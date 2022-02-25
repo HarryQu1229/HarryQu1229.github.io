@@ -1,0 +1,643 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Harry World | Harry World</title><meta name="keywords" content=",,"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# Javaweb # 一、JavaWeb 的概念   JavaWeb 是指所有通过 Java 语言编写的可以通过浏览器访问的程序的总称， JavaWeb 是基于请求和响应来开发的   请求 (Request)：指客户端给服务器发送数据   响应 (Response)：指服务器给客户端回传数据   请求和响应的关系：   # 二、Web 资源的分类 静态资源：html，css，js，txt，mp4">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Harry World">
+<meta property="og:url" content="https://harryqu1229.github.io/2022/02/25/tomcat%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BB%A5%E5%8F%8Aidea%E9%87%8C%E9%9D%A2%E7%9A%84tomcat/index.html">
+<meta property="og:site_name" content="Harry World">
+<meta property="og:description" content="# Javaweb # 一、JavaWeb 的概念   JavaWeb 是指所有通过 Java 语言编写的可以通过浏览器访问的程序的总称， JavaWeb 是基于请求和响应来开发的   请求 (Request)：指客户端给服务器发送数据   响应 (Response)：指服务器给客户端回传数据   请求和响应的关系：   # 二、Web 资源的分类 静态资源：html，css，js，txt，mp4">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg">
+<meta property="article:published_time" content="2022-02-24T13:31:46.357Z">
+<meta property="article:modified_time" content="2022-02-25T12:53:14.841Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="full-stack">
+<meta property="article:tag" content="study">
+<meta property="article:tag" content="programmer">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="front-end">
+<meta property="article:tag" content="back-end">
+<meta property="article:tag" content="全栈">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="harry">
+<meta property="article:tag" content="总结">
+<meta property="article:tag" content="interview">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://harryqu1229.github.io/2022/02/25/tomcat%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BB%A5%E5%8F%8Aidea%E9%87%8C%E9%9D%A2%E7%9A%84tomcat/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Harry World',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-26 01:53:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/flink.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry World</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">No title</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-02-24T13:31:46.357Z" title="Created 2022-02-25 02:31:46">2022-02-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-02-25T12:53:14.841Z" title="Updated 2022-02-26 01:53:14">2022-02-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>4min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><span class="disqus-comment-count"><a href="https://harryqu1229.github.io/2022/02/25/tomcat%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BB%A5%E5%8F%8Aidea%E9%87%8C%E9%9D%A2%E7%9A%84tomcat/#disqus_thread"></a></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="javaweb"><a class="markdownIt-Anchor" href="#javaweb">#</a> Javaweb</h1>
+<h2 id="一-javaweb的概念"><a class="markdownIt-Anchor" href="#一-javaweb的概念">#</a> 一、JavaWeb 的概念</h2>
+<ol>
+<li>
+<p>JavaWeb 是指所有通过 Java 语言编写的可以通过浏览器访问的程序的总称，</p>
+<p>JavaWeb 是基于请求和响应来开发的</p>
+</li>
+<li>
+<p>请求 (Request)：指客户端给服务器发送数据</p>
+</li>
+<li>
+<p>响应 (Response)：指服务器给客户端回传数据</p>
+</li>
+<li>
+<p>请求和响应的关系：<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/2020080413350860.png" alt="在这里插入图片描述" style="zoom:150%;" /></p>
+</li>
+</ol>
+<h2 id="二-web资源的分类"><a class="markdownIt-Anchor" href="#二-web资源的分类">#</a> 二、Web 资源的分类</h2>
+<p>静态资源：html，css，js，txt，mp4，jpg 等<br>
+动态资源：jsp 页面，<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Servlet&amp;spm=1001.2101.3001.7020">Servlet</a> 程序</p>
+<h2 id="三-tomcat概念"><a class="markdownIt-Anchor" href="#三-tomcat概念">#</a> 三、Tomcat 概念</h2>
+<p>由 Apache 组织提供的一种__Web 服务器__，提供对 jsp 和 Servlet 的支持，它是一种轻量级的 javaweb<br>
+ 容器 (服务器)，也是目前应用最广泛的 Javaweb 服务器 (免费)</p>
+<h2 id="四-tomcat服务器和servlet版本的对应关系"><a class="markdownIt-Anchor" href="#四-tomcat服务器和servlet版本的对应关系">#</a> 四、Tomcat 服务器和 Servlet 版本的对应关系</h2>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133524551.png" alt="在这里插入图片描述"></p>
+<h2 id="五-tomcat的使用"><a class="markdownIt-Anchor" href="#五-tomcat的使用">#</a> 五、Tomcat 的使用</h2>
+<ol>
+<li>
+<p>将所需的 zip 压缩包解压到需要安装的目录</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133549570.png" alt="在这里插入图片描述"></p>
+</li>
+<li>
+<p>解压之后的目录介绍</p>
+<p>bin：存放 Tomcat 服务器的可执行程序<br>
+ conf：存放 Tomcat 服务器的配置文件<br>
+ lib：存放 Tomcat 服务器的 jar 包<br>
+ logs：存放 Tomcat 服务器运行时输出的日志信息<br>
+ temp：存放 Tomcat 服务器运行时产生的临时数据<br>
+ webapps：存放部署的 Web 工程<br>
+ work：存放 Tomcat 运行时 jsp 翻译为 Servlet 的源码和 Session 钝化 (序列化) 的目录</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133600369.png" alt="在这里插入图片描述"></p>
+<ol start="3">
+<li>
+<p>配置 JAVA_HOME 环境变量</p>
+<p>(1) 若不配置，会导致启动服务器失败：双击 bin 目录下的 startup.bat 文件会出现一个小黑窗 口一闪而过，此时代表未启动成功，需要配置 JAVA_HOME 环境变量<br>
+ (2) 配置步骤：<br>
+此电脑右击 --&gt; 属性 --&gt; 高级系统设置 (如下图所示)</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133610532.png" alt="在这里插入图片描述"></p>
+<p>注意：第五步中填写的是 JDK 的安装目录，不需要带上 bin 目录 (填写 bin 目录的上层目录)</p>
+<ol start="4">
+<li>
+<p>启动 Tomcat 服务器</p>
+<p>①找到 Tomcat 目录下的 bin 目录下的 startup.bat 文件，双击即可启动 Tomcat 服务器<br>
+②测试 Tomcat 服务器启动成功与否 (以下三选一即可):<br>
+ 在浏览器的地址栏中输入以下地址 (此时访问到的是 Tomcat 目录下的 webapps 目录中)：<br>
+(1) <a target="_blank" rel="noopener" href="http://localhost:8080">http://localhost:8080</a><br>
+(2) <a target="_blank" rel="noopener" href="http://127.0.0.1:8080">http://127.0.0.1:8080</a><br>
+(3) <a target="_blank" rel="noopener" href="http://xn--ip-ne1d365h:8080">http:// 真实 ip:8080</a><br>
+ 出现以下界面代表 Tomcat 服务器启动成功：</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133628351.png" alt="在这里插入图片描述"></p>
+<ol start="5">
+<li>
+<p>另一种启动 Tomcat 服务器的方式</p>
+<p>①打开命令行<br>
+②cd 到 Tomcat 安装目录下的 bin 目录下</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133638985.png" alt="在这里插入图片描述"></p>
+<p>​	③敲入启动命令：catalina run</p>
+<ol start="6">
+<li>
+<p>Tomcat 服务器的停止</p>
+<p>以下方式三选一：<br>
+① 点击已经启动 Tomcat 服务器的命令行窗口的 x 关闭按钮<br>
+② 把 Tomcat 服务器窗口设置为当前窗口，然后按快捷键 ctrl + c<br>
+③ 双击 Tomcat 安装目录下的 bin 目录下的 shutdown.bat 文件</p>
+</li>
+<li>
+<p>修改 Tomcat 的端口号</p>
+<p>Tomcat 的默认端口号是 8080，修改方法如下：<br>
+①找到 Tomcat 目录下的 conf 目录，打开 server.xml 配置文件<br>
+②找到 Connector 标签，修改 port 属性值为想要的端口号</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133701605.png" alt="在这里插入图片描述"></p>
+<p>​	③修改完端口号需重启 Tomcat 服务器方可生效</p>
+<ol start="8">
+<li>
+<p>部署 web 工程到 Tomcat 中</p>
+<p>(1) 第一种部署方法：将 web 工程的目录拷贝到 Tomcat 的 webapps 目录下即可<br>
+步骤如下：</p>
+</li>
+</ol>
+<p>①在 webapps 目录下创建一个 book 工程 (文件夹)：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133715972.png" alt="在这里插入图片描述"></p>
+<p>②将工程拷贝到 book 文件夹中：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200804133721890.png" alt="在这里插入图片描述"></p>
+<p>③访问 Tomcat 下的 web 工程：<br>
+在浏览器的地址栏中输入：<a target="_blank" rel="noopener" href="http://localhost:8080/%E5%B7%A5%E7%A8%8B%E5%90%8D/%E6%96%87%E4%BB%B6%E5%90%8D">http://localhost:8080 / 工程名 / 文件名</a><br>
+如：<a target="_blank" rel="noopener" href="http://localhost:8080/book/index.html%EF%BC%8C%E5%8D%B3%E5%8F%AF%E6%89%93%E5%BC%80%E7%B4%A2%E5%BC%95%E9%A1%B5">http://localhost:8080/book/index.html，即可打开索引页</a></p>
+<p>​	(2) 第二种部署方法：创建配置文件<br>
+步骤如下：<br>
+①在如图所示的目录下创建任意名字的 xml 文件：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133746853.png" alt="在这里插入图片描述"></p>
+<p>②此 xml 文件 (UTF-8 格式) 中的内容为：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133802418.png" alt="在这里插入图片描述"></p>
+<p>其中：Context 代表一个工程的上下文<br>
+ path 代表工程的访问路径，即：/ 此文件名<br>
+ docBase 代表要访问的工程目录在哪里 (可以访问磁盘中的任何目录)<br>
+ 注意：默认打开的是__工程的 index.html 文件__</p>
+<ol start="9">
+<li>
+<p>访问方式的区别</p>
+<p>(1) 拖动 html 页面到浏览器：<br>
+①浏览器中的地址栏为：file:///E:/Tomcat/apache-tomcat-8.0.50/webapps/book/index.html<br>
+②使用的是 file:// 协议：浏览器直接读取 file 协议后面的路径，解析展示在浏览器上即可<br>
+ (2) 在浏览器的地址栏中输入 http 协议：</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133830151.png" alt="在这里插入图片描述"></p>
+<h2 id="六-idea整合tomcat服务器"><a class="markdownIt-Anchor" href="#六-idea整合tomcat服务器">#</a> 六、IDEA 整合 Tomcat 服务器</h2>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133841890.png" alt="在这里插入图片描述"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133847182.png" alt="在这里插入图片描述"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133851757.png" alt="在这里插入图片描述"></p>
+<h2 id="七-idea中操作web工程"><a class="markdownIt-Anchor" href="#七-idea中操作web工程">#</a> 七、IDEA 中操作 web 工程</h2>
+<p>IDEA 中创建动态 web 工程</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133907507.png" alt="在这里插入图片描述"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133911504.png" alt="在这里插入图片描述"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133915588.png" alt="在这里插入图片描述"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/2020080413392171.png" alt="在这里插入图片描述"></p>
+<ol start="2">
+<li>
+<p>在 IDEA 中部署工程到 Tomcat 中运行</p>
+<p>(1) 每次创建 web 工程时，会伴随着一个 Tomcat 实例一起创建，如下：</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133930593.png" alt="在这里插入图片描述"></p>
+<p>​	(2) 为了防止多个 web 工程的 Tomcat 实例混淆，一般将 Tomcat 实例重命名为 web 工程的名字， 点击上图的 Edit Configurations，如下：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/2020080413394072.png" alt="在这里插入图片描述"></p>
+<p>​	(3) 确认 Tomcat 实例中有要部署运行的 web 工程，如下：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804133950631.png" alt="在这里插入图片描述"></p>
+<ol start="3">
+<li>
+<p>在 IDEA 中运行、停止 Tomcat 实例</p>
+<p>(1) 启动 Tomcat 实例：</p>
+</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20200804134026228.png" alt="在这里插入图片描述"></p>
+<p>​	(2) Debug 方式启动 Tomcat 实例：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/2020080413403187.png" alt="在这里插入图片描述"></p>
+<p>​	(3) 停止运行 Tomcat 实例：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804134043115.png" alt="在这里插入图片描述"></p>
+<p>​	(4) 重启 Tomcat 运行实例：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804134050162.png" alt="在这里插入图片描述"></p>
+<p>配置资源热部署<br>
+热部署就是正在运行状态的应用，修改了他的源码之后，在不重新启动的情况下能够自动把增量内容编译并部署到服务器上，使得修改立即生效。热部署为了解决的问题有两个， 一是在开发的时候，修改代码后不需要重启应用就能看到效果，大大提升开发效率；二是生产上运行的程序，可以在不停止运行的情况下进行升级，不影响用户使用。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20200804134059522.png" alt="在这里插入图片描述"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2022/02/25/tomcat%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BB%A5%E5%8F%8Aidea%E9%87%8C%E9%9D%A2%E7%9A%84tomcat/">https://harryqu1229.github.io/2022/02/25/tomcat%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BB%A5%E5%8F%8Aidea%E9%87%8C%E9%9D%A2%E7%9A%84tomcat/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/25/XML%20and%20dom4j/"><img class="prev-cover" src="https://raw.githubusercontent.com/HarryQu1229/image-host/ca78dff38e0bfb81a8e98ad64f749e97bcc55f14/notes-img/Billfish.yWAOuM.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">XML and Dom4j</div></div></a></div><div class="next-post pull-right"><a href="/2022/02/25/%E4%BB%A3%E7%A0%81%E5%8F%AF%E8%AF%BB%E6%80%A7/"><img class="next-cover" src="https://w.wallhaven.cc/full/v9/wallhaven-v9v9o5.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Code readibility</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#javaweb"><span class="toc-number">1.</span> <span class="toc-text"> Javaweb</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-javaweb%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text"> 一、JavaWeb 的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-web%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text"> 二、Web 资源的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-tomcat%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.</span> <span class="toc-text"> 三、Tomcat 概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Cservlet%E7%89%88%E6%9C%AC%E7%9A%84%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB"><span class="toc-number">1.4.</span> <span class="toc-text"> 四、Tomcat 服务器和 Servlet 版本的对应关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-tomcat%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.5.</span> <span class="toc-text"> 五、Tomcat 的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-idea%E6%95%B4%E5%90%88tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.6.</span> <span class="toc-text"> 六、IDEA 整合 Tomcat 服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-idea%E4%B8%AD%E6%93%8D%E4%BD%9Cweb%E5%B7%A5%E7%A8%8B"><span class="toc-number">1.7.</span> <span class="toc-text"> 七、IDEA 中操作 web 工程</span></a></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux easy notes"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes">Linux easy notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux commands"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands">Linux commands</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/Linux/" title="Linux notes"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux notes"/></a><div class="content"><a class="title" href="/2022/04/02/Linux/" title="Linux notes">Linux notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/nodejs/" title="Nodejs notes"><img src="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nodejs notes"/></a><div class="content"><a class="title" href="/2022/03/01/nodejs/" title="Nodejs notes">Nodejs notes</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Frontend interview questions"/></a><div class="content"><a class="title" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions">Frontend interview questions</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2022/02/25/tomcat%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BB%A5%E5%8F%8Aidea%E9%87%8C%E9%9D%A2%E7%9A%84tomcat/'
+    this.page.identifier = '2022/02/25/tomcat的使用以及idea里面的tomcat/'
+    this.page.title = ''
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>if (window.DISQUSWIDGETS === undefined) {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://harry-study-blog.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+} else {
+  DISQUSWIDGETS.getCount({reset: true});
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: 'a0e549f88a55862234b10f359aec1a4f',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=a5KJbIVovxK3ZXvlrPvv7wgYLY4fAh3pvP4thfjXYUdM2cNymlgVhMhdyhb9e0O3')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" title="本站使用JsDelivr为静态资源提供CDN加速"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，默认线路托管于Vercel"><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，联通线路托管于Coding"><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

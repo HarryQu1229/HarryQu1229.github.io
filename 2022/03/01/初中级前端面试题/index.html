@@ -1,0 +1,1920 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Frontend interview questions | Harry World</title><meta name="keywords" content="interview,frontend,面试"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# HTML # HTML 语义化 HTML 语义化就是让页面内容结构化，它有如下优点 1、易于用户阅读，样式丢失的时候能让页面呈现清晰的结构。 2、有利于SEO，搜索引擎根据标签来确定上下文和各个关键字的权重。 3、方便其他设备解析，如盲人阅读器根据语义渲染网页 4、有利于开发和维护，语义化更具可读性，代码更好维护，与CSS3关系更和谐  如： &lt;header&gt;代表头部 &lt;na">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Frontend interview questions">
+<meta property="og:url" content="https://harryqu1229.github.io/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="Harry World">
+<meta property="og:description" content="# HTML # HTML 语义化 HTML 语义化就是让页面内容结构化，它有如下优点 1、易于用户阅读，样式丢失的时候能让页面呈现清晰的结构。 2、有利于SEO，搜索引擎根据标签来确定上下文和各个关键字的权重。 3、方便其他设备解析，如盲人阅读器根据语义渲染网页 4、有利于开发和维护，语义化更具可读性，代码更好维护，与CSS3关系更和谐  如： &lt;header&gt;代表头部 &lt;na">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg">
+<meta property="article:published_time" content="2022-02-28T11:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-25T13:17:17.590Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="frontend">
+<meta property="article:tag" content="interview">
+<meta property="article:tag" content="offer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://harryqu1229.github.io/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Frontend interview questions',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-26 02:17:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/flink.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.myperfectresume.com/wp-content/uploads/2021/07/how-to-write-a-resume-summary-1024x683.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry World</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Frontend interview questions</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-02-25T13:17:17.590Z" title="Updated 2022-02-26 02:17:17">2022-02-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Interview/">Interview</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Interview/frontend/">frontend</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">15.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>54min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Frontend interview questions"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><span class="disqus-comment-count"><a href="https://harryqu1229.github.io/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/#disqus_thread"></a></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="html"><a class="markdownIt-Anchor" href="#html">#</a> HTML</h2>
+<h3 id="html语义化"><a class="markdownIt-Anchor" href="#html语义化">#</a> HTML 语义化</h3>
+<p>HTML 语义化就是让页面内容结构化，它有如下优点</p>
+<pre class="line-numbers language-none"><code class="language-none">1、易于用户阅读，样式丢失的时候能让页面呈现清晰的结构。
+2、有利于SEO，搜索引擎根据标签来确定上下文和各个关键字的权重。
+3、方便其他设备解析，如盲人阅读器根据语义渲染网页
+4、有利于开发和维护，语义化更具可读性，代码更好维护，与CSS3关系更和谐
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如：</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;header&gt;代表头部
+&lt;nav&gt;代表超链接区域
+&lt;main&gt;定义文档主要内容
+&lt;article&gt;可以表示文章、博客等内容
+&lt;aside&gt;通常表示侧边栏或嵌入内容
+&lt;footer&gt;代表尾部
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="html5新标签"><a class="markdownIt-Anchor" href="#html5新标签">#</a> HTML5 新标签</h3>
+<pre class="line-numbers language-none"><code class="language-none">有&lt;header&gt;、&lt;footer&gt;、&lt;aside&gt;、&lt;nav&gt;、&lt;video&gt;、&lt;audio&gt;、&lt;canvas&gt;等...
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="css"><a class="markdownIt-Anchor" href="#css">#</a> CSS</h2>
+<h3 id="盒子模型"><a class="markdownIt-Anchor" href="#盒子模型">#</a> 盒子模型</h3>
+<p>盒模型分为标准盒模型和怪异盒模型 (IE 模型)</p>
+<pre class="line-numbers language-none"><code class="language-none">box-sizing：content-box   &#x2F;&#x2F;标准盒模型
+box-sizing：border-box    &#x2F;&#x2F;怪异盒模型
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/9/9/16d1528aff0ef536~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>标准盒模型：元素的宽度等于 style 里的 width+margin+border+padding 宽度</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/9/9/16d158cb1351e5b1~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>如下代码，整个宽高还是 120px</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">div&#123;
+    box-sizing: content-box;
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>怪异盒模型：元素宽度等于 style 里的 width 宽度</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16d158e2ebd5fefe%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>如下代码，整个宽高还是 100px</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">div&#123;
+    box-sizing: border-box;
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意：如果你在设计页面中，发现内容区被撑爆了，那么就先检查一下 border-sizing 是什么，最好在引用 reset.css 的时候，就对 border-sizing 进行统一设置，方便管理</p>
+<h3 id="rem与em的区别"><a class="markdownIt-Anchor" href="#rem与em的区别">#</a> rem 与 em 的区别</h3>
+<blockquote>
+<p>rem 是根据根的 font-size 变化，而 em 是根据父级的 font-size 变化</p>
+</blockquote>
+<p>rem：相对于根元素 html 的 font-size，假如 html 为 font-size：12px，那么，在其当中的 div 设置为 font-size：2rem, 就是当中的 div 为 24px</p>
+<p>em：相对于父元素计算，假如某个 p 元素为 font-size:12px, 在它内部有个 span 标签，设置 font-size：2em, 那么，这时候的 span 字体大小为：12*2=24px</p>
+<h3 id="css选择器"><a class="markdownIt-Anchor" href="#css选择器">#</a> CSS 选择器</h3>
+<p><strong>css 常用选择器</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">通配符：*
+ID选择器：#ID
+类选择器：.class
+元素选择器：p、a    等
+后代选择器：p span、div a   等
+伪类选择器：a:hover 等
+属性选择器：input[type&#x3D;&quot;text&quot;]  等
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>css 选择器权重</strong></p>
+<p>!important -&gt; 行内样式 -&gt; #id -&gt; .class -&gt; 元素和伪元素 -&gt; * -&gt; 继承 -&gt; 默认</p>
+<h3 id="css新特性"><a class="markdownIt-Anchor" href="#css新特性">#</a> CSS 新特性</h3>
+<pre class="line-numbers language-none"><code class="language-none">transition：过渡
+transform：旋转、缩放、移动或者倾斜
+animation：动画
+gradient：渐变
+shadow：阴影
+border-radius：圆角
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="行内元素和块级元素"><a class="markdownIt-Anchor" href="#行内元素和块级元素">#</a> 行内元素和块级元素</h3>
+<p><strong>行内元素（display: inline）</strong></p>
+<p>宽度和高度是由内容决定，与其他元素共占一行的元素，我们将其叫行内元素，例如： <code>&lt;span&gt; 、 &lt;i&gt; 、 &lt;a&gt;</code>  等</p>
+<p><strong>块级元素（display: block)</strong></p>
+<p>默认宽度由父容器决定，默认高度由内容决定，独占一行并且可以设置宽高的元素，我们将其叫做块级元素，例如： <code>&lt;p&gt; 、&lt;div&gt; 、&lt;ul&gt;等</code></p>
+<p>在平时，我们经常使用 CSS 的 display: inline-block，使它们拥有更多的状态</p>
+<h3 id="绝对定位和相对定位的区别"><a class="markdownIt-Anchor" href="#绝对定位和相对定位的区别">#</a> 绝对定位和相对定位的区别</h3>
+<p><strong>position: absolute</strong><br>
+ 绝对定位：是相对于元素最近的已定位的祖先元素</p>
+<p><strong>position: relative</strong><br>
+ 相对定位：相对定位是相对于元素在文档中的初始位置</p>
+<h3 id="flex布局"><a class="markdownIt-Anchor" href="#flex布局">#</a> Flex 布局</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903906925887502" title="https://juejin.cn/post/6844903906925887502">juejin.cn/post/684490…</a></p>
+<h3 id="bfc"><a class="markdownIt-Anchor" href="#bfc">#</a> BFC</h3>
+<p><strong>什么是 BFC?</strong></p>
+<p>BFC 格式化上下文，它是一个独立的渲染区域，让处于 BFC 内部的元素和外部的元素相互隔离，使内外元素的定位不会相互影响</p>
+<p><strong>如何产生 BFC?</strong></p>
+<p>display: inline-block</p>
+<p>position: absolute/fixed</p>
+<p><strong>BFC 作用</strong></p>
+<p>BFC 最大的一个作用就是：在页面上有一个独立隔离容器，容器内的元素和容器外的元素布局不会相互影响</p>
+<pre class="line-numbers language-none"><code class="language-none">解决上外边距重叠;重叠的两个box都开启bfc;
+解决浮动引起高度塌陷;容器盒子开启bfc
+解决文字环绕图片;左边图片div,右边文字容器p,将p容器开启bfc
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="水平垂直居中"><a class="markdownIt-Anchor" href="#水平垂直居中">#</a> 水平垂直居中</h3>
+<p><strong>Flex 布局</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">display: flex  &#x2F;&#x2F;设置Flex模式
+flex-direction: column  &#x2F;&#x2F;决定元素是横排还是竖着排
+flex-wrap: wrap     &#x2F;&#x2F;决定元素换行格式
+justify-content: space-between  &#x2F;&#x2F;同一排下对齐方式，空格如何隔开各个元素
+align-items: center     &#x2F;&#x2F;同一排下元素如何对齐
+align-content: space-between    &#x2F;&#x2F;多行对齐方式
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>水平居中</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">行内元素：display: inline-block;
+块级元素：margin: 0 auto;
+Flex: display: flex; justify-content: center
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>垂直居中</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">行高 &#x3D; 元素高：line-height: height
+flex: display: flex; align-item: center
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="lesssassstyus三者的区别"><a class="markdownIt-Anchor" href="#lesssassstyus三者的区别">#</a> less,sass,styus 三者的区别</h3>
+<p><strong>变量</strong></p>
+<p>Sass 声明变量必须是『$』开头，后面紧跟变量名和变量值，而且变量名和变量值需要使用冒号：分隔开。</p>
+<p>Less 声明变量用『@』开头，其余等同 Sass。</p>
+<p>Stylus 中声明变量没有任何限定，结尾的分号可有可无，但变量名和变量值之间必须要有『等号』。</p>
+<p><strong>作用域</strong></p>
+<p>Sass：三者最差，不存在全局变量的概念</p>
+<p>Less：最近的一次更新的变量有效，并且会作用于全部的引用！</p>
+<p>Stylus：Sass 的处理方式和 Stylus 相同，变量值输出时根据之前最近的一次定义计算，每次引用最近的定义有效；</p>
+<p><strong>嵌套</strong></p>
+<p>三种 css 预编译器的「选择器嵌套」在使用上来说没有任何区别，甚至连引用父级选择器的标记 &amp; 也相同</p>
+<p><strong>继承</strong></p>
+<p>Sass 和 Stylus 的继承非常像，能把一个选择器的所有样式继承到另一个选择器上。使用『@extend』开始，后面接被继承的选择器。Stylus 的继承方式来自 Sass，两者如出一辙。 Less 则又「独树一帜」地用伪类来描述继承关系；</p>
+<p><strong>导入 @Import</strong></p>
+<p>Sass 中只能在使用 url () 表达式引入时进行变量插值</p>
+<pre class="line-numbers language-none"><code class="language-none">$device: mobile;
+@import url(styles.#&#123;$device&#125;.css);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>Less 中可以在字符串中进行插值</p>
+<pre class="line-numbers language-none"><code class="language-none">@device: mobile;
+@import &quot;styles.@&#123;device&#125;.css&quot;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>Stylus 中在这里插值不管用，但是可以利用其字符串拼接的功能实现</p>
+<pre class="line-numbers language-none"><code class="language-none">device &#x3D; &quot;mobile&quot;
+@import &quot;styles.&quot; + device + &quot;.css&quot;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>总结</strong></p>
+<p>Sass 和 Less 语法严谨、Stylus 相对自由。因为 Less 长得更像 css，所以它可能学习起来更容易。</p>
+<p>Sass 和 Compass、Stylus 和 Nib 都是好基友。</p>
+<p>Sass 和 Stylus 都具有类语言的逻辑方式处理：条件、循环等，而 Less 需要通过 When 等关键词模拟这些功能，这方面 Less 比不上 Sass 和 Stylus</p>
+<p>Less 在丰富性以及特色上都不及 Sass 和 Stylus，若不是因为 Bootstrap 引入了 Less，可能它不会像现在这样被广泛应用（个人愚见）</p>
+<h3 id="link与import区别与选择"><a class="markdownIt-Anchor" href="#link与import区别与选择">#</a> link 与 @import 区别与选择</h3>
+<pre class="line-numbers language-none"><code class="language-none">&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;
+	@import url(CSS文件路径地址);
+&lt;&#x2F;style&gt;
+&lt;link href&#x3D;&quot;CSSurl路径&quot; rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; &#x2F;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>link 功能较多，可以定义 RSS，定义 Rel 等作用，而 @import 只能用于加载 css；</p>
+<p>当解析到 link 时，页面会同步加载所引的 css，而 @import 所引用的 css 会等到页面加载完才被加载；</p>
+<p>@import 需要 IE5 以上才能使用；</p>
+<p>link 可以使用 js 动态引入，@import 不行</p>
+<h3 id="多行元素的文本省略号"><a class="markdownIt-Anchor" href="#多行元素的文本省略号">#</a> 多行元素的文本省略号</h3>
+<pre class="line-numbers language-none"><code class="language-none">overflow : hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="javascript"><a class="markdownIt-Anchor" href="#javascript">#</a> JavaScript</h2>
+<h3 id="js的几条基本规范"><a class="markdownIt-Anchor" href="#js的几条基本规范">#</a> JS 的几条基本规范</h3>
+<pre class="line-numbers language-none"><code class="language-none">1、不要在同一行声明多个变量
+2、请使用&#x3D;&#x3D;&#x3D;&#x2F;！&#x3D;&#x3D;来比较true&#x2F;false或者数值
+3、使用对象字面量替代new Array这种形式
+4、不要使用全局变量
+5、Switch语句必须带有default分支
+6、函数不应该有时候有返回值，有时候没有返回值
+7、For循环必须使用大括号
+8、IF语句必须使用大括号
+9、for-in循环中的变量 应该使用var关键字明确限定作用域，从而避免作用域污染
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="js引用方法"><a class="markdownIt-Anchor" href="#js引用方法">#</a> JS 引用方法</h3>
+<p><strong>行内引入</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
+  &lt;input type&#x3D;&quot;button&quot; onclick&#x3D;&quot;alert(&#39;行内引入&#39;)&quot; value&#x3D;&quot;按钮&quot;&#x2F;&gt;
+  &lt;button onclick&#x3D;&quot;alert(123)&quot;&gt;点击我&lt;&#x2F;button&gt;
+&lt;&#x2F;body&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>内部引入</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+  window.onload &#x3D; function() &#123;
+    alert(&quot;js 内部引入！&quot;);
+  &#125;
+&lt;&#x2F;script&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>外部引入</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
+  &lt;div&gt;&lt;&#x2F;div&gt;
+
+  &lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;.&#x2F;js&#x2F;index.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;body&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>注意</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">1，不推荐写行内或者HTML中插入&lt;script&gt;,因为浏览器解析顺序缘故，如果解析到死循环之类的JS代码，会卡住页面
+2，建议在onload事件之后，即等HTML、CSS渲染完毕再执行代码
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="js的基本数据类型"><a class="markdownIt-Anchor" href="#js的基本数据类型">#</a> JS 的基本数据类型</h3>
+<p>Undefined、Null、Boolean、Number、String、新增：Symbol</p>
+<h3 id="数组操作"><a class="markdownIt-Anchor" href="#数组操作">#</a> 数组操作</h3>
+<blockquote>
+<p>在 JavaScript 中，用得较多的之一无疑是数组操作，这里过一遍数组的一些用法</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">map: 遍历数组，返回回调返回值组成的新数组
+forEach: 无法break，可以用try&#x2F;catch中throw new Error来停止
+filter: 过滤
+some: 有一项返回true，则整体为true
+every: 有一项返回false，则整体为false
+join: 通过指定连接符生成字符串
+push &#x2F; pop: 末尾推入和弹出，改变原数组， 返回推入&#x2F;弹出项【有误】
+unshift &#x2F; shift: 头部推入和弹出，改变原数组，返回操作项【有误】
+sort(fn) &#x2F; reverse: 排序与反转，改变原数组
+concat: 连接数组，不影响原数组， 浅拷贝
+slice(start, end): 返回截断后的新数组，不改变原数组
+splice(start, number, value...): 返回删除元素组成的数组，value 为插入项，改变原数组
+indexOf &#x2F; lastIndexOf(value, fromIndex): 查找数组项，返回对应的下标
+reduce &#x2F; reduceRight(fn(prev, cur)， defaultPrev): 两两执行，prev 为上次化简函数的return值，cur 为当前值(从第二项开始)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="js有哪些内置对象"><a class="markdownIt-Anchor" href="#js有哪些内置对象">#</a> JS 有哪些内置对象</h3>
+<pre class="line-numbers language-none"><code class="language-none">Object是JavaScript中所有对象的父对象
+
+数据封装对象：Object、Array、Boolean、Number和String
+其他对象：Function、Arguments、Math、Date、RegExp、Error
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="get请求传参长度的误区"><a class="markdownIt-Anchor" href="#get请求传参长度的误区">#</a> get 请求传参长度的误区</h3>
+<p>误区：我们经常说 get 请求参数的大小存在限制，而 post 请求的参数大小是无限制的</p>
+<p>实际上 HTTP 协议从未规定 GET/POST 的请求长度限制是多少。对 get 请求参数的限制是来源与浏览器或 web 服务器，浏览器或 web 服务器限制了 url 的长度。为了明确这个概念，我们必须再次强调下面几点:</p>
+<p>1、HTTP 协议 未规定 GET 和 POST 的长度限制</p>
+<p>2、GET 的最大长度显示是因为 浏览器和 web 服务器限制了 URI 的长度</p>
+<p>3、不同的浏览器和 WEB 服务器，限制的最大长度不一样</p>
+<p>4、要支持 IE，则最大长度为 2083byte，若只支持 Chrome，则最大长度 8182byte</p>
+<h3 id="补充get和post请求在缓存方面的区别"><a class="markdownIt-Anchor" href="#补充get和post请求在缓存方面的区别">#</a> 补充 get 和 post 请求在缓存方面的区别</h3>
+<ul>
+<li>
+<p>get 请求类似于查找的过程，用户获取数据，可以不用每次都与数据库连接，所以可以使用缓存。</p>
+</li>
+<li>
+<p>post 不同，post 做的一般是修改和删除的工作，所以必须与数据库交互，所以不能使用缓存。因此 get 请求适合于请求缓存。</p>
+</li>
+</ul>
+<h3 id="闭包"><a class="markdownIt-Anchor" href="#闭包">#</a> 闭包</h3>
+<p><strong>什么是闭包？</strong></p>
+<p>函数 A 里面包含了 函数 B，而 函数 B 里面使用了 函数 A 的变量，那么 函数 B 被称为闭包。</p>
+<p>又或者：闭包就是能够读取其他函数内部变量的函数</p>
+<pre class="line-numbers language-none"><code class="language-none">function A() &#123;
+  var a &#x3D; 1;
+  function B() &#123;
+    console.log(a);
+  &#125;
+  return B();
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>闭包的特征</strong></p>
+<ul>
+<li>函数内再嵌套函数</li>
+<li>内部函数可以引用外层的参数和变量</li>
+<li>参数和变量不会被垃圾回收制回收</li>
+</ul>
+<p><strong>对闭包的理解</strong></p>
+<p>使用闭包主要是为了设计私有的方法和变量。闭包的优点是可以避免全局变量的污染，缺点是闭包会常驻内存，会增大内存使用量，使用不当很容易造成内存泄露。在 js 中，函数即闭包，只有函数才会产生作用域的概念</p>
+<p>闭包 的最大用处有两个，一个是可以读取函数内部的变量，另一个就是让这些变量始终保持在内存中</p>
+<p>闭包的另一个用处，是封装对象的私有属性和私有方法</p>
+<p><strong>闭包的好处</strong></p>
+<p>能够实现封装和缓存等</p>
+<p><strong>闭包的坏处</strong></p>
+<p>就是消耗内存、不正当使用会造成内存溢出的问题</p>
+<p><strong>使用闭包的注意点</strong></p>
+<p>由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在 IE 中可能导致内存泄露</p>
+<p>解决方法是：在退出函数之前，将不使用的局部变量全部删除</p>
+<p><strong>闭包的经典问题</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">for(var i &#x3D; 0; i &lt; 3; i++) &#123;
+  setTimeout(function() &#123;
+    console.log(i);
+  &#125;, 1000);
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这段代码输出</p>
+<pre class="line-numbers language-none"><code class="language-none">答案：3个3
+解析：首先，for 循环是同步代码，先执行三遍 for，i 变成了 3；然后，再执行异步代码 setTimeout，这时候输出的 i，只能是 3 个 3 了
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>有什么办法依次输出 0 1 2</p>
+<blockquote>
+<p>第一种方法</p>
+</blockquote>
+<p>使用 let</p>
+<pre class="line-numbers language-none"><code class="language-none">for(let i &#x3D; 0; i &lt; 3; i++) &#123;
+  setTimeout(function() &#123;
+    console.log(i);
+  &#125;, 1000);
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在这里，每个 let 和代码块结合起来形成块级作用域，当 setTimeout () 打印时，会寻找最近的块级作用域中的 i，所以依次打印出 0 1 2</p>
+<p>如果这样不明白，我们可以执行下边这段代码</p>
+<pre class="line-numbers language-none"><code class="language-none">for(let i &#x3D; 0; i &lt; 3; i++) &#123;
+  console.log(&quot;定时器外部：&quot; + i);
+  setTimeout(function() &#123;
+    console.log(i);
+  &#125;, 1000);
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时浏览器依次输出的是：</p>
+<pre class="line-numbers language-none"><code class="language-none">定时器外部：0
+定时器外部：1
+定时器外部：2
+0
+1
+2
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>即代码还是先执行 for 循环，但是当 for 结束执行到了 setTimeout 的时候，它会做个标记，这样到了 console.log (i) 中，i 就能找到这个块中最近的变量定义</p>
+<blockquote>
+<p>第二种方法</p>
+</blockquote>
+<p>使用立即执行函数解决闭包的问题</p>
+<pre class="line-numbers language-none"><code class="language-none">for(let i &#x3D; 0; i &lt; 3; i++) &#123;
+  (function(i)&#123;
+    setTimeout(function() &#123;
+      console.log(i);
+    &#125;, 1000);
+  &#125;)(i)
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="js作用域及作用域链"><a class="markdownIt-Anchor" href="#js作用域及作用域链">#</a> JS 作用域及作用域链</h3>
+<p><strong>作用域</strong></p>
+<p>在 JavaScript 中，作用域分为 全局作用域 和 函数作用域</p>
+<blockquote>
+<p>全局作用域</p>
+</blockquote>
+<p>代码在程序的任何地方都能被访问，window 对象的内置属性都拥有全局作用域</p>
+<blockquote>
+<p>函数作用域</p>
+</blockquote>
+<p>在固定的代码片段才能被访问</p>
+<p>例子：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16d382c7d68e17ae%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>作用域有上下级关系，上下级关系的确定就看函数是在哪个作用域下创建的。如上，fn 作用域下创建了 bar 函数，那么 “fn 作用域” 就是 “bar 作用域” 的上级。</p>
+<p>作用域最大的用处就是隔离变量，不同作用域下同名变量不会有冲突。</p>
+<p>变量取值：到创建 这个变量 的函数的作用域中取值</p>
+<p><strong>作用域链</strong></p>
+<p>一般情况下，变量取值到 创建 这个变量 的函数的作用域中取值。</p>
+<p>但是如果在当前作用域中没有查到值，就会向上级作用域去查，直到查到全局作用域，这么一个查找过程形成的链条就叫做作用域链</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16d3830bf3cf1ebf%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h3 id="原型和原型链"><a class="markdownIt-Anchor" href="#原型和原型链">#</a> 原型和原型链</h3>
+<p><strong>原型和原型链的概念</strong></p>
+<p>每个对象都会在其内部初始化一个属性，就是 prototype (原型)，当我们访问一个对象的属性时，如果这个对象内部不存在这个属性，那么他就会去 prototype 里找这个属性，这个 prototype 又会有自己的 prototype，于是就这样一直找下去</p>
+<p><strong>原型和原型链的关系</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">instance.constructor.prototype &#x3D; instance.__proto__
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>原型和原型链的特点</strong></p>
+<p>JavaScript 对象是通过引用来传递的，我们创建的每个新对象实体中并没有一份属于自己的原型副本。当我们修改原型时，与之相关的对象也会继承这一改变</p>
+<p>当我们需要一个属性的时，Javascript 引擎会先看当前对象中是否有这个属性， 如果没有的</p>
+<p>就会查找他的 Prototype 对象是否有这个属性，如此递推下去，一直检索到 Object 内建对象</p>
+<h3 id="组件化和模块化"><a class="markdownIt-Anchor" href="#组件化和模块化">#</a> 组件化和模块化</h3>
+<p><strong>组件化</strong></p>
+<p><strong>为什么要组件化开发</strong></p>
+<p>有时候页面代码量太大，逻辑太多或者同一个功能组件在许多页面均有使用，维护起来相当复杂，这个时候，就需要组件化开发来进行功能拆分、组件封装，已达到组件通用性，增强代码可读性，维护成本也能大大降低</p>
+<p><strong>组件化开发的优点</strong></p>
+<p>很大程度上降低系统各个功能的耦合性，并且提高了功能内部的聚合性。这对前端工程化及降低代码的维护来说，是有很大的好处的，耦合性的降低，提高了系统的伸展性，降低了开发的复杂度，提升开发效率，降低开发成本</p>
+<p><strong>组件化开发的原则</strong></p>
+<ul>
+<li>
+<p>专一</p>
+</li>
+<li>
+<p>可配置性</p>
+</li>
+<li>
+<p>标准性</p>
+</li>
+<li>
+<p>复用性</p>
+</li>
+<li>
+<p>可维护性</p>
+</li>
+</ul>
+<p><strong>模块化</strong></p>
+<p><strong>为什么要模块化</strong></p>
+<p>早期的 javascript 版本没有块级作用域、没有类、没有包、也没有模块，这样会带来一些问题，如复用、依赖、冲突、代码组织混乱等，随着前端的膨胀，模块化显得非常迫切</p>
+<p><strong>模块化的好处</strong></p>
+<ul>
+<li>
+<p>避免变量污染，命名冲突</p>
+</li>
+<li>
+<p>提高代码复用率</p>
+</li>
+<li>
+<p>提高了可维护性</p>
+</li>
+<li>
+<p>方便依赖关系管理</p>
+</li>
+</ul>
+<p><strong>模块化的几种方法</strong></p>
+<ul>
+<li>函数封装</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">var myModule &#x3D; &#123;
+    var1: 1,
+    
+    var2: 2,
+    
+    fn1: function()&#123;
+    
+    &#125;,
+    
+    fn2: function()&#123;
+    
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">总结：这样避免了变量污染，只要保证模块名唯一即可，同时同一模块内的成员也有了关系
+
+缺陷：外部可以睡意修改内部成员，这样就会产生意外的安全问题
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>立即执行函数表达式 (IIFE)</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">var myModule &#x3D; (function()&#123;
+    var var1 &#x3D; 1;
+    var var2 &#x3D; 2;
+    
+    function fn1()&#123;
+    
+    &#125; 
+    
+    function fn2()&#123;
+    
+    &#125;
+
+return &#123;
+    fn1: fn1,
+    fn2: fn2
+&#125;;
+&#125;)();
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">总结：这样在模块外部无法修改我们没有暴露出来的变量、函数
+
+缺点：功能相对较弱，封装过程增加了工作量，仍会导致命名空间污染可能、闭包是有成本的
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="图片的预加载和懒加载"><a class="markdownIt-Anchor" href="#图片的预加载和懒加载">#</a> 图片的预加载和懒加载</h3>
+<ul>
+<li>预加载：提前加载图片，当用户需要查看时可直接从本地缓存中渲染</li>
+<li>懒加载：懒加载的主要目的是作为服务器前端的优化，减少请求数或延迟请求数</li>
+</ul>
+<p>两种技术的本质：两者的行为是相反的，一个是提前加载，一个是迟缓甚至不加载。预加载则会增加服务器前端压力，懒加载对服务器有一定的缓解压力作用。</p>
+<h3 id="mouseover和mouseenter的区别"><a class="markdownIt-Anchor" href="#mouseover和mouseenter的区别">#</a> mouseover 和 mouseenter 的区别</h3>
+<p>mouseover：当鼠标移入元素或其子元素都会触发事件，所以有一个重复触发，冒泡的过程。对应的移除事件是 mouseout</p>
+<p>mouseenter：当鼠标移除元素本身（不包含元素的子元素）会触发事件，也就是不会冒泡，对应的移除事件是 mouseleave</p>
+<h3 id="解决异步回调地狱"><a class="markdownIt-Anchor" href="#解决异步回调地狱">#</a> 解决异步回调地狱</h3>
+<p>promise、generator、async/await</p>
+<h3 id="对this对象的理解"><a class="markdownIt-Anchor" href="#对this对象的理解">#</a> 对 This 对象的理解</h3>
+<p>this 总是指向函数的直接调用者（而非间接调用者）</p>
+<p>如果有 new 关键字，this 指向 new 出来的那个对象</p>
+<p>在事件中，this 指向触发这个事件的对象，特殊的是，IE 中的 attachEvent 中的 this 总是指向全局对象 Window</p>
+<h2 id="vue"><a class="markdownIt-Anchor" href="#vue">#</a> Vue</h2>
+<h3 id="vue生命周期"><a class="markdownIt-Anchor" href="#vue生命周期">#</a> vue 生命周期</h3>
+<p><strong>什么是 Vue 生命周期？</strong></p>
+<p>Vue 实例从创建到销毁的过程，就是生命周期。也就是从开始创建、初始化数据、编译模板、挂载 Dom→渲染、更新→渲染、卸载等一系列过程，我们称这是 Vue 的生命周期</p>
+<p><strong>Vue 生命周期的作用是什么？</strong></p>
+<p>它的生命周期中有多个事件钩子，让我们在控制整个 Vue 实例的过程时更容易形成好的逻辑</p>
+<p><strong>Vue 生命周期总共有几个阶段？</strong></p>
+<p>它可以总共分为 8 个阶段：创建前 / 后，载入前 / 后，更新前 / 后，销毁前 / 销毁后</p>
+<p><strong>第一次页面加载会触发哪几个钩子？</strong></p>
+<p>第一次页面加载时会触发 beforeCreate, created, beforeMount, mounted 这几个钩子</p>
+<p><strong>DOM 渲染在哪个周期中就已经完成？</strong></p>
+<p>DOM 渲染在 mounted 中就已经完成了</p>
+<p><strong>每个生命周期适合哪些场景？</strong></p>
+<p>生命周期钩子的一些使用方法：</p>
+<p>beforecreate : 可以在这加个 loading 事件，在加载实例时触发</p>
+<p>created : 初始化完成时的事件写在这里，如在这结束 loading 事件，异步请求也适宜在这里调用</p>
+<p>mounted : 挂载元素，获取到 DOM 节点</p>
+<p>updated : 如果对数据统一处理，在这里写上相应函数</p>
+<p>beforeDestroy : 可以做一个确认停止事件的确认框</p>
+<p>nextTick : 更新数据后立即操作 dom</p>
+<h3 id="v-show与v-if区别"><a class="markdownIt-Anchor" href="#v-show与v-if区别">#</a> v-show 与 v-if 区别</h3>
+<p>v-show 是 css 切换，v-if 是完整的销毁和重新创建</p>
+<p>使用 频繁切换时用 v-show，运行时较少改变时用 v-if</p>
+<p>v-if=‘false’ v-if 是条件渲染，当 false 的时候不会渲染</p>
+<h3 id="开发中常用的指令有哪些"><a class="markdownIt-Anchor" href="#开发中常用的指令有哪些">#</a> 开发中常用的指令有哪些</h3>
+<p>v-model : 一般用在表达输入，很轻松的实现表单控件和数据的双向绑定</p>
+<p>v-html: 更新元素的 innerHTML</p>
+<p>v-show 与 v-if: 条件渲染，注意二者区别</p>
+<pre class="line-numbers language-none"><code class="language-none">使用了v-if的时候，如果值为false，那么页面将不会有这个html标签生成
+v-show则是不管值为true还是false，html元素都会存在，只是CSS中的display显示或隐藏
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>v-on : click: 可以简写为 @click,@绑定一个事件。如果事件触发了，就可以指定事件的处理函数 v-for: 基于源数据多次渲染元素或模板块 v-bind: 当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM</p>
+<pre class="line-numbers language-none"><code class="language-none">语法：v-bind:title&#x3D;&quot;msg&quot; 简写：:title&#x3D;&quot;msg&quot;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="绑定class的数组用法"><a class="markdownIt-Anchor" href="#绑定class的数组用法">#</a> 绑定 class 的数组用法</h3>
+<p>对象方法 v-bind:class=&quot;{‘orange’: isRipe, ‘green’: isNotRipe}&quot;</p>
+<p>数组方法 v-bind:class=&quot;[class1, class2]&quot;</p>
+<p>行内 v-bind:style=&quot;{color: color, fontSize: fontSize+‘px’}&quot;</p>
+<h3 id="组件之间的传值通信"><a class="markdownIt-Anchor" href="#组件之间的传值通信">#</a> 组件之间的传值通信</h3>
+<p><strong>父组件给子组件传值</strong></p>
+<blockquote>
+<p>使用 props，父组件可以使用 props 向子组件传递数据</p>
+</blockquote>
+<p>父组件 vue 模板 father.vue</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;template&gt;
+    &lt;child :msg&#x3D;&quot;message&quot;&gt;&lt;&#x2F;child&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import child from &#39;.&#x2F;child.vue&#39;;
+export default &#123;
+    components: &#123;
+        child
+    &#125;,
+    data () &#123;
+        return &#123;
+            message: &#39;father message&#39;;
+        &#125;
+    &#125;
+&#125;
+&lt;&#x2F;script&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>子组件 vue 模板 child.vue:</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;template&gt;
+    &lt;div&gt;&#123;&#123;msg&#125;&#125;&lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+export default &#123;
+    props: &#123;
+        msg: &#123;
+            type: String,
+            required: true
+        &#125;
+    &#125;
+&#125;
+&lt;&#x2F;script&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>子组件向父组件通信</strong></p>
+<blockquote>
+<p>父组件向子组件传递事件方法，子组件通过 $emit 触发事件，回调给父组件</p>
+</blockquote>
+<p>父组件 vue 模板 father.vue:</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;template&gt;
+    &lt;child @msgFunc&#x3D;&quot;func&quot;&gt;&lt;&#x2F;child&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import child from &#39;.&#x2F;child.vue&#39;;
+export default &#123;
+    components: &#123;
+        child
+    &#125;,
+    methods: &#123;
+        func (msg) &#123;
+            console.log(msg);
+        &#125;
+    &#125;
+&#125;
+&lt;&#x2F;script&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>子组件 vue 模板 child.vue:</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;template&gt;
+    &lt;button @click&#x3D;&quot;handleClick&quot;&gt;点我&lt;&#x2F;button&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+export default &#123;
+    props: &#123;
+        msg: &#123;
+            type: String,
+            required: true
+        &#125;
+    &#125;,
+    methods () &#123;
+        handleClick () &#123;
+            &#x2F;&#x2F;........
+            this.$emit(&#39;msgFunc&#39;);
+        &#125;
+    &#125;
+&#125;
+&lt;&#x2F;script&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>非父子，兄弟组件之间通信</strong></p>
+<blockquote>
+<p>可以通过实例一个 vue 实例 Bus 作为媒介，要相互通信的兄弟组件之中，都引入 Bus，然后通过分别调用 Bus 事件触发和监听来实现通信和参数传递</p>
+</blockquote>
+<p>Bus.js 可以是这样:</p>
+<pre class="line-numbers language-none"><code class="language-none">import Vue from &#39;vue&#39;
+export default new Vue()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>在需要通信的组件都引入 Bus.js:</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;template&gt;
+	&lt;button @click&#x3D;&quot;toBus&quot;&gt;子组件传给兄弟组件&lt;&#x2F;button&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import Bus from &#39;..&#x2F;common&#x2F;js&#x2F;bus.js&#39;
+export default&#123;
+	methods: &#123;
+	    toBus () &#123;
+	        Bus.$emit(&#39;on&#39;, &#39;来自兄弟组件&#39;)
+	    &#125;
+	  &#125;
+&#125;
+&lt;&#x2F;script&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>另一个组件也 import Bus.js 在钩子函数中监听 on 事件</p>
+<pre class="line-numbers language-none"><code class="language-none">import Bus from &#39;..&#x2F;common&#x2F;js&#x2F;bus.js&#39;
+export default &#123;
+    data() &#123;
+      return &#123;
+        message: &#39;&#39;
+      &#125;
+    &#125;,
+    mounted() &#123;
+       Bus.$on(&#39;on&#39;, (msg) &#x3D;&gt; &#123;
+         this.message &#x3D; msg
+       &#125;)
+     &#125;
+   &#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="路由跳转方式"><a class="markdownIt-Anchor" href="#路由跳转方式">#</a> 路由跳转方式</h3>
+<pre class="line-numbers language-none"><code class="language-none">1，&lt;router-link to&#x3D;&#39;home&#39;&gt; router-link标签会渲染为&lt;a&gt;标签，咋填template中的跳转都是这种；
+
+2，另一种是编程是导航 也就是通过js跳转 比如 router.push(&#39;&#x2F;home&#39;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="mvvm"><a class="markdownIt-Anchor" href="#mvvm">#</a> MVVM</h3>
+<pre class="line-numbers language-none"><code class="language-none">M - Model，Model 代表数据模型，也可以在 Model 中定义数据修改和操作的业务逻辑
+
+V - View，View 代表 UI 组件，它负责将数据模型转化为 UI 展现出来
+
+VM - ViewModel，ViewModel 监听模型数据的改变和控制视图行为、处理用户交互，简单理解就是一个同步 View 和 Model 的对象，连接 Model 和 View
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="computed和watch有什么区别"><a class="markdownIt-Anchor" href="#computed和watch有什么区别">#</a> computed 和 watch 有什么区别？</h3>
+<p><strong>computed:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">1. computed是计算属性,也就是计算值,它更多用于计算值的场景
+2. computed具有缓存性,computed的值在getter执行后是会缓存的，只有在它依赖的属性值改变之后，下一次获取computed的值时才会重新调用对应的getter来计算
+3. computed适用于计算比较消耗性能的计算场景
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>watch:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">1. 更多的是「观察」的作用,类似于某些数据的监听回调,用于观察props $emit或者本组件的值,当数据变化时来执行回调进行后续操作
+2. 无缓存性，页面重新渲染时值不变化也会执行
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>小结:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">1. 当我们要进行数值计算,而且依赖于其他数据，那么把这个数据设计为computed
+2. 如果你需要在某个数据变化时做一些事情，使用watch来观察这个数据变化
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="key"><a class="markdownIt-Anchor" href="#key">#</a> key</h3>
+<p>key 是为 Vue 中的 vnode 标记的唯一 id，通过这个 key，我们的 diff 操作可以 更准确、更快速</p>
+<p><strong>准确:</strong><br>
+ 如果不加 key, 那么 vue 会选择复用节点 (Vue 的就地更新策略), 导致之前节点的状态被保留下来，会产生一系列的 bug</p>
+<p><strong>快速:</strong><br>
+key 的唯一性可以被 Map 数据结构充分利用</p>
+<h3 id="组件中的data为什么是函数"><a class="markdownIt-Anchor" href="#组件中的data为什么是函数">#</a> 组件中的 data 为什么是函数？</h3>
+<p>为什么组件中的 data 必须是一个函数，然后 return 一个对象，而 new Vue 实例里，data 可以直接是一个对象？</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; data
+data() &#123;
+  return &#123;
+	message: &quot;子组件&quot;,
+	childName:this.name
+  &#125;
+&#125;
+
+&#x2F;&#x2F; new Vue
+new Vue(&#123;
+  el: &#39;#app&#39;,
+  router,
+  template: &#39;&lt;App&#x2F;&gt;&#39;,
+  components: &#123;App&#125;
+&#125;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>因为组件是用来复用的，JS 里对象是引用关系，这样作用域没有隔离，而 new Vue 的实例，是不会被复用的，因此不存在引用对象问题</p>
+<h3 id="class-与-style-如何动态绑定"><a class="markdownIt-Anchor" href="#class-与-style-如何动态绑定">#</a> Class 与 Style 如何动态绑定？</h3>
+<blockquote>
+<p>Class 可以通过对象语法和数组语法进行动态绑定：</p>
+</blockquote>
+<p><strong>对象语法</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;div v-bind:class&#x3D;&quot;&#123; active: isActive, &#39;text-danger&#39;: hasError &#125;&quot;&gt;&lt;&#x2F;div&gt;
+
+data: &#123;
+  isActive: true,
+  hasError: false
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>数组语法</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;div v-bind:class&#x3D;&quot;[isActive ? activeClass : &#39;&#39;, errorClass]&quot;&gt;&lt;&#x2F;div&gt;
+
+data: &#123;
+  activeClass: &#39;active&#39;,
+  errorClass: &#39;text-danger&#39;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>Style 也可以通过对象语法和数组语法进行动态绑定：</p>
+</blockquote>
+<p><strong>对象语法</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;div v-bind:style&#x3D;&quot;&#123; color: activeColor, fontSize: fontSize + &#39;px&#39; &#125;&quot;&gt;&lt;&#x2F;div&gt;
+
+data: &#123;
+  activeColor: &#39;red&#39;,
+  fontSize: 30
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>数组语法</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;div v-bind:style&#x3D;&quot;[styleColor, styleSize]&quot;&gt;&lt;&#x2F;div&gt;
+
+data: &#123;
+  styleColor: &#123;
+     color: &#39;red&#39;
+   &#125;,
+  styleSize:&#123;
+     fontSize:&#39;23px&#39;
+  &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="vue的单项数据流"><a class="markdownIt-Anchor" href="#vue的单项数据流">#</a> vue 的单项数据流</h3>
+<p>所有的 prop 都使得其父子 prop 之间形成了一个单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解</p>
+<p>额外的，每次父级组件发生更新时，子组件中所有的 prop 都将会刷新为最新的值。这意味着你不应该在一个子组件内部改变 prop。如果你这样做了，Vue 会在浏览器的控制台中发出警告。子组件想修改时，只能通过 $emit 派发一个自定义事件，父组件接收到后，由父组件修改</p>
+<p>有两种常见的试图改变一个 prop 的情形 :</p>
+<p>这个 prop 用来传递一个初始值；这个子组件接下来希望将其作为一个本地的 prop 数据来使用</p>
+<blockquote>
+<p>在这种情况下，最好定义一个本地的 data 属性并将这个 prop 用作其初始值：</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">props: [&#39;initialCounter&#39;],
+data: function () &#123;
+  return &#123;
+    counter: this.initialCounter
+  &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这个 prop 以一种原始的值传入且需要进行转换</p>
+<blockquote>
+<p>在这种情况下，最好使用这个 prop 的值来定义一个计算属性</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">props: [&#39;size&#39;],
+computed: &#123;
+  normalizedSize: function () &#123;
+    return this.size.trim().toLowerCase()
+  &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="keep-alive"><a class="markdownIt-Anchor" href="#keep-alive">#</a> keep-alive</h3>
+<p>keep-alive 是 Vue 内置的一个组件，可以使被包含的组件保留状态，避免重新渲染 ，其有以下特性：</p>
+<ul>
+<li>一般结合路由和动态组件一起使用，用于缓存组件；</li>
+<li>提供 include 和 exclude 属性，两者都支持字符串或正则表达式， include 表示只有名称匹配的组件会被缓存，exclude 表示任何名称匹配的组件都不会被缓存 ，其中 exclude 的优先级比 include 高；</li>
+<li>对应两个钩子函数 activated 和 deactivated ，当组件被激活时，触发钩子函数 activated，当组件被移除时，触发钩子函数 deactivated。</li>
+</ul>
+<h3 id="v-model-的原理"><a class="markdownIt-Anchor" href="#v-model-的原理">#</a> v-model 的原理</h3>
+<p>vue 项目中主要使用 v-model 指令在表单 input、textarea、select 等元素上创建双向数据绑定，我们知道 v-model 本质上不过是语法糖，v-model 在内部为不同的输入元素使用不同的属性并抛出不同的事件：</p>
+<ul>
+<li>text 和 textarea 元素使用 value 属性和 input 事件；</li>
+<li>checkbox 和 radio 使用 checked 属性和 change 事件；</li>
+<li>select 字段将 value 作为 prop 并将 change 作为事件；</li>
+</ul>
+<p>以 input 表单元素为例：</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;input v-model&#x3D;&#39;something&#39;&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>相当于</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;input v-bind:value&#x3D;&quot;something&quot; v-on:input&#x3D;&quot;something &#x3D; $event.target.value&quot;&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果在自定义组件中，v-model 默认会利用名为 value 的 prop 和名为 input 的事件，如下所示：</p>
+<pre class="line-numbers language-none"><code class="language-none">父组件：
+&lt;ModelChild v-model&#x3D;&quot;message&quot;&gt;&lt;&#x2F;ModelChild&gt;
+
+子组件：
+&lt;div&gt;&#123;&#123;value&#125;&#125;&lt;&#x2F;div&gt;
+
+props:&#123;
+    value: String
+&#125;,
+methods: &#123;
+  test1()&#123;
+     this.$emit(&#39;input&#39;, &#39;小红&#39;)
+  &#125;,
+&#125;,
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="nexttick"><a class="markdownIt-Anchor" href="#nexttick">#</a> nextTick()</h3>
+<p>在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后，立即使用的这个回调函数，获取更新后的 DOM</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 修改数据
+vm.msg &#x3D; &#39;Hello&#39;
+&#x2F;&#x2F; DOM 还未更新
+Vue.nextTick(function () &#123;
+  &#x2F;&#x2F; DOM 更新
+&#125;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="vue插槽"><a class="markdownIt-Anchor" href="#vue插槽">#</a> vue 插槽</h3>
+<p>个人觉得这篇文章写的还可以：<a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.cnblogs.com%2Fchinabin1993%2Fp%2F9115396.html" title="https://www.cnblogs.com/chinabin1993/p/9115396.html">www.cnblogs.com/chinabin199…</a></p>
+<p><strong>单个插槽</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">当子组件模板只有一个没有属性的插槽时，
+父组件传入的整个内容片段将插入到插槽所在的 DOM 位置，
+并替换掉插槽标签本身
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>命名插槽</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">solt元素可以用一个特殊的特性name来进一步配置如何分发内容。
+多个插槽可以有不同的名字。 这样可以将父组件模板中 slot 位置，
+和子组件 slot 元素产生关联，便于插槽内容对应传递
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>作用域插槽</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">可以访问组件内部数据的可复用插槽(reusable slot)
+在父级中，具有特殊特性 slot-scope 的&lt;template&gt; 元素必须存在，
+表示它是作用域插槽的模板。slot-scope 的值将被用作一个临时变量名，
+此变量接收从子组件传递过来的 prop 对象
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="vue-router有哪几种导航钩子"><a class="markdownIt-Anchor" href="#vue-router有哪几种导航钩子">#</a> vue-router 有哪几种导航钩子</h3>
+<p>第一种：是全局导航钩子：router.beforeEach (to,from,next)，作用：跳转前进行判断拦截</p>
+<p>第二种：组件内的钩子</p>
+<p>第三种：单独路由独享组件</p>
+<h3 id="vuex"><a class="markdownIt-Anchor" href="#vuex">#</a> vuex</h3>
+<p><strong>vuex 是什么？</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">vuex 就是一个仓库，仓库里放了很多对象。其中 state 就是数据源存放地，对应于一般 vue 对象里面的 data
+
+state 里面存放的数据是响应式的，vue 组件从 store 读取数据，若是 store 中的数据发生改变，依赖这相数据的组件也会发生更新
+
+它通过 mapState 把全局的 state 和 getters 映射到当前组件的 computed 计算属性
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Vuex 有 5 种属性：分别是 state、getter、mutation、action、module;</p>
+<p><strong>state</strong><br>
+Vuex 使用单一状态树，即每个应用将仅仅包含一个 store 实例，但单一状态树和模块化并不冲突。存放的数据状态，不可以直接修改里面的数据</p>
+<p><strong>mutations</strong><br>
+mutations 定义的方法动态修改 Vuex 的 store 中的状态或数据</p>
+<p><strong>getters</strong><br>
+ 类似 vue 的计算属性，主要用来过滤一些数据</p>
+<p><strong>action</strong><br>
+actions 可以理解为通过将 mutations 里面处里数据的方法变成可异步的处理数据的方法，简单的说就是异步操作数据。view 层通过 store.dispath 来分发 action</p>
+<p><strong>总结</strong><br>
+ vuex 一般用于中大型 web 单页应用中对应用的状态进行管理，对于一些组件间关系较为简单的小型应用，使用 vuex 的必要性不是很大，因为完全可以用组件 prop 属性或者事件来完成父子组件之间的通信，vuex 更多地用于解决跨组件通信以及作为数据中心集中式存储数据</p>
+<h3 id="你有对-vue-项目进行哪些优化"><a class="markdownIt-Anchor" href="#你有对-vue-项目进行哪些优化">#</a> 你有对 Vue 项目进行哪些优化？</h3>
+<p><strong>代码层面的优化</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">v-if 和 v-show 区分使用场景
+computed 和 watch  区分使用场景
+v-for 遍历必须为 item 添加 key，且避免同时使用 v-if
+长列表性能优化
+事件的销毁
+图片资源懒加载
+路由懒加载
+第三方插件的按需引入
+优化无限列表性能
+服务端渲染 SSR or 预渲染
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>Webpack 层面的优化</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">Webpack 对图片进行压缩
+减少 ES6 转为 ES5 的冗余代码
+提取公共代码
+模板预编译
+提取组件的 CSS
+优化 SourceMap
+构建结果输出分析
+Vue 项目的编译优化
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>基础的 Web 技术的优化</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">开启 gzip 压缩
+浏览器缓存
+CDN 的使用
+使用 Chrome Performance 查找性能瓶颈
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="es6"><a class="markdownIt-Anchor" href="#es6">#</a> ES6</h2>
+<h3 id="var-let-const之间的区别"><a class="markdownIt-Anchor" href="#var-let-const之间的区别">#</a> var、let、const 之间的区别</h3>
+<p>var 声明变量可以重复声明，而 let 不可以重复声明</p>
+<p>var 是不受限于块级的，而 let 是受限于块级</p>
+<p>var 会与 window 相映射（会挂一个属性），而 let 不与 window 相映射</p>
+<p>var 可以在声明的上面访问变量，而 let 有暂存死区，在声明的上面访问变量会报错</p>
+<p>const 声明之后必须赋值，否则会报错</p>
+<p>const 定义不可变的量，改变了就会报错</p>
+<p>const 和 let 一样不会与 window 相映射、支持块级作用域、在声明的上面访问变量会报错</p>
+<h3 id="解构赋值"><a class="markdownIt-Anchor" href="#解构赋值">#</a> 解构赋值</h3>
+<p><strong>数组解构</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">let [a, b, c] &#x3D; [1, 2, 3]   &#x2F;&#x2F;a&#x3D;1, b&#x3D;2, c&#x3D;3
+let [d, [e], f] &#x3D; [1, [2], 3]    &#x2F;&#x2F;嵌套数组解构 d&#x3D;1, e&#x3D;2, f&#x3D;3
+let [g, ...h] &#x3D; [1, 2, 3]   &#x2F;&#x2F;数组拆分 g&#x3D;1, h&#x3D;[2, 3]
+let [i,,j] &#x3D; [1, 2, 3]   &#x2F;&#x2F;不连续解构 i&#x3D;1, j&#x3D;3
+let [k,l] &#x3D; [1, 2, 3]   &#x2F;&#x2F;不完全解构 k&#x3D;1, l&#x3D;2
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>对象解构</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">let &#123;a, b&#125; &#x3D; &#123;a: &#39;aaaa&#39;, b: &#39;bbbb&#39;&#125;      &#x2F;&#x2F;a&#x3D;&#39;aaaa&#39; b&#x3D;&#39;bbbb&#39;
+let obj &#x3D; &#123;d: &#39;aaaa&#39;, e: &#123;f: &#39;bbbb&#39;&#125;&#125;
+let &#123;d, e:&#123;f&#125;&#125; &#x3D; obj    &#x2F;&#x2F;嵌套解构 d&#x3D;&#39;aaaa&#39; f&#x3D;&#39;bbbb&#39;
+let g;
+(g &#x3D; &#123;g: &#39;aaaa&#39;&#125;)   &#x2F;&#x2F;以声明变量解构 g&#x3D;&#39;aaaa&#39;
+let [h, i, j, k] &#x3D; &#39;nice&#39;    &#x2F;&#x2F;字符串解构 h&#x3D;&#39;n&#39; i&#x3D;&#39;i&#39; j&#x3D;&#39;c&#39; k&#x3D;&#39;e&#39;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>函数参数的定义</strong></p>
+<p>一般我们在定义函数的时候，如果函数有多个参数时，在 es5 语法中函数调用时参数必须一一对应，否则就会出现赋值错误的情况，来看一个例子：</p>
+<pre class="line-numbers language-none"><code class="language-none">function personInfo(name, age, address, gender) &#123;
+  console.log(name, age, address, gender)
+&#125;
+personInfo(&#39;william&#39;, 18, &#39;changsha&#39;, &#39;man&#39;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上面这个例子在对用户信息的时候需要传递四个参数，且需要一一对应，这样就会极易出现参数顺序传错的情况，从而导致 bug，接下来来看 es6 解构赋值是怎么解决这个问题的：</p>
+<pre class="line-numbers language-none"><code class="language-none">function personInfo(&#123;name, age, address, gender&#125;) &#123;
+  console.log(name, age, address, gender)
+&#125;
+personInfo(&#123;gender: &#39;man&#39;, address: &#39;changsha&#39;, name: &#39;william&#39;, age: 18&#125;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这么写我们只知道要传声明参数就行来，不需要知道参数的顺序也没关系</p>
+<p><strong>交换变量的值</strong></p>
+<p>在 es5 中我们需要交换两个变量的值需要借助临时变量的帮助，来看一个例子：</p>
+<pre class="line-numbers language-none"><code class="language-none">var a&#x3D;1, b&#x3D;2, c
+c &#x3D; a
+a &#x3D; b
+b &#x3D; c
+console.log(a, b)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>来看 es6 怎么实现：</p>
+<pre class="line-numbers language-none"><code class="language-none">let a&#x3D;1, b&#x3D;2;
+[b, a] &#x3D; [a, b]
+console.log(a, b)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>是不是比 es5 的写法更加方便呢</p>
+<p><strong>函数默认参数</strong></p>
+<p>在日常开发中，经常会有这种情况：函数的参数需要默认值，如果没有默认值在使用的时候就会报错，来看 es5 中是怎么做的：</p>
+<pre class="line-numbers language-none"><code class="language-none">function saveInfo(name, age, address, gender) &#123;
+  name &#x3D; name || &#39;william&#39;
+  age &#x3D; age || 18
+  address &#x3D; address || &#39;changsha&#39;
+  gender &#x3D; gender || &#39;man&#39;
+  console.log(name, age, address, gender)
+&#125;
+saveInfo()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在函数离 main 先对参数做一个默认值赋值，然后再使用避免使用的过程中报错，再来看 es6 中的使用的方法：</p>
+<pre class="line-numbers language-none"><code class="language-none">function saveInfo(&#123;name&#x3D; &#39;william&#39;, age&#x3D; 18, address&#x3D; &#39;changsha&#39;, gender&#x3D; &#39;man&#39;&#125; &#x3D; &#123;&#125;) &#123;
+  console.log(name, age, address, gender)
+&#125;
+saveInfo()
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在函数定义的时候就定义了默认参数，这样就免了后面给参数赋值默认值的过程，是不是看起来简单多了</p>
+<h3 id="foreach-for-in-for-of三者区别"><a class="markdownIt-Anchor" href="#foreach-for-in-for-of三者区别">#</a> forEach、for in、for of 三者区别</h3>
+<p>forEach 更多的用来遍历数</p>
+<p>for in 一般常用来遍历对象或 json</p>
+<p>for of 数组对象都可以遍历，遍历对象需要通过和 Object.keys ()</p>
+<p>for in 循环出的是 key，for of 循环出的是 value</p>
+<h3 id="使用箭头函数应注意什么"><a class="markdownIt-Anchor" href="#使用箭头函数应注意什么">#</a> 使用箭头函数应注意什么？</h3>
+<p>1、用了箭头函数，this 就不是指向 window，而是父级（指向是可变的）<br>
+2、不能够使用 arguments 对象<br>
+ 3、不能用作构造函数，这就是说不能够使用 new 命令，否则会抛出一个错误<br>
+ 4、不可以使用 yield 命令，因此箭头函数不能用作 Generator 函数</p>
+<h3 id="set-map的区别"><a class="markdownIt-Anchor" href="#set-map的区别">#</a> Set、Map 的区别</h3>
+<p>应用场景 Set 用于数据重组，Map 用于数据储存</p>
+<p><strong>Set：</strong><br>
+1，成员不能重复<br>
+ 2，只有键值没有键名，类似数组<br>
+ 3，可以遍历，方法有 add, delete,has</p>
+<p><strong>Map:</strong><br>
+1，本质上是健值对的集合，类似集合<br>
+ 2，可以遍历，可以跟各种数据格式转换</p>
+<h3 id="promise对象的用法手写一个promise"><a class="markdownIt-Anchor" href="#promise对象的用法手写一个promise">#</a> promise 对象的用法，手写一个 promise</h3>
+<p>promise 是一个构造函数，下面是一个简单实例</p>
+<pre class="line-numbers language-none"><code class="language-none">var promise &#x3D; new Promise((resolve,reject) &#x3D;&gt; &#123;
+    if (操作成功) &#123;
+        resolve(value)
+    &#125; else &#123;
+        reject(error)
+    &#125;
+&#125;)
+promise.then(function (value) &#123;
+    &#x2F;&#x2F; success
+&#125;,function (value) &#123;
+    &#x2F;&#x2F; failure
+&#125;)
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="ajax"><a class="markdownIt-Anchor" href="#ajax">#</a> Ajax</h2>
+<h3 id="如何创建一个ajax"><a class="markdownIt-Anchor" href="#如何创建一个ajax">#</a> 如何创建一个 ajax</h3>
+<p>(1) 创建 XMLHttpRequest 对象，也就是创建一个异步调用对象<br>
+ (2) 创建一个新的 HTTP 请求，并指定该 HTTP 请求的方法、URL 及验证信息<br>
+ (3) 设置响应 HTTP 请求状态变化的函数<br>
+ (4) 发送 HTTP 请求<br>
+ (5) 获取异步调用返回的数据<br>
+ (6) 使用 JavaScript 和 DOM 实现局部刷新</p>
+<h3 id="同步和异步的区别"><a class="markdownIt-Anchor" href="#同步和异步的区别">#</a> 同步和异步的区别</h3>
+<p><strong>同步：</strong><br>
+浏览器访问服务器请求，用户看得到页面刷新，重新发请求，等请求完，页面刷新，新内容出现，用户看到新内容，进行下一步操作</p>
+<p><strong>异步：</strong><br>
+浏览器访问服务器请求，用户正常操作，浏览器后端进行请求。等请求完，页面不刷新，新内容也会出现，用户看到新内容</p>
+<h3 id="ajax的优点和缺点"><a class="markdownIt-Anchor" href="#ajax的优点和缺点">#</a> ajax 的优点和缺点</h3>
+<p><strong>ajax 的优点</strong></p>
+<p>1、无刷新更新数据（在不刷新整个页面的情况下维持与服务器通信）<br>
+2、异步与服务器通信（使用异步的方式与服务器通信，不打断用户的操作）<br>
+3、前端和后端负载均衡（将一些后端的工作交给前端，减少服务器与宽度的负担）<br>
+4、界面和应用相分离（ajax 将界面和应用分离也就是数据与呈现相分离）</p>
+<p><strong>ajax 的缺点</strong></p>
+<p>1、ajax 不支持浏览器 back 按钮<br>
+ 2、安全问题 Aajax 暴露了与服务器交互的细节<br>
+ 3、对搜索引擎的支持比较弱<br>
+ 4、破坏了 Back 与 History 后退按钮的正常行为等浏览器机制</p>
+<h3 id="get和post的区别"><a class="markdownIt-Anchor" href="#get和post的区别">#</a> get 和 post 的区别</h3>
+<p>1、get 和 post 在 HTTP 中都代表着请求数据，其中 get 请求相对来说更简单、快速，效率高些 2、get 相对 post 安全性低<br>
+ 3、get 有缓存，post 没有<br>
+ 4、get 体积小，post 可以无限大<br>
+ 5、get 的 url 参数可见，post 不可见<br>
+ 6、get 只接受 ASCII 字符的参数数据类型，post 没有限制<br>
+ 7、get 请求参数会保留历史记录，post 中参数不会保留<br>
+ 8、get 会被浏览器主动 catch，post 不会，需要手动设置<br>
+ 9、get 在浏览器回退时无害，post 会再次提交请求</p>
+<p><strong>什么时候使用 post？</strong></p>
+<p>post 一般用于修改服务器上的资源，对所发送的信息没有限制。比如</p>
+<p>1、无法使用缓存文件（更新服务器上的文件或数据库）<br>
+2、向服务器发送大量数据（POST 没有数据量限制）<br>
+3、发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠</p>
+<h3 id="如何解决跨域问题"><a class="markdownIt-Anchor" href="#如何解决跨域问题">#</a> 如何解决跨域问题</h3>
+<p>跨域的概念：协议、域名、端口都相同才同域，否则都是跨域</p>
+<p><strong>解决跨域问题：</strong></p>
+<p>1、使用 JSONP（json+padding）把数据内填充起来<br>
+ 2、CORS 方式（跨域资源共享），在后端上配置可跨域<br>
+ 3、服务器代理，通过服务器的文件能访问第三方资源</p>
+<h3 id="什么是ajax和json它们的优点和缺点"><a class="markdownIt-Anchor" href="#什么是ajax和json它们的优点和缺点">#</a> 什么是 Ajax 和 JSON，它们的优点和缺点</h3>
+<p><strong>Ajax：</strong></p>
+<p>Ajax 是异步 JavaScript 和 XML，用于在 Web 页面中实现异步数据交互</p>
+<p><strong>Ajax 优点：</strong></p>
+<p>异步请求响应快，用户体验好；页面无刷新、数据局部更新；按需取数据，减少了冗余请求和服务器的负担；</p>
+<p><strong>Ajax 缺点：</strong></p>
+<p>异步回调问题、this 指向问题、路由跳转 back 问题；对搜索引擎的支持比较弱，对于一些手机还不是很好的支持</p>
+<p><strong>JSON：</strong></p>
+<p>是一种轻量级的数据交换格式，看着像对象，本质是字符串</p>
+<p><strong>JSON 优点：</strong></p>
+<p>轻量级、易于人的阅读和编写，便于 js 解析，支持复合数据类型</p>
+<p><strong>JSON 缺点：</strong></p>
+<p>没有 XML 格式这么推广的深入人心和使用广泛，没有 XML 那么通用性</p>
+<h2 id="github"><a class="markdownIt-Anchor" href="#github">#</a> Github</h2>
+<h3 id="git常用的命令"><a class="markdownIt-Anchor" href="#git常用的命令">#</a> git 常用的命令</h3>
+<p>从远程库克隆到本地：git clone 网站上的仓库地址</p>
+<p>新增文件的命令：git add .</p>
+<p>提交文件的命令：git commit –m 或者 git commit –a</p>
+<p>查看工作区状况：git status –s</p>
+<p>拉取合并远程分支的操作：git fetch/git merge 或者 git pull</p>
+<p>查看提交记录命令：git reflog</p>
+<h2 id="webpack"><a class="markdownIt-Anchor" href="#webpack">#</a> webpack</h2>
+<h3 id="webpack打包原理"><a class="markdownIt-Anchor" href="#webpack打包原理">#</a> webpack 打包原理</h3>
+<p>webpack 只是一个打包模块的机制，只是把依赖的模块转化成可以代表这些包的静态文件。webpack 就是识别你的 入口文件。识别你的模块依赖，来打包你的代码。至于你的代码使用的是 commonjs 还是 amd 或者 es6 的 import。webpack 都会对其进行分析。来获取代码的依赖。webpack 做的就是分析代码。转换代码，编译代码，输出代码。webpack 本身是一个 node 的模块，所以 webpack.config.js 是以 commonjs 形式书写的 (node 中的模块化是 commonjs 规范的)</p>
+<h3 id="模块热更新"><a class="markdownIt-Anchor" href="#模块热更新">#</a> 模块热更新</h3>
+<p>模块热更新是 webpack 的一个功能，他可以使代码修改过后不用刷新就可以更新，是高级版的自动刷新浏览器</p>
+<blockquote>
+<p>devServer 中通过 hot 属性可以控制模块的热替换</p>
+</blockquote>
+<p><strong>通过配置文件</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">const webpack &#x3D; require(&#39;webpack&#39;);
+const path &#x3D; require(&#39;path&#39;);
+let env &#x3D; process.env.NODE_ENV &#x3D;&#x3D; &quot;development&quot; ? &quot;development&quot; : &quot;production&quot;;
+const config &#x3D; &#123;
+  mode: env,
+ devServer: &#123;
+     hot:true
+ &#125;
+&#125;
+  plugins: [
+     new webpack.HotModuleReplacementPlugin(), &#x2F;&#x2F;热加载插件
+  ],
+module.exports &#x3D; config;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>通过命令行</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&quot;scripts&quot;: &#123;
+   &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+   &quot;start&quot;: &quot;NODE_ENV&#x3D;development  webpack-dev-server --config  webpack.develop.config.js --hot&quot;,
+ &#125;,
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="如何提高webpack构建速度"><a class="markdownIt-Anchor" href="#如何提高webpack构建速度">#</a> 如何提高 webpack 构建速度</h3>
+<p>1、通过 externals 配置来提取常用库</p>
+<p>2、利用 DllPlugin 和 DllReferencePlugin 预编译资源模块 通过 DllPlugin 来对那些我们引用但是绝对不会修改的 npm 包来进行预编译，再通过 DllReferencePlugin 将预编译的模块加载进来</p>
+<p>3、使用 Happypack 实现多线程加速编译</p>
+<p>要注意的第一点是，它对 file-loader 和 url-loader 支持不好，所以这两个 loader 就不需要换成 happypack 了，其他 loader 可以类似地换一下</p>
+<p>4、使用 Tree-shaking 和 Scope Hoisting 来剔除多余代码 5、使用 fast-sass-loader 代替 sass-loader 6、babel-loader 开启缓存</p>
+<p>babel-loader 在执行的时候，可能会产生一些运行期间重复的公共文件，造成代码体积大冗余，同时也会减慢编译效率 可以加上 cacheDirectory 参数或使用 transform-runtime 插件试试</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; webpack.config.js
+use: [&#123;
+    loader: &#39;babel-loader&#39;,
+    options: &#123;
+        cacheDirectory: true
+&#125;]
+&#x2F;&#x2F; .bablerc
+&#123;
+    &quot;presets&quot;: [
+        &quot;env&quot;,
+        &quot;react&quot;
+    ],
+    &quot;plugins&quot;: [&quot;transform-runtime&quot;]
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>不需要打包编译的插件库换成全局 &quot;script&quot; 标签引入的方式</p>
+<p>比如 jQuery 插件，react, react-dom 等，代码量是很多的，打包起来可能会很耗时 可以直接用标签引入，然后在 webpack 配置里使用 expose-loader 或 externals 或 ProvidePlugin 提供给模块内部使用相应的变量</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; @1
+use: [&#123;
+    loader: &#39;expose-loader&#39;,
+    options: &#39;$&#39;
+    &#125;, &#123;
+    loader: &#39;expose-loader&#39;,
+    options: &#39;jQuery&#39;
+    &#125;]
+&#x2F;&#x2F; @2
+externals: &#123;
+        jquery: &#39;jQuery&#39;
+    &#125;,
+&#x2F;&#x2F; @3
+        new webpack.ProvidePlugin(&#123;
+            $: &#39;jquery&#39;,
+            jQuery: &#39;jquery&#39;,
+            &#39;window.jQuery&#39;: &#39;jquery&#39;
+        &#125;),
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>8、优化构建时的搜索路径</p>
+<p>在 webpack 打包时，会有各种各样的路径要去查询搜索，我们可以加上一些配置，让它搜索地更快 比如说，方便改成绝对路径的模块路径就改一下，以纯模块名来引入的可以加上一些目录路径 还可以善于用下 resolve alias 别名 这个字段来配置 还有 exclude 等的配置，避免多余查找的文件，比如使用 babel 别忘了剔除不需要遍历的</p>
+<h3 id="webpack的优点"><a class="markdownIt-Anchor" href="#webpack的优点">#</a> webpack 的优点</h3>
+<p>专注于处理模块化的项目，能做到开箱即用，一步到位</p>
+<p>可通过 plugin 扩展，完整好用又不失灵活</p>
+<p>使用场景不局限于 web 开发</p>
+<p>社区庞大活跃，经常引入紧跟时代发展的新特性，能为大多数场景找到已有的开源扩展</p>
+<p>良好的开发体验</p>
+<h3 id="webpack的缺点"><a class="markdownIt-Anchor" href="#webpack的缺点">#</a> webpack 的缺点</h3>
+<p>webpack 的缺点是只能用于采用模块化开发的项目</p>
+<h2 id="微信小程序"><a class="markdownIt-Anchor" href="#微信小程序">#</a> 微信小程序</h2>
+<h3 id="文件主要目录及文件作用"><a class="markdownIt-Anchor" href="#文件主要目录及文件作用">#</a> 文件主要目录及文件作用</h3>
+<pre class="line-numbers language-none"><code class="language-none">- component —————————————————— 组件文件夹
+  - navBar                  —— 底部组件
+    - navBar.js             —— 底部组件的 JS 代码
+    - navBar.json           —— 底部组件的配置文件
+    - navBar.wxml           —— 底部组件的 HTML 代码
+    - navBar.wxss           —— 底部组件的 CSS 代码
+- pages  ————————————————————— 页面文件夹
+  - index                   —— 首页
+    - index.js              —— 首页的 JS 代码
+    - index.json            —— 首页的配置文件
+    - index.wxml            —— 首页的 HTML 代码
+    - index.wxss            —— 首页的 CSS 代码
+- public ————————————————————— 图片文件夹
+- utils —————————————————————— 工具文件夹
+  - api.js                  —— 控制 API 的文件
+  - md5.js                  —— 工具 - MD5 加密文件
+  - timestamp.js            —— 工具 - 时间戳文件
+- app.json ——————————————————— 设置全局的基础数据等
+- app.wxss ——————————————————— 公共样式，可通过 import 导入更多
+- project.config.json ———————— 项目配置文件
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="微信小程序生命周期"><a class="markdownIt-Anchor" href="#微信小程序生命周期">#</a> 微信小程序生命周期</h3>
+<pre class="line-numbers language-none"><code class="language-none">onLoad()：页面加载时触发。
+onShow()：页面显示&#x2F;切入前台时触发。
+onReady()：页面初次渲染完成时触发。
+onHide()：页面隐藏&#x2F;切入后台时触发。
+onUnload()：页面卸载时触发。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="如何封装数据请求"><a class="markdownIt-Anchor" href="#如何封装数据请求">#</a> 如何封装数据请求</h3>
+<p><strong>1，封装接口</strong></p>
+<blockquote>
+<p>项目 /utils/api.js</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 将请求进行 Promise 封装
+const fetch &#x3D; (&#123;url, data&#125;) &#x3D;&gt; &#123;
+
+  &#x2F;&#x2F; 打印接口请求的信息
+  console.log(&#96;【step 1】API 接口：$&#123;url&#125;&#96;);
+  console.log(&quot;【step 2】data 传参：&quot;);
+  console.log(data);
+
+  &#x2F;&#x2F; 返回 Promise
+  return new Promise((resolve, reject) &#x3D;&gt; &#123;
+    wx.request(&#123;
+      url: getApp().globalData.api + url,
+      data: data,
+      success: res &#x3D;&gt; &#123;
+        
+        &#x2F;&#x2F; 成功时的处理 
+        if (res.data.code &#x3D;&#x3D; 0) &#123;
+          console.log(&quot;【step 3】请求成功：&quot;);
+          console.log(res.data);
+          return resolve(res.data);
+        &#125; else &#123;
+          wx.showModal(&#123;
+            title: &#39;请求失败&#39;,
+            content: res.data.message,
+            showCancel: false
+          &#125;);
+        &#125;
+
+      &#125;,
+      fail: err &#x3D;&gt; &#123;
+        &#x2F;&#x2F; 失败时的处理
+        console.log(err);
+        return reject(err);
+      &#125;
+    &#125;)
+  &#125;)
+
+&#125;
+
+&#x2F;**
+ * code 换取 openId
+ * @data &#123;
+ *   jsCode - wx.login() 返回的 code
+ * &#125;
+ *&#x2F;
+export const wxLogin &#x3D; data &#x3D;&gt; &#123;
+  return fetch(&#123;
+    url: &quot;tbcUser&#x2F;getWechatOpenId&quot;,
+    data: data
+  &#125;)
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>2，调用接口</strong></p>
+<blockquote>
+<p>项目 /pages/login/login.js</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">import &#123;
+  wxLogin,
+&#125; from &#39;..&#x2F;..&#x2F;utils&#x2F;api.js&#39;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>3，使用接口</strong></p>
+<blockquote>
+<p>项目 /pages/login/login.js</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">wxLogin(&#123;
+  jsCode: this.data.code
+&#125;).then(
+  res &#x3D;&gt; &#123;
+    console.log(&quot;【step 4】返回成功处理：&quot;);
+    console.log(res.data);
+  &#125;,
+  err &#x3D;&gt; &#123;
+    console.log(&quot;【step 4】返回失败处理：&quot;);
+    console.log(err);
+  &#125;
+)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="页面数据传递"><a class="markdownIt-Anchor" href="#页面数据传递">#</a> 页面数据传递</h3>
+<p>通过 url 携带参数，在 onLoad () 中通过 options 获取 url 上的参数：</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;navigator url&#x3D;&quot;..&#x2F;index&#x2F;index?userId&#x3D;&#123;&#123;userId&#125;&#125;&quot;&gt;&lt;&#x2F;navigator&gt;
+
+&lt;!-- 这两段是分别在 HTML 和 JS 中的代码 --&gt;
+
+onLoad: function(options) &#123;
+  console.log(options.userId);
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>通过 Storage 来传递参数：</p>
+<pre class="line-numbers language-none"><code class="language-none">wx.setStorageSync(&#39;userId&#39;, &#39;jsliang&#39;);
+wx.getStorageSync(&#39;userId&#39;);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>WXML 传递数据到 JS</p>
+<blockquote>
+<p>login.wxml</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">&lt;text bindtap&#x3D;&quot;clickText&quot; data-labelId&#x3D;&quot;&#123;&#123;userId&#125;&#125;&quot;&gt;点击传递数据到 JS&lt;&#x2F;text&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p>login.js</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">clickText(e) &#123;
+  console.log(e.currentTarget.labelid)
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>组件调用传参</p>
+<blockquote>
+<p>组件接收数据：component-tag-name</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">Component(&#123;
+  properties: &#123;
+    &#x2F;&#x2F; 这里定义了innerText属性，属性值可以在组件使用时指定
+    innerText: &#123;
+      type: String,
+      value: &#39;default value&#39;,
+    &#125;
+  &#125;
+&#125;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>使用组件的页面定义 json</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">&#123;
+  &quot;usingComponents&quot;: &#123;
+    &quot;component-tag-name&quot;: &quot;..&#x2F;component&#x2F;component&quot;
+  &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>使用组件的页面 HTML 代码</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">&lt;view&gt;
+  &lt;!-- 以下是对一个自定义组件的引用 --&gt;
+  &lt;component-tag-name inner-text&#x3D;&quot;Some text&quot;&gt;&lt;&#x2F;component-tag-name&gt;
+&lt;&#x2F;view&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>通过接口调用传递参数</p>
+<h3 id="加载性能优化方法"><a class="markdownIt-Anchor" href="#加载性能优化方法">#</a> 加载性能优化方法</h3>
+<p>1、通过 this.$preload () 预加载用户可能点击的第二个页面</p>
+<p>2、组件化页面，出现两次以上的部分都进行封装成组件</p>
+<p>3、提取共用的 CSS 样式</p>
+<p>4、优化图片：TinyPNG</p>
+<h3 id="微信小程序与原生app-vue-h5差异"><a class="markdownIt-Anchor" href="#微信小程序与原生app-vue-h5差异">#</a> 微信小程序与原生 APP、Vue、H5 差异</h3>
+<p><strong>微信小程序优势</strong></p>
+<p>1、无需下载<br>
+ 2、打开速度较快<br>
+ 3、开发成本低于原生 APP</p>
+<p><strong>微信小程序劣势</strong></p>
+<p>1、限制多。页面大小不能超过 1M，不能打开超过 5 个层级的页面<br>
+ 2、样式单一。小程序内部组件已经成宿，样式不可以修改<br>
+ 3、推广面窄。跑不出微信，还不能跑入朋友圈</p>
+<p><strong>微信小程序 VS 原生 APP</strong><br>
+ 微信小程序有着低开发成本、低获客成本、无需下载的优势</p>
+<p><strong>微信小程序 VS H5</strong><br>
+1、依赖环境不同。一个能在多种手机浏览器运行。一个只能在微信中的非完整的浏览器<br>
+ 2、开发成本不同。一个可能在各种浏览器出问题。一个只能在微信中运行</p>
+<p><strong>微信小程序 VS Vue</strong><br>
+ 微信小程序看似就是阉割版的 Vue</p>
+<h3 id="微信小程序原理"><a class="markdownIt-Anchor" href="#微信小程序原理">#</a> 微信小程序原理</h3>
+<p>本质上就是一个单页面应用，所有的页面渲染和事件处理，都在一个页面中进行</p>
+<p>架构为数据驱动的模式，UI 和数据分离，所有页面的更新，都需要通过对数据的更改来实现</p>
+<p>微信小程序分为两个部分：webview 和 appService。其中 webview 主要用来展示 UI，appServer 用来处理业务逻辑、数据及接口调用。它们在两个进程中进行，通过系统层 JSBridge 实现通信，实现 UI 的渲染、事件的处理</p>
+<h3 id="wxml与标准的html的异同"><a class="markdownIt-Anchor" href="#wxml与标准的html的异同">#</a> wxml 与标准的 html 的异同</h3>
+<p>wxml 基于 xml 设计，标签只能在微信小程序中使用，不能使用 html 的标签</p>
+<h2 id="网络协议"><a class="markdownIt-Anchor" href="#网络协议">#</a> 网络协议</h2>
+<h3 id="网络分层"><a class="markdownIt-Anchor" href="#网络分层">#</a> 网络分层</h3>
+<p>目前网络分层可分为两种：OSI 模型和 TCP/IP 模型</p>
+<p><strong>OSI 模型</strong><br>
+应用层（Application）<br>
+表示层（Presentation）<br>
+会话层（Session）<br>
+传输层（Transport）<br>
+网络层（Network）<br>
+数据链路层（Data Link）<br>
+物理层（Physical）</p>
+<p><strong>TCP/IP 模型</strong><br>
+应用层（Application）<br>
+传输层（Host-to-Host Transport）<br>
+互联网层（Internet）<br>
+网络接口层（Network Interface）</p>
+<h3 id="httphttps"><a class="markdownIt-Anchor" href="#httphttps">#</a> HTTP/HTTPS</h3>
+<p>1、https 协议需要到 ca 申请证书，一般免费证书较少，因而需要一定费用<br>
+ 2、http 是超文本传输协议，信息是明文传输，https 则是具有安全性的 ssl 加密传输协议<br>
+ 3、http 和 https 使用的是完全不同的连接方式，用的端口也不一样，前者是 80，后者是 443<br>
+4、http 的连接很简单，是无状态的；HTTPS 协议是由 SSL+HTTP 协议构建的可进行加密传输、身份认证的网络协议，比 http 协议安全。</p>
+<h3 id="http状态码"><a class="markdownIt-Anchor" href="#http状态码">#</a> HTTP 状态码</h3>
+<p><strong>区分状态码</strong><br>
+ 1×× 开头 - 信息提示<br>
+ 2×× 开头 - 请求成功<br>
+ 3×× 开头 - 请求被重定向<br>
+ 4×× 开头 - 请求错误<br>
+ 5×× 开头 - 服务器错误</p>
+<p><strong>常见状态码</strong><br>
+ 200 - 请求成功，Ajax 接受到信息了<br>
+ 400 - 服务器不理解请求<br>
+ 403 - 服务器拒绝请求<br>
+ 404 - 请求页面错误<br>
+ 500 - 服务器内部错误，无法完成请求</p>
+<h2 id="性能优化"><a class="markdownIt-Anchor" href="#性能优化">#</a> 性能优化</h2>
+<h3 id="html优化"><a class="markdownIt-Anchor" href="#html优化">#</a> HTML 优化</h3>
+<pre class="line-numbers language-none"><code class="language-none">1、避免 HTML 中书写 CSS 代码，因为这样难以维护。
+2、使用 Viewport 加速页面的渲染。
+3、使用语义化标签，减少 CSS 代码，增加可读性和 SEO。
+4、减少标签的使用，DOM 解析是一个大量遍历的过程，减少不必要的标签，能降低遍历的次数。
+5、避免 src、href 等的值为空，因为即时它们为空，浏览器也会发起 HTTP 请求。
+6、减少 DNS 查询的次数
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="css优化"><a class="markdownIt-Anchor" href="#css优化">#</a> CSS 优化</h3>
+<pre class="line-numbers language-none"><code class="language-none">1、优化选择器路径：使用 .c &#123;&#125; 而不是 .a .b .c &#123;&#125;。
+2、选择器合并：共同的属性内容提起出来，压缩空间和资源开销。
+3、精准样式：使用 padding-left: 10px 而不是 padding: 0 0 0 10px。
+4、雪碧图：将小的图标合并到一张图中，这样所有的图片只需要请求一次。
+5、避免通配符：.a .b * &#123;&#125; 这样的选择器，根据从右到左的解析顺序在解析过程中遇到通配符 * &#123;&#125; 6、会遍历整个 DOM，性能大大损耗。
+7、少用 float：float 在渲染时计算量比较大，可以使用 flex 布局。
+8、为 0 值去单位：增加兼容性。
+9、压缩文件大小，减少资源下载负担。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="javascript优化"><a class="markdownIt-Anchor" href="#javascript优化">#</a> JavaScript 优化</h3>
+<pre class="line-numbers language-none"><code class="language-none">1、尽可能把 &lt;script&gt; 标签放在 body 之后，避免 JS 的执行卡住 DOM 的渲染，最大程度保证页面尽快地展示出来
+2、尽可能合并 JS 代码：提取公共方法，进行面向对象设计等……
+3、CSS 能做的事情，尽量不用 JS 来做，毕竟 JS 的解析执行比较粗暴，而 CSS 效率更高。
+4、尽可能逐条操作 DOM，并预定好 CSs 样式，从而减少 reflow 或者 repaint 的次数。
+5、尽可能少地创建 DOM，而是在 HTML 和 CSS 中使用 display: none 来隐藏，按需显示。
+6、压缩文件大小，减少资源下载负担。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="面试常见的其他问题"><a class="markdownIt-Anchor" href="#面试常见的其他问题">#</a> 面试常见的其他问题</h2>
+<h3 id="常问"><a class="markdownIt-Anchor" href="#常问">#</a> 常问</h3>
+<p>1、自我介绍<br>
+ 2、你的项目中技术难点是什么？遇到了什么问题？你是怎么解决的？<br>
+3、你认为哪个项目做得最好？<br>
+4、平时是如何学习前端开发的？<br>
+5、你最有成就感的一件事<br>
+ 6、你是怎么学习前端的</p>
+<h3 id="人事面"><a class="markdownIt-Anchor" href="#人事面">#</a> 人事面</h3>
+<p>1、面试完你还有什么问题要问的吗<br>
+ 2、你有什么爱好？<br>
+3、你最大的优点和缺点是什么？<br>
+4、你为什么会选择这个行业，职位？<br>
+5、你觉得你适合从事这个岗位吗？<br>
+6、你有什么职业规划？<br>
+7、你对工资有什么要求？<br>
+8、如何看待前端开发？<br>
+9、未来三到五年的规划是怎样的？</p>
+<h3 id="其他"><a class="markdownIt-Anchor" href="#其他">#</a> 其他</h3>
+<p><strong>谈谈你对重构的理解？</strong></p>
+<p>网络重构：在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一致的行为。也就是说是在不改变 UI 的情况下，对网站进行优化， 在扩展的同时保持一致的 UI</p>
+<p>对于传统的网站来说重构通常是：</p>
+<ul>
+<li>表格 (table) 布局改为 DIV+CSS</li>
+<li>使网站前端兼容于现代浏览器 (针对于不合规范的 CSS、如对 IE6 有效的)</li>
+<li>对于移动平台的优化</li>
+<li>针对于 SEO 进行优化</li>
+</ul>
+<p><strong>什么样的前端代码是好的？</strong></p>
+<p>高复用低耦合，这样文件小，好维护，而且好扩展</p>
+<p><strong>对前端工程师这个职位是怎么样理解的？它的前景会怎么样？</strong></p>
+<p>前端是最贴近用户的程序员，比后端、数据库、产品经理、运营、安全都近</p>
+<ul>
+<li>实现界面交互</li>
+<li>提升用户体验</li>
+<li>有了 Node.js，前端可以实现服务端的一些事情</li>
+</ul>
+<p>前端是最贴近用户的程序员，前端的能力就是能让产品从 90 分进化到 100 分，甚至更好，</p>
+<p>与团队成员，UI 设计，产品经理的沟通；</p>
+<p>做好的页面结构，页面重构和用户体验；</p>
+<p><strong>你觉得前端工程的价值体现在哪？</strong></p>
+<p>1、为简化用户使用提供技术支持（交互部分）<br>
+2、为多个浏览器兼容性提供支持<br>
+ 3、为提高用户浏览速度（浏览器性能）提供支持<br>
+ 4、为跨平台或者其他基于 webkit 或其他渲染引擎的应用提供支持<br>
+ 5、为展示数据提供支持（数据接口）</p>
+<p><strong>平时如何管理你的项目？</strong></p>
+<ul>
+<li>
+<p>先期团队必须确定好全局样式（globe.css），编码模式 (utf-8) 等；</p>
+</li>
+<li>
+<p>编写习惯必须一致（例如都是采用继承式的写法，单样式都写成一行）；</p>
+</li>
+<li>
+<p>标注样式编写人，各模块都及时标注（标注关键样式调用的地方）；</p>
+</li>
+<li>
+<p>页面进行标注（例如 页面 模块 开始和结束）；</p>
+</li>
+<li>
+<p>CSS 跟 HTML 分文件夹并行存放，命名都得统一（例如 style.css）；</p>
+</li>
+<li>
+<p>JS 分文件夹存放 命名以该 JS 功能为准的英文翻译。</p>
+</li>
+<li>
+<p>图片采用整合的 images.png png8 格式文件使用 - 尽量整合在一起使用方便将来的管理</p>
+</li>
+</ul>
+<p><strong>移动端（Android IOS）怎么做好用户体验？</strong></p>
+<p>清晰的视觉纵线、<br>
+信息的分组、极致的减法、<br>
+利用选择代替输入、<br>
+标签及文字的排布方式、<br>
+依靠明文确认密码、<br>
+合理的键盘利用</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/">https://harryqu1229.github.io/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/frontend/">frontend</a><a class="post-meta__tags" href="/tags/interview/">interview</a><a class="post-meta__tags" href="/tags/offer/">offer</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/01/nodejs(express,mysql%E4%BB%A5%E5%8F%8A%E5%A4%A7%E4%BA%8B%E4%BB%B6%E5%90%8E%E5%8F%B0%20API%20%E9%A1%B9%E7%9B%AE)/"><img class="prev-cover" src="https://w.wallhaven.cc/full/57/wallhaven-57jlo1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Nodejs notes + mysql + express + 项目</div></div></a></div><div class="next-post pull-right"><a href="/2022/03/01/nodejs/"><img class="next-cover" src="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Nodejs notes</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/02/25/%E4%B8%80%E7%82%B9%E7%82%B9js%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Javascript Interview Questions"><img class="cover" src="https://w.wallhaven.cc/full/57/wallhaven-57jlo1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">Javascript Interview Questions</div></div></a></div><div><a href="/2022/01/12/CSS%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93-YK%E8%8F%8C/" title="css Interview Questions"><img class="cover" src="https://w.wallhaven.cc/full/wq/wallhaven-wqvov7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-12</div><div class="title">css Interview Questions</div></div></a></div><div><a href="/2022/01/01/50%E9%81%93%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="50 Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/57/wallhaven-57jlo1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">50 Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/01/01/20%E9%81%93%E5%A4%A7%E5%8E%82%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="20 Frontend Interview Quesitions"><img class="cover" src="https://raw.githubusercontent.com/HarryQu1229/image-host/9575054fd0f7d407d7b7d5343dfc530a06ed4104/notes-img/cat.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">20 Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/01/01/30%E9%81%93vue%E9%9D%A2%E8%AF%95%E9%A2%98/" title="30 Vue Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/wq/wallhaven-wqvov7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">30 Vue Frontend Interview Quesitions</div></div></a></div><div><a href="/2021/02/12/JS%E9%9D%A2%E8%AF%95%E9%A2%98--YK%E8%8F%8C/" title="some JS Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-12</div><div class="title">some JS Frontend Interview Quesitions</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#html"><span class="toc-number">1.</span> <span class="toc-text"> HTML</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#html%E8%AF%AD%E4%B9%89%E5%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text"> HTML 语义化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#html5%E6%96%B0%E6%A0%87%E7%AD%BE"><span class="toc-number">1.2.</span> <span class="toc-text"> HTML5 新标签</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css"><span class="toc-number">2.</span> <span class="toc-text"> CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.1.</span> <span class="toc-text"> 盒子模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rem%E4%B8%8Eem%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.2.</span> <span class="toc-text"> rem 与 em 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">2.3.</span> <span class="toc-text"> CSS 选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-number">2.4.</span> <span class="toc-text"> CSS 新特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E5%92%8C%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0"><span class="toc-number">2.5.</span> <span class="toc-text"> 行内元素和块级元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E5%92%8C%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8D%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.6.</span> <span class="toc-text"> 绝对定位和相对定位的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex%E5%B8%83%E5%B1%80"><span class="toc-number">2.7.</span> <span class="toc-text"> Flex 布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bfc"><span class="toc-number">2.8.</span> <span class="toc-text"> BFC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD"><span class="toc-number">2.9.</span> <span class="toc-text"> 水平垂直居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lesssassstyus%E4%B8%89%E8%80%85%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.10.</span> <span class="toc-text"> less,sass,styus 三者的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#link%E4%B8%8Eimport%E5%8C%BA%E5%88%AB%E4%B8%8E%E9%80%89%E6%8B%A9"><span class="toc-number">2.11.</span> <span class="toc-text"> link 与 @import 区别与选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%A1%8C%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC%E7%9C%81%E7%95%A5%E5%8F%B7"><span class="toc-number">2.12.</span> <span class="toc-text"> 多行元素的文本省略号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#javascript"><span class="toc-number">3.</span> <span class="toc-text"> JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#js%E7%9A%84%E5%87%A0%E6%9D%A1%E5%9F%BA%E6%9C%AC%E8%A7%84%E8%8C%83"><span class="toc-number">3.1.</span> <span class="toc-text"> JS 的几条基本规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js%E5%BC%95%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text"> JS 引用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.3.</span> <span class="toc-text"> JS 的基本数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C"><span class="toc-number">3.4.</span> <span class="toc-text"> 数组操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js%E6%9C%89%E5%93%AA%E4%BA%9B%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.5.</span> <span class="toc-text"> JS 有哪些内置对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get%E8%AF%B7%E6%B1%82%E4%BC%A0%E5%8F%82%E9%95%BF%E5%BA%A6%E7%9A%84%E8%AF%AF%E5%8C%BA"><span class="toc-number">3.6.</span> <span class="toc-text"> get 请求传参长度的误区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E5%85%85get%E5%92%8Cpost%E8%AF%B7%E6%B1%82%E5%9C%A8%E7%BC%93%E5%AD%98%E6%96%B9%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.7.</span> <span class="toc-text"> 补充 get 和 post 请求在缓存方面的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-number">3.8.</span> <span class="toc-text"> 闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE"><span class="toc-number">3.9.</span> <span class="toc-text"> JS 作用域及作用域链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="toc-number">3.10.</span> <span class="toc-text"> 原型和原型链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%8C%96%E5%92%8C%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="toc-number">3.11.</span> <span class="toc-text"> 组件化和模块化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E7%9A%84%E9%A2%84%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="toc-number">3.12.</span> <span class="toc-text"> 图片的预加载和懒加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mouseover%E5%92%8Cmouseenter%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.13.</span> <span class="toc-text"> mouseover 和 mouseenter 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%BC%82%E6%AD%A5%E5%9B%9E%E8%B0%83%E5%9C%B0%E7%8B%B1"><span class="toc-number">3.14.</span> <span class="toc-text"> 解决异步回调地狱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9this%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">3.15.</span> <span class="toc-text"> 对 This 对象的理解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue"><span class="toc-number">4.</span> <span class="toc-text"> Vue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">4.1.</span> <span class="toc-text"> vue 生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-show%E4%B8%8Ev-if%E5%8C%BA%E5%88%AB"><span class="toc-number">4.2.</span> <span class="toc-text"> v-show 与 v-if 区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-number">4.3.</span> <span class="toc-text"> 开发中常用的指令有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%91%E5%AE%9Aclass%E7%9A%84%E6%95%B0%E7%BB%84%E7%94%A8%E6%B3%95"><span class="toc-number">4.4.</span> <span class="toc-text"> 绑定 class 的数组用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BC%A0%E5%80%BC%E9%80%9A%E4%BF%A1"><span class="toc-number">4.5.</span> <span class="toc-text"> 组件之间的传值通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E6%96%B9%E5%BC%8F"><span class="toc-number">4.6.</span> <span class="toc-text"> 路由跳转方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mvvm"><span class="toc-number">4.7.</span> <span class="toc-text"> MVVM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#computed%E5%92%8Cwatch%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-number">4.8.</span> <span class="toc-text"> computed 和 watch 有什么区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#key"><span class="toc-number">4.9.</span> <span class="toc-text"> key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84data%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%BD%E6%95%B0"><span class="toc-number">4.10.</span> <span class="toc-text"> 组件中的 data 为什么是函数？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#class-%E4%B8%8E-style-%E5%A6%82%E4%BD%95%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A"><span class="toc-number">4.11.</span> <span class="toc-text"> Class 与 Style 如何动态绑定？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue%E7%9A%84%E5%8D%95%E9%A1%B9%E6%95%B0%E6%8D%AE%E6%B5%81"><span class="toc-number">4.12.</span> <span class="toc-text"> vue 的单项数据流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#keep-alive"><span class="toc-number">4.13.</span> <span class="toc-text"> keep-alive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-model-%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">4.14.</span> <span class="toc-text"> v-model 的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nexttick"><span class="toc-number">4.15.</span> <span class="toc-text"> nextTick()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue%E6%8F%92%E6%A7%BD"><span class="toc-number">4.16.</span> <span class="toc-text"> vue 插槽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-router%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E5%AF%BC%E8%88%AA%E9%92%A9%E5%AD%90"><span class="toc-number">4.17.</span> <span class="toc-text"> vue-router 有哪几种导航钩子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vuex"><span class="toc-number">4.18.</span> <span class="toc-text"> vuex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E6%9C%89%E5%AF%B9-vue-%E9%A1%B9%E7%9B%AE%E8%BF%9B%E8%A1%8C%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8C%96"><span class="toc-number">4.19.</span> <span class="toc-text"> 你有对 Vue 项目进行哪些优化？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#es6"><span class="toc-number">5.</span> <span class="toc-text"> ES6</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#var-let-const%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">5.1.</span> <span class="toc-text"> var、let、const 之间的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-number">5.2.</span> <span class="toc-text"> 解构赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#foreach-for-in-for-of%E4%B8%89%E8%80%85%E5%8C%BA%E5%88%AB"><span class="toc-number">5.3.</span> <span class="toc-text"> forEach、for in、for of 三者区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E5%BA%94%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88"><span class="toc-number">5.4.</span> <span class="toc-text"> 使用箭头函数应注意什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set-map%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">5.5.</span> <span class="toc-text"> Set、Map 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%94%A8%E6%B3%95%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AApromise"><span class="toc-number">5.6.</span> <span class="toc-text"> promise 对象的用法，手写一个 promise</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ajax"><span class="toc-number">6.</span> <span class="toc-text"> Ajax</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAajax"><span class="toc-number">6.1.</span> <span class="toc-text"> 如何创建一个 ajax</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">6.2.</span> <span class="toc-text"> 同步和异步的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ajax%E7%9A%84%E4%BC%98%E7%82%B9%E5%92%8C%E7%BC%BA%E7%82%B9"><span class="toc-number">6.3.</span> <span class="toc-text"> ajax 的优点和缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get%E5%92%8Cpost%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">6.4.</span> <span class="toc-text"> get 和 post 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98"><span class="toc-number">6.5.</span> <span class="toc-text"> 如何解决跨域问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFajax%E5%92%8Cjson%E5%AE%83%E4%BB%AC%E7%9A%84%E4%BC%98%E7%82%B9%E5%92%8C%E7%BC%BA%E7%82%B9"><span class="toc-number">6.6.</span> <span class="toc-text"> 什么是 Ajax 和 JSON，它们的优点和缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#github"><span class="toc-number">7.</span> <span class="toc-text"> Github</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">7.1.</span> <span class="toc-text"> git 常用的命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack"><span class="toc-number">8.</span> <span class="toc-text"> webpack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack%E6%89%93%E5%8C%85%E5%8E%9F%E7%90%86"><span class="toc-number">8.1.</span> <span class="toc-text"> webpack 打包原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E7%83%AD%E6%9B%B4%E6%96%B0"><span class="toc-number">8.2.</span> <span class="toc-text"> 模块热更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98webpack%E6%9E%84%E5%BB%BA%E9%80%9F%E5%BA%A6"><span class="toc-number">8.3.</span> <span class="toc-text"> 如何提高 webpack 构建速度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-number">8.4.</span> <span class="toc-text"> webpack 的优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">8.5.</span> <span class="toc-text"> webpack 的缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F"><span class="toc-number">9.</span> <span class="toc-text"> 微信小程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%BB%E8%A6%81%E7%9B%AE%E5%BD%95%E5%8F%8A%E6%96%87%E4%BB%B6%E4%BD%9C%E7%94%A8"><span class="toc-number">9.1.</span> <span class="toc-text"> 文件主要目录及文件作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">9.2.</span> <span class="toc-text"> 微信小程序生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%B0%81%E8%A3%85%E6%95%B0%E6%8D%AE%E8%AF%B7%E6%B1%82"><span class="toc-number">9.3.</span> <span class="toc-text"> 如何封装数据请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92"><span class="toc-number">9.4.</span> <span class="toc-text"> 页面数据传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95"><span class="toc-number">9.5.</span> <span class="toc-text"> 加载性能优化方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%8E%9F%E7%94%9Fapp-vue-h5%E5%B7%AE%E5%BC%82"><span class="toc-number">9.6.</span> <span class="toc-text"> 微信小程序与原生 APP、Vue、H5 差异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%90%86"><span class="toc-number">9.7.</span> <span class="toc-text"> 微信小程序原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wxml%E4%B8%8E%E6%A0%87%E5%87%86%E7%9A%84html%E7%9A%84%E5%BC%82%E5%90%8C"><span class="toc-number">9.8.</span> <span class="toc-text"> wxml 与标准的 html 的异同</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE"><span class="toc-number">10.</span> <span class="toc-text"> 网络协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82"><span class="toc-number">10.1.</span> <span class="toc-text"> 网络分层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#httphttps"><span class="toc-number">10.2.</span> <span class="toc-text"> HTTP&#x2F;HTTPS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-number">10.3.</span> <span class="toc-text"> HTTP 状态码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">11.</span> <span class="toc-text"> 性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#html%E4%BC%98%E5%8C%96"><span class="toc-number">11.1.</span> <span class="toc-text"> HTML 优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css%E4%BC%98%E5%8C%96"><span class="toc-number">11.2.</span> <span class="toc-text"> CSS 优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#javascript%E4%BC%98%E5%8C%96"><span class="toc-number">11.3.</span> <span class="toc-text"> JavaScript 优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E7%9A%84%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="toc-number">12.</span> <span class="toc-text"> 面试常见的其他问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E9%97%AE"><span class="toc-number">12.1.</span> <span class="toc-text"> 常问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%BA%E4%BA%8B%E9%9D%A2"><span class="toc-number">12.2.</span> <span class="toc-text"> 人事面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">12.3.</span> <span class="toc-text"> 其他</span></a></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux easy notes"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes">Linux easy notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux commands"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands">Linux commands</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/Linux/" title="Linux notes"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux notes"/></a><div class="content"><a class="title" href="/2022/04/02/Linux/" title="Linux notes">Linux notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/nodejs/" title="Nodejs notes"><img src="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nodejs notes"/></a><div class="content"><a class="title" href="/2022/03/01/nodejs/" title="Nodejs notes">Nodejs notes</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Frontend interview questions"/></a><div class="content"><a class="title" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions">Frontend interview questions</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/'
+    this.page.identifier = '2022/03/01/初中级前端面试题/'
+    this.page.title = 'Frontend interview questions'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>if (window.DISQUSWIDGETS === undefined) {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://harry-study-blog.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+} else {
+  DISQUSWIDGETS.getCount({reset: true});
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: '2c8794bb5a1da60d234ce1a00ab7e955',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=a5KJbIVovxK3ZXvlrPvv7wgYLY4fAh3pvP4thfjXYUdM2cNymlgVhMhdyhb9e0O3')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" title="本站使用JsDelivr为静态资源提供CDN加速"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，默认线路托管于Vercel"><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，联通线路托管于Coding"><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

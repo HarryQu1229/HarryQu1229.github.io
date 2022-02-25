@@ -1,0 +1,2723 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>My CSS notes | Harry World</title><meta name="keywords" content="frontend,css"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# CSS 基础 [TOC] # CSS 构造块 「1. HTML 的局限性」  HTML 满足不了设计者的需求，可以将网页结构与样式相分离，这样就可以在不更改网页结构的前提下，更换网站的样式。 操作 html 属性不方便 HTML 里面添加样式带来的是无尽的臃肿和繁琐  「2. CSS 网页的美容师」  让我们的网页更加丰富多彩，布局更加灵活自如。 CSS 最大的贡献：让 HTML 从样式中脱离">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My CSS notes">
+<meta property="og:url" content="https://harryqu1229.github.io/2022/02/01/CSS/index.html">
+<meta property="og:site_name" content="Harry World">
+<meta property="og:description" content="# CSS 基础 [TOC] # CSS 构造块 「1. HTML 的局限性」  HTML 满足不了设计者的需求，可以将网页结构与样式相分离，这样就可以在不更改网页结构的前提下，更换网站的样式。 操作 html 属性不方便 HTML 里面添加样式带来的是无尽的臃肿和繁琐  「2. CSS 网页的美容师」  让我们的网页更加丰富多彩，布局更加灵活自如。 CSS 最大的贡献：让 HTML 从样式中脱离">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://w.wallhaven.cc/full/8o/wallhaven-8oply1.jpg">
+<meta property="article:published_time" content="2022-01-31T11:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-25T14:48:07.852Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="frontend">
+<meta property="article:tag" content="css">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://w.wallhaven.cc/full/8o/wallhaven-8oply1.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://harryqu1229.github.io/2022/02/01/CSS/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'My CSS notes',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-26 03:48:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/flink.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.victorkingsley.com/wp-content/uploads/edd/2020/12/css.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry World</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">My CSS notes</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-01-31T11:00:00.000Z" title="Created 2022-02-01 00:00:00">2022-02-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-02-25T14:48:07.852Z" title="Updated 2022-02-26 03:48:07">2022-02-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Frontend/">Frontend</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">15.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>51min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="My CSS notes"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><span class="disqus-comment-count"><a href="https://harryqu1229.github.io/2022/02/01/CSS/#disqus_thread"></a></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="css基础"><a class="markdownIt-Anchor" href="#css基础">#</a> CSS 基础</h1>
+<p>[TOC]</p>
+<h2 id="css构造块"><a class="markdownIt-Anchor" href="#css构造块">#</a> CSS 构造块</h2>
+<p><strong>「1. HTML 的局限性」</strong></p>
+<ul>
+<li>HTML 满足不了设计者的需求，可以将网页结构与样式相分离，这样就可以在不更改网页结构的前提下，更换网站的样式。</li>
+<li>操作 html 属性不方便</li>
+<li>HTML 里面添加样式带来的是无尽的臃肿和繁琐</li>
+</ul>
+<p><strong>「2. CSS 网页的美容师」</strong></p>
+<ul>
+<li>让我们的网页更加丰富多彩，布局更加灵活自如。</li>
+<li>CSS 最大的贡献：让 HTML 从样式中脱离，实现了 HTML 专注去做__结构呈现__，样式交给 CSS</li>
+</ul>
+<p>**「3. CSS」**CSS (Cascading Style Sheets) 通常称为 CSS 样式表或层叠样式表 (级联样式表)。</p>
+<ul>
+<li>主要用于设置 HTML 页面中的文本内容 (字体、大小、对齐方式等)\ 图片的外形 (宽高、边框样式、边距等) 以及版面的布局和外观显示样式。</li>
+<li>CSS 以 HTML 为基础，提供了丰富的功能，如字体、样式、背景的控制及整体排版等，而且可以针对不同的浏览器设置不同的样式。</li>
+</ul>
+<p><strong>「4. CSS 注释」</strong></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token comment">/* 这是注释 */</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<hr>
+<h3 id="引入css样式表"><a class="markdownIt-Anchor" href="#引入css样式表">#</a> 引入 CSS 样式表</h3>
+<h4 id="1行内式内联样式"><a class="markdownIt-Anchor" href="#1行内式内联样式">#</a> 「1. 行内式 (内联样式)」</h4>
+<p>通过标签的 style 属性来设置元素的样式</p>
+<ul>
+<li><code>style</code>  其实就是标签的属性</li>
+<li><strong>样式属性和值中间是 <code>:</code> </strong></li>
+<li><strong>多组属性值直接用 <code>;</code>  隔开</strong></li>
+<li>只能控制当前的标签和以及嵌套在其中的字标签，造成代码冗余。</li>
+<li>** 缺点:** 没有实现样式和结构相分离。</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">&lt;标签名 style=<span class="token string">"属性1:属性值1; 属性2:属性值2; 属性3:属性值3;"</span>> 内容 &lt;/标签名>
+<span class="token comment">/*例如*/</span>
+&lt;div style=<span class="token string">"color: red; font-size: 12px;"</span>>青春不常在，抓紧谈恋爱&lt;/div><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="2内部样式表内嵌样式表"><a class="markdownIt-Anchor" href="#2内部样式表内嵌样式表">#</a> 「2. 内部样式表 (内嵌样式表)」</h4>
+<p>也称为内嵌式，将 CSS 代码集中写在 HTML 文档的 head 头部标签中，并且用 style 标签定义。</p>
+<ul>
+<li>style 标签一般位于 head 标签中，当然理论上他可以放在 HTML 文档的任何地方。</li>
+<li>type=“text/css”  <strong>在 HTML5 中可以省略。</strong></li>
+<li>只能控制当前的页面</li>
+<li>** 缺点:** 没有彻底分离结构与样式</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">&lt;head>
+&lt;style type=<span class="token string">"text/CSS"</span>> <span class="token comment">/*注意如果是HTML5这块的type=...可以省略*/</span>
+    <span class="token selector">选择器</span> <span class="token punctuation">&#123;</span> 
+      <span class="token property">属性1</span><span class="token punctuation">:</span> 属性值1<span class="token punctuation">;</span>
+      <span class="token property">属性2</span><span class="token punctuation">:</span> 属性值2<span class="token punctuation">;</span> 
+      <span class="token property">属性3</span><span class="token punctuation">:</span> 属性值3<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+&lt;/style>
+&lt;/head><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="3外部样式表外链式"><a class="markdownIt-Anchor" href="#3外部样式表外链式">#</a> 「3. 外部样式表 (外链式)」</h4>
+<p>也称<mark>链入式</mark>，是将所有的样式放在一个或多个以 <code>.css</code>  为扩展名的外部样式表文件中，通过 <code>link</code>  标签将外部样式表文件链接到 HTML 文档中。</p>
+<ul>
+<li><code>rel</code> : 定义当前文档与被链接文档之间的关系，在这里需要指定为 “stylesheet”，表示被链接的文档是一个样式表文件。</li>
+<li><code>href</code> : 定义所链接外部样式表文件的 URL，可以是相对路径，也可以是绝对路径。</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">&lt;link rel=<span class="token string">"stylesheet"</span> href=<span class="token string">"index.css"</span>><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>团队约定 - 代码风格</strong></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token comment">/*一种是展开格式（推荐）*/</span>
+<span class="token selector">h3</span> <span class="token punctuation">&#123;</span>
+	<span class="token property">color</span><span class="token punctuation">:</span> deeppink<span class="token punctuation">;</span>
+	<span class="token property">font-size</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>    
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/* 团队约定-代码大小写*/</span>
+<span class="token comment">/* 样式选择器，属性名，属性值关键字全部使用小写字母书写，属性字符串允许使用大小写。*/</span>
+<span class="token comment">/* 推荐 */</span>
+<span class="token selector">h3</span><span class="token punctuation">&#123;</span>
+	<span class="token property">color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="css基础选择器"><a class="markdownIt-Anchor" href="#css基础选择器">#</a> CSS 基础选择器</h2>
+<h3 id="css基础选择器-2"><a class="markdownIt-Anchor" href="#css基础选择器-2">#</a> CSS 基础选择器</h3>
+<h4 id="1-标签选择器"><a class="markdownIt-Anchor" href="#1-标签选择器">#</a> 「1. 标签选择器」</h4>
+<blockquote>
+<p>标签选择器（元素选择器）是指用<mark> HTML 标签名</mark>称作为选择器，按标签名称分类，为页面中某一类标签指定统一的 CSS 样式。</p>
+</blockquote>
+<ul>
+<li>作用：可以把某一类标签__全部__选择出来。</li>
+<li>优点：快速为网页中同类型的标签统一样式</li>
+<li>缺点：不能设计差异化样式。</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">标签名</span><span class="token punctuation">&#123;</span><span class="token property">属性1</span><span class="token punctuation">:</span>属性值1<span class="token punctuation">;</span> <span class="token property">属性2</span><span class="token punctuation">:</span>属性值2<span class="token punctuation">;</span> <span class="token property">属性3</span><span class="token punctuation">:</span>属性值3<span class="token punctuation">;</span> <span class="token punctuation">&#125;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="2-类选择器"><a class="markdownIt-Anchor" href="#2-类选择器">#</a> 「2. 类选择器」</h4>
+<p>类选择器使用 <code>.</code> (英文点号) 进行标识，后面紧跟__类名__。</p>
+<ul>
+<li>语法：<strong>类名选择器</strong></li>
+</ul>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>类名<span class="token punctuation">'</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.类名</span>  <span class="token punctuation">&#123;</span>   
+    <span class="token property">属性1</span><span class="token punctuation">:</span>属性值1<span class="token punctuation">;</span> 
+    <span class="token property">属性2</span><span class="token punctuation">:</span>属性值2<span class="token punctuation">;</span> 
+    <span class="token property">属性3</span><span class="token punctuation">:</span>属性值3<span class="token punctuation">;</span>     
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><mark>优点</mark>：可以为元素对象定义单独或相同的样式。可以选择一个或者多个标签。</li>
+<li><mark>注意</mark>：类选择器使用 “.”（英文点号）进行标识，后面紧跟类名 (自定义，我们自己命名的)
+<ul>
+<li>长名称或词组可以使用__中横线__来为选择器命名。</li>
+<li>不要纯数字、中文等命名，尽量使用英文字母来表示。</li>
+<li>多类名选择器：各个类名中间用空格隔开。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-id选择器"><a class="markdownIt-Anchor" href="#3-id选择器">#</a> 「3. id 选择器」</h4>
+<p>id 选择器使用 <code>#</code> 进行标识，后面紧跟 id 名</p>
+<ul>
+<li>元素的 id 值是唯一的，只能对应于文档中某一个具体的元素。</li>
+</ul>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>id名<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">#id名</span> <span class="token punctuation">&#123;</span><span class="token property">属性1</span><span class="token punctuation">:</span>属性值1<span class="token punctuation">;</span> <span class="token property">属性2</span><span class="token punctuation">:</span>属性值2<span class="token punctuation">;</span> <span class="token property">属性3</span><span class="token punctuation">:</span>属性值3<span class="token punctuation">;</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="4-通配符选择器"><a class="markdownIt-Anchor" href="#4-通配符选择器">#</a> 「4. 通配符选择器」</h4>
+<p>通配符选择器用 <code>*</code>  号表示， <code>*</code>  就是选择所有的标签。它是所有选择器中作用__范围最广的__，能匹配页面中所有的元素。</p>
+<ul>
+<li><mark>注意</mark>：会匹配页面所有的元素，降低页面响应速度，不建议随便使用</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">*</span> <span class="token punctuation">&#123;</span> <span class="token property">属性1</span><span class="token punctuation">:</span>属性值1<span class="token punctuation">;</span> <span class="token property">属性2</span><span class="token punctuation">:</span>属性值2<span class="token punctuation">;</span> <span class="token property">属性3</span><span class="token punctuation">:</span>属性值3<span class="token punctuation">;</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>例如下面代码，使用通配符选择器定义 CSS 样式，清除所有 HTML 标记的默认边距</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">*</span> <span class="token punctuation">&#123;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>                    <span class="token comment">/* 定义外边距*/</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>                   <span class="token comment">/* 定义内边距*/</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="基础选择器总结"><a class="markdownIt-Anchor" href="#基础选择器总结">#</a> 「基础选择器总结」</h4>
+<table color:="" red;="">
+<thead>
+<tr>
+<th style="text-align:left">选择器</th>
+<th style="text-align:left">作用</th>
+<th style="text-align:left">缺点</th>
+<th style="text-align:left">使用情况</th>
+<th style="text-align:left">用法</th>
+</tr>
+</thead>
+<tbody>
+<tr color：red;="">
+<td style="text-align:left">标签选择器</td>
+<td style="text-align:left">可以选出所有相同的标签，比如 p</td>
+<td style="text-align:left">不能差异化选择</td>
+<td style="text-align:left">较多</td>
+<td style="text-align:left">p</td>
+</tr>
+<tr color:="" red;="">
+<td style="text-align:left">类选择器</td>
+<td style="text-align:left">可以选出 1 个或者多个标签</td>
+<td style="text-align:left">可以根据需求选择</td>
+<td style="text-align:left">非常多</td>
+<td style="text-align:left">.nav</td>
+</tr>
+<tr color:="" red;="">
+<td style="text-align:left">id 选择器</td>
+<td style="text-align:left">一次只能选择器 1 个标签</td>
+<td style="text-align:left">只能使用一次</td>
+<td style="text-align:left">不推荐使用</td>
+<td style="text-align:left">#nav</td>
+</tr>
+<tr>
+<td style="text-align:left">通配符选择器</td>
+<td style="text-align:left">选择所有的标签</td>
+<td style="text-align:left">选择的太多，有部分不需要</td>
+<td style="text-align:left">不推荐使用</td>
+<td style="text-align:left">*</td>
+</tr>
+</tbody>
+</table>
+<p><strong>「团队约定 - 选择器」</strong></p>
+<ol>
+<li>尽量少用通配符选择器 <code>*</code></li>
+<li>尽量少用 ID 选择器</li>
+<li>不使用无具体语义定义的标签选择器</li>
+</ol>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token comment">/* 推荐 */</span>
+<span class="token selector">.jdc</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token selector">li</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token selector">p</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+<span class="token comment">/* 不推荐 */</span>
+<span class="token selector">*</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token selector">#jdc</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token selector">div</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>   因为div 没有语义，我们尽量少用<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h3 id="css复合选择器"><a class="markdownIt-Anchor" href="#css复合选择器">#</a> CSS 复合选择器</h3>
+<p>复合选择器是由两个或多个基础选择器，通过不同的方式组合而成的</p>
+<h4 id="1-后代选择器"><a class="markdownIt-Anchor" href="#1-后代选择器">#</a> 「1. 后代选择器」</h4>
+<p>又称为包含选择器</p>
+<ul>
+<li>用来选择元素或元素组的<mark>子孙后代</mark></li>
+<li>其写法就是把外层标签写在前面，内层标签写在后面，中间用 **「空格」** 分隔，先写父亲爷爷，再写儿子孙子。</li>
+<li>子孙后代都可以这么选择。或者说，它能选择任何包含在内的标签。</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">父级 子级</span><span class="token punctuation">&#123;</span><span class="token property">属性</span><span class="token punctuation">:</span>属性值<span class="token punctuation">;</span><span class="token property">属性</span><span class="token punctuation">:</span>属性值<span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+
+<span class="token selector">.class h3</span> <span class="token punctuation">&#123;</span><span class="token property">color</span><span class="token punctuation">:</span>red<span class="token punctuation">;</span><span class="token property">font-size</span><span class="token punctuation">:</span>16px<span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071605233.webp" alt="图片"></p>
+<ul>
+<li>当标签发生嵌套时，内层标签就成为外层标签的后代。</li>
+<li>子孙后代都可以这么选择。或者说，它能选择任何包含在内的标签。</li>
+</ul>
+<h4 id="2-子元素选择器"><a class="markdownIt-Anchor" href="#2-子元素选择器">#</a> 「2. 子元素选择器」</h4>
+<ul>
+<li>子元素选择器只能选择作为某元素 ==<strong> 子元素 (亲儿子)</strong>== 的元素。</li>
+<li>其写法就是把父级标签写在前面，子级标签写在后面，中间跟一个 <code>&gt;</code>  进行连接</li>
+<li>这里的子，指的是亲儿子。不包含孙子，重孙子之类。</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.class>h3</span> <span class="token punctuation">&#123;</span>
+     <span class="token property">color</span><span class="token punctuation">:</span>red<span class="token punctuation">;</span>
+     <span class="token property">font-size</span><span class="token punctuation">:</span>14px<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="3-交集选择器"><a class="markdownIt-Anchor" href="#3-交集选择器">#</a> 「3. 交集选择器」</h4>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071605978.webp" alt="图片"></p>
+<ul>
+<li>其中第一个为标签选择器，第二个为 class 选择器，两个选择器之间<mark>不能有空格</mark>，如 h3.special。</li>
+</ul>
+<blockquote>
+<p>交集选择器是并且的意思，即… 又… 的意思</p>
+</blockquote>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">比如：   p.one选择的是类名为.one的段落<span class="token punctuation">(</span>p<span class="token punctuation">)</span>标签。 
+<span class="token comment">/*用的相对来说比较少，不建议使用。*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="4-并集选择器"><a class="markdownIt-Anchor" href="#4-并集选择器">#</a> 「4. 并集选择器」</h4>
+<p>如果某些选择器定义的相同样式，就可以利用并集选择器，可以让代码更简洁。并集选择器（CSS 选择器分组）是各个选择器通过 <code>,</code>  连接而成的，通常用于集体声明。</p>
+<ul>
+<li><strong>任何形式的选择器</strong>（包括标签选择器、class 类选择器 id 选择器等）, 都可以作为并集选择器的一部分。</li>
+<li>并集选择器通常用于__集体声明__, 逗号隔开的，所有选择器都会执行后面样式，逗号可以理解为和的意思。</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token comment">/*比如*/</span>  
+<span class="token selector">.one, 
+p, 
+#test</span> <span class="token punctuation">&#123;</span><span class="token property">color</span><span class="token punctuation">:</span> #F00<span class="token punctuation">;</span><span class="token punctuation">&#125;</span>    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>表示 <code>.one</code>  和 <code>p</code>  和 <code>#test</code>  这三个选择器都会执行颜色为红色。<br>
+通常用于集体声明。</p>
+</blockquote>
+<h4 id="5-链接伪类选择器"><a class="markdownIt-Anchor" href="#5-链接伪类选择器">#</a> 「5. 链接伪类选择器」</h4>
+<p>用于向某些选择器添加特殊的效果。写的时候，他们的顺序尽量不要颠倒，按照<mark> lvha</mark> 的顺序。否则可能引起错误。</p>
+<p>链接伪类，是利用交集选择器.</p>
+<ul>
+<li><code>a:link</code>  未访问的链接</li>
+<li><code>a:visited</code>  已访问的链接</li>
+<li><code>a:hover</code>  鼠标移动到链接上</li>
+<li><code>a:active</code>  选定的链接</li>
+</ul>
+<h4 id="实际工作中很少写全四个状态一般写法如下"><a class="markdownIt-Anchor" href="#实际工作中很少写全四个状态一般写法如下">#</a> 实际工作中，很少写全四个状态，一般写法如下：</h4>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">a</span> <span class="token punctuation">&#123;</span><span class="token comment">/* a是标签选择器  所有的链接 */</span>
+   <span class="token property">font-weight</span><span class="token punctuation">:</span> 700<span class="token punctuation">;</span>
+   <span class="token property">font-size</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+   <span class="token property">color</span><span class="token punctuation">:</span> gray<span class="token punctuation">;</span>
+   <span class="token property">text-decoration</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span> <span class="token comment">/* 清除链接默认的下划线*/</span>
+<span class="token punctuation">&#125;</span>
+<span class="token selector">a:hover</span> <span class="token punctuation">&#123;</span><span class="token comment">/* :hover 是链接伪类选择器 鼠标经过 */</span>
+   <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> <span class="token comment">/*  鼠标经过的时候，由原来的 灰色 变成了红色 */</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="复合选择器总结"><a class="markdownIt-Anchor" href="#复合选择器总结">#</a> 「复合选择器总结」</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选择器</th>
+<th style="text-align:left">作用</th>
+<th style="text-align:left">特征</th>
+<th style="text-align:left">使用情况</th>
+<th style="text-align:left">隔开符号及用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">后代选择器</td>
+<td style="text-align:left">用来选择元素后代</td>
+<td style="text-align:left">是选择所有的子孙后代</td>
+<td style="text-align:left">较多</td>
+<td style="text-align:left">符号是__空格__ .nav a</td>
+</tr>
+<tr>
+<td style="text-align:left">子代选择器</td>
+<td style="text-align:left">选择 最近一级元素</td>
+<td style="text-align:left">只选亲儿子</td>
+<td style="text-align:left">较少</td>
+<td style="text-align:left">符号是__&gt;__   .nav&gt;p</td>
+</tr>
+<tr>
+<td style="text-align:left">交集选择器</td>
+<td style="text-align:left">选择两个标签交集的部分</td>
+<td style="text-align:left">既是 又是</td>
+<td style="text-align:left">较少</td>
+<td style="text-align:left"><strong>没有符号</strong>   p.one</td>
+</tr>
+<tr>
+<td style="text-align:left">并集选择器</td>
+<td style="text-align:left">选择某些相同样式的选择器</td>
+<td style="text-align:left">可以用于集体声明</td>
+<td style="text-align:left">较多</td>
+<td style="text-align:left">符号是__逗号__ .nav, .header</td>
+</tr>
+<tr>
+<td style="text-align:left">链接伪类选择器</td>
+<td style="text-align:left">给链接更改状态</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">较多</td>
+<td style="text-align:left">重点记住 a {} 和 a:hover 实际开发的写法</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="css字体样式"><a class="markdownIt-Anchor" href="#css字体样式">#</a> CSS 字体样式</h2>
+<h3 id="font字体"><a class="markdownIt-Anchor" href="#font字体">#</a> font 字体</h3>
+<h4 id="1-font-size"><a class="markdownIt-Anchor" href="#1-font-size">#</a> 「1. font-size」</h4>
+<ul>
+<li><code>font-size</code>  属性用于设置字号 (字体大小)</li>
+<li>谷歌浏览器默认的文字大小为 16px</li>
+<li>不同浏览器可能默认显示的字号大小不一致，我们尽量给一个明确值大小，不要默认大小。一般给 <code>body</code>  指定__整个页面文字的大小__。</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">&#123;</span> <span class="token property">font-size</span><span class="token punctuation">:</span>20px<span class="token punctuation">;</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="单位"><a class="markdownIt-Anchor" href="#单位">#</a> 单位</h4>
+<ul>
+<li>相对长度单位、绝对长度单位</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071606345.webp" alt="图片"></p>
+<h4 id="2-font-family"><a class="markdownIt-Anchor" href="#2-font-family">#</a> 「2. font-family」</h4>
+<ul>
+<li><code>font-family</code>  属性用于设置哪一种字体。</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">&#123;</span> <span class="token property">font-family</span><span class="token punctuation">:</span><span class="token string">"微软雅黑"</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><mark><strong>指定多个字体</strong></mark>，如果浏览器不支持第一个字体就会尝试下一个直到找到合适的字体，如果都没有，以电脑默认字体为准。</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">&#123;</span> <span class="token property">font-family</span><span class="token punctuation">:</span> Arial<span class="token punctuation">,</span><span class="token string">"Microsoft Yahei"</span><span class="token punctuation">,</span> <span class="token string">"微软雅黑"</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><strong>CSS Unicode 字体</strong>
+<ul>
+<li>在 CSS 中设置字体名称，直接写中文是可以的。但是在文件编码（GB2312、UTF-8 等）不匹配时会产生乱码的错误。</li>
+<li>xp 系统不支持 类似微软雅黑的中文。</li>
+<li>== 解决方案:== 英文来替代。比如 <code>font-family:&quot;Microsoft Yahei&quot;</code> 。在 CSS 直接使用 Unicode 编码来写字体名称可以避免这些错误。使用 Unicode 写中文字体名称，浏览器是可以正确的解析的。</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"\5FAE\8F6F\96C5\9ED1"</span><span class="token punctuation">;</span>   表示设置字体为“微软雅黑”。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="3-font-weight"><a class="markdownIt-Anchor" href="#3-font-weight">#</a> 「3. font-weight」</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">normal</td>
+<td style="text-align:left">默认值（不加粗的）</td>
+</tr>
+<tr>
+<td style="text-align:left">bold</td>
+<td style="text-align:left">定义粗体（加粗的）</td>
+</tr>
+<tr>
+<td style="text-align:left">100~900</td>
+<td style="text-align:left">400 等同于 normal，而 700 等同于 bold  (数字表示粗细用的多)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-font-style"><a class="markdownIt-Anchor" href="#4-font-style">#</a> 「4. font-style」</h4>
+<p><code>font-style</code>  属性用于定义__字体风格__，如设置斜体、倾斜或正常字体，其可用属性值如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">normal</td>
+<td style="text-align:left">默认值，浏览器会显示标准的字体样式  font-style: normal;</td>
+</tr>
+<tr>
+<td style="text-align:left">italic</td>
+<td style="text-align:left">浏览器会显示斜体的字体样式。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="5-font综合设置字体样式"><a class="markdownIt-Anchor" href="#5-font综合设置字体样式">#</a> 「5. font: 综合设置字体样式」</h4>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">选择器</span> <span class="token punctuation">&#123;</span> <span class="token property">font</span><span class="token punctuation">:</span> font-style  font-weight  font-size/line-height  font-family<span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>
+<p>注意：使用 <code>font</code>  属性时，必须按上面语法格式中的顺序书写，不能更换顺序，各个属性以__空格__隔开</p>
+<blockquote>
+<p>其中不需要设置的属性可以省略 (取默认值), 但 ==<strong> 必须保留</strong> == <code>font-size</code>  和 <code>font-family</code>  属性，否则 font 属性将不起作用。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="font总结"><a class="markdownIt-Anchor" href="#font总结">#</a> 「font 总结」</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">表示</th>
+<th style="text-align:left">注意点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">font-size</td>
+<td style="text-align:left">字号</td>
+<td style="text-align:left">我们通常用的单位是 px 像素，一定要跟上单位</td>
+</tr>
+<tr>
+<td style="text-align:left">font-family</td>
+<td style="text-align:left">字体</td>
+<td style="text-align:left">实际工作中按照团队约定来写字体</td>
+</tr>
+<tr>
+<td style="text-align:left">font-weight</td>
+<td style="text-align:left">字体粗细</td>
+<td style="text-align:left">记住加粗是 <code>700</code>  或者 <code>bold</code> , 不加粗是 <code>normal</code>  或者 <code>400</code> , 记住数字不要跟单位</td>
+</tr>
+<tr>
+<td style="text-align:left">font-style</td>
+<td style="text-align:left">字体样式</td>
+<td style="text-align:left">记住倾斜是 <code>italic</code> , 不倾斜是 <code>normal</code> , 工作中我们最常用 <code>normal</code></td>
+</tr>
+<tr>
+<td style="text-align:left">font</td>
+<td style="text-align:left">字体连写</td>
+<td style="text-align:left">1. 字体连写是有顺序的，不能随意换位置 <br />2. 其中字号和字体必须同时出现</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="css外观属性"><a class="markdownIt-Anchor" href="#css外观属性">#</a> CSS 外观属性</h3>
+<h4 id="1-color"><a class="markdownIt-Anchor" href="#1-color">#</a> 「1. color」</h4>
+<p><code>color</code>  属性用于__<mark>定义文本的颜色</mark>__<br>
+其取值方式有以下 3 种：</p>
+<ul>
+<li>实际工作中，用__16 进制__的写法是最多的，且我们更喜欢__简写方式__比如 #f0 代表红色。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表示表示</th>
+<th style="text-align:left">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">预定义的颜色值</td>
+<td style="text-align:left">red，green，blue，pink</td>
+</tr>
+<tr>
+<td style="text-align:left">十六进制</td>
+<td style="text-align:left">#FF0000，#FF6600，#29D794</td>
+</tr>
+<tr>
+<td style="text-align:left">RGB 代码</td>
+<td style="text-align:left">rgb (255,0,0) 或 rgb (100%,0%,0%)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2text-align"><a class="markdownIt-Anchor" href="#2text-align">#</a> 「2.text-align」</h4>
+<p><code>text-align</code>  属性用于设置__文本内容__的水平对齐方式，相当于 html 中的 align 对齐属性。</p>
+<blockquote>
+<p>注意：是让盒子里面的文本内容水平居中，<strong>而不是让盒子居中对齐</strong></p>
+</blockquote>
+<p>其可用属性值如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:center">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">left</td>
+<td style="text-align:center">左对齐（默认值）</td>
+</tr>
+<tr>
+<td style="text-align:left">right</td>
+<td style="text-align:center">右对齐</td>
+</tr>
+<tr>
+<td style="text-align:left">center</td>
+<td style="text-align:center">居中对齐</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-line-height"><a class="markdownIt-Anchor" href="#3-line-height">#</a> 「3. line-height」</h4>
+<p><code>line-height</code>  属性用于设置行间距，就是行与行之间的距离，即字符的垂直间距，一般称为行高。</p>
+<blockquote>
+<p><code>line-height</code>  常用的属性值单位有三种，分别为像素 px，相对值 em 和百分比 %，实际工作中使用最多的是像素 px</p>
+<blockquote>
+<p>一般情况下，行距比字号大 7–8 像素左右就可以了。</p>
+</blockquote>
+</blockquote>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">line-height</span><span class="token punctuation">:</span> 24px<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="行高测量"><a class="markdownIt-Anchor" href="#行高测量">#</a> 行高测量</h4>
+<p>行高测量方法：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071606611.webp" alt="图片"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071606017.webp" alt="图片"></p>
+<p>__行高测量方__法行高我们利用最多的一个地方是：可以让单行文本在盒子中垂直居中对齐</p>
+<blockquote>
+<p><strong>文字的行高等于盒子的高度</strong></p>
+<blockquote>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>行高</mtext><mo>=</mo><mtext>上距离</mtext><mo>+</mo><mtext>内容高度</mtext><mo>+</mo><mtext>下距离</mtext></mrow><annotation encoding="application/x-tex">行高  =  上距离 +  内容高度  + 下距离
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">高</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord cjk_fallback">上</span><span class="mord cjk_fallback">距</span><span class="mord cjk_fallback">离</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord cjk_fallback">内</span><span class="mord cjk_fallback">容</span><span class="mord cjk_fallback">高</span><span class="mord cjk_fallback">度</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord cjk_fallback">下</span><span class="mord cjk_fallback">距</span><span class="mord cjk_fallback">离</span></span></span></span></span></p>
+<p>上距离和下距离总是相等的，因此文字看上去是垂直居中的</p>
+</blockquote>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071606552.webp" alt="图片"></p>
+<h4 id="行高与高度的三种关系"><a class="markdownIt-Anchor" href="#行高与高度的三种关系">#</a> 行高与高度的三种关系</h4>
+<ul>
+<li>如果行高 等于 高度 文字会 垂直居中</li>
+<li>如果行高 大于 高度 文字会 偏下</li>
+<li>如果行高 小于 高度 文字会 偏上</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token comment">/* line-height 要设置在font属性下面，否则无效，例如：*/</span>
+<span class="token property">height</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>
+<span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+<span class="token property">font</span><span class="token punctuation">:</span> normal bold 30px <span class="token string">"宋体"</span><span class="token punctuation">;</span>
+<span class="token property">line-height</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以使用 <code>display:flex;</code>  布局方式让文字水平垂直居中</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+<span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>     <span class="token comment">/* 侧轴对齐方式 */</span>
+<span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span> <span class="token comment">/* 主轴对齐方式 */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="4-text-indent"><a class="markdownIt-Anchor" href="#4-text-indent">#</a> 「4. text-indent」</h4>
+<p><code>text-indent</code>  属性用于设置首行文本的缩进</p>
+<ul>
+<li>其属性值可为不同单位的数值、em 字符宽度的倍数、或相对于浏览器窗口宽度的百分比 %，允许使用负值。</li>
+<li>建议使用 em 作为设置单位。</li>
+<li>1em 就是一个字的宽度。如果是汉字的段落，1em 就是一个汉字的宽度</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">&#123;</span>
+      <span class="token comment">/*行间距*/</span>
+      <span class="token property">line-height</span><span class="token punctuation">:</span> 25px<span class="token punctuation">;</span>
+      <span class="token comment">/*首行缩进2个字  em  1个em 就是1个字的大小*/</span>
+      <span class="token property">text-indent</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>  
+ <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="5-text-decoration"><a class="markdownIt-Anchor" href="#5-text-decoration">#</a> 「5. text-decoration」</h4>
+<p>文本的装饰</p>
+<p><code>text-decoration</code> , 通常我们用于给链接修改装饰效果</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">none</td>
+<td style="text-align:left">默认。定义标准的文本。取消下划线（最常用）</td>
+</tr>
+<tr>
+<td style="text-align:left">underline</td>
+<td style="text-align:left">定义文本下的一条线。下划线 也是我们链接自带的（常用）</td>
+</tr>
+<tr>
+<td style="text-align:left">overline</td>
+<td style="text-align:left">定义文本上的一条线。（不用）</td>
+</tr>
+<tr>
+<td style="text-align:left">line-through</td>
+<td style="text-align:left">定义穿过文本下的一条线。（不常用）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="css外观属性总结"><a class="markdownIt-Anchor" href="#css外观属性总结">#</a> 「CSS 外观属性总结」</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">表示</th>
+<th style="text-align:left">注意点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">color</td>
+<td style="text-align:left">颜色</td>
+<td style="text-align:left">我们通常用十六进比如而且是简写形式 #fff</td>
+</tr>
+<tr>
+<td style="text-align:left">line-height</td>
+<td style="text-align:left">行高</td>
+<td style="text-align:left">控制行与行之间的距离</td>
+</tr>
+<tr>
+<td style="text-align:left">text-align</td>
+<td style="text-align:left">水平对齐</td>
+<td style="text-align:left">可以设定文字水平的对齐方式</td>
+</tr>
+<tr>
+<td style="text-align:left">text-indent</td>
+<td style="text-align:left">首行缩进</td>
+<td style="text-align:left">通常我们用于段落首行缩进 2 个字的距离 <code>text-indent:2em;</code></td>
+</tr>
+<tr>
+<td style="text-align:left">text-decoration</td>
+<td style="text-align:left">文本修饰</td>
+<td style="text-align:left">记住添加下划线 <code>underline</code> , 取消下划线 <code>none</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="标签显示模式display"><a class="markdownIt-Anchor" href="#标签显示模式display">#</a> 标签显示模式 (display)</h2>
+<p><code>标签显示模式</code> 是标签以什么方式进行显示。HTML 标签一般分为块标签和行内标签两种类型，它们也称为块元素和行内元素。</p>
+<h3 id="标签显示模式转换-display"><a class="markdownIt-Anchor" href="#标签显示模式转换-display">#</a> 标签显示模式转换 display</h3>
+<ul>
+<li>块转行内： <code>display:inline</code> ;</li>
+<li>行内转块： <code>display:block</code> ;</li>
+<li>块、行内元素转换为行内块： <code>display:inline-block</code> ;</li>
+</ul>
+<h4 id="1-块级元素block-level"><a class="markdownIt-Anchor" href="#1-块级元素block-level">#</a> 「1. 块级元素 (block-level)」</h4>
+<blockquote>
+<p>常见的块元素有 &lt;h1&gt;~&lt;h6&gt;、&lt;p&gt;、&lt;div&gt;、&lt;ul&gt;、&lt;ol&gt;、&lt;li &gt; 等，其中 &lt; div &gt; 标签是最典型的块元素。</p>
+</blockquote>
+<p><strong>块级元素的特点</strong></p>
+<ul>
+<li>
+<p>独占一行</p>
+</li>
+<li>
+<p>高度，宽度，外边距以及内边距都可以控制</p>
+</li>
+<li>
+<p>宽度默认是容器 (父级宽度) 的 100%</p>
+</li>
+<li>
+<p>是一个容器及盒子，里面可以放行内或者块级元素</p>
+<blockquote>
+<p>== 注意:== 只有文字才能组成段落，因此 p 标签里面不能放块级元素，特别是 p 不能放 div。同理，还有 h1~h6，dt, 它们都是文字类块级标签，里面不能放其他块级元素。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="2-行内元素inline-level"><a class="markdownIt-Anchor" href="#2-行内元素inline-level">#</a> 「2. 行内元素 (inline-level)」</h4>
+<blockquote>
+<p>有的地方也称为<mark>内联元素</mark></p>
+<p>常见的行内元素有 &lt;a&gt;、&lt;strong&gt;、&lt;b&gt;、&lt;em&gt;、&lt;i&gt;、&lt;del&gt;、&lt;s&gt;、&lt;ins&gt;、&lt;u&gt;、&lt;span &gt; 等，其中 &lt; span &gt; 标签最典型的行内元素。</p>
+</blockquote>
+<ul>
+<li>
+<h5 id="行内元素的特点"><a class="markdownIt-Anchor" href="#行内元素的特点">#</a> 行内元素的特点</h5>
+<ol>
+<li>相邻行内元素在一行上，一行可以显示多个。</li>
+<li>高度、宽度直接设置是无效的。</li>
+<li>默认高度就是它本身内容的宽度。</li>
+<li><strong>行内元素只能容纳文本或其他行内元素</strong>。</li>
+</ol>
+</li>
+</ul>
+<p><mark>注意:</mark></p>
+<ul>
+<li>链接里面不能再放链接</li>
+<li>特殊情况 <code>a</code>  里面可以放块级元素，但是给 <code>a</code>  转换一下块级模式最安全。</li>
+</ul>
+<h4 id="3-行内块元素inline-block"><a class="markdownIt-Anchor" href="#3-行内块元素inline-block">#</a> 「3. 行内块元素 (inline-block)」</h4>
+<blockquote>
+<p>在行内元素中有几个特殊的标签 ——&lt;img&gt;、&lt;input &gt;、&lt;td&gt;，可以对它们设置宽高和对齐属性，有些资料可能会称它们为行内块元素。</p>
+</blockquote>
+<p><strong>行内块元素的特点</strong></p>
+<ol>
+<li>
+<p>和相邻行内元素 (行内块) 在一行上，但是之间会有空白风险。一行可以显示多个</p>
+</li>
+<li>
+<p>默认宽度就是它本身内容的宽度。</p>
+</li>
+<li>
+<p>高度，行高，外边距以及内边距都可以控制。</p>
+</li>
+</ol>
+<h4 id="三种模式总结"><a class="markdownIt-Anchor" href="#三种模式总结">#</a> 三种模式总结</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">元素模式</th>
+<th style="text-align:left">元素排列</th>
+<th style="text-align:left">设置样式</th>
+<th style="text-align:left">默认宽度</th>
+<th style="text-align:left">包含</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">块级元素</td>
+<td style="text-align:left">一行只能放一个块级元素</td>
+<td style="text-align:left">可以设置宽度高度</td>
+<td style="text-align:left">容器的 100%</td>
+<td style="text-align:left">容器级可以包含任何标签</td>
+</tr>
+<tr>
+<td style="text-align:left">行内元素</td>
+<td style="text-align:left">一行可以放多个行内元素</td>
+<td style="text-align:left">不可以直接设置宽度高度</td>
+<td style="text-align:left">它本身内容的宽度</td>
+<td style="text-align:left">容纳文本或者其他行内元素</td>
+</tr>
+<tr>
+<td style="text-align:left">行内块元素</td>
+<td style="text-align:left">一行放多个行内块元素</td>
+<td style="text-align:left">可以设置宽度和高度</td>
+<td style="text-align:left">它本身内容的宽度</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="css背景background"><a class="markdownIt-Anchor" href="#css背景background">#</a> CSS 背景 (background)</h2>
+<h4 id="1-背景颜色color"><a class="markdownIt-Anchor" href="#1-背景颜色color">#</a> 「1. 背景颜色 (color)」</h4>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">background-color</span><span class="token punctuation">:</span> 颜色值<span class="token punctuation">;</span>   
+<span class="token comment">/*默认的值是 transparent  透明的*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="2-背景图片image"><a class="markdownIt-Anchor" href="#2-背景图片image">#</a> 「2. 背景图片 (image)」</h4>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">语法：
+<span class="token property">background-image</span> <span class="token punctuation">:</span> none | url <span class="token punctuation">(</span>url<span class="token punctuation">)</span> <span class="token punctuation">;</span>
+<span class="token property">例如</span><span class="token punctuation">:</span>
+<span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>images/1.png<span class="token punctuation">)</span></span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="3-背景平铺repeat"><a class="markdownIt-Anchor" href="#3-背景平铺repeat">#</a> 「3. 背景平铺（repeat）」</h4>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">background-repeat</span> <span class="token punctuation">:</span> repeat | no-repeat | repeat-x | repeat-y <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">repeat</td>
+<td style="text-align:center">背景图像在纵向和横向上平铺（默认的）</td>
+</tr>
+<tr>
+<td style="text-align:left">no-repeat</td>
+<td style="text-align:center">背景图像不平铺</td>
+</tr>
+<tr>
+<td style="text-align:left">repeat-x</td>
+<td style="text-align:center">背景图像在横向上平铺</td>
+</tr>
+<tr>
+<td style="text-align:left">repeat-y</td>
+<td style="text-align:center">背景图像在纵向平铺</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-背景位置position"><a class="markdownIt-Anchor" href="#4-背景位置position">#</a> 「4. 背景位置 (position)」</h4>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">background-position</span> <span class="token punctuation">:</span> length || length
+<span class="token property">background-position</span> <span class="token punctuation">:</span> position || position <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:center">值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">length</td>
+<td style="text-align:center">百分数 | 由浮点数字和单位标识符组成的长度值</td>
+</tr>
+<tr>
+<td style="text-align:left">position</td>
+<td style="text-align:center">top | center | bottom | left | center | right  方位名词</td>
+</tr>
+</tbody>
+</table>
+<p><mark>注意:</mark></p>
+<ul>
+<li>必须先指定 <code>background-image</code>  属性</li>
+<li><code>position</code>  后面是 x 坐标和 y 坐标。可以使用方位名词或者精确单位</li>
+<li>如果指定两个值，两个值都是方位名字，则两个值前后顺序无关，比如 <code>left top</code>  和 <code>top left</code>  效果一致</li>
+<li>如果只指定了一个方位名词，另一个值默认居中对齐</li>
+<li>如果 <code>position</code>  后面是精确坐标，那么第一个肯定是 <code>x</code> , 第二个一定是 <code>y</code></li>
+<li>如果只指定一个数值，那该数值一定是 <code>x</code>  坐标，另一个默认垂直居中</li>
+<li>如果指定的两个值是__精确单位和方位名字混合使用__，则第一个值是 x 坐标，第二个值是 y 坐标</li>
+</ul>
+<h4 id="背景简写"><a class="markdownIt-Anchor" href="#背景简写">#</a> 背景简写</h4>
+<ul>
+<li><code>background</code> ：属性的值的书写顺序官方没有强制的标准。为了可读性，建议如下写：</li>
+<li>background: 背景颜色 背景图片地址 背景平铺 背景滚动 背景位置；</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token comment">/* 有背景图片背景颜色可以不用写*/</span>
+<span class="token property">background</span><span class="token punctuation">:</span> transparent <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>image.jpg<span class="token punctuation">)</span></span> repeat-y scroll center top <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="5-背景半透明css3"><a class="markdownIt-Anchor" href="#5-背景半透明css3">#</a> 「5. 背景半透明 (CSS3)」</h4>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> .3<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>等同于 <code>background-color: rgba(0, 0, 0, .3)</code></li>
+<li>最后一个参数是 alpha 透明度 取值范围 0~1 之间</li>
+<li>我们习惯把 0.3 的 0 省略掉 这样写  <code>background: rgba(0, 0, 0, .3);</code></li>
+<li>注意：背景半透明是指盒子背景半透明，盒子里面的内容不受影响</li>
+<li>低于 IE 9 的版本不支持</li>
+</ul>
+<h5 id="盒子半透明opacity"><a class="markdownIt-Anchor" href="#盒子半透明opacity">#</a> 盒子半透明 <code>opacity</code></h5>
+<ul>
+<li>设置 <code>opacity</code>  元素的所有后代元素会随着一起具有透明性，一般用于调整图片或者模块的整体不透明度</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">opacity</span><span class="token punctuation">:</span> .2<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="背景总结"><a class="markdownIt-Anchor" href="#背景总结">#</a> 「背景总结」</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">作用</th>
+<th style="text-align:left">值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">background-color</td>
+<td style="text-align:left">背景颜色</td>
+<td style="text-align:left">预定义的颜色值 / 十六进制 / RGB 代码</td>
+</tr>
+<tr>
+<td style="text-align:left">background-image</td>
+<td style="text-align:left">背景图片</td>
+<td style="text-align:left">url (图片路径)</td>
+</tr>
+<tr>
+<td style="text-align:left">background-repeat</td>
+<td style="text-align:left">是否平铺</td>
+<td style="text-align:left">repeat/no-repeat/repeat-x/repeat-y</td>
+</tr>
+<tr>
+<td style="text-align:left">background-position</td>
+<td style="text-align:left">背景位置</td>
+<td style="text-align:left">length/position   分别是 x  和 y 坐标， 切记 如果有 精确数值单位，则必须按照先 X 后 Y 的写法</td>
+</tr>
+<tr>
+<td style="text-align:left">background-attachment</td>
+<td style="text-align:left">背景固定还是滚动</td>
+<td style="text-align:left">scroll/fixed</td>
+</tr>
+<tr>
+<td style="text-align:left">背景简写</td>
+<td style="text-align:left">更简单</td>
+<td style="text-align:left">背景颜色 背景图片地址 背景平铺 背景滚动 背景位置；他们没有顺序</td>
+</tr>
+<tr>
+<td style="text-align:left">背景透明</td>
+<td style="text-align:left">让盒子半透明</td>
+<td style="text-align:left">background: rgba (0,0,0,0.3);  后面必须是 4 个值</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="css三大特性"><a class="markdownIt-Anchor" href="#css三大特性">#</a> CSS 三大特性</h2>
+<h4 id="1-css-层叠性"><a class="markdownIt-Anchor" href="#1-css-层叠性">#</a> 「1. CSS 层叠性」</h4>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071606311.webp" alt="图片"></p>
+<p>-<mark> 概念:</mark></p>
+<ul>
+<li>所谓层叠性是指多种 CSS 样式的叠加</li>
+<li>是浏览器处理冲突的一个能力，如果一个属性通过两个相同选择器设置到同一个元素上，那么这个时候一个属性就会将另一个属性层叠掉</li>
+</ul>
+<p>-<mark> 原则:</mark></p>
+<ul>
+<li>样式冲突，遵循的原则是就近原则。 那个样式离着结构近，就执行那个样式。</li>
+<li>样式不冲突，不会层叠。</li>
+</ul>
+<h4 id="2-css-继承性"><a class="markdownIt-Anchor" href="#2-css-继承性">#</a> 「2. CSS 继承性」</h4>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071606280.webp" alt="图片"></p>
+<p>-<mark> 概念:</mark></p>
+<ul>
+<li>子标签会继承父标签的某些样式，如文本颜色和字号。</li>
+<li>想要设置一个可继承的属性，只需将它应用于父元素即可。</li>
+</ul>
+<p>-<mark> 注意:</mark></p>
+<ul>
+<li>恰当地使用继承可以简化代码，降低 CSS 样式的复杂性。比如有很多子级孩子都需要某个样式，可以给父级指定一个，这些孩子继承过来就好了。</li>
+<li>子元素可以继承父元素的样式（<strong> <code>text-，font-，line-</code>  这些元素开头的可以继承，以及 <code>color</code>  属性</strong>）</li>
+</ul>
+<h4 id="3-css-优先级css特殊性"><a class="markdownIt-Anchor" href="#3-css-优先级css特殊性">#</a> 「3. CSS 优先级 (CSS 特殊性)」</h4>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071606434.webp" alt="图片"></p>
+<p>权重计算公式定义 CSS 样式时，经常出现两个或更多规则应用在同一元素上，此时，</p>
+<ul>
+<li>选择器相同，则执行层叠性</li>
+<li>选择器不同，就会出现优先级的问题。</li>
+</ul>
+<p>-<mark> 权重计算公式:</mark></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">标签选择器</th>
+<th style="text-align:left">计算权重公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>继承</strong> 或者 <strong>*</strong></td>
+<td style="text-align:left">0,0,0,0</td>
+</tr>
+<tr>
+<td style="text-align:left">每个元素（标签选择器）</td>
+<td style="text-align:left">0,0,0,1</td>
+</tr>
+<tr>
+<td style="text-align:left">每个类，伪类</td>
+<td style="text-align:left">0,0,1,0</td>
+</tr>
+<tr>
+<td style="text-align:left">每个 ID</td>
+<td style="text-align:left">0,1,0,0</td>
+</tr>
+<tr>
+<td style="text-align:left">每个行内样式 style=&quot;&quot;</td>
+<td style="text-align:left">1,0,0,0</td>
+</tr>
+<tr>
+<td style="text-align:left">每个！important–&gt; 最重要的</td>
+<td style="text-align:left">∞ 无穷大</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>值从左到右，左面的最大，一级大于一级，数位之间没有进制 (<strong>不是二进制！！</strong>)， 级别之间不可超越。</li>
+<li>关于 CSS 权重，我们需要一套计算公式来去计算，这个就是 CSS Specificity（特殊性）</li>
+<li><code>div &#123; color: pink !important; &#125;</code></li>
+</ul>
+<p>-<strong><mark> 权重叠加:</mark></strong></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">div ul li   ------>      0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>3
+.nav ul li   ------>      0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>1<span class="token punctuation">,</span>2
+<span class="token property">a</span><span class="token punctuation">:</span>hover      -----—>      0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>1<span class="token punctuation">,</span>1
+.nav a       ------>      0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>1<span class="token punctuation">,</span>1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>继承的权重是 0：</p>
+<ul>
+<li>我们修改样式，一定要看该标签有没有被选中</li>
+<li>如果选中了，那么以上面的公式来计权重。谁大听谁的。</li>
+<li>如果没有选中，那么权重是 0，因为继承的权重为 0.</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="盒子模型"><a class="markdownIt-Anchor" href="#盒子模型">#</a> 盒子模型</h2>
+<p>CSS 学习三大重点：CSS 盒子模型 、 浮动 、 定位</p>
+<p><strong>网页布局的本质</strong></p>
+<ul>
+<li>首先利用 CSS 设置好盒子的大小，然后摆放盒子的位置</li>
+<li>最后把网页元素比如文字图片等等，放入盒子里面</li>
+</ul>
+<h3 id="1-盒子模型box-model"><a class="markdownIt-Anchor" href="#1-盒子模型box-model">#</a> 1. 盒子模型 (Box Model)</h3>
+<ul>
+<li>盒子模型就是把 HTML 页面中的布局元素看作是一个矩形的盒子，也就是一个盛装内容的容器</li>
+<li>盒子模型由元素的内容、边框（ <code>border</code> ）、内边距（ <code>padding</code> ）、和外边距（ <code>margin</code> ）组成</li>
+<li>盒子里面的文字和图片等元素是内容区域</li>
+<li>盒子的厚度我们称为为盒子的边框</li>
+<li>盒子内容与边框的距离是内边距</li>
+<li>盒子与盒子之间的距离是外边距</li>
+</ul>
+<p><strong>W3c 标准盒子模型</strong></p>
+<p>标准 w3c 盒子模型的范围包括  <code>margin、border、padding、content</code></p>
+<p>当设置为 <code>box-sizing: content-box;</code>  时，将采用标准模式解析计算，也是默认模式；</p>
+<p>内盒尺寸计算 (元素实际大小)</p>
+<ul>
+<li>
+<p>宽度： <code>Element Height = content height + padding + border</code>  （Height 为内容高度）</p>
+</li>
+<li>
+<p>高度： <code>Element Width  = content width +  padding + border</code>  （Width 为内容宽度）</p>
+</li>
+<li>
+<p>盒子的实际大小：<strong>内容的宽度和高度 +  内边距  +  边框</strong></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071735354.webp" alt=""></p>
+<p><strong>IE 盒子模型</strong></p>
+</li>
+</ul>
+<p>IE 盒子模型的 content 部分包含了  <code>border</code>  和  <code>padding</code></p>
+<p>当设置为 <code>box-sizing: border-box</code>  时，将采用 <code>怪异模式</code> 解析计算；</p>
+<h3 id="2-盒子边框border"><a class="markdownIt-Anchor" href="#2-盒子边框border">#</a> 2. 盒子边框 (border)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">border-width</td>
+<td style="text-align:center">定义边框粗细，单位是 px</td>
+</tr>
+<tr>
+<td style="text-align:left">border-style</td>
+<td style="text-align:center">边框的样式</td>
+</tr>
+<tr>
+<td style="text-align:left">border-color</td>
+<td style="text-align:center">边框颜色</td>
+</tr>
+</tbody>
+</table>
+<p><strong>边框的样式：</strong></p>
+<ul>
+<li><code>none</code> ：没有边框即忽略所有边框的宽度（默认值）</li>
+<li><code>solid</code> ：边框为单实线 (最为常用的)</li>
+<li><code>dashed</code> ：边框为虚线</li>
+<li><code>dotted</code> ：边框为点线</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">边框综合设置
+<span class="token property">border</span> <span class="token punctuation">:</span> border-width || border-style || border-color 
+
+<span class="token property">border</span><span class="token punctuation">:</span> 1px solid red<span class="token punctuation">;</span>  没有顺序要求  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>盒子边框写法总结表：</strong></p>
+<p>很多情况下，我们不需要指定 4 个边框，我们是可以单独给 4 个边框分别指定的。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">上边框</th>
+<th style="text-align:left">下边框</th>
+<th style="text-align:left">左边框</th>
+<th style="text-align:left">右边框</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">border-top-style: 样式；</td>
+<td style="text-align:left">border-bottom-style: 样式；</td>
+<td style="text-align:left">border-left-style: 样式；</td>
+<td style="text-align:left">border-right-style: 样式；</td>
+</tr>
+<tr>
+<td style="text-align:left">border-top-width: 宽度；</td>
+<td style="text-align:left">border- bottom-width: 宽度；</td>
+<td style="text-align:left">border-left-width: 宽度；</td>
+<td style="text-align:left">border-right-width: 宽度；</td>
+</tr>
+<tr>
+<td style="text-align:left">border-top-color: 颜色；</td>
+<td style="text-align:left">border- bottom-color: 颜色；</td>
+<td style="text-align:left">border-left-color: 颜色；</td>
+<td style="text-align:left">border-right-color: 颜色；</td>
+</tr>
+<tr>
+<td style="text-align:left">border-top: 宽度 样式 颜色；</td>
+<td style="text-align:left">border-bottom: 宽度 样式 颜色；</td>
+<td style="text-align:left">border-left: 宽度 样式 颜色；</td>
+<td style="text-align:left">border-right: 宽度 样式 颜色；</td>
+</tr>
+</tbody>
+</table>
+<p><strong>表格的细线边框：</strong></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071735266.webp" alt="图片"></p>
+<ul>
+<li>通过表格的 <code>cellspacing=&quot;0&quot;</code> , 将单元格与单元格之间的距离设置为 0，</li>
+<li>但是两个单元格之间的边框会出现重叠，从而使边框变粗</li>
+<li border-collapse:collapse;="">通过 css 属性：table
+<ul>
+<li><code>collapse</code>  单词是合并的意思， <code>border-collapse: collapse;</code>  表示相邻边框合并在一起。</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">&lt;style>
+ table</span> <span class="token punctuation">&#123;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 500px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid red<span class="token punctuation">;</span>
+ <span class="token punctuation">&#125;</span>
+ <span class="token selector">td</span> <span class="token punctuation">&#123;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid red<span class="token punctuation">;</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+ <span class="token punctuation">&#125;</span>
+ <span class="token selector">table, td</span> <span class="token punctuation">&#123;</span>
+  <span class="token property">border-collapse</span><span class="token punctuation">:</span> collapse<span class="token punctuation">;</span>  <span class="token comment">/*合并相邻边框*/</span>
+ <span class="token punctuation">&#125;</span>
+&lt;/style><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-内边距padding"><a class="markdownIt-Anchor" href="#2-内边距padding">#</a> 2. 内边距 (padding)</h3>
+<p><code>padding</code>  属性用于设置内边距。是指边框与内容之间的距离。</p>
+<p><strong>设置</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">padding-left</td>
+<td style="text-align:left">左内边距</td>
+</tr>
+<tr>
+<td style="text-align:left">padding-right</td>
+<td style="text-align:left">右内边距</td>
+</tr>
+<tr>
+<td style="text-align:left">padding-top</td>
+<td style="text-align:left">上内边距</td>
+</tr>
+<tr>
+<td style="text-align:left">padding-bottom</td>
+<td style="text-align:left">下内边距</td>
+</tr>
+</tbody>
+</table>
+<p><strong>padding 简写</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值的个数</th>
+<th style="text-align:left">表达意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1 个值</td>
+<td style="text-align:left">padding：上下左右内边距；</td>
+</tr>
+<tr>
+<td style="text-align:left">2 个值</td>
+<td style="text-align:left">padding: 上下内边距   左右内边距 ；</td>
+</tr>
+<tr>
+<td style="text-align:left">3 个值</td>
+<td style="text-align:left">padding：上内边距  左右内边距  下内边距；</td>
+</tr>
+<tr>
+<td style="text-align:left">4 个值</td>
+<td style="text-align:left">padding: 上内边距 右内边距 下内边距 左内边距 ；</td>
+</tr>
+</tbody>
+</table>
+<p>当我们给盒子指定 padding 值之后，发生了 2 件事情：</p>
+<ol>
+<li>内容和边框有了距离，添加了内边距</li>
+<li>盒子会变大</li>
+</ol>
+<p>==<strong> 解决措施:</strong>== 通过给设置了宽高的盒子，减去相应的内边距的值，维持盒子原有的大小</p>
+<p>**<mark>padding 不影响盒子大小情况：👉</mark>** 如果没有给一个盒子指定宽度，此时，如果给这个盒子指定 padding，则不会撑开盒子</p>
+<h3 id="3-外边距margin"><a class="markdownIt-Anchor" href="#3-外边距margin">#</a> 3. 外边距（margin）</h3>
+<p><code>margin</code>  属性用于设置外边距。 <code>margin</code>  就是控制__盒子和盒子之间的距离__</p>
+<p><strong>设置</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">margin-left</td>
+<td style="text-align:left">左外边距</td>
+</tr>
+<tr>
+<td style="text-align:left">margin-right</td>
+<td style="text-align:left">右外边距</td>
+</tr>
+<tr>
+<td style="text-align:left">margin-top</td>
+<td style="text-align:left">上外边距</td>
+</tr>
+<tr>
+<td style="text-align:left">margin-bottom</td>
+<td style="text-align:left">下外边距</td>
+</tr>
+</tbody>
+</table>
+<p><code>margin</code>  值的简写（复合写法）代表意思跟 <code>padding</code>  完全相同。</p>
+<p><strong>块级盒子水平居中</strong></p>
+<ul>
+<li>盒子必须指定宽度（ <code>width</code> ）</li>
+<li>然后就给左右的外边距都设置为 <code>auto</code></li>
+</ul>
+<p>实际工作中常用这种方式进行网页布局，示例代码如下：</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.header</span>  <span class="token punctuation">&#123;</span> <span class="token property">width</span><span class="token punctuation">:</span> 960px<span class="token punctuation">;</span> <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p>常见的写法，以下下三种都可以👇👇</p>
+<ul>
+<li>margin-left: auto;  margin-right: auto;</li>
+<li>margin: auto;</li>
+<li>margin: 0 auto;</li>
+</ul>
+</blockquote>
+<p><strong>文字居中和盒子居中区别👇👇</strong></p>
+<ol>
+<li>盒子内的文字水平居中是 <code>text-align: center;</code>  而且还可以让行内元素和行内块居中对齐</li>
+<li>块级盒子水平居中    左右 <code>margin</code>  改为 <code>auto</code></li>
+</ol>
+<p><strong>插入图片和背景图片区别👇👇</strong></p>
+<ol>
+<li>__插入图片__我们用的最多 比如产品展示类  移动位置只能靠盒模型  <code>padding margin</code></li>
+<li>__背景图片__我们一般用于小图标背景或者超大背景图片、背景图片，移动位置只能通过   <code>background-position</code></li>
+</ol>
+<p><strong>清除元素的默认内外边距👇👇</strong></p>
+<ul>
+<li><strong>行内元素为了照顾兼容性，尽量只设置左右 内外边距，不要设置上下内外边距。</strong></li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">*</span> <span class="token punctuation">&#123;</span>
+   <span class="token property">padding</span><span class="token punctuation">:</span>0<span class="token punctuation">;</span>         <span class="token comment">/* 清除内边距 */</span>
+   <span class="token property">margin</span><span class="token punctuation">:</span>0<span class="token punctuation">;</span>          <span class="token comment">/* 清除外边距 */</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4外边距合并"><a class="markdownIt-Anchor" href="#4外边距合并">#</a> 4. 外边距合并</h3>
+<p>使用 <code>margin</code>  定义块元素的 **「垂直外边距」** 时，可能会出现外边距的合并。</p>
+<h4 id="1-相邻块元素垂直外边距的合并"><a class="markdownIt-Anchor" href="#1-相邻块元素垂直外边距的合并">#</a> (1) 相邻块元素垂直外边距的合并</h4>
+<ul>
+<li>当上下相邻的两个块元素相遇时，如果上面的元素有下外边距 <code>margin-bottom</code></li>
+<li>下面的元素有上外边距 <code>margin-top</code> ，则他们之间的垂直间距不是 <code>margin-bottom</code>  与 <code>margin-top</code>  之和</li>
+<li>**「取两个值中的较大者」** 这种现象被称为相邻块元素垂直外边距的合并（也称外边距塌陷）。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071606911.webp" alt="图片"></p>
+<blockquote>
+<p><strong>「解决方案：尽量给只给一个盒子添加 margin 值」</strong></p>
+</blockquote>
+<h4 id="2-嵌套块元素垂直外边距的合并塌陷"><a class="markdownIt-Anchor" href="#2-嵌套块元素垂直外边距的合并塌陷">#</a> (2) 嵌套块元素垂直外边距的合并（塌陷）</h4>
+<ul>
+<li>对于两个嵌套关系的块元素，如果父元素没有上内边距及边框</li>
+<li>父元素的上外边距会与子元素的上外边距发生合并</li>
+<li>合并后的外边距为两者中的较大者</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071607936.webp" alt="图片"></p>
+<blockquote>
+<p><strong>「解决方案：」</strong></p>
+<ol>
+<li>
+<p>可以为父元素定义上边框。</p>
+</li>
+<li>
+<p>可以为父元素定义上内边距</p>
+</li>
+<li>
+<p>可以为父元素添加 <code>overflow:hidden</code></p>
+</li>
+</ol>
+<p>还有其他方法，比如浮动、固定、绝对定位的盒子不会有问题，后面咱们再总结。。。</p>
+</blockquote>
+<h4 id="盒子模型布局稳定性"><a class="markdownIt-Anchor" href="#盒子模型布局稳定性">#</a> 盒子模型布局稳定性</h4>
+<p>优先使用 宽度（width）, 其次使用 内边距（padding）, 再次  外边距（margin）</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">width >  padding  >   margin   <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>原因：</strong></p>
+<ul>
+<li>margin  会有外边距合并还有 ie6 下面 margin 加倍的 bug (讨厌) 所以最后使用。</li>
+<li>padding 会影响盒子大小，需要进行加减计算 (麻烦) 其次使用。</li>
+<li>width   没有问题（嗨皮）我们经常使用宽度剩余法高度剩余法来做。</li>
+</ul>
+<h3 id="5-css3-新增"><a class="markdownIt-Anchor" href="#5-css3-新增">#</a> 5. CSS3 新增</h3>
+<p><strong>圆角边框：</strong></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">border-radius</span><span class="token punctuation">:</span>length<span class="token punctuation">;</span>
+
+border-top-left-radius   定义了左上角的弧度
+border-top-right-radius   定义了右上角的弧度
+border-bottom-right-radius   定义了右下角的弧度
+border-bottom-left-radius   定义了左下角的弧度<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>其中每一个值可以为 数值或百分比的形式。</li>
+<li>技巧：让一个正方形 变成圆圈</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071607334.webp" alt="图片"></p>
+<p>如果要在四个角上一一指定，可以使用以下规则👇👇：</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">border-radius</span><span class="token punctuation">:</span> 左上角 右上角  右下角  左下角<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol>
+<li>四个值：第一个值为左上角，第二个值为右上角，第三个值为右下角，第四个值为左下角。</li>
+<li>三个值：第一个值为左上角，第二个值为右上角和左下角，第三个值为右下角</li>
+<li>两个值：第一个值为左上角与右下角，第二个值为右上角与左下角</li>
+<li>一个值：四个圆角值相同</li>
+</ol>
+<p><strong>盒子阴影 (box-shadow)：</strong></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">box-shadow</span><span class="token punctuation">:</span> offset-x offset-y [blur [spread]] [color] [inset]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">offset-x</td>
+<td style="text-align:left">阴影的水平偏移量。正数向右偏移，负数向左偏移。</td>
+</tr>
+<tr>
+<td style="text-align:left">offset-y</td>
+<td style="text-align:left">阴影的垂直偏移量。正数向下偏移，负数向上偏移。</td>
+</tr>
+<tr>
+<td style="text-align:left">blur</td>
+<td style="text-align:left">可选。阴影模糊距离，不能取负数。</td>
+</tr>
+<tr>
+<td style="text-align:left">spread</td>
+<td style="text-align:left">可选。阴影大小</td>
+</tr>
+<tr>
+<td style="text-align:left">color</td>
+<td style="text-align:left">可选。阴影的颜色</td>
+</tr>
+<tr>
+<td style="text-align:left">inset</td>
+<td style="text-align:left">可选。表示添加内阴影，默认为外阴影</td>
+</tr>
+</tbody>
+</table>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">div</span> <span class="token punctuation">&#123;</span>
+   <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+   <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+   <span class="token property">border</span><span class="token punctuation">:</span> 10px solid red<span class="token punctuation">;</span>
+   <span class="token comment">/* box-shadow: 5px 5px 3px 4px rgba(0, 0, 0, .4);  */</span>
+   <span class="token comment">/* box-shadow:水平位置 垂直位置 模糊距离 阴影尺寸（影子大小） 阴影颜色  内/外阴影； */</span>
+   <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 15px 30px  <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> .4<span class="token punctuation">)</span><span class="token punctuation">;</span>   
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="浮动"><a class="markdownIt-Anchor" href="#浮动">#</a> 浮动</h2>
+<h3 id="浮动-2"><a class="markdownIt-Anchor" href="#浮动-2">#</a> 浮动</h3>
+<p><strong>「1. CSS 布局的三种机制」</strong></p>
+<blockquote>
+<p>网页布局的核心 —— 就是<strong>用 CSS 来摆放盒子</strong>。</p>
+</blockquote>
+<p>CSS 提供了 3 种机制来设置盒子的摆放位置，分别是普通流（标准流）、浮动和定位，其中：</p>
+<p><strong>A. 普通流（标准流）</strong></p>
+<ul>
+<li>
+<p>块级元素会独占一行，从上向下顺序排列；</p>
+<ul>
+<li>常用元素：div、hr、p、h1~h6、ul、ol、dl、form、table</li>
+</ul>
+</li>
+<li>
+<p>行内元素会按照顺序，从左到右顺序排列，碰到父元素边缘则自动换行；</p>
+<ul>
+<li>常用元素：span、a、i、em 等</li>
+</ul>
+</li>
+</ul>
+<p><strong>B. 浮动</strong></p>
+<ul>
+<li>让盒子从普通流中浮起来，主要作用让__多个块级盒子一行显示__。</li>
+</ul>
+<p><strong>C. 定位</strong></p>
+<ul>
+<li>将盒子定在浏览器的某一个位置 ——CSS 离不开定位，特别是后面的 js 特效。</li>
+</ul>
+<p><strong>「2. 什么是浮动」</strong></p>
+<p>元素的浮动是指设置了浮动属性的元素会</p>
+<ul>
+<li>脱离标准普通流的控制，不占位置，脱标</li>
+<li>移动到指定位置。</li>
+</ul>
+<h5 id="作用"><a class="markdownIt-Anchor" href="#作用">#</a> 作用</h5>
+<ol>
+<li>让多个盒子 ( <code>div</code> ) 水平排列成一行，使得浮动称为布局的重要手段</li>
+<li>可以实现盒子的左右对齐等等</li>
+<li>浮动最早是用来控制图片，实现文字环绕图片效果，<strong><mark> 所以不会压住标准流盒子里面的文字或者图片 (不包括背景)!!! 只会压住盒子</mark></strong></li>
+<li><code>float</code>  属性会改变元素的 <code>display</code>  属性，任何元素都可以浮动。浮动元素会生成一个块级框，而不论它本身是何种元素。生成的块级框和我们前面的行内块极其相似。</li>
+</ol>
+<h5 id="语法"><a class="markdownIt-Anchor" href="#语法">#</a> 语法</h5>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">选择器</span> <span class="token punctuation">&#123;</span> <span class="token property">float</span><span class="token punctuation">:</span> 属性值<span class="token punctuation">;</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">none</td>
+<td style="text-align:left">元素不浮动（默认值）</td>
+</tr>
+<tr>
+<td style="text-align:left">left</td>
+<td style="text-align:left">元素向左浮动</td>
+</tr>
+<tr>
+<td style="text-align:left">right</td>
+<td style="text-align:left">元素向右浮动</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong><mark>浮动只会影响当前的或者是后面的标准流盒子，不会影响前面的标准流。</mark></strong><br>
+** 建议:** 如果一个盒子里面有多个子盒子，如果其中一个盒子浮动了，其他兄弟也应该浮动。防止引起问题</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071607457.webp" alt="图片"></p>
+<p>这里是因为上一个盒子不浮动是个块级元素，所以占一行，而且浮动的只会影响后面的标准流盒子，不会影响之前的.</p>
+<h5 id="浮动float小结"><a class="markdownIt-Anchor" href="#浮动float小结">#</a> 浮动 (float) 小结</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">特点</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">浮</td>
+<td style="text-align:left">加了浮动的盒子 **「是浮起来」** 的，漂浮在其他标准流盒子的上面。</td>
+</tr>
+<tr>
+<td style="text-align:left">漏</td>
+<td style="text-align:left">加了浮动的盒子 **「是不占位置的」<strong>，它原来的位置</strong>「漏给了标准流的盒子」**。</td>
+</tr>
+<tr>
+<td style="text-align:left">特</td>
+<td style="text-align:left"><strong>「特别注意」</strong>：浮动元素会改变 display 属性， 类似转换为了行内块，但是跟正常的行内块不同，浮动的盒子和下一个浮动的盒子 (比如说都是往左浮动的) 会紧挨着，<strong><mark> 元素之间没有空白缝隙！！</mark></strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="清除浮动"><a class="markdownIt-Anchor" href="#清除浮动">#</a> 清除浮动</h3>
+<p>因为父级盒子很多情况下，不方便给高度，<strong><mark>但是子盒子浮动就不占有位置，最后父级盒子高度为 0，就影响了下面的标准流盒子</mark></strong></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071607489.webp" alt="图片"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071654291.webp" alt="图片"></p>
+<p><mark><strong>总结:</strong></mark></p>
+<ul>
+<li>由于浮动元素不再占用原文档流的位置，所以它会对后面的元素排版产生影响</li>
+<li>准确地说，并不是清除浮动，而是清除浮动后造成的影响</li>
+</ul>
+<p><strong>清除浮动本质</strong>清除浮动主要为了解决父级元素因为子级浮动引起内部高度为 0 的问题。清除浮动之后，父级就会根据浮动的子盒子自动检测高度。父级有了高度，就不会影响下面的标准流了</p>
+<h4 id="清除浮动的方法"><a class="markdownIt-Anchor" href="#清除浮动的方法">#</a> 清除浮动的方法</h4>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">选择器</span> <span class="token punctuation">&#123;</span> <span class="token property">clear</span><span class="token punctuation">:</span> 属性值<span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">left</td>
+<td style="text-align:left">不允许左侧有浮动元素（清除左侧浮动的影响）</td>
+</tr>
+<tr>
+<td style="text-align:left">right</td>
+<td style="text-align:left">不允许右侧有浮动元素（清除右侧浮动的影响）</td>
+</tr>
+<tr>
+<td style="text-align:left">both</td>
+<td style="text-align:left">同时清除左右两侧浮动的影响</td>
+</tr>
+</tbody>
+</table>
+<p>实际工作中，几乎只用 <code>clear: both</code></p>
+<p><strong>1). 额外标签法 (隔墙法)</strong></p>
+<p>是 W3C 推荐的做法是通过在浮动元素末尾添加一个空的标签例如 <div style="clear:both"></div>，或则其他标签 br 等亦可。</p>
+<ul>
+<li>优点：通俗易懂，书写方便</li>
+<li>缺点：添加许多无意义的标签，结构化较差。</li>
+</ul>
+<p><strong>2). 父级添加 overflow 属性方法</strong></p>
+<blockquote>
+<p>可以给父级添加： overflow 为 hidden| auto| scroll  都可以实现。</p>
+</blockquote>
+<ul>
+<li>优点： 代码简洁</li>
+<li>缺点： 内容增多时候容易造成不会自动换行导致内容被隐藏掉，无法显示需要溢出的元素。</li>
+</ul>
+<p><strong>3). 使用 after 伪元素清除浮动</strong>:after 方式为空元素额外标签法的升级版，好处是不用单独加标签了</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.clearfix:after</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
+    <span class="token property">visibility</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+  
+<span class="token comment">/* IE6、7 专有 */</span>
+<span class="token selector">.clearfix</span> <span class="token punctuation">&#123;</span>
+    *<span class="token property">zoom</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>优点：符合闭合浮动思想，结构语义化正确</li>
+<li>缺点：由于 IE6-7 不支持:after，使用 zoom:1 触发 hasLayout</li>
+</ul>
+<p><strong>4). 使用双伪元素清除浮动</strong></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.clearfix:before,
+.clearfix:after</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> table<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token selector">.clearfix:after</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token selector">.clearfix</span> <span class="token punctuation">&#123;</span>
+   *<span class="token property">zoom</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>优点： 代码更简洁</li>
+<li>缺点： 由于 IE6-7 不支持:after，使用 zoom:1 触发 hasLayout</li>
+</ul>
+<h4 id="清除浮动总结"><a class="markdownIt-Anchor" href="#清除浮动总结">#</a> 清除浮动总结</h4>
+<p>什么时候用清除浮动呢？</p>
+<ol>
+<li>父级没高度</li>
+<li>子盒子浮动了</li>
+<li>影响下面布局了，我们就应该清除浮动了</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">清除浮动的方式</th>
+<th style="text-align:left">优点</th>
+<th style="text-align:left">缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">额外标签法（隔墙法）</td>
+<td style="text-align:left">通俗易懂，书写方便</td>
+<td style="text-align:left">添加许多无意义的标签，结构化较差。</td>
+</tr>
+<tr>
+<td style="text-align:left">父级 overflow:hidden;</td>
+<td style="text-align:left">书写简单</td>
+<td style="text-align:left">溢出隐藏</td>
+</tr>
+<tr>
+<td style="text-align:left">父级 after 伪元素</td>
+<td style="text-align:left">结构语义化正确</td>
+<td style="text-align:left">由于 IE6-7 不支持:after，兼容性问题</td>
+</tr>
+<tr>
+<td style="text-align:left">父级双伪元素</td>
+<td style="text-align:left">结构语义化正确</td>
+<td style="text-align:left">由于 IE6-7 不支持:after，兼容性问题</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="css属性书写顺序"><a class="markdownIt-Anchor" href="#css属性书写顺序">#</a> CSS 属性书写顺序</h2>
+<p>建议遵循以下顺序：</p>
+<ol>
+<li>布局定位属性：display /position/float /clear/visibility /overflow（建议 display 第一个写，毕竟关系到模式）</li>
+<li>自身属性：width /height/margin /padding/border /background</li>
+<li>文本属性：color /font/text-decoration /text-align/vertical-align /white- space /break-word</li>
+<li>其他属性（CSS3）：content /cursor/border-radius /box-shadow/text-shadow /background:linear-gradient …</li>
+</ol>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.jdc</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+    <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0 10px<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 20px 0<span class="token punctuation">;</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> Arial<span class="token punctuation">,</span> <span class="token string">'Helvetica Neue'</span><span class="token punctuation">,</span> Helvetica<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #333<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>.5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">-webkit-border-radius</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+    <span class="token property">-moz-border-radius</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+    <span class="token property">-o-border-radius</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+    <span class="token property">-ms-border-radius</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="定位position"><a class="markdownIt-Anchor" href="#定位position">#</a> 定位 (position)</h2>
+<h4 id="1-定位详解"><a class="markdownIt-Anchor" href="#1-定位详解">#</a> 「1. 定位详解」</h4>
+<p>将盒子 **「定」<strong>在某一个</strong>「位」** 置  自由的漂浮在其他盒子 (包括标准流和浮动) 的上面。</p>
+<blockquote>
+<p>所以，我们脑海应该有三种布局机制的上下顺序👇👇<br>
+标准流在最底层 (海底)------- 浮动的盒子在中间层 (海面) ------- 定位的盒子在最上层（天空）</p>
+</blockquote>
+<p><strong>定位</strong>是用来布局的，它有两部分组成：定位 = 定位模式 + 边偏移在 CSS 中，通过  <code>top</code> 、 <code>bottom</code> 、 <code>left</code>  和  <code>right</code>  属性定义元素的 **「边偏移」**：（方位名词）</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">边偏移属性</th>
+<th style="text-align:left">示例</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>top</code></td>
+<td style="text-align:left"><code>top: 80px</code></td>
+<td style="text-align:left"><strong>「顶端」<strong>偏移量，定义元素相对于其父元素</strong>「上边线的距离」</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>bottom</code></td>
+<td style="text-align:left"><code>bottom: 80px</code></td>
+<td style="text-align:left"><strong>「底部」<strong>偏移量，定义元素相对于其父元素</strong>「下边线的距离」</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>left</code></td>
+<td style="text-align:left"><code>left: 80px</code></td>
+<td style="text-align:left"><strong>「左侧」<strong>偏移量，定义元素相对于其父元素</strong>「左边线的距离」</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>right</code></td>
+<td style="text-align:left"><code>right: 80px</code></td>
+<td style="text-align:left"><strong>「右侧」<strong>偏移量，定义元素相对于其父元素</strong>「右边线的距离」</strong></td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071607373.webp" alt="图片"></p>
+<h4 id="2-定位模式position"><a class="markdownIt-Anchor" href="#2-定位模式position">#</a> 「2. 定位模式 (position)」</h4>
+<p>在 CSS 中，通过  <code>position</code>  属性定义元素的 **「定位模式」**，语法如下：</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">选择器</span> <span class="token punctuation">&#123;</span> <span class="token property">position</span><span class="token punctuation">:</span> 属性值<span class="token punctuation">;</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:center">语义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>static</code></td>
+<td style="text-align:center">**「静态」** 定位</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>relative</code></td>
+<td style="text-align:center">**「相对」** 定位</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>absolute</code></td>
+<td style="text-align:center">**「绝对」** 定位</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>fixed</code></td>
+<td style="text-align:center">**「固定」** 定位</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-静态定位static"><a class="markdownIt-Anchor" href="#3-静态定位static">#</a> 「3. 静态定位 (static)」</h4>
+<ul>
+<li>静态定位是元素的默认定位方式，无定位的意思。它相当于 border 里面的 none，不要定位的时候用。</li>
+<li>静态定位 按照标准流特性摆放位置。它没有边偏移。</li>
+<li>静态定位在布局时几乎不用</li>
+</ul>
+<h4 id="4-相对定位relative"><a class="markdownIt-Anchor" href="#4-相对定位relative">#</a> 「4. 相对定位 (relative)」</h4>
+<p>相对定位是元素相对于它原来在标准流中的位置来说的。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071607842.webp" alt="图片"></p>
+<ul>
+<li>
+<p>相对于自己原来在标准流中位置来移动的</p>
+</li>
+<li>
+<p><strong>原来在标准流的区域继续占有</strong>，后面的盒子仍然以标准流的方式对待它 (对待他原来的位置)。</p>
+</li>
+</ul>
+<h4 id="5-绝对定位absolute"><a class="markdownIt-Anchor" href="#5-绝对定位absolute">#</a> 「5. 绝对定位 (absolute)」</h4>
+<p>绝对定位是元素以带有定位的父级元素来移动位置</p>
+<ul>
+<li>完全脱表–<mark>完全不占位置</mark>；</li>
+<li><strong>父元素没有定位，则以浏览器为准定位 (Document 文档)</strong></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071607161.webp" alt="图片"></p>
+<h4 id="父元素有定位"><a class="markdownIt-Anchor" href="#父元素有定位">#</a> 父元素有定位</h4>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071607615.webp" alt="图片"></p>
+<blockquote>
+<p><mark><em><strong>定位口诀–子绝父相 (子是绝对，父是相对)</strong></em></mark></p>
+<p>这个样子，父元素有了定位 (position, 任何一种 position), 这样子他的子元素 (作为一个绝对定位) 才会按照他的父元素来定位，不然就跟之前一样是按照浏览器为准。这么做就可以让子元素在父元素里面随便安放.</p>
+<p>__注意！__这里的父元素只是声明是相对定位，并没有说其他的 (比如说相对之前位置的坐标啊啥的).</p>
+<p><mark>一般都是使用相对定位 (如果使用绝对定位是不占有盒子的，那么后面的标准流就会占位置), 这是因为只要声明相对定位然后其他不用做，这样这个父元素还是会占着自己的位置</mark></p>
+</blockquote>
+<h4 id="6-固定定位fixed"><a class="markdownIt-Anchor" href="#6-固定定位fixed">#</a> 「6. 固定定位 (fixed)」</h4>
+<p>固定定位是绝对定位的一种特殊形式；</p>
+<ul>
+<li>完全脱标–完全不占位置；</li>
+<li>只认<strong>浏览器的可视窗口</strong>–浏览器可视窗口 + 边偏移属性来设置元素的位置
+<ul>
+<li>跟父元素没有任何关系；单独使用</li>
+<li><strong><mark>不随滚动条滚动</mark></strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="定位position的扩展"><a class="markdownIt-Anchor" href="#定位position的扩展">#</a> 定位 (position) 的扩展</h3>
+<h4 id="绝对定位的盒子居中"><a class="markdownIt-Anchor" href="#绝对定位的盒子居中">#</a> 绝对定位的盒子居中</h4>
+<blockquote>
+<p>__绝对定位 / 固定定位的盒子不能通过设置 margin: auto 设置水平居中 __</p>
+<p>在使用绝对定位时要向实现水平居中，可以按照下面的方法：</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071607254.webp" alt="图片"></p>
+<ol>
+<li><code>left: 50%;</code>  让盒子的左侧移动到父级元素的水平中心位置</li>
+<li><code>margin-left: -100px;</code>  让盒子向左移动__自身宽度的一半__</li>
+<li>同理垂直居中。</li>
+</ol>
+<h4 id="堆叠顺序z-index"><a class="markdownIt-Anchor" href="#堆叠顺序z-index">#</a> 堆叠顺序（z-index）</h4>
+<p>在使用 **「定位」<strong>布局时，可能会</strong>「出现盒子重叠的情况」**。</p>
+<p>加了定位的盒子，默认 **「后来者居上」**， 后面的盒子会压住前面的盒子。</p>
+<p>应用  <code>z-index</code>  层叠等级属性可以 **「调整盒子的堆叠顺序」**。如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071607672.webp" alt="图片"></p>
+<p>z-index 的特性如下:</p>
+<ol>
+<li><strong>属性值</strong>：正整数、负整数或 0，默认值是 0，数值越大，盒子越靠上</li>
+<li>如果属性值相同，则按照书写顺序，后来居上</li>
+<li>数字后面不能加单位</li>
+<li><strong>z-index 只能用于相对定位、绝对定位和固定定位的元素，其他标准流、浮动和静态定位无效</strong></li>
+</ol>
+<h4 id="定位改变display属性"><a class="markdownIt-Anchor" href="#定位改变display属性">#</a> 定位改变 display 属性</h4>
+<p>前面提过， <code>display</code>  是显示模式，可以通过以下方式改变显示模式:</p>
+<ul>
+<li>可以用 <code>inline-block</code>  转换为行内块</li>
+<li>可以用浮动 <code>float</code>  默认转换为行内块（类似，并不完全一样，因为浮动是脱标的）</li>
+<li>绝对定位和固定定位也和浮动类似，<strong>默认转换的特性转换为行内块</strong>。</li>
+</ul>
+<blockquote>
+<p><mark>所以说，一个行内的盒子，如果加了 **「浮动」<strong>、</strong>「固定定位」<strong>和</strong>「绝对定位」**, 不用转换，就可以给这个盒子直接设置宽度和高度等。</mark></p>
+</blockquote>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071610000.png" style="zoom:150%;" /> 
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071609152.png" alt="image-20220107160920060" style="zoom:150%;" />
+<blockquote>
+<p><strong><mark>不过注意！跟浮动不一样的是，绝对定位和相对定位会压住标准流里面任何内容，包括文字和图片！</mark></strong></p>
+</blockquote>
+<h4 id="6-粘性定位sticky"><a class="markdownIt-Anchor" href="#6-粘性定位sticky">#</a> 「6. 粘性定位 (sticky)」</h4>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">选择器</span> <span class="token punctuation">&#123;</span> <span class="token property">position</span><span class="token punctuation">:</span> sticky<span class="token punctuation">;</span> ...<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<ul>
+<li>
+<p>比如说让 menubar 变成粘性定位就可以往下滑页面，menubar 会按照浏览器的可视窗口作为参照点移动元素 (具有固定定位特点)</p>
+</li>
+<li>
+<p>粘性定位__占有原先位置__(具有相对定位的特点)</p>
+</li>
+</ul>
+<p>可以看成是相对定位和固定定位的混合</p>
+<p><mark>注意！</mark><strong> 必须添加 top,left,right,bottom 其中至少一个才能有效！如果不加会被当成相对定位来看</strong></p>
+</blockquote>
+<h4 id="定位小结"><a class="markdownIt-Anchor" href="#定位小结">#</a> 定位小结</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">定位模式</th>
+<th style="text-align:left">是否脱标占有位置</th>
+<th style="text-align:left">移动位置基准</th>
+<th style="text-align:left">模式转换（行内块）</th>
+<th style="text-align:left">使用情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">静态 static</td>
+<td style="text-align:left">不脱标，正常模式</td>
+<td style="text-align:left">正常模式</td>
+<td style="text-align:left">不能</td>
+<td style="text-align:left">几乎不用</td>
+</tr>
+<tr>
+<td style="text-align:left">相对定位 relative</td>
+<td style="text-align:left">不脱标，占有位置</td>
+<td style="text-align:left">相对自身位置移动</td>
+<td style="text-align:left">不能</td>
+<td style="text-align:left">基本单独使用</td>
+</tr>
+<tr>
+<td style="text-align:left">绝对定位 absolute</td>
+<td style="text-align:left">完全脱标，不占有位置</td>
+<td style="text-align:left">相对于定位父级移动位置</td>
+<td style="text-align:left">能</td>
+<td style="text-align:left">要和定位父级元素搭配使用</td>
+</tr>
+<tr>
+<td style="text-align:left">固定定位 fixed</td>
+<td style="text-align:left">完全脱标，不占有位置</td>
+<td style="text-align:left">相对于浏览器移动位置</td>
+<td style="text-align:left">能</td>
+<td style="text-align:left">单独使用，不需要父级</td>
+</tr>
+<tr>
+<td style="text-align:left">粘性定位</td>
+<td style="text-align:left">不脱标，占有位置</td>
+<td style="text-align:left">按照浏览器的可视窗口作为参照点移动 (黏住)</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">不怎么使用</td>
+</tr>
+</tbody>
+</table>
+<p><mark><strong>注意:</strong></mark></p>
+<ol>
+<li><mark><strong>边偏移需要和定位模式联合使用，单独使用无效</strong></mark></li>
+<li><code>top</code>   和  <code>bottom</code>  不要同时使用</li>
+<li><code>left</code>  和  <code>right</code>   不要同时使用</li>
+</ol>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071611234.png" alt="image-20211228165253177" style="zoom:150%;" />
+<blockquote>
+<p><code>top</code> &gt; <code>bottom</code> , <code>left</code> &gt; <code>right</code></p>
+</blockquote>
+<hr>
+<h2 id="css高级技巧"><a class="markdownIt-Anchor" href="#css高级技巧">#</a> CSS 高级技巧</h2>
+<h3 id="元素的显示与隐藏"><a class="markdownIt-Anchor" href="#元素的显示与隐藏">#</a> 元素的显示与隐藏</h3>
+<ul>
+<li>==<strong> 目的:</strong>== 让一个元素在页面中消失或者显示出来</li>
+<li>==<strong> 场景:</strong>== 类似网站广告，当我们点击关闭就不见了，但是我们重新刷新页面，会重新出现！</li>
+</ul>
+<h4 id="11-display-显示重点"><a class="markdownIt-Anchor" href="#11-display-显示重点">#</a> 1.1 display 显示（重点）</h4>
+<p>display 设置或检索对象是否显示或如何显示。</p>
+<ul>
+<li>
+<p><code>display: none</code>  隐藏对象</p>
+<blockquote>
+<p>特点：<strong>隐藏元素之后，不再保留位置</strong></p>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071611715.webp" alt="图片"></p>
+<p><mark>实际开发场景：配合后面 js 做特效，比如下拉菜单，原先没有，鼠标经过，显示下拉菜单，应用极为广泛</mark></p>
+<ul>
+<li><code>display: block</code>  <strong>除了转换为块级元素之外，同时还有显示元素的意思</strong></li>
+</ul>
+<h4 id="12-visibility-可见性"><a class="markdownIt-Anchor" href="#12-visibility-可见性">#</a> 1.2 visibility 可见性</h4>
+<p>设置或检索是否显示对象</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">visibility：visible <span class="token punctuation">;</span>  对象可视
+
+visibility：hidden<span class="token punctuation">;</span>    对象隐藏<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>特点：<strong>隐藏之后，继续保留原有位置。</strong></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071611716.webp" alt="图片"></p>
+<h4 id="13-overflow-溢出"><a class="markdownIt-Anchor" href="#13-overflow-溢出">#</a> 1.3 overflow 溢出</h4>
+<p>检索或设置当对象的内容超过其指定高度及宽度时如何管理内容。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">visible</td>
+<td style="text-align:left">不剪切内容也不添加滚动条__这是默认的 (如果什么都不设就是这个)__</td>
+</tr>
+<tr>
+<td style="text-align:left">hidden</td>
+<td style="text-align:left">不显示超过对象尺寸的内容，超出的部分隐藏掉</td>
+</tr>
+<tr>
+<td style="text-align:left">scroll</td>
+<td style="text-align:left">不管超出内容否，总是显示滚动条</td>
+</tr>
+<tr>
+<td style="text-align:left">auto</td>
+<td style="text-align:left">超出自动显示滚动条，不超出不显示滚动条</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071611192.webp" alt="图片"></p>
+<p><strong>实际开发场景:</strong></p>
+<ol>
+<li><strong>清除浮动</strong></li>
+<li>隐藏超出内容，隐藏掉，不允许内容超过父盒子。</li>
+</ol>
+<blockquote>
+<p>注意使用这个，特别是对于__有定位的盒子__, 如果这些盒子会超出父盒子的内容然后加了隐藏超出就会隐藏掉</p>
+</blockquote>
+<h4 id="14-显示与隐藏总结"><a class="markdownIt-Anchor" href="#14-显示与隐藏总结">#</a> 1.4 显示与隐藏总结</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">区别</th>
+<th style="text-align:left">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">display</td>
+<td style="text-align:left">隐藏对象，不保留位置</td>
+<td style="text-align:left">配合后面 js 做特效，比如下拉菜单，原先没有，鼠标经过，显示下拉菜单， 应用极为广泛</td>
+</tr>
+<tr>
+<td style="text-align:left">visibility</td>
+<td style="text-align:left">隐藏对象，保留位置</td>
+<td style="text-align:left">使用较少</td>
+</tr>
+<tr>
+<td style="text-align:left">overflow</td>
+<td style="text-align:left">只是隐藏超出大小的部分</td>
+<td style="text-align:left">1. 可以清除浮动 2. 保证盒子里面的内容不会超出该盒子范围</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="css用户界面样式"><a class="markdownIt-Anchor" href="#css用户界面样式">#</a> CSS 用户界面样式</h3>
+<p>所谓的界面样式， 就是更改一些用户操作样式，以便提高更好的用户体验。</p>
+<ul>
+<li>更改用户的鼠标样式</li>
+<li>表单轮廓等。</li>
+<li>防止表单域拖拽</li>
+</ul>
+<h4 id="21-鼠标样式"><a class="markdownIt-Anchor" href="#21-鼠标样式">#</a> 2.1 鼠标样式</h4>
+<p>设置或检索在对象上移动的鼠标指针采用何种系统预定义的光标形状。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">default</td>
+<td style="text-align:left">小白  默认</td>
+</tr>
+<tr>
+<td style="text-align:left">pointer</td>
+<td style="text-align:left">小手</td>
+</tr>
+<tr>
+<td style="text-align:left">move</td>
+<td style="text-align:left">移动</td>
+</tr>
+<tr>
+<td style="text-align:left">text</td>
+<td style="text-align:left">文本</td>
+</tr>
+<tr>
+<td style="text-align:left">not-allowed</td>
+<td style="text-align:left">禁止</td>
+</tr>
+</tbody>
+</table>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">&lt;ul>
+  &lt;li style=<span class="token string">"cursor:default"</span>>我是小白&lt;/li>
+  &lt;li style=<span class="token string">"cursor:pointer"</span>>我是小手&lt;/li>
+  &lt;li style=<span class="token string">"cursor:move"</span>>我是移动&lt;/li>
+  &lt;li style=<span class="token string">"cursor:text"</span>>我是文本&lt;/li>
+  &lt;li style=<span class="token string">"cursor:not-allowed"</span>>我是文本&lt;/li>
+&lt;/ul><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="22-轮廓线-outline"><a class="markdownIt-Anchor" href="#22-轮廓线-outline">#</a> 2.2 轮廓线 outline</h4>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071611380.webp" alt="图片"></p>
+<p>是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">outline</span> <span class="token punctuation">:</span> outline-color ||outline-style || outline-width <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>但是我们都不关心可以设置多少，我们平时都是去掉的。<br>
+最直接的写法是 ：  <code>outline: 0;</code>   或者   <code>outline: none;</code></p>
+<h4 id="23-防止拖拽文本域resize"><a class="markdownIt-Anchor" href="#23-防止拖拽文本域resize">#</a> 2.3 防止拖拽文本域 resize</h4>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071611497.webp" alt="图片"></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">&lt;textarea  style=<span class="token string">"resize: none;"</span>>&lt;/textarea> <span class="token comment">/*取消resize*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="24-用户界面样式总结"><a class="markdownIt-Anchor" href="#24-用户界面样式总结">#</a> 2.4 用户界面样式总结</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">用途</th>
+<th style="text-align:left">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">鼠标样式</td>
+<td style="text-align:left">更改鼠标样式 cursor</td>
+<td style="text-align:left">样式很多，重点记住 pointer</td>
+</tr>
+<tr>
+<td style="text-align:left">轮廓线</td>
+<td style="text-align:left">表单默认 outline</td>
+<td style="text-align:left">outline 轮廓线，我们一般直接去掉，border 是边框，我们会经常用</td>
+</tr>
+<tr>
+<td style="text-align:left">防止拖拽</td>
+<td style="text-align:left">主要针对文本域 resize</td>
+<td style="text-align:left">防止用户随意拖拽文本域，造成页面布局混乱，我们 resize:none</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="vertical-align-垂直对齐"><a class="markdownIt-Anchor" href="#vertical-align-垂直对齐">#</a> vertical-align 垂直对齐</h3>
+<ul>
+<li>有宽度的块级元素居中对齐，是 <code>margin: 0 auto;</code></li>
+<li>让文字居中对齐，是  <code>text-align: center;</code></li>
+</ul>
+<p>vertical-align 垂直对齐，它只针对于 **「行内元素」<strong>或者</strong>「行内块元素」**,<strong> 对块级元素无效！</strong></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071611812.webp" alt="图片"></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">设置或检索对象内容的垂直对其方式。
+<span class="token property">vertical-align</span> <span class="token punctuation">:</span> baseline |top |middle |bottom <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>注意：</p>
+<p><code>vertical-align</code>  不影响块级元素中的内容对齐，它只针对于 **「行内元素」<strong>或者</strong>「行内块元素」**，</p>
+<p>特别是行内块元素，通常用来控制图片 / 表单与文字的对齐。</p>
+<p>比如说图片然后一些文字，直接给图片设置这个 <code>text-align: center;</code>  就可以让图片和文字中线对其了</p>
+<p>再比如说表单的文本域之类的，都可以让他跟他之后的文字中线居中</p>
+<h4 id="31-图片-表单和文字对齐"><a class="markdownIt-Anchor" href="#31-图片-表单和文字对齐">#</a> 3.1 图片、表单和文字对齐</h4>
+<p>我们可以通过 <code>vertical-align</code>  控制图片和文字的垂直关系了。默认的图片会和文字 (英文字母) 基线对齐。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071611868.webp" alt="图片"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071611965.webp" alt="图片"></p>
+<h4 id="32-去除图片底侧空白缝隙"><a class="markdownIt-Anchor" href="#32-去除图片底侧空白缝隙">#</a> 3.2 去除图片底侧空白缝隙</h4>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071611524.webp" alt="图片"></p>
+<p>** 原因：** 图片或者表单等行内块元素，他的底线会和父级盒子的基线对齐。</p>
+<p>就是图片底侧会有一个空白缝隙。因为那一块是基线到底线的距离，是留给文字用的 (字母 gy 之类的和中文都需要在那块显示一些). 然后图片又是默认基线对其，所以那块就是空的.</p>
+<p><strong>解决方法：</strong></p>
+<ol>
+<li>给__img__  <code>vertical-align:middle|top|bottom</code>  等等。让图片不要和基线对齐就可以了</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071611783.webp" alt="图片"></p>
+<ol start="2">
+<li>给__img__ 添加  <code>display：block;</code>  转换为块级元素也可以解决问题</li>
+</ol>
+<p>(无法给块级元素设置 vertical-align, 所以块级元素也没这种漏出缝隙的问题)</p>
+<hr>
+<h3 id="溢出的文字省略号显示"><a class="markdownIt-Anchor" href="#溢出的文字省略号显示">#</a> 溢出的文字省略号显示</h3>
+<h4 id="41-white-space"><a class="markdownIt-Anchor" href="#41-white-space">#</a> 4.1 white-space</h4>
+<ul>
+<li>white-space 设置或检索对象内文本显示方式。通常我们使用于强制一行显示内容</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">white-space</span><span class="token punctuation">:</span>normal ；默认处理方式<span class="token punctuation">,</span>每一行的文字超出当前盒子宽度就会自动换行
+
+<span class="token property">white-space</span><span class="token punctuation">:</span>nowrap ； 强制在同一行内显示所有文本，直到文本结束或者遭遇br标签对象才换行<span class="token punctuation">,</span>就算超出盒子也照样显示<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="42-text-overflow-文字溢出"><a class="markdownIt-Anchor" href="#42-text-overflow-文字溢出">#</a> 4.2 text-overflow 文字溢出</h4>
+<ul>
+<li>设置或检索是否使用一个省略标记（…）标示对象内文本的溢出</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">text-overflow</span> <span class="token punctuation">:</span> clip ；不显示省略标记（...），而是简单的裁切 
+
+text-overflow：ellipsis ； 当对象内文本溢出时显示省略标记（...）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>「注意」</strong>：</p>
+<p>一定要首先强制一行内显示，再次和 overflow 属性  搭配使用</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071612633.webp" alt="图片"></p>
+<h4 id="43-总结三步曲"><a class="markdownIt-Anchor" href="#43-总结三步曲">#</a> 4.3 总结三步曲</h4>
+<h5 id="单行文本省略号显示"><a class="markdownIt-Anchor" href="#单行文本省略号显示">#</a> 单行文本省略号显示</h5>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token comment">/*1. 先强制一行内显示文本*/</span>
+    <span class="token property">white-space</span><span class="token punctuation">:</span> nowrap<span class="token punctuation">;</span>
+<span class="token comment">/*2. 超出的部分隐藏*/</span>
+    <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token comment">/*3. 文字用省略号替代超出的部分*/</span>
+    <span class="token property">text-overflow</span><span class="token punctuation">:</span> ellipsis<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="多文本省略号显示文本好几行然后最后一行还是超了就会那一行末尾显示省略号"><a class="markdownIt-Anchor" href="#多文本省略号显示文本好几行然后最后一行还是超了就会那一行末尾显示省略号">#</a> 多文本省略号显示 (文本好几行然后最后一行还是超了就会那一行末尾显示省略号)</h5>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071612576.png" alt="image-20211229121833227"></p>
+<blockquote>
+<p>这么做记得把盒子调到合适大小 (合适想显示的文字的行数), 不然要是比如说在第二行有省略，但是第三行没有省略还是会显示出来，所以要把盒子调到只能容下两行就行了</p>
+</blockquote>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071612097.png" alt="image-20211229122214683" style="zoom:150%;" />
+<hr>
+<h3 id="常见布局技巧"><a class="markdownIt-Anchor" href="#常见布局技巧">#</a> 常见布局技巧</h3>
+<h4 id="margin负值运用"><a class="markdownIt-Anchor" href="#margin负值运用">#</a> margin 负值运用</h4>
+<p>比如说两个盒子紧挨着都有 border, 比如说每个 border 为一像素，那么那两个盒子挨着的地方的 border 就是两个像素 (会比其他的更粗)</p>
+<ul>
+<li>两个盒子加边框 1px，浮动，贴紧会出现 1 + 1 = 2px</li>
+<li>给__右边盒子__添加 margin-left: -1px</li>
+<li>正数向右边走，负数向左边走</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071617881.png" alt="image-20220107161744720"></p>
+<p>当我们有多个盒子时的解决办法：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071618415.png" alt="image-20220107161807268"></p>
+<ol>
+<li>
+<p>让每个盒子 margin 往左侧移动 -1px 正好__压住__相邻盒子边框</p>
+</li>
+<li>
+<p>鼠标经过某个盒子的时候，提高当前盒子的层级即可</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>如果__原本标签没有定位__，则标签:hover 加__相对定位 (保留位置), 相对定位会压住其他标准流和浮动的盒子__</p>
+</li>
+<li>
+<p>如果__原本标签已经有定位__，则标签:hover 加 <strong>z-index</strong></p>
+</li>
+</ul>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">&lt;head>
+&lt;style>
+    ul li</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+        <span class="token property">list-style</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+        <span class="token property">width</span><span class="token punctuation">:</span> 150px<span class="token punctuation">;</span>
+        <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+        <span class="token property">border</span><span class="token punctuation">:</span> 1px solid red<span class="token punctuation">;</span>
+        <span class="token property">margin-left</span><span class="token punctuation">:</span> -11px
+    <span class="token punctuation">&#125;</span>
+<span class="token selector">ul li:hover</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 1px solid blue<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+&lt;/style>
+&lt;/head>
+&lt;body>
+    &lt;ul>
+        &lt;li>&lt;/li>
+        &lt;li>&lt;/li>
+        &lt;li>&lt;/li>
+        &lt;li>&lt;/li>
+        &lt;li>&lt;/li>
+        &lt;li>&lt;/li>
+    &lt;/ul>
+&lt;/body><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071623546.gif" alt="3359f694ecc94214a1a4530afdbefe2e"></p>
+<blockquote>
+<p>不用担心让所有盒子都这样会反而没效果，因为都是从第一个开始然后 margin 啥的设好了，接着第二个，so on…</p>
+</blockquote>
+<h4 id="文字围绕浮动元素"><a class="markdownIt-Anchor" href="#文字围绕浮动元素">#</a> 文字围绕浮动元素🔥</h4>
+<p>巧妙运用浮动元素不会压住文字的特性</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071624950.png" alt="image-20220107162443789"></p>
+<h4 id="行内块巧妙运用"><a class="markdownIt-Anchor" href="#行内块巧妙运用">#</a> 行内块巧妙运用🔥</h4>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071627366.png" alt="image-20220107162752240"></p>
+<blockquote>
+<p>页码在页面中间显示：</p>
+<p>把这些链接盒子转换为行内块，之后给父级指定 text-align: center</p>
+<p><strong>利用行内块元素中间有缝隙，并且给父级添加  <code>text-align: center</code>  ，行内块元素会水平居中</strong></p>
+</blockquote>
+<h4 id="三角形强化"><a class="markdownIt-Anchor" href="#三角形强化">#</a> 三角形强化</h4>
+<p>更改不同 border 的大小来获得不同的三角形.</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071627921.png" alt="image-20211229141801407"> 显示出来的 -&gt;<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071628897.png" alt="image-20211229141708568"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071628061.png" alt="image-20211229141822471"></p>
+<h4 id="css-初始化"><a class="markdownIt-Anchor" href="#css-初始化">#</a> CSS 初始化</h4>
+<ul>
+<li>
+<p>不同浏览器对有些标签的默认值是不同的，为了消除不同浏览器对 HTML 文本呈现的差异，照顾浏览器的兼容，我们需要对 CSS 初始化</p>
+</li>
+<li>
+<p>简单理解：CSS 初始化是指重设浏览器的样式。（也称为 CSS reset）每个网页都必须首先进行 CSS 初始化。就比如把所有的标签的默认 padding 和 margin 设为 0, 等等</p>
+</li>
+<li>
+<p>Unicode 编码字体：把中文字体的名称用相应的 Unicode 编码来代替，这样就可以有效的避免一些浏览器解释 CSS 代码时候出现乱码的问题。</p>
+</li>
+</ul>
+<p>比如： 黑体： <code>\9ED1\4F53</code>  宋体： <code>\5B8B\4F53</code>  微软雅黑： <code>\5FAE\8F6F196C519ED1</code></p>
+<hr>
+<h3 id="css精灵技术sprite"><a class="markdownIt-Anchor" href="#css精灵技术sprite">#</a> CSS 精灵技术（sprite)</h3>
+<p>CSS 精灵技术（也称 CSS Sprites、CSS 雪碧）。<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071628081.webp" alt="图片"></p>
+<ul>
+<li>图所示为网页的请求原理图，当用户访问一个网站时，需要向服务器发送请求，网页上的每张图像都要经过一次请求才能展现给用户。</li>
+<li>然而，一个网页中往往会应用很多小的背景图像作为修饰，当网页中的图像过多时，服务器就会频繁地接受和发送请求，这将大大降低页面的加载速度。</li>
+</ul>
+<p><strong>为什么需要精灵技术</strong>：为了有效地减少服务器接受和发送请求的次数，提高页面的加载速度。</p>
+<h4 id="51-精灵技术讲解"><a class="markdownIt-Anchor" href="#51-精灵技术讲解">#</a> 5.1 精灵技术讲解</h4>
+<p>CSS 精灵其实是将网页中的一些__背景图像 (不包括插入图片等因为会经常更换)__整合到一张大图中（精灵图），然而，各个网页元素通常只需要精灵图中不同位置的某个小图，要想精确定位到精灵图中的某个小图。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071628658.webp" alt="图片"></p>
+<p>这样，当用户访问该页面时，只需向服务发送一次请求，网页中的背景图像即可全部展示出来。</p>
+<p>我们需要使用 CSS 的:</p>
+<ul>
+<li>background-image</li>
+<li>background-repeat</li>
+<li>background-position 属性进行背景定位</li>
+</ul>
+<p>其中最关键的是使用 <code>background-position</code>  属性精确地定位。精灵图然后在精灵图上面创建盒子然后调整__后面精灵图的__位置 (不是盒子的位置！！！) 到想要的图像上，这个盒子的背景就是他下面的精灵图的图像.</p>
+<p>所以比如说精灵图然后一个盒子，盒子一开始在精灵图的左上角，然后需要把精灵图往左移 (所以在网页中是负的 x 值), 然后往上移 (在网页中是付的 y 值), 然后才可以移动精灵图把想要的图像放到那个盒子下面.</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071639132.png" alt="image-20211228232130935"></p>
+<p><mark>需要精确测量！</mark></p>
+<h4 id="52-精灵技术使用的核心总结"><a class="markdownIt-Anchor" href="#52-精灵技术使用的核心总结">#</a> 5.2 精灵技术使用的核心总结</h4>
+<p>首先我们知道，css 精灵技术主要针对于背景图片，插入的图片 img 是不需要这个技术的。</p>
+<ol>
+<li>精确测量，每个小背景图片的大小和 位置。</li>
+<li>给盒子指定小背景图片时， 背景定位基本都是 负值。</li>
+</ol>
+<p>例子:</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071628689.png" alt="image-20211228232353301"></p>
+<blockquote>
+<p>这里如果不给 <code>background-position</code>  就会是默认从精灵图的左上角开始然后显示出盒子大小的那块区域，之后 <code>background-position</code>  定位好了精灵图想要的图像的位置就会显示出来，所以需要都量的很准，比如说盒子的高宽.</p>
+</blockquote>
+<hr>
+<h3 id="字体图标"><a class="markdownIt-Anchor" href="#字体图标">#</a> 字体图标</h3>
+<p>比如说放大镜，相机，等的小图标都是字体图标.</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071628908.png" alt="image-20211228233708814"></p>
+<blockquote>
+<p>看起来像是个图标 (图片), 但其实就是文字，可以像文字一样更换颜色啊啥的</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071628618.png" alt="image-20211228233951574"></p>
+<p>使用:</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071628913.png" alt="image-20211228234032568"></p>
+<p><strong>先下载… 然后解压把其中他 fonts 文件夹引入:</strong></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071628727.png" alt="image-20211228234507246"></p>
+<p>fonts 文件里面的不同格式的文件是为了兼容性</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071629108.png" alt="image-20211228234544256"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071629210.png" alt="image-20211228234820695"></p>
+<blockquote>
+<p>这块代码可以从解压出来的 style.css 里面复制</p>
+<p>把这些代码复制到我们那里就完成引入了</p>
+</blockquote>
+<p><strong>引入之后就可以使用:</strong></p>
+<p>找到解压后的 demo.html, 然后</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071629555.png" alt="image-20211228235325042"></p>
+<p>然后给使用他的元素标签给 <code>font-family</code>  设置好 (这里是用 icomoon, 别的可能不一样，看你从哪取的这个字体图标)</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071629415.png" alt="image-20211228235512679"></p>
+<p><strong>可以像文字一样随意更改:</strong></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071629496.png" alt="image-20211228235607526"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071629475.png" alt="image-20211228235627113"></p>
+<p>可能之后想追加字体图标</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071629332.png" alt="image-20211229000216856"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071629435.png" alt="image-20211229000334823"></p>
+<p>发送请求，服务器返回字体文件给我们浏览器，之后要是下一个字体图标就不需要发送请求了，因为已经得到了那些字体文件，浏览器直接拿着使用</p>
+<hr>
+<h3 id="滑动门"><a class="markdownIt-Anchor" href="#滑动门">#</a> 滑动门</h3>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071630947.gif" alt="图片"></p>
+<h4 id="61-滑动门出现的背景"><a class="markdownIt-Anchor" href="#61-滑动门出现的背景">#</a> 6.1 滑动门出现的背景</h4>
+<p>制作网页时，为了美观，常常需要为网页元素设置特殊形状的背景，比如微信导航栏，有凸起和凹下去的感觉，最大的问题是里面的字数不一样多，咋办？</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071630920.webp" alt="图片"></p>
+<p>为了使各种特殊形状的背景能够自适应元素中文本内容的多少，出现了 CSS 滑动门技术。它从新的角度构建页面，使各种特殊形状的背景能够自由拉伸滑动，以适应元素内部的文本内容，可用性更强。最常见于各种导航栏的滑动门。</p>
+<h4 id="62-核心技术"><a class="markdownIt-Anchor" href="#62-核心技术">#</a> 6.2 核心技术</h4>
+<p>核心技术就是利用 <code>CSS精灵</code> （主要是背景位置）和  <code>盒子padding</code>  撑开宽度，以便能适应不同字数的导航栏。</p>
+<p>一般的经典布局都是这样的：</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">&lt;li>
+  &lt;a href=<span class="token string">"#"</span>>
+    &lt;span>导航栏内容&lt;/span>
+  &lt;/a>
+&lt;/li><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">*</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span>0<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span>0<span class="token punctuation">;</span>
+
+   <span class="token punctuation">&#125;</span>
+    <span class="token selector">body</span><span class="token punctuation">&#123;</span>
+      <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>images/wx.jpg<span class="token punctuation">)</span></span> repeat-x<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token selector">.father</span> <span class="token punctuation">&#123;</span>
+      <span class="token property">padding-top</span><span class="token punctuation">:</span>20px<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token selector">li</span> <span class="token punctuation">&#123;</span>
+      <span class="token property">padding-left</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+      <span class="token property">height</span><span class="token punctuation">:</span> 33px<span class="token punctuation">;</span>
+      <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+      <span class="token property">line-height</span><span class="token punctuation">:</span> 33px<span class="token punctuation">;</span>
+      <span class="token property">margin</span><span class="token punctuation">:</span>0  10px<span class="token punctuation">;</span>
+      <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>./images/to.png<span class="token punctuation">)</span></span> no-repeat left <span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token selector">a</span> <span class="token punctuation">&#123;</span>
+      <span class="token property">padding-right</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+      <span class="token property">height</span><span class="token punctuation">:</span> 33px<span class="token punctuation">;</span>
+      <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
+      <span class="token property">color</span><span class="token punctuation">:</span>#fff<span class="token punctuation">;</span>
+      <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>./images/to.png<span class="token punctuation">)</span></span> no-repeat right <span class="token punctuation">;</span>
+      <span class="token property">text-decoration</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token selector">li:hover,
+    li:hover a</span> <span class="token punctuation">&#123;</span>
+      <span class="token property">background-image</span><span class="token punctuation">:</span><span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>./images/ao.png<span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>总结：</p>
+<ol>
+<li>a 设置 背景左侧，padding 撑开合适宽度。</li>
+<li>span 设置背景右侧， padding 撑开合适宽度 剩下由文字继续撑开宽度。</li>
+<li>之所以 a 包含 span 就是因为 整个导航都是可以点击的。</li>
+</ol>
+<hr>
+<h3 id="css-三角形"><a class="markdownIt-Anchor" href="#css-三角形">#</a> CSS 三角形</h3>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">div</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> 
+    <span class="token property">height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">line-height</span><span class="token punctuation">:</span>0；
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+   <span class="token property">border-top</span><span class="token punctuation">:</span> 10px solid red<span class="token punctuation">;</span>
+
+   <span class="token property">border-right</span><span class="token punctuation">:</span> 10px solid green<span class="token punctuation">;</span>
+
+   <span class="token property">border-bottom</span><span class="token punctuation">:</span> 10px solid blue<span class="token punctuation">;</span>
+
+   <span class="token property">border-left</span><span class="token punctuation">:</span> 10px solid #000<span class="token punctuation">;</span> 
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071630631.webp" alt="图片"></p>
+<p>我们用 css 边框可以模拟三角效果</p>
+<ol>
+<li>__<mark>宽度高度为 0</mark>__这个是必须的！！！</li>
+<li>我们 4 个边框都要写，只保留需要的边框颜色，其余的不能省略，都改为 transparent 透明就好了</li>
+<li>为了照顾兼容性 低版本的浏览器，加上 font-size: 0;  line-height: 0;</li>
+</ol>
+<p>可以按照边框的大小来控制这个三角形的大小</p>
+<p>案例:</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071630243.png" alt="image-20211229114852488"></p>
+<p>给 class 是 jd 的盒子里面的 span 盒子通过 border 显示小三角，然后定位到合适位置.</p>
+<p>注意移动的位置要考虑到 border 的本身大小等，其他的 border 也不要忽略都有只是设了 transparent</p>
+<hr>
+<h2 id="其他笔记"><a class="markdownIt-Anchor" href="#其他笔记">#</a> 其他笔记</h2>
+<ul>
+<li>
+<p>尽量让重复的 css 代码放进更适合的选择器中，比如说父元素，这样就可以继承到所有的子元素。再比如__使用 <code>,</code> -&gt; 并集选择器__同时选多个对应的标签来进行重复的部分，然后可以再挨个自己的那里做更 &quot;个人化的&quot; 更改，添加等</p>
+</li>
+<li>
+<p>一直注意 css 的三大特性：层叠性，继承性还有最重要的优先性 (权重计算等)</p>
+</li>
+<li>
+<p>总结标准流，浮动和定位各自的特点</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071630651.png" alt="image-20211228170706149"></p>
+<ul>
+<li>div 也可以 <code>:hover</code>  等，比如说 <code>.menu:hover</code></li>
+<li>还可以这样 <code>.menu:hover .home</code> , 这么做就是当鼠标 hover class 为 menu 的元素时，menu 的元素的子元素 (class 为 home) CSS 的样式。这样做可以设置关于 display 相关的，比如说一开始是隐藏的，之后要是 hover, 那么某个具体的元素就会显示出来</li>
+</ul>
+<p>例如:</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/202201071631475.png" alt="image-20211228230700690"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2022/02/01/CSS/">https://harryqu1229.github.io/2022/02/01/CSS/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/frontend/">frontend</a><a class="post-meta__tags" href="/tags/css/">css</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/01/Javascript/"><img class="prev-cover" src="https://w.wallhaven.cc/full/28/wallhaven-28wymm.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">My Javascript notes</div></div></a></div><div class="next-post pull-right"><a href="/2022/02/01/css3%E6%80%BB%E7%BB%93/"><img class="next-cover" src="https://w.wallhaven.cc/full/57/wallhaven-57jlo1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">My CSS3 notes</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/01/12/CSS%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93-YK%E8%8F%8C/" title="css Interview Questions"><img class="cover" src="https://w.wallhaven.cc/full/wq/wallhaven-wqvov7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-12</div><div class="title">css Interview Questions</div></div></a></div><div><a href="/2022/02/02/js,css%E7%AD%89%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="css and JS Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/8o/wallhaven-8oply1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-02</div><div class="title">css and JS Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/02/01/HTML5%E4%B8%8ECSS3%E9%AB%98%E9%98%B6/" title="My HTML5 and CSS3 notes"><img class="cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-01</div><div class="title">My HTML5 and CSS3 notes</div></div></a></div><div><a href="/2022/02/01/css3%E6%80%BB%E7%BB%93/" title="My CSS3 notes"><img class="cover" src="https://w.wallhaven.cc/full/57/wallhaven-57jlo1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-01</div><div class="title">My CSS3 notes</div></div></a></div><div><a href="/2022/01/12/css%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" title="css Interview Summary"><img class="cover" src="https://w.wallhaven.cc/full/8o/wallhaven-8oply1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-12</div><div class="title">css Interview Summary</div></div></a></div><div><a href="/2022/02/01/JS%E6%A8%A1%E5%9D%97%E5%8C%96/" title="My Javascript modularity notes"><img class="cover" src="https://w.wallhaven.cc/full/72/wallhaven-72myve.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-01</div><div class="title">My Javascript modularity notes</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#css%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text"> CSS 基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#css%E6%9E%84%E9%80%A0%E5%9D%97"><span class="toc-number">1.1.</span> <span class="toc-text"> CSS 构造块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5css%E6%A0%B7%E5%BC%8F%E8%A1%A8"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 引入 CSS 样式表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E8%A1%8C%E5%86%85%E5%BC%8F%E5%86%85%E8%81%94%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.1.1.1.</span> <span class="toc-text"> 「1. 行内式 (内联样式)」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E5%86%85%E9%83%A8%E6%A0%B7%E5%BC%8F%E8%A1%A8%E5%86%85%E5%B5%8C%E6%A0%B7%E5%BC%8F%E8%A1%A8"><span class="toc-number">1.1.1.2.</span> <span class="toc-text"> 「2. 内部样式表 (内嵌样式表)」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E5%A4%96%E9%83%A8%E6%A0%B7%E5%BC%8F%E8%A1%A8%E5%A4%96%E9%93%BE%E5%BC%8F"><span class="toc-number">1.1.1.3.</span> <span class="toc-text"> 「3. 外部样式表 (外链式)」</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css%E5%9F%BA%E7%A1%80%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.2.</span> <span class="toc-text"> CSS 基础选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#css%E5%9F%BA%E7%A1%80%E9%80%89%E6%8B%A9%E5%99%A8-2"><span class="toc-number">1.2.1.</span> <span class="toc-text"> CSS 基础选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%A0%87%E7%AD%BE%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.2.1.1.</span> <span class="toc-text"> 「1. 标签选择器」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.2.1.2.</span> <span class="toc-text"> 「2. 类选择器」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-id%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.2.1.3.</span> <span class="toc-text"> 「3. id 选择器」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E9%80%9A%E9%85%8D%E7%AC%A6%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.2.1.4.</span> <span class="toc-text"> 「4. 通配符选择器」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E9%80%89%E6%8B%A9%E5%99%A8%E6%80%BB%E7%BB%93"><span class="toc-number">1.2.1.5.</span> <span class="toc-text"> 「基础选择器总结」</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css%E5%A4%8D%E5%90%88%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text"> CSS 复合选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%90%8E%E4%BB%A3%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.2.2.1.</span> <span class="toc-text"> 「1. 后代选择器」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AD%90%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.2.2.2.</span> <span class="toc-text"> 「2. 子元素选择器」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BA%A4%E9%9B%86%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.2.2.3.</span> <span class="toc-text"> 「3. 交集选择器」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%B9%B6%E9%9B%86%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.2.2.4.</span> <span class="toc-text"> 「4. 并集选择器」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E9%93%BE%E6%8E%A5%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.2.2.5.</span> <span class="toc-text"> 「5. 链接伪类选择器」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E5%B7%A5%E4%BD%9C%E4%B8%AD%E5%BE%88%E5%B0%91%E5%86%99%E5%85%A8%E5%9B%9B%E4%B8%AA%E7%8A%B6%E6%80%81%E4%B8%80%E8%88%AC%E5%86%99%E6%B3%95%E5%A6%82%E4%B8%8B"><span class="toc-number">1.2.2.6.</span> <span class="toc-text"> 实际工作中，很少写全四个状态，一般写法如下：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E5%90%88%E9%80%89%E6%8B%A9%E5%99%A8%E6%80%BB%E7%BB%93"><span class="toc-number">1.2.2.7.</span> <span class="toc-text"> 「复合选择器总结」</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css%E5%AD%97%E4%BD%93%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text"> CSS 字体样式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#font%E5%AD%97%E4%BD%93"><span class="toc-number">1.3.1.</span> <span class="toc-text"> font 字体</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-font-size"><span class="toc-number">1.3.1.1.</span> <span class="toc-text"> 「1. font-size」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E4%BD%8D"><span class="toc-number">1.3.1.2.</span> <span class="toc-text"> 单位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-font-family"><span class="toc-number">1.3.1.3.</span> <span class="toc-text"> 「2. font-family」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-font-weight"><span class="toc-number">1.3.1.4.</span> <span class="toc-text"> 「3. font-weight」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-font-style"><span class="toc-number">1.3.1.5.</span> <span class="toc-text"> 「4. font-style」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-font%E7%BB%BC%E5%90%88%E8%AE%BE%E7%BD%AE%E5%AD%97%E4%BD%93%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.3.1.6.</span> <span class="toc-text"> 「5. font: 综合设置字体样式」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#font%E6%80%BB%E7%BB%93"><span class="toc-number">1.3.1.7.</span> <span class="toc-text"> 「font 总结」</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css%E5%A4%96%E8%A7%82%E5%B1%9E%E6%80%A7"><span class="toc-number">1.3.2.</span> <span class="toc-text"> CSS 外观属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-color"><span class="toc-number">1.3.2.1.</span> <span class="toc-text"> 「1. color」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2text-align"><span class="toc-number">1.3.2.2.</span> <span class="toc-text"> 「2.text-align」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-line-height"><span class="toc-number">1.3.2.3.</span> <span class="toc-text"> 「3. line-height」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E9%AB%98%E6%B5%8B%E9%87%8F"><span class="toc-number">1.3.2.4.</span> <span class="toc-text"> 行高测量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E9%AB%98%E4%B8%8E%E9%AB%98%E5%BA%A6%E7%9A%84%E4%B8%89%E7%A7%8D%E5%85%B3%E7%B3%BB"><span class="toc-number">1.3.2.5.</span> <span class="toc-text"> 行高与高度的三种关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-text-indent"><span class="toc-number">1.3.2.6.</span> <span class="toc-text"> 「4. text-indent」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-text-decoration"><span class="toc-number">1.3.2.7.</span> <span class="toc-text"> 「5. text-decoration」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#css%E5%A4%96%E8%A7%82%E5%B1%9E%E6%80%A7%E6%80%BB%E7%BB%93"><span class="toc-number">1.3.2.8.</span> <span class="toc-text"> 「CSS 外观属性总结」</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E6%98%BE%E7%A4%BA%E6%A8%A1%E5%BC%8Fdisplay"><span class="toc-number">1.4.</span> <span class="toc-text"> 标签显示模式 (display)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E6%98%BE%E7%A4%BA%E6%A8%A1%E5%BC%8F%E8%BD%AC%E6%8D%A2-display"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 标签显示模式转换 display</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0block-level"><span class="toc-number">1.4.1.1.</span> <span class="toc-text"> 「1. 块级元素 (block-level)」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0inline-level"><span class="toc-number">1.4.1.2.</span> <span class="toc-text"> 「2. 行内元素 (inline-level)」</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.4.1.2.1.</span> <span class="toc-text"> 行内元素的特点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%A1%8C%E5%86%85%E5%9D%97%E5%85%83%E7%B4%A0inline-block"><span class="toc-number">1.4.1.3.</span> <span class="toc-text"> 「3. 行内块元素 (inline-block)」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.1.4.</span> <span class="toc-text"> 三种模式总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css%E8%83%8C%E6%99%AFbackground"><span class="toc-number">1.5.</span> <span class="toc-text"> CSS 背景 (background)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2color"><span class="toc-number">1.5.0.1.</span> <span class="toc-text"> 「1. 背景颜色 (color)」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87image"><span class="toc-number">1.5.0.2.</span> <span class="toc-text"> 「2. 背景图片 (image)」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%83%8C%E6%99%AF%E5%B9%B3%E9%93%BArepeat"><span class="toc-number">1.5.0.3.</span> <span class="toc-text"> 「3. 背景平铺（repeat）」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%83%8C%E6%99%AF%E4%BD%8D%E7%BD%AEposition"><span class="toc-number">1.5.0.4.</span> <span class="toc-text"> 「4. 背景位置 (position)」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E7%AE%80%E5%86%99"><span class="toc-number">1.5.0.5.</span> <span class="toc-text"> 背景简写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E8%83%8C%E6%99%AF%E5%8D%8A%E9%80%8F%E6%98%8Ecss3"><span class="toc-number">1.5.0.6.</span> <span class="toc-text"> 「5. 背景半透明 (CSS3)」</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%92%E5%AD%90%E5%8D%8A%E9%80%8F%E6%98%8Eopacity"><span class="toc-number">1.5.0.6.1.</span> <span class="toc-text"> 盒子半透明 opacity</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E6%80%BB%E7%BB%93"><span class="toc-number">1.5.0.7.</span> <span class="toc-text"> 「背景总结」</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="toc-number">1.6.</span> <span class="toc-text"> CSS 三大特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-css-%E5%B1%82%E5%8F%A0%E6%80%A7"><span class="toc-number">1.6.0.1.</span> <span class="toc-text"> 「1. CSS 层叠性」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-css-%E7%BB%A7%E6%89%BF%E6%80%A7"><span class="toc-number">1.6.0.2.</span> <span class="toc-text"> 「2. CSS 继承性」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-css-%E4%BC%98%E5%85%88%E7%BA%A7css%E7%89%B9%E6%AE%8A%E6%80%A7"><span class="toc-number">1.6.0.3.</span> <span class="toc-text"> 「3. CSS 优先级 (CSS 特殊性)」</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.7.</span> <span class="toc-text"> 盒子模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8Bbox-model"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 1. 盒子模型 (Box Model)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%9B%92%E5%AD%90%E8%BE%B9%E6%A1%86border"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 2. 盒子边框 (border)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%86%85%E8%BE%B9%E8%B7%9Dpadding"><span class="toc-number">1.7.3.</span> <span class="toc-text"> 2. 内边距 (padding)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%A4%96%E8%BE%B9%E8%B7%9Dmargin"><span class="toc-number">1.7.4.</span> <span class="toc-text"> 3. 外边距（margin）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%90%88%E5%B9%B6"><span class="toc-number">1.7.5.</span> <span class="toc-text"> 4. 外边距合并</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%9B%B8%E9%82%BB%E5%9D%97%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E5%A4%96%E8%BE%B9%E8%B7%9D%E7%9A%84%E5%90%88%E5%B9%B6"><span class="toc-number">1.7.5.1.</span> <span class="toc-text"> (1) 相邻块元素垂直外边距的合并</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%B5%8C%E5%A5%97%E5%9D%97%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E5%A4%96%E8%BE%B9%E8%B7%9D%E7%9A%84%E5%90%88%E5%B9%B6%E5%A1%8C%E9%99%B7"><span class="toc-number">1.7.5.2.</span> <span class="toc-text"> (2) 嵌套块元素垂直外边距的合并（塌陷）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%B8%83%E5%B1%80%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="toc-number">1.7.5.3.</span> <span class="toc-text"> 盒子模型布局稳定性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-css3-%E6%96%B0%E5%A2%9E"><span class="toc-number">1.7.6.</span> <span class="toc-text"> 5. CSS3 新增</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%AE%E5%8A%A8"><span class="toc-number">1.8.</span> <span class="toc-text"> 浮动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E5%8A%A8-2"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 浮动</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-number">1.8.1.0.1.</span> <span class="toc-text"> 作用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">1.8.1.0.2.</span> <span class="toc-text"> 语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B5%AE%E5%8A%A8float%E5%B0%8F%E7%BB%93"><span class="toc-number">1.8.1.0.3.</span> <span class="toc-text"> 浮动 (float) 小结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 清除浮动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.8.2.1.</span> <span class="toc-text"> 清除浮动的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8%E6%80%BB%E7%BB%93"><span class="toc-number">1.8.2.2.</span> <span class="toc-text"> 清除浮动总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css%E5%B1%9E%E6%80%A7%E4%B9%A6%E5%86%99%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.9.</span> <span class="toc-text"> CSS 属性书写顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8Dposition"><span class="toc-number">1.10.</span> <span class="toc-text"> 定位 (position)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%9A%E4%BD%8D%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.10.0.1.</span> <span class="toc-text"> 「1. 定位详解」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%9A%E4%BD%8D%E6%A8%A1%E5%BC%8Fposition"><span class="toc-number">1.10.0.2.</span> <span class="toc-text"> 「2. 定位模式 (position)」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%9D%99%E6%80%81%E5%AE%9A%E4%BD%8Dstatic"><span class="toc-number">1.10.0.3.</span> <span class="toc-text"> 「3. 静态定位 (static)」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8Drelative"><span class="toc-number">1.10.0.4.</span> <span class="toc-text"> 「4. 相对定位 (relative)」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8Dabsolute"><span class="toc-number">1.10.0.5.</span> <span class="toc-text"> 「5. 绝对定位 (absolute)」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%88%B6%E5%85%83%E7%B4%A0%E6%9C%89%E5%AE%9A%E4%BD%8D"><span class="toc-number">1.10.0.6.</span> <span class="toc-text"> 父元素有定位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%9B%BA%E5%AE%9A%E5%AE%9A%E4%BD%8Dfixed"><span class="toc-number">1.10.0.7.</span> <span class="toc-text"> 「6. 固定定位 (fixed)」</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8Dposition%E7%9A%84%E6%89%A9%E5%B1%95"><span class="toc-number">1.10.1.</span> <span class="toc-text"> 定位 (position) 的扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E7%9A%84%E7%9B%92%E5%AD%90%E5%B1%85%E4%B8%AD"><span class="toc-number">1.10.1.1.</span> <span class="toc-text"> 绝对定位的盒子居中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A0%86%E5%8F%A0%E9%A1%BA%E5%BA%8Fz-index"><span class="toc-number">1.10.1.2.</span> <span class="toc-text"> 堆叠顺序（z-index）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E6%94%B9%E5%8F%98display%E5%B1%9E%E6%80%A7"><span class="toc-number">1.10.1.3.</span> <span class="toc-text"> 定位改变 display 属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%B2%98%E6%80%A7%E5%AE%9A%E4%BD%8Dsticky"><span class="toc-number">1.10.1.4.</span> <span class="toc-text"> 「6. 粘性定位 (sticky)」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E5%B0%8F%E7%BB%93"><span class="toc-number">1.10.1.5.</span> <span class="toc-text"> 定位小结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7"><span class="toc-number">1.11.</span> <span class="toc-text"> CSS 高级技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E7%9A%84%E6%98%BE%E7%A4%BA%E4%B8%8E%E9%9A%90%E8%97%8F"><span class="toc-number">1.11.1.</span> <span class="toc-text"> 元素的显示与隐藏</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11-display-%E6%98%BE%E7%A4%BA%E9%87%8D%E7%82%B9"><span class="toc-number">1.11.1.1.</span> <span class="toc-text"> 1.1 display 显示（重点）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-visibility-%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-number">1.11.1.2.</span> <span class="toc-text"> 1.2 visibility 可见性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-overflow-%E6%BA%A2%E5%87%BA"><span class="toc-number">1.11.1.3.</span> <span class="toc-text"> 1.3 overflow 溢出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-%E6%98%BE%E7%A4%BA%E4%B8%8E%E9%9A%90%E8%97%8F%E6%80%BB%E7%BB%93"><span class="toc-number">1.11.1.4.</span> <span class="toc-text"> 1.4 显示与隐藏总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.11.2.</span> <span class="toc-text"> CSS 用户界面样式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#21-%E9%BC%A0%E6%A0%87%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.11.2.1.</span> <span class="toc-text"> 2.1 鼠标样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-%E8%BD%AE%E5%BB%93%E7%BA%BF-outline"><span class="toc-number">1.11.2.2.</span> <span class="toc-text"> 2.2 轮廓线 outline</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23-%E9%98%B2%E6%AD%A2%E6%8B%96%E6%8B%BD%E6%96%87%E6%9C%AC%E5%9F%9Fresize"><span class="toc-number">1.11.2.3.</span> <span class="toc-text"> 2.3 防止拖拽文本域 resize</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#24-%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E6%A0%B7%E5%BC%8F%E6%80%BB%E7%BB%93"><span class="toc-number">1.11.2.4.</span> <span class="toc-text"> 2.4 用户界面样式总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vertical-align-%E5%9E%82%E7%9B%B4%E5%AF%B9%E9%BD%90"><span class="toc-number">1.11.3.</span> <span class="toc-text"> vertical-align 垂直对齐</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#31-%E5%9B%BE%E7%89%87-%E8%A1%A8%E5%8D%95%E5%92%8C%E6%96%87%E5%AD%97%E5%AF%B9%E9%BD%90"><span class="toc-number">1.11.3.1.</span> <span class="toc-text"> 3.1 图片、表单和文字对齐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#32-%E5%8E%BB%E9%99%A4%E5%9B%BE%E7%89%87%E5%BA%95%E4%BE%A7%E7%A9%BA%E7%99%BD%E7%BC%9D%E9%9A%99"><span class="toc-number">1.11.3.2.</span> <span class="toc-text"> 3.2 去除图片底侧空白缝隙</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%A2%E5%87%BA%E7%9A%84%E6%96%87%E5%AD%97%E7%9C%81%E7%95%A5%E5%8F%B7%E6%98%BE%E7%A4%BA"><span class="toc-number">1.11.4.</span> <span class="toc-text"> 溢出的文字省略号显示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#41-white-space"><span class="toc-number">1.11.4.1.</span> <span class="toc-text"> 4.1 white-space</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#42-text-overflow-%E6%96%87%E5%AD%97%E6%BA%A2%E5%87%BA"><span class="toc-number">1.11.4.2.</span> <span class="toc-text"> 4.2 text-overflow 文字溢出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#43-%E6%80%BB%E7%BB%93%E4%B8%89%E6%AD%A5%E6%9B%B2"><span class="toc-number">1.11.4.3.</span> <span class="toc-text"> 4.3 总结三步曲</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%95%E8%A1%8C%E6%96%87%E6%9C%AC%E7%9C%81%E7%95%A5%E5%8F%B7%E6%98%BE%E7%A4%BA"><span class="toc-number">1.11.4.3.1.</span> <span class="toc-text"> 单行文本省略号显示</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%9A%E6%96%87%E6%9C%AC%E7%9C%81%E7%95%A5%E5%8F%B7%E6%98%BE%E7%A4%BA%E6%96%87%E6%9C%AC%E5%A5%BD%E5%87%A0%E8%A1%8C%E7%84%B6%E5%90%8E%E6%9C%80%E5%90%8E%E4%B8%80%E8%A1%8C%E8%BF%98%E6%98%AF%E8%B6%85%E4%BA%86%E5%B0%B1%E4%BC%9A%E9%82%A3%E4%B8%80%E8%A1%8C%E6%9C%AB%E5%B0%BE%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7"><span class="toc-number">1.11.4.3.2.</span> <span class="toc-text"> 多文本省略号显示 (文本好几行然后最后一行还是超了就会那一行末尾显示省略号)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7"><span class="toc-number">1.11.5.</span> <span class="toc-text"> 常见布局技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#margin%E8%B4%9F%E5%80%BC%E8%BF%90%E7%94%A8"><span class="toc-number">1.11.5.1.</span> <span class="toc-text"> margin 负值运用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E5%AD%97%E5%9B%B4%E7%BB%95%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0"><span class="toc-number">1.11.5.2.</span> <span class="toc-text"> 文字围绕浮动元素🔥</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E5%9D%97%E5%B7%A7%E5%A6%99%E8%BF%90%E7%94%A8"><span class="toc-number">1.11.5.3.</span> <span class="toc-text"> 行内块巧妙运用🔥</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E8%A7%92%E5%BD%A2%E5%BC%BA%E5%8C%96"><span class="toc-number">1.11.5.4.</span> <span class="toc-text"> 三角形强化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#css-%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.11.5.5.</span> <span class="toc-text"> CSS 初始化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css%E7%B2%BE%E7%81%B5%E6%8A%80%E6%9C%AFsprite"><span class="toc-number">1.11.6.</span> <span class="toc-text"> CSS 精灵技术（sprite)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#51-%E7%B2%BE%E7%81%B5%E6%8A%80%E6%9C%AF%E8%AE%B2%E8%A7%A3"><span class="toc-number">1.11.6.1.</span> <span class="toc-text"> 5.1 精灵技术讲解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#52-%E7%B2%BE%E7%81%B5%E6%8A%80%E6%9C%AF%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%BB%E7%BB%93"><span class="toc-number">1.11.6.2.</span> <span class="toc-text"> 5.2 精灵技术使用的核心总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87"><span class="toc-number">1.11.7.</span> <span class="toc-text"> 字体图标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BB%91%E5%8A%A8%E9%97%A8"><span class="toc-number">1.11.8.</span> <span class="toc-text"> 滑动门</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#61-%E6%BB%91%E5%8A%A8%E9%97%A8%E5%87%BA%E7%8E%B0%E7%9A%84%E8%83%8C%E6%99%AF"><span class="toc-number">1.11.8.1.</span> <span class="toc-text"> 6.1 滑动门出现的背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#62-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF"><span class="toc-number">1.11.8.2.</span> <span class="toc-text"> 6.2 核心技术</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css-%E4%B8%89%E8%A7%92%E5%BD%A2"><span class="toc-number">1.11.9.</span> <span class="toc-text"> CSS 三角形</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%AC%94%E8%AE%B0"><span class="toc-number">1.12.</span> <span class="toc-text"> 其他笔记</span></a></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux easy notes"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes">Linux easy notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux commands"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands">Linux commands</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/Linux/" title="Linux notes"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux notes"/></a><div class="content"><a class="title" href="/2022/04/02/Linux/" title="Linux notes">Linux notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/nodejs/" title="Nodejs notes"><img src="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nodejs notes"/></a><div class="content"><a class="title" href="/2022/03/01/nodejs/" title="Nodejs notes">Nodejs notes</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Frontend interview questions"/></a><div class="content"><a class="title" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions">Frontend interview questions</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2022/02/01/CSS/'
+    this.page.identifier = '2022/02/01/CSS/'
+    this.page.title = 'My CSS notes'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>if (window.DISQUSWIDGETS === undefined) {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://harry-study-blog.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+} else {
+  DISQUSWIDGETS.getCount({reset: true});
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: 'dd30e060f28c42010d551471f5f227e9',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=a5KJbIVovxK3ZXvlrPvv7wgYLY4fAh3pvP4thfjXYUdM2cNymlgVhMhdyhb9e0O3')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" title="本站使用JsDelivr为静态资源提供CDN加速"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，默认线路托管于Vercel"><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，联通线路托管于Coding"><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

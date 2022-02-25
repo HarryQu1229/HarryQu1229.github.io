@@ -1,0 +1,1014 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Javascript interview questions | Harry World</title><meta name="keywords" content="面试,interview,js"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# 1. JavaScript 基础  # 1.1 执行上下文 &#x2F; 作用域链 &#x2F; 闭包  理解 JavaScript 中的执行上下文和执行栈 JavaScript 深入之执行上下文栈 一道 js 面试题引发的思考 JavaScript 深入之词法作用域和动态作用域 JavaScript 深入之作用域链 发现 JavaScript 中闭包的强大威力 JavaScript 闭包的底层运行机制 我从来不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript interview questions">
+<meta property="og:url" content="https://harryqu1229.github.io/2021/07/11/%E8%B6%85%E5%85%A8%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%96%87%E7%AB%A0/index.html">
+<meta property="og:site_name" content="Harry World">
+<meta property="og:description" content="# 1. JavaScript 基础  # 1.1 执行上下文 &#x2F; 作用域链 &#x2F; 闭包  理解 JavaScript 中的执行上下文和执行栈 JavaScript 深入之执行上下文栈 一道 js 面试题引发的思考 JavaScript 深入之词法作用域和动态作用域 JavaScript 深入之作用域链 发现 JavaScript 中闭包的强大威力 JavaScript 闭包的底层运行机制 我从来不">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d">
+<meta property="article:published_time" content="2021-07-10T12:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-25T13:41:09.471Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="interview">
+<meta property="article:tag" content="offer">
+<meta property="article:tag" content="front-end">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://harryqu1229.github.io/2021/07/11/%E8%B6%85%E5%85%A8%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%96%87%E7%AB%A0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Javascript interview questions',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-26 02:41:09'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/flink.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/512px-Unofficial_JavaScript_logo_2.svg.png?20141107110902')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry World</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Javascript interview questions</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-07-10T12:00:00.000Z" title="Created 2021-07-11 00:00:00">2021-07-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-02-25T13:41:09.471Z" title="Updated 2022-02-26 02:41:09">2022-02-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Interview/">Interview</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Interview/javascript/">javascript</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">4.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>16min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Javascript interview questions"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><span class="disqus-comment-count"><a href="https://harryqu1229.github.io/2021/07/11/%E8%B6%85%E5%85%A8%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%96%87%E7%AB%A0/#disqus_thread"></a></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-javascript-基础"><a class="markdownIt-Anchor" href="#1-javascript-基础">#</a> 1. JavaScript 基础</h1>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/71e30bdc18b44272b5fa0e16b9c3f2e8~tplv-k3u1fbpfcp-watermark.awebp" alt=""></p>
+<h3 id="11-执行上下文作用域链闭包"><a class="markdownIt-Anchor" href="#11-执行上下文作用域链闭包">#</a> 1.1 执行上下文 / 作用域链 / 闭包</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903682283143181" title="https://juejin.cn/post/6844903682283143181">理解 JavaScript 中的执行上下文和执行栈</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fmqyqingfeng%2FBlog%2Fissues%2F4" title="https://github.com/mqyqingfeng/Blog/issues/4">JavaScript 深入之执行上下文栈</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fkuitos%2Fkuitos.github.io%2Fissues%2F18" title="https://github.com/kuitos/kuitos.github.io/issues/18">一道 js 面试题引发的思考</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fmqyqingfeng%2FBlog%2Fissues%2F3" title="https://github.com/mqyqingfeng/Blog/issues/3">JavaScript 深入之词法作用域和动态作用域</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fmqyqingfeng%2FBlog%2Fissues%2F6" title="https://github.com/mqyqingfeng/Blog/issues/6">JavaScript 深入之作用域链</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903769646317576" title="https://juejin.cn/post/6844903769646317576">发现 JavaScript 中闭包的强大威力</a></li>
+<li><a href="https://link.juejin.cn?target=http%3A%2F%2Fblog.leapoahead.com%2F2015%2F09%2F15%2Fjs-closure%2F" title="http://blog.leapoahead.com/2015/09/15/js-closure/">JavaScript 闭包的底层运行机制</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F56490498" title="https://zhuanlan.zhihu.com/p/56490498">我从来不理解 JavaScript 闭包，直到有人这样向我解释它…</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903474212143117#heading-0" title="https://juejin.cn/post/6844903474212143117#heading-0">破解前端面试（80% 应聘者不及格系列）：从闭包说起</a></li>
+</ul>
+<h3 id="12-thiscallapplybind"><a class="markdownIt-Anchor" href="#12-thiscallapplybind">#</a> 1.2 this/call/apply/bind</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Faxuebin%2Farticles%2Fissues%2F6" title="https://github.com/axuebin/articles/issues/6">JavaScript 基础心法 ——this</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fmqyqingfeng%2FBlog%2Fissues%2F7" title="https://github.com/mqyqingfeng/Blog/issues/7">JavaScript 深入之从 ECMAScript 规范解读 this</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.jianshu.com%2Fp%2Fd647aa6d1ae6" title="https://www.jianshu.com/p/d647aa6d1ae6">前端基础进阶（七）：全方位解读 this</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903746984476686" title="https://juejin.cn/post/6844903746984476686">面试官问：JS 的 this 指向</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903476477034510" title="https://juejin.cn/post/6844903476477034510">JavaScript 深入之 call 和 apply 的模拟实现</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Faxuebin%2Farticles%2Fissues%2F7" title="https://github.com/axuebin/articles/issues/7">JavaScript 基础心法 —— call apply bind</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903728147857415" title="https://juejin.cn/post/6844903728147857415">面试官问：能否模拟实现 JS 的 call 和 apply 方法</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903444348665870" title="https://juejin.cn/post/6844903444348665870">回味 JS 基础:call apply 与 bind</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903718089916429" title="https://juejin.cn/post/6844903718089916429">面试官问：能否模拟实现 JS 的 bind 方法</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fjawil%2Fblog%2Fissues%2F16" title="https://github.com/jawil/blog/issues/16">不用 call 和 apply 方法模拟实现 ES5 的 bind 方法</a></li>
+</ul>
+<h3 id="13-原型继承"><a class="markdownIt-Anchor" href="#13-原型继承">#</a> 1.3 原型 / 继承</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2F1UDILezroK5wrcK-Z5bHOg" title="https://mp.weixin.qq.com/s/1UDILezroK5wrcK-Z5bHOg">深入理解 JavaScript 原型</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903984335945736" title="https://juejin.cn/post/6844903984335945736">【THE LAST TIME】一文吃透所有 JS 原型相关知识点</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903779079290887" title="https://juejin.cn/post/6844903779079290887">重新认识构造函数、原型和原型链</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fmqyqingfeng%2Fblog%2Fissues%2F2" title="https://github.com/mqyqingfeng/blog/issues/2">JavaScript 深入之从原型到原型链</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.jianshu.com%2Fp%2Fdee9f8b14771" title="https://www.jianshu.com/p/dee9f8b14771">最详尽的 JS 原型与原型链终极详解，没有「可能是」。（一）</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.jianshu.com%2Fp%2F652991a67186" title="https://www.jianshu.com/p/652991a67186">最详尽的 JS 原型与原型链终极详解，没有「可能是」。（二）</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.jianshu.com%2Fp%2Fa4e1e7b6f4f8" title="https://www.jianshu.com/p/a4e1e7b6f4f8">最详尽的 JS 原型与原型链终极详解，没有「可能是」。（三）</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fhijiangtao.github.io%2F2018%2F08%2F21%2FPrototypes%2F" title="https://hijiangtao.github.io/2018/08/21/Prototypes/">JavaScript 引擎基础：原型优化</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmedium.com%2Fbetter-programming%2Fprototypes-in-javascript-5bba2990e04b" title="https://medium.com/better-programming/prototypes-in-javascript-5bba2990e04b">Prototypes in JavaScript</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fmqyqingfeng%2FBlog%2Fissues%2F15" title="https://github.com/mqyqingfeng/Blog/issues/15">JavaScript 深入之创建对象的多种方式以及优缺点</a></li>
+<li><a href="https://link.juejin.cn?target=http%3A%2F%2Flouiszhai.github.io%2F2015%2F12%2F15%2FprototypeChain%2F" title="http://louiszhai.github.io/2015/12/15/prototypeChain/">详解 JS 原型链与继承</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fcreeperyang%2Fblog%2Fissues%2F9" title="https://github.com/creeperyang/blog/issues/9">从__proto__和 prototype 来深入理解 JS 对象和原型链</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fjayli%2Fjavascript-patterns%2Fblob%2Fmaster%2Fchapter6.markdown" title="https://github.com/jayli/javascript-patterns/blob/master/chapter6.markdown">代码复用模式</a></li>
+<li><a href="https://link.juejin.cn?target=http%3A%2F%2Ftianfangye.com%2F2017%2F12%2F31%2Finheritance-in-javascript-es3-es5-and-es6%2F" title="http://tianfangye.com/2017/12/31/inheritance-in-javascript-es3-es5-and-es6/">JavaScript 中的继承：ES3、ES5 和 ES6</a></li>
+</ul>
+<h3 id="14-promise"><a class="markdownIt-Anchor" href="#14-promise">#</a> 1.4 Promise</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FqdJ0Xd8zTgtetFdlJL3P1g" title="https://mp.weixin.qq.com/s/qdJ0Xd8zTgtetFdlJL3P1g">100 行代码实现 Promises/A+ 规范</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903648162480142" title="https://juejin.cn/post/6844903648162480142">你好，JavaScript 异步编程 ---- 理解 JavaScript 异步的美妙</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903607968481287" title="https://juejin.cn/post/6844903607968481287">Promise 不会？？看这里！！！史上最通俗易懂的 Promise！！！</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903617619558408#heading-34" title="https://juejin.cn/post/6844903617619558408#heading-34">一起学习造轮子（一）：从零开始写一个符合 Promises/A + 规范的 promise</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903665686282253" title="https://juejin.cn/post/6844903665686282253">Promise 实现原理（附源码）</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fobjcer.com%2F2017%2F10%2F12%2Fasync-await-with-forEach%2F" title="https://objcer.com/2017/10/12/async-await-with-forEach/">当 async/await 遇上 forEach</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903509934997511" title="https://juejin.cn/post/6844903509934997511">Promise 必知必会（十道题）</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903625769091079#heading-9" title="https://juejin.cn/post/6844903625769091079#heading-9">BAT 前端经典面试问题：史上最最最详细的手写 Promise 教程</a></li>
+</ul>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">async1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'async1 start'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">await</span> <span class="token function">async2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'async1 end'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 相当于</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">async1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'async1 start'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token function">async2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'async1 end'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="15-深浅拷贝"><a class="markdownIt-Anchor" href="#15-深浅拷贝">#</a> 1.5 深浅拷贝</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Faxuebin%2Farticles%2Fissues%2F20" title="https://github.com/axuebin/articles/issues/20">JavaScript 基础心法 —— 深浅拷贝</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903692756336653" title="https://juejin.cn/post/6844903692756336653">深拷贝的终极探索（90% 的人都不知道）</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fmqyqingfeng%2FBlog%2Fissues%2F32" title="https://github.com/mqyqingfeng/Blog/issues/32">JavaScript 专题之深浅拷贝</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fwengjq%2FBlog%2Fissues%2F3" title="https://github.com/wengjq/Blog/issues/3">javaScript 中浅拷贝和深拷贝的实现</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fjerryzou.com%2Fposts%2Fdive-into-deep-clone-in-javascript%2F" title="https://jerryzou.com/posts/dive-into-deep-clone-in-javascript/">深入剖析 JavaScript 的深复制</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000015042902" title="https://segmentfault.com/a/1190000015042902">「JavaScript」带你彻底搞清楚深拷贝、浅拷贝和循环引用</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fyygmind%2Fblog%2Fissues%2F29" title="https://github.com/yygmind/blog/issues/29">面试题之如何实现一个深拷贝</a></li>
+</ul>
+<h3 id="16-事件机制event-loop"><a class="markdownIt-Anchor" href="#16-事件机制event-loop">#</a> 1.6 事件机制 / Event Loop</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fjakearchibald.com%2F2015%2Ftasks-microtasks-queues-and-schedules%2F" title="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/">Tasks, microtasks, queues and schedules</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fblog.sessionstack.com%2Fhow-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with-2f077c4438b5" title="https://blog.sessionstack.com/how-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with-2f077c4438b5">How JavaScript works</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Faooy%2Fblog%2Fissues%2F5" title="https://github.com/aooy/blog/issues/5">从 event loop 规范探究 javaScript 异步及浏览器更新渲染时机</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903512845860872" title="https://juejin.cn/post/6844903512845860872">这一次，彻底弄懂 JavaScript 执行机制</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903955286196237" title="https://juejin.cn/post/6844903955286196237">【THE LAST TIME】彻底吃透 JavaScript 执行机制</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903764202094606" title="https://juejin.cn/post/6844903764202094606">一次弄懂 Event Loop（彻底解决此类面试问题）</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F54882306" title="https://zhuanlan.zhihu.com/p/54882306">浏览器与 Node 的事件循环 (Event Loop) 有何区别？</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F34229323" title="https://zhuanlan.zhihu.com/p/34229323">深入理解 JavaScript Event Loop</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fnodejs.org%2Fen%2Fdocs%2Fguides%2Fevent-loop-timers-and-nexttick%2F" title="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/">The Node.js Event Loop, Timers, and process.nextTick()</a></li>
+</ul>
+<p>这个知识点真的是重在理解，一定要理解彻底</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> macroTask <span class="token keyword">of</span> macroTaskQueue<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token function">handleMacroTask</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> microTask <span class="token keyword">of</span> microTaskQueue<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">handleMicroTask</span><span class="token punctuation">(</span>microTask<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="17-函数式编程"><a class="markdownIt-Anchor" href="#17-函数式编程">#</a> 1.7 函数式编程</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fllh911001.gitbooks.io%2Fmostly-adequate-guide-chinese%2Fcontent%2F" title="https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/">函数式编程指北</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fmqyqingfeng%2FBlog%2Fissues%2F42" title="https://github.com/mqyqingfeng/Blog/issues/42">JavaScript 专题之函数柯里化</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Flevelup.gitconnected.com%2Funderstanding-functional-programming-in-javascript-a-complete-guide-e85ed13b42c8" title="https://levelup.gitconnected.com/understanding-functional-programming-in-javascript-a-complete-guide-e85ed13b42c8">Understanding Functional Programming in Javascript</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmedium.com%2Fjavascript-scene%2Fmaster-the-javascript-interview-what-is-functional-programming-7f218c68b3a0" title="https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0">What is Functional Programming?</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903936378273799" title="https://juejin.cn/post/6844903936378273799">简明 JavaScript 函数式编程 —— 入门篇</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fdev.to%2Fallanmacgregor%2Fyou-should-learn-functional-programming-in-2018-4nff" title="https://dev.to/allanmacgregor/you-should-learn-functional-programming-in-2018-4nff">You Should Learn Functional Programming</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000009864459" title="https://segmentfault.com/a/1190000009864459">JavaScript 函数式编程到底是个啥</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fecmadao%2FCoding-Guide%2Fblob%2Fmaster%2FNotes%2FJavaScript%2FJavaScript%25E5%2587%25BD%25E6%2595%25B0%25E5%25BC%258F%25E7%25BC%2596%25E7%25A8%258B.md" title="https://github.com/ecmadao/Coding-Guide/blob/master/Notes/JavaScript/JavaScript%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B.md">JavaScript - 函数式编程</a></li>
+</ul>
+<h3 id="18-service-worker-pwa"><a class="markdownIt-Anchor" href="#18-service-worker-pwa">#</a> 1.8 Service Worker / PWA</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fdevelopers.google.com%2Fweb%2Ffundamentals%2Fprimers%2Fservice-workers" title="https://developers.google.com/web/fundamentals/primers/service-workers">Service Worker：简介</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fqq449245884%2Fxiaozhi%2Fissues%2F8" title="https://github.com/qq449245884/xiaozhi/issues/8">JavaScript 是如何工作的：Service Worker 的生命周期及使用场景</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.zhangxinxu.com%2Fwordpress%2F2017%2F07%2Fservice-worker-cachestorage-offline-develop%2F" title="https://www.zhangxinxu.com/wordpress/2017/07/service-worker-cachestorage-offline-develop/">借助 Service Worker 和 cacheStorage 缓存及离线开发</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Flavas.baidu.com%2Fpwa%2FREADME" title="https://lavas.baidu.com/pwa/README">PWA Lavas 文档</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fpwa.alienzhou.com%2F" title="https://pwa.alienzhou.com/">PWA 学习手册</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904052166230030#heading-24" title="https://juejin.cn/post/6844904052166230030#heading-24">面试官：请你实现一个 PWA</a></li>
+</ul>
+<h3 id="19-web-worker"><a class="markdownIt-Anchor" href="#19-web-worker">#</a> 1.9 Web Worker</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903496550989837" title="https://juejin.cn/post/6844903496550989837">浅谈 HTML5 Web Worker</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F25184390" title="https://zhuanlan.zhihu.com/p/25184390">JavaScript 中的多线程 – Web Worker</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903736238669837" title="https://juejin.cn/post/6844903736238669837">JavaScript 性能利器 —— Web Worker</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmedium.com%2Fyoung-coder%2Fa-simple-introduction-to-web-workers-in-javascript-b3504f9d9d1c" title="https://medium.com/young-coder/a-simple-introduction-to-web-workers-in-javascript-b3504f9d9d1c">A Simple Introduction to Web Workers in JavaScript</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fauth0.com%2Fblog%2Fspeedy-introduction-to-web-workers%2F" title="https://auth0.com/blog/speedy-introduction-to-web-workers/">Speedy Introduction to Web Workers</a></li>
+</ul>
+<h3 id="110-常用方法"><a class="markdownIt-Anchor" href="#110-常用方法">#</a> 1.10 常用方法</h3>
+<p>太多了… 总的来说就是 API 一定要熟悉…</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903775329583112" title="https://juejin.cn/post/6844903775329583112">近一万字的 ES6 语法知识点补充</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903679976275976" title="https://juejin.cn/post/6844903679976275976">ES6、ES7、ES8 特性一锅炖 (ES6、ES7、ES8 学习指南)</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903608467587085" title="https://juejin.cn/post/6844903608467587085">解锁多种 JavaScript 数组去重姿势</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.freecodecamp.org%2Fnews%2Fheres-how-you-can-make-better-use-of-javascript-arrays-3efd6395af3c%2F" title="https://www.freecodecamp.org/news/heres-how-you-can-make-better-use-of-javascript-arrays-3efd6395af3c/">Here’s how you can make better use of JavaScript arrays</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903856489365518" title="https://juejin.cn/post/6844903856489365518">一个合格的中级前端工程师需要掌握的 28 个 JavaScript 技巧</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903959283367950" title="https://juejin.cn/post/6844903959283367950">1.5 万字概括 ES6 全部特性 (已更新 ES2020)</a></li>
+</ul>
+<h2 id="2-css-基础"><a class="markdownIt-Anchor" href="#2-css-基础">#</a> 2. CSS 基础</h2>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d52c8bdaf1cc4ddbad79d941f4e8fdec~tplv-k3u1fbpfcp-watermark.awebp" alt=""></p>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FWeb%2FCSS%2Fposition" title="https://developer.mozilla.org/en-US/docs/Web/CSS/position">position - CSS: Cascading Style Sheets | MDN</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fcss-tricks.com%2Falmanac%2Fproperties%2Fp%2Fposition%2F" title="https://css-tricks.com/almanac/properties/p/position/">position | CSS Tricks</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.zhangxinxu.com%2Fwordpress%2F2018%2F12%2Fcss-position-sticky%2F" title="https://www.zhangxinxu.com/wordpress/2018/12/css-position-sticky/">杀了个回马枪，还是说说 position:sticky 吧</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F25303493" title="https://zhuanlan.zhihu.com/p/25303493">30 分钟学会 Flex 布局</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.zhangxinxu.com%2Fwordpress%2F2009%2F11%2Fcss%25E8%25A1%258C%25E9%25AB%2598line-height%25E7%259A%2584%25E4%25B8%2580%25E4%25BA%259B%25E6%25B7%25B1%25E5%2585%25A5%25E7%2590%2586%25E8%25A7%25A3%25E5%258F%258A%25E5%25BA%2594%25E7%2594%25A8%2F" title="https://www.zhangxinxu.com/wordpress/2009/11/css%E8%A1%8C%E9%AB%98line-height%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%8F%8A%E5%BA%94%E7%94%A8/">css 行高 line-height 的一些深入理解及应用</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fcss-tricks.com%2Fsnippets%2Fcss%2Fa-guide-to-flexbox%2F" title="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.zhangxinxu.com%2Fwordpress%2F2018%2F10%2Fdisplay-flex-css3-css%2F" title="https://www.zhangxinxu.com/wordpress/2018/10/display-flex-css3-css/">写给自己看的 display: flex 布局教程</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.cnblogs.com%2Flyzg%2Fp%2F4877277.html" title="https://www.cnblogs.com/lyzg/p/4877277.html">从网易与淘宝的 font-size 思考前端设计稿与工作流</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fcloud.tencent.com%2Fdeveloper%2Farticle%2F1352187" title="https://cloud.tencent.com/developer/article/1352187">细说移动端 经典的 REM 布局 与 新秀 VW 布局</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903877947424782" title="https://juejin.cn/post/6844903877947424782">移动端 1px 解决方案</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fjinlong.github.io%2F2015%2F05%2F24%2Fcss-retina-hairlines%2F" title="https://jinlong.github.io/2015/05/24/css-retina-hairlines/">Retina 屏的移动设备如何实现真正 1px 的线？</a></li>
+<li><a href="https://link.juejin.cn?target=http%3A%2F%2Fdieulot.net%2Fcss-retina-hairline" title="http://dieulot.net/css-retina-hairline">CSS retina hairline, the easy way.</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903569087266823" title="https://juejin.cn/post/6844903569087266823">浏览器的回流与重绘 (Reflow &amp; Repaint)</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.zhangxinxu.com%2Fwordpress%2F2010%2F01%2F%25E5%259B%259E%25E6%25B5%2581%25E4%25B8%258E%25E9%2587%258D%25E7%25BB%2598%25EF%25BC%259Acss%25E6%2580%25A7%25E8%2583%25BD%25E8%25AE%25A9javascript%25E5%258F%2598%25E6%2585%25A2%25EF%25BC%259F%2F" title="https://www.zhangxinxu.com/wordpress/2010/01/%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E7%BB%98%EF%BC%9Acss%E6%80%A7%E8%83%BD%E8%AE%A9javascript%E5%8F%98%E6%85%A2%EF%BC%9F/">回流与重绘：CSS 性能让 JavaScript 变慢？</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903679242305544" title="https://juejin.cn/post/6844903679242305544">CSS 实现水平垂直居中的 1010 种方式（史上最全）</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903574929932301" title="https://juejin.cn/post/6844903574929932301">干货！各种常见布局实现</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903491891118087" title="https://juejin.cn/post/6844903491891118087">CSS 常见布局方式</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903667175260174" title="https://juejin.cn/post/6844903667175260174">彻底搞懂 CSS 层叠上下文、层叠等级、层叠顺序、z-index</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.zhangxinxu.com%2Fwordpress%2F2016%2F01%2Funderstand-css-stacking-context-order-z-index%2F" title="https://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/">深入理解 CSS 中的层叠上下文和层叠顺序</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fcss-tricks.com%2Fsass-vs-less%2F" title="https://css-tricks.com/sass-vs-less/">Sass vs. Less</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Faotu.io%2Fnotes%2F2019%2F10%2F29%2Fcss-preprocessor%2Findex.html" title="https://aotu.io/notes/2019/10/29/css-preprocessor/index.html">2019 年，你是否可以抛弃 CSS 预处理器？</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fcssmagic%2Fblog%2Fissues%2F73" title="https://github.com/cssmagic/blog/issues/73">浅谈 CSS 预处理器（一）：为什么要使用预处理器？</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.zhihu.com%2Fquestion%2F264372456" title="https://www.zhihu.com/question/264372456">浏览器将 rem 转成 px 时有精度误差怎么办？</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fcss-tricks.com%2Ffighting-the-space-between-inline-block-elements%2F" title="https://css-tricks.com/fighting-the-space-between-inline-block-elements/">Fighting the Space Between Inline Block Elements</a></li>
+</ul>
+<h2 id="3-框架vue-为主"><a class="markdownIt-Anchor" href="#3-框架vue-为主">#</a> 3. 框架 (Vue 为主)</h2>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/12343ec292ca49588fee20ec003d4966%7Etplv-k3u1fbpfcp-watermark.awebp" alt=""></p>
+<h3 id="31-mvvm"><a class="markdownIt-Anchor" href="#31-mvvm">#</a> 3.1 MVVM</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903619808985095" title="https://juejin.cn/post/6844903619808985095">50 行代码的 MVVM，感受闭包的艺术</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903586103558158" title="https://juejin.cn/post/6844903586103558158">不好意思！耽误你的十分钟，让 MVVM 原理还给你</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904099704471559" title="https://juejin.cn/post/6844904099704471559">基于 Vue 实现一个简易 MVVM</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2FDMQ%2Fmvvm" title="https://github.com/DMQ/mvvm">剖析 Vue 实现原理 - 如何实现双向绑定 mvvm</a></li>
+</ul>
+<h3 id="32-生命周期"><a class="markdownIt-Anchor" href="#32-生命周期">#</a> 3.2 生命周期</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fustbhuangyi.github.io%2Fvue-analysis%2Fv2%2Fcomponents%2Flifecycle.html" title="https://ustbhuangyi.github.io/vue-analysis/v2/components/lifecycle.html">Vue 生命周期源码剖析</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903843197616136" title="https://juejin.cn/post/6844903843197616136">你真的理解 $nextTick 么</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F20312691" title="https://zhuanlan.zhihu.com/p/20312691">React 源码剖析系列 － 生命周期的管理艺术</a></li>
+</ul>
+<h3 id="33-数据绑定"><a class="markdownIt-Anchor" href="#33-数据绑定">#</a> 3.3 数据绑定</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fustbhuangyi.github.io%2Fvue-analysis%2Fv2%2Freactive%2F" title="https://ustbhuangyi.github.io/vue-analysis/v2/reactive/">Vue 深入响应式原理</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903601416978439" title="https://juejin.cn/post/6844903601416978439">面试官：实现双向绑定 Proxy 比 defineproperty 优劣如何？</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FO8iL4o8oPpqTm4URRveOIA" title="https://mp.weixin.qq.com/s/O8iL4o8oPpqTm4URRveOIA">为什么 Vue3.0 不再使用 defineProperty 实现数据监听？</a></li>
+</ul>
+<h3 id="34-状态管理"><a class="markdownIt-Anchor" href="#34-状态管理">#</a> 3.4 状态管理</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F53599723" title="https://zhuanlan.zhihu.com/p/53599723">Vuex、Flux、Redux、Redux-saga、Dva、MobX</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904036013965325" title="https://juejin.cn/post/6844904036013965325">10 行代码看尽 redux 实现</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F25585910" title="https://zhuanlan.zhihu.com/p/25585910">Mobx 思想的实现原理，及与 Redux 对比</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903660804112391" title="https://juejin.cn/post/6844903660804112391">使用原生 JavaScript 构建状态管理系统</a></li>
+</ul>
+<h3 id="35-组件通信"><a class="markdownIt-Anchor" href="#35-组件通信">#</a> 3.5 组件通信</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903887162310669" title="https://juejin.cn/post/6844903887162310669">vue 中 8 种组件通信方式，值得收藏！</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903845642911752" title="https://juejin.cn/post/6844903845642911752">Vue 组件间通信六种方式（完整版）</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fanswershuto%2FlearnVue%2Fblob%2Fmaster%2Fdocs%2FVue%25E7%25BB%2584%25E4%25BB%25B6%25E9%2597%25B4%25E9%2580%259A%25E4%25BF%25A1.MarkDown" title="https://github.com/answershuto/learnVue/blob/master/docs/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1.MarkDown">Vue 组件间通信</a></li>
+</ul>
+<h3 id="36-virtual-dom"><a class="markdownIt-Anchor" href="#36-virtual-dom">#</a> 3.6 Virtual DOM</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fustbhuangyi.github.io%2Fvue-analysis%2Fv2%2Fdata-driven%2Fvirtual-dom.html" title="https://ustbhuangyi.github.io/vue-analysis/v2/data-driven/virtual-dom.html">Vue Virtual DOM 源码剖析</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903902429577229" title="https://juejin.cn/post/6844903902429577229">面试官：你对虚拟 DOM 原理的理解？</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903806132568072" title="https://juejin.cn/post/6844903806132568072">让虚拟 DOM 和 DOM-diff 不再成为你的绊脚石</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F35876032" title="https://zhuanlan.zhihu.com/p/35876032">探索 Virtual DOM 的前世今生</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FoAlVmZ4Hbt2VhOwFEkNEhw" title="https://mp.weixin.qq.com/s/oAlVmZ4Hbt2VhOwFEkNEhw">虚拟 DOM 到底是什么？(长文建议收藏)</a></li>
+</ul>
+<h3 id="37-diff"><a class="markdownIt-Anchor" href="#37-diff">#</a> 3.7 Diff</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903607913938951" title="https://juejin.cn/post/6844903607913938951">详解 vue 的 diff 算法</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903901590716429" title="https://juejin.cn/post/6844903901590716429">Deep In React 之详谈 React 16 Diff 策略 (二)</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F20346379" title="https://zhuanlan.zhihu.com/p/20346379">React 源码剖析系列 － 不可思议的 react diff</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903592520843277" title="https://juejin.cn/post/6844903592520843277">浅入浅出图解 Dom Diff</a></li>
+</ul>
+<h3 id="38-vue-计算属性-vs-侦听属性"><a class="markdownIt-Anchor" href="#38-vue-计算属性-vs-侦听属性">#</a> 3.8 Vue 计算属性 VS 侦听属性</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fustbhuangyi.github.io%2Fvue-analysis%2Fv2%2Freactive%2Fcomputed-watcher.html" title="https://ustbhuangyi.github.io/vue-analysis/v2/reactive/computed-watcher.html">Vue 计算属性 VS 侦听属性源码剖析</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903667884097543" title="https://juejin.cn/post/6844903667884097543">Vue.js 的 computed 和 watch 是如何工作的？</a></li>
+</ul>
+<h3 id="39-react-hooks"><a class="markdownIt-Anchor" href="#39-react-hooks">#</a> 3.9 React Hooks</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fbrickspert%2Fblog%2Fissues%2F26" title="https://github.com/brickspert/blog/issues/26">React Hooks 原理</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmedium.com%2F%40ryardley%2Freact-hooks-not-magic-just-arrays-cd4f1857236e" title="https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e">React hooks: not magic, just arrays</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.netlify.com%2Fblog%2F2019%2F03%2F11%2Fdeep-dive-how-do-react-hooks-really-work%2F" title="https://www.netlify.com/blog/2019/03/11/deep-dive-how-do-react-hooks-really-work/">Deep dive: How do React hooks really work?</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903815762673671" title="https://juejin.cn/post/6844903815762673671">【React 深入】从 Mixin 到 HOC 再到 Hook</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903985338400782" title="https://juejin.cn/post/6844903985338400782">React Hooks 详解 【近 1W 字】+ 项目实战</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000016950339" title="https://segmentfault.com/a/1190000016950339">30 分钟精通 React 今年最劲爆的新特性 ——React Hooks</a></li>
+<li><a href="https://link.juejin.cn?target=http%3A%2F%2Fhuayifeng.top%3A2368%2Freact-hooks%2F" title="http://huayifeng.top:2368/react-hooks/">React Hooks 详解（一）</a></li>
+</ul>
+<h3 id="310-react-hocvue-mixin"><a class="markdownIt-Anchor" href="#310-react-hocvue-mixin">#</a> 3.10 React Hoc/Vue mixin</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=http%3A%2F%2Fhcysun.me%2F2018%2F01%2F05%2F%25E6%258E%25A2%25E7%25B4%25A2Vue%25E9%25AB%2598%25E9%2598%25B6%25E7%25BB%2584%25E4%25BB%25B6%2F" title="http://hcysun.me/2018/01/05/%E6%8E%A2%E7%B4%A2Vue%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6/">探索 Vue 高阶组件</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903477798256647" title="https://juejin.cn/post/6844903477798256647">React 高阶组件 (HOC) 入门指南</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F24776678" title="https://zhuanlan.zhihu.com/p/24776678">深入理解 React 高阶组件</a></li>
+</ul>
+<h3 id="311-vue-和-react-有什么不同"><a class="markdownIt-Anchor" href="#311-vue-和-react-有什么不同">#</a> 3.11 Vue 和 React 有什么不同</h3>
+<p>从思想、生态、语法、数据、通信、diff 等角度自己总结一下吧。</p>
+<h2 id="4-工程化"><a class="markdownIt-Anchor" href="#4-工程化">#</a> 4. 工程化</h2>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/df3cf7bce9c4475db94aa28556e73886%7Etplv-k3u1fbpfcp-watermark.awebp" alt=""></p>
+<h3 id="41-webpack"><a class="markdownIt-Anchor" href="#41-webpack">#</a> 4.1 Webpack</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Faxuebin%2Farticles%2Fissues%2F38" title="https://github.com/axuebin/articles/issues/38">前端工程师都得掌握的 webpack Loader</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FNO5jZfoHZbjOwR8qiWnXmw" title="https://mp.weixin.qq.com/s/NO5jZfoHZbjOwR8qiWnXmw">webpack loader 从上手到理解系列：vue-loader</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FalIKsKkGRU_yyjpeV8i0og" title="https://mp.weixin.qq.com/s/alIKsKkGRU_yyjpeV8i0og">webpack loader 从上手到理解系列：style-loader</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%3F__biz%3DMzI0MTUxOTE5NQ%3D%3D%26mid%3D2247484030%26idx%3D1%26sn%3Dd630d4b3995bbfd50f99e781074acfeb" title="https://mp.weixin.qq.com/s?__biz=MzI0MTUxOTE5NQ==&amp;mid=2247484030&amp;idx=1&amp;sn=d630d4b3995bbfd50f99e781074acfeb">一文掌握 Webpack 编译流程</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903617971879949" title="https://juejin.cn/post/6844903617971879949">手把手教你撸一个简易的 webpack</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903588607557639" title="https://juejin.cn/post/6844903588607557639">带你走进 webpack 世界，成为 webpack 头号玩家。</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903853905674248" title="https://juejin.cn/post/6844903853905674248">关于 webpack4 的 14 个知识点，童叟无欺</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903555673882632" title="https://juejin.cn/post/6844903555673882632">手把手教你撸一个 Webpack Loader</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fdiverse.space%2F2018%2F05%2Fbetter-tree-shaking-with-scope-analysis" title="https://diverse.space/2018/05/better-tree-shaking-with-scope-analysis">webpack 如何通过作用域分析消除无用代码</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903693070909447" title="https://juejin.cn/post/6844903693070909447">【webpack 进阶】你真的掌握了 loader 么？- loader 十问</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.timsrc.com%2Farticle%2F2%2Fwebpack-book" title="https://www.timsrc.com/article/2/webpack-book">Webpack 小书</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2F879479119%2F879479119.github.io%2Fissues%2F5" title="https://github.com/879479119/879479119.github.io/issues/5">聊一聊 webpack-dev-server 和其中 socket，HMR 的实现</a></li>
+<li><a href="https://link.juejin.cn?target=http%3A%2F%2Flouiszhai.github.io%2F2019%2F01%2F04%2Fwebpack4" title="http://louiszhai.github.io/2019/01/04/webpack4">使用 webpack4 提升 180% 编译速度</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F26710831" title="https://zhuanlan.zhihu.com/p/26710831">Webpack 大法之 Code Splitting</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2F2L9Y0pdwTTmd8U2kXHFlPA" title="https://mp.weixin.qq.com/s/2L9Y0pdwTTmd8U2kXHFlPA">轻松理解 webpack 热更新原理</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904008432222215" title="https://juejin.cn/post/6844904008432222215">轻松理解 webpack 热更新原理</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fchampyin.com%2F2020%2F01%2F12%2F%25E6%258F%25AD%25E7%25A7%2598webpack-plugin%2F" title="https://champyin.com/2020/01/12/%E6%8F%AD%E7%A7%98webpack-plugin/">揭秘 webpack plugin</a></li>
+</ul>
+<h3 id="42-babel"><a class="markdownIt-Anchor" href="#42-babel">#</a> 4.2 Babel</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FC-WmM5tjfc3r4sB52C4R0Q" title="https://mp.weixin.qq.com/s/C-WmM5tjfc3r4sB52C4R0Q">一篇文章了解前端开发必须懂的 Babel</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904008679686152" title="https://juejin.cn/post/6844904008679686152">不容错过的 Babel7 知识</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.zoo.team%2Farticle%2Fbabel" title="https://www.zoo.team/article/babel">前端工程师需要了解的 Babel 知识</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903956905197576" title="https://juejin.cn/post/6844903956905197576">深入浅出 Babel 上篇：架构和原理 + 实战</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903961820921869" title="https://juejin.cn/post/6844903961820921869">深入浅出 Babel 下篇：既生 Plugin 何生 Macros</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904079118827533" title="https://juejin.cn/post/6844904079118827533">前端工程师的自我修养 - 关于 Babel 那些事儿</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000017241258" title="https://segmentfault.com/a/1190000017241258">前端与编译原理 —— 用 JS 写一个 JS 解释器</a></li>
+</ul>
+<h3 id="43-模板引擎"><a class="markdownIt-Anchor" href="#43-模板引擎">#</a> 4.3 模板引擎</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.liaoxuefeng.com%2Farticle%2F1006272230979008" title="https://www.liaoxuefeng.com/article/1006272230979008">编写一个简单的 JavaScript 模板引擎</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.cnblogs.com%2Fhustskyking%2Fp%2Fprinciple-of-javascript-template.html" title="https://www.cnblogs.com/hustskyking/p/principle-of-javascript-template.html">JavaScript 模板引擎原理，几行代码的事儿</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fberwin%2FBlog%2Fissues%2F18" title="https://github.com/berwin/Blog/issues/18">Vue 模板编译原理</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fkrasimirtsonev.com%2Fblog%2Farticle%2FJavascript-template-engine-in-just-20-line" title="https://krasimirtsonev.com/blog/article/Javascript-template-engine-in-just-20-line">JavaScript template engine in just 20 lines</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmedium.com%2Fwdstack%2Funderstanding-javascript-micro-templating-f37a37b3b40e" title="https://medium.com/wdstack/understanding-javascript-micro-templating-f37a37b3b40e">Understanding JavaScript Micro-Templating</a></li>
+</ul>
+<h3 id="44-前端发布"><a class="markdownIt-Anchor" href="#44-前端发布">#</a> 4.4 前端发布</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.zhihu.com%2Fquestion%2F20790576" title="https://www.zhihu.com/question/20790576">大公司里怎样开发和部署前端代码？</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904086823780366" title="https://juejin.cn/post/6844904086823780366">前端高级进阶：前端部署的发展历程</a></li>
+</ul>
+<h3 id="45-weex"><a class="markdownIt-Anchor" href="#45-weex">#</a> 4.5 weex</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903618290663438" title="https://juejin.cn/post/6844903618290663438">深入了解 Weex</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fweexteam%2Farticle%2Fissues%2F32" title="https://github.com/weexteam/article/issues/32">Weex 原理概述</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fhalfrost.com%2Fweex_ios%2F" title="https://halfrost.com/weex_ios/">Weex 是如何在 iOS 客户端上跑起来的</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000010415641" title="https://segmentfault.com/a/1190000010415641">详解 Weex 页面的渲染过程</a></li>
+<li><a href="https://link.juejin.cn?target=http%3A%2F%2Fcoolnuanfeng.github.io%2Fjsbridge" title="http://coolnuanfeng.github.io/jsbridge">JSBridge 介绍及实现原理</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FI812Cr1_tLGrvIRb9jsg-A" title="https://mp.weixin.qq.com/s/I812Cr1_tLGrvIRb9jsg-A">移动混合开发中的 JSBridge</a></li>
+</ul>
+<h3 id="46-前端监控"><a class="markdownIt-Anchor" href="#46-前端监控">#</a> 4.6 前端监控</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903662020460552" title="https://juejin.cn/post/6844903662020460552">5 分钟撸一个前端性能监控工具</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F32262716" title="https://zhuanlan.zhihu.com/p/32262716">把前端监控做到极致</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903629573324807" title="https://juejin.cn/post/6844903629573324807">GMTC 大前端时代前端监控的最佳实践</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903650603565063" title="https://juejin.cn/post/6844903650603565063">前端监控和前端埋点方案设计</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FW0i-Iu6nqkWttsGZ-RmOqw" title="https://mp.weixin.qq.com/s/W0i-Iu6nqkWttsGZ-RmOqw">腾讯 CDC 团队：前端异常监控解决方案</a></li>
+</ul>
+<h2 id="5-性能优化"><a class="markdownIt-Anchor" href="#5-性能优化">#</a> 5. 性能优化</h2>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/58082bb8d51e463291a98012efd26c55~tplv-k3u1fbpfcp-watermark.awebp" alt=""></p>
+<h3 id="51-打包阶段"><a class="markdownIt-Anchor" href="#51-打包阶段">#</a> 5.1 打包阶段</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903924806189070" title="https://juejin.cn/post/6844903924806189070">Webpack 优化 —— 将你的构建效率提速翻倍</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000018493260" title="https://segmentfault.com/a/1190000018493260">性能优化篇 —Webpack 构建速度优化</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fhuangxsu.com%2F2018%2F08%2F12%2Fwebpack-optimization%2F" title="https://huangxsu.com/2018/08/12/webpack-optimization/">webpack 构建速度与结果优化</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F42465502" title="https://zhuanlan.zhihu.com/p/42465502">让你的 Webpack 起飞 — 考拉会员后台 Webpack 优化实战</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F39727247" title="https://zhuanlan.zhihu.com/p/39727247">webpack dllPlugin 打包体积和速度优化</a></li>
+<li><a href="https://link.juejin.cn?target=http%3A%2F%2Flouiszhai.github.io%2F2019%2F01%2F04%2Fwebpack4%2F" title="http://louiszhai.github.io/2019/01/04/webpack4/">使用 webpack4 提升 180% 编译速度</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.jeffjade.com%2F2017%2F08%2F12%2F125-webpack-package-optimization-for-speed%2F" title="https://www.jeffjade.com/2017/08/12/125-webpack-package-optimization-for-speed/">Webpack 打包优化之速度篇</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fjkfhto.github.io%2F2019-10-17%2Fwebpack%2F%25E5%25A4%259A%25E8%25BF%259B%25E7%25A8%258B%25E5%25B9%25B6%25E8%25A1%258C%25E5%258E%258B%25E7%25BC%25A9%25E4%25BB%25A3%25E7%25A0%2581%2F" title="https://jkfhto.github.io/2019-10-17/webpack/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%B9%B6%E8%A1%8C%E5%8E%8B%E7%BC%A9%E4%BB%A3%E7%A0%81/">多进程并行压缩代码</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903544756109319" title="https://juejin.cn/post/6844903544756109319">Tree-Shaking 性能优化实践 - 原理篇</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903669100445710" title="https://juejin.cn/post/6844903669100445710">体积减少 80%！释放 webpack tree-shaking 的真正潜力</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F32831172" title="https://zhuanlan.zhihu.com/p/32831172">你的 Tree-Shaking 并没什么卵用</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fdiverse.space%2F2018%2F05%2Fbetter-tree-shaking-with-scope-analysis" title="https://diverse.space/2018/05/better-tree-shaking-with-scope-analysis">webpack 如何通过作用域分析消除无用代码</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fimweb.io%2Ftopic%2F5a40551ea192c3b460fce335" title="https://imweb.io/topic/5a40551ea192c3b460fce335">加速 Webpack - 缩小文件搜索范围</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmedium.com%2Fwebpack%2Fbrief-introduction-to-scope-hoisting-in-webpack-8435084c171f" title="https://medium.com/webpack/brief-introduction-to-scope-hoisting-in-webpack-8435084c171f">Brief introduction to scope hoisting in Webpack</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fimweb.io%2Ftopic%2F5a43064fa192c3b460fce360" title="https://imweb.io/topic/5a43064fa192c3b460fce360">通过 Scope Hoisting 优化 Webpack 输出</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fssshooter.com%2F2019-02-20-webpack-scope-hoisting%2F" title="https://ssshooter.com/2019-02-20-webpack-scope-hoisting/">webpack 的 scope hoisting 是什么？</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000013000463" title="https://segmentfault.com/a/1190000013000463">webpack 优化之 code splitting</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903922117820423" title="https://juejin.cn/post/6844903922117820423">webpack 4: Code Splitting 和 chunks 切分优化</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F26710831" title="https://zhuanlan.zhihu.com/p/26710831">Webpack 大法之 Code Splitting</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmedium.com%2Fwebpack%2Fbetter-tree-shaking-with-deep-scope-analysis-a0b788c0ce77" title="https://medium.com/webpack/better-tree-shaking-with-deep-scope-analysis-a0b788c0ce77">Better tree shaking with deep scope analysis</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.smashingmagazine.com%2F2020%2F01%2Ffront-end-performance-checklist-2020-pdf-pages%2F%23top" title="https://www.smashingmagazine.com/2020/01/front-end-performance-checklist-2020-pdf-pages/#top">Front-End Performance Checklist 2020</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903765682683911" title="https://juejin.cn/post/6844903765682683911">（译）2019 年前端性能优化清单 — 上篇</a></li>
+</ul>
+<h3 id="52-其它优化"><a class="markdownIt-Anchor" href="#52-其它优化">#</a> 5.2 其它优化</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903655330562062" title="https://juejin.cn/post/6844903655330562062">网站性能优化实战 —— 从 12.67s 到 1.06s 的故事</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903545016156174" title="https://juejin.cn/post/6844903545016156174">浏览器页面资源加载过程与优化</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F26022258" title="https://zhuanlan.zhihu.com/p/26022258">聊聊前端开发中的长列表</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F34585166" title="https://zhuanlan.zhihu.com/p/34585166">再谈前端虚拟列表的实现</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fdwqs%2Fblog%2Fissues%2F70" title="https://github.com/dwqs/blog/issues/70">浅说虚拟列表的实现原理</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.zhangxinxu.com%2Fwordpress%2F2019%2F09%2Fnative-img-loading-lazy%2F" title="https://www.zhangxinxu.com/wordpress/2019/09/native-img-loading-lazy/">浏览器 IMG 图片原生懒加载 loading=”lazy” 实践指南</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903562070196237" title="https://juejin.cn/post/6844903562070196237">用 preload 预加载页面资源</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%3F__biz%3DMzAwNTAzMjcxNg%3D%3D%26mid%3D2651425811%26idx%3D1%26sn%3Df839230a11fa269021c92b510dec47bc%26chksm%3D80dff270b7a87b66abdf73cf9df18efa3e9594c68ab4ca46ba28eb6d3e832969afad031b48fa%26mpshare%3D1%26scene%3D1%26srcid%3D%26sharer_sharetime%3D1569234865992%26sharer_shareid%3D14157f200c2bbcdb4b651ff5559c60ab%26rd2werd%3D1%23wechat_redirect" title="https://mp.weixin.qq.com/s?__biz=MzAwNTAzMjcxNg==&amp;mid=2651425811&amp;idx=1&amp;sn=f839230a11fa269021c92b510dec47bc&amp;chksm=80dff270b7a87b66abdf73cf9df18efa3e9594c68ab4ca46ba28eb6d3e832969afad031b48fa&amp;mpshare=1&amp;scene=1&amp;srcid=&amp;sharer_sharetime=1569234865992&amp;sharer_shareid=14157f200c2bbcdb4b651ff5559c60ab&amp;rd2werd=1#wechat_redirect">App 内网页启动加速实践：静态资源预加载视角</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FV62VYS8KFNKxJxfzMYefrw" title="https://mp.weixin.qq.com/s/V62VYS8KFNKxJxfzMYefrw">腾讯 HTTPS 性能优化实践</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmedium.com%2Freloading%2Fpreload-prefetch-and-priorities-in-chrome-776165961bbf" title="https://medium.com/reloading/preload-prefetch-and-priorities-in-chrome-776165961bbf">Preload, Prefetch And Priorities in Chrome</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fthedaviddias%2FFront-End-Performance-Checklist" title="https://github.com/thedaviddias/Front-End-Performance-Checklist">Front-End Performance Checklist</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fdevelopers.google.com%2Fweb%2Ffundamentals%2Fperformance%2Flazy-loading-guidance%2Fimages-and-video%2F" title="https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/">图片与视频懒加载的详细指南</a></li>
+<li><a href="https://link.juejin.cn?target=http%3A%2F%2Fdeanhume.com%2Flazy-loading-images-using-intersection-observer%2F" title="http://deanhume.com/lazy-loading-images-using-intersection-observer/">使用 Intersection Observer 来懒加载图片</a></li>
+</ul>
+<p>欢迎关注公众号「前端试炼」，回复【面试】获取完整复习导图。公众号平时会分享一些实用或者有意思的东西，发现代码之美。专注深度和最佳实践，希望打造一个高质量的公众号。</p>
+<hr>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/8b163bc4c3f24e0e9aa1eda58cd00827%7Etplv-k3u1fbpfcp-watermark.awebp" alt=""></p>
+<h2 id="6-typescript"><a class="markdownIt-Anchor" href="#6-typescript">#</a> 6. TypeScript</h2>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/d44490ffdf064cf0bd17f5109b6c6844%7Etplv-k3u1fbpfcp-watermark.awebp" alt=""></p>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FOypiN7HOlUBprYUjJs_Rqw" title="https://mp.weixin.qq.com/s/OypiN7HOlUBprYUjJs_Rqw">TypeScript 是什么</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.jianshu.com%2Fp%2Fbda750e2d15e" title="https://www.jianshu.com/p/bda750e2d15e">为什么要在 javascript 中进行静态类型检查</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Faxuebin%2Farticles%2Fissues%2F36" title="https://github.com/axuebin/articles/issues/36">TypeScript Start: 基础类型</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FKfOAu983zg8d0Uc-jhM84w" title="https://mp.weixin.qq.com/s/KfOAu983zg8d0Uc-jhM84w">TypeScript 真香系列 —— 接口篇</a></li>
+<li><a href="https://link.juejin.cn?target=http%3A%2F%2Fwww.alloyteam.com%2F2019%2F07%2F13796%2F" title="http://www.alloyteam.com/2019/07/13796/">TypeScript 中高级应用与最佳实践</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FnvYqDhhZzbNuifxck87aNQ" title="https://mp.weixin.qq.com/s/nvYqDhhZzbNuifxck87aNQ">typescript 高级技巧</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903849166110728" title="https://juejin.cn/post/6844903849166110728">可能是你需要的 React + TypeScript 50 条规范和经验</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903485977133069" title="https://juejin.cn/post/6844903485977133069">从 JavaScript 到 TypeScript</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903641829081095" title="https://juejin.cn/post/6844903641829081095">TypeScript + 大型项目实战</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903841951924232" title="https://juejin.cn/post/6844903841951924232">TypeScript - 一种思维方式</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000009247663" title="https://segmentfault.com/a/1190000009247663">如何编写一个 d.ts 文件</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmy.oschina.net%2Ffenying%2Fblog%2F748805" title="https://my.oschina.net/fenying/blog/748805">TypeScript 的声明文件的使用与编写</a></li>
+<li><a href="https://link.juejin.cn?target=http%3A%2F%2Fimzc.me%2Fdev%2F2016%2F11%2F30%2Fwrite-d-ts-files%2F" title="http://imzc.me/dev/2016/11/30/write-d-ts-files/">TypeScript 进阶：给第三方库编写声明文件</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fjkchao.github.io%2Ftypescript-book-chinese%2Ftypings%2Fgenerices.html" title="https://jkchao.github.io/typescript-book-chinese/typings/generices.html">TypeScript 泛型</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903720967372814" title="https://juejin.cn/post/6844903720967372814">TypeScript 重构 Axios 经验分享</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903511033921543" title="https://juejin.cn/post/6844903511033921543">手把手教写 TypeScript Transformer Plugin</a></li>
+</ul>
+<h2 id="7-网络"><a class="markdownIt-Anchor" href="#7-网络">#</a> 7. 网络</h2>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/eb26dc993bc548d790a76e0ccefdb673~tplv-k3u1fbpfcp-watermark.awebp" alt=""></p>
+<h3 id="71-http"><a class="markdownIt-Anchor" href="#71-http">#</a> 7.1 HTTP</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F25028045" title="https://zhuanlan.zhihu.com/p/25028045">听说『99% 的人都理解错了 HTTP 中 GET 与 POST 的区别』？？</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903844216832007" title="https://juejin.cn/post/6844903844216832007">前端基础篇之 HTTP 协议</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000018129846" title="https://segmentfault.com/a/1190000018129846">都 9102 年了，还问 GET 和 POST 的区别</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FHTTP%2FStatus" title="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status">HTTP 响应代码 | MDN</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fharttle.land%2F2015%2F08%2F15%2Fhttp-status-code.html%23header-11" title="https://harttle.land/2015/08/15/http-status-code.html#header-11">如何理解 HTTP 响应的状态码？</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Faotu.io%2Fnotes%2F2016%2F01%2F28%2F3xx-of-http-status%2Findex.html" title="https://aotu.io/notes/2016/01/28/3xx-of-http-status/index.html">你所知道的 3xx 状态码</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FWvc0lkLpgyEW_u7bbMdvpQ" title="https://mp.weixin.qq.com/s/Wvc0lkLpgyEW_u7bbMdvpQ">关于浏览器缓存你知道多少</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fxiangxingchen%2Fblog%2Fissues%2F9" title="https://github.com/xiangxingchen/blog/issues/9">浏览器缓存</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.byvoid.com%2Fzhs%2Fblog%2Fhttp-keep-alive-header" title="https://www.byvoid.com/zhs/blog/http-keep-alive-header">HTTP 协议头部与 Keep-Alive 模式详解</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Flotabout.me%2F2019%2FThings-about-keepalive%2F" title="https://lotabout.me/2019/Things-about-keepalive/">HTTP keep-alive 二三事</a></li>
+</ul>
+<h3 id="72-httpshttp2"><a class="markdownIt-Anchor" href="#72-httpshttp2">#</a> 7.2 HTTPS/HTTP2</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903830916694030" title="https://juejin.cn/post/6844903830916694030">深入理解 HTTPS 工作原理</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903521272201223" title="https://juejin.cn/post/6844903521272201223">九个问题从入门到熟悉 HTTPS</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903504046211079" title="https://juejin.cn/post/6844903504046211079">谈谈 HTTPS</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903608421449742" title="https://juejin.cn/post/6844903608421449742">看图学 HTTPS</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903599303032845" title="https://juejin.cn/post/6844903599303032845">分分钟让你理解 HTTPS</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000020714686%23articleHeader16" title="https://segmentfault.com/a/1190000020714686#articleHeader16">解密 HTTP/2 与 HTTP/3 的新特性</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F26757514" title="https://zhuanlan.zhihu.com/p/26757514">浅谈 HTTP/2 Server Push</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903589635162120" title="https://juejin.cn/post/6844903589635162120">HTTP2 基本概念学习笔记</a></li>
+</ul>
+<h3 id="73-dns"><a class="markdownIt-Anchor" href="#73-dns">#</a> 7.3 DNS</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=http%3A%2F%2Fwww.sunhao.win%2Farticles%2Fnetwrok-dns.html" title="http://www.sunhao.win/articles/netwrok-dns.html">写给前端工程师的 DNS 基础知识</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.jianshu.com%2Fp%2F95a0c0636d28" title="https://www.jianshu.com/p/95a0c0636d28">前端优化: DNS 预解析提升页面速度</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fimweb.io%2Ftopic%2F55e3ba46771670e207a16bc8" title="https://imweb.io/topic/55e3ba46771670e207a16bc8">DNS 解析</a></li>
+</ul>
+<h3 id="74-tcp"><a class="markdownIt-Anchor" href="#74-tcp">#</a> 7.4 TCP</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fjawil%2Fblog%2Fissues%2F14" title="https://github.com/jawil/blog/issues/14">通俗大白话来理解 TCP 协议的三次握手和四次分手</a></li>
+<li><a href="https://link.juejin.cn?target=http%3A%2F%2Fjm.taobao.org%2F2017%2F06%2F08%2F20170608%2F" title="http://jm.taobao.org/2017/06/08/20170608/">就是要你懂 TCP</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903685563105293" title="https://juejin.cn/post/6844903685563105293">TCP 协议详解</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903472559718407" title="https://juejin.cn/post/6844903472559718407">面试时，你被问到过 TCP/IP 协议吗？</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F53374516" title="https://zhuanlan.zhihu.com/p/53374516">“三次握手，四次挥手” 你真的懂吗？</a></li>
+</ul>
+<h3 id="75-cdn"><a class="markdownIt-Anchor" href="#75-cdn">#</a> 7.5 CDN</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903605888090125" title="https://juejin.cn/post/6844903605888090125">五分钟了解 CDN</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903906296725518" title="https://juejin.cn/post/6844903906296725518">漫话：如何给女朋友解释什么是 CDN？</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903604596244493" title="https://juejin.cn/post/6844903604596244493">关于 cdn、回源等问题一网打尽</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.zhihu.com%2Fquestion%2F36514327%3Frf%3D37353035" title="https://www.zhihu.com/question/36514327?rf=37353035">CDN 是什么？使用 CDN 有什么优势？</a></li>
+</ul>
+<h3 id="76-经典题"><a class="markdownIt-Anchor" href="#76-经典题">#</a> 7.6 经典题</h3>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Ftime.geekbang.org%2Fcolumn%2Farticle%2F117637" title="https://time.geekbang.org/column/article/117637">从输入 URL 到页面展示，这中间发生了什么？</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000006879700" title="https://segmentfault.com/a/1190000006879700">前端经典面试题：从输入 URL 到页面加载发生了什么？</a></li>
+</ul>
+<h2 id="8-设计模式"><a class="markdownIt-Anchor" href="#8-设计模式">#</a> 8. 设计模式</h2>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c04e0bb4902e4b3ab0fc195c4e1b65be~tplv-k3u1fbpfcp-watermark.awebp" alt=""></p>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.cnblogs.com%2Ftugenhua0707%2Fp%2F5198407.html" title="https://www.cnblogs.com/tugenhua0707/p/5198407.html">Javascript 常用的设计模式详解</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903503266054157" title="https://juejin.cn/post/6844903503266054157">JavaScript 设计模式</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903607452581896" title="https://juejin.cn/post/6844903607452581896">JavaScript 中常见设计模式整理</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903474535071752" title="https://juejin.cn/post/6844903474535071752">JavaScript 常见设计模式解析</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903918330347533" title="https://juejin.cn/post/6844903918330347533">深入 JavaScript 设计模式，从此有了优化代码的理论依据</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F111553641" title="https://zhuanlan.zhihu.com/p/111553641">设计模式之美 - 前端</a></li>
+</ul>
+<h2 id="9-数据结构算法"><a class="markdownIt-Anchor" href="#9-数据结构算法">#</a> 9. 数据结构 / 算法</h2>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d53033bedae24f238456ad9522d0c7c2~tplv-k3u1fbpfcp-watermark.awebp" alt=""></p>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fcodeburst.io%2Flinked-lists-in-javascript-es6-code-part-1-6dd349c3dcc3" title="https://codeburst.io/linked-lists-in-javascript-es6-code-part-1-6dd349c3dcc3">Linked Lists in JavaScript (ES6 code)</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmedium.com%2Fdev-blogs%2Fds-with-js-linked-lists-ii-3b387596e27e" title="https://medium.com/dev-blogs/ds-with-js-linked-lists-ii-3b387596e27e">DS with JS — Linked Lists — II</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzxi.mytechroad.com%2Fblog%2Fleetcode-list%2F" title="https://zxi.mytechroad.com/blog/leetcode-list/">LeetCode List</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.jianshu.com%2Fp%2Ff254ec665e57" title="https://www.jianshu.com/p/f254ec665e57">JS 中的算法与数据结构 —— 链表 (Linked-list)</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903656865677326" title="https://juejin.cn/post/6844903656865677326">前端笔试 &amp; 面试爬坑系列 — 算法</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903519632228365" title="https://juejin.cn/post/6844903519632228365">漫画：什么是红黑树？</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903626050273294" title="https://juejin.cn/post/6844903626050273294">前端你应该了解的数据结构与算法</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903901586538504" title="https://juejin.cn/post/6844903901586538504">数据结构和算法在前端领域的应用（前菜）</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Flucifer.ren%2Fblog%2F2019%2F09%2F19%2Falgorthimn-fe-2%2F" title="https://lucifer.ren/blog/2019/09/19/algorthimn-fe-2/">数据结构与算法在前端领域的应用 - 第二篇</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fbiaochenxuying%2Fblog%2Fissues%2F43" title="https://github.com/biaochenxuying/blog/issues/43">JavaScript 数据结构与算法之美</a></li>
+</ul>
+<h2 id="10-安全"><a class="markdownIt-Anchor" href="#10-安全">#</a> 10. 安全</h2>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/0ab67a38881e444989459645de840eb1%7Etplv-k3u1fbpfcp-watermark.awebp" alt=""></p>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Ftech.meituan.com%2F2018%2F09%2F27%2Ffe-security.html" title="https://tech.meituan.com/2018/09/27/fe-security.html">前端安全系列（一）：如何防止 XSS 攻击？</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Ftech.meituan.com%2F2018%2F10%2F11%2Ffe-security-csrf.html" title="https://tech.meituan.com/2018/10/11/fe-security-csrf.html">前端安全系列（二）：如何防止 CSRF 攻击？</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Falmanac.httparchive.org%2Fen%2F2019%2Fsecurity" title="https://almanac.httparchive.org/en/2019/security">Security</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903660678299661" title="https://juejin.cn/post/6844903660678299661">前端也需要了解的 JSONP 安全</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903842635579405" title="https://juejin.cn/post/6844903842635579405">【面试篇】寒冬求职之你必须要懂的 Web 安全</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F25486768%3Fgroup_id%3D820705780520079360" title="https://zhuanlan.zhihu.com/p/25486768?group_id=820705780520079360">谈谈对 Web 安全的理解</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903639820009486" title="https://juejin.cn/post/6844903639820009486">程序员必须要了解的 web 安全</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.freebuf.com%2Farticles%2Fweb%2F102269.html" title="https://www.freebuf.com/articles/web/102269.html">可信前端之路：代码保护</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.zhihu.com%2Fquestion%2F47047191" title="https://www.zhihu.com/question/47047191">前端如何给 JavaScript 加密（不是混淆）？</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzoumiaojiang.com%2Farticle%2Fcommon-web-security%2F" title="https://zoumiaojiang.com/article/common-web-security/">常见 Web 安全攻防总结</a></li>
+</ul>
+<h2 id="11-node"><a class="markdownIt-Anchor" href="#11-node">#</a> 11. Node</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903767926636558" title="https://juejin.cn/post/6844903767926636558">一篇文章构建你的 NodeJS 知识体系</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903775937757192" title="https://juejin.cn/post/6844903775937757192">真 - Node 多线程</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F54882306" title="https://zhuanlan.zhihu.com/p/54882306">浏览器与 Node 的事件循环 (Event Loop) 有何区别？</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.yuque.com%2Fegg%2Fnodejs%2Fdklip5" title="https://www.yuque.com/egg/nodejs/dklip5">聊聊 Node.js RPC</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fnodesource.com%2Fblog%2Funderstanding-streams-in-nodejs" title="https://nodesource.com/blog/understanding-streams-in-nodejs">Understanding Streams in Node.js</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FVzXnnfn4gCBMd5wea3LRIg" title="https://mp.weixin.qq.com/s/VzXnnfn4gCBMd5wea3LRIg">深入理解 Node.js 进程与线程</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2FElemeFE%2Fnode-interview%2Ftree%2Fmaster%2Fsections%2Fzh-cn" title="https://github.com/ElemeFE/node-interview/tree/master/sections/zh-cn">如何通过饿了么 Node.js 面试</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904046436843527" title="https://juejin.cn/post/6844904046436843527">字节跳动面试官：请你实现一个大文件上传和断点续传</a></li>
+</ul>
+<h2 id="12-项目业务"><a class="markdownIt-Anchor" href="#12-项目业务">#</a> 12. 项目 / 业务</h2>
+<p>思考题，自由发挥</p>
+<h2 id="13-其它"><a class="markdownIt-Anchor" href="#13-其它">#</a> 13. 其它</h2>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F53913989" title="https://zhuanlan.zhihu.com/p/53913989">深入浅出浏览器渲染原理</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000010719058" title="https://segmentfault.com/a/1190000010719058">前端开发如何独立解决跨域问题</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903844745330695" title="https://juejin.cn/post/6844903844745330695">探索 Serverless 中的前端开发模式</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903998009393160?utm_source=gold_browser_extension" title="https://juejin.cn/post/6844903998009393160?utm_source=gold_browser_extension">「NGW」前端新技术赛场：Serverless SSR 技术内幕</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fcjting.me%2Fweb2.0%2Fjs-and-unicode%2F" title="https://cjting.me/web2.0/js-and-unicode/">JavaScript 与 Unicode</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903767226351623" title="https://juejin.cn/post/6844903767226351623">九种跨域方式实现原理（完整版）</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903669389885453" title="https://juejin.cn/post/6844903669389885453">7 分钟理解 JS 的节流、防抖及使用场景</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.html5rocks.com%2Fzh%2Ftutorials%2Finternals%2Fhowbrowserswork%2F" title="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/">浏览器的工作原理：新式网络浏览器幕后揭秘</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.zeolearn.com%2Fmagazine%2Fdifferent-types-of-observers-supported-by-modern-browsers" title="https://www.zeolearn.com/magazine/different-types-of-observers-supported-by-modern-browsers">Different Types Of Observers Supported By Modern Browsers</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.jianshu.com%2Fp%2F438183ddcea8" title="https://www.jianshu.com/p/438183ddcea8">浏览器同源策略与 ajax 跨域方法汇总</a></li>
+</ul>
+<h2 id="14-面试"><a class="markdownIt-Anchor" href="#14-面试">#</a> 14. 面试</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904072345026574" title="https://juejin.cn/post/6844904072345026574">一年半经验如何准备阿里巴巴 P6 前端面试</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903928442667015" title="https://juejin.cn/post/6844903928442667015">面试分享：两年工作经验成功面试阿里 P6 总结</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903636271644680" title="https://juejin.cn/post/6844903636271644680">总结了 17 年初到 18 年初百场前端面试的面试经验 (含答案)</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903570001625102" title="https://juejin.cn/post/6844903570001625102">2018 春招前端面试：闯关记 (精排精校) | 掘金技术征文</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903891591495693" title="https://juejin.cn/post/6844903891591495693">20 道 JS 原理题助你面试一臂之力！</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903715669999629" title="https://juejin.cn/post/6844903715669999629">一年半经验，百度、有赞、阿里前端面试总结</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903911686406158" title="https://juejin.cn/post/6844903911686406158">22 道高频 JavaScript 手写面试题及答案</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903566776205319" title="https://juejin.cn/post/6844903566776205319">面试分享：专科半年经验面试阿里前端 P6 + 总结 (附面试真题及答案)</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904115428917255" title="https://juejin.cn/post/6844904115428917255">写给女朋友的中级前端面试秘籍</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904097556987917" title="https://juejin.cn/post/6844904097556987917">阿里前端攻城狮们写了一份前端面试题答案，请查收</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904088337907720" title="https://juejin.cn/post/6844904088337907720">字节跳动今日头条前端面经（4 轮技术面 + hr 面）</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904084374290446" title="https://juejin.cn/post/6844904084374290446">「面试题」20+Vue 面试题整理 (持续更新)</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904094281236487" title="https://juejin.cn/post/6844904094281236487">「吐血整理」再来一打 Webpack 面试题 (持续更新)</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904097544405000" title="https://juejin.cn/post/6844904097544405000">高级前端开发者必会的 34 道 Vue 面试题系列</a></li>
+</ul>
+<h2 id="15-书单"><a class="markdownIt-Anchor" href="#15-书单">#</a> 15. 书单</h2>
+<p>推荐一些值得看的书，基本都是我看完或者有翻过几页觉得不错但是还没时间看的书。</p>
+<h3 id="151-javascript"><a class="markdownIt-Anchor" href="#151-javascript">#</a> 15.1 JavaScript</h3>
+<ul>
+<li>JavaScript 高级程序设计（高程就不多说了，第四版有英文版）</li>
+<li>JavaScript 设计模式</li>
+<li>你不知道的 JavaScript</li>
+<li>JavaScript 语言精粹</li>
+<li>高性能 JavaScript</li>
+<li>Learning TypeScript 中文版</li>
+<li>深入理解 ES6</li>
+<li>ES6 标准入门</li>
+<li>深入理解 JavaScript 特性</li>
+</ul>
+<h3 id="152-css"><a class="markdownIt-Anchor" href="#152-css">#</a> 15.2 CSS</h3>
+<ul>
+<li>CSS 权威指南（建议看英文版）</li>
+<li>精通 CSS 高级 Web 标准解决方案</li>
+<li>CSS 世界（张鑫旭老师的大作，但是建议需要有一定 CSS 实践后再看）</li>
+</ul>
+<h3 id="153-node"><a class="markdownIt-Anchor" href="#153-node">#</a> 15.3 Node</h3>
+<ul>
+<li>Node.js 实战</li>
+<li>了不起的 Node.js</li>
+</ul>
+<h3 id="154-计算机基础"><a class="markdownIt-Anchor" href="#154-计算机基础">#</a> 15.4 计算机基础</h3>
+<ul>
+<li>大话数据结构</li>
+<li>图解 HTTP</li>
+<li>计算机 / 程序是怎样跑起来的</li>
+<li>学习 JavaScript 数据结构与算法</li>
+</ul>
+<h3 id="155-工程化浏览器软技能"><a class="markdownIt-Anchor" href="#155-工程化浏览器软技能">#</a> 15.5 工程化 / 浏览器 / 软技能</h3>
+<ul>
+<li>前端工程化体系设计与实践</li>
+<li>webpack 实战：入门、进阶与优化（了解一下 webpack 的所有会涉及到的知识点）</li>
+<li>WebKit 技术内幕（讲浏览器的，挺好的）</li>
+<li>重构：改善既有代码的涉及</li>
+<li>码农翻身</li>
+<li>程序员思维修炼</li>
+<li>编码：隐匿在计算机软硬件背后的语言</li>
+<li>写给大家看的设计书</li>
+<li>技术之瞳：阿里巴巴技术笔试心得</li>
+</ul>
+<h2 id="结束语"><a class="markdownIt-Anchor" href="#结束语">#</a> 结束语</h2>
+<p>上文整理了网上的一些相关文章和躺在我收藏夹里精选文章，有一些文章还没看，还需要持续学习呀～</p>
+<p>放弃了假期快落的岛上生活（动森），吐血整理这份资料，希望对大家有所帮助～</p>
+<p>也可以扫码加我微信，拉你进交流划水聊天群，有看到好文章 / 代码都会发在群里。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2021/07/11/%E8%B6%85%E5%85%A8%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%96%87%E7%AB%A0/">https://harryqu1229.github.io/2021/07/11/%E8%B6%85%E5%85%A8%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%96%87%E7%AB%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/javascript/">javascript</a><a class="post-meta__tags" href="/tags/interview/">interview</a><a class="post-meta__tags" href="/tags/offer/">offer</a><a class="post-meta__tags" href="/tags/front-end/">front-end</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/02/SSM%E6%A1%86%E6%9E%B6%E7%9A%84%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE/"><img class="prev-cover" src="https://w.wallhaven.cc/full/e7/wallhaven-e7p2pk.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">SSM combine</div></div></a></div><div class="next-post pull-right"><a href="/2021/07/12/%E9%9B%86%E7%BE%A4/"><img class="next-cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Clusters</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/02/12/JS%E9%9D%A2%E8%AF%95%E9%A2%98--YK%E8%8F%8C/" title="some JS Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-12</div><div class="title">some JS Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/02/02/js,css%E7%AD%89%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="css and JS Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/8o/wallhaven-8oply1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-02</div><div class="title">css and JS Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/01/12/js%E4%B8%87%E5%AD%97%E6%80%BB%E7%BB%93/" title="Javascript 26k words Summary"><img class="cover" src="https://w.wallhaven.cc/full/3z/wallhaven-3zgdd3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-12</div><div class="title">Javascript 26k words Summary</div></div></a></div><div><a href="/2021/03/12/js%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" title="Javascript Interview Summary"><img class="cover" src="https://w.wallhaven.cc/full/rd/wallhaven-rdw8dj.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-12</div><div class="title">Javascript Interview Summary</div></div></a></div><div><a href="/2022/01/01/%E9%98%BF%E9%87%8C%E9%9D%A2%E7%BB%8F/" title="Alibaba Interview Questions"><img class="cover" src="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">Alibaba Interview Questions</div></div></a></div><div><a href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions"><img class="cover" src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-01</div><div class="title">Frontend interview questions</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-javascript-%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text"> 1. JavaScript 基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE%E9%97%AD%E5%8C%85"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 1.1 执行上下文 &#x2F; 作用域链 &#x2F; 闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-thiscallapplybind"><span class="toc-number">1.0.2.</span> <span class="toc-text"> 1.2 this&#x2F;call&#x2F;apply&#x2F;bind</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E5%8E%9F%E5%9E%8B%E7%BB%A7%E6%89%BF"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 1.3 原型 &#x2F; 继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-promise"><span class="toc-number">1.0.4.</span> <span class="toc-text"> 1.4 Promise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="toc-number">1.0.5.</span> <span class="toc-text"> 1.5 深浅拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6event-loop"><span class="toc-number">1.0.6.</span> <span class="toc-text"> 1.6 事件机制 &#x2F; Event Loop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="toc-number">1.0.7.</span> <span class="toc-text"> 1.7 函数式编程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-service-worker-pwa"><span class="toc-number">1.0.8.</span> <span class="toc-text"> 1.8 Service Worker &#x2F; PWA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-web-worker"><span class="toc-number">1.0.9.</span> <span class="toc-text"> 1.9 Web Worker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#110-%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.10.</span> <span class="toc-text"> 1.10 常用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-css-%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.</span> <span class="toc-text"> 2. CSS 基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%A1%86%E6%9E%B6vue-%E4%B8%BA%E4%B8%BB"><span class="toc-number">1.2.</span> <span class="toc-text"> 3. 框架 (Vue 为主)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-mvvm"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 3.1 MVVM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 3.2 生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 3.3 数据绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#34-%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 3.4 状态管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#35-%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1"><span class="toc-number">1.2.5.</span> <span class="toc-text"> 3.5 组件通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#36-virtual-dom"><span class="toc-number">1.2.6.</span> <span class="toc-text"> 3.6 Virtual DOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#37-diff"><span class="toc-number">1.2.7.</span> <span class="toc-text"> 3.7 Diff</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#38-vue-%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7-vs-%E4%BE%A6%E5%90%AC%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.8.</span> <span class="toc-text"> 3.8 Vue 计算属性 VS 侦听属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#39-react-hooks"><span class="toc-number">1.2.9.</span> <span class="toc-text"> 3.9 React Hooks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#310-react-hocvue-mixin"><span class="toc-number">1.2.10.</span> <span class="toc-text"> 3.10 React Hoc&#x2F;Vue mixin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#311-vue-%E5%92%8C-react-%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C"><span class="toc-number">1.2.11.</span> <span class="toc-text"> 3.11 Vue 和 React 有什么不同</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%B7%A5%E7%A8%8B%E5%8C%96"><span class="toc-number">1.3.</span> <span class="toc-text"> 4. 工程化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-webpack"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 4.1 Webpack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-babel"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 4.2 Babel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 4.3 模板引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#44-%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B8%83"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 4.4 前端发布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#45-weex"><span class="toc-number">1.3.5.</span> <span class="toc-text"> 4.5 weex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#46-%E5%89%8D%E7%AB%AF%E7%9B%91%E6%8E%A7"><span class="toc-number">1.3.6.</span> <span class="toc-text"> 4.6 前端监控</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">1.4.</span> <span class="toc-text"> 5. 性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#51-%E6%89%93%E5%8C%85%E9%98%B6%E6%AE%B5"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 5.1 打包阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#52-%E5%85%B6%E5%AE%83%E4%BC%98%E5%8C%96"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 5.2 其它优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-typescript"><span class="toc-number">1.5.</span> <span class="toc-text"> 6. TypeScript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%BD%91%E7%BB%9C"><span class="toc-number">1.6.</span> <span class="toc-text"> 7. 网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#71-http"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 7.1 HTTP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#72-httpshttp2"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 7.2 HTTPS&#x2F;HTTP2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#73-dns"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 7.3 DNS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#74-tcp"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 7.4 TCP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#75-cdn"><span class="toc-number">1.6.5.</span> <span class="toc-text"> 7.5 CDN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#76-%E7%BB%8F%E5%85%B8%E9%A2%98"><span class="toc-number">1.6.6.</span> <span class="toc-text"> 7.6 经典题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.7.</span> <span class="toc-text"> 8. 设计模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95"><span class="toc-number">1.8.</span> <span class="toc-text"> 9. 数据结构 &#x2F; 算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E5%AE%89%E5%85%A8"><span class="toc-number">1.9.</span> <span class="toc-text"> 10. 安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-node"><span class="toc-number">1.10.</span> <span class="toc-text"> 11. Node</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E9%A1%B9%E7%9B%AE%E4%B8%9A%E5%8A%A1"><span class="toc-number">1.11.</span> <span class="toc-text"> 12. 项目 &#x2F; 业务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E5%85%B6%E5%AE%83"><span class="toc-number">1.12.</span> <span class="toc-text"> 13. 其它</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E9%9D%A2%E8%AF%95"><span class="toc-number">1.13.</span> <span class="toc-text"> 14. 面试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-%E4%B9%A6%E5%8D%95"><span class="toc-number">1.14.</span> <span class="toc-text"> 15. 书单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#151-javascript"><span class="toc-number">1.14.1.</span> <span class="toc-text"> 15.1 JavaScript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#152-css"><span class="toc-number">1.14.2.</span> <span class="toc-text"> 15.2 CSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#153-node"><span class="toc-number">1.14.3.</span> <span class="toc-text"> 15.3 Node</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#154-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80"><span class="toc-number">1.14.4.</span> <span class="toc-text"> 15.4 计算机基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#155-%E5%B7%A5%E7%A8%8B%E5%8C%96%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BD%AF%E6%8A%80%E8%83%BD"><span class="toc-number">1.14.5.</span> <span class="toc-text"> 15.5 工程化 &#x2F; 浏览器 &#x2F; 软技能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9D%9F%E8%AF%AD"><span class="toc-number">1.15.</span> <span class="toc-text"> 结束语</span></a></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux easy notes"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes">Linux easy notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux commands"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands">Linux commands</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/Linux/" title="Linux notes"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux notes"/></a><div class="content"><a class="title" href="/2022/04/02/Linux/" title="Linux notes">Linux notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/nodejs/" title="Nodejs notes"><img src="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nodejs notes"/></a><div class="content"><a class="title" href="/2022/03/01/nodejs/" title="Nodejs notes">Nodejs notes</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Frontend interview questions"/></a><div class="content"><a class="title" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions">Frontend interview questions</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2021/07/11/%E8%B6%85%E5%85%A8%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%96%87%E7%AB%A0/'
+    this.page.identifier = '2021/07/11/超全前端面试文章/'
+    this.page.title = 'Javascript interview questions'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>if (window.DISQUSWIDGETS === undefined) {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://harry-study-blog.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+} else {
+  DISQUSWIDGETS.getCount({reset: true});
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: 'bf070b32515bf4c76fdda0862dd29770',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=a5KJbIVovxK3ZXvlrPvv7wgYLY4fAh3pvP4thfjXYUdM2cNymlgVhMhdyhb9e0O3')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" title="本站使用JsDelivr为静态资源提供CDN加速"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，默认线路托管于Vercel"><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，联通线路托管于Coding"><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

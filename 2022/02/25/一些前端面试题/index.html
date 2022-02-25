@@ -1,0 +1,589 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Frontend Algorithm and Data Structure | Harry World</title><meta name="keywords" content="algorithm,data structure,fundamental,front end,interview"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# css # css 布局 干货！各种常见布局实现 + 知名网站实例分析 # BFC 学习 BFC (Block Formatting Context) # flex Flex 布局教程：语法篇 Flex 布局教程：实例篇 # 移动端 腾讯移动 Web 前端知识库 # css3 综合 个人总结（css3 新特性） # css3 动画优化 高性能 CSS3 动画 # 综合 12 个 HTML 和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Frontend Algorithm and Data Structure">
+<meta property="og:url" content="https://harryqu1229.github.io/2022/02/25/%E4%B8%80%E4%BA%9B%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="Harry World">
+<meta property="og:description" content="# css # css 布局 干货！各种常见布局实现 + 知名网站实例分析 # BFC 学习 BFC (Block Formatting Context) # flex Flex 布局教程：语法篇 Flex 布局教程：实例篇 # 移动端 腾讯移动 Web 前端知识库 # css3 综合 个人总结（css3 新特性） # css3 动画优化 高性能 CSS3 动画 # 综合 12 个 HTML 和">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png">
+<meta property="article:published_time" content="2022-02-24T13:31:46.401Z">
+<meta property="article:modified_time" content="2022-02-25T14:16:55.310Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="fundamental">
+<meta property="article:tag" content="interview">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="data structure">
+<meta property="article:tag" content="front end">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://harryqu1229.github.io/2022/02/25/%E4%B8%80%E4%BA%9B%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Frontend Algorithm and Data Structure',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-26 03:16:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/flink.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://compote.slate.com/images/5326d554-d222-4549-b61c-1b730dcb6c4c.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry World</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Frontend Algorithm and Data Structure</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-02-24T13:31:46.401Z" title="Created 2022-02-25 02:31:46">2022-02-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-02-25T14:16:55.310Z" title="Updated 2022-02-26 03:16:55">2022-02-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Interview/">Interview</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Interview/Algorithm-and-Data-Structure/">Algorithm and Data Structure</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>3min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Frontend Algorithm and Data Structure"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><span class="disqus-comment-count"><a href="https://harryqu1229.github.io/2022/02/25/%E4%B8%80%E4%BA%9B%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/#disqus_thread"></a></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="css"><a class="markdownIt-Anchor" href="#css">#</a> css</h1>
+<h3 id="css布局"><a class="markdownIt-Anchor" href="#css布局">#</a> css 布局</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903574929932301" title="https://juejin.cn/post/6844903574929932301">干货！各种常见布局实现 + 知名网站实例分析</a></p>
+<h3 id="bfc"><a class="markdownIt-Anchor" href="#bfc">#</a> BFC</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903495108132877" title="https://juejin.cn/post/6844903495108132877">学习 BFC (Block Formatting Context)</a></p>
+<h3 id="flex"><a class="markdownIt-Anchor" href="#flex">#</a> flex</h3>
+<p><a href="https://link.juejin.cn?target=http%3A%2F%2Fwww.ruanyifeng.com%2Fblog%2F2015%2F07%2Fflex-grammar.html" title="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">Flex 布局教程：语法篇</a></p>
+<p><a href="https://link.juejin.cn?target=http%3A%2F%2Fwww.ruanyifeng.com%2Fblog%2F2015%2F07%2Fflex-examples.html" title="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html">Flex 布局教程：实例篇</a></p>
+<h3 id="移动端"><a class="markdownIt-Anchor" href="#移动端">#</a> 移动端</h3>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fhoosin%2Fmobile-web-favorites" title="https://github.com/hoosin/mobile-web-favorites">腾讯移动 Web 前端知识库</a></p>
+<h3 id="css3综合"><a class="markdownIt-Anchor" href="#css3综合">#</a> css3 综合</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903518520901639" title="https://juejin.cn/post/6844903518520901639">个人总结（css3 新特性）</a></p>
+<h3 id="css3动画优化"><a class="markdownIt-Anchor" href="#css3动画优化">#</a> css3 动画优化</h3>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2FAlloyTeam%2FMars%2Fblob%2Fmaster%2Fperformance%2Fhigh-performance-css3-animation.md" title="https://github.com/AlloyTeam/Mars/blob/master/performance/high-performance-css3-animation.md">高性能 CSS3 动画</a></p>
+<h3 id="综合"><a class="markdownIt-Anchor" href="#综合">#</a> 综合</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903567707357197" title="https://juejin.cn/post/6844903567707357197">12 个 HTML 和 CSS 必须知道的重点难点问题</a></p>
+<h2 id="js"><a class="markdownIt-Anchor" href="#js">#</a> js</h2>
+<h3 id="js基础"><a class="markdownIt-Anchor" href="#js基础">#</a> js 基础</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903479429824526" title="https://juejin.cn/post/6844903479429824526">JavaScript 深入系列 15 篇正式完结！</a></p>
+<h3 id="闭包"><a class="markdownIt-Anchor" href="#闭包">#</a> 闭包</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903474212143117" title="https://juejin.cn/post/6844903474212143117">破解前端面试（80% 应聘者不及格系列）：从闭包说起</a></p>
+<h3 id="原型"><a class="markdownIt-Anchor" href="#原型">#</a> 原型</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903575974313992" title="https://juejin.cn/post/6844903575974313992">深度解析原型中的各个难点</a></p>
+<h3 id="this-apply-call-bind相关问题"><a class="markdownIt-Anchor" href="#this-apply-call-bind相关问题">#</a> this、apply、call、bind 相关问题</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903496253177863" title="https://juejin.cn/post/6844903496253177863">this、apply、call、bind</a></p>
+<h3 id="js执行机制"><a class="markdownIt-Anchor" href="#js执行机制">#</a> js 执行机制</h3>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000004322358" title="https://segmentfault.com/a/1190000004322358">JavaScript：彻底理解同步、异步和事件循环 (Event Loop)</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903512845860872" title="https://juejin.cn/post/6844903512845860872">这一次，彻底弄懂 JavaScript 执行机制</a></p>
+<h3 id="dom"><a class="markdownIt-Anchor" href="#dom">#</a> dom</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903474547671047" title="https://juejin.cn/post/6844903474547671047">破解前端面试（80% 应聘者不及格系列）：从 DOM 说起</a></p>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fmicrozz.com%2F2017%2F04%2F06%2Fjsdom%2F" title="https://microzz.com/2017/04/06/jsdom/">原生 JS 中 DOM 节点相关 API 合集</a></p>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fpramper%2FBlog%2Fissues%2F10" title="https://github.com/pramper/Blog/issues/10">dom 里各种尺寸区别（offsetWidth，scrollWidth，clientWidth，innerWidth…）</a></p>
+<h3 id="跨域"><a class="markdownIt-Anchor" href="#跨域">#</a> 跨域</h3>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000011145364" title="https://segmentfault.com/a/1190000011145364">前端常见跨域解决方案（全）</a></p>
+<h3 id="常见工具函数手写节流防抖扁平柯里化"><a class="markdownIt-Anchor" href="#常见工具函数手写节流防抖扁平柯里化">#</a> 常见工具函数手写（节流，防抖，扁平，柯里化…）</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903506017517582" title="https://juejin.cn/post/6844903506017517582">JavaScript 专题系列 20 篇正式完结！</a></p>
+<h3 id="正则"><a class="markdownIt-Anchor" href="#正则">#</a> 正则</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903487155732494" title="https://juejin.cn/post/6844903487155732494">JS 正则表达式完整教程（略长）</a></p>
+<h3 id="es6综合"><a class="markdownIt-Anchor" href="#es6综合">#</a> es6 综合</h3>
+<p><a href="https://link.juejin.cn?target=http%3A%2F%2Fes6.ruanyifeng.com%2F" title="http://es6.ruanyifeng.com/">ECMAScript 6 入门</a></p>
+<h3 id="promise"><a class="markdownIt-Anchor" href="#promise">#</a> promise</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903488695042062" title="https://juejin.cn/post/6844903488695042062">promise 用法：八段代码彻底掌握 Promise</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903617619558408" title="https://juejin.cn/post/6844903617619558408">promise 实现原理：手把手教你实现一个完整的 Promise</a></p>
+<h3 id="generatorasyncawait相关"><a class="markdownIt-Anchor" href="#generatorasyncawait相关">#</a> Generator，async/await 相关</h3>
+<p><a href="https://link.juejin.cn?target=http%3A%2F%2Fwww.ruanyifeng.com%2Fblog%2F2015%2F04%2Fgenerator.html" title="http://www.ruanyifeng.com/blog/2015/04/generator.html">阮一峰：Generator，async，Thunk，co 系列</a></p>
+<h2 id="vue"><a class="markdownIt-Anchor" href="#vue">#</a> vue</h2>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000016344599" title="https://segmentfault.com/a/1190000016344599">Vue 面试中，经常会被问到的面试题 / Vue 知识点整理</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903569422811150" title="https://juejin.cn/post/6844903569422811150">记录面试中一些回答不够好的题（Vue 居多）</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/book/6844733705089449991" title="https://juejin.cn/book/6844733705089449991">剖析 Vue.js 内部运行机制</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903632815521799" title="https://juejin.cn/post/6844903632815521799">Vue 项目里戳中你痛点的问题及解决办法</a></p>
+<h2 id="react"><a class="markdownIt-Anchor" href="#react">#</a> React</h2>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F24856035%23tipjar" title="https://zhuanlan.zhihu.com/p/24856035#tipjar">React 常用面试题目与分析</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903620664623111" title="https://juejin.cn/post/6844903620664623111">关于 React 面试题汇总</a></p>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000016885832" title="https://segmentfault.com/a/1190000016885832">常见 react 面试题汇总（适合中级前端）</a></p>
+<h2 id="webpack"><a class="markdownIt-Anchor" href="#webpack">#</a> webpack</h2>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903498350329869#heading-5" title="https://juejin.cn/post/6844903498350329869#heading-5">前端面试之 webpack 篇</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903573675835400" title="https://juejin.cn/post/6844903573675835400">webpack 详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903599080734728" title="https://juejin.cn/post/6844903599080734728">webpack4 使用</a></p>
+<h2 id="其他"><a class="markdownIt-Anchor" href="#其他">#</a> 其他</h2>
+<h3 id="模块化"><a class="markdownIt-Anchor" href="#模块化">#</a> 模块化</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903576309858318" title="https://juejin.cn/post/6844903576309858318">前端模块化：CommonJS,AMD,CMD,ES6</a></p>
+<h3 id="前端规范"><a class="markdownIt-Anchor" href="#前端规范">#</a> 前端规范</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903479698259975" title="https://juejin.cn/post/6844903479698259975">前端开发规范：命名规范、html 规范、css 规范、js 规范</a></p>
+<h3 id="移动端适配"><a class="markdownIt-Anchor" href="#移动端适配">#</a> 移动端适配</h3>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Famfe%2Farticle%2Fissues%2F17" title="https://github.com/amfe/article/issues/17">使用 Flexible 实现手淘 H5 页面的终端适配</a></p>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.w3cplus.com%2Fcss%2Fvw-for-layout.html" title="https://www.w3cplus.com/css/vw-for-layout.html">vw、vh: 再聊移动端页面的适配</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903845617729549" title="https://juejin.cn/post/6844903845617729549">关于移动端适配，你必须要知道的</a></p>
+<h3 id="pc端兼容性"><a class="markdownIt-Anchor" href="#pc端兼容性">#</a> PC 端兼容性</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903493161975822" title="https://juejin.cn/post/6844903493161975822">浏览器兼容性问题解决方案・总结</a></p>
+<h3 id="移动端兼容性"><a class="markdownIt-Anchor" href="#移动端兼容性">#</a> 移动端兼容性</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903602620727303" title="https://juejin.cn/post/6844903602620727303">移动 Web 开发问题和优化小结</a></p>
+<h3 id="调试技巧"><a class="markdownIt-Anchor" href="#调试技巧">#</a> 调试技巧</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903508760608776" title="https://juejin.cn/post/6844903508760608776">web 调试优化 - chrome 开发者工具不完全指南</a></p>
+<h3 id="常见数据结构与算法"><a class="markdownIt-Anchor" href="#常见数据结构与算法">#</a> 常见数据结构与算法</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903485968744461" title="https://juejin.cn/post/6844903485968744461">我接触过的前端数据结构与算法</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903444365443080" title="https://juejin.cn/post/6844903444365443080">十大经典排序算法总结（JavaScript 描述）</a></p>
+<h3 id="设计模式"><a class="markdownIt-Anchor" href="#设计模式">#</a> 设计模式</h3>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.cnblogs.com%2Ftugenhua0707%2Fp%2F5198407.html" title="https://www.cnblogs.com/tugenhua0707/p/5198407.html">Javascript 常用的设计模式详解</a></p>
+<h3 id="版本控制问题gitsvn"><a class="markdownIt-Anchor" href="#版本控制问题gitsvn">#</a> 版本控制问题（git/svn）</h3>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fgeeeeeeeeek%2Fgit-recipes%2Fwiki%2F3.5-%25E5%25B8%25B8%25E8%25A7%2581%25E5%25B7%25A5%25E4%25BD%259C%25E6%25B5%2581%25E6%25AF%2594%25E8%25BE%2583" title="https://github.com/geeeeeeeeek/git-recipes/wiki/3.5-%E5%B8%B8%E8%A7%81%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%AF%94%E8%BE%83">互联网公司常见工作流比较</a></p>
+<h3 id="前端部署代码问题"><a class="markdownIt-Anchor" href="#前端部署代码问题">#</a> 前端部署代码问题</h3>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.zhihu.com%2Fquestion%2F20790576" title="https://www.zhihu.com/question/20790576">大公司里怎样开发和部署前端代码？</a></p>
+<h3 id="前端持续集成"><a class="markdownIt-Anchor" href="#前端持续集成">#</a> 前端持续集成</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903591417757710" title="https://juejin.cn/post/6844903591417757710">实战笔记：Jenkins 打造强大的前端自动化工作流</a></p>
+<h3 id="https"><a class="markdownIt-Anchor" href="#https">#</a> https</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903599303032845" title="https://juejin.cn/post/6844903599303032845">分分钟让你理解 HTTPS</a></p>
+<h3 id="http20"><a class="markdownIt-Anchor" href="#http20">#</a> http2.0</h3>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.cnblogs.com%2Fyingsmirk%2Fp%2F5248506.html" title="https://www.cnblogs.com/yingsmirk/p/5248506.html">HTTP/2 协议–特性扫盲篇</a></p>
+<h3 id="浏览器工作原理"><a class="markdownIt-Anchor" href="#浏览器工作原理">#</a> 浏览器工作原理</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903553795014663" title="https://juejin.cn/post/6844903553795014663">浏览器工作机制全面梳理</a></p>
+<h3 id="浏览器缓存机制"><a class="markdownIt-Anchor" href="#浏览器缓存机制">#</a> 浏览器缓存机制</h3>
+<p><a href="https://link.juejin.cn?target=http%3A%2F%2Fwww.cnblogs.com%2Flyzg%2Fp%2F5125934.html" title="http://www.cnblogs.com/lyzg/p/5125934.html">浏览器缓存知识小结及应用</a></p>
+<h3 id="浏览器综合"><a class="markdownIt-Anchor" href="#浏览器综合">#</a> 浏览器综合</h3>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F34453198%3Fgroup_id%3D957277540147056640" title="https://zhuanlan.zhihu.com/p/34453198?group_id=957277540147056640">从输入 URL 到页面加载的过程？如何由一道题完善自己的前端知识体系！</a></p>
+<h3 id="前端安全"><a class="markdownIt-Anchor" href="#前端安全">#</a> 前端安全</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903502968258574" title="https://juejin.cn/post/6844903502968258574">xss/csrf 问题：前端安全知识</a></p>
+<p><a href="https://link.juejin.cn?target=http%3A%2F%2Fwww.cnblogs.com%2Frush%2Farchive%2F2011%2F12%2F31%2F2309203.html" title="http://www.cnblogs.com/rush/archive/2011/12/31/2309203.html">sql 注入问题：网络攻击技术开篇 ——SQL Injection</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903481078185992" title="https://juejin.cn/post/6844903481078185992">劫持类问题：Web 前端页面劫持和反劫持</a></p>
+<h3 id="seo"><a class="markdownIt-Anchor" href="#seo">#</a> SEO</h3>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.cnblogs.com%2FEnSnail%2Fp%2F5671345.html" title="https://www.cnblogs.com/EnSnail/p/5671345.html">前端 SEO 技巧总结</a></p>
+<h3 id="pwa"><a class="markdownIt-Anchor" href="#pwa">#</a> PWA</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903588267835406" title="https://juejin.cn/post/6844903588267835406">PWA 学习与实践系列</a></p>
+<h3 id="nginx"><a class="markdownIt-Anchor" href="#nginx">#</a> Nginx</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903701459501070" title="https://juejin.cn/post/6844903701459501070">前端必会的 Nginx</a></p>
+<h2 id="项目经验"><a class="markdownIt-Anchor" href="#项目经验">#</a> 项目经验</h2>
+<p>（适用于自身做过的业务单一但是仍然想在面试时展示项目经验时想丰富些的同学，这些笔者都看过，里面有很多做类似项目的最佳实践。不过有些是视频课程需要花钱，自己取舍～）</p>
+<h3 id="后台管理系统项目"><a class="markdownIt-Anchor" href="#后台管理系统项目">#</a> 后台管理系统项目</h3>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903476661583880" title="https://juejin.cn/post/6844903476661583880">手摸手，带你用 vue 撸后台系列（目前共 9 篇，vue+element-ui）</a></p>
+<h3 id="pc站"><a class="markdownIt-Anchor" href="#pc站">#</a> PC 站</h3>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fcoding.imooc.com%2Fclass%2Fchapter%2F229.html%23Anchor" title="https://coding.imooc.com/class/chapter/229.html#Anchor">React16.4+antd 开发简书项目</a></p>
+<h3 id="node项目"><a class="markdownIt-Anchor" href="#node项目">#</a> Node 项目</h3>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fke.qq.com%2Fcourse%2F185893%3Ftaid%3D1130572831446565" title="https://ke.qq.com/course/185893?taid=1130572831446565">Node 从 0 搭建博客系统</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903745755545614#heading-27" title="https://juejin.cn/post/6844903745755545614#heading-27">Node - 从 0 基础到实战企业官网</a></p>
+<h3 id="移动端-2"><a class="markdownIt-Anchor" href="#移动端-2">#</a> 移动端</h3>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fcoding.imooc.com%2Fclass%2F74.html" title="https://coding.imooc.com/class/74.html">vue 开发饿了么</a></p>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fcoding.imooc.com%2Fclass%2F107.html" title="https://coding.imooc.com/class/107.html">vue 开发音乐播放器</a></p>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fcoding.imooc.com%2Fclass%2F203.html" title="https://coding.imooc.com/class/203.html">vue 开发携程 app</a></p>
+<h3 id="微信小程序"><a class="markdownIt-Anchor" href="#微信小程序">#</a> 微信小程序</h3>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fcoding.imooc.com%2Fclass%2F251.html" title="https://coding.imooc.com/class/251.html">纯正商业级应用 - 微信小程序开发实战</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2022/02/25/%E4%B8%80%E4%BA%9B%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/">https://harryqu1229.github.io/2022/02/25/%E4%B8%80%E4%BA%9B%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/fundamental/">fundamental</a><a class="post-meta__tags" href="/tags/interview/">interview</a><a class="post-meta__tags" href="/tags/algorithm/">algorithm</a><a class="post-meta__tags" href="/tags/data-structure/">data structure</a><a class="post-meta__tags" href="/tags/front-end/">front end</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/25/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/"><img class="prev-cover" src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Object Orientated Programming</div></div></a></div><div class="next-post pull-right"><a href="/2022/02/25/Socket/"><img class="next-cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Socket Notes</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/02/25/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98js%E7%89%88%E6%9C%AC/" title="Frontend ByteDance Algorithm and Data Structure(javascript)"><img class="cover" src="https://w.wallhaven.cc/full/v9/wallhaven-v9v9o5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">Frontend ByteDance Algorithm and Data Structure(javascript)</div></div></a></div><div><a href="/2022/02/25/%E4%B8%80%E4%BA%9B%E5%89%8D%E7%AB%AF%E7%AE%97%E6%B3%95/" title="Frontend Algorithm and Data Structure"><img class="cover" src="https://w.wallhaven.cc/full/3z/wallhaven-3zgdd3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">Frontend Algorithm and Data Structure</div></div></a></div><div><a href="/2022/02/25/%E4%B8%80%E4%BA%9B%E7%AE%97%E6%B3%95%E7%9A%84%E5%B0%8F%E6%80%BB%E7%BB%93/" title="Algorithm and Data Structure interview summary notes"><img class="cover" src="https://w.wallhaven.cc/full/e7/wallhaven-e7p2pk.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">Algorithm and Data Structure interview summary notes</div></div></a></div><div><a href="/2022/02/25/%E7%AE%97%E6%B3%95%20-%20%E5%85%B6%E5%AE%83/" title="Algorithm and Data Structure - Other"><img class="cover" src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">Algorithm and Data Structure - Other</div></div></a></div><div><a href="/2022/02/25/%E7%AE%97%E6%B3%95%20-%20%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="Algorithm and Data Structure - Disjoint-set data structure"><img class="cover" src="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">Algorithm and Data Structure - Disjoint-set data structure</div></div></a></div><div><a href="/2022/02/25/%E7%AE%97%E6%B3%95%20-%20%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" title="Algorithm and Data Structure - Algorithm Analysis"><img class="cover" src="https://w.wallhaven.cc/full/8o/wallhaven-8oply1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">Algorithm and Data Structure - Algorithm Analysis</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#css"><span class="toc-number">1.</span> <span class="toc-text"> css</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#css%E5%B8%83%E5%B1%80"><span class="toc-number">1.0.1.</span> <span class="toc-text"> css 布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bfc"><span class="toc-number">1.0.2.</span> <span class="toc-text"> BFC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex"><span class="toc-number">1.0.3.</span> <span class="toc-text"> flex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF"><span class="toc-number">1.0.4.</span> <span class="toc-text"> 移动端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css3%E7%BB%BC%E5%90%88"><span class="toc-number">1.0.5.</span> <span class="toc-text"> css3 综合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css3%E5%8A%A8%E7%94%BB%E4%BC%98%E5%8C%96"><span class="toc-number">1.0.6.</span> <span class="toc-text"> css3 动画优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%BC%E5%90%88"><span class="toc-number">1.0.7.</span> <span class="toc-text"> 综合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js"><span class="toc-number">1.1.</span> <span class="toc-text"> js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#js%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.1.</span> <span class="toc-text"> js 基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 原型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#this-apply-call-bind%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.4.</span> <span class="toc-text"> this、apply、call、bind 相关问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="toc-number">1.1.5.</span> <span class="toc-text"> js 执行机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dom"><span class="toc-number">1.1.6.</span> <span class="toc-text"> dom</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%A8%E5%9F%9F"><span class="toc-number">1.1.7.</span> <span class="toc-text"> 跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%E6%89%8B%E5%86%99%E8%8A%82%E6%B5%81%E9%98%B2%E6%8A%96%E6%89%81%E5%B9%B3%E6%9F%AF%E9%87%8C%E5%8C%96"><span class="toc-number">1.1.8.</span> <span class="toc-text"> 常见工具函数手写（节流，防抖，扁平，柯里化…）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%99"><span class="toc-number">1.1.9.</span> <span class="toc-text"> 正则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#es6%E7%BB%BC%E5%90%88"><span class="toc-number">1.1.10.</span> <span class="toc-text"> es6 综合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise"><span class="toc-number">1.1.11.</span> <span class="toc-text"> promise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#generatorasyncawait%E7%9B%B8%E5%85%B3"><span class="toc-number">1.1.12.</span> <span class="toc-text"> Generator，async&#x2F;await 相关</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue"><span class="toc-number">1.2.</span> <span class="toc-text"> vue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#react"><span class="toc-number">1.3.</span> <span class="toc-text"> React</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack"><span class="toc-number">1.4.</span> <span class="toc-text"> webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">1.5.</span> <span class="toc-text"> 其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 模块化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%A7%84%E8%8C%83"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 前端规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D"><span class="toc-number">1.5.3.</span> <span class="toc-text"> 移动端适配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pc%E7%AB%AF%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-number">1.5.4.</span> <span class="toc-text"> PC 端兼容性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-number">1.5.5.</span> <span class="toc-text"> 移动端兼容性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7"><span class="toc-number">1.5.6.</span> <span class="toc-text"> 调试技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95"><span class="toc-number">1.5.7.</span> <span class="toc-text"> 常见数据结构与算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.5.8.</span> <span class="toc-text"> 设计模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E9%97%AE%E9%A2%98gitsvn"><span class="toc-number">1.5.9.</span> <span class="toc-text"> 版本控制问题（git&#x2F;svn）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2%E4%BB%A3%E7%A0%81%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.10.</span> <span class="toc-text"> 前端部署代码问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90"><span class="toc-number">1.5.11.</span> <span class="toc-text"> 前端持续集成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#https"><span class="toc-number">1.5.12.</span> <span class="toc-text"> https</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http20"><span class="toc-number">1.5.13.</span> <span class="toc-text"> http2.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.5.14.</span> <span class="toc-text"> 浏览器工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6"><span class="toc-number">1.5.15.</span> <span class="toc-text"> 浏览器缓存机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BB%BC%E5%90%88"><span class="toc-number">1.5.16.</span> <span class="toc-text"> 浏览器综合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8"><span class="toc-number">1.5.17.</span> <span class="toc-text"> 前端安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#seo"><span class="toc-number">1.5.18.</span> <span class="toc-text"> SEO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwa"><span class="toc-number">1.5.19.</span> <span class="toc-text"> PWA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx"><span class="toc-number">1.5.20.</span> <span class="toc-text"> Nginx</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C"><span class="toc-number">1.6.</span> <span class="toc-text"> 项目经验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 后台管理系统项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pc%E7%AB%99"><span class="toc-number">1.6.2.</span> <span class="toc-text"> PC 站</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#node%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.6.3.</span> <span class="toc-text"> Node 项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF-2"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 移动端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.6.5.</span> <span class="toc-text"> 微信小程序</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux easy notes"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes">Linux easy notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux commands"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands">Linux commands</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/Linux/" title="Linux notes"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux notes"/></a><div class="content"><a class="title" href="/2022/04/02/Linux/" title="Linux notes">Linux notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/nodejs/" title="Nodejs notes"><img src="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nodejs notes"/></a><div class="content"><a class="title" href="/2022/03/01/nodejs/" title="Nodejs notes">Nodejs notes</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Frontend interview questions"/></a><div class="content"><a class="title" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions">Frontend interview questions</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2022/02/25/%E4%B8%80%E4%BA%9B%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/'
+    this.page.identifier = '2022/02/25/一些前端面试题/'
+    this.page.title = 'Frontend Algorithm and Data Structure'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>if (window.DISQUSWIDGETS === undefined) {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://harry-study-blog.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+} else {
+  DISQUSWIDGETS.getCount({reset: true});
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: 'f37bbd82e12594ff3765c659702db15a',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=a5KJbIVovxK3ZXvlrPvv7wgYLY4fAh3pvP4thfjXYUdM2cNymlgVhMhdyhb9e0O3')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" title="本站使用JsDelivr为静态资源提供CDN加速"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，默认线路托管于Vercel"><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，联通线路托管于Coding"><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

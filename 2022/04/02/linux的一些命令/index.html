@@ -1,0 +1,1252 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Linux commands | Harry World</title><meta name="keywords" content="linux,fundamental,operating systems"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# 命令行的艺术   前言 基础 日常使用 文件及数据处理 系统调试 单行脚本 冷门但有用 仅限 OS X 系统 仅限 Windows 系统 更多资源 免责声明   熟练使用命令行是一种常常被忽视，或被认为难以掌握的技能，但实际上，它会提高你作为工程师的灵活性以及生产力。本文是一份我在 Linux 上工作时，发现的一些命令行使用技巧的摘要。有些技巧非常基础，而另一些则相当复杂，甚至晦涩难懂。这篇文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux commands">
+<meta property="og:url" content="https://harryqu1229.github.io/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="Harry World">
+<meta property="og:description" content="# 命令行的艺术   前言 基础 日常使用 文件及数据处理 系统调试 单行脚本 冷门但有用 仅限 OS X 系统 仅限 Windows 系统 更多资源 免责声明   熟练使用命令行是一种常常被忽视，或被认为难以掌握的技能，但实际上，它会提高你作为工程师的灵活性以及生产力。本文是一份我在 Linux 上工作时，发现的一些命令行使用技巧的摘要。有些技巧非常基础，而另一些则相当复杂，甚至晦涩难懂。这篇文">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png">
+<meta property="article:published_time" content="2022-04-01T11:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-25T15:09:24.103Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="fundamental">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="operating systems">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://harryqu1229.github.io/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux commands',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-26 04:09:24'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/flink.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/png;base64,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')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry World</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux commands</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-02-25T15:09:24.103Z" title="Updated 2022-02-26 04:09:24">2022-02-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Important/">Important</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Important/linux/">linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">9.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>30min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux commands"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><span class="disqus-comment-count"><a href="https://harryqu1229.github.io/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/#disqus_thread"></a></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="命令行的艺术"><a class="markdownIt-Anchor" href="#命令行的艺术">#</a> 命令行的艺术</h1>
+<p><a target="_blank" rel="noopener" href="https://gitter.im/jlevy/the-art-of-command-line?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/jlevy/the-art-of-command-line"></a></p>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E5%9F%BA%E7%A1%80">基础</a></li>
+<li><a href="#%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8">日常使用</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86">文件及数据处理</a></li>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E8%AF%95">系统调试</a></li>
+<li><a href="#%E5%8D%95%E8%A1%8C%E8%84%9A%E6%9C%AC">单行脚本</a></li>
+<li><a href="#%E5%86%B7%E9%97%A8%E4%BD%86%E6%9C%89%E7%94%A8">冷门但有用</a></li>
+<li><a href="#%E4%BB%85%E9%99%90-os-x-%E7%B3%BB%E7%BB%9F">仅限 OS X 系统</a></li>
+<li><a href="#%E4%BB%85%E9%99%90-windows-%E7%B3%BB%E7%BB%9F">仅限 Windows 系统</a></li>
+<li><a href="#%E6%9B%B4%E5%A4%9A%E8%B5%84%E6%BA%90">更多资源</a></li>
+<li><a href="#%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E">免责声明</a></li>
+</ul>
+<p><img src="cowsay.png" alt="curl -s 'https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README.md' | egrep -o '' | tr -d '`' | cowsay -W50"></p>
+<p>熟练使用命令行是一种常常被忽视，或被认为难以掌握的技能，但实际上，它会提高你作为工程师的灵活性以及生产力。本文是一份我在 Linux 上工作时，发现的一些命令行使用技巧的摘要。有些技巧非常基础，而另一些则相当复杂，甚至晦涩难懂。这篇文章并不长，但当你能够熟练掌握这里列出的所有技巧时，你就学会了很多关于命令行的东西了。</p>
+<p>这篇文章是<a href="AUTHORS.md">许多作者和译者</a>共同的成果。<br>
+这里的部分内容<br>
+<a target="_blank" rel="noopener" href="http://www.quora.com/What-are-some-lesser-known-but-useful-Unix-commands">首次</a><br>
+<a target="_blank" rel="noopener" href="http://www.quora.com/What-are-the-most-useful-Swiss-army-knife-one-liners-on-Unix">出现</a><br>
+于 <a target="_blank" rel="noopener" href="http://www.quora.com/What-are-some-time-saving-tips-that-every-Linux-user-should-know">Quora</a>，<br>
+但已经迁移到了 Github，并由众多高手做出了许多改进。<br>
+如果你在本文中发现了错误或者存在可以改善的地方，请<a href="/CONTRIBUTING.md"><strong>贡献你的一份力量</strong></a>。</p>
+<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h2>
+<p>涵盖范围：</p>
+<ul>
+<li>这篇文章不仅能帮助刚接触命令行的新手，而且对具有经验的人也大有裨益。本文致力于做到<em>覆盖面广</em>（涉及所有重要的内容），<em>具体</em>（给出具体的最常用的例子），以及<em>简洁</em>（避免冗余的内容，或是可以在其他地方轻松查到的细枝末节）。在特定应用场景下，本文的内容属于基本功或者能帮助您节约大量的时间。</li>
+<li>本文主要为 Linux 所写，但在<a href="#%E4%BB%85%E9%99%90-os-x-%E7%B3%BB%E7%BB%9F">仅限 OS X 系统</a>章节和<a href="#%E4%BB%85%E9%99%90-windows-%E7%B3%BB%E7%BB%9F">仅限 Windows 系统</a>章节中也包含有对应操作系统的内容。除去这两个章节外，其它的内容大部分均可在其他类 Unix 系统或 OS X，甚至 Cygwin 中得到应用。</li>
+<li>本文主要关注于交互式 Bash，但也有很多技巧可以应用于其他 shell 和 Bash 脚本当中。</li>
+<li>除去 “标准的” Unix 命令，本文还包括了一些依赖于特定软件包的命令（前提是它们具有足够的价值）。</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>为了能在一页内展示尽量多的东西，一些具体的信息可以在引用的页面中找到。我们相信机智的你知道如何使用 Google 或者其他搜索引擎来查阅到更多的详细信息。文中部分命令需要您使用  <code>apt-get</code> ， <code>yum</code> ， <code>dnf</code> ， <code>pacman</code> ，<br>
+ <code>pip</code>  或  <code>brew</code> （以及其它合适的包管理器）来安装依赖的程序。</li>
+<li>遇到问题的话，请尝试使用 <a target="_blank" rel="noopener" href="http://explainshell.com/">Explainshell</a> 去获取相关命令、参数、管道等内容的解释。</li>
+</ul>
+<h2 id="基础"><a class="markdownIt-Anchor" href="#基础">#</a> 基础</h2>
+<ul>
+<li>
+<p>学习 Bash 的基础知识。具体地，在命令行中输入  <code>man bash</code>  并至少全文浏览一遍；它理解起来很简单并且不冗长。其他的 shell 可能很好用，但 Bash 的功能已经足够强大并且到几乎总是可用的（ 如果你<em>只</em>学习 zsh，fish 或其他的 shell 的话，在你自己的设备上会显得很方便，但过度依赖这些功能会给您带来不便，例如当你需要在服务器上工作时）。</p>
+</li>
+<li>
+<p>熟悉至少一个基于文本的编辑器。通常而言 Vim （ <code>vi</code> ） 会是你最好的选择，毕竟在终端中编辑文本时 Vim 是最好用的工具（甚至大部分情况下 Vim 要比 Emacs、大型 IDE 或是炫酷的编辑器更好用）。</p>
+</li>
+<li>
+<p>学会如何使用  <code>man</code>  命令去阅读文档。学会使用  <code>apropos</code>  去查找文档。知道有些命令并不对应可执行文件，而是在 Bash 内置好的，此时可以使用  <code>help</code>  和  <code>help -d</code>  命令获取帮助信息。你可以用  <code>type 命令</code>  来判断这个命令到底是可执行文件、shell 内置命令还是别名。</p>
+</li>
+<li>
+<p>学会使用  <code>&gt;</code>  和  <code>&lt;</code>  来重定向输出和输入，学会使用  <code>|</code>  来重定向管道。明白  <code>&gt;</code>  会覆盖了输出文件而  <code>&gt;&gt;</code>  是在文件末添加。了解标准输出 stdout 和标准错误 stderr。</p>
+</li>
+<li>
+<p>学会使用通配符  <code>*</code>  （或许再算上  <code>?</code>  和  <code>[</code> … <code>]</code> ） 和引用以及引用中  <code>'</code>  和  <code>&quot;</code>  的区别（后文中有一些具体的例子）。</p>
+</li>
+<li>
+<p>熟悉 Bash 中的任务管理工具： <code>&amp;</code> ，<strong>ctrl-z</strong>，<strong>ctrl-c</strong>， <code>jobs</code> ， <code>fg</code> ， <code>bg</code> ， <code>kill</code>  等。</p>
+</li>
+<li>
+<p>学会使用  <code>ssh</code>  进行远程命令行登录，最好知道如何使用  <code>ssh-agent</code> ， <code>ssh-add</code>  等命令来实现基础的无密码认证登录。</p>
+</li>
+<li>
+<p>学会基本的文件管理工具： <code>ls</code>  和  <code>ls -l</code>  （了解  <code>ls -l</code>  中每一列代表的意义）， <code>less</code> ， <code>head</code> ， <code>tail</code>  和  <code>tail -f</code>  （甚至  <code>less +F</code> ）， <code>ln</code>  和  <code>ln -s</code>  （了解硬链接与软链接的区别）， <code>chown</code> ， <code>chmod</code> ， <code>du</code>  （硬盘使用情况概述： <code>du -hs *</code> ）。 关于文件系统的管理，学习  <code>df</code> ， <code>mount</code> ， <code>fdisk</code> ， <code>mkfs</code> ， <code>lsblk</code> 。知道 inode 是什么（与  <code>ls -i</code>  和  <code>df -i</code>  等命令相关）。</p>
+</li>
+<li>
+<p>学习基本的网络管理工具： <code>ip</code>  或  <code>ifconfig</code> ， <code>dig</code> 。</p>
+</li>
+<li>
+<p>学习并使用一种版本控制管理系统，例如  <code>git</code> 。</p>
+</li>
+<li>
+<p>熟悉正则表达式，学会使用  <code>grep</code> ／ <code>egrep</code> ，它们的参数中  <code>-i</code> ， <code>-o</code> ， <code>-v</code> ， <code>-A</code> ， <code>-B</code>  和  <code>-C</code>  这些是很常用并值得认真学习的。</p>
+</li>
+<li>
+<p>学会使用  <code>apt-get</code> ， <code>yum</code> ， <code>dnf</code>  或  <code>pacman</code>  （具体使用哪个取决于你使用的 Linux 发行版）来查找和安装软件包。并确保你的环境中有  <code>pip</code>  来安装基于 Python 的命令行工具 （接下来提到的部分程序使用  <code>pip</code>  来安装会很方便）。</p>
+</li>
+</ul>
+<h2 id="日常使用"><a class="markdownIt-Anchor" href="#日常使用">#</a> 日常使用</h2>
+<ul>
+<li>
+<p>在 Bash 中，可以通过按 <strong>Tab</strong> 键实现自动补全参数，使用 <strong>ctrl-r</strong> 搜索命令行历史记录（按下按键之后，输入关键字便可以搜索，重复按下 <strong>ctrl-r</strong> 会向后查找匹配项，按下 <strong>Enter</strong> 键会执行当前匹配的命令，而按下右方向键会将匹配项放入当前行中，不会直接执行，以便做出修改）, 使用 <strong>ctrl-s</strong> 会向前查找匹配项 (针对 <strong>ctrl-r</strong> 的回退，如果没有起作用请参考<a target="_blank" rel="noopener" href="http://www.kbase101.com/question/7864.html">这里</a>)</p>
+</li>
+<li>
+<p>在 Bash 中，可以按下 <strong>ctrl-w</strong> 删除你键入的最后一个单词，<strong>ctrl-u</strong> 可以删除行内光标所在位置之前的内容，<strong>alt-b</strong> 和 <strong>alt-f</strong> 可以以单词为单位移动光标，<strong>ctrl-a</strong> 可以将光标移至行首，<strong>ctrl-e</strong> 可以将光标移至行尾，<strong>ctrl-k</strong> 可以删除光标至行尾的所有内容，<strong>ctrl-l</strong> 可以清屏。键入  <code>man readline</code>  可以查看 Bash 中的默认快捷键。内容有很多，例如 <strong>alt-.</strong> 循环地移向前一个参数，而 <strong>alt-</strong>* 可以展开通配符。</p>
+</li>
+<li>
+<p>你喜欢的话，可以执行  <code>set -o vi</code>  来使用 vi 风格的快捷键，而执行  <code>set -o emacs</code>  可以把它改回来。</p>
+</li>
+<li>
+<p>为了便于编辑长命令，在设置你的默认编辑器后（例如  <code>export EDITOR=vim</code> ），<strong>ctrl-x</strong> <strong>ctrl-e</strong> 会打开一个编辑器来编辑当前输入的命令。在 vi 风格下快捷键则是 <strong>escape-v</strong>。</p>
+</li>
+<li>
+<p>键入  <code>history</code>  查看命令行历史记录，再用  <code>!n</code> （ <code>n</code>  是命令编号）就可以再次执行。其中有许多缩写，最有用的大概就是  <code>!$</code> ， 它用于指代上次键入的参数，而  <code>!!</code>  可以指代上次键入的命令了（参考 man 页面中的 “HISTORY EXPANSION”）。不过这些功能，你也可以通过快捷键 <strong>ctrl-r</strong> 和 <strong>alt-.</strong> 来实现。</p>
+</li>
+<li>
+<p><code>cd</code>  命令可以切换工作路径，输入  <code>cd ~</code>  可以进入 home 目录。要访问你的 home 目录中的文件，可以使用前缀  <code>~</code> （例如  <code>~/.bashrc</code> ）。在  <code>sh</code>  脚本里则用环境变量  <code>$HOME</code>  指代 home 目录的路径。</p>
+</li>
+<li>
+<p>回到前一个工作路径： <code>cd -</code> 。</p>
+</li>
+<li>
+<p>如果你输入命令的时候中途改了主意，按下 <strong>alt-#</strong> 在行首添加  <code>#</code>  把它当做注释再按下回车执行（或者依次按下 <strong>ctrl-a</strong>， <strong>#</strong>， <strong>enter</strong>）。这样做的话，之后借助命令行历史记录，你可以很方便恢复你刚才输入到一半的命令。</p>
+</li>
+<li>
+<p>使用  <code>xargs</code>  （ 或  <code>parallel</code> ）。他们非常给力。注意到你可以控制每行参数个数（ <code>-L</code> ）和最大并行数（ <code>-P</code> ）。如果你不确定它们是否会按你想的那样工作，先使用  <code>xargs echo</code>  查看一下。此外，使用  <code>-I&#123;&#125;</code>  会很方便。例如：</p>
+</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> <span class="token builtin class-name">.</span> -name <span class="token string">'*.py'</span> <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">grep</span> some_function
+<span class="token function">cat</span> hosts <span class="token operator">|</span> <span class="token function">xargs</span> -I<span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token function">ssh</span> root@<span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token function">hostname</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>
+<p><code>pstree -p</code>  以一种优雅的方式展示进程树。</p>
+</li>
+<li>
+<p>使用  <code>pgrep</code>  和  <code>pkill</code>  根据名字查找进程或发送信号（ <code>-f</code>  参数通常有用）。</p>
+</li>
+<li>
+<p>了解你可以发往进程的信号的种类。比如，使用  <code>kill -STOP [pid]</code>  停止一个进程。使用  <code>man 7 signal</code>  查看详细列表。</p>
+</li>
+<li>
+<p>使用  <code>nohup</code>  或  <code>disown</code>  使一个后台进程持续运行。</p>
+</li>
+<li>
+<p>使用  <code>netstat -lntp</code>  或  <code>ss -plat</code>  检查哪些进程在监听端口（默认是检查 TCP 端口；添加参数  <code>-u</code>  则检查 UDP 端口）或者  <code>lsof -iTCP -sTCP:LISTEN -P -n</code>  (这也可以在 OS X 上运行)。</p>
+</li>
+<li>
+<p><code>lsof</code>  来查看开启的套接字和文件。</p>
+</li>
+<li>
+<p>使用  <code>uptime</code>  或  <code>w</code>  来查看系统已经运行多长时间。</p>
+</li>
+<li>
+<p>使用  <code>alias</code>  来创建常用命令的快捷形式。例如： <code>alias ll='ls -latr'</code>  创建了一个新的命令别名  <code>ll</code> 。</p>
+</li>
+<li>
+<p>可以把别名、shell 选项和常用函数保存在  <code>~/.bashrc</code> ，具体看下这篇<a target="_blank" rel="noopener" href="http://superuser.com/a/183980/7106">文章</a>。这样做的话你就可以在所有 shell 会话中使用你的设定。</p>
+</li>
+<li>
+<p>把环境变量的设定以及登陆时要执行的命令保存在  <code>~/.bash_profile</code> 。而对于从图形界面启动的 shell 和  <code>cron</code>  启动的 shell，则需要单独配置文件。</p>
+</li>
+<li>
+<p>要想在几台电脑中同步你的配置文件（例如  <code>.bashrc</code>  和  <code>.bash_profile</code> ），可以借助 Git。</p>
+</li>
+<li>
+<p>当变量和文件名中包含空格的时候要格外小心。Bash 变量要用引号括起来，比如  <code>&quot;$FOO&quot;</code> 。尽量使用  <code>-0</code>  或  <code>-print0</code>  选项以便用 NULL 来分隔文件名，例如  <code>locate -0 pattern | xargs -0 ls -al</code>  或  <code>find / -print0 -type d | xargs -0 ls -al</code> 。如果 for 循环中循环访问的文件名含有空字符（空格、tab 等字符），只需用  <code>IFS=$'\n'</code>  把内部字段分隔符设为换行符。</p>
+</li>
+<li>
+<p>在 Bash 脚本中，使用  <code>set -x</code>  去调试输出（或者使用它的变体  <code>set -v</code> ，它会记录原始输入，包括多余的参数和注释）。尽可能地使用严格模式：使用  <code>set -e</code>  令脚本在发生错误时退出而不是继续运行；使用  <code>set -u</code>  来检查是否使用了未赋值的变量；试试  <code>set -o pipefail</code> ，它可以监测管道中的错误。当牵扯到很多脚本时，使用  <code>trap</code>  来检测 ERR 和 EXIT。一个好的习惯是在脚本文件开头这样写，这会使它能够检测一些错误，并在错误发生时中断程序并输出信息：</p>
+</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">set</span> -euo pipefail
+<span class="token builtin class-name">trap</span> <span class="token string">"echo 'error: Script failed: see failed command above'"</span> ERR<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>在 Bash 脚本中，子 shell（使用括号  <code>(...)</code> ）是一种组织参数的便捷方式。一个常见的例子是临时地移动工作路径，代码如下：</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># do something in current dir</span>
+<span class="token punctuation">(</span>cd /some/other/dir <span class="token operator">&amp;&amp;</span> other-command<span class="token punctuation">)</span>
+<span class="token comment"># continue in original dir</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>
+<p>在 Bash 中，变量有许多的扩展方式。 <code>$&#123;name:?error message&#125;</code>  用于检查变量是否存在。此外，当 Bash 脚本只需要一个参数时，可以使用这样的代码  <code>input_file=$&#123;1:?usage: $0 input_file&#125;</code> 。在变量为空时使用默认值： <code>$&#123;name:-default&#125;</code> 。如果你要在之前的例子中再加一个（可选的）参数，可以使用类似这样的代码  <code>output_file=$&#123;2:-logfile&#125;</code> ，如果省略了 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mtext>，它的值就为空，于是</mtext><mi mathvariant="normal">‘</mi><mi>o</mi><mi>u</mi><mi>t</mi><mi>p</mi><mi>u</mi><msub><mi>t</mi><mi>f</mi></msub><mi>i</mi><mi>l</mi><mi>e</mi><mi mathvariant="normal">‘</mi><mtext>就会被设为</mtext><mi mathvariant="normal">‘</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>f</mi><mi>i</mi><mi>l</mi><mi>e</mi><mi mathvariant="normal">‘</mi><mtext>。数学表达式：</mtext><mi mathvariant="normal">‘</mi><mi>i</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">2，它的值就为空，于是 `output_file` 就会被设为 `logfile`。数学表达式：`i=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord">2</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">它</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">值</span><span class="mord cjk_fallback">就</span><span class="mord cjk_fallback">为</span><span class="mord cjk_fallback">空</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">于</span><span class="mord cjk_fallback">是</span><span class="mord">‘</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mord mathnormal">p</span><span class="mord mathnormal">u</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord">‘</span><span class="mord cjk_fallback">就</span><span class="mord cjk_fallback">会</span><span class="mord cjk_fallback">被</span><span class="mord cjk_fallback">设</span><span class="mord cjk_fallback">为</span><span class="mord">‘</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord">‘</span><span class="mord cjk_fallback">。</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">学</span><span class="mord cjk_fallback">表</span><span class="mord cjk_fallback">达</span><span class="mord cjk_fallback">式</span><span class="mord cjk_fallback">：</span><span class="mord">‘</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span>(( (i + 1) % 5 )) <code 1..10="">。序列：</code>  <code>。截断字符串：</code> {var%suffix}` 和 `{var#prefix} <code>。例如，假设 </code> var=foo.pdf <code>，那么 </code> echo ${var%.pdf}.txt <code>将输出</code>  foo.txt`。</p>
+</li>
+<li>
+<p>使用括号扩展（ <code>&#123;</code> … <code>&#125;</code> ）来减少输入相似文本，并自动化文本组合。这在某些情况下会很有用，例如  <code>mv foo.&#123;txt,pdf&#125; some-dir</code> （同时移动两个文件）， <code>cp somefile&#123;,.bak&#125;</code> （会被扩展成  <code>cp somefile somefile.bak</code> ）或者  <code>mkdir -p test-&#123;a,b,c&#125;/subtest-&#123;1,2,3&#125;</code> （会被扩展成所有可能的组合，并创建一个目录树）。</p>
+</li>
+<li>
+<p>通过使用  <code>&lt;(some command)</code>  可以将输出视为文件。例如，对比本地文件  <code>/etc/hosts</code>  和一个远程文件：</p>
+</li>
+</ul>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">diff &#x2F;etc&#x2F;hosts &lt;(ssh somehost cat &#x2F;etc&#x2F;hosts)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>编写脚本时，你可能会想要把代码都放在大括号里。缺少右括号的话，代码就会因为语法错误而无法执行。如果你的脚本是要放在网上分享供他人使用的，这样的写法就体现出它的好处了，因为这样可以防止下载不完全代码被执行。</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">&#123;</span>
+      <span class="token comment"># 在这里写代码</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>
+<p>了解 Bash 中的 “here documents”，例如  <code>cat &lt;&lt;EOF ...</code> 。</p>
+</li>
+<li>
+<p>在 Bash 中，同时重定向标准输出和标准错误： <code>some-command &gt;logfile 2&gt;&amp;1</code>  或者  <code>some-command &amp;&gt;logfile</code> 。通常，为了保证命令不会在标准输入里残留一个未关闭的文件句柄捆绑在你当前所在的终端上，在命令后添加  <code>&lt;/dev/null</code>  是一个好习惯。</p>
+</li>
+<li>
+<p>使用  <code>man ascii</code>  查看具有十六进制和十进制值的 ASCII 表。 <code>man unicode</code> ， <code>man utf-8</code> ，以及  <code>man latin1</code>  有助于你去了解通用的编码信息。</p>
+</li>
+<li>
+<p>使用  <code>screen</code>  或 <a target="_blank" rel="noopener" href="https://tmux.github.io/"> <code>tmux</code> </a> 来使用多份屏幕，当你在使用 ssh 时（保存 session 信息）将尤为有用。而  <code>byobu</code>  可以为它们提供更多的信息和易用的管理工具。另一个轻量级的 session 持久化解决方案是 <a target="_blank" rel="noopener" href="https://github.com/bogner/dtach"> <code>dtach</code> </a>。</p>
+</li>
+<li>
+<p>ssh 中，了解如何使用  <code>-L</code>  或  <code>-D</code> （偶尔需要用  <code>-R</code> ）开启隧道是非常有用的，比如当你需要从一台远程服务器上访问 web 页面。</p>
+</li>
+<li>
+<p>对 ssh 设置做一些小优化可能是很有用的，例如这个  <code>~/.ssh/config</code>  文件包含了防止特定网络环境下连接断开、压缩数据、多通道等选项：</p>
+</li>
+</ul>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">TCPKeepAlive=yes
+ServerAliveInterval=15
+ServerAliveCountMax=6
+Compression=yes
+ControlMaster auto
+ControlPath /tmp/%r@%h:%p
+ControlPersist yes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>
+<p>一些其他的关于 ssh 的选项是与安全相关的，应当小心翼翼的使用。例如你应当只能在可信任的网络中启用  <code>StrictHostKeyChecking=no</code> ， <code>ForwardAgent=yes</code> 。</p>
+</li>
+<li>
+<p>考虑使用 <a target="_blank" rel="noopener" href="https://mosh.mit.edu/"> <code>mosh</code> </a> 作为 ssh 的替代品，它使用 UDP 协议。它可以避免连接被中断并且对带宽需求更小，但它需要在服务端做相应的配置。</p>
+</li>
+<li>
+<p>获取八进制形式的文件访问权限（修改系统设置时通常需要，但  <code>ls</code>  的功能不那么好用并且通常会搞砸），可以使用类似如下的代码：</p>
+</li>
+</ul>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">stat -c &#39;%A %a %n&#39; &#x2F;etc&#x2F;timezone<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>
+<p>使用 <a target="_blank" rel="noopener" href="https://github.com/mooz/percol"> <code>percol</code> </a> 或者 <a target="_blank" rel="noopener" href="https://github.com/junegunn/fzf"> <code>fzf</code> </a> 可以交互式地从另一个命令输出中选取值。</p>
+</li>
+<li>
+<p>使用  <code>fpp</code> （<a target="_blank" rel="noopener" href="https://github.com/facebook/PathPicker">PathPicker</a>）可以与基于另一个命令 (例如  <code>git</code> ）输出的文件交互。</p>
+</li>
+<li>
+<p>将 web 服务器上当前目录下所有的文件（以及子目录）暴露给你所处网络的所有用户，使用：<br>
+ <code>python -m SimpleHTTPServer 7777</code>  （使用端口 7777 和 Python 2）或 <code>python -m http.server 7777</code>  （使用端口 7777 和 Python 3）。</p>
+</li>
+<li>
+<p>以其他用户的身份执行命令，使用  <code>sudo</code> 。默认以 root 用户的身份执行；使用  <code>-u</code>  来指定其他用户。使用  <code>-i</code>  来以该用户登录（需要输入_你自己的_密码）。</p>
+</li>
+<li>
+<p>将 shell 切换为其他用户，使用  <code>su username</code>  或者  <code>sudo - username</code> 。加入  <code>-</code>  会使得切换后的环境与使用该用户登录后的环境相同。省略用户名则默认为 root。切换到哪个用户，就需要输入_哪个用户的_密码。</p>
+</li>
+<li>
+<p>了解命令行的 <a target="_blank" rel="noopener" href="https://wiki.debian.org/CommonErrorMessages/ArgumentListTooLong">128K 限制</a>。使用通配符匹配大量文件名时，常会遇到 “Argument list too long” 的错误信息。（这种情况下换用  <code>find</code>  或  <code>xargs</code>  通常可以解决。）</p>
+</li>
+<li>
+<p>当你需要一个基本的计算器时，可以使用  <code>python</code>  解释器（当然你要用 python 的时候也是这样）。例如：</p>
+</li>
+</ul>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">>>> 2+3
+5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="文件及数据处理"><a class="markdownIt-Anchor" href="#文件及数据处理">#</a> 文件及数据处理</h2>
+<ul>
+<li>
+<p>在当前目录下通过文件名查找一个文件，使用类似于这样的命令： <code>find . -iname '*something*'</code> 。在所有路径下通过文件名查找文件，使用  <code>locate something</code>  （但注意到  <code>updatedb</code>  可能没有对最近新建的文件建立索引，所以你可能无法定位到这些未被索引的文件）。</p>
+</li>
+<li>
+<p>使用 <a target="_blank" rel="noopener" href="https://github.com/ggreer/the_silver_searcher"> <code>ag</code> </a> 在源代码或数据文件里检索（ <code>grep -r</code>  同样可以做到，但相比之下  <code>ag</code>  更加先进）。</p>
+</li>
+<li>
+<p>将 HTML 转为文本： <code>lynx -dump -stdin</code> 。</p>
+</li>
+<li>
+<p>Markdown，HTML，以及所有文档格式之间的转换，试试 <a target="_blank" rel="noopener" href="http://pandoc.org/"> <code>pandoc</code> </a>。</p>
+</li>
+<li>
+<p>当你要处理棘手的 XML 时候， <code>xmlstarlet</code>  算是上古时代流传下来的神器。</p>
+</li>
+<li>
+<p>使用 <a target="_blank" rel="noopener" href="http://stedolan.github.io/jq/"> <code>jq</code> </a> 处理 JSON。</p>
+</li>
+<li>
+<p>使用 <a target="_blank" rel="noopener" href="https://github.com/0k/shyaml"> <code>shyaml</code> </a> 处理 YAML。</p>
+</li>
+<li>
+<p>要处理 Excel 或 CSV 文件的话，<a target="_blank" rel="noopener" href="https://github.com/onyxfish/csvkit">csvkit</a> 提供了  <code>in2csv</code> ， <code>csvcut</code> ， <code>csvjoin</code> ， <code>csvgrep</code>  等方便易用的工具。</p>
+</li>
+<li>
+<p>当你要处理 Amazon S3 相关的工作的时候，<a target="_blank" rel="noopener" href="https://github.com/s3tools/s3cmd"> <code>s3cmd</code> </a> 是一个很方便的工具而 <a target="_blank" rel="noopener" href="https://github.com/bloomreach/s4cmd"> <code>s4cmd</code> </a> 的效率更高。Amazon 官方提供的 <a target="_blank" rel="noopener" href="https://github.com/aws/aws-cli"> <code>aws</code> </a> 以及  <a target="_blank" rel="noopener" href="https://github.com/donnemartin/saws"> <code>saws</code> </a> 是其他 AWS 相关工作的基础，值得学习。</p>
+</li>
+<li>
+<p>了解如何使用  <code>sort</code>  和  <code>uniq</code> ，包括 uniq 的  <code>-u</code>  参数和  <code>-d</code>  参数，具体内容在后文单行脚本节中。另外可以了解一下  <code>comm</code> 。</p>
+</li>
+<li>
+<p>了解如何使用  <code>cut</code> ， <code>paste</code>  和  <code>join</code>  来更改文件。很多人都会使用  <code>cut</code> ，但遗忘了  <code>join</code> 。</p>
+</li>
+<li>
+<p>了解如何运用  <code>wc</code>  去计算新行数（ <code>-l</code> ），字符数（ <code>-m</code> ），单词数（ <code>-w</code> ）以及字节数（ <code>-c</code> ）。</p>
+</li>
+<li>
+<p>了解如何使用  <code>tee</code>  将标准输入复制到文件甚至标准输出，例如  <code>ls -al | tee file.txt</code> 。</p>
+</li>
+<li>
+<p>要进行一些复杂的计算，比如分组、逆序和一些其他的统计分析，可以考虑使用 <a target="_blank" rel="noopener" href="https://www.gnu.org/software/datamash/"> <code>datamash</code> </a>。</p>
+</li>
+<li>
+<p>注意到语言设置（中文或英文等）对许多命令行工具有一些微妙的影响，比如排序的顺序和性能。大多数 Linux 的安装过程会将  <code>LANG</code>  或其他有关的变量设置为符合本地的设置。要意识到当你改变语言设置时，排序的结果可能会改变。明白国际化可能会使 sort 或其他命令运行效率下降<em>许多倍</em>。某些情况下（例如集合运算）你可以放心的使用  <code>export LC_ALL=C</code>  来忽略掉国际化并按照字节来判断顺序。</p>
+</li>
+<li>
+<p>你可以单独指定某一条命令的环境，只需在调用时把环境变量设定放在命令的前面，例如  <code>TZ=Pacific/Fiji date</code>  可以获取斐济的时间。</p>
+</li>
+<li>
+<p>了解如何使用  <code>awk</code>  和  <code>sed</code>  来进行简单的数据处理。 参阅 <a href="#one-liners">One-liners</a> 获取示例。</p>
+</li>
+<li>
+<p>替换一个或多个文件中出现的字符串：</p>
+</li>
+</ul>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">perl -pi.bak -e &#39;s&#x2F;old-string&#x2F;new-string&#x2F;g&#39; my-files-*.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>使用 <a target="_blank" rel="noopener" href="https://github.com/jlevy/repren"> <code>repren</code> </a> 来批量重命名文件，或是在多个文件中搜索替换内容。（有些时候  <code>rename</code>  命令也可以批量重命名，但要注意，它在不同 Linux 发行版中的功能并不完全一样。）</li>
+</ul>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># 将文件、目录和内容全部重命名 foo -&gt; bar:
+repren --full --preserve-case --from foo --to bar .
+# 还原所有备份文件 whatever.bak -&gt; whatever:
+repren --renames --from &#39;(.*)\.bak&#39; --to &#39;\1&#39; *.bak
+# 用 rename 实现上述功能（若可用）:
+rename &#39;s&#x2F;\.bak$&#x2F;&#x2F;&#39; *.bak<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>根据 man 页面的描述， <code>rsync</code>  是一个快速且非常灵活的文件复制工具。它闻名于设备之间的文件同步，但其实它在本地情况下也同样有用。在安全设置允许下，用  <code>rsync</code>  代替  <code>scp</code>  可以实现文件续传，而不用重新从头开始。它同时也是删除大量文件的<a target="_blank" rel="noopener" href="https://web.archive.org/web/20130929001850/http://linuxnote.net/jianingy/en/linux/a-fast-way-to-remove-huge-number-of-files.html">最快方法</a>之一：</li>
+</ul>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">mkdir empty &amp;&amp; rsync -r --delete empty&#x2F; some-dir &amp;&amp; rmdir some-dir<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>
+<p>若要在复制文件时获取当前进度，可使用  <code>pv</code> ，<a target="_blank" rel="noopener" href="https://github.com/dmerejkowsky/pycp"> <code>pycp</code> </a>，<a target="_blank" rel="noopener" href="https://github.com/Xfennec/progress"> <code>progress</code> </a>， <code>rsync --progress</code> 。若所执行的复制为 block 块拷贝，可以使用  <code>dd status=progress</code> 。</p>
+</li>
+<li>
+<p>使用  <code>shuf</code>  可以以行为单位来打乱文件的内容或从一个文件中随机选取多行。</p>
+</li>
+<li>
+<p>了解  <code>sort</code>  的参数。显示数字时，使用  <code>-n</code>  或者  <code>-h</code>  来显示更易读的数（例如  <code>du -h</code>  的输出）。明白排序时关键字的工作原理（ <code>-t</code>  和  <code>-k</code> ）。例如，注意到你需要  <code>-k1，1</code>  来仅按第一个域来排序，而  <code>-k1</code>  意味着按整行排序。稳定排序（ <code>sort -s</code> ）在某些情况下很有用。例如，以第二个域为主关键字，第一个域为次关键字进行排序，你可以使用  <code>sort -k1，1 | sort -s -k2，2</code> 。</p>
+</li>
+<li>
+<p>如果你想在 Bash 命令行中写 tab 制表符，按下 <strong>ctrl-v</strong> <strong>[Tab]</strong> 或键入  <code>$'\t'</code>  （后者可能更好，因为你可以复制粘贴它）。</p>
+</li>
+<li>
+<p>标准的源代码对比及合并工具是  <code>diff</code>  和  <code>patch</code> 。使用  <code>diffstat</code>  查看变更总览数据。注意到  <code>diff -r</code>  对整个文件夹有效。使用  <code>diff -r tree1 tree2 | diffstat</code>  查看变更的统计数据。 <code>vimdiff</code>  用于比对并编辑文件。</p>
+</li>
+<li>
+<p>对于二进制文件，使用  <code>hd</code> ， <code>hexdump</code>  或者  <code>xxd</code>  使其以十六进制显示，使用  <code>bvi</code> ， <code>hexedit</code>  或者  <code>biew</code>  来进行二进制编辑。</p>
+</li>
+<li>
+<p>同样对于二进制文件， <code>strings</code> （包括  <code>grep</code>  等工具）可以帮助在二进制文件中查找特定比特。</p>
+</li>
+<li>
+<p>制作二进制差分文件（Delta 压缩），使用  <code>xdelta3</code> 。</p>
+</li>
+<li>
+<p>使用  <code>iconv</code>  更改文本编码。需要更高级的功能，可以使用  <code>uconv</code> ，它支持一些高级的 Unicode 功能。例如，这条命令移除了所有重音符号：</p>
+</li>
+</ul>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">uconv -f utf-8 -t utf-8 -x &#39;::Any-Lower; ::Any-NFD; [:Nonspacing Mark:] &gt;; ::Any-NFC; &#39; &lt; input.txt &gt; output.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>
+<p>拆分文件可以使用  <code>split</code> （按大小拆分）和  <code>csplit</code> （按模式拆分）。</p>
+</li>
+<li>
+<p>操作日期和时间表达式，可以用 <a target="_blank" rel="noopener" href="http://www.fresse.org/dateutils/"> <code>dateutils</code> </a> 中的  <code>dateadd</code> 、 <code>datediff</code> 、 <code>strptime</code>  等工具。</p>
+</li>
+<li>
+<p>使用  <code>zless</code> 、 <code>zmore</code> 、 <code>zcat</code>  和  <code>zgrep</code>  对压缩过的文件进行操作。</p>
+</li>
+<li>
+<p>文件属性可以通过  <code>chattr</code>  进行设置，它比文件权限更加底层。例如，为了保护文件不被意外删除，可以使用不可修改标记： <code>sudo chattr +i /critical/directory/or/file</code></p>
+</li>
+<li>
+<p>使用  <code>getfacl</code>  和  <code>setfacl</code>  以保存和恢复文件权限。例如：</p>
+</li>
+</ul>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">getfacl -R &#x2F;some&#x2F;path &gt; permissions.txt
+setfacl --restore&#x3D;permissions.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>为了高效地创建空文件，请使用  <code>truncate</code> （创建<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%A8%80%E7%96%8F%E6%96%87%E4%BB%B6">稀疏文件</a>）， <code>fallocate</code> （用于 ext4，xfs，btrf 和 ocfs2 文件系统）， <code>xfs_mkfile</code> （适用于几乎所有的文件系统，包含在 xfsprogs 包中）， <code>mkfile</code> （用于类 Unix 操作系统，比如 Solaris 和 Mac OS）。</li>
+</ul>
+<h2 id="系统调试"><a class="markdownIt-Anchor" href="#系统调试">#</a> 系统调试</h2>
+<ul>
+<li>
+<p><code>curl</code>  和  <code>curl -I</code>  可以被轻松地应用于 web 调试中，它们的好兄弟  <code>wget</code>  也是如此，或者也可以试试更潮的 <a target="_blank" rel="noopener" href="https://github.com/jkbrzt/httpie"> <code>httpie</code> </a>。</p>
+</li>
+<li>
+<p>获取 CPU 和硬盘的使用状态，通常使用使用  <code>top</code> （ <code>htop</code>  更佳）， <code>iostat</code>  和  <code>iotop</code> 。而  <code>iostat -mxz 15</code>  可以让你获悉 CPU 和每个硬盘分区的基本信息和性能表现。</p>
+</li>
+<li>
+<p>使用  <code>netstat</code>  和  <code>ss</code>  查看网络连接的细节。</p>
+</li>
+<li>
+<p><code>dstat</code>  在你想要对系统的现状有一个粗略的认识时是非常有用的。然而若要对系统有一个深度的总体认识，使用 <a target="_blank" rel="noopener" href="https://github.com/nicolargo/glances"> <code>glances</code> </a>，它会在一个终端窗口中向你提供一些系统级的数据。</p>
+</li>
+<li>
+<p>若要了解内存状态，运行并理解  <code>free</code>  和  <code>vmstat</code>  的输出。值得留意的是 “cached” 的值，它指的是 Linux 内核用来作为文件缓存的内存大小，而与空闲内存无关。</p>
+</li>
+<li>
+<p>Java 系统调试则是一件截然不同的事，一个可以用于 Oracle 的 JVM 或其他 JVM 上的调试的技巧是你可以运行  <code>kill -3 &lt;pid&gt;</code>  同时一个完整的栈轨迹和堆概述（包括 GC 的细节）会被保存到标准错误或是日志文件。JDK 中的  <code>jps</code> ， <code>jstat</code> ， <code>jstack</code> ， <code>jmap</code>  很有用。<a target="_blank" rel="noopener" href="https://github.com/aragozin/jvm-tools">SJK tools</a> 更高级。</p>
+</li>
+<li>
+<p>使用 <a target="_blank" rel="noopener" href="http://www.bitwizard.nl/mtr/"> <code>mtr</code> </a> 去跟踪路由，用于确定网络问题。</p>
+</li>
+<li>
+<p>用 <a target="_blank" rel="noopener" href="https://dev.yorhel.nl/ncdu"> <code>ncdu</code> </a> 来查看磁盘使用情况，它比寻常的命令，如  <code>du -sh *</code> ，更节省时间。</p>
+</li>
+<li>
+<p>查找正在使用带宽的套接字连接或进程，使用 <a target="_blank" rel="noopener" href="http://www.ex-parrot.com/~pdw/iftop/"> <code>iftop</code> </a> 或 <a target="_blank" rel="noopener" href="https://github.com/raboof/nethogs"> <code>nethogs</code> </a>。</p>
+</li>
+<li>
+<p><code>ab</code>  工具（Apache 中自带）可以简单粗暴地检查 web 服务器的性能。对于更复杂的负载测试，使用  <code>siege</code> 。</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://wireshark.org/"> <code>wireshark</code> </a>，<a target="_blank" rel="noopener" href="https://www.wireshark.org/docs/wsug_html_chunked/AppToolstshark.html"> <code>tshark</code> </a> 和 <a target="_blank" rel="noopener" href="http://ngrep.sourceforge.net/"> <code>ngrep</code> </a> 可用于复杂的网络调试。</p>
+</li>
+<li>
+<p>了解  <code>strace</code>  和  <code>ltrace</code> 。这俩工具在你的程序运行失败、挂起甚至崩溃，而你却不知道为什么或你想对性能有个总体的认识的时候是非常有用的。注意 profile 参数（ <code>-c</code> ）和附加到一个运行的进程参数 （ <code>-p</code> ）。</p>
+</li>
+<li>
+<p>了解使用  <code>ldd</code>  来检查共享库。但是<a target="_blank" rel="noopener" href="http://www.catonmat.net/blog/ldd-arbitrary-code-execution/">永远不要在不信任的文件上运行</a>。</p>
+</li>
+<li>
+<p>了解如何运用  <code>gdb</code>  连接到一个运行着的进程并获取它的堆栈轨迹。</p>
+</li>
+<li>
+<p>学会使用  <code>/proc</code> 。它在调试正在出现的问题的时候有时会效果惊人。比如： <code>/proc/cpuinfo</code> ， <code>/proc/meminfo</code> ， <code>/proc/cmdline</code> ， <code>/proc/xxx/cwd</code> ， <code>/proc/xxx/exe</code> ， <code>/proc/xxx/fd/</code> ， <code>/proc/xxx/smaps</code> （这里的  <code>xxx</code>  表示进程的 id 或 pid）。</p>
+</li>
+<li>
+<p>当调试一些之前出现的问题的时候，<a target="_blank" rel="noopener" href="http://sebastien.godard.pagesperso-orange.fr/"> <code>sar</code> </a> 非常有用。它展示了 cpu、内存以及网络等的历史数据。</p>
+</li>
+<li>
+<p>关于更深层次的系统分析以及性能分析，看看  <code>stap</code> （<a target="_blank" rel="noopener" href="https://sourceware.org/systemtap/wiki">SystemTap</a>），<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Perf_(Linux)"> <code>perf</code> </a>，以及<a target="_blank" rel="noopener" href="https://github.com/draios/sysdig"> <code>sysdig</code> </a>。</p>
+</li>
+<li>
+<p>查看你当前使用的系统，使用  <code>uname</code> ， <code>uname -a</code> （Unix／kernel 信息）或者  <code>lsb_release -a</code> （Linux 发行版信息）。</p>
+</li>
+<li>
+<p>无论什么东西工作得很欢乐（可能是硬件或驱动问题）时可以试试  <code>dmesg</code> 。</p>
+</li>
+<li>
+<p>如果你删除了一个文件，但通过  <code>du</code>  发现没有释放预期的磁盘空间，请检查文件是否被进程占用：<br>
+ <code>lsof | grep deleted | grep &quot;filename-of-my-big-file&quot;</code></p>
+</li>
+</ul>
+<h2 id="单行脚本"><a class="markdownIt-Anchor" href="#单行脚本">#</a> 单行脚本</h2>
+<p>一些命令组合的例子：</p>
+<ul>
+<li>当你需要对文本文件做集合交、并、差运算时， <code>sort</code>  和  <code>uniq</code>  会是你的好帮手。具体例子请参照代码后面的，此处假设  <code>a</code>  与  <code>b</code>  是两内容不同的文件。这种方式效率很高，并且在小文件和上 G 的文件上都能运用（注意尽管在  <code>/tmp</code>  在一个小的根分区上时你可能需要  <code>-T</code>  参数，但是实际上  <code>sort</code>  并不被内存大小约束），参阅前文中关于  <code>LC_ALL</code>  和  <code>sort</code>  的  <code>-u</code>  参数的部分。</li>
+</ul>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">sort a b | uniq &gt; c   # c 是 a 并 b
+sort a b | uniq -d &gt; c   # c 是 a 交 b
+sort a b b | uniq -u &gt; c   # c 是 a - b<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>
+<p>使用  <code>grep . *</code> （每行都会附上文件名）或者  <code>head -100 *</code> （每个文件有一个标题）来阅读检查目录下所有文件的内容。这在检查一个充满配置文件的目录（如  <code>/sys</code> 、 <code>/proc</code> 、 <code>/etc</code> ）时特别好用。</p>
+</li>
+<li>
+<p>计算文本文件第三列中所有数的和（可能比同等作用的 Python 代码快三倍且代码量少三倍）：</p>
+</li>
+</ul>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">awk &#39;&#123; x +&#x3D; $3 &#125; END &#123; print x &#125;&#39; myfile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>如果你想在文件树上查看大小 / 日期，这可能看起来像递归版的  <code>ls -l</code>  但比  <code>ls -lR</code>  更易于理解：</li>
+</ul>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">find . -type f -ls<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>假设你有一个类似于 web 服务器日志文件的文本文件，并且一个确定的值只会出现在某些行上，假设一个  <code>acct_id</code>  参数在 URI 中。如果你想计算出每个  <code>acct_id</code>  值有多少次请求，使用如下代码：</li>
+</ul>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">egrep -o &#39;acct_id&#x3D;[0-9]+&#39; access.log | cut -d&#x3D; -f2 | sort | uniq -c | sort -rn<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>
+<p>要持续监测文件改动，可以使用  <code>watch</code> ，例如检查某个文件夹中文件的改变，可以用  <code>watch -d -n 2 'ls -rtlh | tail'</code> ；或者在排查 WiFi 设置故障时要监测网络设置的更改，可以用  <code>watch -d -n 2 ifconfig</code> 。</p>
+</li>
+<li>
+<p>运行这个函数从这篇文档中随机获取一条技巧（解析 Markdown 文件并抽取项目）：</p>
+</li>
+</ul>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">function taocl() &#123;
+  curl -s https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;jlevy&#x2F;the-art-of-command-line&#x2F;master&#x2F;README-zh.md|
+    pandoc -f markdown -t html |
+    iconv -f &#39;utf-8&#39; -t &#39;unicode&#39; |
+    xmlstarlet fo --html --dropdtd |
+    xmlstarlet sel -t -v &quot;(html&#x2F;body&#x2F;ul&#x2F;li[count(p)&gt;0])[$RANDOM mod last()+1]&quot; |
+    xmlstarlet unesc | fmt -80
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="冷门但有用"><a class="markdownIt-Anchor" href="#冷门但有用">#</a> 冷门但有用</h2>
+<ul>
+<li>
+<p><code>expr</code> ：计算表达式或正则匹配</p>
+</li>
+<li>
+<p><code>m4</code> ：简单的宏处理器</p>
+</li>
+<li>
+<p><code>yes</code> ：多次打印字符串</p>
+</li>
+<li>
+<p><code>cal</code> ：漂亮的日历</p>
+</li>
+<li>
+<p><code>env</code> ：执行一个命令（脚本文件中很有用）</p>
+</li>
+<li>
+<p><code>printenv</code> ：打印环境变量（调试时或在写脚本文件时很有用）</p>
+</li>
+<li>
+<p><code>look</code> ：查找以特定字符串开头的单词或行</p>
+</li>
+<li>
+<p><code>cut</code> ， <code>paste</code>  和  <code>join</code> ：数据修改</p>
+</li>
+<li>
+<p><code>fmt</code> ：格式化文本段落</p>
+</li>
+<li>
+<p><code>pr</code> ：将文本格式化成页／列形式</p>
+</li>
+<li>
+<p><code>fold</code> ：包裹文本中的几行</p>
+</li>
+<li>
+<p><code>column</code> ：将文本格式化成多个对齐、定宽的列或表格</p>
+</li>
+<li>
+<p><code>expand</code>  和  <code>unexpand</code> ：制表符与空格之间转换</p>
+</li>
+<li>
+<p><code>nl</code> ：添加行号</p>
+</li>
+<li>
+<p><code>seq</code> ：打印数字</p>
+</li>
+<li>
+<p><code>bc</code> ：计算器</p>
+</li>
+<li>
+<p><code>factor</code> ：分解因数</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://gnupg.org/"> <code>gpg</code> </a>：加密并签名文件</p>
+</li>
+<li>
+<p><code>toe</code> ：terminfo 入口列表</p>
+</li>
+<li>
+<p><code>nc</code> ：网络调试及数据传输</p>
+</li>
+<li>
+<p><code>socat</code> ：套接字代理，与  <code>netcat</code>  类似</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/mattthias/slurm"> <code>slurm</code> </a>：网络流量可视化</p>
+</li>
+<li>
+<p><code>dd</code> ：文件或设备间传输数据</p>
+</li>
+<li>
+<p><code>file</code> ：确定文件类型</p>
+</li>
+<li>
+<p><code>tree</code> ：以树的形式显示路径和文件，类似于递归的  <code>ls</code></p>
+</li>
+<li>
+<p><code>stat</code> ：文件信息</p>
+</li>
+<li>
+<p><code>time</code> ：执行命令，并计算执行时间</p>
+</li>
+<li>
+<p><code>timeout</code> ：在指定时长范围内执行命令，并在规定时间结束后停止进程</p>
+</li>
+<li>
+<p><code>lockfile</code> ：使文件只能通过  <code>rm -f</code>  移除</p>
+</li>
+<li>
+<p><code>logrotate</code> ： 切换、压缩以及发送日志文件</p>
+</li>
+<li>
+<p><code>watch</code> ：重复运行同一个命令，展示结果并／或高亮有更改的部分</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/joh/when-changed"> <code>when-changed</code> </a>：当检测到文件更改时执行指定命令。参阅  <code>inotifywait</code>  和  <code>entr</code> 。</p>
+</li>
+<li>
+<p><code>tac</code> ：反向输出文件</p>
+</li>
+<li>
+<p><code>shuf</code> ：文件中随机选取几行</p>
+</li>
+<li>
+<p><code>comm</code> ：一行一行的比较排序过的文件</p>
+</li>
+<li>
+<p><code>strings</code> ：从二进制文件中抽取文本</p>
+</li>
+<li>
+<p><code>tr</code> ：转换字母</p>
+</li>
+<li>
+<p><code>iconv</code>  或  <code>uconv</code> ：文本编码转换</p>
+</li>
+<li>
+<p><code>split</code>  和  <code>csplit</code> ：分割文件</p>
+</li>
+<li>
+<p><code>sponge</code> ：在写入前读取所有输入，在读取文件后再向同一文件写入时比较有用，例如  <code>grep -v something some-file | sponge some-file</code></p>
+</li>
+<li>
+<p><code>units</code> ：将一种计量单位转换为另一种等效的计量单位（参阅  <code>/usr/share/units/definitions.units</code> ）</p>
+</li>
+<li>
+<p><code>apg</code> ：随机生成密码</p>
+</li>
+<li>
+<p><code>xz</code> ：高比例的文件压缩</p>
+</li>
+<li>
+<p><code>ldd</code> ：动态库信息</p>
+</li>
+<li>
+<p><code>nm</code> ：提取 obj 文件中的符号</p>
+</li>
+<li>
+<p><code>ab</code>  或 <a target="_blank" rel="noopener" href="https://github.com/wg/wrk"> <code>wrk</code> </a>：web 服务器性能分析</p>
+</li>
+<li>
+<p><code>strace</code> ：调试系统调用</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="http://www.bitwizard.nl/mtr/"> <code>mtr</code> </a>：更好的网络调试跟踪工具</p>
+</li>
+<li>
+<p><code>cssh</code> ：可视化的并发 shell</p>
+</li>
+<li>
+<p><code>rsync</code> ：通过 ssh 或本地文件系统同步文件和文件夹</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://wireshark.org/"> <code>wireshark</code> </a> 和 <a target="_blank" rel="noopener" href="https://www.wireshark.org/docs/wsug_html_chunked/AppToolstshark.html"> <code>tshark</code> </a>：抓包和网络调试工具</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="http://ngrep.sourceforge.net/"> <code>ngrep</code> </a>：网络层的 grep</p>
+</li>
+<li>
+<p><code>host</code>  和  <code>dig</code> ：DNS 查找</p>
+</li>
+<li>
+<p><code>lsof</code> ：列出当前系统打开文件的工具以及查看端口信息</p>
+</li>
+<li>
+<p><code>dstat</code> ：系统状态查看</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://github.com/nicolargo/glances"> <code>glances</code> </a>：高层次的多子系统总览</p>
+</li>
+<li>
+<p><code>iostat</code> ：硬盘使用状态</p>
+</li>
+<li>
+<p><code>mpstat</code> ： CPU 使用状态</p>
+</li>
+<li>
+<p><code>vmstat</code> ： 内存使用状态</p>
+</li>
+<li>
+<p><code>htop</code> ：top 的加强版</p>
+</li>
+<li>
+<p><code>last</code> ：登入记录</p>
+</li>
+<li>
+<p><code>w</code> ：查看处于登录状态的用户</p>
+</li>
+<li>
+<p><code>id</code> ：用户 / 组 ID 信息</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="http://sebastien.godard.pagesperso-orange.fr/"> <code>sar</code> </a>：系统历史数据</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="http://www.ex-parrot.com/~pdw/iftop/"> <code>iftop</code> </a> 或 <a target="_blank" rel="noopener" href="https://github.com/raboof/nethogs"> <code>nethogs</code> </a>：套接字及进程的网络利用情况</p>
+</li>
+<li>
+<p><code>ss</code> ：套接字数据</p>
+</li>
+<li>
+<p><code>dmesg</code> ：引导及系统错误信息</p>
+</li>
+<li>
+<p><code>sysctl</code> ： 在内核运行时动态地查看和修改内核的运行参数</p>
+</li>
+<li>
+<p><code>hdparm</code> ：SATA/ATA 磁盘更改及性能分析</p>
+</li>
+<li>
+<p><code>lsblk</code> ：列出块设备信息：以树形展示你的磁盘以及磁盘分区信息</p>
+</li>
+<li>
+<p><code>lshw</code> ， <code>lscpu</code> ， <code>lspci</code> ， <code>lsusb</code>  和  <code>dmidecode</code> ：查看硬件信息，包括 CPU、BIOS、RAID、显卡、USB 设备等</p>
+</li>
+<li>
+<p><code>lsmod</code>  和  <code>modinfo</code> ：列出内核模块，并显示其细节</p>
+</li>
+<li>
+<p><code>fortune</code> ， <code>ddate</code>  和  <code>sl</code> ：额，这主要取决于你是否认为蒸汽火车和莫名其妙的名人名言是否 “有用”</p>
+</li>
+</ul>
+<h2 id="仅限-os-x-系统"><a class="markdownIt-Anchor" href="#仅限-os-x-系统">#</a> 仅限 OS X 系统</h2>
+<p>以下是<em>仅限于</em> OS X 系统的技巧。</p>
+<ul>
+<li>
+<p>用  <code>brew</code>  （Homebrew）或者  <code>port</code>  （MacPorts）进行包管理。这些可以用来在 OS X 系统上安装以上的大多数命令。</p>
+</li>
+<li>
+<p>用  <code>pbcopy</code>  复制任何命令的输出到桌面应用，用  <code>pbpaste</code>  粘贴输入。</p>
+</li>
+<li>
+<p>若要在 OS X 终端中将 Option 键视为 alt 键（例如在上面介绍的 <strong>alt-b</strong>、<strong>alt-f</strong> 等命令中用到），打开 偏好设置 -&gt; 描述文件 -&gt; 键盘 并勾选 “使用 Option 键作为 Meta 键”。</p>
+</li>
+<li>
+<p>用  <code>open</code>  或者  <code>open -a /Applications/Whatever.app</code>  使用桌面应用打开文件。</p>
+</li>
+<li>
+<p>Spotlight：用  <code>mdfind</code>  搜索文件，用  <code>mdls</code>  列出元数据（例如照片的 EXIF 信息）。</p>
+</li>
+<li>
+<p>注意 OS X 系统是基于 BSD UNIX 的，许多命令（例如  <code>ps</code> ， <code>ls</code> ， <code>tail</code> ， <code>awk</code> ， <code>sed</code> ）都和 Linux 中有微妙的不同（ Linux 很大程度上受到了 System V-style Unix 和 GNU 工具影响）。你可以通过标题为 “BSD General Commands Manual” 的 man 页面发现这些不同。在有些情况下 GNU 版本的命令也可能被安装（例如  <code>gawk</code>  和  <code>gsed</code>  对应 GNU 中的 awk 和 sed ）。如果要写跨平台的 Bash 脚本，避免使用这些命令（例如，考虑 Python 或者  <code>perl</code>  ）或者经过仔细的测试。</p>
+</li>
+<li>
+<p>用  <code>sw_vers</code>  获取 OS X 的版本信息。</p>
+</li>
+</ul>
+<h2 id="仅限-windows-系统"><a class="markdownIt-Anchor" href="#仅限-windows-系统">#</a> 仅限 Windows 系统</h2>
+<p>以下是<em>仅限于</em> Windows 系统的技巧。</p>
+<h3 id="在-winodws-下获取-unix-工具"><a class="markdownIt-Anchor" href="#在-winodws-下获取-unix-工具">#</a> 在 Winodws 下获取 Unix 工具</h3>
+<ul>
+<li>
+<p>可以安装 <a target="_blank" rel="noopener" href="https://cygwin.com/">Cygwin</a> 允许你在 Microsoft Windows 中体验 Unix shell 的威力。这样的话，本文中介绍的大多数内容都将适用。</p>
+</li>
+<li>
+<p>在 Windows 10 上，你可以使用 <a target="_blank" rel="noopener" href="https://msdn.microsoft.com/commandline/wsl/about">Bash on Ubuntu on Windows</a>，它提供了一个熟悉的 Bash 环境，包含了不少 Unix 命令行工具。好处是它允许 Linux 上编写的程序在 Windows 上运行，而另一方面，Windows 上编写的程序却无法在 Bash 命令行中运行。</p>
+</li>
+<li>
+<p>如果你在 Windows 上主要想用 GNU 开发者工具（例如 GCC），可以考虑 <a target="_blank" rel="noopener" href="http://www.mingw.org/">MinGW</a> 以及它的 <a target="_blank" rel="noopener" href="http://www.mingw.org/wiki/msys">MSYS</a> 包，这个包提供了例如 bash，gawk，make 和 grep 的工具。MSYS 并不包含所有可以与 Cygwin 媲美的特性。当制作 Unix 工具的原生 Windows 端口时 MinGW 将特别地有用。</p>
+</li>
+<li>
+<p>另一个在 Windows 下实现接近 Unix 环境外观效果的选项是 <a target="_blank" rel="noopener" href="https://github.com/dthree/cash">Cash</a>。注意在此环境下只有很少的 Unix 命令和命令行可用。</p>
+</li>
+</ul>
+<h3 id="实用-windows-命令行工具"><a class="markdownIt-Anchor" href="#实用-windows-命令行工具">#</a> 实用 Windows 命令行工具</h3>
+<ul>
+<li>
+<p>可以使用  <code>wmic</code>  在命令行环境下给大部分 Windows 系统管理任务编写脚本以及执行这些任务。</p>
+</li>
+<li>
+<p>Windows 实用的原生命令行网络工具包括  <code>ping</code> ， <code>ipconfig</code> ， <code>tracert</code> ，和  <code>netstat</code> 。</p>
+</li>
+<li>
+<p>可以使用  <code>Rundll32</code>  命令来实现<a target="_blank" rel="noopener" href="http://www.thewindowsclub.com/rundll32-shortcut-commands-windows">许多有用的 Windows 任务</a> 。</p>
+</li>
+</ul>
+<h3 id="cygwin-技巧"><a class="markdownIt-Anchor" href="#cygwin-技巧">#</a> Cygwin 技巧</h3>
+<ul>
+<li>
+<p>通过 Cygwin 的包管理器来安装额外的 Unix 程序。</p>
+</li>
+<li>
+<p>使用  <code>mintty</code>  作为你的命令行窗口。</p>
+</li>
+<li>
+<p>要访问 Windows 剪贴板，可以通过  <code>/dev/clipboard</code> 。</p>
+</li>
+<li>
+<p>运行  <code>cygstart</code>  以通过默认程序打开一个文件。</p>
+</li>
+<li>
+<p>要访问 Windows 注册表，可以使用  <code>regtool</code> 。</p>
+</li>
+<li>
+<p>注意 Windows 驱动器路径  <code>C:\</code>  在 Cygwin 中用  <code>/cygdrive/c</code>  代表，而 Cygwin 的  <code>/</code>  代表 Windows 中的  <code>C:\cygwin</code> 。要转换 Cygwin 和 Windows 风格的路径可以用  <code>cygpath</code> 。这在需要调用 Windows 程序的脚本里很有用。</p>
+</li>
+<li>
+<p>学会使用  <code>wmic</code> ，你就可以从命令行执行大多数 Windows 系统管理任务，并编成脚本。</p>
+</li>
+<li>
+<p>要在 Windows 下获得 Unix 的界面和体验，另一个办法是使用 <a target="_blank" rel="noopener" href="https://github.com/dthree/cash">Cash</a>。需要注意的是，这个环境支持的 Unix 命令和命令行参数非常少。</p>
+</li>
+<li>
+<p>要在 Windows 上获取 GNU 开发者工具（比如 GCC）的另一个办法是使用 <a target="_blank" rel="noopener" href="http://www.mingw.org/">MinGW</a> 以及它的 <a target="_blank" rel="noopener" href="http://www.mingw.org/wiki/msys">MSYS</a> 软件包，该软件包提供了 bash、gawk、make、grep 等工具。然而 MSYS 提供的功能没有 Cygwin 完善。MinGW 在创建 Unix 工具的 Windows 原生移植方面非常有用。</p>
+</li>
+</ul>
+<h2 id="更多资源"><a class="markdownIt-Anchor" href="#更多资源">#</a> 更多资源</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/alebcay/awesome-shell">awesome-shell</a>：一份精心组织的命令行工具及资源的列表。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/herrbischoff/awesome-osx-command-line">awesome-osx-command-line</a>：一份针对 OS X 命令行的更深入的指南。</li>
+<li><a target="_blank" rel="noopener" href="http://redsymbol.net/articles/unofficial-bash-strict-mode/">Strict mode</a>：为了编写更好的脚本文件。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koalaman/shellcheck">shellcheck</a>：一个静态 shell 脚本分析工具，本质上是 bash／sh／zsh 的 lint。</li>
+<li><a target="_blank" rel="noopener" href="http://www.dwheeler.com/essays/filenames-in-shell.html">Filenames and Pathnames in Shell</a>：有关如何在 shell 脚本里正确处理文件名的细枝末节。</li>
+<li><a target="_blank" rel="noopener" href="http://datascienceatthecommandline.com/#tools">Data Science at the Command Line</a>：用于数据科学的一些命令和工具，摘自同名书籍。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/">https://harryqu1229.github.io/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/fundamental/">fundamental</a><a class="post-meta__tags" href="/tags/linux/">linux</a><a class="post-meta__tags" href="/tags/operating-systems/">operating systems</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/04/02/Linux/"><img class="prev-cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Linux notes</div></div></a></div><div class="next-post pull-right"><a href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/"><img class="next-cover" src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Linux easy notes</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes"><img class="cover" src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-02</div><div class="title">Linux easy notes</div></div></a></div><div><a href="/2022/04/02/Linux/" title="Linux notes"><img class="cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-02</div><div class="title">Linux notes</div></div></a></div><div><a href="/2022/02/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" title="Operating Systems"><img class="cover" src="https://w.wallhaven.cc/full/wq/wallhaven-wqvov7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">Operating Systems</div></div></a></div><div><a href="/2022/02/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86%E7%82%B9/" title="Operating Systems"><img class="cover" src="https://w.wallhaven.cc/full/72/wallhaven-72myve.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">Operating Systems</div></div></a></div><div><a href="/2022/02/25/MySQL%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/" title="Mysql commonly used functions"><img class="cover" src="https://w.wallhaven.cc/full/rd/wallhaven-rdw8dj.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">Mysql commonly used functions</div></div></a></div><div><a href="/2022/02/25/%E4%B8%80%E4%BA%9B%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend Algorithm and Data Structure"><img class="cover" src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">Frontend Algorithm and Data Structure</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%9A%84%E8%89%BA%E6%9C%AF"><span class="toc-number">1.</span> <span class="toc-text"> 命令行的艺术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">1.2.</span> <span class="toc-text"> 基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text"> 日常使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-number">1.4.</span> <span class="toc-text"> 文件及数据处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E8%AF%95"><span class="toc-number">1.5.</span> <span class="toc-text"> 系统调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="toc-number">1.6.</span> <span class="toc-text"> 单行脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%B7%E9%97%A8%E4%BD%86%E6%9C%89%E7%94%A8"><span class="toc-number">1.7.</span> <span class="toc-text"> 冷门但有用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%85%E9%99%90-os-x-%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.8.</span> <span class="toc-text"> 仅限 OS X 系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%85%E9%99%90-windows-%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.9.</span> <span class="toc-text"> 仅限 Windows 系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-winodws-%E4%B8%8B%E8%8E%B7%E5%8F%96-unix-%E5%B7%A5%E5%85%B7"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 在 Winodws 下获取 Unix 工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%94%A8-windows-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 实用 Windows 命令行工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cygwin-%E6%8A%80%E5%B7%A7"><span class="toc-number">1.9.3.</span> <span class="toc-text"> Cygwin 技巧</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E5%A4%9A%E8%B5%84%E6%BA%90"><span class="toc-number">1.10.</span> <span class="toc-text"> 更多资源</span></a></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux easy notes"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes">Linux easy notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux commands"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands">Linux commands</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/Linux/" title="Linux notes"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux notes"/></a><div class="content"><a class="title" href="/2022/04/02/Linux/" title="Linux notes">Linux notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/nodejs/" title="Nodejs notes"><img src="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nodejs notes"/></a><div class="content"><a class="title" href="/2022/03/01/nodejs/" title="Nodejs notes">Nodejs notes</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Frontend interview questions"/></a><div class="content"><a class="title" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions">Frontend interview questions</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/'
+    this.page.identifier = '2022/04/02/linux的一些命令/'
+    this.page.title = 'Linux commands'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>if (window.DISQUSWIDGETS === undefined) {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://harry-study-blog.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+} else {
+  DISQUSWIDGETS.getCount({reset: true});
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: '07a6d0d0fc2648249de3f94c6b48cd36',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=a5KJbIVovxK3ZXvlrPvv7wgYLY4fAh3pvP4thfjXYUdM2cNymlgVhMhdyhb9e0O3')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" title="本站使用JsDelivr为静态资源提供CDN加速"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，默认线路托管于Vercel"><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，联通线路托管于Coding"><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

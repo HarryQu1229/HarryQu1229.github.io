@@ -1,0 +1,2182 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>45 Promise Frontend Interview Quesitions | Harry World</title><meta name="keywords" content="frontend,interview"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# 前言 你盼世界，我盼望你无 bug 。Hello 大家好！我是霖呆呆！ （是不是封面和标题取的好就能把你骗进来 😁） 时隔一周不见，霖呆呆我终于更新文章了，小声嘀咕说想我了… 呸… 咳咳，其实我一直在隐忍准备来一发大的好不。 这不，这一章节就是整理了 45  道 Promise  的笔试题让大家爽一爽 😁。 其实想要写一篇关于 Promise  的文章是因为之前在写别的文章的时候被评论区的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="45 Promise Frontend Interview Quesitions">
+<meta property="og:url" content="https://harryqu1229.github.io/2022/01/01/45%E9%81%93promise%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="Harry World">
+<meta property="og:description" content="# 前言 你盼世界，我盼望你无 bug 。Hello 大家好！我是霖呆呆！ （是不是封面和标题取的好就能把你骗进来 😁） 时隔一周不见，霖呆呆我终于更新文章了，小声嘀咕说想我了… 呸… 咳咳，其实我一直在隐忍准备来一发大的好不。 这不，这一章节就是整理了 45  道 Promise  的笔试题让大家爽一爽 😁。 其实想要写一篇关于 Promise  的文章是因为之前在写别的文章的时候被评论区的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://w.wallhaven.cc/full/v9/wallhaven-v9v9o5.jpg">
+<meta property="article:published_time" content="2021-12-31T11:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-25T15:31:17.226Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="frontend">
+<meta property="article:tag" content="interview">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://w.wallhaven.cc/full/v9/wallhaven-v9v9o5.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://harryqu1229.github.io/2022/01/01/45%E9%81%93promise%E9%9D%A2%E8%AF%95%E9%A2%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '45 Promise Frontend Interview Quesitions',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-26 04:31:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/flink.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://nz.hudson.com/wp-content/cache/bb-plugin/cache/unuasual-job-interview-01-1024x731-landscape.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry World</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">45 Promise Frontend Interview Quesitions</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-12-31T11:00:00.000Z" title="Created 2022-01-01 00:00:00">2022-01-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-02-25T15:31:17.226Z" title="Updated 2022-02-26 04:31:17">2022-02-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Interview/">Interview</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Interview/frontend/">frontend</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">15.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>63min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="45 Promise Frontend Interview Quesitions"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><span class="disqus-comment-count"><a href="https://harryqu1229.github.io/2022/01/01/45%E9%81%93promise%E9%9D%A2%E8%AF%95%E9%A2%98/#disqus_thread"></a></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h1>
+<p>你盼世界，我盼望你无 <code>bug</code> 。Hello 大家好！我是霖呆呆！</p>
+<p>（是不是封面和标题取的好就能把你骗进来 😁）</p>
+<p>时隔一周不见，霖呆呆我终于更新文章了，小声嘀咕说想我了…</p>
+<p>呸…</p>
+<p>咳咳，其实我一直在隐忍准备来一发大的好不。</p>
+<p>这不，这一章节就是整理了 <code>45</code>  道 <code>Promise</code>  的笔试题让大家爽一爽 😁。</p>
+<p>其实想要写一篇关于 <code>Promise</code>  的文章是因为之前在写别的文章的时候被评论区的一名读者无情的嘲讽了👎：</p>
+<p><code>&quot;作者的Promise一定很烂&quot;</code></p>
+<p>所以编写这么一个主题霖呆呆我不是为了证明什么，而是想说：</p>
+<p><code>&quot;说我烂我可以学啊&quot;</code></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1708bb5d4e866ed2%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>另外查了很多关于 <code>Promise</code>  的面试题，有些一上来就很难的，有些连着几篇题目都是一样的，还有一些比较好的文章介绍的都是一些硬知识点。</p>
+<p>这篇文章是一篇比较纯的 <code>Promise</code>  笔试文章，是我自己在做题的时候，根据题目想要的考点来反敲知识点，然后再由这个知识点编写从浅到深的的题目。</p>
+<p>所以你可以看到题目中有一些基础题，然后再从基础题慢慢的变难，如果你看着感觉这段位配不上你的话，请答应我坚持看下去，会越来越难的…</p>
+<p>咳咳，循序渐进嘛…</p>
+<p>本文的题目没有到特别深入，不过应该覆盖了大部分的考点，另外为了不把大家绕混，答案也没有考虑在 <code>Node</code>  的执行结果，执行结果全为浏览器环境下。因此如果你都会做的话， <code>可以尽情的在评论区再给我一个👎</code> ，放心，我脾气很好的…</p>
+<p>OK👌， 来看看通过阅读本篇文章你可以学到：</p>
+<ul>
+<li>Promise 的几道基础题</li>
+<li>Promise 结合 setTimeout</li>
+<li>Promise 中的 then、catch、finally</li>
+<li>Promise 中的 all 和 race</li>
+<li>async/await 的几道题</li>
+<li>async 处理错误</li>
+<li>综合题</li>
+<li>几道大厂的面试题</li>
+</ul>
+<h2 id="前期准备"><a class="markdownIt-Anchor" href="#前期准备">#</a> 前期准备</h2>
+<p>在做下面👇的题目之前，我希望你能清楚几个知识点。</p>
+<p>(如果你感觉一上来不想看这些列举的知识点的话，直接看后面的例子再来理解它们也可以)</p>
+<p><strong> <code>event loop</code>  它的执行顺序：</strong></p>
+<ul>
+<li>一开始整个脚本作为一个宏任务执行</li>
+<li>执行过程中同步代码直接执行，宏任务进入宏任务队列，微任务进入微任务队列</li>
+<li>当前宏任务执行完出队，检查微任务列表，有则依次执行，直到全部执行完</li>
+<li>执行浏览器 UI 线程的渲染工作</li>
+<li>检查是否有 <code>Web Worker</code>  任务，有则执行</li>
+<li>执行完本轮的宏任务，回到 2，依此循环，直到宏任务和微任务队列都为空</li>
+</ul>
+<p><strong>微任务包括：</strong>  <code>MutationObserver</code> 、 <code>Promise.then()或catch()</code> 、 <code>Promise为基础开发的其它技术，比如fetch API</code> 、 <code>V8</code>  的垃圾回收过程、 <code>Node独有的process.nextTick</code> 。</p>
+<p><strong>宏任务包括</strong>： <code>script</code>  、 <code>setTimeout</code> 、 <code>setInterval</code>  、 <code>setImmediate</code>  、 <code>I/O</code>  、 <code>UI rendering</code> 。</p>
+<p><strong>注意</strong>⚠️：在所有任务开始的时候，由于宏任务中包括了 <code>script</code> ，所以浏览器会先执行一个宏任务，在这个过程中你看到的延迟任务 (例如 <code>setTimeout</code> ) 将被放到下一轮宏任务中来执行。</p>
+<h3 id="1-promise的几道基础题"><a class="markdownIt-Anchor" href="#1-promise的几道基础题">#</a> 1. Promise 的几道基础题</h3>
+<h4 id="11-题目一"><a class="markdownIt-Anchor" href="#11-题目一">#</a> 1.1 题目一</h4>
+<pre class="line-numbers language-none"><code class="language-none">const promise1 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;
+  console.log(&#39;promise1&#39;)
+&#125;)
+console.log(&#39;1&#39;, promise1);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>过程分析：</p>
+<ul>
+<li>从上至下，先遇到 <code>new Promise</code> ，执行该构造函数中的代码 <code>promise1</code></li>
+<li>然后执行同步代码 <code>1</code> ，此时 <code>promise1</code>  没有被 <code>resolve</code>  或者 <code>reject</code> ，因此状态还是 <code>pending</code></li>
+</ul>
+<p>结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;promise1&#39;
+&#39;1&#39; Promise&#123;&lt;pending&gt;&#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="12-题目二"><a class="markdownIt-Anchor" href="#12-题目二">#</a> 1.2 题目二</h4>
+<pre class="line-numbers language-none"><code class="language-none">const promise &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;
+  console.log(1);
+  resolve(&#39;success&#39;)
+  console.log(2);
+&#125;);
+promise.then(() &#x3D;&gt; &#123;
+  console.log(3);
+&#125;);
+console.log(4);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>过程分析：</p>
+<ul>
+<li>从上至下，先遇到 <code>new Promise</code> ，执行其中的同步代码 <code>1</code></li>
+<li>再遇到 <code>resolve('success')</code> ， 将 <code>promise</code>  的状态改为了 <code>resolved</code>  并且将值保存下来</li>
+<li>继续执行同步代码 <code>2</code></li>
+<li>跳出 <code>promise</code> ，往下执行，碰到 <code>promise.then</code>  这个微任务，将其加入微任务队列</li>
+<li>执行同步代码 <code>4</code></li>
+<li>本轮宏任务全部执行完毕，检查微任务队列，发现 <code>promise.then</code>  这个微任务且状态为 <code>resolved</code> ，执行它。</li>
+</ul>
+<p>结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">1 2 4 3
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="13-题目三"><a class="markdownIt-Anchor" href="#13-题目三">#</a> 1.3 题目三</h4>
+<pre class="line-numbers language-none"><code class="language-none">const promise &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;
+  console.log(1);
+  console.log(2);
+&#125;);
+promise.then(() &#x3D;&gt; &#123;
+  console.log(3);
+&#125;);
+console.log(4);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>过程分析</p>
+<ul>
+<li>和题目二相似，只不过在 <code>promise</code>  中并没有 <code>resolve</code>  或者 <code>reject</code></li>
+<li>因此 <code>promise.then</code>  并不会执行，它只有在被改变了状态之后才会执行。</li>
+</ul>
+<p>结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">1 2 4
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="14-题目四"><a class="markdownIt-Anchor" href="#14-题目四">#</a> 1.4 题目四</h4>
+<pre class="line-numbers language-none"><code class="language-none">const promise1 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;
+  console.log(&#39;promise1&#39;)
+  resolve(&#39;resolve1&#39;)
+&#125;)
+const promise2 &#x3D; promise1.then(res &#x3D;&gt; &#123;
+  console.log(res)
+&#125;)
+console.log(&#39;1&#39;, promise1);
+console.log(&#39;2&#39;, promise2);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>过程分析：</p>
+<ul>
+<li>从上至下，先遇到 <code>new Promise</code> ，执行该构造函数中的代码 <code>promise1</code></li>
+<li>碰到 <code>resolve</code>  函数，将 <code>promise1</code>  的状态改变为 <code>resolved</code> , 并将结果保存下来</li>
+<li>碰到 <code>promise1.then</code>  这个微任务，将它放入微任务队列</li>
+<li><code>promise2</code>  是一个新的状态为 <code>pending</code>  的 <code>Promise</code></li>
+<li>执行同步代码 <code>1</code> ， 同时打印出 <code>promise1</code>  的状态是 <code>resolved</code></li>
+<li>执行同步代码 <code>2</code> ，同时打印出 <code>promise2</code>  的状态是 <code>pending</code></li>
+<li>宏任务执行完毕，查找微任务队列，发现 <code>promise1.then</code>  这个微任务且状态为 <code>resolved</code> ，执行它。</li>
+</ul>
+<p>结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;promise1&#39;
+&#39;1&#39; Promise&#123;&lt;resolved&gt;: &#39;resolve1&#39;&#125;
+&#39;2&#39; Promise&#123;&lt;pending&gt;&#125;
+&#39;resolve1&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="15-题目五"><a class="markdownIt-Anchor" href="#15-题目五">#</a> 1.5 题目五</h4>
+<p>接下来看看这道题：</p>
+<pre class="line-numbers language-none"><code class="language-none">const fn &#x3D; () &#x3D;&gt; (new Promise((resolve, reject) &#x3D;&gt; &#123;
+  console.log(1);
+  resolve(&#39;success&#39;)
+&#125;))
+fn().then(res &#x3D;&gt; &#123;
+  console.log(res)
+&#125;)
+console.log(&#39;start&#39;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这道题里最先执行的是 <code>'start'</code>  吗 🤔️ ？</p>
+<p>请仔细看看哦， <code>fn</code>  函数它是直接返回了一个 <code>new Promise</code>  的，而且 <code>fn</code>  函数的调用是在 <code>start</code>  之前，所以它里面的内容应该会先执行。</p>
+<p>结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">1
+&#39;start&#39;
+&#39;success&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="16-题目六"><a class="markdownIt-Anchor" href="#16-题目六">#</a> 1.6 题目六</h4>
+<p>如果把 <code>fn</code>  的调用放到 <code>start</code>  之后呢？</p>
+<pre class="line-numbers language-none"><code class="language-none">const fn &#x3D; () &#x3D;&gt;
+  new Promise((resolve, reject) &#x3D;&gt; &#123;
+    console.log(1);
+    resolve(&quot;success&quot;);
+  &#125;);
+console.log(&quot;start&quot;);
+fn().then(res &#x3D;&gt; &#123;
+  console.log(res);
+&#125;);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>是的，现在 <code>start</code>  就在 <code>1</code>  之前打印出来了，因为 <code>fn</code>  函数是之后执行的。</p>
+<p><strong>注意⚠️</strong>：之前我们很容易就以为看到 new Promise () 就执行它的第一个参数函数了，其实这是不对的，就像这两道题中，我们得注意它是不是被包裹在函数当中，如果是的话，只有在函数调用的时候才会执行。</p>
+<p>答案：</p>
+<pre class="line-numbers language-none"><code class="language-none">&quot;start&quot;
+1
+&quot;success&quot;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>好嘞，学完了这几道基础题，让我们来用个表情包压压惊。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/28/1708bb6c5b5d2a70~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h3 id="2-promise结合settimeout"><a class="markdownIt-Anchor" href="#2-promise结合settimeout">#</a> 2. Promise 结合 setTimeout</h3>
+<h4 id="21-题目一"><a class="markdownIt-Anchor" href="#21-题目一">#</a> 2.1 题目一</h4>
+<pre class="line-numbers language-none"><code class="language-none">console.log(&#39;start&#39;)
+setTimeout(() &#x3D;&gt; &#123;
+  console.log(&#39;time&#39;)
+&#125;)
+Promise.resolve().then(() &#x3D;&gt; &#123;
+  console.log(&#39;resolve&#39;)
+&#125;)
+console.log(&#39;end&#39;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>过程分析：</p>
+<ul>
+<li>刚开始整个脚本作为一个宏任务来执行，对于同步代码直接压入执行栈进行执行，因此先打印出 <code>start</code>  和 <code>end</code> 。</li>
+<li><code>setTimout</code>  作为一个宏任务被放入宏任务队列 (下一个)</li>
+<li><code>Promise.then</code>  作为一个微任务被放入微任务队列</li>
+<li>本次宏任务执行完，检查微任务，发现 <code>Promise.then</code> ，执行它</li>
+<li>接下来进入下一个宏任务，发现 <code>setTimeout</code> ，执行。</li>
+</ul>
+<p>结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;start&#39;
+&#39;end&#39;
+&#39;resolve&#39;
+&#39;time&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="22-题目二"><a class="markdownIt-Anchor" href="#22-题目二">#</a> 2.2 题目二</h4>
+<pre class="line-numbers language-none"><code class="language-none">const promise &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;
+  console.log(1);
+  setTimeout(() &#x3D;&gt; &#123;
+    console.log(&quot;timerStart&quot;);
+    resolve(&quot;success&quot;);
+    console.log(&quot;timerEnd&quot;);
+  &#125;, 0);
+  console.log(2);
+&#125;);
+promise.then((res) &#x3D;&gt; &#123;
+  console.log(res);
+&#125;);
+console.log(4);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>过程分析：</p>
+<p>和题目 <code>1.2</code>  很像，不过在 <code>resolve</code>  的外层加了一层 <code>setTimeout</code>  定时器。</p>
+<ul>
+<li>从上至下，先遇到 <code>new Promise</code> ，执行该构造函数中的代码 <code>1</code></li>
+<li>然后碰到了定时器，将这个定时器中的函数放到下一个宏任务的延迟队列中等待执行</li>
+<li>执行同步代码 <code>2</code></li>
+<li>跳出 <code>promise</code>  函数，遇到 <code>promise.then</code> ，但其状态还是为 <code>pending</code> ，这里理解为先不执行</li>
+<li>执行同步代码 <code>4</code></li>
+<li>一轮循环过后，进入第二次宏任务，发现延迟队列中有 <code>setTimeout</code>  定时器，执行它</li>
+<li>首先执行 <code>timerStart</code> ，然后遇到了 <code>resolve</code> ，将 <code>promise</code>  的状态改为 <code>resolved</code>  且保存结果并将之前的 <code>promise.then</code>  推入微任务队列</li>
+<li>继续执行同步代码 <code>timerEnd</code></li>
+<li>宏任务全部执行完毕，查找微任务队列，发现 <code>promise.then</code>  这个微任务，执行它。</li>
+</ul>
+<p>因此执行结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">1
+2
+4
+&quot;timerStart&quot;
+&quot;timerEnd&quot;
+&quot;success&quot;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="23-题目三"><a class="markdownIt-Anchor" href="#23-题目三">#</a> 2.3 题目三</h4>
+<p>题目三分了两个题目，因为看着都差不多，不过执行的结果却不一样，大家不妨先猜猜下面两个题目分别执行什么：</p>
+<p><strong>(1)</strong>:</p>
+<pre class="line-numbers language-none"><code class="language-none">setTimeout(() &#x3D;&gt; &#123;
+  console.log(&#39;timer1&#39;);
+  setTimeout(() &#x3D;&gt; &#123;
+    console.log(&#39;timer3&#39;)
+  &#125;, 0)
+&#125;, 0)
+setTimeout(() &#x3D;&gt; &#123;
+  console.log(&#39;timer2&#39;)
+&#125;, 0)
+console.log(&#39;start&#39;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>(2)</strong>:</p>
+<pre class="line-numbers language-none"><code class="language-none">setTimeout(() &#x3D;&gt; &#123;
+  console.log(&#39;timer1&#39;);
+  Promise.resolve().then(() &#x3D;&gt; &#123;
+    console.log(&#39;promise&#39;)
+  &#125;)
+&#125;, 0)
+setTimeout(() &#x3D;&gt; &#123;
+  console.log(&#39;timer2&#39;)
+&#125;, 0)
+console.log(&#39;start&#39;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>执行结果：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;start&#39;
+&#39;timer1&#39;
+&#39;timer2&#39;
+&#39;timer3&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#39;start&#39;
+&#39;timer1&#39;
+&#39;promise&#39;
+&#39;timer2&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这两个例子，看着好像只是把第一个定时器中的内容换了一下而已。</p>
+<p>一个是为定时器 <code>timer3</code> ，一个是为 <code>Promise.then</code></p>
+<p>但是如果是定时器 <code>timer3</code>  的话，它会在 <code>timer2</code>  后执行，而 <code>Promise.then</code>  却是在 <code>timer2</code>  之前执行。</p>
+<p>你可以这样理解， <code>Promise.then</code>  是微任务，它会被加入到本轮中的微任务列表，而定时器 <code>timer3</code>  是宏任务，它会被加入到下一轮的宏任务中。</p>
+<p>理解完这两个案例，可以来看看下面一道比较难的题目了。</p>
+<h4 id="23-题目三-2"><a class="markdownIt-Anchor" href="#23-题目三-2">#</a> 2.3 题目三</h4>
+<pre class="line-numbers language-none"><code class="language-none">Promise.resolve().then(() &#x3D;&gt; &#123;
+  console.log(&#39;promise1&#39;);
+  const timer2 &#x3D; setTimeout(() &#x3D;&gt; &#123;
+    console.log(&#39;timer2&#39;)
+  &#125;, 0)
+&#125;);
+const timer1 &#x3D; setTimeout(() &#x3D;&gt; &#123;
+  console.log(&#39;timer1&#39;)
+  Promise.resolve().then(() &#x3D;&gt; &#123;
+    console.log(&#39;promise2&#39;)
+  &#125;)
+&#125;, 0)
+console.log(&#39;start&#39;);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这道题稍微的难一些，在 <code>promise</code>  中执行定时器，又在定时器中执行 <code>promise</code> ；</p>
+<p>并且要注意的是，这里的 <code>Promise</code>  是直接 <code>resolve</code>  的，而之前的 <code>new Promise</code>  不一样。</p>
+<p>(偷偷告诉你，这道题往下一点有流程图)</p>
+<p>因此过程分析为：</p>
+<ul>
+<li>刚开始整个脚本作为第一次宏任务来执行，我们将它标记为<strong>宏 1</strong>，从上至下执行</li>
+<li>遇到 <code>Promise.resolve().then</code>  这个微任务，将 <code>then</code>  中的内容加入第一次的微任务队列标记为<strong>微 1</strong></li>
+<li>遇到定时器 <code>timer1</code> ，将它加入下一次宏任务的延迟列表，标记为<strong>宏 2</strong>，等待执行 (先不管里面是什么内容)</li>
+<li>执行<strong>宏 1</strong> 中的同步代码 <code>start</code></li>
+<li>第一次宏任务 (<strong>宏 1</strong>) 执行完毕，检查第一次的微任务队列 (<strong>微 1</strong>)，发现有一个 <code>promise.then</code>  这个微任务需要执行</li>
+<li>执行打印出<strong>微 1</strong> 中同步代码 <code>promise1</code> ，然后发现定时器 <code>timer2</code> ，将它加入<strong>宏 2</strong> 的后面，标记为<strong>宏 3</strong></li>
+<li>第一次微任务队列 (<strong>微 1</strong>) 执行完毕，执行第二次宏任务 (<strong>宏 2</strong>)，首先执行同步代码 <code>timer1</code></li>
+<li>然后遇到了 <code>promise2</code>  这个微任务，将它加入此次循环的微任务队列，标记为<strong>微 2</strong></li>
+<li><strong>宏 2</strong> 中没有同步代码可执行了，查找本次循环的微任务队列 (<strong>微 2</strong>)，发现了 <code>promise2</code> ，执行它</li>
+<li>第二轮执行完毕，执行<strong>宏 3</strong>，打印出 <code>timer2</code></li>
+</ul>
+<p>所以结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;start&#39;
+&#39;promise1&#39;
+&#39;timer1&#39;
+&#39;promise2&#39;
+&#39;timer2&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果感觉有点绕的话，可以看下面这张图，就一目了然了。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1708b0d8489e5732%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h4 id="24-题目四"><a class="markdownIt-Anchor" href="#24-题目四">#</a> 2.4 题目四</h4>
+<pre class="line-numbers language-none"><code class="language-none">const promise1 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;
+  setTimeout(() &#x3D;&gt; &#123;
+    resolve(&#39;success&#39;)
+  &#125;, 1000)
+&#125;)
+const promise2 &#x3D; promise1.then(() &#x3D;&gt; &#123;
+  throw new Error(&#39;error!!!&#39;)
+&#125;)
+console.log(&#39;promise1&#39;, promise1)
+console.log(&#39;promise2&#39;, promise2)
+setTimeout(() &#x3D;&gt; &#123;
+  console.log(&#39;promise1&#39;, promise1)
+  console.log(&#39;promise2&#39;, promise2)
+&#125;, 2000)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>过程分析：</p>
+<ul>
+<li>从上至下，先执行第一个 <code>new Promise</code>  中的函数，碰到 <code>setTimeout</code>  将它加入下一个宏任务列表</li>
+<li>跳出 <code>new Promise</code> ，碰到 <code>promise1.then</code>  这个微任务，但其状态还是为 <code>pending</code> ，这里理解为先不执行</li>
+<li><code>promise2</code>  是一个新的状态为 <code>pending</code>  的 <code>Promise</code></li>
+<li>执行同步代码 <code>console.log('promise1')</code> ，且打印出的 <code>promise1</code>  的状态为 <code>pending</code></li>
+<li>执行同步代码 <code>console.log('promise2')</code> ，且打印出的 <code>promise2</code>  的状态为 <code>pending</code></li>
+<li>碰到第二个定时器，将其放入下一个宏任务列表</li>
+<li>第一轮宏任务执行结束，并且没有微任务需要执行，因此执行第二轮宏任务</li>
+<li>先执行第一个定时器里的内容，将 <code>promise1</code>  的状态改为 <code>resolved</code>  且保存结果并将之前的 <code>promise1.then</code>  推入微任务队列</li>
+<li>该定时器中没有其它的同步代码可执行，因此执行本轮的微任务队列，也就是 <code>promise1.then</code> ，它抛出了一个错误，且将 <code>promise2</code>  的状态设置为了 <code>rejected</code></li>
+<li>第一个定时器执行完毕，开始执行第二个定时器中的内容</li>
+<li>打印出 <code>'promise1'</code> ，且此时 <code>promise1</code>  的状态为 <code>resolved</code></li>
+<li>打印出 <code>'promise2'</code> ，且此时 <code>promise2</code>  的状态为 <code>rejected</code></li>
+</ul>
+<p>完整的结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;promise1&#39; Promise&#123;&lt;pending&gt;&#125;
+&#39;promise2&#39; Promise&#123;&lt;pending&gt;&#125;
+test5.html:102 Uncaught (in promise) Error: error!!! at test.html:102
+&#39;promise1&#39; Promise&#123;&lt;resolved&gt;: &quot;success&quot;&#125;
+&#39;promise2&#39; Promise&#123;&lt;rejected&gt;: Error: error!!!&#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="25-题目五"><a class="markdownIt-Anchor" href="#25-题目五">#</a> 2.5 题目五</h4>
+<p>如果你上面这道题搞懂了之后，我们就可以来做做这道了，你应该能很快就给出答案：</p>
+<pre class="line-numbers language-none"><code class="language-none">const promise1 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;
+  setTimeout(() &#x3D;&gt; &#123;
+    resolve(&quot;success&quot;);
+    console.log(&quot;timer1&quot;);
+  &#125;, 1000);
+  console.log(&quot;promise1里的内容&quot;);
+&#125;);
+const promise2 &#x3D; promise1.then(() &#x3D;&gt; &#123;
+  throw new Error(&quot;error!!!&quot;);
+&#125;);
+console.log(&quot;promise1&quot;, promise1);
+console.log(&quot;promise2&quot;, promise2);
+setTimeout(() &#x3D;&gt; &#123;
+  console.log(&quot;timer2&quot;);
+  console.log(&quot;promise1&quot;, promise1);
+  console.log(&quot;promise2&quot;, promise2);
+&#125;, 2000);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;promise1里的内容&#39;
+&#39;promise1&#39; Promise&#123;&lt;pending&gt;&#125;
+&#39;promise2&#39; Promise&#123;&lt;pending&gt;&#125;
+&#39;timer1&#39;
+test5.html:102 Uncaught (in promise) Error: error!!! at test.html:102
+&#39;timer2&#39;
+&#39;promise1&#39; Promise&#123;&lt;resolved&gt;: &quot;success&quot;&#125;
+&#39;promise2&#39; Promise&#123;&lt;rejected&gt;: Error: error!!!&#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-promise中的then-catch-finally"><a class="markdownIt-Anchor" href="#3-promise中的then-catch-finally">#</a> 3. Promise 中的 then、catch、finally</h3>
+<p>额，可能你看到下面👇这么多的 <code>1，2，3</code>  脾气就上来了，不是说好了本篇文章没什么屁话嘛，怎么还是这么多一二三四。</p>
+<p>😂，你要理解我的用心良苦啊，我这是帮你把知识点都列举出来，做个总结而已。当然，你也可以先不看，先去做后面的题，然后再回过头来看这些，你就觉得这些点都好好懂啊，甚至都不需要记。</p>
+<p><strong>总结：</strong></p>
+<ol>
+<li><code>Promise</code>  的状态一经改变就不能再改变。(见 3.1)</li>
+<li><code>.then</code>  和 <code>.catch</code>  都会返回一个新的 <code>Promise</code> 。(上面的👆1.4 证明了)</li>
+<li><code>catch</code>  不管被连接到哪里，都能捕获上层未捕捉过的错误。(见 3.2)</li>
+<li>在 <code>Promise</code>  中，返回任意一个非  <code>promise</code>  的值都会被包裹成  <code>promise</code>  对象，例如 <code>return 2</code>  会被包装为 <code>return Promise.resolve(2)</code> 。</li>
+<li><code>Promise</code>  的  <code>.then</code>  或者  <code>.catch</code>  可以被调用多次，但如果 <code>Promise</code>  内部的状态一经改变，并且有了一个值，那么后续每次调用 <code>.then</code>  或者 <code>.catch</code>  的时候都会直接拿到该值。(见 3.5)</li>
+<li><code>.then</code>  或者  <code>.catch</code>  中  <code>return</code>  一个  <code>error</code>  对象并不会抛出错误，所以不会被后续的  <code>.catch</code>  捕获。(见 3.6)</li>
+<li><code>.then</code>  或  <code>.catch</code>  返回的值不能是 promise 本身，否则会造成死循环。(见 3.7)</li>
+<li><code>.then</code>  或者  <code>.catch</code>  的参数期望是函数，传入非函数则会发生值透传。(见 3.8)</li>
+<li><code>.then</code>  方法是能接收两个参数的，第一个是处理成功的函数，第二个是处理失败的函数，再某些时候你可以认为 <code>catch</code>  是 <code>.then</code>  第二个参数的简便写法。(见 3.9)</li>
+<li><code>.finally</code>  方法也是返回一个 <code>Promise</code> ，他在 <code>Promise</code>  结束的时候，无论结果为 <code>resolved</code>  还是 <code>rejected</code> ，都会执行里面的回调函数。</li>
+</ol>
+<h4 id="31-题目一"><a class="markdownIt-Anchor" href="#31-题目一">#</a> 3.1 题目一</h4>
+<pre class="line-numbers language-none"><code class="language-none">const promise &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;
+  resolve(&quot;success1&quot;);
+  reject(&quot;error&quot;);
+  resolve(&quot;success2&quot;);
+&#125;);
+promise
+.then(res &#x3D;&gt; &#123;
+    console.log(&quot;then: &quot;, res);
+  &#125;).catch(err &#x3D;&gt; &#123;
+    console.log(&quot;catch: &quot;, err);
+  &#125;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">&quot;then: success1&quot;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>构造函数中的  <code>resolve</code>  或  <code>reject</code>  只有第一次执行有效，多次调用没有任何作用 。验证了第一个结论， <code>Promise</code>  的状态一经改变就不能再改变。</p>
+<h4 id="32-题目二"><a class="markdownIt-Anchor" href="#32-题目二">#</a> 3.2 题目二</h4>
+<pre class="line-numbers language-none"><code class="language-none">const promise &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;
+  reject(&quot;error&quot;);
+  resolve(&quot;success2&quot;);
+&#125;);
+promise
+.then(res &#x3D;&gt; &#123;
+    console.log(&quot;then1: &quot;, res);
+  &#125;).then(res &#x3D;&gt; &#123;
+    console.log(&quot;then2: &quot;, res);
+  &#125;).catch(err &#x3D;&gt; &#123;
+    console.log(&quot;catch: &quot;, err);
+  &#125;).then(res &#x3D;&gt; &#123;
+    console.log(&quot;then3: &quot;, res);
+  &#125;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">&quot;catch: &quot; &quot;error&quot;
+&quot;then3: &quot; undefined
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>验证了第三个结论， <code>catch</code>  不管被连接到哪里，都能捕获上层未捕捉过的错误。</p>
+<p>至于 <code>then3</code>  也会被执行，那是因为 <code>catch()</code>  也会返回一个 <code>Promise</code> ，且由于这个 <code>Promise</code>  没有返回值，所以打印出来的是 <code>undefined</code> 。</p>
+<h4 id="33-题目三"><a class="markdownIt-Anchor" href="#33-题目三">#</a> 3.3 题目三</h4>
+<pre class="line-numbers language-none"><code class="language-none">Promise.resolve(1)
+  .then(res &#x3D;&gt; &#123;
+    console.log(res);
+    return 2;
+  &#125;)
+  .catch(err &#x3D;&gt; &#123;
+    return 3;
+  &#125;)
+  .then(res &#x3D;&gt; &#123;
+    console.log(res);
+  &#125;);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">1
+2
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><code>Promise</code>  可以链式调用，不过 <code>promise</code>  每次调用  <code>.then</code>  或者  <code>.catch</code>  都会返回一个新的  <code>promise</code> ，从而实现了链式调用，它并不像一般我们任务的链式调用一样 <code>return this</code> 。</p>
+<p>上面的输出结果之所以依次打印出 <code>1</code>  和 <code>2</code> ，那是因为 <code>resolve(1)</code>  之后走的是第一个 <code>then</code>  方法，并没有走 <code>catch</code>  里，所以第二个 <code>then</code>  中的 <code>res</code>  得到的实际上是第一个 <code>then</code>  的返回值。</p>
+<p>且 <code>return 2</code>  会被包装成 <code>resolve(2)</code> 。</p>
+<h4 id="34-题目四"><a class="markdownIt-Anchor" href="#34-题目四">#</a> 3.4 题目四</h4>
+<p>如果把 <code>3.3</code>  中的 <code>Promise.resolve(1)</code>  改为 <code>Promise.reject(1)</code>  又会怎么样呢？</p>
+<pre class="line-numbers language-none"><code class="language-none">Promise.reject(1)
+  .then(res &#x3D;&gt; &#123;
+    console.log(res);
+    return 2;
+  &#125;)
+  .catch(err &#x3D;&gt; &#123;
+    console.log(err);
+    return 3
+  &#125;)
+  .then(res &#x3D;&gt; &#123;
+    console.log(res);
+  &#125;);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">1
+3
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>结果打印的当然是  <code>1 和 3</code>  啦，因为 <code>reject(1)</code>  此时走的就是 <code>catch</code> ，且第二个 <code>then</code>  中的 <code>res</code>  得到的就是 <code>catch</code>  中的返回值。</p>
+<h4 id="35-题目五"><a class="markdownIt-Anchor" href="#35-题目五">#</a> 3.5 题目五</h4>
+<pre class="line-numbers language-none"><code class="language-none">const promise &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;
+  setTimeout(() &#x3D;&gt; &#123;
+    console.log(&#39;timer&#39;)
+    resolve(&#39;success&#39;)
+  &#125;, 1000)
+&#125;)
+const start &#x3D; Date.now();
+promise.then(res &#x3D;&gt; &#123;
+  console.log(res, Date.now() - start)
+&#125;)
+promise.then(res &#x3D;&gt; &#123;
+  console.log(res, Date.now() - start)
+&#125;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>执行结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;timer&#39;
+&#39;success&#39; 1001
+&#39;success&#39; 1002
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当然，如果你足够快的话，也可能两个都是 <code>1001</code> 。</p>
+<p><code>Promise</code>  的  <code>.then</code>  或者  <code>.catch</code>  可以被调用多次，但这里  <code>Promise</code>  构造函数只执行一次。或者说  <code>promise</code>  内部状态一经改变，并且有了一个值，那么后续每次调用  <code>.then</code>  或者  <code>.catch</code>  都会直接拿到该值。</p>
+<h4 id="36-题目六"><a class="markdownIt-Anchor" href="#36-题目六">#</a> 3.6 题目六</h4>
+<pre class="line-numbers language-none"><code class="language-none">Promise.resolve().then(() &#x3D;&gt; &#123;
+  return new Error(&#39;error!!!&#39;)
+&#125;).then(res &#x3D;&gt; &#123;
+  console.log(&quot;then: &quot;, res)
+&#125;).catch(err &#x3D;&gt; &#123;
+  console.log(&quot;catch: &quot;, err)
+&#125;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>猜猜这里的结果输出的是什么 🤔️ ？</p>
+<p>你可能想到的是进入 <code>.catch</code>  然后被捕获了错误。</p>
+<p>结果并不是这样的，它走的是 <code>.then</code>  里面：</p>
+<pre class="line-numbers language-none"><code class="language-none">&quot;then: &quot; &quot;Error: error!!!&quot;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>这也验证了第 4 点和第 6 点，返回任意一个非  <code>promise</code>  的值都会被包裹成  <code>promise</code>  对象，因此这里的 <code>return new Error('error!!!')</code>  也被包裹成了 <code>return Promise.resolve(new Error('error!!!'))</code> 。</p>
+<p>当然如果你抛出一个错误的话，可以用下面👇两的任意一种：</p>
+<pre class="line-numbers language-none"><code class="language-none">return Promise.reject(new Error(&#39;error!!!&#39;));
+&#x2F;&#x2F; or
+throw new Error(&#39;error!!!&#39;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="37-题目七"><a class="markdownIt-Anchor" href="#37-题目七">#</a> 3.7 题目七</h4>
+<pre class="line-numbers language-none"><code class="language-none">const promise &#x3D; Promise.resolve().then(() &#x3D;&gt; &#123;
+  return promise;
+&#125;)
+promise.catch(console.err)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>.then</code>  或  <code>.catch</code>  返回的值不能是 promise 本身，否则会造成死循环。</p>
+<p>因此结果会报错：</p>
+<pre class="line-numbers language-none"><code class="language-none">Uncaught (in promise) TypeError: Chaining cycle detected for promise #&lt;Promise&gt;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="38-题目八"><a class="markdownIt-Anchor" href="#38-题目八">#</a> 3.8 题目八</h4>
+<pre class="line-numbers language-none"><code class="language-none">Promise.resolve(1)
+  .then(2)
+  .then(Promise.resolve(3))
+  .then(console.log)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这道题看着好像很简单，又感觉很复杂的样子，怎么这么多个 <code>.then</code>  啊… 😅</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/28/1708baaf2b1e9075~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>其实你只要记住<strong>原则 8</strong>： <code>.then</code>  或者  <code>.catch</code>  的参数期望是函数，传入非函数则会发生值透传。</p>
+<p>第一个 <code>then</code>  和第二个 <code>then</code>  中传入的都不是函数，一个是数字类型，一个是对象类型，因此发生了透传，将 <code>resolve(1)</code>  的值直接传到最后一个 <code>then</code>  里。</p>
+<p>所以输出结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">1
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="39-题目九"><a class="markdownIt-Anchor" href="#39-题目九">#</a> 3.9 题目九</h4>
+<p>下面来介绍一下 <code>.then</code>  函数中的两个参数。</p>
+<p>第一个参数是用来处理 <code>Promise</code>  成功的函数，第二个则是处理失败的函数。</p>
+<p>也就是说 <code>Promise.resolve('1')</code>  的值会进入成功的函数， <code>Promise.reject('2')</code>  的值会进入失败的函数。</p>
+<p>让我们来看看这个例子🌰：</p>
+<pre class="line-numbers language-none"><code class="language-none">Promise.reject(&#39;err!!!&#39;)
+  .then((res) &#x3D;&gt; &#123;
+    console.log(&#39;success&#39;, res)
+  &#125;, (err) &#x3D;&gt; &#123;
+    console.log(&#39;error&#39;, err)
+  &#125;).catch(err &#x3D;&gt; &#123;
+    console.log(&#39;catch&#39;, err)
+  &#125;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这里的执行结果是：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;error&#39; &#39;error!!!&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>它进入的是 <code>then()</code>  中的第二个参数里面，而如果把第二个参数去掉，就进入了 <code>catch()</code>  中：</p>
+<pre class="line-numbers language-none"><code class="language-none">Promise.reject(&#39;error!!!&#39;)
+  .then((res) &#x3D;&gt; &#123;
+    console.log(&#39;success&#39;, res)
+  &#125;).catch(err &#x3D;&gt; &#123;
+    console.log(&#39;catch&#39;, err)
+  &#125;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>执行结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;catch&#39; &#39;error!!!&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>但是有一个问题，如果是这个案例呢？</p>
+<pre class="line-numbers language-none"><code class="language-none">Promise.resolve()
+  .then(function success (res) &#123;
+    throw new Error(&#39;error!!!&#39;)
+  &#125;, function fail1 (err) &#123;
+    console.log(&#39;fail1&#39;, err)
+  &#125;).catch(function fail2 (err) &#123;
+    console.log(&#39;fail2&#39;, err)
+  &#125;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>由于 <code>Promise</code>  调用的是 <code>resolve()</code> ，因此 <code>.then()</code>  执行的应该是 <code>success()</code>  函数，可是 <code>success()</code>  函数抛出的是一个错误，它会被后面的 <code>catch()</code>  给捕获到，而不是被 <code>fail1</code>  函数捕获。</p>
+<p>因此执行结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">fail2 Error: error!!!
+			at success
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="310-题目十"><a class="markdownIt-Anchor" href="#310-题目十">#</a> 3.10 题目十</h4>
+<p>接着来看看 <code>.finally()</code> ，这个功能一般不太用在面试中，不过如果碰到了你也应该知道该如何处理。</p>
+<p>其实你只要记住它三个很重要的知识点就可以了：</p>
+<ol>
+<li><code>.finally()</code>  方法不管 <code>Promise</code>  对象最后的状态如何都会执行</li>
+<li><code>.finally()</code>  方法的回调函数不接受任何的参数，也就是说你在 <code>.finally()</code>  函数中是没法知道 <code>Promise</code>  最终的状态是 <code>resolved</code>  还是 <code>rejected</code>  的</li>
+<li>它最终返回的默认会是一个<strong>上一次的 Promise 对象值</strong>，不过如果抛出的是一个异常则返回异常的 <code>Promise</code>  对象。</li>
+</ol>
+<p>来看看这个简单的例子🌰：</p>
+<pre class="line-numbers language-none"><code class="language-none">Promise.resolve(&#39;1&#39;)
+  .then(res &#x3D;&gt; &#123;
+    console.log(res)
+  &#125;)
+  .finally(() &#x3D;&gt; &#123;
+    console.log(&#39;finally&#39;)
+  &#125;)
+Promise.resolve(&#39;2&#39;)
+  .finally(() &#x3D;&gt; &#123;
+    console.log(&#39;finally2&#39;)
+  	return &#39;我是finally2返回的值&#39;
+  &#125;)
+  .then(res &#x3D;&gt; &#123;
+    console.log(&#39;finally2后面的then函数&#39;, res)
+  &#125;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这两个 <code>Promise</code>  的 <code>.finally</code>  都会执行，且就算 <code>finally2</code>  返回了新的值，它后面的 <code>then()</code>  函数接收到的结果却还是 <code>'2'</code> ，因此打印结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;1&#39;
+&#39;finally2&#39;
+&#39;finally&#39;
+&#39;finally2后面的then函数&#39; &#39;2&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>至于为什么 <code>finally2</code>  的打印要在 <code>finally</code>  前面，请看下一个例子中的解析。</p>
+<p>不过在此之前让我们再来确认一下， <code>finally</code>  中要是抛出的是一个异常是怎样的：</p>
+<pre class="line-numbers language-none"><code class="language-none">Promise.resolve(&#39;1&#39;)
+  .finally(() &#x3D;&gt; &#123;
+    console.log(&#39;finally1&#39;)
+    throw new Error(&#39;我是finally中抛出的异常&#39;)
+  &#125;)
+  .then(res &#x3D;&gt; &#123;
+    console.log(&#39;finally后面的then函数&#39;, res)
+  &#125;)
+  .catch(err &#x3D;&gt; &#123;
+    console.log(&#39;捕获错误&#39;, err)
+  &#125;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>执行结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;finally1&#39;
+&#39;捕获错误&#39; Error: 我是finally中抛出的异常
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>但是如果改为 <code>return new Error('我是finally中抛出的异常')</code> ，打印出来的就是 <code>'finally后面的then函数 1'</code></p>
+<p>OK，👌，让我们来看一个比较难的例子🌰：</p>
+<pre class="line-numbers language-none"><code class="language-none">function promise1 () &#123;
+  let p &#x3D; new Promise((resolve) &#x3D;&gt; &#123;
+    console.log(&#39;promise1&#39;);
+    resolve(&#39;1&#39;)
+  &#125;)
+  return p;
+&#125;
+function promise2 () &#123;
+  return new Promise((resolve, reject) &#x3D;&gt; &#123;
+    reject(&#39;error&#39;)
+  &#125;)
+&#125;
+promise1()
+  .then(res &#x3D;&gt; console.log(res))
+  .catch(err &#x3D;&gt; console.log(err))
+  .finally(() &#x3D;&gt; console.log(&#39;finally1&#39;))
+
+promise2()
+  .then(res &#x3D;&gt; console.log(res))
+  .catch(err &#x3D;&gt; console.log(err))
+  .finally(() &#x3D;&gt; console.log(&#39;finally2&#39;))
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>执行过程：</p>
+<ul>
+<li>首先定义了两个函数 <code>promise1</code>  和 <code>promise2</code> ，先不管接着往下看。</li>
+<li><code>promise1</code>  函数先被调用了，然后执行里面 <code>new Promise</code>  的同步代码打印出 <code>promise1</code></li>
+<li>之后遇到了 <code>resolve(1)</code> ，将 <code>p</code>  的状态改为了 <code>resolved</code>  并将结果保存下来。</li>
+<li>此时 <code>promise1</code>  内的函数内容已经执行完了，跳出该函数</li>
+<li>碰到了 <code>promise1().then()</code> ，由于 <code>promise1</code>  的状态已经发生了改变且为 <code>resolved</code>  因此将 <code>promise1().then()</code>  这条微任务加入本轮的微任务列表 (<strong>这是第一个微任务</strong>)</li>
+<li>这时候要注意了，代码并不会接着往链式调用的下面走，也就是不会先将 <code>.finally</code>  加入微任务列表，那是因为 <code>.then</code>  本身就是一个微任务，它链式后面的内容必须得等当前这个微任务执行完才会执行，因此这里我们先不管 <code>.finally()</code></li>
+<li>再往下走碰到了 <code>promise2()</code>  函数，其中返回的 <code>new Promise</code>  中并没有同步代码需要执行，所以执行 <code>reject('error')</code>  的时候将 <code>promise2</code>  函数中的 <code>Promise</code>  的状态变为了 <code>rejected</code></li>
+<li>跳出 <code>promise2</code>  函数，遇到了 <code>promise2().catch()</code> ，将其加入当前的微任务队列 (<strong>这是第二个微任务</strong>)，且链式调用后面的内容得等该任务执行完后才执行，和 <code>.then()</code>  一样。</li>
+<li>OK， 本轮的宏任务全部执行完了，来看看微任务列表，存在 <code>promise1().then()</code> ，执行它，打印出 <code>1</code> ，然后遇到了 <code>.finally()</code>  这个微任务将它加入微任务列表 (<strong>这是第三个微任务</strong>) 等待执行</li>
+<li>再执行 <code>promise2().catch()</code>  打印出 <code>error</code> ，执行完后将 <code>finally2</code>  加入微任务加入微任务列表 (<strong>这是第四个微任务</strong>)</li>
+<li>OK， 本轮又全部执行完了，但是微任务列表还有两个新的微任务没有执行完，因此依次执行 <code>finally1</code>  和 <code>finally2</code> 。</li>
+</ul>
+<p>结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;promise1&#39;
+&#39;1&#39;
+&#39;error&#39;
+&#39;finally1&#39;
+&#39;finally2&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在这道题中其实能拓展的东西挺多的，之前没有提到，那就是你可以理解为<strong>链式调用</strong>后面的内容需要等前一个调用执行完才会执行。</p>
+<p>就像是这里的 <code>finally()</code>  会等 <code>promise1().then()</code>  执行完才会将 <code>finally()</code>  加入微任务队列，其实如果这道题中你把 <code>finally()</code>  换成是 <code>then()</code>  也是这样的:</p>
+<pre class="line-numbers language-none"><code class="language-none">function promise1 () &#123;
+  let p &#x3D; new Promise((resolve) &#x3D;&gt; &#123;
+    console.log(&#39;promise1&#39;);
+    resolve(&#39;1&#39;)
+  &#125;)
+  return p;
+&#125;
+function promise2 () &#123;
+  return new Promise((resolve, reject) &#x3D;&gt; &#123;
+    reject(&#39;error&#39;)
+  &#125;)
+&#125;
+promise1()
+  .then(res &#x3D;&gt; console.log(res))
+  .catch(err &#x3D;&gt; console.log(err))
+  .then(() &#x3D;&gt; console.log(&#39;finally1&#39;))
+
+promise2()
+  .then(res &#x3D;&gt; console.log(res))
+  .catch(err &#x3D;&gt; console.log(err))
+  .then(() &#x3D;&gt; console.log(&#39;finally2&#39;))
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4-promise中的all和race"><a class="markdownIt-Anchor" href="#4-promise中的all和race">#</a> 4. Promise 中的 all 和 race</h3>
+<p>在做下面👇的题目之前，让我们先来了解一下 <code>Promise.all()</code>  和 <code>Promise.race()</code>  的用法。</p>
+<p>通俗来说， <code>.all()</code>  的作用是接收一组异步任务，然后并行执行异步任务，并且在所有异步操作执行完后才执行回调。</p>
+<p><code>.race()</code>  的作用也是接收一组异步任务，然后并行执行异步任务，只保留取第一个执行完成的异步操作的结果，其他的方法仍在执行，不过执行结果会被抛弃。</p>
+<p>来看看题目一。</p>
+<h4 id="41-题目一"><a class="markdownIt-Anchor" href="#41-题目一">#</a> 4.1 题目一</h4>
+<p>我们知道如果直接在脚本文件中定义一个 <code>Promise</code> ，它构造函数的第一个参数是会立即执行的，就像这样：</p>
+<pre class="line-numbers language-none"><code class="language-none">const p1 &#x3D; new Promise(r &#x3D;&gt; console.log(&#39;立即打印&#39;))
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>控制台中会立即打印出 “立即打印”。</p>
+<p>因此为了控制它什么时候执行，我们可以用一个函数包裹着它，在需要它执行的时候，调用这个函数就可以了：</p>
+<pre class="line-numbers language-none"><code class="language-none">function runP1 () &#123;
+    const p1 &#x3D; new Promise(r &#x3D;&gt; console.log(&#39;立即打印&#39;))
+    return p1
+&#125;
+
+runP1() &#x2F;&#x2F; 调用此函数时才执行
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>OK 👌， 让我们回归正题。</p>
+<p>现在来构建这么一个函数：</p>
+<pre class="line-numbers language-none"><code class="language-none">function runAsync (x) &#123;
+    const p &#x3D; new Promise(r &#x3D;&gt; setTimeout(() &#x3D;&gt; r(x, console.log(x)), 1000))
+    return p
+&#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>该函数传入一个值 <code>x</code> ，然后间隔一秒后打印出这个 <code>x</code> 。</p>
+<p>如果我用 <code>.all()</code>  来执行它会怎样呢？</p>
+<pre class="line-numbers language-none"><code class="language-none">function runAsync (x) &#123;
+    const p &#x3D; new Promise(r &#x3D;&gt; setTimeout(() &#x3D;&gt; r(x, console.log(x)), 1000))
+    return p
+&#125;
+Promise.all([runAsync(1), runAsync(2), runAsync(3)])
+  .then(res &#x3D;&gt; console.log(res))
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>先来想想此段代码在浏览器中会如何执行？</p>
+<p>没错，当你打开页面的时候，在间隔一秒后，控制台会同时打印出 <code>1, 2, 3</code> ，还有一个数组 <code>[1, 2, 3]</code> 。</p>
+<pre class="line-numbers language-none"><code class="language-none">1
+2
+3
+[1, 2, 3]
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>所以你现在能理解这句话的意思了吗：<strong>有了 all，你就可以并行执行多个异步操作，并且在一个回调中处理所有的返回数据。</strong></p>
+<p><code>.all()</code>  后面的 <code>.then()</code>  里的回调函数接收的就是所有异步操作的结果。</p>
+<p>而且这个结果中数组的顺序和 <code>Promise.all()</code>  接收到的数组顺序一致！！！</p>
+<blockquote>
+<p>有一个场景是很适合用这个的，一些游戏类的素材比较多的应用，打开网页时，预先加载需要用到的各种资源如图片、flash 以及各种静态文件。所有的都加载完后，我们再进行页面的初始化。</p>
+</blockquote>
+<h4 id="42-题目二"><a class="markdownIt-Anchor" href="#42-题目二">#</a> 4.2 题目二</h4>
+<p>我新增了一个 <code>runReject</code>  函数，它用来在 <code>1000 * x</code>  秒后 <code>reject</code>  一个错误。</p>
+<p>同时 <code>.catch()</code>  函数能够捕获到 <code>.all()</code>  里最先的那个异常，并且只执行一次。</p>
+<p>想想这道题会怎样执行呢 🤔️？</p>
+<pre class="line-numbers language-none"><code class="language-none">function runAsync (x) &#123;
+  const p &#x3D; new Promise(r &#x3D;&gt; setTimeout(() &#x3D;&gt; r(x, console.log(x)), 1000))
+  return p
+&#125;
+function runReject (x) &#123;
+  const p &#x3D; new Promise((res, rej) &#x3D;&gt; setTimeout(() &#x3D;&gt; rej(&#96;Error: $&#123;x&#125;&#96;, console.log(x)), 1000 * x))
+  return p
+&#125;
+Promise.all([runAsync(1), runReject(4), runAsync(3), runReject(2)])
+  .then(res &#x3D;&gt; console.log(res))
+  .catch(err &#x3D;&gt; console.log(err))
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>不卖关子了 😁，让我来公布答案：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 1s后输出
+1
+3
+&#x2F;&#x2F; 2s后输出
+2
+Error: 2
+&#x2F;&#x2F; 4s后输出
+4
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>没错，就像我之前说的， <code>.catch</code>  是会捕获最先的那个异常，在这道题目中最先的异常就是 <code>runReject(2)</code>  的结果。</p>
+<p>另外，如果一组异步操作中有一个异常都不会进入 <code>.then()</code>  的第一个回调函数参数中。</p>
+<p>注意，为什么不说是不进入 <code>.then()</code>  中呢 🤔️？</p>
+<p>哈哈，大家别忘了 <code>.then()</code>  方法的第二个参数也是可以捕获错误的：</p>
+<pre class="line-numbers language-none"><code class="language-none">Promise.all([runAsync(1), runReject(4), runAsync(3), runReject(2)])
+  .then(res &#x3D;&gt; console.log(res), 
+  err &#x3D;&gt; console.log(err))
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="43-题目三"><a class="markdownIt-Anchor" href="#43-题目三">#</a> 4.3 题目三</h4>
+<p>接下来让我们看看另一个有趣的方法 <code>.race</code> 。</p>
+<p>让我看看你们的英语水平如何？</p>
+<p>快！一秒钟告诉我 <code>race</code>  是什么意思？</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/28/1708bb15866277a4~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>好吧… 你们果然很强…</p>
+<p><code>race</code> ，比赛，赛跑的意思。</p>
+<p>所以使用 <code>.race()</code>  方法，它只会获取最先执行完成的那个结果，其它的异步任务虽然也会继续进行下去，不过 <code>race</code>  已经不管那些任务的结果了。</p>
+<p>来，改造一下 <code>4.1</code>  这道题：</p>
+<pre class="line-numbers language-none"><code class="language-none">function runAsync (x) &#123;
+  const p &#x3D; new Promise(r &#x3D;&gt; setTimeout(() &#x3D;&gt; r(x, console.log(x)), 1000))
+  return p
+&#125;
+Promise.race([runAsync(1), runAsync(2), runAsync(3)])
+  .then(res &#x3D;&gt; console.log(&#39;result: &#39;, res))
+  .catch(err &#x3D;&gt; console.log(err))
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>执行结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">1
+&#39;result: &#39; 1
+2
+3
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>这个 race 有什么用呢？使用场景还是很多的，比如我们可以用 race 给某个异步请求设置超时时间，并且在超时后执行相应的操作</p>
+</blockquote>
+<h4 id="44-题目四"><a class="markdownIt-Anchor" href="#44-题目四">#</a> 4.4 题目四</h4>
+<p>改造一下题目 <code>4.2</code> ：</p>
+<pre class="line-numbers language-none"><code class="language-none">function runAsync(x) &#123;
+  const p &#x3D; new Promise(r &#x3D;&gt;
+    setTimeout(() &#x3D;&gt; r(x, console.log(x)), 1000)
+  );
+  return p;
+&#125;
+function runReject(x) &#123;
+  const p &#x3D; new Promise((res, rej) &#x3D;&gt;
+    setTimeout(() &#x3D;&gt; rej(&#96;Error: $&#123;x&#125;&#96;, console.log(x)), 1000 * x)
+  );
+  return p;
+&#125;
+Promise.race([runReject(0), runAsync(1), runAsync(2), runAsync(3)])
+  .then(res &#x3D;&gt; console.log(&quot;result: &quot;, res))
+  .catch(err &#x3D;&gt; console.log(err));
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>遇到错误的话，也是一样的，在这道题中， <code>runReject(0)</code>  最先执行完，所以进入了 <code>catch()</code>  中：</p>
+<pre class="line-numbers language-none"><code class="language-none">0
+&#39;Error: 0&#39;
+1
+2
+3
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="总结"><a class="markdownIt-Anchor" href="#总结">#</a> 总结</h4>
+<p>好的，让我们来总结一下 <code>.then()</code>  和 <code>.race()</code>  吧，😄</p>
+<ul>
+<li><code>Promise.all()</code>  的作用是接收一组异步任务，然后并行执行异步任务，并且在所有异步操作执行完后才执行回调。</li>
+<li><code>.race()</code>  的作用也是接收一组异步任务，然后并行执行异步任务，只保留取第一个执行完成的异步操作的结果，其他的方法仍在执行，不过执行结果会被抛弃。</li>
+<li><code>Promise.all().then()</code>  结果中数组的顺序和 <code>Promise.all()</code>  接收到的数组顺序一致。</li>
+<li><code>all和race</code>  传入的数组中如果有会抛出异常的异步任务，那么只有最先抛出的错误会被捕获，并且是被 <code>then</code>  的第二个参数或者后面的 <code>catch</code>  捕获；但并不会影响数组中其它的异步任务的执行。</li>
+</ul>
+<h3 id="5-asyncawait的几道题"><a class="markdownIt-Anchor" href="#5-asyncawait的几道题">#</a> 5. async/await 的几道题</h3>
+<p>既然谈到了 <code>Promise</code> ，那就肯定得再说说 <code>async/await</code> ，在很多时候 <code>async</code>  和 <code>Promise</code>  的解法差不多，又有些不一样。不信你来看看题目一。</p>
+<h4 id="51-题目一"><a class="markdownIt-Anchor" href="#51-题目一">#</a> 5.1 题目一</h4>
+<pre class="line-numbers language-none"><code class="language-none">async function async1() &#123;
+  console.log(&quot;async1 start&quot;);
+  await async2();
+  console.log(&quot;async1 end&quot;);
+&#125;
+async function async2() &#123;
+  console.log(&quot;async2&quot;);
+&#125;
+async1();
+console.log(&#39;start&#39;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这道基础题输出的是啥？</p>
+<p>答案：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;async1 start&#39;
+&#39;async2&#39;
+&#39;start&#39;
+&#39;async1 end&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>过程分析：</p>
+<ul>
+<li>首先一进来是创建了两个函数的，我们先不看函数的创建位置，而是看它的调用位置</li>
+<li>发现 <code>async1</code>  函数被调用了，然后去看看调用的内容</li>
+<li>执行函数中的同步代码 <code>async1 start</code> ，之后碰到了 <code>await</code> ，它会阻塞 <code>async1</code>  后面代码的执行，因此会先去执行 <code>async2</code>  中的同步代码 <code>async2</code> ，然后跳出 <code>async1</code></li>
+<li>跳出 <code>async1</code>  函数后，执行同步代码 <code>start</code></li>
+<li>在一轮宏任务全部执行完之后，再来执行刚刚 <code>await</code>  后面的内容 <code>async1 end</code> 。</li>
+</ul>
+<p>在这里，你可以理解为「紧跟着 await 后面的语句相当于放到了 new Promise 中，下一行及之后的语句相当于放在 Promise.then 中」。</p>
+<p>让我们来看看将 <code>await</code>  转换为 <code>Promise.then</code>  的伪代码：</p>
+<pre class="line-numbers language-none"><code class="language-none">async function async1() &#123;
+  console.log(&quot;async1 start&quot;);
+  &#x2F;&#x2F; 原来代码
+  &#x2F;&#x2F; await async2();
+  &#x2F;&#x2F; console.log(&quot;async1 end&quot;);
+  
+  &#x2F;&#x2F; 转换后代码
+  new Promise(resolve &#x3D;&gt; &#123;
+    console.log(&quot;async2&quot;)
+    resolve()
+  &#125;).then(res &#x3D;&gt; console.log(&quot;async1 end&quot;))
+&#125;
+async function async2() &#123;
+  console.log(&quot;async2&quot;);
+&#125;
+async1();
+console.log(&quot;start&quot;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>转换后的伪代码和前面的执行结果是一样的。(感谢评论区<a target="_blank" rel="noopener" href="https://juejin.cn/user/3421335914314061" title="https://juejin.cn/user/3421335914314061"> Wing93</a> 和<a target="_blank" rel="noopener" href="https://juejin.cn/user/1926000100012317" title="https://juejin.cn/user/1926000100012317"> Jexxie</a> 小伙伴的指出)</p>
+<p>另外关于 <code>await</code>  和 <code>Promise</code>  的区别，如果我们把 <code>await async2()</code>  换成一个 <code>new Promise</code>  呢？</p>
+<pre class="line-numbers language-none"><code class="language-none">async function async1() &#123;
+  console.log(&quot;async1 start&quot;);
+  new Promise(resolve &#x3D;&gt; &#123;
+    console.log(&#39;promise&#39;)
+  &#125;)
+  console.log(&quot;async1 end&quot;);
+&#125;
+async1();
+console.log(&quot;start&quot;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时的执行结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;async start&#39;
+&#39;promise&#39;
+&#39;async1 end&#39;
+&#39;start&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以看到 <code>new Promise()</code>  并不会阻塞后面的同步代码 <code>async1 end</code>  的执行。</p>
+<h4 id="52-题目二"><a class="markdownIt-Anchor" href="#52-题目二">#</a> 5.2 题目二</h4>
+<p>现在将 <code>async</code>  结合定时器看看。</p>
+<p>给题目一中的  <code>async2</code>  函数中加上一个定时器：</p>
+<pre class="line-numbers language-none"><code class="language-none">async function async1() &#123;
+  console.log(&quot;async1 start&quot;);
+  await async2();
+  console.log(&quot;async1 end&quot;);
+&#125;
+async function async2() &#123;
+  setTimeout(() &#x3D;&gt; &#123;
+    console.log(&#39;timer&#39;)
+  &#125;, 0)
+  console.log(&quot;async2&quot;);
+&#125;
+async1();
+console.log(&quot;start&quot;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>没错，定时器始终还是最后执行的，它被放到下一条宏任务的延迟队列中。</p>
+<p>答案：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;async1 start&#39;
+&#39;async2&#39;
+&#39;start&#39;
+&#39;async1 end&#39;
+&#39;timer&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="53-题目三"><a class="markdownIt-Anchor" href="#53-题目三">#</a> 5.3 题目三</h4>
+<p>来吧，小伙伴们，让我们多加几个定时器看看。😁</p>
+<pre class="line-numbers language-none"><code class="language-none">async function async1() &#123;
+  console.log(&quot;async1 start&quot;);
+  await async2();
+  console.log(&quot;async1 end&quot;);
+  setTimeout(() &#x3D;&gt; &#123;
+    console.log(&#39;timer1&#39;)
+  &#125;, 0)
+&#125;
+async function async2() &#123;
+  setTimeout(() &#x3D;&gt; &#123;
+    console.log(&#39;timer2&#39;)
+  &#125;, 0)
+  console.log(&quot;async2&quot;);
+&#125;
+async1();
+setTimeout(() &#x3D;&gt; &#123;
+  console.log(&#39;timer3&#39;)
+&#125;, 0)
+console.log(&quot;start&quot;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>思考一下🤔，执行结果会是什么？</p>
+<p>其实如果你能做到这里了，说明你前面的那些知识点也都掌握了，我就不需要太过详细的步骤分析了。</p>
+<p>直接公布答案吧：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;async1 start&#39;
+&#39;async2&#39;
+&#39;start&#39;
+&#39;async1 end&#39;
+&#39;timer2&#39;
+&#39;timer3&#39;
+&#39;timer1&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>定时器谁先执行，你只需要关注谁先被调用的以及延迟时间是多少，这道题中延迟时间都是 <code>0</code> ，所以只要关注谁先被调用的。。</p>
+<h4 id="54-题目四"><a class="markdownIt-Anchor" href="#54-题目四">#</a> 5.4 题目四</h4>
+<p>正常情况下， <code>async</code>  中的 <code>await</code>  命令是一个 <code>Promise</code>  对象，返回该对象的结果。</p>
+<p>但如果不是 <code>Promise</code>  对象的话，就会直接返回对应的值，相当于 <code>Promise.resolve()</code></p>
+<pre class="line-numbers language-none"><code class="language-none">async function fn () &#123;
+  &#x2F;&#x2F; return await 1234
+  &#x2F;&#x2F; 等同于
+  return 123
+&#125;
+fn().then(res &#x3D;&gt; console.log(res))
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">123
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="55-题目五"><a class="markdownIt-Anchor" href="#55-题目五">#</a> 5.5 题目五</h4>
+<pre class="line-numbers language-none"><code class="language-none">async function async1 () &#123;
+  console.log(&#39;async1 start&#39;);
+  await new Promise(resolve &#x3D;&gt; &#123;
+    console.log(&#39;promise1&#39;)
+  &#125;)
+  console.log(&#39;async1 success&#39;);
+  return &#39;async1 end&#39;
+&#125;
+console.log(&#39;srcipt start&#39;)
+async1().then(res &#x3D;&gt; console.log(res))
+console.log(&#39;srcipt end&#39;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这道题目比较有意思，大家要注意了。</p>
+<p>在 <code>async1</code>  中 <code>await</code>  后面的 <code>Promise</code>  是没有返回值的，也就是它的状态始终是 <code>pending</code>  状态，因此相当于一直在 <code>await</code> ， <code>await</code> ， <code>await</code>  却始终没有响应…</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/28/1708bb1987d7181b~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>所以在 <code>await</code>  之后的内容是不会执行的，也包括 <code>async1</code>  后面的  <code>.then</code> 。</p>
+<p>答案为：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;script start&#39;
+&#39;async1 start&#39;
+&#39;promise1&#39;
+&#39;script end&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="56-题目六"><a class="markdownIt-Anchor" href="#56-题目六">#</a> 5.6 题目六</h4>
+<p>让我们给 <code>5.5</code>  中的 <code>Promise</code>  加上 <code>resolve</code> ：</p>
+<pre class="line-numbers language-none"><code class="language-none">async function async1 () &#123;
+  console.log(&#39;async1 start&#39;);
+  await new Promise(resolve &#x3D;&gt; &#123;
+    console.log(&#39;promise1&#39;)
+    resolve(&#39;promise1 resolve&#39;)
+  &#125;).then(res &#x3D;&gt; console.log(res))
+  console.log(&#39;async1 success&#39;);
+  return &#39;async1 end&#39;
+&#125;
+console.log(&#39;srcipt start&#39;)
+async1().then(res &#x3D;&gt; console.log(res))
+console.log(&#39;srcipt end&#39;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>现在 <code>Promise</code>  有了返回值了，因此 <code>await</code>  后面的内容将会被执行：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;script start&#39;
+&#39;async1 start&#39;
+&#39;promise1&#39;
+&#39;script end&#39;
+&#39;promise1 resolve&#39;
+&#39;async1 success&#39;
+&#39;async1 end&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="57-题目七"><a class="markdownIt-Anchor" href="#57-题目七">#</a> 5.7 题目七</h4>
+<pre class="line-numbers language-none"><code class="language-none">async function async1 () &#123;
+  console.log(&#39;async1 start&#39;);
+  await new Promise(resolve &#x3D;&gt; &#123;
+    console.log(&#39;promise1&#39;)
+    resolve(&#39;promise resolve&#39;)
+  &#125;)
+  console.log(&#39;async1 success&#39;);
+  return &#39;async1 end&#39;
+&#125;
+console.log(&#39;srcipt start&#39;)
+async1().then(res &#x3D;&gt; &#123;
+  console.log(res)
+&#125;)
+new Promise(resolve &#x3D;&gt; &#123;
+  console.log(&#39;promise2&#39;)
+  setTimeout(() &#x3D;&gt; &#123;
+    console.log(&#39;timer&#39;)
+  &#125;)
+&#125;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这道题应该也不难，不过有一点需要注意的，在 <code>async1</code>  中的 <code>new Promise</code>  它的 <code>resovle</code>  的值和 <code>async1().then()</code>  里的值是没有关系的，很多小伙伴可能看到 <code>resovle('promise resolve')</code>  就会误以为是 <code>async1().then()</code>  中的返回值。</p>
+<p>因此这里的执行结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;script start&#39;
+&#39;async1 start&#39;
+&#39;promise1&#39;
+&#39;promise2&#39;
+&#39;async1 success&#39;
+&#39;async1 end&#39;
+&#39;timer&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="58-题目八"><a class="markdownIt-Anchor" href="#58-题目八">#</a> 5.8 题目八</h4>
+<p>我们再来看一道头条曾经的面试题：</p>
+<pre class="line-numbers language-none"><code class="language-none">async function async1() &#123;
+  console.log(&quot;async1 start&quot;);
+  await async2();
+  console.log(&quot;async1 end&quot;);
+&#125;
+
+async function async2() &#123;
+  console.log(&quot;async2&quot;);
+&#125;
+
+console.log(&quot;script start&quot;);
+
+setTimeout(function() &#123;
+  console.log(&quot;setTimeout&quot;);
+&#125;, 0);
+
+async1();
+
+new Promise(function(resolve) &#123;
+  console.log(&quot;promise1&quot;);
+  resolve();
+&#125;).then(function() &#123;
+  console.log(&quot;promise2&quot;);
+&#125;);
+console.log(&#39;script end&#39;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>有了上面👆几题做基础，相信你很快也能答上来了。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1708bb005aa667c3%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>自信的写下你们的答案吧。</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;script start&#39;
+&#39;async1 start&#39;
+&#39;async2&#39;
+&#39;promise1&#39;
+&#39;script end&#39;
+&#39;async1 end&#39;
+&#39;promise2&#39;
+&#39;setTimeout&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>(这道题最后 <code>async1 end</code>  和 <code>promise2</code>  的顺序其实在网上饱受争议，我这里使用浏览器 <code>Chrome V80</code> ， <code>Node v12.16.1</code>  的执行结果都是上面这个答案)</p>
+<h4 id="59-题目九"><a class="markdownIt-Anchor" href="#59-题目九">#</a> 5.9 题目九</h4>
+<p>好的👌， <code>async/await</code>  大法已练成，咱们继续：</p>
+<pre class="line-numbers language-none"><code class="language-none">async function testSometing() &#123;
+  console.log(&quot;执行testSometing&quot;);
+  return &quot;testSometing&quot;;
+&#125;
+
+async function testAsync() &#123;
+  console.log(&quot;执行testAsync&quot;);
+  return Promise.resolve(&quot;hello async&quot;);
+&#125;
+
+async function test() &#123;
+  console.log(&quot;test start...&quot;);
+  const v1 &#x3D; await testSometing();
+  console.log(v1);
+  const v2 &#x3D; await testAsync();
+  console.log(v2);
+  console.log(v1, v2);
+&#125;
+
+test();
+
+var promise &#x3D; new Promise(resolve &#x3D;&gt; &#123;
+  console.log(&quot;promise start...&quot;);
+  resolve(&quot;promise&quot;);
+&#125;);
+promise.then(val &#x3D;&gt; console.log(val));
+
+console.log(&quot;test end...&quot;);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>答案：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;test start...&#39;
+&#39;执行testSometing&#39;
+&#39;promise start...&#39;
+&#39;test end...&#39;
+&#39;testSometing&#39;
+&#39;执行testAsync&#39;
+&#39;promise&#39;
+&#39;hello async&#39;
+&#39;testSometing&#39; &#39;hello async&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="6-async处理错误"><a class="markdownIt-Anchor" href="#6-async处理错误">#</a> 6. async 处理错误</h3>
+<h4 id="61-题目一"><a class="markdownIt-Anchor" href="#61-题目一">#</a> 6.1 题目一</h4>
+<p>在 <code>async</code>  中，如果  <code>await</code>  后面的内容是一个异常或者错误的话，会怎样呢？</p>
+<pre class="line-numbers language-none"><code class="language-none">async function async1 () &#123;
+  await async2();
+  console.log(&#39;async1&#39;);
+  return &#39;async1 success&#39;
+&#125;
+async function async2 () &#123;
+  return new Promise((resolve, reject) &#x3D;&gt; &#123;
+    console.log(&#39;async2&#39;)
+    reject(&#39;error&#39;)
+  &#125;)
+&#125;
+async1().then(res &#x3D;&gt; console.log(res))
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>例如这道题中， <code>await</code>  后面跟着的是一个状态为 <code>rejected</code>  的 <code>promise</code> 。</p>
+<p><strong>如果在 async 函数中抛出了错误，则终止错误结果，不会继续向下执行。</strong></p>
+<p>所以答案为：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;async2&#39;
+Uncaught (in promise) error
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>如果改为 <code>throw new Error</code>  也是一样的：</p>
+<pre class="line-numbers language-none"><code class="language-none">async function async1 () &#123;
+  console.log(&#39;async1&#39;);
+  throw new Error(&#39;error!!!&#39;)
+  return &#39;async1 success&#39;
+&#125;
+async1().then(res &#x3D;&gt; console.log(res))
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;async1&#39;
+Uncaught (in promise) Error: error!!!
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="62-题目二"><a class="markdownIt-Anchor" href="#62-题目二">#</a> 6.2 题目二</h4>
+<p>如果想要使得错误的地方不影响 <code>async</code>  函数后续的执行的话，可以使用 <code>try catch</code></p>
+<pre class="line-numbers language-none"><code class="language-none">async function async1 () &#123;
+  try &#123;
+    await Promise.reject(&#39;error!!!&#39;)
+  &#125; catch(e) &#123;
+    console.log(e)
+  &#125;
+  console.log(&#39;async1&#39;);
+  return Promise.resolve(&#39;async1 success&#39;)
+&#125;
+async1().then(res &#x3D;&gt; console.log(res))
+console.log(&#39;script start&#39;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这里的结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;script start&#39;
+&#39;error!!!&#39;
+&#39;async1&#39;
+&#39;async1 success&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>或者你可以直接在 <code>Promise.reject</code>  后面跟着一个 <code>catch()</code>  方法：</p>
+<pre class="line-numbers language-none"><code class="language-none">async function async1 () &#123;
+  &#x2F;&#x2F; try &#123;
+  &#x2F;&#x2F;   await Promise.reject(&#39;error!!!&#39;)
+  &#x2F;&#x2F; &#125; catch(e) &#123;
+  &#x2F;&#x2F;   console.log(e)
+  &#x2F;&#x2F; &#125;
+  await Promise.reject(&#39;error!!!&#39;)
+    .catch(e &#x3D;&gt; console.log(e))
+  console.log(&#39;async1&#39;);
+  return Promise.resolve(&#39;async1 success&#39;)
+&#125;
+async1().then(res &#x3D;&gt; console.log(res))
+console.log(&#39;script start&#39;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行结果是一样的。</p>
+<h3 id="7-综合题"><a class="markdownIt-Anchor" href="#7-综合题">#</a> 7. 综合题</h3>
+<p>上面👆的题目都是被我拆分着说一些功能点，现在让我们来做一些比较难的综合题吧。</p>
+<h4 id="71-题目一"><a class="markdownIt-Anchor" href="#71-题目一">#</a> 7.1 题目一</h4>
+<pre class="line-numbers language-none"><code class="language-none">const first &#x3D; () &#x3D;&gt; (new Promise((resolve, reject) &#x3D;&gt; &#123;
+    console.log(3);
+    let p &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;
+        console.log(7);
+        setTimeout(() &#x3D;&gt; &#123;
+            console.log(5);
+            resolve(6);
+            console.log(p)
+        &#125;, 0)
+        resolve(1);
+    &#125;);
+    resolve(2);
+    p.then((arg) &#x3D;&gt; &#123;
+        console.log(arg);
+    &#125;);
+&#125;));
+first().then((arg) &#x3D;&gt; &#123;
+    console.log(arg);
+&#125;);
+console.log(4);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>过程分析：</p>
+<ul>
+<li>第一段代码定义的是一个函数，所以我们得看看它是在哪执行的，发现它在 <code>4</code>  之前，所以可以来看看 <code>first</code>  函数里面的内容了。(这一步有点类似于题目 <code>1.5</code> )</li>
+<li>函数 <code>first</code>  返回的是一个 <code>new Promise()</code> ，因此先执行里面的同步代码 <code>3</code></li>
+<li>接着又遇到了一个 <code>new Promise()</code> ，直接执行里面的同步代码 <code>7</code></li>
+<li>执行完 <code>7</code>  之后，在 <code>p</code>  中，遇到了一个定时器，先将它放到下一个宏任务队列里不管它，接着向下走</li>
+<li>碰到了 <code>resolve(1)</code> ，这里就把 <code>p</code>  的状态改为了 <code>resolved</code> ，且返回值为 <code>1</code> ，不过这里也先不执行</li>
+<li>跳出 <code>p</code> ，碰到了 <code>resolve(2)</code> ，这里的 <code>resolve(2)</code> ，表示的是把 <code>first</code>  函数返回的那个 <code>Promise</code>  的状态改了，也先不管它。</li>
+<li>然后碰到了 <code>p.then</code> ，将它加入本次循环的微任务列表，等待执行</li>
+<li>跳出 <code>first</code>  函数，遇到了 <code>first().then()</code> ，将它加入本次循环的微任务列表 ( <code>p.then</code>  的后面执行)</li>
+<li>然后执行同步代码 <code>4</code></li>
+<li>本轮的同步代码全部执行完毕，查找微任务列表，发现 <code>p.then</code>  和 <code>first().then()</code> ，依次执行，打印出 <code>1和2</code></li>
+<li>本轮任务执行完毕了，发现还有一个定时器没有跑完，接着执行这个定时器里的内容，执行同步代码 <code>5</code></li>
+<li>然后又遇到了一个 <code>resolve(6)</code> ，它是放在 <code>p</code>  里的，但是 <code>p</code>  的状态在之前已经发生过改变了，因此这里就不会再改变，也就是说 <code>resolve(6)</code>  相当于没任何用处，因此打印出来的 <code>p</code>  为 <code>Promise&#123;&lt;resolved&gt;: 1&#125;</code> 。(这一步类似于题目 <code>3.1</code> )</li>
+</ul>
+<p>结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">3
+7
+4
+1
+2
+5
+Promise&#123;&lt;resolved&gt;: 1&#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>做对了的小伙伴奖励自己一朵小 <code>(大)</code>  红 <code>(嘴)</code>  花 <code>(巴)</code>  吧，😄</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/28/1708bb1c9abe9b51~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h4 id="72-题目二"><a class="markdownIt-Anchor" href="#72-题目二">#</a> 7.2 题目二</h4>
+<pre class="line-numbers language-none"><code class="language-none">const async1 &#x3D; async () &#x3D;&gt; &#123;
+  console.log(&#39;async1&#39;);
+  setTimeout(() &#x3D;&gt; &#123;
+    console.log(&#39;timer1&#39;)
+  &#125;, 2000)
+  await new Promise(resolve &#x3D;&gt; &#123;
+    console.log(&#39;promise1&#39;)
+  &#125;)
+  console.log(&#39;async1 end&#39;)
+  return &#39;async1 success&#39;
+&#125; 
+console.log(&#39;script start&#39;);
+async1().then(res &#x3D;&gt; console.log(res));
+console.log(&#39;script end&#39;);
+Promise.resolve(1)
+  .then(2)
+  .then(Promise.resolve(3))
+  .catch(4)
+  .then(res &#x3D;&gt; console.log(res))
+setTimeout(() &#x3D;&gt; &#123;
+  console.log(&#39;timer2&#39;)
+&#125;, 1000)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意的知识点：</p>
+<ul>
+<li><code>async</code>  函数中 <code>await</code>  的 <code>new Promise</code>  要是没有返回值的话则不执行后面的内容 (类似题 <code>5.5</code> )</li>
+<li><code>.then</code>  函数中的参数期待的是函数，如果不是函数的话会发生透传 (类似题 <code>3.8</code>  )</li>
+<li>注意定时器的延迟时间</li>
+</ul>
+<p>因此本题答案为：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;script start&#39;
+&#39;async1&#39;
+&#39;promise1&#39;
+&#39;script end&#39;
+1
+&#39;timer2&#39;
+&#39;timer1&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="73-题目三"><a class="markdownIt-Anchor" href="#73-题目三">#</a> 7.3 题目三</h4>
+<pre class="line-numbers language-none"><code class="language-none">const p1 &#x3D; new Promise((resolve) &#x3D;&gt; &#123;
+  setTimeout(() &#x3D;&gt; &#123;
+    resolve(&#39;resolve3&#39;);
+    console.log(&#39;timer1&#39;)
+  &#125;, 0)
+  resolve(&#39;resovle1&#39;);
+  resolve(&#39;resolve2&#39;);
+&#125;).then(res &#x3D;&gt; &#123;
+  console.log(res)
+  setTimeout(() &#x3D;&gt; &#123;
+    console.log(p1)
+  &#125;, 1000)
+&#125;).finally(res &#x3D;&gt; &#123;
+  console.log(&#39;finally&#39;, res)
+&#125;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意的知识点：</p>
+<ul>
+<li><code>Promise</code>  的状态一旦改变就无法改变 (类似题目 <code>3.5</code> )</li>
+<li><code>finally</code>  不管 <code>Promise</code>  的状态是 <code>resolved</code>  还是 <code>rejected</code>  都会执行，且它的回调函数是接收不到 <code>Promise</code>  的结果的，所以 <code>finally()</code>  中的 <code>res</code>  是一个迷惑项 (类似 <code>3.10</code> )。</li>
+<li>最后一个定时器打印出的 <code>p1</code>  其实是 <code>.finally</code>  的返回值，我们知道 <code>.finally</code>  的返回值如果在没有抛出错误的情况下默认会是上一个 <code>Promise</code>  的返回值 ( <code>3.10</code>  中也有提到), 而这道题中 <code>.finally</code>  上一个 <code>Promise</code>  是 <code>.then()</code> ，但是这个 <code>.then()</code>  并没有返回值，所以 <code>p1</code>  打印出来的 <code>Promise</code>  的值会是 <code>undefined</code> ，如果你在定时器的<strong>下面</strong>加上一个 <code>return 1</code> ，则值就会变成 <code>1</code>  (感谢掘友<a target="_blank" rel="noopener" href="https://juejin.cn/user/2260251637193639" title="https://juejin.cn/user/2260251637193639"> JS 丛中过</a>的指出)。</li>
+</ul>
+<p>答案：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;resolve1&#39;
+&#39;finally&#39; undefined
+&#39;timer1&#39;
+Promise&#123;&lt;resolved&gt;: undefined&#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="8-几道大厂的面试题"><a class="markdownIt-Anchor" href="#8-几道大厂的面试题">#</a> 8. 几道大厂的面试题</h3>
+<h4 id="81-使用promise实现每隔1秒输出123"><a class="markdownIt-Anchor" href="#81-使用promise实现每隔1秒输出123">#</a> 8.1 使用 Promise 实现每隔 1 秒输出 1,2,3</h4>
+<p>这道题比较简单的一种做法是可以用 <code>Promise</code>  配合着 <code>reduce</code>  不停的在 <code>promise</code>  后面叠加 <code>.then</code> ，请看下面的代码：</p>
+<pre class="line-numbers language-none"><code class="language-none">const arr &#x3D; [1, 2, 3]
+arr.reduce((p, x) &#x3D;&gt; &#123;
+  return p.then(() &#x3D;&gt; &#123;
+    return new Promise(r &#x3D;&gt; &#123;
+      setTimeout(() &#x3D;&gt; r(console.log(x)), 1000)
+    &#125;)
+  &#125;)
+&#125;, Promise.resolve())
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>或者你可以更简单一点写：</p>
+<pre class="line-numbers language-none"><code class="language-none">const arr &#x3D; [1, 2, 3]
+arr.reduce((p, x) &#x3D;&gt; p.then(() &#x3D;&gt; new Promise(r &#x3D;&gt; setTimeout(() &#x3D;&gt; r(console.log(x)), 1000))), Promise.resolve())
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>参考链接：<a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fq%2F1010000010748967" title="https://segmentfault.com/q/1010000010748967">如何让异步操作顺序执行</a></p>
+<p><strong>拓展题</strong></p>
+<p>这道拓展题来自于 “万物皆可爱的<a target="_blank" rel="noopener" href="https://juejin.cn/user/2436173498955032" title="https://juejin.cn/user/2436173498955032"> LINGLONG</a> ” 小姐姐，炒鸡棒 😁👍。</p>
+<p>题目是这样的，她把我上面👆写的箭头函数版本改造了一下：</p>
+<pre class="line-numbers language-none"><code class="language-none">const arr &#x3D; [1, 2, 3];
+const result &#x3D; arr.reduce((p, x) &#x3D;&gt; p.then(new Promise(r &#x3D;&gt; setTimeout(() &#x3D;&gt; r(console.log(x)), 1000))), Promise.resolve());
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>眼尖的小伙伴看出区别了吗？😁</p>
+<p><code>p.then</code>  里的代码由 <code>() =&gt; new Promise(...)</code>  变成了 <code>new Promise(...)</code> 。</p>
+<p>现在执行结果就大不相同了。</p>
+<p><strong>在一秒后按顺序同时打印出 <code>1、2、3</code> :</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">1
+2
+3
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>咦 🤔️？为什么会这样呢 🤔️？</p>
+<p>只是一个小小的改变却有大大的区别。</p>
+<p>其实刚开始看到的时候霖呆呆我也愣了那么几秒😂。不过等我们一步一步拆分并对想不通的地方写了几个案例来看就理解了。</p>
+<p>评论区和小姐姐扯了一大堆，结果把她越弄越糊😂。后来我改变了一种思路来描述，觉得应该直接上伪代码：</p>
+<pre class="line-numbers language-none"><code class="language-none">const arr &#x3D; [1, 2, 3]
+arr.reduce((p, x) &#x3D;&gt; p.then(() &#x3D;&gt; new Promise(r &#x3D;&gt; setTimeout(() &#x3D;&gt; r(console.log(x)), 1000))), Promise.resolve())
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>转换为伪代码就是这样：</p>
+<p>(相当于是用 <code>reduce</code>  不停的往后面叠加 <code>.then</code> )</p>
+<pre class="line-numbers language-none"><code class="language-none">Promise.resolve()
+  .then(() &#x3D;&gt; &#123;
+    return new Promise(r &#x3D;&gt; &#123;
+      setTimeout(() &#x3D;&gt; &#123;
+        r(console.log(1))
+      &#125;, 1000)
+    &#125;)
+  &#125;)
+  .then(r &#x3D;&gt; &#123;
+    return new Promise(r &#x3D;&gt; &#123;
+      setTimeout(() &#x3D;&gt; &#123;
+        r(console.log(2))
+      &#125;, 1000)
+    &#125;)
+  &#125;)
+  .then(r &#x3D;&gt; &#123;
+    return new Promise(r &#x3D;&gt; &#123;
+      setTimeout(() &#x3D;&gt; &#123;
+        r(console.log(3))
+      &#125;, 1000)
+    &#125;)
+  &#125;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以看到，每一个 <code>.then</code>  都是依赖于上一个 <code>new Promise</code>  何时被 <code>resolve</code>  了才会执行的，例如第二个 <code>.then()</code> ，它要等 <code>r(console.log(1)</code>  这段代码执行了，才会执行。</p>
+<p>那么 <code>r(console.log(1))</code>  什么时候执行呢？就是在第一个定时器 (也就是一秒后) 触发的时候才执行。这样就保证了后面接着的 <code>.then()</code>  要等前一个定时器执行完才能执行，也就是隔一秒输出。</p>
+<p>而如果是这样写的话：</p>
+<pre class="line-numbers language-none"><code class="language-none">const arr &#x3D; [1, 2, 3];
+const result &#x3D; arr.reduce((p, x) &#x3D;&gt; p.then(new Promise(r &#x3D;&gt; setTimeout(() &#x3D;&gt; r(console.log(x)), 1000))), Promise.resolve());
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>它的伪代码就是这样：</p>
+<p>(每个 <code>then</code>  里面的第一个参数不是一个函数)</p>
+<pre class="line-numbers language-none"><code class="language-none">Promise.resolve()
+  .then(new Promise(r &#x3D;&gt; &#123;
+    setTimeout(() &#x3D;&gt; &#123;
+      r(console.log(1))
+    &#125;, 1000)
+  &#125;))
+  .then(new Promise(r &#x3D;&gt; &#123;
+    setTimeout(() &#x3D;&gt; &#123;
+      r(console.log(2))
+    &#125;, 1000)
+  &#125;))
+  .then(new Promise(r &#x3D;&gt; &#123;
+    setTimeout(() &#x3D;&gt; &#123;
+      r(console.log(3))
+    &#125;, 1000)
+  &#125;))
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>p.then()</code>  里面的参数如果不是函数的话，会发生透传，这个在 <code>3.8</code>  中已经提过了。但是发生透传， <code>.then()</code>  里的代码就不执行了吗？</p>
+<p>并不是的，我们来看这个例子：</p>
+<pre class="line-numbers language-none"><code class="language-none">const p &#x3D; Promise.resolve(1).then(console.log(&#39;我不关心结果&#39;))
+console.log(p)
+p.then((res) &#x3D;&gt; console.log(res))
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>很明显这里也发生了透传，但是 <code>'我不关心结果'</code>  也还是被打印出来了，并且由于透传， <code>p.then()</code>  里获取到的 <code>res</code>  就是 <code>1</code> ，因此会打印出：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#39;我不关心结果&#39;
+Promise&#123;
+[[PromiseStatus]]: &quot;resolved&quot;
+[[PromiseValue]]: 1
+&#125;
+1
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>(第二行打印出 <code>Promise&#123;&lt;pending&gt;&#125;</code>  的小伙伴请把这个对象展开来看)</p>
+<p>这个例子表明，就算发生了透传， <code>p.then()</code>  中的代码依旧也是会执行的。</p>
+<p>所以回到</p>
+<pre class="line-numbers language-none"><code class="language-none">.then(new Promise(r &#x3D;&gt; &#123;
+    setTimeout(() &#x3D;&gt; &#123;
+      r(console.log(1))
+    &#125;, 1000)
+  &#125;))
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>中，现在 <code>.then()</code>  中就相当于是执行一段同步代码：</p>
+<pre class="line-numbers language-none"><code class="language-none">new Promise(r &#x3D;&gt; &#123;
+    setTimeout(() &#x3D;&gt; &#123;
+      r(console.log(1))
+    &#125;, 1000)
+  &#125;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>而这段代码的作用是向延迟队列中 <code>push</code>  一个一秒后执行的定时器任务。</p>
+<p>并且在 <code>push</code>  完定时器之后，代码就马上进入了下一个 <code>.then</code>  (因为既然第一个 <code>.then</code>  已经是透传的了就没有必要等它的执行结果了)</p>
+<p>下一个 <code>.then</code>  竟然也是一个透传，OK，那我继续 <code>push</code>  这个定时器，然后再执行第三个 <code>.then</code> 。</p>
+<p>三个 <code>.then</code>  已经执行完成了，现在我们的延迟队列中已经有了三个定时器等待执行，<strong>并且三个定时器的延迟时间都是 1000ms!!!</strong>。</p>
+<p>所以等到了时间之后，就会同时打印出来了 <code>1、2、3</code> 。（其实准确来说，不是同时打印的，不过中间相差的时间非常非常短，大可忽略它）</p>
+<p>现在你是否理解了其中的区别呢 😝。</p>
+<h4 id="82-使用promise实现红绿灯交替重复亮"><a class="markdownIt-Anchor" href="#82-使用promise实现红绿灯交替重复亮">#</a> 8.2 使用 Promise 实现红绿灯交替重复亮</h4>
+<p>红灯 3 秒亮一次，黄灯 2 秒亮一次，绿灯 1 秒亮一次；如何让三个灯不断交替重复亮灯？（用 Promise 实现）三个亮灯函数已经存在：</p>
+<pre class="line-numbers language-none"><code class="language-none">function red() &#123;
+    console.log(&#39;red&#39;);
+&#125;
+function green() &#123;
+    console.log(&#39;green&#39;);
+&#125;
+function yellow() &#123;
+    console.log(&#39;yellow&#39;);
+&#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>答案：</p>
+<pre class="line-numbers language-none"><code class="language-none">function red() &#123;
+  console.log(&quot;red&quot;);
+&#125;
+function green() &#123;
+  console.log(&quot;green&quot;);
+&#125;
+function yellow() &#123;
+  console.log(&quot;yellow&quot;);
+&#125;
+const light &#x3D; function (timer, cb) &#123;
+  return new Promise(resolve &#x3D;&gt; &#123;
+    setTimeout(() &#x3D;&gt; &#123;
+      cb()
+      resolve()
+    &#125;, timer)
+  &#125;)
+&#125;
+const step &#x3D; function () &#123;
+  Promise.resolve().then(() &#x3D;&gt; &#123;
+    return light(3000, red)
+  &#125;).then(() &#x3D;&gt; &#123;
+    return light(2000, green)
+  &#125;).then(() &#x3D;&gt; &#123;
+    return light(1000, yellow)
+  &#125;).then(() &#x3D;&gt; &#123;
+    return step()
+  &#125;)
+&#125;
+
+step();
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="83-实现mergepromise函数"><a class="markdownIt-Anchor" href="#83-实现mergepromise函数">#</a> 8.3 实现 mergePromise 函数</h4>
+<p>实现 mergePromise 函数，把传进去的数组按顺序先后执行，并且把返回的数据先后放到数组 data 中。</p>
+<pre class="line-numbers language-none"><code class="language-none">const time &#x3D; (timer) &#x3D;&gt; &#123;
+  return new Promise(resolve &#x3D;&gt; &#123;
+    setTimeout(() &#x3D;&gt; &#123;
+      resolve()
+    &#125;, timer)
+  &#125;)
+&#125;
+const ajax1 &#x3D; () &#x3D;&gt; time(2000).then(() &#x3D;&gt; &#123;
+  console.log(1);
+  return 1
+&#125;)
+const ajax2 &#x3D; () &#x3D;&gt; time(1000).then(() &#x3D;&gt; &#123;
+  console.log(2);
+  return 2
+&#125;)
+const ajax3 &#x3D; () &#x3D;&gt; time(1000).then(() &#x3D;&gt; &#123;
+  console.log(3);
+  return 3
+&#125;)
+
+function mergePromise () &#123;
+  &#x2F;&#x2F; 在这里写代码
+&#125;
+
+mergePromise([ajax1, ajax2, ajax3]).then(data &#x3D;&gt; &#123;
+  console.log(&quot;done&quot;);
+  console.log(data); &#x2F;&#x2F; data 为 [1, 2, 3]
+&#125;);
+
+&#x2F;&#x2F; 要求分别输出
+&#x2F;&#x2F; 1
+&#x2F;&#x2F; 2
+&#x2F;&#x2F; 3
+&#x2F;&#x2F; done
+&#x2F;&#x2F; [1, 2, 3]
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这道题有点类似于 <code>Promise.all()</code> ，不过 <code>.all()</code>  不需要管执行顺序，只需要并发执行就行了。但是这里需要等上一个执行完毕之后才能执行下一个。</p>
+<p>解题思路：</p>
+<ul>
+<li>定义一个数组 <code>data</code>  用于保存所有异步操作的结果</li>
+<li>初始化一个 <code>const promise = Promise.resolve()</code> ，然后循环遍历数组，在 <code>promise</code>  后面添加执行 <code>ajax</code>  任务，同时要将添加的结果重新赋值到 <code>promise</code>  上。</li>
+</ul>
+<p>答案：</p>
+<pre class="line-numbers language-none"><code class="language-none">function mergePromise (ajaxArray) &#123;
+  &#x2F;&#x2F; 存放每个ajax的结果
+  const data &#x3D; [];
+  let promise &#x3D; Promise.resolve();
+  ajaxArray.forEach(ajax &#x3D;&gt; &#123;
+  	&#x2F;&#x2F; 第一次的then为了用来调用ajax
+  	&#x2F;&#x2F; 第二次的then是为了获取ajax的结果
+    promise &#x3D; promise.then(ajax).then(res &#x3D;&gt; &#123;
+      data.push(res);
+      return data; &#x2F;&#x2F; 把每次的结果返回
+    &#125;)
+  &#125;)
+  &#x2F;&#x2F; 最后得到的promise它的值就是data
+  return promise;
+&#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="84-根据promisea实现一个自己的promise"><a class="markdownIt-Anchor" href="#84-根据promisea实现一个自己的promise">#</a> 8.4 根据 promiseA + 实现一个自己的 promise</h4>
+<p>说真的，这道题被问到的概率还是挺高的，而且要说的内容也很多…</p>
+<p>霖呆呆这里偷个懒，不想细说了…</p>
+<p>不过哈，我保证，下下题我一定仔细说 😼.</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1708bb0d2846ea40%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>来吧，给你们一些好的宝典：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903607968481287#heading-7" title="https://juejin.cn/post/6844903607968481287#heading-7">《Promise 不会？？看这里！！！史上最通俗易懂的 Promise！！！》</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F23312442" title="https://zhuanlan.zhihu.com/p/23312442">《写一个符合 Promises/A+ 规范并可配合 ES7 async/await 使用的 Promise》</a></li>
+</ul>
+<h4 id="85-封装一个异步加载图片的方法"><a class="markdownIt-Anchor" href="#85-封装一个异步加载图片的方法">#</a> 8.5 封装一个异步加载图片的方法</h4>
+<p>这个相对简单一些，只需要在图片的 <code>onload</code>  函数中，使用 <code>resolve</code>  返回一下就可以了。</p>
+<p>来看看具体代码：</p>
+<pre class="line-numbers language-none"><code class="language-none">function loadImg(url) &#123;
+  return new Promise((resolve, reject) &#x3D;&gt; &#123;
+    const img &#x3D; new Image();
+    img.onload &#x3D; function() &#123;
+      console.log(&quot;一张图片加载完成&quot;);
+      resolve(img);
+    &#125;;
+    img.onerror &#x3D; function() &#123;
+    	reject(new Error(&#39;Could not load image at&#39; + url));
+    &#125;;
+    img.src &#x3D; url;
+  &#125;);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="86-限制异步操作的并发个数并尽可能快的完成全部"><a class="markdownIt-Anchor" href="#86-限制异步操作的并发个数并尽可能快的完成全部">#</a> 8.6 限制异步操作的并发个数并尽可能快的完成全部</h4>
+<p>有 8 个图片资源的 url，已经存储在数组 <code>urls</code>  中。</p>
+<p><code>urls</code>  类似于 <code>['https://image1.png', 'https://image2.png', ....]</code></p>
+<p>而且已经有一个函数 <code>function loadImg</code> ，输入一个 <code>url</code>  链接，返回一个 <code>Promise</code> ，该 <code>Promise</code>  在图片下载完成的时候 <code>resolve</code> ，下载失败则 <code>reject</code> 。</p>
+<p>但有一个要求，任何时刻同时下载的链接<strong>数量不可以超过 3 个</strong>。</p>
+<p>请写一段代码实现这个需求，要求<strong>尽可能快速</strong>地将所有图片下载完成。</p>
+<pre class="line-numbers language-none"><code class="language-none">var urls &#x3D; [
+  &quot;https:&#x2F;&#x2F;hexo-blog-1256114407.cos.ap-shenzhen-fsi.myqcloud.com&#x2F;AboutMe-painting1.png&quot;,
+  &quot;https:&#x2F;&#x2F;hexo-blog-1256114407.cos.ap-shenzhen-fsi.myqcloud.com&#x2F;AboutMe-painting2.png&quot;,
+  &quot;https:&#x2F;&#x2F;hexo-blog-1256114407.cos.ap-shenzhen-fsi.myqcloud.com&#x2F;AboutMe-painting3.png&quot;,
+  &quot;https:&#x2F;&#x2F;hexo-blog-1256114407.cos.ap-shenzhen-fsi.myqcloud.com&#x2F;AboutMe-painting4.png&quot;,
+  &quot;https:&#x2F;&#x2F;hexo-blog-1256114407.cos.ap-shenzhen-fsi.myqcloud.com&#x2F;AboutMe-painting5.png&quot;,
+  &quot;https:&#x2F;&#x2F;hexo-blog-1256114407.cos.ap-shenzhen-fsi.myqcloud.com&#x2F;bpmn6.png&quot;,
+  &quot;https:&#x2F;&#x2F;hexo-blog-1256114407.cos.ap-shenzhen-fsi.myqcloud.com&#x2F;bpmn7.png&quot;,
+  &quot;https:&#x2F;&#x2F;hexo-blog-1256114407.cos.ap-shenzhen-fsi.myqcloud.com&#x2F;bpmn8.png&quot;,
+];
+function loadImg(url) &#123;
+  return new Promise((resolve, reject) &#x3D;&gt; &#123;
+    const img &#x3D; new Image();
+    img.onload &#x3D; function() &#123;
+      console.log(&quot;一张图片加载完成&quot;);
+      resolve(img);
+    &#125;;
+    img.onerror &#x3D; function() &#123;
+    	reject(new Error(&#39;Could not load image at&#39; + url));
+    &#125;;
+    img.src &#x3D; url;
+  &#125;);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>看到这道题时，我最开始的想法是：</p>
+<ul>
+<li>拿到 <code>urls</code> ，然后将这个数组每 3 个 <code>url</code>  一组创建成一个二维数组</li>
+<li>然后用 <code>Promise.all()</code>  每次加载一组 <code>url</code> （也就是并发 3 个），这一组加载完再加载下一组。</li>
+</ul>
+<p>这个想法从技术上说并不难实现，有点类似于第三题。不过缺点也明显，那就是每次都要等到上一组全部加载完之后，才加载下一组，那如果上一组有 <code>2</code>  个已经加载完了，还有 <code>1</code>  个特别慢，还在加载，要等这个慢的也加载完才能进入下一组。这明显会照常卡顿，影响加载效率。</p>
+<p>但是开始没有考虑这么多，因此有了第一个版本。</p>
+<p><strong>如果你有兴趣可以看看想法一的代码，虽然对你没什么帮助，想直接知道比较好的做法的小伙伴请跳到想法二</strong></p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/28/1708bb10eebdcc6e~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p><strong>想法一</strong>💡：</p>
+<pre class="line-numbers language-none"><code class="language-none">function limitLoad (urls, handler, limit) &#123;
+  const data &#x3D; []; &#x2F;&#x2F; 存储所有的加载结果
+  let p &#x3D; Promise.resolve();
+  const handleUrls &#x3D; (urls) &#x3D;&gt; &#123; &#x2F;&#x2F; 这个函数是为了生成3个url为一组的二维数组
+    const doubleDim &#x3D; [];
+    const len &#x3D; Math.ceil(urls.length &#x2F; limit); &#x2F;&#x2F; Math.ceil(8 &#x2F; 3) &#x3D; 3
+    console.log(len) &#x2F;&#x2F; 3, 表示二维数组的长度为3
+    for (let i &#x3D; 0; i &lt; len; i++) &#123;
+      doubleDim.push(urls.slice(i * limit, (i + 1) * limit))
+    &#125;
+    return doubleDim;
+  &#125;
+  const ajaxImage &#x3D; (urlCollect) &#x3D;&gt; &#123; &#x2F;&#x2F; 将一组字符串url 转换为一个加载图片的数组
+    console.log(urlCollect)
+    return urlCollect.map(url &#x3D;&gt; handler(url))
+  &#125;
+  const doubleDim &#x3D; handleUrls(urls); &#x2F;&#x2F; 得到3个url为一组的二维数组
+  doubleDim.forEach(urlCollect &#x3D;&gt; &#123;
+    p &#x3D; p.then(() &#x3D;&gt; Promise.all(ajaxImage(urlCollect))).then(res &#x3D;&gt; &#123;
+      data.push(...res); &#x2F;&#x2F; 将每次的结果展开，并存储到data中 (res为：[img, img, img])
+      return data;
+    &#125;)
+  &#125;)
+  return p;
+&#125;
+limitLoad(urls, loadImg, 3).then(res &#x3D;&gt; &#123;
+  console.log(res); &#x2F;&#x2F; 最终得到的是长度为8的img数组: [img, img, img, ...]
+  res.forEach(img &#x3D;&gt; &#123;
+    document.body.appendChild(img);
+  &#125;)
+&#125;);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>想法二</strong>💡：</p>
+<p>参考<a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.jianshu.com%2Fp%2F4bb1521343ba" title="https://www.jianshu.com/p/4bb1521343ba"> LHH 大翰仔仔 - Promise 面试题</a></p>
+<p>既然题目的要求是保证每次并发请求的数量为 3，那么我们可以先请求 <code>urls</code>  中的前面三个 (下标为 <code>0,1,2</code> )，并且请求的时候使用 <code>Promise.race()</code>  来同时请求，三个中有一个先完成了 (例如下标为 <code>1</code>  的图片)，我们就把这个当前数组中已经完成的那一项 (第 <code>1</code>  项) 换成还没有请求的那一项 ( <code>urls</code>  中下标为 <code>3</code> )。</p>
+<p>直到 <code>urls</code>  已经遍历完了，然后将最后三个没有完成的请求 (也就是状态没有改变的 <code>Promise</code> ) 用 <code>Promise.all()</code>  来加载它们。</p>
+<p>不多说，流程图都给你画好了，你可以结合流程图再来看代码。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1708b0d2d7baa165%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>为了方便你查看，我截了个图，不过代码在后面也有</p>
+<p>(说真的，要我看这一大长串代码我也不愿意…)</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1708b0e23417a9ec%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>代码：</p>
+<pre class="line-numbers language-none"><code class="language-none">function limitLoad(urls, handler, limit) &#123;
+  let sequence &#x3D; [].concat(urls); &#x2F;&#x2F; 复制urls
+  &#x2F;&#x2F; 这一步是为了初始化 promises 这个&quot;容器&quot;
+  let promises &#x3D; sequence.splice(0, limit).map((url, index) &#x3D;&gt; &#123;
+    return handler(url).then(() &#x3D;&gt; &#123;
+      &#x2F;&#x2F; 返回下标是为了知道数组中是哪一项最先完成
+      return index;
+    &#125;);
+  &#125;);
+  &#x2F;&#x2F; 注意这里要将整个变量过程返回，这样得到的就是一个Promise，可以在外面链式调用
+  return sequence
+    .reduce((pCollect, url) &#x3D;&gt; &#123;
+      return pCollect
+        .then(() &#x3D;&gt; &#123;
+          return Promise.race(promises); &#x2F;&#x2F; 返回已经完成的下标
+        &#125;)
+        .then(fastestIndex &#x3D;&gt; &#123; &#x2F;&#x2F; 获取到已经完成的下标
+        	&#x2F;&#x2F; 将&quot;容器&quot;内已经完成的那一项替换
+          promises[fastestIndex] &#x3D; handler(url).then(
+            () &#x3D;&gt; &#123;
+              return fastestIndex; &#x2F;&#x2F; 要继续将这个下标返回，以便下一次变量
+            &#125;
+          );
+        &#125;)
+        .catch(err &#x3D;&gt; &#123;
+          console.error(err);
+        &#125;);
+    &#125;, Promise.resolve()) &#x2F;&#x2F; 初始化传入
+    .then(() &#x3D;&gt; &#123; &#x2F;&#x2F; 最后三个用.all来调用
+      return Promise.all(promises);
+    &#125;);
+&#125;
+limitLoad(urls, loadImg, 3)
+  .then(res &#x3D;&gt; &#123;
+    console.log(&quot;图片全部加载完毕&quot;);
+    console.log(res);
+  &#125;)
+  .catch(err &#x3D;&gt; &#123;
+    console.error(err);
+  &#125;);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="后语"><a class="markdownIt-Anchor" href="#后语">#</a> 后语</h2>
+<p>知识无价，支持原创。</p>
+<p>参考文章：</p>
+<ul>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fblog.csdn.net%2Fweixin_37719279%2Farticle%2Fdetails%2F80950713" title="https://blog.csdn.net/weixin_37719279/article/details/80950713">《ES6 之 Promise 常见面试题》</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fq%2F1010000010748967" title="https://segmentfault.com/q/1010000010748967">《如何让异步操作顺序执行》</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.cnblogs.com%2Flvdabao%2Fp%2Fes6-promise-1.html" title="https://www.cnblogs.com/lvdabao/p/es6-promise-1.html">《大白话讲解 Promise（一）</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.jianshu.com%2Fp%2F4bb1521343ba" title="https://www.jianshu.com/p/4bb1521343ba">《LHH 大翰仔仔 - Promise 面试题》</a></li>
+<li><a href="https://link.juejin.cn?target=https%3A%2F%2Fblog.csdn.net%2Fguolinengineer%2Farticle%2Fdetails%2F85067924" title="https://blog.csdn.net/guolinengineer/article/details/85067924">《今日头条 async/await 面试题执行顺序》</a></li>
+<li>[《(2.4w 字，建议收藏)😇原生 JS 灵魂之问 (下), 冲刺🚀进阶最后一公里 (附个人成长经验分享)》](</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2022/01/01/45%E9%81%93promise%E9%9D%A2%E8%AF%95%E9%A2%98/">https://harryqu1229.github.io/2022/01/01/45%E9%81%93promise%E9%9D%A2%E8%AF%95%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/frontend/">frontend</a><a class="post-meta__tags" href="/tags/interview/">interview</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/01/01/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98css,js,vue,react,.../"><img class="prev-cover" src="https://w.wallhaven.cc/full/72/wallhaven-72myve.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Frontend Interview Quesitions (css,js,vue,react)</div></div></a></div><div class="next-post pull-right"><a href="/2022/01/01/%E5%89%91%E6%8C%87offer%E7%9F%A5%E8%AF%86%E5%B0%8F%E6%80%BB%E7%BB%93/"><img class="next-cover" src="https://w.wallhaven.cc/full/8o/wallhaven-8oply1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">剑指offer summary</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/02/25/%E4%B8%80%E7%82%B9%E7%82%B9js%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Javascript Interview Questions"><img class="cover" src="https://w.wallhaven.cc/full/57/wallhaven-57jlo1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">Javascript Interview Questions</div></div></a></div><div><a href="/2022/01/12/CSS%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93-YK%E8%8F%8C/" title="css Interview Questions"><img class="cover" src="https://w.wallhaven.cc/full/wq/wallhaven-wqvov7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-12</div><div class="title">css Interview Questions</div></div></a></div><div><a href="/2022/01/01/50%E9%81%93%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="50 Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/57/wallhaven-57jlo1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">50 Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/01/01/20%E9%81%93%E5%A4%A7%E5%8E%82%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="20 Frontend Interview Quesitions"><img class="cover" src="https://raw.githubusercontent.com/HarryQu1229/image-host/9575054fd0f7d407d7b7d5343dfc530a06ed4104/notes-img/cat.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">20 Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/01/01/30%E9%81%93vue%E9%9D%A2%E8%AF%95%E9%A2%98/" title="30 Vue Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/wq/wallhaven-wqvov7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">30 Vue Frontend Interview Quesitions</div></div></a></div><div><a href="/2021/02/12/JS%E9%9D%A2%E8%AF%95%E9%A2%98--YK%E8%8F%8C/" title="some JS Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-12</div><div class="title">some JS Frontend Interview Quesitions</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-number">1.1.</span> <span class="toc-text"> 前期准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-promise%E7%9A%84%E5%87%A0%E9%81%93%E5%9F%BA%E7%A1%80%E9%A2%98"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 1. Promise 的几道基础题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11-%E9%A2%98%E7%9B%AE%E4%B8%80"><span class="toc-number">1.1.1.1.</span> <span class="toc-text"> 1.1 题目一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-%E9%A2%98%E7%9B%AE%E4%BA%8C"><span class="toc-number">1.1.1.2.</span> <span class="toc-text"> 1.2 题目二</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-%E9%A2%98%E7%9B%AE%E4%B8%89"><span class="toc-number">1.1.1.3.</span> <span class="toc-text"> 1.3 题目三</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-%E9%A2%98%E7%9B%AE%E5%9B%9B"><span class="toc-number">1.1.1.4.</span> <span class="toc-text"> 1.4 题目四</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15-%E9%A2%98%E7%9B%AE%E4%BA%94"><span class="toc-number">1.1.1.5.</span> <span class="toc-text"> 1.5 题目五</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-%E9%A2%98%E7%9B%AE%E5%85%AD"><span class="toc-number">1.1.1.6.</span> <span class="toc-text"> 1.6 题目六</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-promise%E7%BB%93%E5%90%88settimeout"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 2. Promise 结合 setTimeout</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#21-%E9%A2%98%E7%9B%AE%E4%B8%80"><span class="toc-number">1.1.2.1.</span> <span class="toc-text"> 2.1 题目一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-%E9%A2%98%E7%9B%AE%E4%BA%8C"><span class="toc-number">1.1.2.2.</span> <span class="toc-text"> 2.2 题目二</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23-%E9%A2%98%E7%9B%AE%E4%B8%89"><span class="toc-number">1.1.2.3.</span> <span class="toc-text"> 2.3 题目三</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23-%E9%A2%98%E7%9B%AE%E4%B8%89-2"><span class="toc-number">1.1.2.4.</span> <span class="toc-text"> 2.3 题目三</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#24-%E9%A2%98%E7%9B%AE%E5%9B%9B"><span class="toc-number">1.1.2.5.</span> <span class="toc-text"> 2.4 题目四</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#25-%E9%A2%98%E7%9B%AE%E4%BA%94"><span class="toc-number">1.1.2.6.</span> <span class="toc-text"> 2.5 题目五</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-promise%E4%B8%AD%E7%9A%84then-catch-finally"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 3. Promise 中的 then、catch、finally</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#31-%E9%A2%98%E7%9B%AE%E4%B8%80"><span class="toc-number">1.1.3.1.</span> <span class="toc-text"> 3.1 题目一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#32-%E9%A2%98%E7%9B%AE%E4%BA%8C"><span class="toc-number">1.1.3.2.</span> <span class="toc-text"> 3.2 题目二</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#33-%E9%A2%98%E7%9B%AE%E4%B8%89"><span class="toc-number">1.1.3.3.</span> <span class="toc-text"> 3.3 题目三</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#34-%E9%A2%98%E7%9B%AE%E5%9B%9B"><span class="toc-number">1.1.3.4.</span> <span class="toc-text"> 3.4 题目四</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#35-%E9%A2%98%E7%9B%AE%E4%BA%94"><span class="toc-number">1.1.3.5.</span> <span class="toc-text"> 3.5 题目五</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#36-%E9%A2%98%E7%9B%AE%E5%85%AD"><span class="toc-number">1.1.3.6.</span> <span class="toc-text"> 3.6 题目六</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#37-%E9%A2%98%E7%9B%AE%E4%B8%83"><span class="toc-number">1.1.3.7.</span> <span class="toc-text"> 3.7 题目七</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#38-%E9%A2%98%E7%9B%AE%E5%85%AB"><span class="toc-number">1.1.3.8.</span> <span class="toc-text"> 3.8 题目八</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#39-%E9%A2%98%E7%9B%AE%E4%B9%9D"><span class="toc-number">1.1.3.9.</span> <span class="toc-text"> 3.9 题目九</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#310-%E9%A2%98%E7%9B%AE%E5%8D%81"><span class="toc-number">1.1.3.10.</span> <span class="toc-text"> 3.10 题目十</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-promise%E4%B8%AD%E7%9A%84all%E5%92%8Crace"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 4. Promise 中的 all 和 race</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#41-%E9%A2%98%E7%9B%AE%E4%B8%80"><span class="toc-number">1.1.4.1.</span> <span class="toc-text"> 4.1 题目一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#42-%E9%A2%98%E7%9B%AE%E4%BA%8C"><span class="toc-number">1.1.4.2.</span> <span class="toc-text"> 4.2 题目二</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#43-%E9%A2%98%E7%9B%AE%E4%B8%89"><span class="toc-number">1.1.4.3.</span> <span class="toc-text"> 4.3 题目三</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#44-%E9%A2%98%E7%9B%AE%E5%9B%9B"><span class="toc-number">1.1.4.4.</span> <span class="toc-text"> 4.4 题目四</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.1.4.5.</span> <span class="toc-text"> 总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-asyncawait%E7%9A%84%E5%87%A0%E9%81%93%E9%A2%98"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 5. async&#x2F;await 的几道题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#51-%E9%A2%98%E7%9B%AE%E4%B8%80"><span class="toc-number">1.1.5.1.</span> <span class="toc-text"> 5.1 题目一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#52-%E9%A2%98%E7%9B%AE%E4%BA%8C"><span class="toc-number">1.1.5.2.</span> <span class="toc-text"> 5.2 题目二</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#53-%E9%A2%98%E7%9B%AE%E4%B8%89"><span class="toc-number">1.1.5.3.</span> <span class="toc-text"> 5.3 题目三</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#54-%E9%A2%98%E7%9B%AE%E5%9B%9B"><span class="toc-number">1.1.5.4.</span> <span class="toc-text"> 5.4 题目四</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#55-%E9%A2%98%E7%9B%AE%E4%BA%94"><span class="toc-number">1.1.5.5.</span> <span class="toc-text"> 5.5 题目五</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#56-%E9%A2%98%E7%9B%AE%E5%85%AD"><span class="toc-number">1.1.5.6.</span> <span class="toc-text"> 5.6 题目六</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#57-%E9%A2%98%E7%9B%AE%E4%B8%83"><span class="toc-number">1.1.5.7.</span> <span class="toc-text"> 5.7 题目七</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#58-%E9%A2%98%E7%9B%AE%E5%85%AB"><span class="toc-number">1.1.5.8.</span> <span class="toc-text"> 5.8 题目八</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#59-%E9%A2%98%E7%9B%AE%E4%B9%9D"><span class="toc-number">1.1.5.9.</span> <span class="toc-text"> 5.9 题目九</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-async%E5%A4%84%E7%90%86%E9%94%99%E8%AF%AF"><span class="toc-number">1.1.6.</span> <span class="toc-text"> 6. async 处理错误</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#61-%E9%A2%98%E7%9B%AE%E4%B8%80"><span class="toc-number">1.1.6.1.</span> <span class="toc-text"> 6.1 题目一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#62-%E9%A2%98%E7%9B%AE%E4%BA%8C"><span class="toc-number">1.1.6.2.</span> <span class="toc-text"> 6.2 题目二</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E7%BB%BC%E5%90%88%E9%A2%98"><span class="toc-number">1.1.7.</span> <span class="toc-text"> 7. 综合题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#71-%E9%A2%98%E7%9B%AE%E4%B8%80"><span class="toc-number">1.1.7.1.</span> <span class="toc-text"> 7.1 题目一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#72-%E9%A2%98%E7%9B%AE%E4%BA%8C"><span class="toc-number">1.1.7.2.</span> <span class="toc-text"> 7.2 题目二</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#73-%E9%A2%98%E7%9B%AE%E4%B8%89"><span class="toc-number">1.1.7.3.</span> <span class="toc-text"> 7.3 题目三</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%87%A0%E9%81%93%E5%A4%A7%E5%8E%82%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.1.8.</span> <span class="toc-text"> 8. 几道大厂的面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#81-%E4%BD%BF%E7%94%A8promise%E5%AE%9E%E7%8E%B0%E6%AF%8F%E9%9A%941%E7%A7%92%E8%BE%93%E5%87%BA123"><span class="toc-number">1.1.8.1.</span> <span class="toc-text"> 8.1 使用 Promise 实现每隔 1 秒输出 1,2,3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#82-%E4%BD%BF%E7%94%A8promise%E5%AE%9E%E7%8E%B0%E7%BA%A2%E7%BB%BF%E7%81%AF%E4%BA%A4%E6%9B%BF%E9%87%8D%E5%A4%8D%E4%BA%AE"><span class="toc-number">1.1.8.2.</span> <span class="toc-text"> 8.2 使用 Promise 实现红绿灯交替重复亮</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#83-%E5%AE%9E%E7%8E%B0mergepromise%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.8.3.</span> <span class="toc-text"> 8.3 实现 mergePromise 函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#84-%E6%A0%B9%E6%8D%AEpromisea%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84promise"><span class="toc-number">1.1.8.4.</span> <span class="toc-text"> 8.4 根据 promiseA + 实现一个自己的 promise</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#85-%E5%B0%81%E8%A3%85%E4%B8%80%E4%B8%AA%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%89%87%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.8.5.</span> <span class="toc-text"> 8.5 封装一个异步加载图片的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#86-%E9%99%90%E5%88%B6%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E7%9A%84%E5%B9%B6%E5%8F%91%E4%B8%AA%E6%95%B0%E5%B9%B6%E5%B0%BD%E5%8F%AF%E8%83%BD%E5%BF%AB%E7%9A%84%E5%AE%8C%E6%88%90%E5%85%A8%E9%83%A8"><span class="toc-number">1.1.8.6.</span> <span class="toc-text"> 8.6 限制异步操作的并发个数并尽可能快的完成全部</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E8%AF%AD"><span class="toc-number">1.2.</span> <span class="toc-text"> 后语</span></a></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux easy notes"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes">Linux easy notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux commands"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands">Linux commands</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/Linux/" title="Linux notes"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux notes"/></a><div class="content"><a class="title" href="/2022/04/02/Linux/" title="Linux notes">Linux notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/nodejs/" title="Nodejs notes"><img src="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nodejs notes"/></a><div class="content"><a class="title" href="/2022/03/01/nodejs/" title="Nodejs notes">Nodejs notes</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Frontend interview questions"/></a><div class="content"><a class="title" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions">Frontend interview questions</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2022/01/01/45%E9%81%93promise%E9%9D%A2%E8%AF%95%E9%A2%98/'
+    this.page.identifier = '2022/01/01/45道promise面试题/'
+    this.page.title = '45 Promise Frontend Interview Quesitions'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>if (window.DISQUSWIDGETS === undefined) {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://harry-study-blog.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+} else {
+  DISQUSWIDGETS.getCount({reset: true});
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: '57e925025a09a2824dfa829691d336a9',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=a5KJbIVovxK3ZXvlrPvv7wgYLY4fAh3pvP4thfjXYUdM2cNymlgVhMhdyhb9e0O3')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" title="本站使用JsDelivr为静态资源提供CDN加速"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，默认线路托管于Vercel"><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，联通线路托管于Coding"><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

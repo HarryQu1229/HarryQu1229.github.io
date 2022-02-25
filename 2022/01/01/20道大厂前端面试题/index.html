@@ -1,0 +1,1201 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>20 Frontend Interview Quesitions | Harry World</title><meta name="keywords" content="frontend,interview"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# 这儿有 20 道大厂面试题等你查收 # 1. new 的实现原理是什么？ 查看解析 new  的实现原理:  创建一个空对象，构造函数中的 this 指向这个空对象 这个新对象被执行 [[原型]] 连接 执行构造函数方法，属性和方法被添加到 this 引用的对象中 如果构造函数中没有返回其它对象，那么返回 this，即创建的这个的新对象，否则，返回构造函数中返回的对象。   # 2. 如何正确">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20 Frontend Interview Quesitions">
+<meta property="og:url" content="https://harryqu1229.github.io/2022/01/01/20%E9%81%93%E5%A4%A7%E5%8E%82%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="Harry World">
+<meta property="og:description" content="# 这儿有 20 道大厂面试题等你查收 # 1. new 的实现原理是什么？ 查看解析 new  的实现原理:  创建一个空对象，构造函数中的 this 指向这个空对象 这个新对象被执行 [[原型]] 连接 执行构造函数方法，属性和方法被添加到 this 引用的对象中 如果构造函数中没有返回其它对象，那么返回 this，即创建的这个的新对象，否则，返回构造函数中返回的对象。   # 2. 如何正确">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/HarryQu1229/image-host/9575054fd0f7d407d7b7d5343dfc530a06ed4104/notes-img/cat.png">
+<meta property="article:published_time" content="2021-12-31T11:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-25T15:30:59.625Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="frontend">
+<meta property="article:tag" content="interview">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/HarryQu1229/image-host/9575054fd0f7d407d7b7d5343dfc530a06ed4104/notes-img/cat.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://harryqu1229.github.io/2022/01/01/20%E9%81%93%E5%A4%A7%E5%8E%82%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '20 Frontend Interview Quesitions',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-26 04:30:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/flink.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://nz.hudson.com/wp-content/cache/bb-plugin/cache/unuasual-job-interview-01-1024x731-landscape.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry World</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">20 Frontend Interview Quesitions</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-12-31T11:00:00.000Z" title="Created 2022-01-01 00:00:00">2022-01-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-02-25T15:30:59.625Z" title="Updated 2022-02-26 04:30:59">2022-02-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Interview/">Interview</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Interview/frontend/">frontend</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">7.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>25min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="20 Frontend Interview Quesitions"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><span class="disqus-comment-count"><a href="https://harryqu1229.github.io/2022/01/01/20%E9%81%93%E5%A4%A7%E5%8E%82%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/#disqus_thread"></a></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="这儿有20道大厂面试题等你查收"><a class="markdownIt-Anchor" href="#这儿有20道大厂面试题等你查收">#</a> 这儿有 20 道大厂面试题等你查收</h1>
+<h3 id="1-new的实现原理是什么"><a class="markdownIt-Anchor" href="#1-new的实现原理是什么">#</a> 1. new 的实现原理是什么？</h3>
+<p><strong>查看解析</strong></p>
+<p><code>new</code>  的实现原理:</p>
+<ol>
+<li>创建一个空对象，构造函数中的 this 指向这个空对象</li>
+<li>这个新对象被执行 [[原型]] 连接</li>
+<li>执行构造函数方法，属性和方法被添加到 this 引用的对象中</li>
+<li>如果构造函数中没有返回其它对象，那么返回 this，即创建的这个的新对象，否则，返回构造函数中返回的对象。</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b8f91f34c8703d%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h3 id="2-如何正确判断this的指向"><a class="markdownIt-Anchor" href="#2-如何正确判断this的指向">#</a> 2. 如何正确判断 this 的指向？</h3>
+<p><strong>查看解析</strong></p>
+<p>如果用一句话说明 this 的指向，那么即是：谁调用它，this 就指向谁。</p>
+<p>但是仅通过这句话，我们很多时候并不能准确判断 this 的指向。因此我们需要借助一些规则去帮助自己：</p>
+<p>this 的指向可以按照以下顺序判断:</p>
+<h4 id="全局环境中的-this"><a class="markdownIt-Anchor" href="#全局环境中的-this">#</a> 全局环境中的 this</h4>
+<p>浏览器环境：无论是否在严格模式下，在全局执行环境中（在任何函数体外部）this 都指向全局对象  <code>window</code> ;</p>
+<p>node 环境：无论是否在严格模式下，在全局执行环境中（在任何函数体外部），this 都是空对象  <code>&#123;&#125;</code> ;</p>
+<h4 id="是否是-new-绑定"><a class="markdownIt-Anchor" href="#是否是-new-绑定">#</a> 是否是  <code>new</code>  绑定</h4>
+<p>如果是  <code>new</code>  绑定，并且构造函数中没有返回 function 或者是 object，那么 this 指向这个新对象。如下:</p>
+<blockquote>
+<p>构造函数返回值不是 function 或 object。 <code>new Super()</code>  返回的是 this 对象。</p>
+</blockquote>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b8f94ab26620ed~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>构造函数返回值是 function 或 object， <code>new Super()</code>  是返回的是 Super 种返回的对象。</p>
+</blockquote>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b8f9682a3cb65c~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h4 id="函数是否通过-callapply-调用或者使用了-bind-绑定如果是那么this绑定的就是指定的对象归结为显式绑定"><a class="markdownIt-Anchor" href="#函数是否通过-callapply-调用或者使用了-bind-绑定如果是那么this绑定的就是指定的对象归结为显式绑定">#</a> 函数是否通过 call,apply 调用，或者使用了 bind 绑定，如果是，那么 this 绑定的就是指定的对象【归结为显式绑定】。</h4>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b8f9827e99b032%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>这里同样需要注意一种<strong>特殊</strong>情况，如果 call,apply 或者 bind 传入的第一个参数值是  <code>undefined</code>  或者  <code>null</code> ，严格模式下 this 的值为传入的值 null /undefined。非严格模式下，实际应用的默认绑定规则，this 指向全局对象 (node 环境为 global，浏览器环境为 window)</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b8f99bd6a3562a~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h4 id="隐式绑定函数的调用是在某个对象上触发的即调用位置上存在上下文对象-典型的隐式调用为-xxxfn"><a class="markdownIt-Anchor" href="#隐式绑定函数的调用是在某个对象上触发的即调用位置上存在上下文对象-典型的隐式调用为-xxxfn">#</a> 隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为:  <code>xxx.fn()</code></h4>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b8f9d48e206354%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h4 id="默认绑定在不能应用其它绑定规则时使用的默认规则通常是独立函数调用"><a class="markdownIt-Anchor" href="#默认绑定在不能应用其它绑定规则时使用的默认规则通常是独立函数调用">#</a> 默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。</h4>
+<p>非严格模式： node 环境，指向全局对象 global，浏览器环境，指向全局对象 window。</p>
+<p>严格模式：执行 undefined</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b8f9f52e94df4a%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h4 id="箭头函数的情况"><a class="markdownIt-Anchor" href="#箭头函数的情况">#</a> 箭头函数的情况：</h4>
+<p>箭头函数没有自己的 this，继承外层上下文绑定的 this。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b8fa0ecc32677e%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h3 id="3-深拷贝和浅拷贝的区别是什么实现一个深拷贝"><a class="markdownIt-Anchor" href="#3-深拷贝和浅拷贝的区别是什么实现一个深拷贝">#</a> 3. 深拷贝和浅拷贝的区别是什么？实现一个深拷贝</h3>
+<p><strong>查看解析</strong></p>
+<p>深拷贝和浅拷贝是针对复杂数据类型来说的，浅拷贝只拷贝一层，而深拷贝是层层拷贝。</p>
+<h4 id="深拷贝"><a class="markdownIt-Anchor" href="#深拷贝">#</a> 深拷贝</h4>
+<blockquote>
+<p>深拷贝复制变量值，对于非基本类型的变量，则递归至基本类型变量后，再复制。 深拷贝后的对象与原来的对象是完全隔离的，互不影响，对一个对象的修改并不会影响另一个对象。</p>
+</blockquote>
+<h4 id="浅拷贝"><a class="markdownIt-Anchor" href="#浅拷贝">#</a> 浅拷贝</h4>
+<blockquote>
+<p>浅拷贝是会将对象的每个属性进行依次复制，但是当对象的属性值是引用类型时，实质复制的是其引用，当引用指向的值改变时也会跟着变化。</p>
+</blockquote>
+<p>可以使用  <code>for in</code> 、  <code>Object.assign</code> 、 扩展运算符  <code>...</code>  、 <code>Array.prototype.slice()</code> 、 <code>Array.prototype.concat()</code>  等，例如:</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b8fa2b6af7c9c3%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>可以看出浅拷贝只最第一层属性进行了拷贝，当第一层的属性值是基本数据类型时，新的对象和原对象互不影响，但是如果第一层的属性值是复杂数据类型，那么新对象和原对象的属性值其指向的是同一块内存地址。</p>
+<h4 id="深拷贝实现"><a class="markdownIt-Anchor" href="#深拷贝实现">#</a> 深拷贝实现</h4>
+<blockquote>
+<p>1. 深拷贝最简单的实现是:  <code>JSON.parse(JSON.stringify(obj))</code></p>
+</blockquote>
+<p><code>JSON.parse(JSON.stringify(obj))</code>  是最简单的实现方式，但是有一些缺陷：</p>
+<ol>
+<li>对象的属性值是函数时，无法拷贝。</li>
+<li>原型链上的属性无法拷贝</li>
+<li>不能正确的处理 Date 类型的数据</li>
+<li>不能处理 RegExp</li>
+<li>会忽略 symbol</li>
+<li>会忽略 undefined</li>
+</ol>
+<blockquote>
+<p>2. 实现一个 deepClone 函数</p>
+</blockquote>
+<ol>
+<li>如果是基本数据类型，直接返回</li>
+<li>如果是  <code>RegExp</code>  或者  <code>Date</code>  类型，返回对应类型</li>
+<li>如果是复杂数据类型，递归。</li>
+<li>考虑循环引用的问题</li>
+</ol>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b8fa44225a3f59~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h3 id="4-callapply-的实现原理是什么"><a class="markdownIt-Anchor" href="#4-callapply-的实现原理是什么">#</a> 4. call/apply 的实现原理是什么？</h3>
+<p><strong>查看解析</strong></p>
+<p><code>call</code>  和  <code>apply</code>  的功能相同，都是改变  <code>this</code>  的执行，并立即执行函数。区别在于传参方式不同。</p>
+<ul>
+<li>
+<p><code>func.call(thisArg, arg1, arg2, ...)</code> ：第一个参数是  <code>this</code>  指向的对象，其它参数依次传入。</p>
+</li>
+<li>
+<p><code>func.apply(thisArg, [argsArray])</code> ：第一个参数是  <code>this</code>  指向的对象，第二个参数是数组或类数组。</p>
+</li>
+</ul>
+<p>一起思考一下，如何模拟实现  <code>call</code>  ？</p>
+<p>首先，我们知道，函数都可以调用  <code>call</code> ，说明  <code>call</code>  是函数原型上的方法，所有的实例都可以调用。即:  <code>Function.prototype.call</code> 。</p>
+<ul>
+<li>在  <code>call</code>  方法中获取调用 <code>call()</code>  函数</li>
+<li>如果第一个参数没有传入，那么默认指向  <code>window / global</code>  (非严格模式)</li>
+<li>传入  <code>call</code>  的第一个参数是 this 指向的对象，根据隐式绑定的规则，我们知道  <code>obj.foo()</code> ,  <code>foo()</code>  中的  <code>this</code>  指向  <code>obj</code> ; 因此我们可以这样调用函数  <code>thisArgs.func(...args)</code></li>
+<li>返回执行结果</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b8fa5b38354f87%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p><code>apply</code>  的实现思路和  <code>call</code>  一致，仅参数处理略有差别。如下：</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b8fa721cd5a676~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h3 id="5-柯里化函数实现"><a class="markdownIt-Anchor" href="#5-柯里化函数实现">#</a> 5. 柯里化函数实现</h3>
+<p><strong>查看解析</strong></p>
+<p>在开始之前，我们首先需要搞清楚函数柯里化的概念。</p>
+<p>函数柯里化是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b8fa7c0e997279%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b8fa8d726c8c0c~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>函数柯里化的主要作用：</p>
+</blockquote>
+<ul>
+<li>参数复用</li>
+<li>提前返回 – 返回接受余下的参数且返回结果的新函数</li>
+<li>延迟执行 – 返回新函数，等待执行</li>
+</ul>
+<h3 id="6-如何让-a-1-a-2-a-3-的值为true"><a class="markdownIt-Anchor" href="#6-如何让-a-1-a-2-a-3-的值为true">#</a> 6. 如何让 (a == 1 &amp;&amp; a == 2 &amp;&amp; a == 3) 的值为 true？</h3>
+<p><strong>查看解析</strong></p>
+<blockquote>
+<ol>
+<li>利用隐式类型转换</li>
+</ol>
+</blockquote>
+<p><code>==</code>  操作符在左右数据类型不一致时，会先进行隐式转换。</p>
+<p><code>a == 1 &amp;&amp; a == 2 &amp;&amp; a == 3</code>  的值意味着其不可能是基本数据类型。因为如果 a 是 null 或者是 undefined bool 类型，都不可能返回 true。</p>
+<p>因此可以推测 a 是复杂数据类型，JS 中复杂数据类型只有  <code>object</code> ，回忆一下，Object 转换为原始类型会调用什么方法？</p>
+<ul>
+<li>
+<p>如果部署了  <code>[Symbol.toPrimitive]</code>  接口，那么调用此接口，若返回的不是基本数据类型，抛出错误。</p>
+</li>
+<li>
+<p>如果没有部署  <code>[Symbol.toPrimitive]</code>  接口，那么根据要转换的类型，先调用  <code>valueOf</code>  /  <code>toString</code></p>
+<ol>
+<li>非 Date 类型对象， <code>hint</code>  是  <code>default</code>  时，调用顺序为： <code>valueOf</code>  &gt;&gt;&gt;  <code>toString</code> ，即 <code>valueOf</code>  返回的不是基本数据类型，才会继续调用  <code>valueOf</code> ，如果 <code>toString</code>  返回的还不是基本数据类型，那么抛出错误。</li>
+<li>如果  <code>hint</code>  是  <code>string</code>  (Date 对象的 hint 默认是 string) ，调用顺序为： <code>toString</code>  &gt;&gt;&gt;  <code>valueOf</code> ，即 <code>toString</code>  返回的不是基本数据类型，才会继续调用  <code>valueOf</code> ，如果 <code>valueOf</code>  返回的还不是基本数据类型，那么抛出错误。</li>
+<li>如果  <code>hint</code>  是  <code>number</code> ，调用顺序为：  <code>valueOf</code>  &gt;&gt;&gt;  <code>toString</code></li>
+</ol>
+</li>
+</ul>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b8fa92f524c09b~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<ol start="2">
+<li>利用数据劫持 (Proxy/Object.defineProperty)</li>
+</ol>
+</blockquote>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b8fa9c46e64048~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<ol start="3">
+<li>数组的  <code>toString</code>  接口默认调用数组的  <code>join</code>  方法，重写  <code>join</code>  方法</li>
+</ol>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b8faa13c0a8212%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h3 id="7-什么是bfcbfc的布局规则是什么如何创建bfc"><a class="markdownIt-Anchor" href="#7-什么是bfcbfc的布局规则是什么如何创建bfc">#</a> 7. 什么是 BFC？BFC 的布局规则是什么？如何创建 BFC？</h3>
+<p><strong>查看解析</strong></p>
+<p>Box 是 CSS 布局的对象和基本单位，页面是由若干个 Box 组成的。</p>
+<p>元素的类型 和  <code>display</code>  属性，决定了这个 Box 的类型。不同类型的 Box 会参与不同的 Formatting Context。</p>
+<blockquote>
+<p>Formatting Context</p>
+</blockquote>
+<p>Formatting Context 是页面的一块渲染区域，并且有一套渲染规则，决定了其子元素将如何定位，以及和其它元素的关系和相互作用。</p>
+<p>Formatting Context 有 BFC (Block formatting context)，IFC (Inline formatting context)，FFC (Flex formatting context) 和 GFC (Grid formatting context)。FFC 和 GFC 为 CC3 中新增。</p>
+<blockquote>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.w3.org%2FTR%2F2011%2FREC-CSS2-20110607%2Fvisuren.html%23block-formatting" title="https://www.w3.org/TR/2011/REC-CSS2-20110607/visuren.html#block-formatting">BFC 布局规则</a></p>
+</blockquote>
+<ul>
+<li>BFC 内，盒子依次垂直排列。</li>
+<li>BFC 内，两个盒子的垂直距离由  <code>margin</code>  属性决定。属于同一个 BFC 的两个相邻 Box 的 margin 会发生重叠【符合合并原则的 margin 合并后是使用大的 margin】</li>
+<li>BFC 内，每个盒子的左外边缘接触内部盒子的左边缘（对于从右到左的格式，右边缘接触）。即使在存在浮动的情况下也是如此。除非创建新的 BFC。</li>
+<li>BFC 的区域不会与 float box 重叠。</li>
+<li>BFC 就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。</li>
+<li>计算 BFC 的高度时，浮动元素也参与计算。</li>
+</ul>
+<blockquote>
+<p>如何创建 BFC</p>
+</blockquote>
+<ul>
+<li>根元素</li>
+<li>浮动元素（float 属性不为 none）</li>
+<li>position 为 absolute 或 fixed</li>
+<li>overflow 不为 visible 的块元素</li>
+<li>display 为 inline-block, table-cell, table-caption</li>
+</ul>
+<blockquote>
+<p>BFC 的应用</p>
+</blockquote>
+<ol>
+<li>防止 margin 重叠 (同一个 BFC 内的两个两个相邻 Box 的  <code>margin</code>  会发生重叠，触发生成两个 BFC，即不会重叠)</li>
+<li>清除内部浮动 (创建一个新的 BFC，因为根据 BFC 的规则，计算 BFC 的高度时，浮动元素也参与计算)</li>
+<li>自适应多栏布局 (BFC 的区域不会与 float box 重叠。因此，可以触发生成一个新的 BFC)</li>
+</ol>
+<h3 id="8-异步加载js脚本的方式有哪些"><a class="markdownIt-Anchor" href="#8-异步加载js脚本的方式有哪些">#</a> 8. 异步加载 JS 脚本的方式有哪些？</h3>
+<p><strong>查看解析</strong></p>
+<blockquote>
+<p><code>&lt;script&gt;</code>  标签中增加  <code>async</code>  (html5) 或者  <code>defer</code>  (html4) 属性，脚本就会异步加载。</p>
+</blockquote>
+<p><code>&lt;script src=&quot;../XXX.js&quot; defer&gt;&lt;/script&gt;</code></p>
+<p><code>defer</code>  和  <code>async</code>  的区别在于：</p>
+<ul>
+<li><code>defer</code>  要等到整个页面在内存中正常渲染结束（DOM 结构完全生成，以及其他脚本执行完成），在 window.onload 之前执行；</li>
+<li><code>async</code>  一旦下载完，渲染引擎就会中断渲染，执行这个脚本以后，再继续渲染。</li>
+<li>如果有多个  <code>defer</code>  脚本，会按照它们在页面出现的顺序加载</li>
+<li>多个  <code>async</code>  脚本不能保证加载顺序</li>
+</ul>
+<blockquote>
+<p>动态创建  <code>script</code>  标签</p>
+</blockquote>
+<p>动态创建的  <code>script</code>  ，设置  <code>src</code>  并不会开始下载，而是要添加到文档中，JS 文件才会开始下载。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b8fabcebfed7d8%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>XHR 异步加载 JS</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b8fac07f702213%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h3 id="9-es5有几种方式可以实现继承分别有哪些优缺点"><a class="markdownIt-Anchor" href="#9-es5有几种方式可以实现继承分别有哪些优缺点">#</a> 9. ES5 有几种方式可以实现继承？分别有哪些优缺点？</h3>
+<p><strong>查看解析</strong></p>
+<p>ES5 有 6 种方式可以实现继承，分别为：</p>
+<h5 id="1-原型链继承"><a class="markdownIt-Anchor" href="#1-原型链继承">#</a> 1. 原型链继承</h5>
+<p>原型链继承的基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b8facefebcea8b%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>缺点：</p>
+</blockquote>
+<ol>
+<li>通过原型来实现继承时，原型会变成另一个类型的实例，原先的实例属性变成了现在的原型属性，该原型的引用类型属性会被所有的实例共享。</li>
+<li>在创建子类型的实例时，没有办法在不影响所有对象实例的情况下给超类型的构造函数中传递参数。</li>
+</ol>
+<h5 id="2-借用构造函数"><a class="markdownIt-Anchor" href="#2-借用构造函数">#</a> 2. 借用构造函数</h5>
+<p><strong>借用构造函数</strong>的技术，其基本思想为:</p>
+<p>在子类型的构造函数中调用超类型构造函数。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b91635a0b1b24e%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>优点:</p>
+</blockquote>
+<ol>
+<li>可以向超类传递参数</li>
+<li>解决了原型中包含引用类型值被所有实例共享的问题</li>
+</ol>
+<blockquote>
+<p>缺点:</p>
+</blockquote>
+<ol>
+<li>方法都在构造函数中定义，函数复用无从谈起，另外超类型原型中定义的方法对于子类型而言都是不可见的。</li>
+</ol>
+<h5 id="3-组合继承原型链-借用构造函数"><a class="markdownIt-Anchor" href="#3-组合继承原型链-借用构造函数">#</a> 3. 组合继承 (原型链 + 借用构造函数)</h5>
+<p>组合继承指的是将原型链和借用构造函数技术组合到一块，从而发挥二者之长的一种继承模式。基本思路：</p>
+<p>使用原型链实现对原型属性和方法的继承，通过借用构造函数来实现对实例属性的继承，既通过在原型上定义方法来实现了函数复用，又保证了每个实例都有自己的属性。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b916406ff34cfa%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>缺点:</p>
+</blockquote>
+<ul>
+<li>无论什么情况下，都会调用两次超类型构造函数：一次是在创建子类型原型的时候，另一次是在子类型构造函数内部。</li>
+</ul>
+<blockquote>
+<p>优点:</p>
+</blockquote>
+<ul>
+<li>可以向超类传递参数</li>
+<li>每个实例都有自己的属性</li>
+<li>实现了函数复用</li>
+</ul>
+<h5 id="4-原型式继承"><a class="markdownIt-Anchor" href="#4-原型式继承">#</a> 4. 原型式继承</h5>
+<p>原型继承的基本思想：</p>
+<p>借助原型可以基于已有的对象创建新对象，同时还不必因此创建自定义类型。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b91643c88fd122~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>在  <code>object()</code>  函数内部，先穿甲一个临时性的构造函数，然后将传入的对象作为这个构造函数的原型，最后返回了这个临时类型的一个新实例，从本质上讲， <code>object()</code>  对传入的对象执行了一次浅拷贝。</p>
+<p>ECMAScript5 通过新增  <code>Object.create()</code>  方法规范了原型式继承。这个方法接收两个参数：一个用作新对象原型的对象和（可选的）一个为新对象定义额外属性的对象 (可以覆盖原型对象上的同名属性)，在传入一个参数的情况下， <code>Object.create()</code>  和  <code>object()</code>  方法的行为相同。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b916479876c426%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>在没有必要创建构造函数，仅让一个对象与另一个对象保持相似的情况下，原型式继承是可以胜任的。</p>
+<blockquote>
+<p>缺点:</p>
+</blockquote>
+<p>同原型链实现继承一样，包含引用类型值的属性会被所有实例共享。</p>
+<h5 id="5-寄生式继承"><a class="markdownIt-Anchor" href="#5-寄生式继承">#</a> 5. 寄生式继承</h5>
+<p>寄生式继承是与原型式继承紧密相关的一种思路。寄生式继承的思路与寄生构造函数和工厂模式类似，即创建一个仅用于封装继承过程的函数，该函数在内部已某种方式来增强对象，最后再像真地是它做了所有工作一样返回对象。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b9164b8ff91117~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>基于  <code>person</code>  返回了一个新对象 -——  <code>person2</code> ，新对象不仅具有  <code>person</code>  的所有属性和方法，而且还有自己的  <code>sayHi()</code>  方法。在考虑对象而不是自定义类型和构造函数的情况下，寄生式继承也是一种有用的模式。</p>
+<blockquote>
+<p>缺点：</p>
+</blockquote>
+<ul>
+<li>使用寄生式继承来为对象添加函数，会由于不能做到函数复用而效率低下。</li>
+<li>同原型链实现继承一样，包含引用类型值的属性会被所有实例共享。</li>
+</ul>
+<h5 id="6-寄生组合式继承"><a class="markdownIt-Anchor" href="#6-寄生组合式继承">#</a> 6. 寄生组合式继承</h5>
+<p>所谓寄生组合式继承，即通过借用构造函数来继承属性，通过原型链的混成形式来继承方法，基本思路：</p>
+<p>不必为了指定子类型的原型而调用超类型的构造函数，我们需要的仅是超类型原型的一个副本，本质上就是使用寄生式继承来继承超类型的原型，然后再将结果指定给子类型的原型。寄生组合式继承的基本模式如下所示：</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b9164eadfa9c56~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<ul>
+<li>第一步：创建超类型原型的一个副本</li>
+<li>第二步：为创建的副本添加  <code>constructor</code>  属性</li>
+<li>第三步：将新创建的对象赋值给子类型的原型</li>
+</ul>
+<p>至此，我们就可以通过调用  <code>inheritPrototype</code>  来替换为子类型原型赋值的语句：</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/7/1/16badfb7da64e24a~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>优点:</p>
+</blockquote>
+<p>只调用了一次超类构造函数，效率更高。避免在 <code>SuberType.prototype</code>  上面创建不必要的、多余的属性，与其同时，原型链还能保持不变。</p>
+<p>因此寄生组合继承是引用类型最理性的继承范式。</p>
+<h3 id="10-隐藏页面中的某个元素的方法有哪些"><a class="markdownIt-Anchor" href="#10-隐藏页面中的某个元素的方法有哪些">#</a> 10. 隐藏页面中的某个元素的方法有哪些？</h3>
+<p><strong>查看解析</strong></p>
+<blockquote>
+<p>隐藏类型</p>
+</blockquote>
+<p>屏幕并不是唯一的输出机制，比如说屏幕上看不见的元素（隐藏的元素），其中一些依然能够被读屏软件阅读出来（因为读屏软件依赖于可访问性树来阐述）。为了消除它们之间的歧义，我们将其归为三大类：</p>
+<ul>
+<li>完全隐藏：元素从渲染树中消失，不占据空间。</li>
+<li>视觉上的隐藏：屏幕中不可见，占据空间。</li>
+<li>语义上的隐藏：读屏软件不可读，但正常占据空。</li>
+</ul>
+<blockquote>
+<p>完全隐藏</p>
+</blockquote>
+<h5 id="1display-属性"><a class="markdownIt-Anchor" href="#1display-属性">#</a> 1. <code>display</code>  属性</h5>
+<pre class="line-numbers language-none"><code class="language-none">display: none;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h5 id="2hidden-属性"><a class="markdownIt-Anchor" href="#2hidden-属性">#</a> 2.hidden 属性</h5>
+<p>HTML5 新增属性，相当于  <code>display: none</code></p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;div hidden&gt;
+&lt;&#x2F;div&gt;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>视觉上的隐藏</p>
+</blockquote>
+<h5 id="1利用-position-和-盒模型-将元素移出可视区范围"><a class="markdownIt-Anchor" href="#1利用-position-和-盒模型-将元素移出可视区范围">#</a> 1. 利用  <code>position</code>  和 盒模型 将元素移出可视区范围</h5>
+<ol>
+<li>设置  <code>posoition</code>  为  <code>absolute</code>  或  <code>fixed</code> ，通过设置  <code>top</code> 、 <code>left</code>  等值，将其移出可视区域。</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">position:absolute;
+left: -99999px;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>设置  <code>position</code>  为  <code>relative</code> ，通过设置  <code>top</code> 、 <code>left</code>  等值，将其移出可视区域。</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">position: relative;
+left: -99999px;
+height: 0
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>设置 margin 值，将其移出可视区域范围（可视区域占位）。</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">margin-left: -99999px;
+height: 0;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h5 id="2利用-transfrom"><a class="markdownIt-Anchor" href="#2利用-transfrom">#</a> 2. 利用 transfrom</h5>
+<ol>
+<li>缩放</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">transform: scale(0);
+height: 0;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>移动  <code>translateX</code> ,  <code>translateY</code></li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">transform: translateX(-99999px);
+height: 0
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>旋转  <code>rotate</code></li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">transform: rotateY(90deg);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h5 id="3设置其大小为0"><a class="markdownIt-Anchor" href="#3设置其大小为0">#</a> 3. 设置其大小为 0</h5>
+<ol>
+<li>宽高为 0，字体大小为 0：</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">height: 0;
+width: 0;
+font-size: 0;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>宽高为 0，超出隐藏:</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">height: 0;
+width: 0;
+overflow: hidden;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="4设置透明度为0"><a class="markdownIt-Anchor" href="#4设置透明度为0">#</a> 4. 设置透明度为 0</h5>
+<pre class="line-numbers language-none"><code class="language-none">opacity: 0;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h5 id="5visibility属性"><a class="markdownIt-Anchor" href="#5visibility属性">#</a> 5. <code>visibility</code>  属性</h5>
+<pre class="line-numbers language-none"><code class="language-none">visibility: hidden;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h5 id="6层级覆盖z-index-属性"><a class="markdownIt-Anchor" href="#6层级覆盖z-index-属性">#</a> 6. 层级覆盖， <code>z-index</code>  属性</h5>
+<pre class="line-numbers language-none"><code class="language-none">position: relative;
+z-index: -999;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>再设置一个层级较高的元素覆盖在此元素上。</p>
+<h5 id="7clip-path-裁剪"><a class="markdownIt-Anchor" href="#7clip-path-裁剪">#</a> 7.clip-path 裁剪</h5>
+<pre class="line-numbers language-none"><code class="language-none">clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<blockquote>
+<p>语义上的隐藏</p>
+</blockquote>
+<h5 id="aria-hidden-属性"><a class="markdownIt-Anchor" href="#aria-hidden-属性">#</a> aria-hidden 属性</h5>
+<p>读屏软件不可读，占据空间，可见。</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;div aria-hidden&#x3D;&quot;true&quot;&gt;
+&lt;&#x2F;div&gt;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="11-let-const-var-的区别有哪些"><a class="markdownIt-Anchor" href="#11-let-const-var-的区别有哪些">#</a> 11. let、const、var 的区别有哪些？</h3>
+<p><strong>查看解析</strong></p>
+<table>
+<thead>
+<tr>
+<th>声明方式</th>
+<th>变量提升</th>
+<th>暂时性死区</th>
+<th>重复声明</th>
+<th>块作用域有效</th>
+<th>初始值</th>
+<th>重新赋值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>var</td>
+<td>会</td>
+<td>不存在</td>
+<td>允许</td>
+<td>不是</td>
+<td>非必须</td>
+<td>允许</td>
+</tr>
+<tr>
+<td>let</td>
+<td>不会</td>
+<td>存在</td>
+<td>不允许</td>
+<td>是</td>
+<td>非必须</td>
+<td>允许</td>
+</tr>
+<tr>
+<td>const</td>
+<td>不会</td>
+<td>存在</td>
+<td>不允许</td>
+<td>是</td>
+<td>必须</td>
+<td>不允许</td>
+</tr>
+</tbody>
+</table>
+<p>1.let/const 定义的变量不会出现变量提升，而 var 定义的变量会提升。</p>
+<p>2. 相同作用域中，let 和 const 不允许重复声明，var 允许重复声明。</p>
+<p>3.const 声明变量时必须设置初始值</p>
+<p>4.const 声明一个只读的常量，这个常量不可改变。</p>
+<p>这里有一个非常重要的点即是：在 JS 中，复杂数据类型，存储在栈中的是堆内存的地址，存在栈中的这个地址是不变的，但是存在堆中的值是可以变得。有没有相当常量指针 / 指针常量～</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b916582fc8a0ab%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>一图胜万言，如下图所示，不变的是栈内存中 a 存储的 20，和 b 中存储的 0x0012ff21（瞎编的一个数字）。而 {age: 18, star: 200} 是可变的。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b8f715226b7944~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h3 id="12-说一说你对js执行上下文栈和作用域链的理解"><a class="markdownIt-Anchor" href="#12-说一说你对js执行上下文栈和作用域链的理解">#</a> 12. 说一说你对 JS 执行上下文栈和作用域链的理解？</h3>
+<p><strong>查看解析</strong><br>
+在开始说明 JS 上下文栈和作用域之前，我们先说明下 JS 上下文以及作用域的概念。</p>
+<h4 id="js执行上下文"><a class="markdownIt-Anchor" href="#js执行上下文">#</a> <a href="https://link.juejin.cn?target=https%3A%2F%2Ftc39.github.io%2Fecma262%2F%3Fnsukey%3DrQHqMrFpKq6JJN%252F%252FOeubPCslaSTSRyuc%252FXCznnIDze1SGzwva5SZtzixJ13p2gAlxua95Xa7fraZXwj5tyLRDK33%252BpNhyfKR%252FxyzhWNyB%252FqaIlsDGyQBckNoHQGPveOB24M%252BcK%252FgF8Tg1ehUGLWiCvumxdgcQwZOWj2BGfD3n%252FY%253D%23sec-execution-contexts" title="https://tc39.github.io/ecma262/?nsukey=rQHqMrFpKq6JJN%2F%2FOeubPCslaSTSRyuc%2FXCznnIDze1SGzwva5SZtzixJ13p2gAlxua95Xa7fraZXwj5tyLRDK33%2BpNhyfKR%2FxyzhWNyB%2FqaIlsDGyQBckNoHQGPveOB24M%2BcK%2FgF8Tg1ehUGLWiCvumxdgcQwZOWj2BGfD3n%2FY%3D#sec-execution-contexts">JS 执行上下文</a></h4>
+<p>执行上下文就是当前 JavaScript 代码被解析和执行时所在环境的抽象概念， JavaScript 中运行任何的代码都是在执行上下文中运行。</p>
+<blockquote>
+<p>执行上下文类型分为：</p>
+</blockquote>
+<ul>
+<li>全局执行上下文</li>
+<li>函数执行上下文</li>
+</ul>
+<p>执行上下文创建过程中，需要做以下几件事:</p>
+<ol>
+<li>创建变量对象：首先初始化函数的参数 arguments，提升函数声明和变量声明。</li>
+<li>创建作用域链（Scope Chain）：在执行期上下文的创建阶段，作用域链是在变量对象之后创建的。</li>
+<li>确定 this 的值，即 ResolveThisBinding</li>
+</ol>
+<h4 id="作用域"><a class="markdownIt-Anchor" href="#作用域">#</a> 作用域</h4>
+<p><strong>作用域</strong>负责收集和维护由所有声明的标识符（变量）组成的一系列查询，并实施一套非常严格的规则，确定当前执行的代码对这些标识符的访问权限。—— 摘录自《你不知道的 JavaScript》(上卷)</p>
+<p>作用域有两种工作模型：词法作用域和动态作用域，JS 采用的是<strong>词法作用域</strong>工作模型，词法作用域意味着作用域是由书写代码时变量和函数声明的位置决定的。( <code>with</code>  和  <code>eval</code>  能够修改词法作用域，但是不推荐使用，对此不做特别说明)</p>
+<blockquote>
+<p>作用域分为：</p>
+</blockquote>
+<ul>
+<li>全局作用域</li>
+<li>函数作用域</li>
+<li>块级作用域</li>
+</ul>
+<h4 id="js执行上下文栈后面简称执行栈"><a class="markdownIt-Anchor" href="#js执行上下文栈后面简称执行栈">#</a> JS 执行上下文栈 (后面简称执行栈)</h4>
+<p>执行栈，也叫做调用栈，具有 <strong>LIFO</strong> (后进先出) 结构，用于存储在代码执行期间创建的所有执行上下文。</p>
+<blockquote>
+<p>规则如下：</p>
+</blockquote>
+<ul>
+<li>首次运行 JavaScript 代码的时候，会创建一个全局执行的上下文并 Push 到当前的执行栈中，每当发生函数调用，引擎都会为该函数创建一个新的函数执行上下文并 Push 当前执行栈的栈顶。</li>
+<li>当栈顶的函数运行完成后，其对应的函数执行上下文将会从执行栈中 Pop 出，上下文的控制权将移动到当前执行栈的下一个执行上下文。</li>
+</ul>
+<p>以一段代码具体说明：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b9165b9697a55c%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p><code>Global Execution Context</code>  (即全局执行上下文) 首先入栈，过程如下：</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b8f71525a2e359~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>伪代码:</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;全局执行上下文首先入栈
+ECStack.push(globalContext);
+
+&#x2F;&#x2F;执行fun1();
+ECStack.push(&lt;fun1&gt; functionContext);
+
+&#x2F;&#x2F;fun1中又调用了fun2;
+ECStack.push(&lt;fun2&gt; functionContext);
+
+&#x2F;&#x2F;fun2中又调用了fun3;
+ECStack.push(&lt;fun3&gt; functionContext);
+
+&#x2F;&#x2F;fun3执行完毕
+ECStack.pop();
+
+&#x2F;&#x2F;fun2执行完毕
+ECStack.pop();
+
+&#x2F;&#x2F;fun1执行完毕
+ECStack.pop();
+
+&#x2F;&#x2F;javascript继续顺序执行下面的代码，但ECStack底部始终有一个 全局上下文（globalContext）;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="作用域链"><a class="markdownIt-Anchor" href="#作用域链">#</a> 作用域链</h4>
+<p>作用域链就是从当前作用域开始一层一层向上寻找某个变量，直到找到全局作用域还是没找到，就宣布放弃。这种一层一层的关系，就是作用域链。</p>
+<p>如：</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b916611728955a~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>fn2 作用域链 = [fn2 作用域，fn1 作用域，全局作用域]</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b8f715263fc144%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h3 id="13-防抖函数的作用是什么请实现一个防抖函数"><a class="markdownIt-Anchor" href="#13-防抖函数的作用是什么请实现一个防抖函数">#</a> 13. 防抖函数的作用是什么？请实现一个防抖函数</h3>
+<p><strong>查看解析</strong><br>
+ &gt; 防抖函数的作用</p>
+<p>防抖函数的作用就是控制函数在一定时间内的执行次数。防抖意味着 N 秒内函数只会被执行一次，如果 N 秒内再次被触发，则<strong>重新</strong>计算延迟时间。</p>
+<p><strong>举例说明：</strong>  小思最近在减肥，但是她非常吃吃零食。为此，与其男朋友约定好，如果 10 天不吃零食，就可以购买一个包 (不要问为什么是包，因为<strong>包治百病</strong>)。但是如果中间吃了一次零食，那么就要重新计算时间，直到小思坚持 10 天没有吃零食，才能购买一个包。所以，管不住嘴的小思，没有机会买包 (悲伤的故事)… 这就是 <strong>防抖</strong>。</p>
+<blockquote>
+<p>防抖函数实现</p>
+</blockquote>
+<ol>
+<li>事件第一次触发时， <code>timeout</code>  是  <code>null</code> ，调用  <code>later()</code> ，若  <code>immediate</code>  为 <code>true</code> ，那么立即调用  <code>func.apply(this, params)</code> ；如果  <code>immediate</code>  为  <code>false</code> ，那么过  <code>wait</code>  之后，调用  <code>func.apply(this, params)</code></li>
+<li>事件第二次触发时，如果  <code>timeout</code>  已经重置为  <code>null</code>  (即  <code>setTimeout</code>  的倒计时结束)，那么流程与第一次触发时一样，若  <code>timeout</code>  不为  <code>null</code>  (即 setTimeout 的倒计时未结束)，那么清空定时器，重新开始计时。</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16bfa5a4c5068e81%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p><code>immediate</code>  为 true 时，表示函数在每个等待时延的开始被调用。 <code>immediate</code>  为 false 时，表示函数在每个等待时延的结束被调用。</p>
+<blockquote>
+<p>防抖的应用场景</p>
+</blockquote>
+<ol>
+<li>搜索框输入查询，如果用户一直在输入中，没有必要不停地调用去请求服务端接口，等用户停止输入的时候，再调用，设置一个合适的时间间隔，有效减轻服务端压力。</li>
+<li>表单验证</li>
+<li>按钮提交事件。</li>
+<li>浏览器窗口缩放，resize 事件 (如窗口停止改变大小之后重新计算布局) 等。</li>
+</ol>
+<h3 id="14-节流函数的作用是什么有哪些应用场景请实现一个节流函数"><a class="markdownIt-Anchor" href="#14-节流函数的作用是什么有哪些应用场景请实现一个节流函数">#</a> 14. 节流函数的作用是什么？有哪些应用场景，请实现一个节流函数</h3>
+<p><strong>查看解析</strong><br>
+ &gt; 节流函数的作用</p>
+<p>节流函数的作用是规定一个单位时间，在这个单位时间内最多只能触发一次函数执行，如果这个单位时间内多次触发函数，只能有一次生效。</p>
+<blockquote>
+<p>节流函数实现</p>
+</blockquote>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b91668eb5892fc~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>禁用第一次首先执行，传递  <code>&#123;leading: false&#125;</code>  ；想禁用最后一次执行，传递  <code>&#123;trailing: false&#125;</code></p>
+<blockquote>
+<p>节流的应用场景</p>
+</blockquote>
+<ol>
+<li>按钮点击事件</li>
+<li>拖拽事件</li>
+<li>onScoll</li>
+<li>计算鼠标移动的距离 (mousemove)</li>
+</ol>
+<h3 id="15-什么是闭包闭包的作用是什么"><a class="markdownIt-Anchor" href="#15-什么是闭包闭包的作用是什么">#</a> 15. 什么是闭包？闭包的作用是什么？</h3>
+<p><strong>查看解析</strong></p>
+<h5 id="闭包的定义"><a class="markdownIt-Anchor" href="#闭包的定义">#</a> 闭包的定义</h5>
+<p>《JavaScript 高级程序设计》:</p>
+<blockquote>
+<p>闭包是指有权访问另一个函数作用域中的变量的函数</p>
+</blockquote>
+<p>《JavaScript 权威指南》：</p>
+<blockquote>
+<p>从技术的角度讲，所有的 JavaScript 函数都是闭包：它们都是对象，它们都关联到作用域链。</p>
+</blockquote>
+<p>《你不知道的 JavaScript》</p>
+<blockquote>
+<p>当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前词法作用域之外执行。</p>
+</blockquote>
+<h5 id="创建一个闭包"><a class="markdownIt-Anchor" href="#创建一个闭包">#</a> 创建一个闭包</h5>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b9166d45576042%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>闭包使得函数可以继续访问定义时的词法作用域。拜 fn 所赐，在 foo () 执行后，foo 内部作用域不会被销毁。</p>
+<h5 id="闭包的作用"><a class="markdownIt-Anchor" href="#闭包的作用">#</a> 闭包的作用</h5>
+<ol>
+<li>
+<p>能够访问函数定义时所在的词法作用域 (阻止其被回收)。</p>
+</li>
+<li>
+<p>私有化变量</p>
+</li>
+</ol>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b91670e0c02233~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<ol start="3">
+<li>模拟块级作用域</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b916738cdb5dd1%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<ol start="4">
+<li>创建模块</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b916789083fc58%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>模块模式具有两个必备的条件 (来自《你不知道的 JavaScript》)</p>
+<ul>
+<li>必须有外部的封闭函数，该函数必须至少被调用一次 (每次调用都会创建一个新的模块实例)</li>
+<li>封闭函数必须返回至少<strong>一个</strong>内部函数，这样内部函数才能在私有作用域中形成闭包，并且可以访问或者修改私有的状态。</li>
+</ul>
+<h3 id="16-实现-promiseall-方法"><a class="markdownIt-Anchor" href="#16-实现-promiseall-方法">#</a> 16. 实现 Promise.all 方法</h3>
+<p><strong>查看解析</strong><br>
+在实现 Promise.all 方法之前，我们首先要知道 Promise.all 的功能和特点，因为在清楚了 Promise.all 功能和特点的情况下，我们才能进一步去写实现。</p>
+<blockquote>
+<p>Promise.all 功能</p>
+</blockquote>
+<p><code>Promise.all(iterable)</code>  返回一个新的 Promise 实例。此实例在  <code>iterable</code>  参数内所有的  <code>promise</code>  都  <code>fulfilled</code>  或者参数中不包含  <code>promise</code>  时，状态变成  <code>fulfilled</code> ；如果参数中  <code>promise</code>  有一个失败 <code>rejected</code> ，此实例回调失败，失败原因的是第一个失败  <code>promise</code>  的返回结果。</p>
+<pre class="line-numbers language-none"><code class="language-none">let p &#x3D; Promise.all([p1, p2, p3]);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>p 的状态由 p1,p2,p3 决定，分成以下；两种情况：</p>
+<p>（1）只有 p1、p2、p3 的状态都变成  <code>fulfilled</code> ，p 的状态才会变成  <code>fulfilled</code> ，此时 p1、p2、p3 的返回值组成一个数组，传递给 p 的回调函数。</p>
+<p>（2）只要 p1、p2、p3 之中有一个被  <code>rejected</code> ，p 的状态就变成  <code>rejected</code> ，此时第一个被 reject 的实例的返回值，会传递给 p 的回调函数。</p>
+<blockquote>
+<p>Promise.all 的特点</p>
+</blockquote>
+<p>Promise.all 的返回值是一个 promise 实例</p>
+<ul>
+<li>如果传入的参数为空的可迭代对象， <code>Promise.all</code>  会 <strong>同步</strong> 返回一个已完成状态的  <code>promise</code></li>
+<li>如果传入的参数中不包含任何 promise, <code>Promise.all</code>  会 <strong>异步</strong> 返回一个已完成状态的  <code>promise</code></li>
+<li>其它情况下， <code>Promise.all</code>  返回一个 <strong>处理中（pending）</strong> 状态的  <code>promise</code> .</li>
+</ul>
+<blockquote>
+<p>Promise.all 返回的 promise 的状态</p>
+</blockquote>
+<ul>
+<li>如果传入的参数中的 promise 都变成完成状态， <code>Promise.all</code>  返回的  <code>promise</code>  异步地变为完成。</li>
+<li>如果传入的参数中，有一个  <code>promise</code>  失败， <code>Promise.all</code>  异步地将失败的那个结果给失败状态的回调函数，而不管其它  <code>promise</code>  是否完成</li>
+<li>在任何情况下， <code>Promise.all</code>  返回的  <code>promise</code>  的完成状态的结果都是一个数组</li>
+</ul>
+<blockquote>
+<p>Promise.all 实现</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b9167ba6b7de57%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h3 id="17-请实现一个-flattendeep-函数把嵌套的数组扁平化"><a class="markdownIt-Anchor" href="#17-请实现一个-flattendeep-函数把嵌套的数组扁平化">#</a> 17. 请实现一个 flattenDeep 函数，把嵌套的数组扁平化</h3>
+<p>例如:</p>
+<pre class="line-numbers language-none"><code class="language-none">flattenDeep([1, [2, [3, [4]], 5]]); &#x2F;&#x2F;[1, 2, 3, 4, 5]
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>查看解析</strong><br>
+ &gt; 利用 Array.prototype.flat</p>
+<p>ES6 为数组实例新增了  <code>flat</code>  方法，用于将嵌套的数组 “拉平”，变成一维的数组。该方法返回一个新数组，对原数组没有影响。</p>
+<p><code>flat</code>  默认只会 “拉平” 一层，如果想要 “拉平” 多层的嵌套数组，需要给  <code>flat</code>  传递一个整数，表示想要拉平的层数。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b916809e6f8d14~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>当传递的整数大于数组嵌套的层数时，会将数组拉平为一维数组，JS 能表示的最大数字为  <code>Math.pow(2, 53) - 1</code> ，因此我们可以这样定义  <code>flattenDeep</code>  函数</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b91685144c3dd6%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>利用 reduce 和 concat</p>
+</blockquote>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b91688a074c1b9~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>使用 stack 无限反嵌套多层嵌套数组</p>
+</blockquote>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b9168b8cc46dfe~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h3 id="18-请实现一个-uniq-函数实现数组去重"><a class="markdownIt-Anchor" href="#18-请实现一个-uniq-函数实现数组去重">#</a> 18. 请实现一个 uniq 函数，实现数组去重</h3>
+<p>例如:</p>
+<pre class="line-numbers language-none"><code class="language-none">uniq([1, 2, 3, 5, 3, 2]);&#x2F;&#x2F;[1, 2, 3, 5]
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>查看解析</strong></p>
+<blockquote>
+<p>法 1: 利用 ES6 新增数据类型  <code>Set</code></p>
+</blockquote>
+<p><code>Set</code>  类似于数组，但是成员的值都是唯一的，没有重复的值。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b9168fdbf3fd2b%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>法 2: 利用  <code>indexOf</code></p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b9169308f20e8d%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>法 3: 利用  <code>includes</code></p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b91696a3a312f6%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>法 4：利用  <code>reduce</code></p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b91699a3ad002f%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>法 5：利用  <code>Map</code></p>
+</blockquote>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b9169da45cc69a~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h3 id="19-可迭代对象有哪些特点"><a class="markdownIt-Anchor" href="#19-可迭代对象有哪些特点">#</a> 19. 可迭代对象有哪些特点</h3>
+<p><strong>查看解析</strong><br>
+ ES6 规定，默认的 `Iterator` 接口部署在数据结构的 `Symbol.iterator` 属性，换个角度，也可以认为，一个数据结构只要具有 `Symbol.iterator` 属性 (`Symbol.iterator` 方法对应的是遍历器生成函数，返回的是一个遍历器对象)，那么就可以其认为是可迭代的。</p>
+<h4 id="可迭代对象的特点"><a class="markdownIt-Anchor" href="#可迭代对象的特点">#</a> 可迭代对象的特点</h4>
+<ul>
+<li>具有  <code>Symbol.iterator</code>  属性， <code>Symbol.iterator()</code>  返回的是一个遍历器对象</li>
+<li>可以使用  <code>for ... of</code>  进行循环</li>
+<li>通过被  <code>Array.from</code>  转换为数组</li>
+</ul>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/26/16b916a1b546f068~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h4 id="原生具有-iterator-接口的数据结构"><a class="markdownIt-Anchor" href="#原生具有-iterator-接口的数据结构">#</a> 原生具有  <code>Iterator</code>  接口的数据结构：</h4>
+<ul>
+<li>Array</li>
+<li>Map</li>
+<li>Set</li>
+<li>String</li>
+<li>TypedArray</li>
+<li>函数的 arguments 对象</li>
+<li>NodeList 对象</li>
+</ul>
+<h3 id="20-jsonp-的原理是什么"><a class="markdownIt-Anchor" href="#20-jsonp-的原理是什么">#</a> 20. JSONP 的原理是什么？</h3>
+<p><strong>查看解析</strong></p>
+<p>尽管浏览器有同源策略，但是  <code>&lt;script&gt;</code>  标签的  <code>src</code>  属性不会被同源策略所约束，可以获取任意服务器上的脚本并执行。 <code>jsonp</code>  通过插入  <code>script</code>  标签的方式来实现跨域，参数只能通过  <code>url</code>  传入，仅能支持  <code>get</code>  请求。</p>
+<blockquote>
+<p>实现原理:</p>
+</blockquote>
+<ul>
+<li>Step1: 创建 callback 方法</li>
+<li>Step2: 插入 script 标签</li>
+<li>Step3: 后台接受到请求，解析前端传过去的 callback 方法，返回该方法的调用，并且数据作为参数传入该方法</li>
+<li>Step4: 前端执行服务端返回的方法调用</li>
+</ul>
+<blockquote>
+<p>jsonp 源码实现</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b916a5ab886d8a%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>使用:</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b916a92272c748%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<blockquote>
+<p>服务端代码 (node):</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16b916acb7ac34bf%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h3 id="参考文章"><a class="markdownIt-Anchor" href="#参考文章">#</a> 参考文章：</h3>
+<p>[1] [JavaScript 高级程序设计第六章]</p>
+<p>[2] <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903854174109710" title="https://juejin.cn/post/6844903854174109710">Step-By-Step】高频面试题深入解析 / 周刊 01</a></p>
+<p>[3] <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903858645237767" title="https://juejin.cn/post/6844903858645237767">Step-By-Step】高频面试题深入解析 / 周刊 02</a></p>
+<p>[4] <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903862491414541" title="https://juejin.cn/post/6844903862491414541">Step-By-Step】高频面试题深入解析 / 周刊 03</a></p>
+<p>[5] <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903869399433224" title="https://juejin.cn/post/6844903869399433224">Step-By-Step】高频面试题深入解析 / 周刊 04</a></p>
+<p>谢谢各位小伙伴愿意花费宝贵的时间阅读本文，如果本文给了您一点帮助或者是启发，请不要吝啬你的赞和 Star，您的肯定是我前进的最大动力。 <a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2FYvetteLau%2FBlog" title="https://github.com/YvetteLau/Blog">github.com/YvetteLau/B…</a></p>
+<h4 id="本文中的代码使用了图片如果您想直接复制代码请移步这儿有20道大厂面试题等你查收"><a class="markdownIt-Anchor" href="#本文中的代码使用了图片如果您想直接复制代码请移步这儿有20道大厂面试题等你查收">#</a> 本文中的代码使用了图片，如果您想直接复制代码，请移步 [这儿有 20 道大厂面试题等你查收](</h4>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2022/01/01/20%E9%81%93%E5%A4%A7%E5%8E%82%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/">https://harryqu1229.github.io/2022/01/01/20%E9%81%93%E5%A4%A7%E5%8E%82%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/frontend/">frontend</a><a class="post-meta__tags" href="/tags/interview/">interview</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/01/01/30%E9%81%93vue%E9%9D%A2%E8%AF%95%E9%A2%98/"><img class="prev-cover" src="https://w.wallhaven.cc/full/wq/wallhaven-wqvov7.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">30 Vue Frontend Interview Quesitions</div></div></a></div><div class="next-post pull-right"><a href="/2022/01/01/%E9%98%BF%E9%87%8C%E9%9D%A2%E7%BB%8F/"><img class="next-cover" src="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Alibaba Interview Questions</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/02/25/%E4%B8%80%E7%82%B9%E7%82%B9js%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Javascript Interview Questions"><img class="cover" src="https://w.wallhaven.cc/full/57/wallhaven-57jlo1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">Javascript Interview Questions</div></div></a></div><div><a href="/2022/01/12/CSS%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93-YK%E8%8F%8C/" title="css Interview Questions"><img class="cover" src="https://w.wallhaven.cc/full/wq/wallhaven-wqvov7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-12</div><div class="title">css Interview Questions</div></div></a></div><div><a href="/2022/01/01/50%E9%81%93%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="50 Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/57/wallhaven-57jlo1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">50 Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/01/01/30%E9%81%93vue%E9%9D%A2%E8%AF%95%E9%A2%98/" title="30 Vue Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/wq/wallhaven-wqvov7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">30 Vue Frontend Interview Quesitions</div></div></a></div><div><a href="/2021/02/12/JS%E9%9D%A2%E8%AF%95%E9%A2%98--YK%E8%8F%8C/" title="some JS Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-12</div><div class="title">some JS Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/02/02/js,css%E7%AD%89%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="css and JS Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/8o/wallhaven-8oply1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-02</div><div class="title">css and JS Frontend Interview Quesitions</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%99%E5%84%BF%E6%9C%8920%E9%81%93%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E9%A2%98%E7%AD%89%E4%BD%A0%E6%9F%A5%E6%94%B6"><span class="toc-number">1.</span> <span class="toc-text"> 这儿有 20 道大厂面试题等你查收</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-new%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 1. new 的实现原理是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E5%88%A4%E6%96%ADthis%E7%9A%84%E6%8C%87%E5%90%91"><span class="toc-number">1.0.2.</span> <span class="toc-text"> 2. 如何正确判断 this 的指向？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%AD%E7%9A%84-this"><span class="toc-number">1.0.2.1.</span> <span class="toc-text"> 全局环境中的 this</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E6%98%AF-new-%E7%BB%91%E5%AE%9A"><span class="toc-number">1.0.2.2.</span> <span class="toc-text"> 是否是  new  绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E6%98%AF%E5%90%A6%E9%80%9A%E8%BF%87-callapply-%E8%B0%83%E7%94%A8%E6%88%96%E8%80%85%E4%BD%BF%E7%94%A8%E4%BA%86-bind-%E7%BB%91%E5%AE%9A%E5%A6%82%E6%9E%9C%E6%98%AF%E9%82%A3%E4%B9%88this%E7%BB%91%E5%AE%9A%E7%9A%84%E5%B0%B1%E6%98%AF%E6%8C%87%E5%AE%9A%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%BD%92%E7%BB%93%E4%B8%BA%E6%98%BE%E5%BC%8F%E7%BB%91%E5%AE%9A"><span class="toc-number">1.0.2.3.</span> <span class="toc-text"> 函数是否通过 call,apply 调用，或者使用了 bind 绑定，如果是，那么 this 绑定的就是指定的对象【归结为显式绑定】。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E7%BB%91%E5%AE%9A%E5%87%BD%E6%95%B0%E7%9A%84%E8%B0%83%E7%94%A8%E6%98%AF%E5%9C%A8%E6%9F%90%E4%B8%AA%E5%AF%B9%E8%B1%A1%E4%B8%8A%E8%A7%A6%E5%8F%91%E7%9A%84%E5%8D%B3%E8%B0%83%E7%94%A8%E4%BD%8D%E7%BD%AE%E4%B8%8A%E5%AD%98%E5%9C%A8%E4%B8%8A%E4%B8%8B%E6%96%87%E5%AF%B9%E8%B1%A1-%E5%85%B8%E5%9E%8B%E7%9A%84%E9%9A%90%E5%BC%8F%E8%B0%83%E7%94%A8%E4%B8%BA-xxxfn"><span class="toc-number">1.0.2.4.</span> <span class="toc-text"> 隐式绑定，函数的调用是在某个对象上触发的，即调用位置上存在上下文对象。典型的隐式调用为:  xxx.fn()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E7%BB%91%E5%AE%9A%E5%9C%A8%E4%B8%8D%E8%83%BD%E5%BA%94%E7%94%A8%E5%85%B6%E5%AE%83%E7%BB%91%E5%AE%9A%E8%A7%84%E5%88%99%E6%97%B6%E4%BD%BF%E7%94%A8%E7%9A%84%E9%BB%98%E8%AE%A4%E8%A7%84%E5%88%99%E9%80%9A%E5%B8%B8%E6%98%AF%E7%8B%AC%E7%AB%8B%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8"><span class="toc-number">1.0.2.5.</span> <span class="toc-text"> 默认绑定，在不能应用其它绑定规则时使用的默认规则，通常是独立函数调用。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">1.0.2.6.</span> <span class="toc-text"> 箭头函数的情况：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%B7%B1%E6%8B%B7%E8%B4%9D"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 3. 深拷贝和浅拷贝的区别是什么？实现一个深拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D"><span class="toc-number">1.0.3.1.</span> <span class="toc-text"> 深拷贝</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="toc-number">1.0.3.2.</span> <span class="toc-text"> 浅拷贝</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.0.3.3.</span> <span class="toc-text"> 深拷贝实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-callapply-%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.0.4.</span> <span class="toc-text"> 4. call&#x2F;apply 的实现原理是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%9F%AF%E9%87%8C%E5%8C%96%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.0.5.</span> <span class="toc-text"> 5. 柯里化函数实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%A6%82%E4%BD%95%E8%AE%A9-a-1-a-2-a-3-%E7%9A%84%E5%80%BC%E4%B8%BAtrue"><span class="toc-number">1.0.6.</span> <span class="toc-text"> 6. 如何让 (a &#x3D;&#x3D; 1 &amp;&amp; a &#x3D;&#x3D; 2 &amp;&amp; a &#x3D;&#x3D; 3) 的值为 true？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E4%BB%80%E4%B9%88%E6%98%AFbfcbfc%E7%9A%84%E5%B8%83%E5%B1%80%E8%A7%84%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BAbfc"><span class="toc-number">1.0.7.</span> <span class="toc-text"> 7. 什么是 BFC？BFC 的布局规则是什么？如何创建 BFC？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BDjs%E8%84%9A%E6%9C%AC%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-number">1.0.8.</span> <span class="toc-text"> 8. 异步加载 JS 脚本的方式有哪些？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-es5%E6%9C%89%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF%E5%88%86%E5%88%AB%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.0.9.</span> <span class="toc-text"> 9. ES5 有几种方式可以实现继承？分别有哪些优缺点？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%BB%A7%E6%89%BF"><span class="toc-number">1.0.9.0.1.</span> <span class="toc-text"> 1. 原型链继承</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%80%9F%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.9.0.2.</span> <span class="toc-text"> 2. 借用构造函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E7%BB%84%E5%90%88%E7%BB%A7%E6%89%BF%E5%8E%9F%E5%9E%8B%E9%93%BE-%E5%80%9F%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.9.0.3.</span> <span class="toc-text"> 3. 组合继承 (原型链 + 借用构造函数)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E5%8E%9F%E5%9E%8B%E5%BC%8F%E7%BB%A7%E6%89%BF"><span class="toc-number">1.0.9.0.4.</span> <span class="toc-text"> 4. 原型式继承</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E5%AF%84%E7%94%9F%E5%BC%8F%E7%BB%A7%E6%89%BF"><span class="toc-number">1.0.9.0.5.</span> <span class="toc-text"> 5. 寄生式继承</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-%E5%AF%84%E7%94%9F%E7%BB%84%E5%90%88%E5%BC%8F%E7%BB%A7%E6%89%BF"><span class="toc-number">1.0.9.0.6.</span> <span class="toc-text"> 6. 寄生组合式继承</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E9%9A%90%E8%97%8F%E9%A1%B5%E9%9D%A2%E4%B8%AD%E7%9A%84%E6%9F%90%E4%B8%AA%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-number">1.0.10.</span> <span class="toc-text"> 10. 隐藏页面中的某个元素的方法有哪些？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1display-%E5%B1%9E%E6%80%A7"><span class="toc-number">1.0.10.0.1.</span> <span class="toc-text"> 1. display  属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2hidden-%E5%B1%9E%E6%80%A7"><span class="toc-number">1.0.10.0.2.</span> <span class="toc-text"> 2.hidden 属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E5%88%A9%E7%94%A8-position-%E5%92%8C-%E7%9B%92%E6%A8%A1%E5%9E%8B-%E5%B0%86%E5%85%83%E7%B4%A0%E7%A7%BB%E5%87%BA%E5%8F%AF%E8%A7%86%E5%8C%BA%E8%8C%83%E5%9B%B4"><span class="toc-number">1.0.10.0.3.</span> <span class="toc-text"> 1. 利用  position  和 盒模型 将元素移出可视区范围</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E5%88%A9%E7%94%A8-transfrom"><span class="toc-number">1.0.10.0.4.</span> <span class="toc-text"> 2. 利用 transfrom</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E8%AE%BE%E7%BD%AE%E5%85%B6%E5%A4%A7%E5%B0%8F%E4%B8%BA0"><span class="toc-number">1.0.10.0.5.</span> <span class="toc-text"> 3. 设置其大小为 0</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E8%AE%BE%E7%BD%AE%E9%80%8F%E6%98%8E%E5%BA%A6%E4%B8%BA0"><span class="toc-number">1.0.10.0.6.</span> <span class="toc-text"> 4. 设置透明度为 0</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5visibility%E5%B1%9E%E6%80%A7"><span class="toc-number">1.0.10.0.7.</span> <span class="toc-text"> 5. visibility  属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6%E5%B1%82%E7%BA%A7%E8%A6%86%E7%9B%96z-index-%E5%B1%9E%E6%80%A7"><span class="toc-number">1.0.10.0.8.</span> <span class="toc-text"> 6. 层级覆盖， z-index  属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7clip-path-%E8%A3%81%E5%89%AA"><span class="toc-number">1.0.10.0.9.</span> <span class="toc-text"> 7.clip-path 裁剪</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#aria-hidden-%E5%B1%9E%E6%80%A7"><span class="toc-number">1.0.10.0.10.</span> <span class="toc-text"> aria-hidden 属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-let-const-var-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-number">1.0.11.</span> <span class="toc-text"> 11. let、const、var 的区别有哪些？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E8%AF%B4%E4%B8%80%E8%AF%B4%E4%BD%A0%E5%AF%B9js%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">1.0.12.</span> <span class="toc-text"> 12. 说一说你对 JS 执行上下文栈和作用域链的理解？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#js%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-number">1.0.12.1.</span> <span class="toc-text"> JS 执行上下文</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.0.12.2.</span> <span class="toc-text"> 作用域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#js%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A0%88%E5%90%8E%E9%9D%A2%E7%AE%80%E7%A7%B0%E6%89%A7%E8%A1%8C%E6%A0%88"><span class="toc-number">1.0.12.3.</span> <span class="toc-text"> JS 执行上下文栈 (后面简称执行栈)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE"><span class="toc-number">1.0.12.4.</span> <span class="toc-text"> 作用域链</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E9%98%B2%E6%8A%96%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%E8%AF%B7%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%98%B2%E6%8A%96%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.13.</span> <span class="toc-text"> 13. 防抖函数的作用是什么？请实现一个防抖函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E8%8A%82%E6%B5%81%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E8%AF%B7%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%8A%82%E6%B5%81%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.14.</span> <span class="toc-text"> 14. 节流函数的作用是什么？有哪些应用场景，请实现一个节流函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-%E4%BB%80%E4%B9%88%E6%98%AF%E9%97%AD%E5%8C%85%E9%97%AD%E5%8C%85%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.0.15.</span> <span class="toc-text"> 15. 什么是闭包？闭包的作用是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.0.15.0.1.</span> <span class="toc-text"> 闭包的定义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%97%AD%E5%8C%85"><span class="toc-number">1.0.15.0.2.</span> <span class="toc-text"> 创建一个闭包</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.0.15.0.3.</span> <span class="toc-text"> 闭包的作用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-%E5%AE%9E%E7%8E%B0-promiseall-%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.16.</span> <span class="toc-text"> 16. 实现 Promise.all 方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-%E8%AF%B7%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA-flattendeep-%E5%87%BD%E6%95%B0%E6%8A%8A%E5%B5%8C%E5%A5%97%E7%9A%84%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96"><span class="toc-number">1.0.17.</span> <span class="toc-text"> 17. 请实现一个 flattenDeep 函数，把嵌套的数组扁平化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-%E8%AF%B7%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA-uniq-%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D"><span class="toc-number">1.0.18.</span> <span class="toc-text"> 18. 请实现一个 uniq 函数，实现数组去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E6%9C%89%E5%93%AA%E4%BA%9B%E7%89%B9%E7%82%B9"><span class="toc-number">1.0.19.</span> <span class="toc-text"> 19. 可迭代对象有哪些特点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.0.19.1.</span> <span class="toc-text"> 可迭代对象的特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%94%9F%E5%85%B7%E6%9C%89-iterator-%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.0.19.2.</span> <span class="toc-text"> 原生具有  Iterator  接口的数据结构：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-jsonp-%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.0.20.</span> <span class="toc-text"> 20. JSONP 的原理是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-number">1.0.21.</span> <span class="toc-text"> 参考文章：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E4%BD%BF%E7%94%A8%E4%BA%86%E5%9B%BE%E7%89%87%E5%A6%82%E6%9E%9C%E6%82%A8%E6%83%B3%E7%9B%B4%E6%8E%A5%E5%A4%8D%E5%88%B6%E4%BB%A3%E7%A0%81%E8%AF%B7%E7%A7%BB%E6%AD%A5%E8%BF%99%E5%84%BF%E6%9C%8920%E9%81%93%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E9%A2%98%E7%AD%89%E4%BD%A0%E6%9F%A5%E6%94%B6"><span class="toc-number">1.0.21.1.</span> <span class="toc-text"> 本文中的代码使用了图片，如果您想直接复制代码，请移步 [这儿有 20 道大厂面试题等你查收](</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux easy notes"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes">Linux easy notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux commands"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands">Linux commands</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/Linux/" title="Linux notes"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux notes"/></a><div class="content"><a class="title" href="/2022/04/02/Linux/" title="Linux notes">Linux notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/nodejs/" title="Nodejs notes"><img src="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nodejs notes"/></a><div class="content"><a class="title" href="/2022/03/01/nodejs/" title="Nodejs notes">Nodejs notes</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Frontend interview questions"/></a><div class="content"><a class="title" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions">Frontend interview questions</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2022/01/01/20%E9%81%93%E5%A4%A7%E5%8E%82%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/'
+    this.page.identifier = '2022/01/01/20道大厂前端面试题/'
+    this.page.title = '20 Frontend Interview Quesitions'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>if (window.DISQUSWIDGETS === undefined) {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://harry-study-blog.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+} else {
+  DISQUSWIDGETS.getCount({reset: true});
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: '7c1dc99e0489c5a4550a8d0651abc3e0',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=a5KJbIVovxK3ZXvlrPvv7wgYLY4fAh3pvP4thfjXYUdM2cNymlgVhMhdyhb9e0O3')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" title="本站使用JsDelivr为静态资源提供CDN加速"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，默认线路托管于Vercel"><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，联通线路托管于Coding"><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

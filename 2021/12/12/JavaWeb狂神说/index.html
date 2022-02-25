@@ -1,0 +1,2603 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>JavaWeb 狂神说 | Harry World</title><meta name="keywords" content="javaweb,java,web"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# JavaWeb Java Web # 1、基本概念 # 1.1、前言 web 开发：  web，网页的意思 静态 web  html，css 提供给所有人看的数据始终不会发生变化！   动态 web  淘宝，几乎是所有的网站； 提供给所有人看的数据始终会发生变化，每个人在不同的时间，不同的地点看到的信息各不相同！ 技术栈：Servlet&#x2F;JSP，ASP，PHP    在 Java 中，动态 w">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaWeb 狂神说">
+<meta property="og:url" content="https://harryqu1229.github.io/2021/12/12/JavaWeb%E7%8B%82%E7%A5%9E%E8%AF%B4/index.html">
+<meta property="og:site_name" content="Harry World">
+<meta property="og:description" content="# JavaWeb Java Web # 1、基本概念 # 1.1、前言 web 开发：  web，网页的意思 静态 web  html，css 提供给所有人看的数据始终不会发生变化！   动态 web  淘宝，几乎是所有的网站； 提供给所有人看的数据始终会发生变化，每个人在不同的时间，不同的地点看到的信息各不相同！ 技术栈：Servlet&#x2F;JSP，ASP，PHP    在 Java 中，动态 w">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png">
+<meta property="article:published_time" content="2021-12-11T11:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-25T15:40:10.335Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="javaweb">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://harryqu1229.github.io/2021/12/12/JavaWeb%E7%8B%82%E7%A5%9E%E8%AF%B4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JavaWeb 狂神说',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-26 04:40:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/flink.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.javaindia.in/blog/wp-content/uploads/2020/09/java-web-development.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry World</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JavaWeb 狂神说</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-12-11T11:00:00.000Z" title="Created 2021-12-12 00:00:00">2021-12-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-02-25T15:40:10.335Z" title="Updated 2022-02-26 04:40:10">2022-02-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Backend/">Backend</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Backend/javaweb/">javaweb</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">9.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>40min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JavaWeb 狂神说"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><span class="disqus-comment-count"><a href="https://harryqu1229.github.io/2021/12/12/JavaWeb%E7%8B%82%E7%A5%9E%E8%AF%B4/#disqus_thread"></a></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="javaweb"><a class="markdownIt-Anchor" href="#javaweb">#</a> JavaWeb</h1>
+<p>Java Web</p>
+<h2 id="1-基本概念"><a class="markdownIt-Anchor" href="#1-基本概念">#</a> 1、基本概念</h2>
+<h3 id="11-前言"><a class="markdownIt-Anchor" href="#11-前言">#</a> 1.1、前言</h3>
+<p>web 开发：</p>
+<ul>
+<li>web，网页的意思</li>
+<li>静态 web
+<ul>
+<li>html，css</li>
+<li>提供给所有人看的数据始终不会发生变化！</li>
+</ul>
+</li>
+<li>动态 web
+<ul>
+<li>淘宝，几乎是所有的网站；</li>
+<li>提供给所有人看的数据始终会发生变化，每个人在不同的时间，不同的地点看到的信息各不相同！</li>
+<li>技术栈：Servlet/JSP，ASP，PHP</li>
+</ul>
+</li>
+</ul>
+<p>在 Java 中，动态 web 资源开发的技术统称为 JavaWeb；</p>
+<h3 id="12-web应用程序"><a class="markdownIt-Anchor" href="#12-web应用程序">#</a> 1.2、web 应用程序</h3>
+<p>web 应用程序：可以提供浏览器访问的程序；</p>
+<ul>
+<li>a.html、b.html… 多个 web 资源，这些 web 资源可以被外界访问，对外界提供服务；</li>
+<li>你们能访问到的任何一个页面或者资源，都存在于这个世界的某一个角落的计算机上。</li>
+<li>URL</li>
+<li>这个统一的 web 资源会被放在同一个文件夹下，web 应用程序–&gt;Tomcat：服务器</li>
+<li>一个 web 应用由多部分组成 （静态 web，动态 web）
+<ul>
+<li>html，css，js</li>
+<li>jsp，servlet</li>
+<li>Java 程序</li>
+<li>jar 包</li>
+<li>配置文件 （Properties）</li>
+</ul>
+</li>
+</ul>
+<p>web 应用程序编写完毕后，若想提供给外界访问：需要一个服务器来统一管理；</p>
+<h3 id="13-静态web"><a class="markdownIt-Anchor" href="#13-静态web">#</a> 1.3、静态 web</h3>
+<ul>
+<li>*.htm, *.html, 这些都是网页的后缀，如果服务器上一直存在这些东西，我们就可以直接进行读取。通络；</li>
+</ul>
+<p><img src="https://gitee.com/zhuuuu/java_web_notes/raw/master/JavaWeb.assets/1567822802516.png" alt="1567822802516"></p>
+<ul>
+<li>静态 web 存在的缺点
+<ul>
+<li>Web 页面无法动态更新，所有用户看到都是同一个页面
+<ul>
+<li>轮播图，点击特效：伪动态</li>
+<li>JavaScript [实际开发中，它用的最多]</li>
+<li>VBScript</li>
+</ul>
+</li>
+<li>它无法和数据库交互（数据无法持久化，用户无法交互）</li>
+</ul>
+</li>
+</ul>
+<h3 id="14-动态web"><a class="markdownIt-Anchor" href="#14-动态web">#</a> 1.4、动态 web</h3>
+<p>页面会动态展示： “Web 的页面展示的效果因人而异”；</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567823191289.png" alt="1567823191289"></p>
+<p>缺点：</p>
+<ul>
+<li>
+<p>加入服务器的动态 web 资源出现了错误，我们需要重新编写我们的</p>
+<p>后台程序</p>
+<p>, 重新发布；</p>
+<ul>
+<li>停机维护</li>
+</ul>
+</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>Web 页面可以动态更新，所有用户看到都不是同一个页面</li>
+<li>它可以与数据库交互 （数据持久化：注册，商品信息，用户信息…）</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567823350584.png" alt="1567823350584"></p>
+<p>新手村：–魔鬼训练（分析原理，看源码）–&gt; PK 场</p>
+<h2 id="2-web服务器"><a class="markdownIt-Anchor" href="#2-web服务器">#</a> 2、web 服务器</h2>
+<h3 id="21-技术讲解"><a class="markdownIt-Anchor" href="#21-技术讲解">#</a> 2.1、技术讲解</h3>
+<p><strong>ASP:</strong></p>
+<ul>
+<li>
+<p>微软：国内最早流行的就是 ASP；</p>
+</li>
+<li>
+<p>在 HTML 中嵌入了 VB 的脚本， ASP + COM；</p>
+</li>
+<li>
+<p>在 ASP 开发中，基本一个页面都有几千行的业务代码，页面极其换乱</p>
+</li>
+<li>
+<p>维护成本高！</p>
+</li>
+<li>
+<p>C#</p>
+</li>
+<li>
+<p>IIS</p>
+  <pre class="line-numbers language-none"><code class="language-none">&lt;h1&gt;
+    &lt;h1&gt;&lt;h1&gt;
+        &lt;h1&gt;
+            &lt;h1&gt;
+                &lt;h1&gt;
+        &lt;h1&gt;
+            &lt;%
+            System.out.println(&quot;hello&quot;)
+            %&gt;
+            &lt;h1&gt;
+                &lt;h1&gt;
+   &lt;h1&gt;&lt;h1&gt;
+&lt;h1&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<p><strong>php：</strong></p>
+<ul>
+<li>PHP 开发速度很快，功能很强大，跨平台，代码很简单 （70% , WP）</li>
+<li>无法承载大访问量的情况（局限性）</li>
+</ul>
+<p>**JSP/Servlet : **</p>
+<p>B/S：浏览和服务器</p>
+<p>C/S: 客户端和服务器</p>
+<ul>
+<li>sun 公司主推的 B/S 架构</li>
+<li>基于 Java 语言的 (所有的大公司，或者一些开源的组件，都是用 Java 写的)</li>
+<li>可以承载三高问题带来的影响；</li>
+<li>语法像 ASP ， ASP–&gt;JSP , 加强市场强度；</li>
+</ul>
+<p>…</p>
+<h3 id="22-web服务器"><a class="markdownIt-Anchor" href="#22-web服务器">#</a> 2.2、web 服务器</h3>
+<p>服务器是一种被动的操作，用来处理用户的一些请求和给用户一些响应信息；</p>
+<p><strong>IIS</strong></p>
+<p>微软的； ASP…,Windows 中自带的</p>
+<p><strong>Tomcat</strong></p>
+<p><img src="https://gitee.com/zhuuuu/java_web_notes/raw/master/JavaWeb.assets/1567824446428.png" alt="1567824446428"></p>
+<p>面向百度编程；</p>
+<p>Tomcat 是 Apache 软件基金会（Apache Software Foundation）的 Jakarta 项目中的一个核心项目，最新的 Servlet 和 JSP 规范总是能在 Tomcat 中得到体现，因为 Tomcat 技术先进、性能稳定，而且<strong>免费</strong>，因而深受 Java 爱好者的喜爱并得到了部分软件开发商的认可，成为目前比较流行的 Web 应用服务器。</p>
+<p>Tomcat 服务器是一个免费的开放源代码的 Web 应用服务器，属于轻量级应用<a href="https://gitee.com/link?target=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E6%9C%8D%E5%8A%A1%E5%99%A8">服务器</a>，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试 JSP 程序的首选。对于一个 Java 初学 web 的人来说，它是最佳的选择</p>
+<p>Tomcat 实际上运行 JSP 页面和 Servlet。Tomcat 最新版本为<strong> 9.0。</strong></p>
+<p>…</p>
+<p><strong>工作 3-5 年之后，可以尝试手写 Tomcat 服务器；</strong></p>
+<p>下载 tomcat：</p>
+<ol>
+<li>安装 or 解压</li>
+<li>了解配置文件及目录结构</li>
+<li>这个东西的作用</li>
+</ol>
+<h2 id="3-tomcat"><a class="markdownIt-Anchor" href="#3-tomcat">#</a> 3、Tomcat</h2>
+<h3 id="31-安装tomcat"><a class="markdownIt-Anchor" href="#31-安装tomcat">#</a> 3.1、 安装 tomcat</h3>
+<p>tomcat 官网：<a href="https://gitee.com/link?target=http%3A%2F%2Ftomcat.apache.org%2F">http://tomcat.apache.org/</a></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567825600842.png" alt="1567825600842"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567825627138.png" alt="1567825627138"></p>
+<h3 id="32-tomcat启动和配置"><a class="markdownIt-Anchor" href="#32-tomcat启动和配置">#</a> 3.2、Tomcat 启动和配置</h3>
+<p>文件夹作用：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567825763180.png" alt="1567825763180"></p>
+<p><strong>启动。关闭 Tomcat</strong></p>
+<p><img src="https://gitee.com/zhuuuu/java_web_notes/raw/master/JavaWeb.assets/1567825840657.png" alt="1567825840657"></p>
+<p>访问测试：<a href="https://gitee.com/link?target=http%3A%2F%2Flocalhost%3A8080%2F">http://localhost:8080/</a></p>
+<p>可能遇到的问题：</p>
+<ol>
+<li>Java 环境变量没有配置</li>
+<li>闪退问题：需要配置兼容性</li>
+<li>乱码问题：配置文件中设置</li>
+</ol>
+<h3 id="33-配置"><a class="markdownIt-Anchor" href="#33-配置">#</a> 3.3、配置</h3>
+<p><img src="https://gitee.com/zhuuuu/java_web_notes/raw/master/JavaWeb.assets/1567825967256.png" alt="1567825967256"></p>
+<p>可以配置启动的端口号</p>
+<ul>
+<li>tomcat 的默认端口号为：8080</li>
+<li>mysql：3306</li>
+<li>http：80</li>
+<li>https：443</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;Connector port&#x3D;&quot;8081&quot; protocol&#x3D;&quot;HTTP&#x2F;1.1&quot;
+           connectionTimeout&#x3D;&quot;20000&quot;
+           redirectPort&#x3D;&quot;8443&quot; &#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>可以配置主机的名称</p>
+<ul>
+<li>默认的主机名为：localhost-&gt;127.0.0.1</li>
+<li>默认网站应用存放的位置为：webapps</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;Host name&#x3D;&quot;www.qinjiang.com&quot;  appBase&#x3D;&quot;webapps&quot;
+      unpackWARs&#x3D;&quot;true&quot; autoDeploy&#x3D;&quot;true&quot;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="高难度面试题"><a class="markdownIt-Anchor" href="#高难度面试题">#</a> 高难度面试题：</h4>
+<p>请你谈谈网站是如何进行访问的！</p>
+<ol>
+<li>
+<p>输入一个域名；回车</p>
+</li>
+<li>
+<p>检查本机的 C:\Windows\System32\drivers\etc\hosts 配置文件下有没有这个域名映射；</p>
+<ol>
+<li>
+<p>有：直接返回对应的 ip 地址，这个地址中，有我们需要访问的 web 程序，可以直接访问</p>
+ <pre class="line-numbers language-none"><code class="language-none">127.0.0.1       www.qinjiang.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>没有：去 DNS 服务器找，找到的话就返回，找不到就返回找不到；</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567827057913.png" alt="1567827057913"></p>
+</li>
+<li>
+<p>可以配置一下环境变量（可选性）</p>
+</li>
+</ol>
+<h3 id="34-发布一个web网站"><a class="markdownIt-Anchor" href="#34-发布一个web网站">#</a> 3.4、发布一个 web 网站</h3>
+<p>不会就先模仿</p>
+<ul>
+<li>将自己写的网站，放到服务器 (Tomcat) 中指定的 web 应用的文件夹（webapps）下，就可以访问了</li>
+</ul>
+<p>网站应该有的结构</p>
+<pre class="line-numbers language-none"><code class="language-none">--webapps ：Tomcat服务器的web目录
+	-ROOT
+	-kuangstudy ：网站的目录名
+		- WEB-INF
+			-classes : java程序
+			-lib：web应用所依赖的jar包
+			-web.xml ：网站配置文件
+		- index.html 默认的首页
+		- static 
+            -css
+            	-style.css
+            -js
+            -img
+         -.....<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>HTTP 协议 ： 面试</p>
+<p>Maven：构建工具</p>
+<ul>
+<li>Maven 安装包</li>
+</ul>
+<p>Servlet 入门</p>
+<ul>
+<li>HelloWorld！</li>
+<li>Servlet 配置</li>
+<li>原理</li>
+</ul>
+<h2 id="4-http"><a class="markdownIt-Anchor" href="#4-http">#</a> 4、Http</h2>
+<h3 id="41-什么是http"><a class="markdownIt-Anchor" href="#41-什么是http">#</a> 4.1、什么是 HTTP</h3>
+<p>HTTP（超文本传输协议）是一个简单的请求 - 响应协议，它通常运行在 TCP 之上。</p>
+<ul>
+<li>文本：html，字符串，~ ….</li>
+<li>超文本：图片，音乐，视频，定位，地图…….</li>
+<li>80</li>
+</ul>
+<p>Https：安全的</p>
+<ul>
+<li>443</li>
+</ul>
+<h3 id="42-两个时代"><a class="markdownIt-Anchor" href="#42-两个时代">#</a> 4.2、两个时代</h3>
+<ul>
+<li>http1.0
+<ul>
+<li>HTTP/1.0：客户端可以与 web 服务器连接后，只能获得一个 web 资源，断开连接</li>
+</ul>
+</li>
+<li>http2.0
+<ul>
+<li>HTTP/1.1：客户端可以与 web 服务器连接后，可以获得多个 web 资源。‘</li>
+</ul>
+</li>
+</ul>
+<h3 id="43-http请求"><a class="markdownIt-Anchor" href="#43-http请求">#</a> 4.3、Http 请求</h3>
+<ul>
+<li>客户端 — 发请求（Request）— 服务器</li>
+</ul>
+<p>百度：</p>
+<pre class="line-numbers language-none"><code class="language-none">Request URL:https:&#x2F;&#x2F;www.baidu.com&#x2F;   请求地址
+Request Method:GET    get方法&#x2F;post方法
+Status Code:200 OK    状态码：200
+Remote（远程） Address:14.215.177.39:443
+Accept:text&#x2F;html  
+Accept-Encoding:gzip, deflate, br
+Accept-Language:zh-CN,zh;q&#x3D;0.9    语言
+Cache-Control:max-age&#x3D;0
+Connection:keep-alive<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="1-请求行"><a class="markdownIt-Anchor" href="#1-请求行">#</a> 1、请求行</h4>
+<ul>
+<li>
+<p>请求行中的请求方式：GET</p>
+</li>
+<li>
+<p>请求方式：</p>
+<p>Get，Post</p>
+<p>，HEAD,DELETE,PUT,TRACT…</p>
+<ul>
+<li>get：请求能够携带的参数比较少，大小有限制，会在浏览器的 URL 地址栏显示数据内容，不安全，但高效</li>
+<li>post：请求能够携带的参数没有限制，大小没有限制，不会在浏览器的 URL 地址栏显示数据内容，安全，但不高效。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-消息头"><a class="markdownIt-Anchor" href="#2-消息头">#</a> 2、消息头</h4>
+<pre class="line-numbers language-none"><code class="language-none">Accept：告诉浏览器，它所支持的数据类型
+Accept-Encoding：支持哪种编码格式  GBK   UTF-8   GB2312  ISO8859-1
+Accept-Language：告诉浏览器，它的语言环境
+Cache-Control：缓存控制
+Connection：告诉浏览器，请求完成是断开还是保持连接
+HOST：主机....&#x2F;.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="44-http响应"><a class="markdownIt-Anchor" href="#44-http响应">#</a> 4.4、Http 响应</h3>
+<ul>
+<li>服务器 — 响应 ----- 客户端</li>
+</ul>
+<p>百度：</p>
+<pre class="line-numbers language-none"><code class="language-none">Cache-Control:private    缓存控制
+Connection:Keep-Alive    连接
+Content-Encoding:gzip    编码
+Content-Type:text&#x2F;html   类型<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="1响应体"><a class="markdownIt-Anchor" href="#1响应体">#</a> 1. 响应体</h4>
+<pre class="line-numbers language-none"><code class="language-none">Accept：告诉浏览器，它所支持的数据类型
+Accept-Encoding：支持哪种编码格式  GBK   UTF-8   GB2312  ISO8859-1
+Accept-Language：告诉浏览器，它的语言环境
+Cache-Control：缓存控制
+Connection：告诉浏览器，请求完成是断开还是保持连接
+HOST：主机....&#x2F;.
+Refresh：告诉客户端，多久刷新一次；
+Location：让网页重新定位；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-响应状态码"><a class="markdownIt-Anchor" href="#2-响应状态码">#</a> 2、响应状态码</h4>
+<p>200：请求响应成功 200</p>
+<p>3xx：请求重定向</p>
+<ul>
+<li>重定向：你重新到我给你新位置去；</li>
+</ul>
+<p>4xx：找不到资源 404</p>
+<ul>
+<li>资源不存在；</li>
+</ul>
+<p>5xx：服务器代码错误 500 502: 网关错误</p>
+<p><strong>常见面试题：</strong></p>
+<p>当你的浏览器中地址栏输入地址并回车的一瞬间到页面能够展示回来，经历了什么？</p>
+<h2 id="5-maven"><a class="markdownIt-Anchor" href="#5-maven">#</a> 5、Maven</h2>
+<p><strong>我为什么要学习这个技术？</strong></p>
+<ol>
+<li>
+<p>在 Javaweb 开发中，需要使用大量的 jar 包，我们手动去导入；</p>
+</li>
+<li>
+<p>如何能够让一个东西自动帮我导入和配置这个 jar 包。</p>
+<p>由此，Maven 诞生了！</p>
+</li>
+</ol>
+<h3 id="51-maven项目架构管理工具"><a class="markdownIt-Anchor" href="#51-maven项目架构管理工具">#</a> 5.1 Maven 项目架构管理工具</h3>
+<p>我们目前用来就是方便导入 jar 包的！</p>
+<p>Maven 的核心思想：<strong>约定大于配置</strong></p>
+<ul>
+<li>有约束，不要去违反。</li>
+</ul>
+<p>Maven 会规定好你该如何去编写我们的 Java 代码，必须要按照这个规范来；</p>
+<h3 id="52-下载安装maven"><a class="markdownIt-Anchor" href="#52-下载安装maven">#</a> 5.2 下载安装 Maven</h3>
+<p>官网；<a href="https://gitee.com/link?target=https%3A%2F%2Fmaven.apache.org%2F">https://maven.apache.org/</a></p>
+<p><img src="https://gitee.com/zhuuuu/java_web_notes/raw/master/JavaWeb.assets/1567842350606.png" alt="1567842350606"></p>
+<p>下载完成后，解压即可；</p>
+<p>小狂神友情建议：电脑上的所有环境都放在一个文件夹下，方便管理；</p>
+<h3 id="53-配置环境变量"><a class="markdownIt-Anchor" href="#53-配置环境变量">#</a> 5.3 配置环境变量</h3>
+<p>在我们的系统环境变量中</p>
+<p>配置如下配置：</p>
+<ul>
+<li>M2_HOME maven 目录下的 bin 目录</li>
+<li>MAVEN_HOME maven 的目录</li>
+<li>在系统的 path 中配置 % MAVEN_HOME%\bin</li>
+</ul>
+<p><img src="https://gitee.com/zhuuuu/java_web_notes/raw/master/JavaWeb.assets/1567842882993.png" alt="1567842882993"></p>
+<p>测试 Maven 是否安装成功，保证必须配置完毕！</p>
+<h3 id="54-阿里云镜像"><a class="markdownIt-Anchor" href="#54-阿里云镜像">#</a> 5.4 阿里云镜像</h3>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567844609399.png" alt="1567844609399"></p>
+<ul>
+<li>镜像：mirrors
+<ul>
+<li>作用：加速我们的下载</li>
+</ul>
+</li>
+<li>国内建议使用阿里云的镜像</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;mirror&gt;
+    &lt;id&gt;nexus-aliyun&lt;&#x2F;id&gt;  
+    &lt;mirrorOf&gt;*,!jeecg,!jeecg-snapshots&lt;&#x2F;mirrorOf&gt;  
+    &lt;name&gt;Nexus aliyun&lt;&#x2F;name&gt;  
+    &lt;url&gt;http:&#x2F;&#x2F;maven.aliyun.com&#x2F;nexus&#x2F;content&#x2F;groups&#x2F;public&lt;&#x2F;url&gt; 
+&lt;&#x2F;mirror&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="55-本地仓库"><a class="markdownIt-Anchor" href="#55-本地仓库">#</a> 5.5 本地仓库</h3>
+<p>在本地的仓库，远程仓库；</p>
+<p>** 建立一个本地仓库：**localRepository</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;localRepository&gt;D:\Environment\apache-maven-3.6.2\maven-repo&lt;&#x2F;localRepository&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="56-在idea中使用maven"><a class="markdownIt-Anchor" href="#56-在idea中使用maven">#</a> 5.6、在 IDEA 中使用 Maven</h3>
+<ol>
+<li>
+<p>启动 IDEA</p>
+</li>
+<li>
+<p>创建一个 MavenWeb 项目</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567844785602.png" alt="1567844785602"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567844841172.png" alt="1567844841172"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567844917185.png" alt="1567844917185"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567844956177.png" alt="1567844956177"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567845029864.png" alt="1567845029864"></p>
+</li>
+<li>
+<p>等待项目初始化完毕</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567845105970.png" alt="1567845105970"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567845137978.png" alt="1567845137978"></p>
+</li>
+<li>
+<p>观察 maven 仓库中多了什么东西？</p>
+</li>
+<li>
+<p>IDEA 中的 Maven 设置</p>
+<p>注意：IDEA 项目创建成功后，看一眼 Maven 的配置</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567845341956.png" alt="1567845341956"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567845413672.png" alt="1567845413672"></p>
+</li>
+<li>
+<p>到这里，Maven 在 IDEA 中的配置和使用就 OK 了！</p>
+</li>
+</ol>
+<h3 id="57-创建一个普通的maven项目"><a class="markdownIt-Anchor" href="#57-创建一个普通的maven项目">#</a> 5.7、创建一个普通的 Maven 项目</h3>
+<p><img src="https://gitee.com/zhuuuu/java_web_notes/raw/master/JavaWeb.assets/1567845557744.png" alt="1567845557744"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567845717377.png" alt="1567845717377"></p>
+<p>这个只有在 Web 应用下才会有！</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567845782034.png" alt="1567845782034"></p>
+<h3 id="58-标记文件夹功能"><a class="markdownIt-Anchor" href="#58-标记文件夹功能">#</a> 5.8 标记文件夹功能</h3>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567845910728.png" alt="1567845910728"></p>
+<p><img src="https://gitee.com/zhuuuu/java_web_notes/raw/master/JavaWeb.assets/1567845957139.png" alt="1567845957139"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567846034906.png" alt="1567846034906"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567846073511.png" alt="1567846073511"></p>
+<h3 id="59-在-idea中配置tomcat"><a class="markdownIt-Anchor" href="#59-在-idea中配置tomcat">#</a> 5.9 在 IDEA 中配置 Tomcat</h3>
+<p><img src="https://gitee.com/zhuuuu/java_web_notes/raw/master/JavaWeb.assets/1567846140348.png" alt="1567846140348"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567846179573.png" alt="1567846179573"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567846234175.png" alt="1567846234175"></p>
+<p><img src="https://gitee.com/zhuuuu/java_web_notes/raw/master/JavaWeb.assets/1567846369751.png" alt="1567846369751"></p>
+<p>解决警告问题</p>
+<p>必须要的配置：<strong>为什么会有这个问题：我们访问一个网站，需要指定一个文件夹名字；</strong></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567846421963.png" alt="1567846421963"></p>
+<p><img src="https://gitee.com/zhuuuu/java_web_notes/raw/master/JavaWeb.assets/1567846546465.png" alt="1567846546465"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567846559111.png" alt="1567846559111"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567846640372.png" alt="1567846640372"></p>
+<h3 id="510-pom文件"><a class="markdownIt-Anchor" href="#510-pom文件">#</a> 5.10 pom 文件</h3>
+<p>pom.xml 是 Maven 的核心配置文件</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567846784849.png" alt="1567846784849"></p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;
+
+&lt;!--Maven版本和头文件--&gt;
+&lt;project xmlns&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0&quot; xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;
+  xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0 http:&#x2F;&#x2F;maven.apache.org&#x2F;xsd&#x2F;maven-4.0.0.xsd&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;&#x2F;modelVersion&gt;
+
+  &lt;!--这里就是我们刚才配置的GAV--&gt;
+  &lt;groupId&gt;com.kuang&lt;&#x2F;groupId&gt;
+  &lt;artifactId&gt;javaweb-01-maven&lt;&#x2F;artifactId&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;&#x2F;version&gt;
+  &lt;!--Package：项目的打包方式
+  jar：java应用
+  war：JavaWeb应用
+  --&gt;
+  &lt;packaging&gt;war&lt;&#x2F;packaging&gt;
+
+
+  &lt;!--配置--&gt;
+  &lt;properties&gt;
+    &lt;!--项目的默认构建编码--&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;&#x2F;project.build.sourceEncoding&gt;
+    &lt;!--编码版本--&gt;
+    &lt;maven.compiler.source&gt;1.8&lt;&#x2F;maven.compiler.source&gt;
+    &lt;maven.compiler.target&gt;1.8&lt;&#x2F;maven.compiler.target&gt;
+  &lt;&#x2F;properties&gt;
+
+  &lt;!--项目依赖--&gt;
+  &lt;dependencies&gt;
+    &lt;!--具体依赖的jar包配置文件--&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;&#x2F;groupId&gt;
+      &lt;artifactId&gt;junit&lt;&#x2F;artifactId&gt;
+      &lt;version&gt;4.11&lt;&#x2F;version&gt;
+    &lt;&#x2F;dependency&gt;
+  &lt;&#x2F;dependencies&gt;
+
+  &lt;!--项目构建用的东西--&gt;
+  &lt;build&gt;
+    &lt;finalName&gt;javaweb-01-maven&lt;&#x2F;finalName&gt;
+    &lt;pluginManagement&gt;&lt;!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) --&gt;
+      &lt;plugins&gt;
+        &lt;plugin&gt;
+          &lt;artifactId&gt;maven-clean-plugin&lt;&#x2F;artifactId&gt;
+          &lt;version&gt;3.1.0&lt;&#x2F;version&gt;
+        &lt;&#x2F;plugin&gt;
+        &lt;!-- see http:&#x2F;&#x2F;maven.apache.org&#x2F;ref&#x2F;current&#x2F;maven-core&#x2F;default-bindings.html#Plugin_bindings_for_war_packaging --&gt;
+        &lt;plugin&gt;
+          &lt;artifactId&gt;maven-resources-plugin&lt;&#x2F;artifactId&gt;
+          &lt;version&gt;3.0.2&lt;&#x2F;version&gt;
+        &lt;&#x2F;plugin&gt;
+        &lt;plugin&gt;
+          &lt;artifactId&gt;maven-compiler-plugin&lt;&#x2F;artifactId&gt;
+          &lt;version&gt;3.8.0&lt;&#x2F;version&gt;
+        &lt;&#x2F;plugin&gt;
+        &lt;plugin&gt;
+          &lt;artifactId&gt;maven-surefire-plugin&lt;&#x2F;artifactId&gt;
+          &lt;version&gt;2.22.1&lt;&#x2F;version&gt;
+        &lt;&#x2F;plugin&gt;
+        &lt;plugin&gt;
+          &lt;artifactId&gt;maven-war-plugin&lt;&#x2F;artifactId&gt;
+          &lt;version&gt;3.2.2&lt;&#x2F;version&gt;
+        &lt;&#x2F;plugin&gt;
+        &lt;plugin&gt;
+          &lt;artifactId&gt;maven-install-plugin&lt;&#x2F;artifactId&gt;
+          &lt;version&gt;2.5.2&lt;&#x2F;version&gt;
+        &lt;&#x2F;plugin&gt;
+        &lt;plugin&gt;
+          &lt;artifactId&gt;maven-deploy-plugin&lt;&#x2F;artifactId&gt;
+          &lt;version&gt;2.8.2&lt;&#x2F;version&gt;
+        &lt;&#x2F;plugin&gt;
+      &lt;&#x2F;plugins&gt;
+    &lt;&#x2F;pluginManagement&gt;
+  &lt;&#x2F;build&gt;
+&lt;&#x2F;project&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://gitee.com/zhuuuu/java_web_notes/raw/master/JavaWeb.assets/1567847410771.png" alt="1567847410771"></p>
+<p>maven 由于他的约定大于配置，我们之后可以能遇到我们写的配置文件，无法被导出或者生效的问题，解决方案：</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!--在build中配置resources，来防止我们资源导出失败的问题--&gt;
+&lt;build&gt;
+    &lt;resources&gt;
+        &lt;resource&gt;
+            &lt;directory&gt;src&#x2F;main&#x2F;resources&lt;&#x2F;directory&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**&#x2F;*.properties&lt;&#x2F;include&gt;
+                &lt;include&gt;**&#x2F;*.xml&lt;&#x2F;include&gt;
+            &lt;&#x2F;includes&gt;
+            &lt;filtering&gt;true&lt;&#x2F;filtering&gt;
+        &lt;&#x2F;resource&gt;
+        &lt;resource&gt;
+            &lt;directory&gt;src&#x2F;main&#x2F;java&lt;&#x2F;directory&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**&#x2F;*.properties&lt;&#x2F;include&gt;
+                &lt;include&gt;**&#x2F;*.xml&lt;&#x2F;include&gt;
+            &lt;&#x2F;includes&gt;
+            &lt;filtering&gt;true&lt;&#x2F;filtering&gt;
+        &lt;&#x2F;resource&gt;
+    &lt;&#x2F;resources&gt;
+&lt;&#x2F;build&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="512-idea操作"><a class="markdownIt-Anchor" href="#512-idea操作">#</a> 5.12 IDEA 操作</h3>
+<p><img src="https://gitee.com/zhuuuu/java_web_notes/raw/master/JavaWeb.assets/1567847630808.png" alt="1567847630808"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567847662429.png" alt="1567847662429"></p>
+<h3 id="513-解决遇到的问题"><a class="markdownIt-Anchor" href="#513-解决遇到的问题">#</a> 5.13 解决遇到的问题</h3>
+<ol>
+<li>
+<p>Maven 3.6.2</p>
+<p>解决方法：降级为 3.6.1</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567904721301.png" alt="1567904721301"></p>
+</li>
+<li>
+<p>Tomcat 闪退</p>
+</li>
+<li>
+<p>IDEA 中每次都要重复配置 Maven 在 IDEA 中的全局默认配置中去配置</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567905247201.png" alt="1567905247201"></p>
+<p><img src="https://gitee.com/zhuuuu/java_web_notes/raw/master/JavaWeb.assets/1567905291002.png" alt="1567905291002"></p>
+</li>
+<li>
+<p>Maven 项目中 Tomcat 无法配置</p>
+</li>
+<li>
+<p>maven 默认 web 项目中的 web.xml 版本问题</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1567905537026.png" alt="1567905537026"></p>
+</li>
+<li>
+<p>替换为 webapp4.0 版本和 tomcat 一致</p>
+ <pre class="line-numbers language-none"><code class="language-none">	&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;
+	&lt;web-app xmlns&#x3D;&quot;http:&#x2F;&#x2F;xmlns.jcp.org&#x2F;xml&#x2F;ns&#x2F;javaee&quot;
+	         xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;
+	         xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;xmlns.jcp.org&#x2F;xml&#x2F;ns&#x2F;javaee
+	                      http:&#x2F;&#x2F;xmlns.jcp.org&#x2F;xml&#x2F;ns&#x2F;javaee&#x2F;web-app_4_0.xsd&quot;
+	         version&#x3D;&quot;4.0&quot;
+	         metadata-complete&#x3D;&quot;true&quot;&gt;
+
+
+​	
+​	
+​	&lt;&#x2F;web-app&gt;
+​	&#96;&#96;&#96;
+
+7. Maven仓库的使用
+
+	地址：[https:&#x2F;&#x2F;mvnrepository.com&#x2F;](https:&#x2F;&#x2F;gitee.com&#x2F;link?target&#x3D;https%3A%2F%2Fmvnrepository.com%2F)
+	
+	![1567905870750](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;HarryQu1229&#x2F;image-host&#x2F;main&#x2F;notes-img&#x2F;1567905870750.png)
+	
+	![1567905982979](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;HarryQu1229&#x2F;image-host&#x2F;main&#x2F;notes-img&#x2F;1567905982979.png)
+	
+	![1567906017448](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;HarryQu1229&#x2F;image-host&#x2F;main&#x2F;notes-img&#x2F;1567906017448.png)
+	
+	![1567906039469](https:&#x2F;&#x2F;gitee.com&#x2F;zhuuuu&#x2F;java_web_notes&#x2F;raw&#x2F;master&#x2F;JavaWeb.assets&#x2F;1567906039469.png)
+
+## 6、Servlet
+
+### 6.1、Servlet简介
+
+- Servlet就是sun公司开发动态web的一门技术
+- Sun在这些API中提供一个接口叫做：Servlet，如果你想开发一个Servlet程序，只需要完成两个小步骤：
+	- 编写一个类，实现Servlet接口
+	- 把开发好的Java类部署到web服务器中。
+
+**把实现了Servlet接口的Java程序叫做，Servlet**
+
+### 6.2、HelloServlet
+
+Serlvet接口Sun公司有两个默认的实现类：HttpServlet，GenericServlet
+
+1. 构建一个普通的Maven项目，删掉里面的src目录，以后我们的学习就在这个项目里面建立Moudel；这个空的工程就是Maven主工程；
+
+2. 关于Maven父子工程的理解：
+
+	父项目中会有
+	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code> &lt;modules&gt;
+     &lt;module&gt;servlet-01&lt;/module&gt;
+ &lt;/modules&gt;
+</code></pre>
+ <pre class="line-numbers language-none"><code class="language-none">
+子项目会有
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code> &lt;parent&gt;
+     &lt;artifactId&gt;javaweb-02-servlet&lt;/artifactId&gt;
+     &lt;groupId&gt;com.kuang&lt;/groupId&gt;
+     &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+ &lt;/parent&gt;
+</code></pre>
+ <pre class="line-numbers language-none"><code class="language-none">
+父项目中的java子项目可以直接使用
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>son extends father</p>
+ <pre class="line-numbers language-none"><code class="language-none">
+3. Maven环境优化
+
+	1. 修改web.xml为最新的
+	2. 将maven的结构搭建完整
+
+4. 编写一个Servlet程序
+
+	![1567911804700](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;HarryQu1229&#x2F;image-host&#x2F;main&#x2F;notes-img&#x2F;1567911804700.png)
+	
+	1. 编写一个普通类
+	
+	2. 实现Servlet接口，这里我们直接继承HttpServlet
+	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code> public class HelloServlet extends HttpServlet &#123;
+     
+     //由于get或者post只是请求实现的不同的方式，可以相互调用，业务逻辑都一样；
+     @Override
+     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;
+         //ServletOutputStream outputStream = resp.getOutputStream();
+         PrintWriter writer = resp.getWriter(); //响应流
+         writer.print(&quot;Hello,Serlvet&quot;);
+     &#125;
+ 
+     @Override
+     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;
+         doGet(req, resp);
+     &#125;
+ &#125;
+ <pre class="line-numbers language-none"><code class="language-none">
+5. 编写Servlet的映射
+
+	为什么需要映射：我们写的是JAVA程序，但是要通过浏览器访问，而浏览器需要连接web服务器，所以我们需要再web服务中注册我们写的Servlet，还需给他一个浏览器能够访问的路径；
+	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ &lt;!--注册Servlet--&gt;
+ &lt;servlet&gt;
+     &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
+     &lt;servlet-class&gt;com.kuang.servlet.HelloServlet&lt;/servlet-class&gt;
+ &lt;/servlet&gt;
+ &lt;!--Servlet的请求路径--&gt;
+ &lt;servlet-mapping&gt;
+     &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
+     &lt;url-pattern&gt;/hello&lt;/url-pattern&gt;
+ &lt;/servlet-mapping&gt;
+</code></pre>
+ <pre class="line-numbers language-none"><code class="language-none">
+6. 配置Tomcat
+
+	注意：配置项目发布的路径就可以了
+
+7. 启动测试，OK！
+
+### 6.3、Servlet原理
+
+Servlet是由Web服务器调用，web服务器在收到浏览器请求之后，会：
+
+![1567913793252](https:&#x2F;&#x2F;gitee.com&#x2F;zhuuuu&#x2F;java_web_notes&#x2F;raw&#x2F;master&#x2F;JavaWeb.assets&#x2F;1567913793252.png)
+
+### 6.4、Mapping问题
+
+1. 一个Servlet可以指定一个映射路径
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code> &lt;servlet-mapping&gt;
+     &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
+     &lt;url-pattern&gt;/hello&lt;/url-pattern&gt;
+ &lt;/servlet-mapping&gt;
+</code></pre>
+ <pre class="line-numbers language-none"><code class="language-none">
+2. 一个Servlet可以指定多个映射路径
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code> &lt;servlet-mapping&gt;
+     &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
+     &lt;url-pattern&gt;/hello&lt;/url-pattern&gt;
+ &lt;/servlet-mapping&gt;
+ &lt;servlet-mapping&gt;
+     &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
+     &lt;url-pattern&gt;/hello2&lt;/url-pattern&gt;
+ &lt;/servlet-mapping&gt;
+ &lt;servlet-mapping&gt;
+     &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
+     &lt;url-pattern&gt;/hello3&lt;/url-pattern&gt;
+ &lt;/servlet-mapping&gt;
+ &lt;servlet-mapping&gt;
+     &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
+     &lt;url-pattern&gt;/hello4&lt;/url-pattern&gt;
+ &lt;/servlet-mapping&gt;
+ &lt;servlet-mapping&gt;
+     &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
+     &lt;url-pattern&gt;/hello5&lt;/url-pattern&gt;
+ &lt;/servlet-mapping&gt;
+</code></pre>
+ <pre class="line-numbers language-none"><code class="language-none">
+3. 一个Servlet可以指定通用映射路径
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code> &lt;servlet-mapping&gt;
+     &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
+     &lt;url-pattern&gt;/hello/*&lt;/url-pattern&gt;
+ &lt;/servlet-mapping&gt;
+</code></pre>
+ <pre class="line-numbers language-none"><code class="language-none">
+4. 默认请求路径
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code> &lt;!--默认请求路径--&gt;
+ &lt;servlet-mapping&gt;
+     &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
+     &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+ &lt;/servlet-mapping&gt;
+</code></pre>
+ <pre class="line-numbers language-none"><code class="language-none">
+5. 指定一些后缀或者前缀等等….
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+ <!--可以自定义后缀实现请求映射
+     注意点，*前面不能加项目映射的路径
+     hello/sajdlkajda.qinjiang
+     -->
+ <servlet-mapping>
+     <servlet-name>hello</servlet-name>
+     <url-pattern>*.qinjiang</url-pattern>
+ </servlet-mapping>
+ <pre class="line-numbers language-none"><code class="language-none">
+6. 优先级问题 指定了固有的映射路径优先级最高，如果找不到就会走默认的处理请求；
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+ <!--404-->
+ <servlet>
+     <servlet-name>error</servlet-name>
+     <servlet-class>com.kuang.servlet.ErrorServlet</servlet-class>
+ </servlet>
+ <servlet-mapping>
+     <servlet-name>error</servlet-name>
+     <url-pattern>/*</url-pattern>
+ </servlet-mapping>
+ <pre class="line-numbers language-none"><code class="language-none">
+### 6.5、ServletContext
+
+web容器在启动的时候，它会为每个web程序都创建一个对应的ServletContext对象，它代表了当前的web应用；
+
+#### 1、共享数据
+
+我在这个Servlet中保存的数据，可以在另外一个servlet中拿到；
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<p>public class HelloServlet extends HttpServlet {<br>
+@Override<br>
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {</p>
+<pre><code>    //this.getInitParameter()   初始化参数
+    //this.getServletConfig()   Servlet配置
+    //this.getServletContext()  Servlet上下文
+    ServletContext context = this.getServletContext();
+
+    String username = &quot;秦疆&quot;; //数据
+    context.setAttribute(&quot;username&quot;,username); //将一个数据保存在了ServletContext中，名字为：username 。值 username
+
+&#125;
+</code></pre>
+<p>}<br>
+public class GetServlet extends HttpServlet {<br>
+@Override<br>
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {<br>
+ServletContext context = this.getServletContext();<br>
+String username = (String) context.getAttribute(“username”);</p>
+<pre><code>    resp.setContentType(&quot;text/html&quot;);
+    resp.setCharacterEncoding(&quot;utf-8&quot;);
+    resp.getWriter().print(&quot;名字&quot;+username);
+
+&#125;
+
+@Override
+protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;
+    doGet(req, resp);
+&#125;
+</code></pre>
+<p>}<br>
+<servlet><br>
+<servlet-name>hello</servlet-name><br>
+<servlet-class>com.kuang.servlet.HelloServlet</servlet-class><br>
+</servlet><br>
+<servlet-mapping><br>
+<servlet-name>hello</servlet-name><br>
+<url-pattern>/hello</url-pattern><br>
+</servlet-mapping></p>
+<pre><code>&lt;servlet&gt;
+    &lt;servlet-name&gt;getc&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;com.kuang.servlet.GetServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;getc&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/getc&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">
+测试访问结果；
+
+#### 2、获取初始化参数
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>&lt;!--配置一些web应用初始化参数--&gt;
+&lt;context-param&gt;
+    &lt;param-name&gt;url&lt;/param-name&gt;
+    &lt;param-value&gt;jdbc:mysql://localhost:3306/mybatis&lt;/param-value&gt;
+&lt;/context-param&gt;
+</code></pre>
+<p>protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {<br>
+ServletContext context = this.getServletContext();<br>
+String url = context.getInitParameter(“url”);<br>
+resp.getWriter().print(url);<br>
+}</p>
+<pre class="line-numbers language-none"><code class="language-none">
+#### 3、请求转发
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>@Override<br>
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {<br>
+ServletContext context = this.getServletContext();<br>
+System.out.println (“进入了 ServletDemo04”);<br>
+//RequestDispatcher requestDispatcher = context.getRequestDispatcher (&quot;/gp&quot;); // 转发的请求路径<br>
+<a target="_blank" rel="noopener" href="//requestDispatcher.forward"> //requestDispatcher.forward</a> (req,resp); // 调用 forward 实现请求转发；<br>
+context.getRequestDispatcher(&quot;/gp&quot;).forward(req,resp);<br>
+}</p>
+<pre class="line-numbers language-none"><code class="language-none">
+![1567924457532](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;HarryQu1229&#x2F;image-host&#x2F;main&#x2F;notes-img&#x2F;1567924457532.png)
+
+#### 4、读取资源文件
+
+Properties
+
+- 在java目录下新建properties
+- 在resources目录下新建properties
+
+发现：都被打包到了同一个路径下：classes，我们俗称这个路径为classpath:
+
+思路：需要一个文件流；
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>username=root12312<br>
+password=zxczxczxc<br>
+public class ServletDemo05 extends HttpServlet {<br>
+@Override<br>
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {</p>
+<pre><code>    InputStream is = this.getServletContext().getResourceAsStream(&quot;/WEB-INF/classes/com/kuang/servlet/aa.properties&quot;);
+
+    Properties prop = new Properties();
+    prop.load(is);
+    String user = prop.getProperty(&quot;username&quot;);
+    String pwd = prop.getProperty(&quot;password&quot;);
+
+    resp.getWriter().print(user+&quot;:&quot;+pwd);
+
+&#125;
+
+@Override
+protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;
+    doGet(req, resp);
+&#125;
+</code></pre>
+<p>}</p>
+<pre class="line-numbers language-none"><code class="language-none">
+访问测试即可ok；
+
+### 6.6、HttpServletResponse
+
+web服务器接收到客户端的http请求，针对这个请求，分别创建一个代表请求的HttpServletRequest对象，代表响应的一个HttpServletResponse；
+
+- 如果要获取客户端请求过来的参数：找HttpServletRequest
+- 如果要给客户端响应一些信息：找HttpServletResponse
+
+#### 1、简单分类
+
+负责向浏览器发送数据的方法
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>ServletOutputStream getOutputStream() throws IOException;<br>
+PrintWriter getWriter() throws IOException;</p>
+<pre class="line-numbers language-none"><code class="language-none">
+负责向浏览器发送响应头的方法
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>void setCharacterEncoding(String var1);
+
+void setContentLength(int var1);
+
+void setContentLengthLong(long var1);
+
+void setContentType(String var1);
+
+void setDateHeader(String var1, long var2);
+
+void addDateHeader(String var1, long var2);
+
+void setHeader(String var1, String var2);
+
+void addHeader(String var1, String var2);
+
+void setIntHeader(String var1, int var2);
+
+void addIntHeader(String var1, int var2);
+</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">
+响应的状态码
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>int SC_CONTINUE = 100;
+int SC_SWITCHING_PROTOCOLS = 101;
+int SC_OK = 200;
+int SC_CREATED = 201;
+int SC_ACCEPTED = 202;
+int SC_NON_AUTHORITATIVE_INFORMATION = 203;
+int SC_NO_CONTENT = 204;
+int SC_RESET_CONTENT = 205;
+int SC_PARTIAL_CONTENT = 206;
+int SC_MULTIPLE_CHOICES = 300;
+int SC_MOVED_PERMANENTLY = 301;
+int SC_MOVED_TEMPORARILY = 302;
+int SC_FOUND = 302;
+int SC_SEE_OTHER = 303;
+int SC_NOT_MODIFIED = 304;
+int SC_USE_PROXY = 305;
+int SC_TEMPORARY_REDIRECT = 307;
+int SC_BAD_REQUEST = 400;
+int SC_UNAUTHORIZED = 401;
+int SC_PAYMENT_REQUIRED = 402;
+int SC_FORBIDDEN = 403;
+int SC_NOT_FOUND = 404;
+int SC_METHOD_NOT_ALLOWED = 405;
+int SC_NOT_ACCEPTABLE = 406;
+int SC_PROXY_AUTHENTICATION_REQUIRED = 407;
+int SC_REQUEST_TIMEOUT = 408;
+int SC_CONFLICT = 409;
+int SC_GONE = 410;
+int SC_LENGTH_REQUIRED = 411;
+int SC_PRECONDITION_FAILED = 412;
+int SC_REQUEST_ENTITY_TOO_LARGE = 413;
+int SC_REQUEST_URI_TOO_LONG = 414;
+int SC_UNSUPPORTED_MEDIA_TYPE = 415;
+int SC_REQUESTED_RANGE_NOT_SATISFIABLE = 416;
+int SC_EXPECTATION_FAILED = 417;
+int SC_INTERNAL_SERVER_ERROR = 500;
+int SC_NOT_IMPLEMENTED = 501;
+int SC_BAD_GATEWAY = 502;
+int SC_SERVICE_UNAVAILABLE = 503;
+int SC_GATEWAY_TIMEOUT = 504;
+int SC_HTTP_VERSION_NOT_SUPPORTED = 505;
+</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">
+#### 2、下载文件
+
+1. 向浏览器输出消息 （一直在讲，就不说了）
+2. 下载文件
+	1. 要获取下载文件的路径
+	2. 下载的文件名是啥？
+	3. 设置想办法让浏览器能够支持下载我们需要的东西
+	4. 获取下载文件的输入流
+	5. 创建缓冲区
+	6. 获取OutputStream对象
+	7. 将FileOutputStream流写入到buffer缓冲区
+	8. 使用OutputStream将缓冲区中的数据输出到客户端！
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>@Override<br>
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {<br>
+// 1. 要获取下载文件的路径<br>
+ String realPath = “F:\ 班级管理 \ 西开【19525】\2、代码 \JavaWeb\javaweb-02-servlet\response\target\classes\ 秦疆.png”;<br>
+System.out.println (“下载文件的路径：”+realPath);<br>
+// 2. 下载的文件名是啥？<br>
+String fileName = realPath.substring(realPath.lastIndexOf(&quot;\&quot;) + 1);<br>
+// 3. 设置想办法让浏览器能够支持 (Content-Disposition) 下载我们需要的东西，中文文件名 URLEncoder.encode 编码，否则有可能乱码<br>
+ resp.setHeader (“Content-Disposition”,“attachment;filename=”+URLEncoder.encode (fileName,“UTF-8”));<br>
+// 4. 获取下载文件的输入流<br>
+ FileInputStream in = new FileInputStream (realPath);<br>
+// 5. 创建缓冲区<br>
+ int len = 0;<br>
+byte[] buffer = new byte[1024];<br>
+// 6. 获取 OutputStream 对象<br>
+ ServletOutputStream out = resp.getOutputStream ();<br>
+// 7. 将 FileOutputStream 流写入到 buffer 缓冲区，使用 OutputStream 将缓冲区中的数据输出到客户端！<br>
+while ((len=in.read(buffer))&gt;0){<br>
+out.write(buffer,0,len);<br>
+}</p>
+<pre><code>in.close();
+out.close();
+</code></pre>
+<p>}</p>
+<pre class="line-numbers language-none"><code class="language-none">
+#### 3、验证码功能
+
+验证怎么来的？
+
+- 前端实现
+- 后端实现，需要用到 Java 的图片类，生产一个图片
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>package com.kuang.servlet;</p>
+<p>import javax.imageio.ImageIO;<br>
+import javax.servlet.ServletException;<br>
+import javax.servlet.http.HttpServlet;<br>
+import javax.servlet.http.HttpServletRequest;<br>
+import javax.servlet.http.HttpServletResponse;<br>
+import java.awt.*;<br>
+import java.awt.image.BufferedImage;<br>
+import java.io.IOException;<br>
+import java.util.Random;</p>
+<p>public class ImageServlet extends HttpServlet {</p>
+<pre><code>@Override
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;
+
+    //如何让浏览器3秒自动刷新一次;
+    resp.setHeader(&quot;refresh&quot;,&quot;3&quot;);
+    
+    //在内存中创建一个图片
+    BufferedImage image = new BufferedImage(80,20,BufferedImage.TYPE_INT_RGB);
+    //得到图片
+    Graphics2D g = (Graphics2D) image.getGraphics(); //笔
+    //设置图片的背景颜色
+    g.setColor(Color.white);
+    g.fillRect(0,0,80,20);
+    //给图片写数据
+    g.setColor(Color.BLUE);
+    g.setFont(new Font(null,Font.BOLD,20));
+    g.drawString(makeNum(),0,20);
+
+    //告诉浏览器，这个请求用图片的方式打开
+    resp.setContentType(&quot;image/jpeg&quot;);
+    //网站存在缓存，不让浏览器缓存
+    resp.setDateHeader(&quot;expires&quot;,-1);
+    resp.setHeader(&quot;Cache-Control&quot;,&quot;no-cache&quot;);
+    resp.setHeader(&quot;Pragma&quot;,&quot;no-cache&quot;);
+
+    //把图片写给浏览器
+    ImageIO.write(image,&quot;jpg&quot;, resp.getOutputStream());
+
+&#125;
+
+//生成随机数
+private String makeNum()&#123;
+    Random random = new Random();
+    String num = random.nextInt(9999999) + &quot;&quot;;
+    StringBuffer sb = new StringBuffer();
+    for (int i = 0; i &lt; 7-num.length() ; i++) &#123;
+        sb.append(&quot;0&quot;);
+    &#125;
+    num = sb.toString() + num;
+    return num;
+&#125;
+
+
+@Override
+protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;
+    doGet(req, resp);
+&#125;
+</code></pre>
+<p>}</p>
+<pre class="line-numbers language-none"><code class="language-none">
+#### 4、实现重定向
+
+![1567931587955](https:&#x2F;&#x2F;gitee.com&#x2F;zhuuuu&#x2F;java_web_notes&#x2F;raw&#x2F;master&#x2F;JavaWeb.assets&#x2F;1567931587955.png)
+
+B一个web资源收到客户端A请求后，B他会通知A客户端去访问另外一个web资源C，这个过程叫重定向
+
+常见场景：
+
+- 用户登录
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>void sendRedirect(String var1) throws IOException;</p>
+<pre class="line-numbers language-none"><code class="language-none">
+测试：
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>@Override<br>
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {</p>
+<pre><code>/*
+    resp.setHeader(&quot;Location&quot;,&quot;/r/img&quot;);
+    resp.setStatus(302);
+     */
+resp.sendRedirect(&quot;/r/img&quot;);//重定向
+</code></pre>
+<p>}</p>
+<pre class="line-numbers language-none"><code class="language-none">
+面试题：请你聊聊重定向和转发的区别？
+
+相同点
+
+- 页面都会实现跳转
+
+不同点
+
+- 请求转发的时候，url不会产生变化
+- 重定向时候，url地址栏会发生变化；
+
+![1567932163430](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;HarryQu1229&#x2F;image-host&#x2F;main&#x2F;notes-img&#x2F;1567932163430.png)
+
+#### 5、简单实现登录重定向
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>&lt;%–这里提交的路径，需要寻找到项目的路径–%&gt;<br>
+&lt;%–${pageContext.request.contextPath} 代表当前的项目–%&gt;</p>
+<form action="${pageContext.request.contextPath}/login" method="get">
+    用户名：<input type="text" name="username"> <br>
+    密码：<input type="password" name="password"> <br>
+    <input type="submit">
+</form>
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //处理请求
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+<pre><code>    System.out.println(username+&quot;:&quot;+password);
+
+    //重定向时候一定要注意，路径问题，否则404；
+    resp.sendRedirect(&quot;/r/success.jsp&quot;);
+&#125;
+</code></pre>
+  <servlet>
+    <servlet-name>requset</servlet-name>
+    <servlet-class>com.kuang.servlet.RequestTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>requset</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<h1>Success</h1>
+<!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" title="本站使用JsDelivr为静态资源提供CDN加速"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，默认线路托管于Vercel"><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用双线部署，联通线路托管于Coding"><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
+    }
+  </script><!-- hexo injector body_end end --></body>
+</html>
+<pre class="line-numbers language-none"><code class="language-none">
+### 6.7、HttpServletRequest
+
+HttpServletRequest代表客户端的请求，用户通过Http协议访问服务器，HTTP请求中的所有信息会被封装到HttpServletRequest，通过这个HttpServletRequest的方法，获得客户端的所有信息；
+
+![1567933996830](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;HarryQu1229&#x2F;image-host&#x2F;main&#x2F;notes-img&#x2F;1567933996830.png)
+
+![1567934023106](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;HarryQu1229&#x2F;image-host&#x2F;main&#x2F;notes-img&#x2F;1567934023106.png)
+
+#### 获取参数，请求转发
+
+![1567934110794](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;HarryQu1229&#x2F;image-host&#x2F;main&#x2F;notes-img&#x2F;1567934110794.png)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+@Override
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+<pre><code>req.setCharacterEncoding(&quot;utf-8&quot;);
+resp.setCharacterEncoding(&quot;utf-8&quot;);
+
+String username = req.getParameter(&quot;username&quot;);
+String password = req.getParameter(&quot;password&quot;);
+String[] hobbys = req.getParameterValues(&quot;hobbys&quot;);
+System.out.println(&quot;=============================&quot;);
+//后台接收中文乱码问题
+System.out.println(username);
+System.out.println(password);
+System.out.println(Arrays.toString(hobbys));
+System.out.println(&quot;=============================&quot;);
+
+
+System.out.println(req.getContextPath());
+//通过请求转发
+//这里的 / 代表当前的web应用
+req.getRequestDispatcher(&quot;/success.jsp&quot;).forward(req,resp);
+</code></pre>
+<p>}</p>
+<pre class="line-numbers language-none"><code class="language-none">
+**面试题：请你聊聊重定向和转发的区别？**
+
+相同点
+
+- 页面都会实现跳转
+
+不同点
+
+- 请求转发的时候，url不会产生变化 307
+- 重定向时候，url地址栏会发生变化； 302
+
+## 7、Cookie、Session
+
+### 7.1、会话
+
+**会话**：用户打开一个浏览器，点击了很多超链接，访问多个web资源，关闭浏览器，这个过程可以称之为会话；
+
+**有状态会话**：一个同学来过教室，下次再来教室，我们会知道这个同学，曾经来过，称之为有状态会话；
+
+**你能怎么证明你是西开的学生？**
+
+你 西开
+
+1. 发票 西开给你发票
+2. 学校登记 西开标记你来过了
+
+**一个网站，怎么证明你来过？**
+
+客户端 服务端
+
+1. 服务端给客户端一个 信件，客户端下次访问服务端带上信件就可以了； cookie
+2. 服务器登记你来过了，下次你来的时候我来匹配你； seesion
+
+### 7.2、保存会话的两种技术
+
+**cookie**
+
+- 客户端技术 （响应，请求）
+
+**session**
+
+- 服务器技术，利用这个技术，可以保存用户的会话信息？ 我们可以把信息或者数据放在Session中！
+
+常见常见：网站登录之后，你下次不用再登录了，第二次访问直接就上去了！
+
+### 7.3、Cookie
+
+![1568344447291](https:&#x2F;&#x2F;gitee.com&#x2F;zhuuuu&#x2F;java_web_notes&#x2F;raw&#x2F;master&#x2F;JavaWeb.assets&#x2F;1568344447291.png)
+
+1. 从请求中拿到cookie信息
+2. 服务器响应给客户端cookie
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Cookie [] cookies = req.getCookies (); // 获得 Cookie<br>
+cookie.getName (); // 获得 cookie 中的 key<br>
+cookie.getValue (); // 获得 cookie 中的 vlaue<br>
+new Cookie (“lastLoginTime”, System.currentTimeMillis ()+&quot;&quot;); // 新建一个 cookie<br>
+cookie.setMaxAge(24<em>60</em>60); // 设置 cookie 的有效期<br>
+ resp.addCookie (cookie); // 响应给客户端一个 cookie</p>
+<pre class="line-numbers language-none"><code class="language-none">
+**cookie：一般会保存在本地的 用户目录下 appdata；**
+
+一个网站cookie是否存在上限！**聊聊细节问题**
+
+- 一个Cookie只能保存一个信息；
+- 一个web站点可以给浏览器发送多个cookie，最多存放20个cookie；
+- Cookie大小有限制4kb；
+- 300个cookie浏览器上限
+
+**删除Cookie；**
+
+- 不设置有效期，关闭浏览器，自动失效；
+- 设置有效期时间为 0 ；
+
+**编码解码：**
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>URLEncoder.encode (“秦疆”,“utf-8”)<br>
+URLDecoder.decode(cookie.getValue(),“UTF-8”)</p>
+<pre class="line-numbers language-none"><code class="language-none">
+### 7.4、Session（重点）
+
+![1568344560794](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;HarryQu1229&#x2F;image-host&#x2F;main&#x2F;notes-img&#x2F;1568344560794.png)
+
+什么是Session：
+
+- 服务器会给每一个用户（浏览器）创建一个Seesion对象；
+- 一个Seesion独占一个浏览器，只要浏览器没有关闭，这个Session就存在；
+- 用户登录之后，整个网站它都可以访问！--&gt; 保存用户的信息；保存购物车的信息…..
+
+![1568342773861](https:&#x2F;&#x2F;gitee.com&#x2F;zhuuuu&#x2F;java_web_notes&#x2F;raw&#x2F;master&#x2F;JavaWeb.assets&#x2F;1568342773861.png)
+
+Session和cookie的区别：
+
+- Cookie是把用户的数据写给用户的浏览器，浏览器保存 （可以保存多个）
+- Session把用户的数据写到用户独占Session中，服务器端保存 （保存重要的信息，减少服务器资源的浪费）
+- Session对象由服务创建；
+
+使用场景：
+
+- 保存一个登录用户的信息；
+- 购物车信息；
+- 在整个网站中经常会使用的数据，我们将它保存在Session中；
+
+使用Session：
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>package com.kuang.servlet;</p>
+<p>import com.kuang.pojo.Person;</p>
+<p>import javax.servlet.ServletException;<br>
+import javax.servlet.http.*;<br>
+import java.io.IOException;</p>
+<p>public class SessionDemo01 extends HttpServlet {<br>
+@Override<br>
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {</p>
+<pre><code>    //解决乱码问题
+    req.setCharacterEncoding(&quot;UTF-8&quot;);
+    resp.setCharacterEncoding(&quot;UTF-8&quot;);
+    resp.setContentType(&quot;text/html;charset=utf-8&quot;);
+    
+    //得到Session
+    HttpSession session = req.getSession();
+    //给Session中存东西
+    session.setAttribute(&quot;name&quot;,new Person(&quot;秦疆&quot;,1));
+    //获取Session的ID
+    String sessionId = session.getId();
+
+    //判断Session是不是新创建
+    if (session.isNew())&#123;
+        resp.getWriter().write(&quot;session创建成功,ID:&quot;+sessionId);
+    &#125;else &#123;
+        resp.getWriter().write(&quot;session以及在服务器中存在了,ID:&quot;+sessionId);
+    &#125;
+
+    //Session创建的时候做了什么事情；
+</code></pre>
+<p>//        Cookie cookie = new Cookie(“JSESSIONID”,sessionId);<br>
+//        resp.addCookie(cookie);</p>
+<pre><code>&#125;
+
+@Override
+protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;
+    doGet(req, resp);
+&#125;
+</code></pre>
+<p>}</p>
+<p>// 得到 Session<br>
+HttpSession session = req.getSession();</p>
+<p>Person person = (Person) session.getAttribute(“name”);</p>
+<p>System.out.println(person.toString());</p>
+<p>HttpSession session = req.getSession();<br>
+session.removeAttribute(“name”);<br>
+// 手动注销 Session<br>
+session.invalidate();</p>
+<pre class="line-numbers language-none"><code class="language-none">
+**会话自动过期：web.xml配置**
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<!--设置Session默认的失效时间-->
+<session-config>
+    <!--15分钟后Session自动失效，以分钟为单位-->
+    <session-timeout>15</session-timeout>
+</session-config>
+<pre class="line-numbers language-none"><code class="language-none">
+![1568344679763](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;HarryQu1229&#x2F;image-host&#x2F;main&#x2F;notes-img&#x2F;1568344679763.png)
+
+## 8、JSP
+
+### 8.1、什么是JSP
+
+Java Server Pages ： Java服务器端页面，也和Servlet一样，用于动态Web技术！
+
+最大的特点：
+
+- 写JSP就像在写HTML
+- 区别：
+	- HTML只给用户提供静态的数据
+	- JSP页面中可以嵌入JAVA代码，为用户提供动态数据；
+
+### 8.2、JSP原理
+
+思路：JSP到底怎么执行的！
+
+- 代码层面没有任何问题
+
+- 服务器内部工作
+
+	tomcat中有一个work目录；
+	
+	IDEA中使用Tomcat的会在IDEA的tomcat中生产一个work目录
+	
+	![1568345873736](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;HarryQu1229&#x2F;image-host&#x2F;main&#x2F;notes-img&#x2F;1568345873736.png)
+	
+	我电脑的地址：
+	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	C:\Users\Administrator\.IntelliJIdea2018.1\system\tomcat\Unnamed_javaweb-session-cookie\work\Catalina\localhost\ROOT\org\apache\jsp
+	<pre class="line-numbers language-none"><code class="language-none">	
+	发现页面转变成了Java程序！
+	
+	![1568345948307](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;HarryQu1229&#x2F;image-host&#x2F;main&#x2F;notes-img&#x2F;1568345948307.png)
+
+**浏览器向服务器发送请求，不管访问什么资源，其实都是在访问Servlet！**
+
+JSP最终也会被转换成为一个Java类！
+
+**JSP 本质上就是一个Servlet**
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+//初始化
+  public void _jspInit() {
+<p>}<br>
+// 销毁<br>
+ public void _jspDestroy () {<br>
+}<br>
+//JSPService<br>
+public void _jspService(.HttpServletRequest request,HttpServletResponse response)</p>
+<pre class="line-numbers language-none"><code class="language-none">
+1. 判断请求
+
+2. 内置一些对象
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>final javax.servlet.jsp.PageContext pageContext;  //页面上下文
+javax.servlet.http.HttpSession session = null;    //session
+final javax.servlet.ServletContext application;   //applicationContext
+final javax.servlet.ServletConfig config;         //config
+javax.servlet.jsp.JspWriter out = null;           //out
+final java.lang.Object page = this;               //page：当前
+HttpServletRequest request                        //请求
+HttpServletResponse response                      //响应
+<pre class="line-numbers language-none"><code class="language-none">
+3. 输出页面前增加的代码
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+response.setContentType(&quot;text/html&quot;);       //设置响应的页面类型
+pageContext = _jspxFactory.getPageContext(this, request, response,
+                                          null, true, 8192, true);
+_jspx_page_context = pageContext;
+application = pageContext.getServletContext();
+config = pageContext.getServletConfig();
+session = pageContext.getSession();
+out = pageContext.getOut();
+_jspx_out = out;
+<pre class="line-numbers language-none"><code class="language-none">
+4. 以上的这些个对象我们可以在JSP页面中直接使用！
+
+![1568347078207](https:&#x2F;&#x2F;gitee.com&#x2F;zhuuuu&#x2F;java_web_notes&#x2F;raw&#x2F;master&#x2F;JavaWeb.assets&#x2F;1568347078207.png)
+
+在JSP页面中；
+
+只要是 JAVA代码就会原封不动的输出；
+
+如果是HTML代码，就会被转换为：
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
+<p>out.write(&quot;<html>\r\n&quot;);</p>
+<pre class="line-numbers language-none"><code class="language-none">
+这样的格式，输出到前端！
+
+### 8.3、JSP基础语法
+
+任何语言都有自己的语法，JAVA中有,。 JSP 作为java技术的一种应用，它拥有一些自己扩充的语法（了解，知道即可！），Java所有语法都支持！
+
+#### **JSP表达式**
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>&lt;%–JSP 表达式<br>
+作用：用来将程序的输出，输出到客户端<br>
+ &lt;%= 变量或者表达式 %&gt;<br>
+–%&gt;<br>
+&lt;%= new java.util.Date()%&gt;</p>
+<pre class="line-numbers language-none"><code class="language-none">
+#### **jsp脚本片段**
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>&lt;%–jsp 脚本片段–%&gt;<br>
+&lt;%<br>
+int sum = 0;<br>
+for (int i = 1; i &lt;=100 ; i++) {<br>
+sum+=i;<br>
+}<br>
+out.println(“<h1>Sum=”+sum+&quot;</h1>&quot;);<br>
+%&gt;</p>
+<pre class="line-numbers language-none"><code class="language-none">
+**脚本片段的再实现**
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>&lt;%<br>
+int x = 10;<br>
+out.println(x);<br>
+%&gt;</p>
+  <p>这是一个JSP文档</p>
+  <%
+    int y = 2;
+    out.println(y);
+  %>
+  <hr>
+<p>&lt;%–在代码嵌入 HTML 元素–%&gt;<br>
+&lt;%<br>
+for (int i = 0; i &lt; 5; i++) {<br>
+%&gt;<br>
+<h1>Hello,World  &lt;%=i%&gt; </h1><br>
+&lt;%<br>
+}<br>
+%&gt;</p>
+<pre class="line-numbers language-none"><code class="language-none">
+#### JSP声明
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>&lt;%!<br>
+static {<br>
+System.out.println(“Loading Servlet!”);<br>
+}</p>
+<pre><code>private int globalVar = 0;
+
+public void kuang()&#123;
+  System.out.println(&quot;进入了方法Kuang！&quot;);
+&#125;
+</code></pre>
+<p>%&gt;</p>
+<pre class="line-numbers language-none"><code class="language-none">
+JSP声明：会被编译到JSP生成Java的类中！其他的，就会被生成到_jspService方法中！
+
+在JSP，嵌入Java代码即可！
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>&lt;%%&gt;<br>
+&lt;%=%&gt;<br>
+&lt;%!%&gt;</p>
+<p>&lt;%–注释–%&gt;</p>
+<pre class="line-numbers language-none"><code class="language-none">
+JSP的注释，不会在客户端显示，HTML就会！
+
+### 8.4、JSP指令
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>&lt;%@page args… %&gt;<br>
+&lt;%@include file=&quot;&quot;%&gt;</p>
+<p>&lt;%–@include 会将两个页面合二为一–%&gt;</p>
+<p>&lt;%@include file=“common/header.jsp”%&gt;</p>
+<h1>网页主体</h1>
+<p>&lt;%@include file=“common/footer.jsp”%&gt;</p>
+<hr>
+<p>&lt;%–jSP 标签<br>
+ jsp:include：拼接页面，本质还是三个<br>
+–%&gt;<br>
+&lt;jsp:include page=&quot;/common/header.jsp&quot;/&gt;</p>
+<h1>网页主体</h1>
+<jsp:include page="/common/footer.jsp"/>
+<pre class="line-numbers language-none"><code class="language-none">
+### 8.5、9大内置对象
+
+- PageContext 存东西
+- Request 存东西
+- Response
+- Session 存东西
+- Application 【SerlvetContext】 存东西
+- config 【SerlvetConfig】
+- out
+- page ，不用了解
+- exception
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+pageContext.setAttribute("name1","秦疆1号"); //保存的数据只在一个页面中有效
+request.setAttribute("name2","秦疆2号"); //保存的数据只在一次请求中有效，请求转发会携带这个数据
+session.setAttribute("name3","秦疆3号"); //保存的数据只在一次会话中有效，从打开浏览器到关闭浏览器
+application.setAttribute("name4","秦疆4号");  //保存的数据只在服务器中有效，从打开服务器到关闭服务器
+<pre class="line-numbers language-none"><code class="language-none">
+request：客户端向服务器发送请求，产生的数据，用户看完就没用了，比如：新闻，用户看完没用的！
+
+session：客户端向服务器发送请求，产生的数据，用户用完一会还有用，比如：购物车；
+
+application：客户端向服务器发送请求，产生的数据，一个用户用完了，其他用户还可能使用，比如：聊天数据；
+
+### 8.6、JSP标签、JSTL标签、EL表达式
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<!-- JSTL表达式的依赖 -->
+<dependency>
+    <groupId>javax.servlet.jsp.jstl</groupId>
+    <artifactId>jstl-api</artifactId>
+    <version>1.2</version>
+</dependency>
+<!-- standard标签库 -->
+<dependency>
+    <groupId>taglibs</groupId>
+    <artifactId>standard</artifactId>
+    <version>1.1.2</version>
+</dependency>
+<pre class="line-numbers language-none"><code class="language-none">
+EL表达式： $&#123; &#125;
+
+- **获取数据**
+- **执行运算**
+- **获取web开发的常用对象**
+
+**JSP标签**
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<%--jsp:include--%>
+<p>&lt;%–<br>
+<a target="_blank" rel="noopener" href="http://localhost:8080/jsptag.jsp?name=kuangshen&amp;age=12">http://localhost:8080/jsptag.jsp?name=kuangshen&amp;age=12</a><br>
+–%&gt;</p>
+<p>&lt;jsp:forward page=&quot;/jsptag2.jsp&quot;&gt;<br>
+&lt;jsp:param name=“name” value=“kuangshen”&gt;&lt;/jsp:param&gt;<br>
+&lt;jsp:param name=“age” value=“12”&gt;&lt;/jsp:param&gt;<br>
+&lt;/jsp:forward&gt;</p>
+<pre class="line-numbers language-none"><code class="language-none">
+**JSTL表达式**
+
+JSTL标签库的使用就是为了弥补HTML标签的不足；它自定义许多标签，可以供我们使用，标签的功能和Java代码一样！
+
+**格式化标签**
+
+**SQL标签**
+
+**XML 标签**
+
+**核心标签** （掌握部分）
+
+![1568362473764](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;HarryQu1229&#x2F;image-host&#x2F;main&#x2F;notes-img&#x2F;1568362473764.png)
+
+**JSTL标签库使用步骤**
+
+- 引入对应的 taglib
+- 使用其中的方法
+- **在Tomcat 也需要引入 jstl的包，否则会报错：JSTL解析错误**
+
+c：if
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<h4>if测试</h4>
+<hr>
+<form action="coreif.jsp" method="get">
+    <%--
+    EL表达式获取表单中的数据
+    ${param.参数名}
+    --%>
+    <input type="text" name="username" value="${param.username}">
+    <input type="submit" value="登录">
+</form>
+<p>&lt;%–判断如果提交的用户名是管理员，则登录成功–%&gt;<br>
+&lt;c:if test=&quot;${param.username==‘admin’}&quot; var=“isAdmin”&gt;<br>
+&lt;c:out value=“管理员欢迎您！”/&gt;<br>
+&lt;/c:if&gt;</p>
+<p>&lt;%–自闭合标签–%&gt;<br>
+&lt;c:out value=&quot;${isAdmin}&quot;/&gt;</p>
+</body>
+<pre class="line-numbers language-none"><code class="language-none">
+c:choose c:when
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<body>
+<p>&lt;%–定义一个变量 score，值为 85–%&gt;<br>
+&lt;c:set var=“score” value=“55”/&gt;</p>
+<p>&lt;c:choose&gt;<br>
+&lt;c:when test=&quot;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>s</mi><mi>c</mi><mi>o</mi><mi>r</mi><mi>e</mi><mo>&gt;</mo><mo>=</mo><mn>90</mn></mrow><mi mathvariant="normal">&quot;</mi><mo>&gt;</mo><mtext>你的成绩为优秀</mtext><mo>&lt;</mo><mi mathvariant="normal">/</mi><mi>c</mi><mo>:</mo><mi>w</mi><mi>h</mi><mi>e</mi><mi>n</mi><mo>&gt;</mo><mo>&lt;</mo><mi>c</mi><mo>:</mo><mi>w</mi><mi>h</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>e</mi><mi>s</mi><mi>t</mi><mo>=</mo><mi mathvariant="normal">&quot;</mi></mrow><annotation encoding="application/x-tex">{score&gt;=90}&quot;&gt;
+        你的成绩为优秀
+    &lt;/c:when&gt;
+    &lt;c:when test=&quot;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="mord mathnormal">c</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">9</span><span class="mord">0</span></span><span class="mord">&quot;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord cjk_fallback">你</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">成</span><span class="mord cjk_fallback">绩</span><span class="mord cjk_fallback">为</span><span class="mord cjk_fallback">优</span><span class="mord cjk_fallback">秀</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">&quot;</span></span></span></span>{score&gt;=80}&quot;&gt;<br>
+ 你的成绩为一般<br>
+ &lt;/c:when&gt;<br>
+&lt;c:when test=&quot;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>s</mi><mi>c</mi><mi>o</mi><mi>r</mi><mi>e</mi><mo>&gt;</mo><mo>=</mo><mn>70</mn></mrow><mi mathvariant="normal">&quot;</mi><mo>&gt;</mo><mtext>你的成绩为良好</mtext><mo>&lt;</mo><mi mathvariant="normal">/</mi><mi>c</mi><mo>:</mo><mi>w</mi><mi>h</mi><mi>e</mi><mi>n</mi><mo>&gt;</mo><mo>&lt;</mo><mi>c</mi><mo>:</mo><mi>w</mi><mi>h</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>e</mi><mi>s</mi><mi>t</mi><mo>=</mo><mi mathvariant="normal">&quot;</mi></mrow><annotation encoding="application/x-tex">{score&gt;=70}&quot;&gt;
+        你的成绩为良好
+    &lt;/c:when&gt;
+    &lt;c:when test=&quot;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="mord mathnormal">c</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">7</span><span class="mord">0</span></span><span class="mord">&quot;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord cjk_fallback">你</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">成</span><span class="mord cjk_fallback">绩</span><span class="mord cjk_fallback">为</span><span class="mord cjk_fallback">良</span><span class="mord cjk_fallback">好</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">&quot;</span></span></span></span>{score&lt;=60}&quot;&gt;<br>
+ 你的成绩为不及格<br>
+ &lt;/c:when&gt;<br>
+&lt;/c:choose&gt;</p>
+</body>
+<pre class="line-numbers language-none"><code class="language-none">
+c:forEach
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<%
+<pre><code>ArrayList&lt;String&gt; people = new ArrayList&lt;&gt;();
+people.add(0,&quot;张三&quot;);
+people.add(1,&quot;李四&quot;);
+people.add(2,&quot;王五&quot;);
+people.add(3,&quot;赵六&quot;);
+people.add(4,&quot;田六&quot;);
+request.setAttribute(&quot;list&quot;,people);
+</code></pre>
+<p>%&gt;</p>
+<p>&lt;%–<br>
+var , 每一次遍历出来的变量<br>
+ items, 要遍历的对象<br>
+ begin,   哪里开始<br>
+ end,     到哪里<br>
+ step,   步长<br>
+–%&gt;<br>
+&lt;c:forEach var=“people” items=&quot;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>l</mi><mi>i</mi><mi>s</mi><mi>t</mi></mrow><mi mathvariant="normal">&quot;</mi><mo>&gt;</mo><mo>&lt;</mo><mi>c</mi><mo>:</mo><mi>o</mi><mi>u</mi><mi>t</mi><mi>v</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi><mo>=</mo><mi mathvariant="normal">&quot;</mi></mrow><annotation encoding="application/x-tex">{list}&quot;&gt;
+    &lt;c:out value=&quot;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span></span><span class="mord">&quot;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">u</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">&quot;</span></span></span></span>{people}&quot;/&gt; <br><br>
+&lt;/c:forEach&gt;</p>
+<hr>
+<p>&lt;c:forEach var=“people” items=&quot;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>l</mi><mi>i</mi><mi>s</mi><mi>t</mi></mrow><mi mathvariant="normal">&quot;</mi><mi>b</mi><mi>e</mi><mi>g</mi><mi>i</mi><mi>n</mi><mo>=</mo><mi mathvariant="normal">&quot;</mi><mn>1</mn><mi mathvariant="normal">&quot;</mi><mi>e</mi><mi>n</mi><mi>d</mi><mo>=</mo><mi mathvariant="normal">&quot;</mi><mn>3</mn><mi mathvariant="normal">&quot;</mi><mi>s</mi><mi>t</mi><mi>e</mi><mi>p</mi><mo>=</mo><mi mathvariant="normal">&quot;</mi><mn>1</mn><mi mathvariant="normal">&quot;</mi><mo>&gt;</mo><mo>&lt;</mo><mi>c</mi><mo>:</mo><mi>o</mi><mi>u</mi><mi>t</mi><mi>v</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi><mo>=</mo><mi mathvariant="normal">&quot;</mi></mrow><annotation encoding="application/x-tex">{list}&quot; begin=&quot;1&quot; end=&quot;3&quot; step=&quot;1&quot; &gt;
+    &lt;c:out value=&quot;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span></span><span class="mord">&quot;</span><span class="mord mathnormal">b</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">&quot;</span><span class="mord">1</span><span class="mord">&quot;</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">&quot;</span><span class="mord">3</span><span class="mord">&quot;</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord">&quot;</span><span class="mord">1</span><span class="mord">&quot;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">u</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">&quot;</span></span></span></span>{people}&quot;/&gt; <br><br>
+&lt;/c:forEach&gt;</p>
+<pre class="line-numbers language-none"><code class="language-none">
+## 9、JavaBean
+
+实体类
+
+JavaBean有特定的写法：
+
+- 必须要有一个无参构造
+- 属性必须私有化
+- 必须有对应的get&#x2F;set方法；
+
+一般用来和数据库的字段做映射 ORM；
+
+ORM ：对象关系映射
+
+- 表---&gt;类
+- 字段--&gt;属性
+- 行记录----&gt;对象
+
+**people表**
+
+| id   | name    | age  | address |
+| ---- | ------- | ---- | ------- |
+| 1    | 秦疆1号 | 3    | 西安    |
+| 2    | 秦疆2号 | 18   | 西安    |
+| 3    | 秦疆3号 | 100  | 西安    |
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>class People{<br>
+private int id;<br>
+private String name;<br>
+private int id;<br>
+private String address;<br>
+}</p>
+<p>class A{<br>
+new People (1,“秦疆 1 号”,3，“西安”);<br>
+new People (2,“秦疆 2 号”,3，“西安”);<br>
+new People (3,“秦疆 3 号”,3，“西安”);<br>
+}</p>
+<pre class="line-numbers language-none"><code class="language-none">
+- 过滤器
+- 文件上传
+- 邮件发送
+- JDBC 复习 ： 如何使用JDBC , JDBC crud， jdbc 事务
+
+## 10、MVC三层架构
+
+什么是MVC： Model view Controller 模型、视图、控制器
+
+### 10.1、早些年
+
+![1568423664332](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;HarryQu1229&#x2F;image-host&#x2F;main&#x2F;notes-img&#x2F;1568423664332.png)
+
+用户直接访问控制层，控制层就可以直接操作数据库；
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>servlet–CRUD–&gt; 数据库<br>
+弊端：程序十分臃肿，不利于维护<br>
+ servlet 的代码中：处理请求、响应、视图跳转、处理 JDBC、处理业务代码、处理逻辑代码</p>
+<p>架构：没有什么是加一层解决不了的！<br>
+程序猿调用<br>
+ |<br>
+JDBC<br>
+|<br>
+Mysql Oracle SqlServer …</p>
+<pre class="line-numbers language-none"><code class="language-none">
+### 10.2、MVC三层架构
+
+![1568424227281](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;HarryQu1229&#x2F;image-host&#x2F;main&#x2F;notes-img&#x2F;1568424227281.png)
+
+Model
+
+- 业务处理 ：业务逻辑（Service）
+- 数据持久层：CRUD （Dao）
+
+View
+
+- 展示数据
+- 提供链接发起Servlet请求 （a，form，img…）
+
+Controller （Servlet）
+
+- 接收用户的请求 ：（req：请求参数、Session信息….）
+
+- 交给业务层处理对应的代码
+
+- 控制视图的跳转
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>登录---&gt;接收用户的登录请求---&gt;处理用户的请求（获取用户登录的参数，username，password）----&gt;交给业务层处理登录业务（判断用户名密码是否正确：事务）---&gt;Dao层查询用户名和密码是否正确--&gt;数据库
+<pre class="line-numbers language-none"><code class="language-none">
+## 11、Filter （重点）
+
+Filter：过滤器 ，用来过滤网站的数据；
+
+- 处理中文乱码
+- 登录验证….
+
+![1568424858708](https:&#x2F;&#x2F;gitee.com&#x2F;zhuuuu&#x2F;java_web_notes&#x2F;raw&#x2F;master&#x2F;JavaWeb.assets&#x2F;1568424858708.png)
+
+Filter开发步骤：
+
+1. 导包
+
+2. 编写过滤器
+
+	1. 导包不要错
+
+		![1568425162525](https:&#x2F;&#x2F;gitee.com&#x2F;zhuuuu&#x2F;java_web_notes&#x2F;raw&#x2F;master&#x2F;JavaWeb.assets&#x2F;1568425162525.png)
+		
+		实现Filter接口，重写对应的方法即可
+		<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	public class CharacterEncodingFilter implements Filter &#123;
+	
+	    //初始化：web服务器启动，就以及初始化了，随时等待过滤对象出现！
+	    public void init(FilterConfig filterConfig) throws ServletException &#123;
+	        System.out.println(&quot;CharacterEncodingFilter初始化&quot;);
+	    &#125;
+	
+	    //Chain : 链
+	    /*
+	    1. 过滤中的所有代码，在过滤特定请求的时候都会执行
+	    2. 必须要让过滤器继续同行
+	        chain.doFilter(request,response);
+	     */
+	    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException &#123;
+	        request.setCharacterEncoding(&quot;utf-8&quot;);
+	        response.setCharacterEncoding(&quot;utf-8&quot;);
+	        response.setContentType(&quot;text/html;charset=UTF-8&quot;);
+	
+	        System.out.println(&quot;CharacterEncodingFilter执行前....&quot;);
+	        chain.doFilter(request,response); //让我们的请求继续走，如果不写，程序到这里就被拦截停止！
+	        System.out.println(&quot;CharacterEncodingFilter执行后....&quot;);
+	    &#125;
+	
+	    //销毁：web服务器关闭的时候，过滤会销毁
+	    public void destroy() &#123;
+	        System.out.println(&quot;CharacterEncodingFilter销毁&quot;);
+	    &#125;
+	&#125;
+	<pre class="line-numbers language-none"><code class="language-none">
+3. 在web.xml中配置 Filter
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+&lt;filter&gt;
+    &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;com.kuang.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+    &lt;!--只要是 /servlet的任何请求，会经过这个过滤器--&gt;
+    &lt;url-pattern&gt;/servlet/*&lt;/url-pattern&gt;
+    &lt;!--&lt;url-pattern&gt;/*&lt;/url-pattern&gt;--&gt;
+&lt;/filter-mapping&gt;
+<pre class="line-numbers language-none"><code class="language-none">
+## 12、监听器
+
+实现一个监听器的接口；（有N种）
+
+1. 编写一个监听器
+
+	实现监听器的接口…
+	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+//统计网站在线人数 ： 统计session
+public class OnlineCountListener implements HttpSessionListener &#123;
+
+    //创建session监听： 看你的一举一动
+    //一旦创建Session就会触发一次这个事件！
+    public void sessionCreated(HttpSessionEvent se) &#123;
+        ServletContext ctx = se.getSession().getServletContext();
+
+        System.out.println(se.getSession().getId());
+
+        Integer onlineCount = (Integer) ctx.getAttribute(&quot;OnlineCount&quot;);
+
+        if (onlineCount==null)&#123;
+            onlineCount = new Integer(1);
+        &#125;else &#123;
+            int count = onlineCount.intValue();
+            onlineCount = new Integer(count+1);
+        &#125;
+
+        ctx.setAttribute(&quot;OnlineCount&quot;,onlineCount);
+
+    &#125;
+
+    //销毁session监听
+    //一旦销毁Session就会触发一次这个事件！
+    public void sessionDestroyed(HttpSessionEvent se) &#123;
+        ServletContext ctx = se.getSession().getServletContext();
+
+        Integer onlineCount = (Integer) ctx.getAttribute(&quot;OnlineCount&quot;);
+
+        if (onlineCount==null)&#123;
+            onlineCount = new Integer(0);
+        &#125;else &#123;
+            int count = onlineCount.intValue();
+            onlineCount = new Integer(count-1);
+        &#125;
+
+        ctx.setAttribute(&quot;OnlineCount&quot;,onlineCount);
+
+    &#125;
+</code></pre>
+<p>​	<br>
+​	    /*<br>
+​	    Session 销毁：<br>
+​	    1. 手动销毁  getSession ().invalidate ();<br>
+​	    2. 自动销毁<br>
+​	     */<br>
+​	}<br>
+​	```</p>
+<ol start="2">
+<li>
+<p>web.xml 中注册监听器</p>
+ <pre class="line-numbers language-none"><code class="language-none">&lt;!--注册监听器--&gt;
+&lt;listener&gt;
+    &lt;listener-class&gt;com.kuang.listener.OnlineCountListener&lt;&#x2F;listener-class&gt;
+&lt;&#x2F;listener&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>看情况是否使用！</p>
+</li>
+</ol>
+<h2 id="13-过滤器-监听器常见应用"><a class="markdownIt-Anchor" href="#13-过滤器-监听器常见应用">#</a> 13、过滤器、监听器常见应用</h2>
+<p><strong>监听器：GUI 编程中经常使用；</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">public class TestPanel &#123;
+    public static void main(String[] args) &#123;
+        Frame frame &#x3D; new Frame(&quot;中秋节快乐&quot;);  &#x2F;&#x2F;新建一个窗体
+        Panel panel &#x3D; new Panel(null); &#x2F;&#x2F;面板
+        frame.setLayout(null); &#x2F;&#x2F;设置窗体的布局
+
+        frame.setBounds(300,300,500,500);
+        frame.setBackground(new Color(0,0,255)); &#x2F;&#x2F;设置背景颜色
+
+        panel.setBounds(50,50,300,300);
+        panel.setBackground(new Color(0,255,0)); &#x2F;&#x2F;设置背景颜色
+
+        frame.add(panel);
+
+        frame.setVisible(true);
+
+        &#x2F;&#x2F;监听事件，监听关闭事件
+        frame.addWindowListener(new WindowAdapter() &#123;
+            @Override
+            public void windowClosing(WindowEvent e) &#123;
+                super.windowClosing(e);
+            &#125;
+        &#125;);
+
+
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>用户登录之后才能进入主页！用户注销后就不能进入主页了！</p>
+<ol>
+<li>
+<p>用户登录之后，向 Sesison 中放入用户的数据</p>
+</li>
+<li>
+<p>进入主页的时候要判断用户是否已经登录；要求：在过滤器中实现！</p>
+ <pre class="line-numbers language-none"><code class="language-none">HttpServletRequest request &#x3D; (HttpServletRequest) req;
+HttpServletResponse response &#x3D; (HttpServletResponse) resp;
+
+if (request.getSession().getAttribute(Constant.USER_SESSION)&#x3D;&#x3D;null)&#123;
+    response.sendRedirect(&quot;&#x2F;error.jsp&quot;);
+&#125;
+
+chain.doFilter(request,response);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<h2 id="14-jdbc"><a class="markdownIt-Anchor" href="#14-jdbc">#</a> 14、JDBC</h2>
+<p>什么是 JDBC ： Java 连接数据库！</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1568439601825.png" alt="1568439601825"></p>
+<p>需要 jar 包的支持：</p>
+<ul>
+<li>java.sql</li>
+<li>javax.sql</li>
+<li>mysql-conneter-java… 连接驱动（必须要导入）</li>
+</ul>
+<p><strong>实验环境搭建</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">CREATE TABLE users(
+    id INT PRIMARY KEY,
+    &#96;name&#96; VARCHAR(40),
+    &#96;password&#96; VARCHAR(40),
+    email VARCHAR(60),
+    birthday DATE
+);
+
+INSERT INTO users(id,&#96;name&#96;,&#96;password&#96;,email,birthday)
+VALUES(1,&#39;张三&#39;,&#39;123456&#39;,&#39;zs@qq.com&#39;,&#39;2000-01-01&#39;);
+INSERT INTO users(id,&#96;name&#96;,&#96;password&#96;,email,birthday)
+VALUES(2,&#39;李四&#39;,&#39;123456&#39;,&#39;ls@qq.com&#39;,&#39;2000-01-01&#39;);
+INSERT INTO users(id,&#96;name&#96;,&#96;password&#96;,email,birthday)
+VALUES(3,&#39;王五&#39;,&#39;123456&#39;,&#39;ww@qq.com&#39;,&#39;2000-01-01&#39;);
+
+
+SELECT	* FROM users;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>导入数据库依赖</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!--mysql的驱动--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;
+    &lt;version&gt;5.1.47&lt;&#x2F;version&gt;
+&lt;&#x2F;dependency&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>IDEA 中连接数据库：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1568440926845.png" alt="1568440926845"></p>
+<p><strong>JDBC 固定步骤：</strong></p>
+<ol>
+<li>加载驱动</li>
+<li>连接数据库，代表数据库</li>
+<li>向数据库发送 SQL 的对象 Statement : CRUD</li>
+<li>编写 SQL （根据业务，不同的 SQL）</li>
+<li>执行 SQL</li>
+<li>关闭连接</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">public class TestJdbc &#123;
+    public static void main(String[] args) throws ClassNotFoundException, SQLException &#123;
+        &#x2F;&#x2F;配置信息
+        &#x2F;&#x2F;useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf-8 解决中文乱码
+        String url&#x3D;&quot;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;jdbc?useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf-8&quot;;
+        String username &#x3D; &quot;root&quot;;
+        String password &#x3D; &quot;123456&quot;;
+
+        &#x2F;&#x2F;1.加载驱动
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+        &#x2F;&#x2F;2.连接数据库,代表数据库
+        Connection connection &#x3D; DriverManager.getConnection(url, username, password);
+
+        &#x2F;&#x2F;3.向数据库发送SQL的对象Statement,PreparedStatement : CRUD
+        Statement statement &#x3D; connection.createStatement();
+
+        &#x2F;&#x2F;4.编写SQL
+        String sql &#x3D; &quot;select * from users&quot;;
+
+        &#x2F;&#x2F;5.执行查询SQL，返回一个 ResultSet  ： 结果集
+        ResultSet rs &#x3D; statement.executeQuery(sql);
+
+        while (rs.next())&#123;
+            System.out.println(&quot;id&#x3D;&quot;+rs.getObject(&quot;id&quot;));
+            System.out.println(&quot;name&#x3D;&quot;+rs.getObject(&quot;name&quot;));
+            System.out.println(&quot;password&#x3D;&quot;+rs.getObject(&quot;password&quot;));
+            System.out.println(&quot;email&#x3D;&quot;+rs.getObject(&quot;email&quot;));
+            System.out.println(&quot;birthday&#x3D;&quot;+rs.getObject(&quot;birthday&quot;));
+        &#125;
+
+        &#x2F;&#x2F;6.关闭连接，释放资源（一定要做） 先开后关
+        rs.close();
+        statement.close();
+        connection.close();
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>预编译 SQL</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">public class TestJDBC2 &#123;
+    public static void main(String[] args) throws Exception &#123;
+        &#x2F;&#x2F;配置信息
+        &#x2F;&#x2F;useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf-8 解决中文乱码
+        String url&#x3D;&quot;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;jdbc?useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf-8&quot;;
+        String username &#x3D; &quot;root&quot;;
+        String password &#x3D; &quot;123456&quot;;
+
+        &#x2F;&#x2F;1.加载驱动
+        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+        &#x2F;&#x2F;2.连接数据库,代表数据库
+        Connection connection &#x3D; DriverManager.getConnection(url, username, password);
+
+        &#x2F;&#x2F;3.编写SQL
+        String sql &#x3D; &quot;insert into  users(id, name, password, email, birthday) values (?,?,?,?,?);&quot;;
+
+        &#x2F;&#x2F;4.预编译
+        PreparedStatement preparedStatement &#x3D; connection.prepareStatement(sql);
+
+        preparedStatement.setInt(1,2);&#x2F;&#x2F;给第一个占位符？ 的值赋值为1；
+        preparedStatement.setString(2,&quot;狂神说Java&quot;);&#x2F;&#x2F;给第二个占位符？ 的值赋值为狂神说Java；
+        preparedStatement.setString(3,&quot;123456&quot;);&#x2F;&#x2F;给第三个占位符？ 的值赋值为123456；
+        preparedStatement.setString(4,&quot;24736743@qq.com&quot;);&#x2F;&#x2F;给第四个占位符？ 的值赋值为1；
+        preparedStatement.setDate(5,new Date(new java.util.Date().getTime()));&#x2F;&#x2F;给第五个占位符？ 的值赋值为new Date(new java.util.Date().getTime())；
+
+        &#x2F;&#x2F;5.执行SQL
+        int i &#x3D; preparedStatement.executeUpdate();
+
+        if (i&gt;0)&#123;
+            System.out.println(&quot;插入成功@&quot;);
+        &#125;
+
+        &#x2F;&#x2F;6.关闭连接，释放资源（一定要做） 先开后关
+        preparedStatement.close();
+        connection.close();
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>事务</strong></p>
+<p>要么都成功，要么都失败！</p>
+<p>ACID 原则：保证数据的安全。</p>
+<pre class="line-numbers language-none"><code class="language-none">开启事务
+事务提交  commit()
+事务回滚  rollback()
+关闭事务
+
+转账：
+A:1000
+B:1000
+    
+A(900)   --100--&gt;   B(1100) <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>Junit 单元测试</strong></p>
+<p>依赖</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!--单元测试--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;junit&lt;&#x2F;groupId&gt;
+    &lt;artifactId&gt;junit&lt;&#x2F;artifactId&gt;
+    &lt;version&gt;4.12&lt;&#x2F;version&gt;
+&lt;&#x2F;dependency&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>简单使用</p>
+<p>@Test 注解只有在方法上有效，只要加了这个注解的方法，就可以直接运行！</p>
+<pre class="line-numbers language-none"><code class="language-none">@Test
+public void test()&#123;
+    System.out.println(&quot;Hello&quot;);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1568442261610.png" alt="1568442261610"></p>
+<p>失败的时候是红色：</p>
+<p><img src="https://gitee.com/zhuuuu/java_web_notes/raw/master/JavaWeb.assets/1568442289597.png" alt="1568442289597"></p>
+<p><strong>搭建一个环境</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">CREATE TABLE account(
+   id INT PRIMARY KEY AUTO_INCREMENT,
+   &#96;name&#96; VARCHAR(40),
+   money FLOAT
+);
+
+INSERT INTO account(&#96;name&#96;,money) VALUES(&#39;A&#39;,1000);
+INSERT INTO account(&#96;name&#96;,money) VALUES(&#39;B&#39;,1000);
+INSERT INTO account(&#96;name&#96;,money) VALUES(&#39;C&#39;,1000);
+    @Test
+    public void test() &#123;
+        &#x2F;&#x2F;配置信息
+        &#x2F;&#x2F;useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf-8 解决中文乱码
+        String url&#x3D;&quot;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;jdbc?useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf-8&quot;;
+        String username &#x3D; &quot;root&quot;;
+        String password &#x3D; &quot;123456&quot;;
+
+        Connection connection &#x3D; null;
+
+        &#x2F;&#x2F;1.加载驱动
+        try &#123;
+            Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+            &#x2F;&#x2F;2.连接数据库,代表数据库
+             connection &#x3D; DriverManager.getConnection(url, username, password);
+
+            &#x2F;&#x2F;3.通知数据库开启事务,false 开启
+            connection.setAutoCommit(false);
+
+            String sql &#x3D; &quot;update account set money &#x3D; money-100 where name &#x3D; &#39;A&#39;&quot;;
+            connection.prepareStatement(sql).executeUpdate();
+
+            &#x2F;&#x2F;制造错误
+            &#x2F;&#x2F;int i &#x3D; 1&#x2F;0;
+
+            String sql2 &#x3D; &quot;update account set money &#x3D; money+100 where name &#x3D; &#39;B&#39;&quot;;
+            connection.prepareStatement(sql2).executeUpdate();
+
+            connection.commit();&#x2F;&#x2F;以上两条SQL都执行成功了，就提交事务！
+            System.out.println(&quot;success&quot;);
+        &#125; catch (Exception e) &#123;
+            try &#123;
+                &#x2F;&#x2F;如果出现异常，就通知数据库回滚事务
+                connection.rollback();
+            &#125; catch (SQLException e1) &#123;
+                e1.printStackTrace();
+            &#125;
+            e.printStackTrace();
+        &#125;finally &#123;
+            try &#123;
+                connection.close();
+            &#125; catch (SQLException e) &#123;
+                e.printStackTrace();
+            &#125;
+        &#125;
+    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2021/12/12/JavaWeb%E7%8B%82%E7%A5%9E%E8%AF%B4/">https://harryqu1229.github.io/2021/12/12/JavaWeb%E7%8B%82%E7%A5%9E%E8%AF%B4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/web/">web</a><a class="post-meta__tags" href="/tags/java/">java</a><a class="post-meta__tags" href="/tags/javaweb/">javaweb</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/12/JavaWeb%E5%B0%9A%E7%A1%85%E8%B0%B7%E8%80%81%E7%89%88(%E4%B8%8D%E5%8C%85%E5%90%ABjsp%E7%AD%89)/"><img class="prev-cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">JavaWeb 尚硅谷老版</div></div></a></div><div class="next-post pull-right"><a href="/2022/01/01/git+linux+docker/"><img class="next-cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Linux and Build tool -&gt; git, Maven</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/12/12/JavaWeb%E5%B0%9A%E7%A1%85%E8%B0%B7%E8%80%81%E7%89%88(%E4%B8%8D%E5%8C%85%E5%90%ABjsp%E7%AD%89)/" title="JavaWeb 尚硅谷老版"><img class="cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-12</div><div class="title">JavaWeb 尚硅谷老版</div></div></a></div><div><a href="/2021/12/12/JavaWeb%E5%B0%9A%E7%A1%85%E8%B0%B7(http,servlet,MVC,Thymeleaf,%E4%BC%9A%E8%AF%9D%E6%8E%A7%E5%88%B6,%E8%BF%87%E6%BB%A4%E5%99%A8,%E7%9B%91%E5%90%AC%E5%99%A8)/" title="My JavaWeb notes"><img class="cover" src="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-12</div><div class="title">My JavaWeb notes</div></div></a></div><div><a href="/2022/01/01/%E5%BA%94%E7%94%A8%E4%BB%A3%E7%A0%81%E5%88%86%E5%B1%82/" title="Model,View,Controller"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">Model,View,Controller</div></div></a></div><div><a href="/2022/01/01/%E9%98%BF%E9%87%8C%E9%9D%A2%E7%BB%8F/" title="Alibaba Interview Questions"><img class="cover" src="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">Alibaba Interview Questions</div></div></a></div><div><a href="/2022/02/25/JDBC/" title="My JDBC notes"><img class="cover" src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">My JDBC notes</div></div></a></div><div><a href="/2022/02/25/Java%20%E5%9F%BA%E7%A1%80/" title="Java Basics(javase)"><img class="cover" src="https://w.wallhaven.cc/full/3z/wallhaven-3zgdd3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">Java Basics(javase)</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">171</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">89</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">60</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#javaweb"><span class="toc-number">1.</span> <span class="toc-text"> JavaWeb</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text"> 1、基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 1.1、前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 1.2、web 应用程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E9%9D%99%E6%80%81web"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 1.3、静态 web</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E5%8A%A8%E6%80%81web"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 1.4、动态 web</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-web%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.2.</span> <span class="toc-text"> 2、web 服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21-%E6%8A%80%E6%9C%AF%E8%AE%B2%E8%A7%A3"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 2.1、技术讲解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-web%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 2.2、web 服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-tomcat"><span class="toc-number">1.3.</span> <span class="toc-text"> 3、Tomcat</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E5%AE%89%E8%A3%85tomcat"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 3.1、 安装 tomcat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-tomcat%E5%90%AF%E5%8A%A8%E5%92%8C%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 3.2、Tomcat 启动和配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 3.3、配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E9%9A%BE%E5%BA%A6%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.3.3.1.</span> <span class="toc-text"> 高难度面试题：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#34-%E5%8F%91%E5%B8%83%E4%B8%80%E4%B8%AAweb%E7%BD%91%E7%AB%99"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 3.4、发布一个 web 网站</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-http"><span class="toc-number">1.4.</span> <span class="toc-text"> 4、Http</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-%E4%BB%80%E4%B9%88%E6%98%AFhttp"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 4.1、什么是 HTTP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-%E4%B8%A4%E4%B8%AA%E6%97%B6%E4%BB%A3"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 4.2、两个时代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-http%E8%AF%B7%E6%B1%82"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 4.3、Http 请求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%AF%B7%E6%B1%82%E8%A1%8C"><span class="toc-number">1.4.3.1.</span> <span class="toc-text"> 1、请求行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%B6%88%E6%81%AF%E5%A4%B4"><span class="toc-number">1.4.3.2.</span> <span class="toc-text"> 2、消息头</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#44-http%E5%93%8D%E5%BA%94"><span class="toc-number">1.4.4.</span> <span class="toc-text"> 4.4、Http 响应</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E5%93%8D%E5%BA%94%E4%BD%93"><span class="toc-number">1.4.4.1.</span> <span class="toc-text"> 1. 响应体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%93%8D%E5%BA%94%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-number">1.4.4.2.</span> <span class="toc-text"> 2、响应状态码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-maven"><span class="toc-number">1.5.</span> <span class="toc-text"> 5、Maven</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#51-maven%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 5.1 Maven 项目架构管理工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#52-%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85maven"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 5.2 下载安装 Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#53-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.5.3.</span> <span class="toc-text"> 5.3 配置环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#54-%E9%98%BF%E9%87%8C%E4%BA%91%E9%95%9C%E5%83%8F"><span class="toc-number">1.5.4.</span> <span class="toc-text"> 5.4 阿里云镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#55-%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="toc-number">1.5.5.</span> <span class="toc-text"> 5.5 本地仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#56-%E5%9C%A8idea%E4%B8%AD%E4%BD%BF%E7%94%A8maven"><span class="toc-number">1.5.6.</span> <span class="toc-text"> 5.6、在 IDEA 中使用 Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#57-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%99%AE%E9%80%9A%E7%9A%84maven%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.5.7.</span> <span class="toc-text"> 5.7、创建一个普通的 Maven 项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#58-%E6%A0%87%E8%AE%B0%E6%96%87%E4%BB%B6%E5%A4%B9%E5%8A%9F%E8%83%BD"><span class="toc-number">1.5.8.</span> <span class="toc-text"> 5.8 标记文件夹功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#59-%E5%9C%A8-idea%E4%B8%AD%E9%85%8D%E7%BD%AEtomcat"><span class="toc-number">1.5.9.</span> <span class="toc-text"> 5.9 在 IDEA 中配置 Tomcat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#510-pom%E6%96%87%E4%BB%B6"><span class="toc-number">1.5.10.</span> <span class="toc-text"> 5.10 pom 文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#512-idea%E6%93%8D%E4%BD%9C"><span class="toc-number">1.5.11.</span> <span class="toc-text"> 5.12 IDEA 操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#513-%E8%A7%A3%E5%86%B3%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.12.</span> <span class="toc-text"> 5.13 解决遇到的问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">Success</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">Sum&#x3D;”+sum+&quot;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">Hello,World  &lt;%&#x3D;i%&gt; </span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">网页主体</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">网页主体</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">6.0.0.1.</span> <span class="toc-text">if测试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E8%BF%87%E6%BB%A4%E5%99%A8-%E7%9B%91%E5%90%AC%E5%99%A8%E5%B8%B8%E8%A7%81%E5%BA%94%E7%94%A8"><span class="toc-number">6.1.</span> <span class="toc-text"> 13、过滤器、监听器常见应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-jdbc"><span class="toc-number">6.2.</span> <span class="toc-text"> 14、JDBC</span></a></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux easy notes"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E5%B0%8F%E7%AC%94%E8%AE%B0/" title="Linux easy notes">Linux easy notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux commands"/></a><div class="content"><a class="title" href="/2022/04/02/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="Linux commands">Linux commands</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/02/Linux/" title="Linux notes"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux notes"/></a><div class="content"><a class="title" href="/2022/04/02/Linux/" title="Linux notes">Linux notes</a><time datetime="2022-04-01T11:00:00.000Z" title="Created 2022-04-02 00:00:00">2022-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/nodejs/" title="Nodejs notes"><img src="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nodejs notes"/></a><div class="content"><a class="title" href="/2022/03/01/nodejs/" title="Nodejs notes">Nodejs notes</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Frontend interview questions"/></a><div class="content"><a class="title" href="/2022/03/01/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Frontend interview questions">Frontend interview questions</a><time datetime="2022-02-28T11:00:00.000Z" title="Created 2022-03-01 00:00:00">2022-03-01</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2021/12/12/JavaWeb%E7%8B%82%E7%A5%9E%E8%AF%B4/'
+    this.page.identifier = '2021/12/12/JavaWeb狂神说/'
+    this.page.title = 'JavaWeb 狂神说'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>if (window.DISQUSWIDGETS === undefined) {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://harry-study-blog.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+} else {
+  DISQUSWIDGETS.getCount({reset: true});
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: 'ecd5dff526f5eb76df8fad3e12f033ce',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=a5KJbIVovxK3ZXvlrPvv7wgYLY4fAh3pvP4thfjXYUdM2cNymlgVhMhdyhb9e0O3')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
