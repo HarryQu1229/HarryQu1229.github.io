@@ -65,7 +65,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2022-02-26 06:01:27'
+  postUpdate: '2022-02-26 06:17:39'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -199,7 +199,7 @@ window.addEventListener('load',preloader.endLoading())</script><div class="js-pj
   }
 
   const getComment = () => {
-    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=')
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=B5XFmdGuVaYDW7OIBakffpXoKorvphwRiwONIol4puEtr8YiwYAMAk2K7QcExNLY')
       .then(response => response.json())
       .then(data => {
         const disqusArray = data.response.map(item => {
