@@ -1,0 +1,1373 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>css and JS Frontend Interview Quesitions | Harry World</title><meta name="keywords" content="frontend,interview,css,javascript"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# 一、基础 javascript 篇 # 1. get 请求传参长度的误区 _误区：我们经常说 get 请求参数的大小存在限制，而 post 请求的参数大小是无限制的。 _ 实际上 HTTP 协议从未规定 GET&#x2F;POST 的请求长度限制是多少。对 get 请求参数的限制是来源与浏览器或 web 服务器，浏览器或 web 服务器限制了 url 的长度。为了明确这个概念，我们必须再次强调下面几点:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css and JS Frontend Interview Quesitions">
+<meta property="og:url" content="https://harryqu1229.github.io/2022/02/21/js,css%E7%AD%89%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="Harry World">
+<meta property="og:description" content="# 一、基础 javascript 篇 # 1. get 请求传参长度的误区 _误区：我们经常说 get 请求参数的大小存在限制，而 post 请求的参数大小是无限制的。 _ 实际上 HTTP 协议从未规定 GET&#x2F;POST 的请求长度限制是多少。对 get 请求参数的限制是来源与浏览器或 web 服务器，浏览器或 web 服务器限制了 url 的长度。为了明确这个概念，我们必须再次强调下面几点:">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://w.wallhaven.cc/full/rd/wallhaven-rdw8dj.jpg">
+<meta property="article:published_time" content="2022-02-20T11:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-12T01:10:50.889Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="frontend">
+<meta property="article:tag" content="interview">
+<meta property="article:tag" content="css">
+<meta property="article:tag" content="javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://w.wallhaven.cc/full/rd/wallhaven-rdw8dj.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://harryqu1229.github.io/2022/02/21/js,css%E7%AD%89%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'css and JS Frontend Interview Quesitions',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-12 13:10:50'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://nz.hudson.com/wp-content/cache/bb-plugin/cache/unuasual-job-interview-01-1024x731-landscape.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry World</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">css and JS Frontend Interview Quesitions</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-02-20T11:00:00.000Z" title="Created 2022-02-21 00:00:00">2022-02-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-06-12T01:10:50.889Z" title="Updated 2022-06-12 13:10:50">2022-06-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Interview/">Interview</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Interview/frontend/">frontend</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">11.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>42min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="css and JS Frontend Interview Quesitions"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><span class="disqus-comment-count"><a href="https://harryqu1229.github.io/2022/02/21/js,css%E7%AD%89%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/#disqus_thread"></a></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一-基础javascript篇"><a class="markdownIt-Anchor" href="#一-基础javascript篇">#</a> 一、基础 javascript 篇</h1>
+<h3 id="1-get请求传参长度的误区"><a class="markdownIt-Anchor" href="#1-get请求传参长度的误区">#</a> 1. get 请求传参长度的误区</h3>
+<p>_<strong>误区：我们经常说 get 请求参数的大小存在限制，而 post 请求的参数大小是无限制的。</strong> _</p>
+<p>实际上 HTTP 协议从未规定 GET/POST 的请求长度限制是多少。对 get 请求参数的限制是来源与浏览器或 web 服务器，浏览器或 web 服务器限制了 url 的长度。为了明确这个概念，我们必须再次强调下面几点:</p>
+<ul>
+<li>HTTP 协议 未规定 GET 和 POST 的长度限制</li>
+<li>GET 的最大长度显示是因为 浏览器和 web 服务器限制了 URI 的长度</li>
+<li>不同的浏览器和 WEB 服务器，限制的最大长度不一样</li>
+<li>要支持 IE，则最大长度为 2083byte，若只支持 Chrome，则最大长度 8182byte</li>
+</ul>
+<h3 id="2-补充get和post请求在缓存方面的区别"><a class="markdownIt-Anchor" href="#2-补充get和post请求在缓存方面的区别">#</a> 2. 补充 get 和 post 请求在缓存方面的区别</h3>
+<p>post/get 的请求区别，具体不再赘述。</p>
+<p>补充补充一个 get 和 post 在缓存方面的区别：</p>
+<ul>
+<li>get 请求类似于查找的过程，用户获取数据，可以不用每次都与数据库连接，所以可以使用缓存。</li>
+<li>post 不同，post 做的一般是修改和删除的工作，所以必须与数据库交互，所以不能使用缓存。因此 get 请求适合于请求缓存。</li>
+</ul>
+<h3 id="3-闭包"><a class="markdownIt-Anchor" href="#3-闭包">#</a> 3. 闭包</h3>
+<p>一句话可以概括：闭包就是能够读取其他函数内部变量的函数，或者子函数在外调用，子函数所在的父函数的作用域不会被释放。</p>
+<h3 id="4-类的创建和继承"><a class="markdownIt-Anchor" href="#4-类的创建和继承">#</a> 4. 类的创建和继承</h3>
+<p>（1）类的创建（es5）：new 一个 function，在这个 function 的 prototype 里面增加属性和方法。</p>
+<p>下面来创建一个 Animal 类：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 定义一个动物类
+function Animal (name) &#123;
+  &#x2F;&#x2F; 属性
+  this.name &#x3D; name || &#39;Animal&#39;;
+  &#x2F;&#x2F; 实例方法
+  this.sleep &#x3D; function()&#123;
+    console.log(this.name + &#39;正在睡觉！&#39;);
+  &#125;
+&#125;
+&#x2F;&#x2F; 原型方法
+Animal.prototype.eat &#x3D; function(food) &#123;
+  console.log(this.name + &#39;正在吃：&#39; + food);
+&#125;;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这样就生成了一个 Animal 类，实力化生成对象后，有方法和属性。</p>
+<p>（2）类的继承 —— 原型链继承</p>
+<pre class="line-numbers language-none"><code class="language-none">--原型链继承
+function Cat()&#123; &#125;
+Cat.prototype &#x3D; new Animal();
+Cat.prototype.name &#x3D; &#39;cat&#39;;
+&#x2F;&#x2F;&amp;emsp;Test Code
+var cat &#x3D; new Cat();
+console.log(cat.name);
+console.log(cat.eat(&#39;fish&#39;));
+console.log(cat.sleep());
+console.log(cat instanceof Animal); &#x2F;&#x2F;true 
+console.log(cat instanceof Cat); &#x2F;&#x2F;true
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>介绍：在这里我们可以看到 new 了一个空对象，这个空对象指向 Animal 并且 Cat.prototype 指向了这个空对象，这种就是基于原型链的继承。</li>
+<li>特点：基于原型链，既是父类的实例，也是子类的实例</li>
+<li>缺点：无法实现多继承</li>
+</ul>
+<p>（3）构造继承：使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（没用到原型）</p>
+<pre class="line-numbers language-none"><code class="language-none">function Cat(name)&#123;
+  Animal.call(this);
+  this.name &#x3D; name || &#39;Tom&#39;;
+&#125;
+&#x2F;&#x2F; Test Code
+var cat &#x3D; new Cat();
+console.log(cat.name);
+console.log(cat.sleep());
+console.log(cat instanceof Animal); &#x2F;&#x2F; false
+console.log(cat instanceof Cat); &#x2F;&#x2F; true
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>特点：可以实现多继承</li>
+<li>缺点：只能继承父类实例的属性和方法，不能继承原型上的属性和方法。</li>
+</ul>
+<p>（4）实例继承和拷贝继承</p>
+<p>实例继承：为父类实例添加新特性，作为子类实例返回</p>
+<p>拷贝继承：拷贝父类元素上的属性和方法</p>
+<p>上述两个实用性不强，不一一举例。</p>
+<p>（5）组合继承：相当于构造继承和原型链继承的组合体。通过调用父类构造，继承父类的属性并保留传参的优点，然后通过将父类实例作为子类原型，实现函数复用</p>
+<pre class="line-numbers language-none"><code class="language-none">function Cat(name)&#123;
+  Animal.call(this);
+  this.name &#x3D; name || &#39;Tom&#39;;
+&#125;
+Cat.prototype &#x3D; new Animal();
+Cat.prototype.constructor &#x3D; Cat;
+&#x2F;&#x2F; Test Code
+var cat &#x3D; new Cat();
+console.log(cat.name);
+console.log(cat.sleep());
+console.log(cat instanceof Animal); &#x2F;&#x2F; true
+console.log(cat instanceof Cat); &#x2F;&#x2F; true
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>特点：可以继承实例属性 / 方法，也可以继承原型属性 / 方法</li>
+<li>缺点：调用了两次父类构造函数，生成了两份实例</li>
+</ul>
+<p>（6）寄生组合继承：通过寄生方式，砍掉父类的实例属性，这样，在调用两次父类的构造的时候，就不会初始化两次实例方法 / 属性</p>
+<pre class="line-numbers language-none"><code class="language-none">function Cat(name)&#123;
+  Animal.call(this);
+  this.name &#x3D; name || &#39;Tom&#39;;
+&#125;
+(function()&#123;
+  &#x2F;&#x2F; 创建一个没有实例方法的类
+  var Super &#x3D; function()&#123;&#125;;
+  Super.prototype &#x3D; Animal.prototype;
+  &#x2F;&#x2F;将实例作为子类的原型
+  Cat.prototype &#x3D; new Super();
+&#125;)();
+&#x2F;&#x2F; Test Code
+var cat &#x3D; new Cat();
+console.log(cat.name);
+console.log(cat.sleep());
+console.log(cat instanceof Animal); &#x2F;&#x2F; true
+console.log(cat instanceof Cat); &#x2F;&#x2F;true
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>较为推荐</li>
+</ul>
+<h3 id="5-如何解决异步回调地狱"><a class="markdownIt-Anchor" href="#5-如何解决异步回调地狱">#</a> 5. 如何解决异步回调地狱</h3>
+<p>promise、generator、async/await</p>
+<h3 id="6-说说前端中的事件流"><a class="markdownIt-Anchor" href="#6-说说前端中的事件流">#</a> 6. 说说前端中的事件流</h3>
+<p>HTML 中与 javascript 交互是通过事件驱动来实现的，例如鼠标点击事件 onclick、页面的滚动事件 onscroll 等等，可以向文档或者文档中的元素添加事件侦听器来预订事件。想要知道这些事件是在什么时候进行调用的，就需要了解一下 “事件流” 的概念。</p>
+<p>什么是事件流：事件流描述的是从页面中接收事件的顺序，DOM2 级事件流包括下面几个阶段。</p>
+<ul>
+<li>事件捕获阶段</li>
+<li>处于目标阶段</li>
+<li>事件冒泡阶段</li>
+</ul>
+<p><strong>addEventListener</strong>：<strong>addEventListener</strong> 是 DOM2 级事件新增的指定事件处理程序的操作，这个方法接收 3 个参数：要处理的事件名、作为事件处理程序的函数和一个布尔值。最后这个布尔值参数如果是 true，表示在捕获阶段调用事件处理程序；如果是 false，表示在冒泡阶段调用事件处理程序。</p>
+<p><strong>IE 只支持事件冒泡</strong>。</p>
+<h3 id="7-如何让事件先冒泡后捕获"><a class="markdownIt-Anchor" href="#7-如何让事件先冒泡后捕获">#</a> 7. 如何让事件先冒泡后捕获</h3>
+<p>在 DOM 标准事件模型中，是先捕获后冒泡。但是如果要实现先冒泡后捕获的效果，对于同一个事件，监听捕获和冒泡，分别对应相应的处理函数，监听到捕获事件，先暂缓执行，直到冒泡事件被捕获后再执行捕获之间。</p>
+<h3 id="8-事件委托"><a class="markdownIt-Anchor" href="#8-事件委托">#</a> 8. 事件委托</h3>
+<ul>
+<li>
+<p>简介：事件委托指的是，不在事件的发生地（直接 dom）上设置监听函数，而是在其父元素上设置监听函数，通过事件冒泡，父元素可以监听到子元素上事件的触发，通过判断事件发生元素 DOM 的类型，来做出不同的响应。</p>
+</li>
+<li>
+<p>举例：最经典的就是 ul 和 li 标签的事件监听，比如我们在添加事件时候，采用事件委托机制，不会在 li 标签上直接添加，而是在 ul 父元素上添加。</p>
+</li>
+<li>
+<p>好处：比较合适动态元素的绑定，新添加的子元素也会有监听函数，也可以有事件触发机制。</p>
+</li>
+</ul>
+<h3 id="9-图片的懒加载和预加载"><a class="markdownIt-Anchor" href="#9-图片的懒加载和预加载">#</a> 9. 图片的懒加载和预加载</h3>
+<ul>
+<li>
+<p>预加载：提前加载图片，当用户需要查看时可直接从本地缓存中渲染。</p>
+</li>
+<li>
+<p>懒加载：懒加载的主要目的是作为服务器前端的优化，减少请求数或延迟请求数。</p>
+</li>
+</ul>
+<p>两种技术的本质：两者的行为是相反的，一个是提前加载，一个是迟缓甚至不加载。 懒加载对服务器前端有一定的缓解压力作用，预加载则会增加服务器前端压力。</p>
+<h3 id="10-mouseover和mouseenter的区别"><a class="markdownIt-Anchor" href="#10-mouseover和mouseenter的区别">#</a> 10. mouseover 和 mouseenter 的区别</h3>
+<ul>
+<li>
+<p>mouseover：当鼠标移入元素或其子元素都会触发事件，所以有一个重复触发，冒泡的过程。对应的移除事件是 mouseout</p>
+</li>
+<li>
+<p>mouseenter：当鼠标移除元素本身（不包含元素的子元素）会触发事件，也就是不会冒泡，对应的移除事件是 mouseleave</p>
+</li>
+</ul>
+<h3 id="11-js的new操作符做了哪些事情"><a class="markdownIt-Anchor" href="#11-js的new操作符做了哪些事情">#</a> 11. js 的 new 操作符做了哪些事情</h3>
+<p>new 操作符新建了一个空对象，这个对象原型指向构造函数的 prototype，执行构造函数后返回这个对象。</p>
+<h3 id="12改变函数内部this指针的指向函数bindapplycall的区别"><a class="markdownIt-Anchor" href="#12改变函数内部this指针的指向函数bindapplycall的区别">#</a> 12. 改变函数内部 this 指针的指向函数（bind，apply，call 的区别）</h3>
+<ul>
+<li>
+<p>通过 apply 和 call 改变函数的 this 指向，他们两个函数的第一个参数都是一样的表示要改变指向的那个对象，第二个参数，apply 是数组，而 call 则是 arg1,arg2… 这种形式。</p>
+</li>
+<li>
+<p>通过 bind 改变 this 作用域会返回一个新的函数，这个函数不会马上执行。</p>
+</li>
+</ul>
+<h3 id="13-js的各种位置比如clientheightscrollheightoffsetheight-以及scrolltop-offsettopclienttop的区别"><a class="markdownIt-Anchor" href="#13-js的各种位置比如clientheightscrollheightoffsetheight-以及scrolltop-offsettopclienttop的区别">#</a> 13. js 的各种位置，比如 clientHeight,scrollHeight,offsetHeight , 以及 scrollTop, offsetTop,clientTop 的区别？</h3>
+<ul>
+<li>
+<p>clientHeight：表示的是可视区域的高度，不包含 border 和滚动条</p>
+</li>
+<li>
+<p>offsetHeight：表示可视区域的高度，包含了 border 和滚动条</p>
+</li>
+<li>
+<p>scrollHeight：表示了所有区域的高度，包含了因为滚动被隐藏的部分。</p>
+</li>
+<li>
+<p>clientTop：表示边框 border 的厚度，在未指定的情况下一般为 0</p>
+</li>
+<li>
+<p>scrollTop：滚动后被隐藏的高度，获取对象相对于由 offsetParent 属性指定的父坐标 (css 定位的元素或 body 元素) 距离顶端的高度。</p>
+</li>
+</ul>
+<h3 id="14-js拖拽功能的实现"><a class="markdownIt-Anchor" href="#14-js拖拽功能的实现">#</a> 14. js 拖拽功能的实现</h3>
+<ul>
+<li>
+<p>首先是三个事件，分别是 mousedown，mousemove，mouseup 当鼠标点击按下的时候，需要一个 tag 标识此时已经按下，可以执行 mousemove 里面的具体方法。</p>
+</li>
+<li>
+<p>clientX，clientY 标识的是鼠标的坐标，分别标识横坐标和纵坐标，并且我们用 offsetX 和 offsetY 来表示元素的元素的初始坐标，移动的举例应该是：</p>
+<p><strong>鼠标移动时候的坐标 - 鼠标按下去时候的坐标。</strong></p>
+<p>也就是说定位信息为：</p>
+<p>鼠标移动时候的坐标 - 鼠标按下去时候的坐标 + 元素初始情况下的 offetLeft.</p>
+</li>
+<li>
+<p>还有一点也是原理性的东西，也就是拖拽的同时是绝对定位，我们改变的是绝对定位条件下的 left 以及 top 等等值。</p>
+</li>
+</ul>
+<p>补充：也可以通过 html5 的拖放（Drag 和 drop）来实现</p>
+<h2 id="二-进阶javascript篇"><a class="markdownIt-Anchor" href="#二-进阶javascript篇">#</a> 二、进阶 javascript 篇</h2>
+<h3 id="1自己实现一个bind函数"><a class="markdownIt-Anchor" href="#1自己实现一个bind函数">#</a> 1. 自己实现一个 bind 函数</h3>
+<p><strong><em>原理：通过 apply 或者 call 方法来实现。</em></strong></p>
+<h4 id="1初始版本"><a class="markdownIt-Anchor" href="#1初始版本">#</a> (1) 初始版本</h4>
+<pre class="line-numbers language-none"><code class="language-none">Function.prototype.bind&#x3D;function(obj,arg)&#123;
+  var arg&#x3D;Array.prototype.slice.call(arguments,1);
+  var context&#x3D;this;
+  return function(newArg)&#123;
+    arg&#x3D;arg.concat(Array.prototype.slice.call(newArg));
+    return context.apply(obj,arg);
+  &#125;
+&#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-考虑到原型链"><a class="markdownIt-Anchor" href="#2-考虑到原型链">#</a> (2) 考虑到原型链</h4>
+<p><strong><em>为什么要考虑？因为在 new 一个 bind 过生成的新函数的时候，必须的条件是要继承原函数的原型</em></strong></p>
+<pre class="line-numbers language-none"><code class="language-none">Function.prototype.bind&#x3D;function(obj,arg)&#123;
+  var arg&#x3D;Array.prototype.slice.call(arguments,1);
+  var context&#x3D;this;
+  var bound&#x3D;function(newArg)&#123;
+    arg&#x3D;arg.concat(Array.prototype.slice.call(newArg));
+    return context.apply(obj,arg);
+  &#125;
+  var F&#x3D;function()&#123;&#125;
+  &#x2F;&#x2F;这里需要一个寄生组合继承
+  F.prototype&#x3D;context.prototype;
+  bound.prototype&#x3D;new F();
+  return bound;
+&#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2用settimeout来实现setinterval"><a class="markdownIt-Anchor" href="#2用settimeout来实现setinterval">#</a> 2. 用 setTimeout 来实现 setInterval</h3>
+<h4 id="1用settimeout方法来模拟setinterval与setinterval之间的什么区别"><a class="markdownIt-Anchor" href="#1用settimeout方法来模拟setinterval与setinterval之间的什么区别">#</a> (1) 用 setTimeout () 方法来模拟 setInterval () 与 setInterval () 之间的什么区别？</h4>
+<p>首先来看 setInterval 的缺陷，使用 setInterval () 创建的定时器确保了定时器代码规则地插入队列中。这个问题在于：如果定时器代码在代码再次添加到队列之前还没完成执行，结果就会导致定时器代码连续运行好几次。而之间没有间隔。不过幸运的是：javascript 引擎足够聪明，能够避免这个问题。当且仅当没有该定时器的如何代码实例时，才会将定时器代码添加到队列中。这确保了定时器代码加入队列中最小的时间间隔为指定时间。</p>
+<p>这种重复定时器的规则有两个问题：<strong><em>1. 某些间隔会被跳过 2. 多个定时器的代码执行时间可能会比预期小。</em></strong></p>
+<p>下面举例子说明：</p>
+<p>假设，某个 onclick 事件处理程序使用啦 setInterval () 来设置了一个 200ms 的重复定时器。如果事件处理程序花了 300ms 多一点的时间完成。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1648412f2eb805ec%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>这个例子中的第一个定时器是在 205ms 处添加到队列中，但是要过 300ms 才能执行。在 405ms 又添加了一个副本。在一个间隔，605ms 处，第一个定时器代码还在执行中，而且队列中已经有了一个定时器实例，结果是 605ms 的定时器代码不会添加到队列中。结果是在 5ms 处添加的定时器代码执行结束后，405 处的代码立即执行。</p>
+<pre class="line-numbers language-none"><code class="language-none">function say()&#123;
+  &#x2F;&#x2F;something
+  setTimeout(say,200);
+&#125;
+setTimeout(say,200)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>或者</p>
+<pre class="line-numbers language-none"><code class="language-none">setTimeout(function()&#123;
+   &#x2F;&#x2F;do something
+   setTimeout(arguments.callee,200);
+&#125;,200);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3js怎么控制一次加载一张图片加载完后再加载下一张"><a class="markdownIt-Anchor" href="#3js怎么控制一次加载一张图片加载完后再加载下一张">#</a> 3.js 怎么控制一次加载一张图片，加载完后再加载下一张</h3>
+<h4 id="1方法1"><a class="markdownIt-Anchor" href="#1方法1">#</a> (1) 方法 1</h4>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;
+var obj&#x3D;new Image();
+obj.src&#x3D;&quot;http:&#x2F;&#x2F;www.phpernote.com&#x2F;uploadfiles&#x2F;editor&#x2F;201107240502201179.jpg&quot;;
+obj.onload&#x3D;function()&#123;
+alert(&#39;图片的宽度为：&#39;+obj.width+&#39;；图片的高度为：&#39;+obj.height);
+document.getElementById(&quot;mypic&quot;).innnerHTML&#x3D;&quot;&lt;img src&#x3D;&#39;&quot;+this.src+&quot;&#39; &#x2F;&gt;&quot;;
+&#125;
+&lt;&#x2F;script&gt;
+&lt;div id&#x3D;&quot;mypic&quot;&gt;onloading……&lt;&#x2F;div&gt;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2方法2"><a class="markdownIt-Anchor" href="#2方法2">#</a> (2) 方法 2</h4>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;
+var obj&#x3D;new Image();
+obj.src&#x3D;&quot;http:&#x2F;&#x2F;www.phpernote.com&#x2F;uploadfiles&#x2F;editor&#x2F;201107240502201179.jpg&quot;;
+obj.onreadystatechange&#x3D;function()&#123;
+if(this.readyState&#x3D;&#x3D;&quot;complete&quot;)&#123;
+alert(&#39;图片的宽度为：&#39;+obj.width+&#39;；图片的高度为：&#39;+obj.height);
+document.getElementById(&quot;mypic&quot;).innnerHTML&#x3D;&quot;&lt;img src&#x3D;&#39;&quot;+this.src+&quot;&#39; &#x2F;&gt;&quot;;
+&#125;
+&#125;
+&lt;&#x2F;script&gt;
+&lt;div id&#x3D;&quot;mypic&quot;&gt;onloading……&lt;&#x2F;div&gt;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3代码的执行顺序"><a class="markdownIt-Anchor" href="#3代码的执行顺序">#</a> 3. 代码的执行顺序</h3>
+<pre class="line-numbers language-none"><code class="language-none">setTimeout(function()&#123;console.log(1)&#125;,0);
+new Promise(function(resolve,reject)&#123;
+   console.log(2);
+   resolve();
+&#125;).then(function()&#123;console.log(3)
+&#125;).then(function()&#123;console.log(4)&#125;);
+
+process.nextTick(function()&#123;console.log(5)&#125;);
+
+console.log(6);
+&#x2F;&#x2F;输出2,6,5,3,4,1
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>为什么呢？具体请参考我的文章： <a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fforthealllight%2Fblog%2Fissues%2F5" title="https://github.com/forthealllight/blog/issues/5">从 promise、process.nextTick、setTimeout 出发，谈谈 Event Loop 中的 Job queue</a></p>
+<h3 id="4如何实现sleep的效果es5或者es6"><a class="markdownIt-Anchor" href="#4如何实现sleep的效果es5或者es6">#</a> 4. 如何实现 sleep 的效果（es5 或者 es6）</h3>
+<h4 id="1while循环的方式"><a class="markdownIt-Anchor" href="#1while循环的方式">#</a> (1) while 循环的方式</h4>
+<pre class="line-numbers language-none"><code class="language-none">function sleep(ms)&#123;
+   var start&#x3D;Date.now(),expire&#x3D;start+ms;
+   while(Date.now()&lt;expire);
+   console.log(&#39;1111&#39;);
+   return;
+&#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>执行 sleep (1000) 之后，休眠了 1000ms 之后输出了 1111。上述循环的方式缺点很明显，容易造成死循环。</p>
+<h3 id="2通过promise来实现"><a class="markdownIt-Anchor" href="#2通过promise来实现">#</a> (2) 通过 promise 来实现</h3>
+<pre class="line-numbers language-none"><code class="language-none">function sleep(ms)&#123;
+  var temple&#x3D;new Promise(
+  (resolve)&#x3D;&gt;&#123;
+  console.log(111);setTimeout(resolve,ms)
+  &#125;);
+  return temple
+&#125;
+sleep(500).then(function()&#123;
+   &#x2F;&#x2F;console.log(222)
+&#125;)
+&#x2F;&#x2F;先输出了111，延迟500ms后输出222
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3通过async封装"><a class="markdownIt-Anchor" href="#3通过async封装">#</a> (3) 通过 async 封装</h3>
+<pre class="line-numbers language-none"><code class="language-none">function sleep(ms)&#123;
+  return new Promise((resolve)&#x3D;&gt;setTimeout(resolve,ms));
+&#125;
+async function test()&#123;
+  var temple&#x3D;await sleep(1000);
+  console.log(1111)
+  return temple
+&#125;
+test();
+&#x2F;&#x2F;延迟1000ms输出了1111
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>####(4). 通过 generate 来实现</p>
+<pre class="line-numbers language-none"><code class="language-none">function* sleep(ms)&#123;
+   yield new Promise(function(resolve,reject)&#123;
+             console.log(111);
+             setTimeout(resolve,ms);
+        &#125;)  
+&#125;
+sleep(500).next().value.then(function()&#123;console.log(2222)&#125;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="5简单的实现一个promise"><a class="markdownIt-Anchor" href="#5简单的实现一个promise">#</a> 5. 简单的实现一个 promise</h3>
+<p>首先明确什么是 promiseA + 规范，参考规范的地址：</p>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fpromisesaplus.com%2F" title="https://promisesaplus.com/">primiseA + 规范</a></p>
+<p>如何实现一个 promise，参考我的文章：</p>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fforthealllight%2Fblog%2Fissues%2F4" title="https://github.com/forthealllight/blog/issues/4">实现一个完美符合 Promise/A + 规范的 Promise</a></p>
+<p>一般不会问的很详细，只要能写出上述文章中的 v1.0 版本的简单 promise 即可。</p>
+<h3 id="6function_proto_getprototypeof是什么"><a class="markdownIt-Anchor" href="#6function_proto_getprototypeof是什么">#</a> 6.Function._<em>proto_</em>(getPrototypeOf) 是什么？</h3>
+<p>获取一个对象的原型，在 chrome 中可以通过__proto__的形式，或者在 ES6 中可以通过 Object.getPrototypeOf 的形式。</p>
+<p>那么 Function.proto 是什么么？也就是说 Function 由什么对象继承而来，我们来做如下判别。</p>
+<pre class="line-numbers language-none"><code class="language-none">Function.__proto__&#x3D;&#x3D;Object.prototype &#x2F;&#x2F;false
+Function.__proto__&#x3D;&#x3D;Function.prototype&#x2F;&#x2F;true
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>我们发现 Function 的原型也是 Function。</p>
+<p>我们用图可以来明确这个关系：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1648412f2ed72c1d%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h3 id="7实现js中所有对象的深度克隆包装对象date对象正则对象"><a class="markdownIt-Anchor" href="#7实现js中所有对象的深度克隆包装对象date对象正则对象">#</a> 7. 实现 js 中所有对象的深度克隆（包装对象，Date 对象，正则对象）</h3>
+<p>通过递归可以简单实现对象的深度克隆，但是这种方法不管是 ES6 还是 ES5 实现，都有同样的缺陷，就是只能实现特定的 object 的深度复制（比如数组和函数），不能实现包装对象 Number，String ， Boolean，以及 Date 对象，RegExp 对象的复制。</p>
+<h4 id="1前文的方法"><a class="markdownIt-Anchor" href="#1前文的方法">#</a> (1) 前文的方法</h4>
+<pre class="line-numbers language-none"><code class="language-none">function deepClone(obj)&#123;
+    var newObj&#x3D; obj instanceof Array?[]:&#123;&#125;;
+    for(var i in obj)&#123;
+       newObj[i]&#x3D;typeof obj[i]&#x3D;&#x3D;&#39;object&#39;?  
+       deepClone(obj[i]):obj[i];    
+    &#125;
+    return newObj;
+&#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这种方法可以实现一般对象和数组对象的克隆，比如：</p>
+<pre class="line-numbers language-none"><code class="language-none">var arr&#x3D;[1,2,3];
+var newArr&#x3D;deepClone(arr);
+&#x2F;&#x2F; newArr-&gt;[1,2,3]
+
+var obj&#x3D;&#123;
+   x:1,
+   y:2
+&#125;
+var newObj&#x3D;deepClone(obj);
+&#x2F;&#x2F; newObj&#x3D;&#123;x:1,y:2&#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>但是不能实现例如包装对象 Number,String,Boolean, 以及正则对象 RegExp 和 Date 对象的克隆，比如：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;Number包装对象
+var num&#x3D;new Number(1);
+typeof num &#x2F;&#x2F; &quot;object&quot;
+
+var newNum&#x3D;deepClone(num);
+&#x2F;&#x2F;newNum -&gt;  &#123;&#125; 空对象
+
+&#x2F;&#x2F;String包装对象
+var str&#x3D;new String(&quot;hello&quot;);
+typeof str &#x2F;&#x2F;&quot;object&quot;
+
+var newStr&#x3D;deepClone(str);
+&#x2F;&#x2F;newStr-&gt;  &#123;0:&#39;h&#39;,1:&#39;e&#39;,2:&#39;l&#39;,3:&#39;l&#39;,4:&#39;o&#39;&#125;;
+
+&#x2F;&#x2F;Boolean包装对象
+var bol&#x3D;new Boolean(true);
+typeof bol &#x2F;&#x2F;&quot;object&quot;
+
+var newBol&#x3D;deepClone(bol);
+&#x2F;&#x2F; newBol -&gt;&#123;&#125; 空对象
+
+....
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2valueof函数"><a class="markdownIt-Anchor" href="#2valueof函数">#</a> (2) valueof () 函数</h4>
+<p>所有对象都有 valueOf 方法，valueOf 方法对于：如果存在任意原始值，它就默认将对象转换为表示它的原始值。对象是复合值，而且大多数对象无法真正表示为一个原始值，因此默认的 valueOf () 方法简单地返回对象本身，而不是返回一个原始值。数组、函数和正则表达式简单地继承了这个默认方法，调用这些类型的实例的 valueOf () 方法只是简单返回这个对象本身。</p>
+<p>对于原始值或者包装类：</p>
+<pre class="line-numbers language-none"><code class="language-none">function baseClone(base)&#123;
+ return base.valueOf();
+&#125;
+
+&#x2F;&#x2F;Number
+var num&#x3D;new Number(1);
+var newNum&#x3D;baseClone(num);
+&#x2F;&#x2F;newNum-&gt;1
+
+&#x2F;&#x2F;String
+var str&#x3D;new String(&#39;hello&#39;);
+var newStr&#x3D;baseClone(str);
+&#x2F;&#x2F; newStr-&gt;&quot;hello&quot;
+
+&#x2F;&#x2F;Boolean
+var bol&#x3D;new Boolean(true);
+var newBol&#x3D;baseClone(bol);
+&#x2F;&#x2F;newBol-&gt; true
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其实对于包装类，完全可以用 = 号来进行克隆，其实没有深度克隆一说，</p>
+<p>这里用 valueOf 实现，语法上比较符合规范。</p>
+<p>对于 Date 类型：</p>
+<p>因为 valueOf 方法，日期类定义的 valueOf () 方法会返回它的一个内部表示：1970 年 1 月 1 日以来的毫秒数。因此我们可以在 Date 的原型上定义克隆的方法：</p>
+<pre class="line-numbers language-none"><code class="language-none">Date.prototype.clone&#x3D;function()&#123;
+  return new Date(this.valueOf());
+&#125;
+
+var date&#x3D;new Date(&#39;2010&#39;);
+var newDate&#x3D;date.clone();
+&#x2F;&#x2F; newDate-&gt;  Fri Jan 01 2010 08:00:00 GMT+0800 
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>对于正则对象 RegExp：</p>
+<pre class="line-numbers language-none"><code class="language-none">RegExp.prototype.clone &#x3D; function() &#123;
+var pattern &#x3D; this.valueOf();
+var flags &#x3D; &#39;&#39;;
+flags +&#x3D; pattern.global ? &#39;g&#39; : &#39;&#39;;
+flags +&#x3D; pattern.ignoreCase ? &#39;i&#39; : &#39;&#39;;
+flags +&#x3D; pattern.multiline ? &#39;m&#39; : &#39;&#39;;
+return new RegExp(pattern.source, flags);
+&#125;;
+
+var reg&#x3D;new RegExp(&#39;&#x2F;111&#x2F;&#39;);
+var newReg&#x3D;reg.clone();
+&#x2F;&#x2F;newReg-&gt;  &#x2F;\&#x2F;111\&#x2F;&#x2F;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="8简单实现node的events模块"><a class="markdownIt-Anchor" href="#8简单实现node的events模块">#</a> 8. 简单实现 Node 的 Events 模块</h3>
+<p>简介：观察者模式或者说订阅模式，它定义了对象间的一种一对多的关系，让多个观察者对象同时监听某一个主题对象，当一个对象发生改变时，所有依赖于它的对象都将得到通知。</p>
+<p>node 中的 Events 模块就是通过观察者模式来实现的：</p>
+<pre class="line-numbers language-none"><code class="language-none">var events&#x3D;require(&#39;events&#39;);
+var eventEmitter&#x3D;new events.EventEmitter();
+eventEmitter.on(&#39;say&#39;,function(name)&#123;
+    console.log(&#39;Hello&#39;,name);
+&#125;)
+eventEmitter.emit(&#39;say&#39;,&#39;Jony yu&#39;);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这样，eventEmitter 发出 say 事件，通过 On 接收，并且输出结果，这就是一个订阅模式的实现，下面我们来简单的实现一个 Events 模块的 EventEmitter。</p>
+<h4 id="1实现简单的event模块的emit和on方法"><a class="markdownIt-Anchor" href="#1实现简单的event模块的emit和on方法">#</a> (1) 实现简单的 Event 模块的 emit 和 on 方法</h4>
+<pre class="line-numbers language-none"><code class="language-none">function Events()&#123;
+this.on&#x3D;function(eventName,callBack)&#123;
+  if(!this.handles)&#123;
+    this.handles&#x3D;&#123;&#125;;
+  &#125;
+  if(!this.handles[eventName])&#123;
+    this.handles[eventName]&#x3D;[];
+  &#125;
+  this.handles[eventName].push(callBack);
+&#125;
+this.emit&#x3D;function(eventName,obj)&#123;
+   if(this.handles[eventName])&#123;
+     for(var i&#x3D;0;o&lt;this.handles[eventName].length;i++)&#123;
+       this.handles[eventName][i](obj);
+     &#125;
+   &#125;
+&#125;
+return this;
+&#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这样我们就定义了 Events，现在我们可以开始来调用：</p>
+<pre class="line-numbers language-none"><code class="language-none"> var events&#x3D;new Events();
+ events.on(&#39;say&#39;,function(name)&#123;
+    console.log(&#39;Hello&#39;,nama)
+ &#125;);
+ events.emit(&#39;say&#39;,&#39;Jony yu&#39;);
+ &#x2F;&#x2F;结果就是通过emit调用之后，输出了Jony yu
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2每个对象是独立的"><a class="markdownIt-Anchor" href="#2每个对象是独立的">#</a> (2) 每个对象是独立的</h4>
+<p>因为是通过 new 的方式，每次生成的对象都是不相同的，因此：</p>
+<pre class="line-numbers language-none"><code class="language-none">var event1&#x3D;new Events();
+var event2&#x3D;new Events();
+event1.on(&#39;say&#39;,function()&#123;
+    console.log(&#39;Jony event1&#39;);
+&#125;);
+event2.on(&#39;say&#39;,function()&#123;
+    console.log(&#39;Jony event2&#39;);
+&#125;)
+event1.emit(&#39;say&#39;);
+event2.emit(&#39;say&#39;);
+&#x2F;&#x2F;event1、event2之间的事件监听互相不影响
+&#x2F;&#x2F;输出结果为&#39;Jony event1&#39; &#39;Jony event2&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="9箭头函数中this指向举例"><a class="markdownIt-Anchor" href="#9箭头函数中this指向举例">#</a> 9. 箭头函数中 this 指向举例</h3>
+<pre class="line-numbers language-none"><code class="language-none">var a&#x3D;11;
+function test2()&#123;
+  this.a&#x3D;22;
+  let b&#x3D;()&#x3D;&gt;&#123;console.log(this.a)&#125;
+  b();
+&#125;
+var x&#x3D;new test2();
+&#x2F;&#x2F;输出22
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>定义时绑定。</p>
+<h2 id="三-http-html和浏览器篇"><a class="markdownIt-Anchor" href="#三-http-html和浏览器篇">#</a> 三、http、html 和浏览器篇</h2>
+<h3 id="1http和https"><a class="markdownIt-Anchor" href="#1http和https">#</a> 1.http 和 https</h3>
+<p><strong><em>https 的 SSL 加密是在传输层实现的。</em></strong></p>
+<h4 id="1http和https的基本概念"><a class="markdownIt-Anchor" href="#1http和https的基本概念">#</a> (1) http 和 https 的基本概念</h4>
+<p>http: 超文本传输协议，是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（TCP），用于从 WWW 服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。</p>
+<p>https: 是以安全为目标的 HTTP 通道，简单讲是 HTTP 的安全版，即 HTTP 下加入 SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL。</p>
+<p>https 协议的主要作用是：建立一个信息安全通道，来确保数组的传输，确保网站的真实性。</p>
+<h4 id="2http和https的区别"><a class="markdownIt-Anchor" href="#2http和https的区别">#</a> (2) http 和 https 的区别？</h4>
+<p>http 传输的数据都是未加密的，也就是明文的，网景公司设置了 SSL 协议来对 http 协议传输的数据进行加密处理，简单来说 https 协议是由 http 和 ssl 协议构建的可进行加密传输和身份认证的网络协议，比 http 协议的安全性更高。 主要的区别如下：</p>
+<ul>
+<li>Https 协议需要 ca 证书，费用较高。</li>
+<li>http 是超文本传输协议，信息是明文传输，https 则是具有安全性的 ssl 加密传输协议。</li>
+<li>使用不同的链接方式，端口也不同，一般而言，http 协议的端口为 80，https 的端口为 443</li>
+<li>http 的连接很简单，是无状态的；HTTPS 协议是由 SSL+HTTP 协议构建的可进行加密传输、身份认证的网络协议，比 http 协议安全。</li>
+</ul>
+<h4 id="3https协议的工作原理"><a class="markdownIt-Anchor" href="#3https协议的工作原理">#</a> (3) https 协议的工作原理</h4>
+<p>客户端在使用 HTTPS 方式与 Web 服务器通信时有以下几个步骤，如图所示。</p>
+<ul>
+<li>客户使用 https url 访问服务器，则要求 web 服务器建立 ssl 链接。</li>
+<li>web 服务器接收到客户端的请求之后，会将网站的证书（证书中包含了公钥），返回或者说传输给客户端。</li>
+<li>客户端和 web 服务器端开始协商 SSL 链接的安全等级，也就是加密等级。</li>
+<li>客户端浏览器通过双方协商一致的安全等级，建立会话密钥，然后通过网站的公钥来加密会话密钥，并传送给网站。</li>
+<li>web 服务器通过自己的私钥解密出会话密钥。</li>
+<li>web 服务器通过会话密钥加密与客户端之间的通信。</li>
+</ul>
+<h4 id="4https协议的优点"><a class="markdownIt-Anchor" href="#4https协议的优点">#</a> (4) https 协议的优点</h4>
+<ul>
+<li>使用 HTTPS 协议可认证用户和服务器，确保数据发送到正确的客户机和服务器；</li>
+<li>HTTPS 协议是由 SSL+HTTP 协议构建的可进行加密传输、身份认证的网络协议，要比 http 协议安全，可防止数据在传输过程中不被窃取、改变，确保数据的完整性。</li>
+<li>HTTPS 是现行架构下最安全的解决方案，虽然不是绝对安全，但它大幅增加了中间人攻击的成本。</li>
+<li>谷歌曾在 2014 年 8 月份调整搜索引擎算法，并称 “比起同等 HTTP 网站，采用 HTTPS 加密的网站在搜索结果中的排名将会更高”。</li>
+</ul>
+<h4 id="5https协议的缺点"><a class="markdownIt-Anchor" href="#5https协议的缺点">#</a> (5) https 协议的缺点</h4>
+<ul>
+<li>https 握手阶段比较费时，会使页面加载时间延长 50%，增加 10%~20% 的耗电。</li>
+<li>https 缓存不如 http 高效，会增加数据开销。</li>
+<li>SSL 证书也需要钱，功能越强大的证书费用越高。</li>
+<li>SSL 证书需要绑定 IP，不能再同一个 ip 上绑定多个域名，ipv4 资源支持不了这种消耗。</li>
+</ul>
+<h3 id="2tcp三次握手一句话概括"><a class="markdownIt-Anchor" href="#2tcp三次握手一句话概括">#</a> 2.tcp 三次握手，一句话概括</h3>
+<p><strong><em>客户端和服务端都需要直到各自可收发，因此需要三次握手。</em></strong></p>
+<p>简化三次握手：</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/7/10/16484133eee33c76~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>从图片可以得到三次握手可以简化为：C 发起请求连接 S 确认，也发起连接 C 确认我们再看看每次握手的作用：第一次握手：S 只可以确认 自己可以接受 C 发送的报文段第二次握手：C 可以确认 S 收到了自己发送的报文段，并且可以确认 自己可以接受 S 发送的报文段第三次握手：S 可以确认 C 收到了自己发送的报文段</p>
+<h3 id="3tcp和udp的区别"><a class="markdownIt-Anchor" href="#3tcp和udp的区别">#</a> 3.TCP 和 UDP 的区别</h3>
+<p>（1）TCP 是面向连接的，udp 是无连接的即发送数据前不需要先建立链接。</p>
+<p>（2）TCP 提供可靠的服务。也就是说，通过 TCP 连接传送的数据，无差错，不丢失，不重复，且按序到达；UDP 尽最大努力交付，即不保证可靠交付。 并且因为 tcp 可靠，面向连接，不会丢失数据因此适合大数据量的交换。</p>
+<p>（3）TCP 是面向字节流，UDP 面向报文，并且网络出现拥塞不会使得发送速率降低（因此会出现丢包，对实时的应用比如 IP 电话和视频会议等）。</p>
+<p>（4）TCP 只能是 1 对 1 的，UDP 支持 1 对 1,1 对多。</p>
+<p>（5）TCP 的首部较大为 20 字节，而 UDP 只有 8 字节。</p>
+<p>（6）TCP 是面向连接的可靠性传输，而 UDP 是不可靠的。</p>
+<h3 id="4websocket的实现和应用"><a class="markdownIt-Anchor" href="#4websocket的实现和应用">#</a> 4.WebSocket 的实现和应用</h3>
+<h4 id="1什么是websocket"><a class="markdownIt-Anchor" href="#1什么是websocket">#</a> (1) 什么是 WebSocket?</h4>
+<p>WebSocket 是 HTML5 中的协议，支持持久连续，http 协议不支持持久性连接。Http1.0 和 HTTP1.1 都不支持持久性的链接，HTTP1.1 中的 keep-alive，将多个 http 请求合并为 1 个</p>
+<h4 id="2websocket是什么样的协议具体有什么优点"><a class="markdownIt-Anchor" href="#2websocket是什么样的协议具体有什么优点">#</a> (2) WebSocket 是什么样的协议，具体有什么优点？</h4>
+<ul>
+<li>HTTP 的生命周期通过 Request 来界定，也就是 Request 一个 Response，那么在 Http1.0 协议中，这次 Http 请求就结束了。在 Http1.1 中进行了改进，是的有一个 connection：Keep-alive，也就是说，在一个 Http 连接中，可以发送多个 Request，接收多个 Response。但是必须记住，在 Http 中一个 Request 只能对应有一个 Response，而且这个 Response 是被动的，不能主动发起。</li>
+<li>WebSocket 是基于 Http 协议的，或者说借用了 Http 协议来完成一部分握手，在握手阶段与 Http 是相同的。我们来看一个 websocket 握手协议的实现，基本是 2 个属性，upgrade，connection。</li>
+</ul>
+<p>基本请求如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">GET &#x2F;chat HTTP&#x2F;1.1
+Host: server.example.com
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw&#x3D;&#x3D;
+Sec-WebSocket-Protocol: chat, superchat
+Sec-WebSocket-Version: 13
+Origin: http:&#x2F;&#x2F;example.com
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>多了下面 2 个属性：</p>
+<pre class="line-numbers language-none"><code class="language-none">Upgrade:webSocket
+Connection:Upgrade
+告诉服务器发送的是websocket
+Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw&#x3D;&#x3D;
+Sec-WebSocket-Protocol: chat, superchat
+Sec-WebSocket-Version: 13
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="5http请求的方式head方式"><a class="markdownIt-Anchor" href="#5http请求的方式head方式">#</a> 5.HTTP 请求的方式，HEAD 方式</h3>
+<ul>
+<li>head：类似于 get 请求，只不过返回的响应中没有具体的内容，用户获取报头</li>
+<li>options：允许客户端查看服务器的性能，比如说服务器支持的请求方式等等。</li>
+</ul>
+<h3 id="6一个图片url访问后直接下载怎样实现"><a class="markdownIt-Anchor" href="#6一个图片url访问后直接下载怎样实现">#</a> 6. 一个图片 url 访问后直接下载怎样实现？</h3>
+<p>请求的返回头里面，用于浏览器解析的重要参数就是 OSS 的 API 文档里面的返回 http 头，决定用户下载行为的参数。</p>
+<p>下载的情况下：</p>
+<pre class="line-numbers language-none"><code class="language-none">  1. x-oss-object-type:
+         Normal
+  2. x-oss-request-id:
+         598D5ED34F29D01FE2925F41
+  3. x-oss-storage-class:
+         Standard
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="7web"><a class="markdownIt-Anchor" href="#7web">#</a> <a target="_blank" rel="noopener" href="http://7.web">7.web</a> Quality （无障碍）</h3>
+<p>能够被残障人士使用的网站才能称得上一个易用的（易访问的）网站。 残障人士指的是那些带有残疾或者身体不健康的用户。</p>
+<p>使用 alt 属性：</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;img src&#x3D;&quot;person.jpg&quot;  alt&#x3D;&quot;this is a person&quot;&#x2F;&gt;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>有时候浏览器会无法显示图像。具体的原因有：</p>
+<ul>
+<li>用户关闭了图像显示</li>
+<li>浏览器是不支持图形显示的迷你浏览器</li>
+<li>浏览器是语音浏览器（供盲人和弱视人群使用） 如果您使用了 alt 属性，那么浏览器至少可以显示或读出有关图像的描述。</li>
+</ul>
+<h3 id="8几个很实用的bom属性对象方法"><a class="markdownIt-Anchor" href="#8几个很实用的bom属性对象方法">#</a> 8. 几个很实用的 BOM 属性对象方法？</h3>
+<p>什么是 Bom? Bom 是浏览器对象。有哪些常用的 Bom 属性呢？</p>
+<h4 id="1location对象"><a class="markdownIt-Anchor" href="#1location对象">#</a> (1) location 对象</h4>
+<p>location.href-- 返回或设置当前文档的 URL location.search – 返回 URL 中的查询字符串部分。例如 <a href="https://link.juejin.cn?target=http%3A%2F%2Fwww.dreamdu.com%2Fdreamdu.php%3Fid%3D5%26name%3Ddreamdu" title="http://www.dreamdu.com/dreamdu.php?id=5&amp;name=dreamdu">www.dreamdu.com/dreamdu.php…</a> 返回包括 (?) 后面的内容？id=5&amp;name=dreamdu location.hash – 返回 URL# 后面的内容，如果没有 #，返回空 location.host – 返回 URL 中的域名部分，<a target="_blank" rel="noopener" href="http://xn--www-uc0ep96b.dreamdu.com">例如 www.dreamdu.com</a> location.hostname – 返回 URL 中的主域名部分，<a target="_blank" rel="noopener" href="http://xn--dreamdu-ff6kt45e.com">例如 dreamdu.com</a> location.pathname – 返回 URL 的域名后的部分。例如 <a href="https://link.juejin.cn?target=http%3A%2F%2Fwww.dreamdu.com%2Fxhtml%2F" title="http://www.dreamdu.com/xhtml/">www.dreamdu.com/xhtml/</a> 返回 /xhtml/ location.port – 返回 URL 中的端口部分。例如 <a href="https://link.juejin.cn?target=http%3A%2F%2Fwww.dreamdu.com%3A8080%2Fxhtml%2F" title="http://www.dreamdu.com:8080/xhtml/">www.dreamdu.com:8080/xhtml/</a> 返回 8080 location.protocol – 返回 URL 中的协议部分。例如 <a href="https://link.juejin.cn?target=http%3A%2F%2Fwww.dreamdu.com%3A8080%2Fxhtml%2F" title="http://www.dreamdu.com:8080/xhtml/">www.dreamdu.com:8080/xhtml/</a> 返回 (//) 前面的内容 http: location.assign – 设置当前文档的 URL location.replace () – 设置当前文档的 URL，并且在 history 对象的地址列表中移除这个 URL location.replace (url); location.reload () – 重载当前页面</p>
+<h4 id="2history对象"><a class="markdownIt-Anchor" href="#2history对象">#</a> (2) history 对象</h4>
+<p>history.go () – 前进或后退指定的页面数 history.go (num); history.back () – 后退一页 history.forward () – 前进一页</p>
+<h4 id="3navigator对象"><a class="markdownIt-Anchor" href="#3navigator对象">#</a> (3) Navigator 对象</h4>
+<p>navigator.userAgent – 返回用户代理头的字符串表示 (就是包括浏览器版本信息等的字符串) navigator.cookieEnabled – 返回浏览器是否支持 (启用) cookie</p>
+<h3 id="9html5-drag-api"><a class="markdownIt-Anchor" href="#9html5-drag-api">#</a> 9.HTML5 drag api</h3>
+<ul>
+<li>dragstart：事件主体是被拖放元素，在开始拖放被拖放元素时触发，。</li>
+<li>darg：事件主体是被拖放元素，在正在拖放被拖放元素时触发。</li>
+<li>dragenter：事件主体是目标元素，在被拖放元素进入某元素时触发。</li>
+<li>dragover：事件主体是目标元素，在被拖放在某元素内移动时触发。</li>
+<li>dragleave：事件主体是目标元素，在被拖放元素移出目标元素是触发。</li>
+<li>drop：事件主体是目标元素，在目标元素完全接受被拖放元素时触发。</li>
+<li>dragend：事件主体是被拖放元素，在整个拖放操作结束时触发</li>
+</ul>
+<h3 id="10http20"><a class="markdownIt-Anchor" href="#10http20">#</a> 10.http2.0</h3>
+<p>首先补充一下，http 和 https 的区别，相比于 http,https 是基于 ssl 加密的 http 协议 简要概括：http2.0 是基于 1999 年发布的 http1.0 之后的首次更新。</p>
+<ul>
+<li>提升访问速度（可以对于，请求资源所需时间更少，访问速度更快，相比 http1.0）</li>
+<li>允许多路复用：多路复用允许同时通过单一的 HTTP/2 连接发送多重请求 - 响应信息。改善了：在 http1.1 中，浏览器客户端在同一时间，针对同一域名下的请求有一定数量限制（连接数量），超过限制会被阻塞。</li>
+<li>二进制分帧：HTTP2.0 会将所有的传输信息分割为更小的信息或者帧，并对他们进行二进制编码</li>
+<li>首部压缩</li>
+<li>服务器端推送</li>
+</ul>
+<h3 id="11补充400和401-403状态码"><a class="markdownIt-Anchor" href="#11补充400和401-403状态码">#</a> 11. 补充 400 和 401、403 状态码</h3>
+<h4 id="1400状态码请求无效"><a class="markdownIt-Anchor" href="#1400状态码请求无效">#</a> (1) 400 状态码：请求无效</h4>
+<p>产生原因：</p>
+<ul>
+<li>前端提交数据的字段名称和字段类型与后台的实体没有保持一致</li>
+<li>前端提交到后台的数据应该是 json 字符串类型，但是前端没有将对象 JSON.stringify 转化成字符串。</li>
+</ul>
+<p>解决方法：</p>
+<ul>
+<li>对照字段的名称，保持一致性</li>
+<li>将 obj 对象通过 JSON.stringify 实现序列化</li>
+</ul>
+<h4 id="2401状态码当前请求需要用户验证"><a class="markdownIt-Anchor" href="#2401状态码当前请求需要用户验证">#</a> (2) 401 状态码：当前请求需要用户验证</h4>
+<h4 id="3403状态码服务器已经得到请求但是拒绝执行"><a class="markdownIt-Anchor" href="#3403状态码服务器已经得到请求但是拒绝执行">#</a> (3) 403 状态码：服务器已经得到请求，但是拒绝执行</h4>
+<h3 id="12fetch发送2次请求的原因"><a class="markdownIt-Anchor" href="#12fetch发送2次请求的原因">#</a> 12.fetch 发送 2 次请求的原因</h3>
+<p><strong><em>fetch 发送 post 请求的时候，总是发送 2 次，第一次状态码是 204，第二次才成功？</em></strong></p>
+<p>原因很简单，因为你用 fetch 的 post 请求的时候，导致 fetch 第一次发送了一个 Options 请求，询问服务器是否支持修改的请求头，如果服务器支持，则在第二次中发送真正的请求。</p>
+<h3 id="13cookie-sessionstorage-localstorage的区别"><a class="markdownIt-Anchor" href="#13cookie-sessionstorage-localstorage的区别">#</a> 13.Cookie、sessionStorage、localStorage 的区别</h3>
+<p>共同点：都是保存在浏览器端，并且是同源的</p>
+<ul>
+<li>
+<p>Cookie：cookie 数据始终在同源的 http 请求中携带（即使不需要），即 cookie 在浏览器和服务器间来回传递。而 sessionStorage 和 localStorage 不会自动把数据发给服务器，仅在本地保存。cookie 数据还有路径（path）的概念，可以限制 cookie 只属于某个路径下，存储的大小很小只有 4K 左右。 （key：可以在浏览器和服务器端来回传递，存储容量小，只有大约 4K 左右）</p>
+</li>
+<li>
+<p>sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持，localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；cookie 只在设置的 cookie 过期时间之前一直有效，即使窗口或浏览器关闭。（key：本身就是一个回话过程，关闭浏览器后消失，session 为一个回话，当页面不同即使是同一页面打开两次，也被视为同一次回话）</p>
+</li>
+<li>
+<p>localStorage：localStorage 在所有同源窗口中都是共享的；cookie 也是在所有同源窗口中都是共享的。（key：同源窗口都会共享，并且不会失效，不管窗口或者浏览器关闭与否都会始终生效）</p>
+</li>
+</ul>
+<p>补充说明一下 cookie 的作用：</p>
+<ul>
+<li>
+<p>保存用户登录状态。例如将用户 id 存储于一个 cookie 内，这样当用户下次访问该页面时就不需要重新登录了，现在很多论坛和社区都提供这样的功能。 cookie 还可以设置过期时间，当超过时间期限后，cookie 就会自动消失。因此，系统往往可以提示用户保持登录状态的时间：常见选项有一个月、三个 月、一年等。</p>
+</li>
+<li>
+<p>跟踪用户行为。例如一个天气预报网站，能够根据用户选择的地区显示当地的天气情况。如果每次都需要选择所在地是烦琐的，当利用了 cookie 后就会显得很人性化了，系统能够记住上一次访问的地区，当下次再打开该页面时，它就会自动显示上次用户所在地区的天气情况。因为一切都是在后 台完成，所以这样的页面就像为某个用户所定制的一样，使用起来非常方便</p>
+</li>
+<li>
+<p>定制页面。如果网站提供了换肤或更换布局的功能，那么可以使用 cookie 来记录用户的选项，例如：背景色、分辨率等。当用户下次访问时，仍然可以保存上一次访问的界面风格。</p>
+</li>
+</ul>
+<h3 id="14web"><a class="markdownIt-Anchor" href="#14web">#</a> <a target="_blank" rel="noopener" href="http://14.web">14.web</a> worker</h3>
+<p>在 HTML 页面中，如果在执行脚本时，页面的状态是不可相应的，直到脚本执行完成后，页面才变成可相应。web worker 是运行在后台的 js，独立于其他脚本，不会影响页面你的性能。并且通过 postMessage 将结果回传到主线程。这样在进行复杂操作的时候，就不会阻塞主线程了。</p>
+<p>如何创建 web worker：</p>
+<ul>
+<li>检测浏览器对于 web worker 的支持性</li>
+<li>创建 web worker 文件（js，回传函数等）</li>
+<li>创建 web worker 对象</li>
+</ul>
+<h3 id="15对html语义化标签的理解"><a class="markdownIt-Anchor" href="#15对html语义化标签的理解">#</a> 15. 对 HTML 语义化标签的理解</h3>
+<p>HTML5 语义化标签是指正确的标签包含了正确的内容，结构良好，便于阅读，比如 nav 表示导航条，类似的还有 article、header、footer 等等标签。</p>
+<h3 id="16iframe是什么有什么缺点"><a class="markdownIt-Anchor" href="#16iframe是什么有什么缺点">#</a> 16.iframe 是什么？有什么缺点？</h3>
+<p>定义：iframe 元素会创建包含另一个文档的内联框架 提示：可以将提示文字放在之间，来提示某些不支持 iframe 的浏览器</p>
+<p>缺点：</p>
+<ul>
+<li>会阻塞主页面的 onload 事件</li>
+<li>搜索引擎无法解读这种页面，不利于 SEO</li>
+<li>iframe 和主页面共享连接池，而浏览器对相同区域有限制所以会影响性能。</li>
+</ul>
+<h3 id="17doctype作用-严格模式与混杂模式如何区分它们有何意义"><a class="markdownIt-Anchor" href="#17doctype作用-严格模式与混杂模式如何区分它们有何意义">#</a> 17.Doctype 作用？严格模式与混杂模式如何区分？它们有何意义？</h3>
+<p>Doctype 声明于文档最前面，告诉浏览器以何种方式来渲染页面，这里有两种模式，严格模式和混杂模式。</p>
+<ul>
+<li>严格模式的排版和 JS 运作模式是 以该浏览器支持的最高标准运行。</li>
+<li>混杂模式，向后兼容，模拟老式浏览器，防止浏览器无法兼容页面。</li>
+</ul>
+<h3 id="18cookie如何防范xss攻击"><a class="markdownIt-Anchor" href="#18cookie如何防范xss攻击">#</a> 18.Cookie 如何防范 XSS 攻击</h3>
+<p>XSS（跨站脚本攻击）是指攻击者在返回的 HTML 中嵌入 javascript 脚本，为了减轻这些攻击，需要在 HTTP 头部配上，set-cookie：</p>
+<ul>
+<li>httponly - 这个属性可以防止 XSS, 它会禁止 javascript 脚本来访问 cookie。</li>
+<li>secure - 这个属性告诉浏览器仅在请求为 https 的时候发送 cookie。</li>
+</ul>
+<p>结果应该是这样的：Set-Cookie=…</p>
+<h3 id="19cookie和session的区别"><a class="markdownIt-Anchor" href="#19cookie和session的区别">#</a> 19.Cookie 和 session 的区别</h3>
+<p>HTTP 是一个无状态协议，因此 Cookie 的最大的作用就是存储 sessionId 用来唯一标识用户</p>
+<h3 id="20-一句话概括restful"><a class="markdownIt-Anchor" href="#20-一句话概括restful">#</a> 20. 一句话概括 RESTFUL</h3>
+<p><strong><em>就是用 URL 定位资源，用 HTTP 描述操作</em></strong></p>
+<h3 id="21讲讲viewport和移动端布局"><a class="markdownIt-Anchor" href="#21讲讲viewport和移动端布局">#</a> 21. 讲讲 viewport 和移动端布局</h3>
+<p>可以参考我的这篇文章：</p>
+<p><a href="https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fforthealllight%2Fblog%2Fissues%2F13" title="https://github.com/forthealllight/blog/issues/13">响应式布局的常用解决方案对比 (媒体查询、百分比、rem 和 vw/vh）</a></p>
+<h3 id="22-click在ios上有300ms延迟原因及如何解决"><a class="markdownIt-Anchor" href="#22-click在ios上有300ms延迟原因及如何解决">#</a> 22. click 在 ios 上有 300ms 延迟，原因及如何解决？</h3>
+<h4 id="1粗暴型禁用缩放"><a class="markdownIt-Anchor" href="#1粗暴型禁用缩放">#</a> (1) 粗暴型，禁用缩放</h4>
+<pre class="line-numbers language-none"><code class="language-none"> &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, user-scalable&#x3D;no&quot;&gt; 
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="2利用fastclick其原理是"><a class="markdownIt-Anchor" href="#2利用fastclick其原理是">#</a> (2) 利用 FastClick，其原理是：</h4>
+<p>检测到 touchend 事件后，立刻出发模拟 click 事件，并且把浏览器 300 毫秒之后真正出发的事件给阻断掉</p>
+<h2 id="四-css篇"><a class="markdownIt-Anchor" href="#四-css篇">#</a> 四、css 篇</h2>
+<h3 id="1css盒模型"><a class="markdownIt-Anchor" href="#1css盒模型">#</a> 1.css 盒模型</h3>
+<p>简介：就是用来装页面上的元素的矩形区域。CSS 中的盒子模型包括 IE 盒子模型和标准的 W3C 盒子模型。</p>
+<p>border-sizing (有 3 个值哦)：border-box,padding-box,content-box.</p>
+<ul>
+<li>标准盒子模型：</li>
+</ul>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/7/10/1648419a623a69db~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<ul>
+<li>IE 盒子模型：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1648419a6d29fa5e%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>区别：从图中我们可以看出，这两种盒子模型最主要的区别就是 width 的包含范围，在标准的盒子模型中，width 指 content 部分的宽度，在 IE 盒子模型中，width 表示 content+padding+border 这三个部分的宽度，故这使得在计算整个盒子的宽度时存在着差异：</p>
+<p>标准盒子模型的盒子宽度：左右 border + 左右 padding+width IE 盒子模型的盒子宽度：width</p>
+<p>在 CSS3 中引入了 box-sizing 属性，box-sizing:content-box; 表示标准的盒子模型，box-sizing:border-box 表示的是 IE 盒子模型</p>
+<p>最后，前面我们还提到了，box-sizing:padding-box, 这个属性值的宽度包含了左右 padding+width</p>
+<p>也很好理解性记忆，包含什么，width 就从什么开始算起。</p>
+<h3 id="2画一条05px的线"><a class="markdownIt-Anchor" href="#2画一条05px的线">#</a> 2. 画一条 0.5px 的线</h3>
+<ul>
+<li>
+<p>采用 meta viewport 的方式</p>
+</li>
+<li>
+<p>采用 border-image 的方式</p>
+</li>
+<li>
+<p>采用 transform: scale () 的方式</p>
+</li>
+</ul>
+<h3 id="3link标签和import标签的区别"><a class="markdownIt-Anchor" href="#3link标签和import标签的区别">#</a> 3.link 标签和 import 标签的区别</h3>
+<ul>
+<li>link 属于 html 标签，而 @import 是 css 提供的</li>
+<li>页面被加载时，link 会同时被加载，而 @import 引用的 css 会等到页面加载结束后加载。</li>
+<li>link 是 html 标签，因此没有兼容性，而 @import 只有 IE5 以上才能识别。</li>
+<li>link 方式样式的权重高于 @import 的。</li>
+</ul>
+<h3 id="4transition和animation的区别"><a class="markdownIt-Anchor" href="#4transition和animation的区别">#</a> 4.transition 和 animation 的区别</h3>
+<p>Animation 和 transition 大部分属性是相同的，他们都是随时间改变元素的属性值，他们的主要区别是 transition 需要触发一个事件才能改变属性，而 animation 不需要触发任何事件的情况下才会随时间改变属性值，并且 transition 为 2 帧，从 from … to，而 animation 可以一帧一帧的。</p>
+<h3 id="5flex布局"><a class="markdownIt-Anchor" href="#5flex布局">#</a> 5.Flex 布局</h3>
+<p>文章链接： <a href="https://link.juejin.cn?target=http%3A%2F%2Fwww.ruanyifeng.com%2Fblog%2F2015%2F07%2Fflex-grammar.html%3Futm_source%3Dtuicool%25EF%25BC%2588%25E8%25AF%25AD%25E6%25B3%2595%25E7%25AF%2587%25EF%25BC%2589" title="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool%EF%BC%88%E8%AF%AD%E6%B3%95%E7%AF%87%EF%BC%89">www.ruanyifeng.com/blog/2015/0…</a> <a href="https://link.juejin.cn?target=http%3A%2F%2Fwww.ruanyifeng.com%2Fblog%2F2015%2F07%2Fflex-examples.html%25EF%25BC%2588%25E5%25AE%259E%25E4%25BE%258B%25E7%25AF%2587%25EF%25BC%2589" title="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html%EF%BC%88%E5%AE%9E%E4%BE%8B%E7%AF%87%EF%BC%89">www.ruanyifeng.com/blog/2015/0…</a></p>
+<p>Flex 是 Flexible Box 的缩写，意为 &quot;弹性布局&quot;，用来为盒状模型提供最大的灵活性。 布局的传统解决方案，基于盒状模型，依赖 display 属性 + position 属性 + float 属性。它对于那些特殊布局非常不方便，比如，垂直居中就不容易实现。</p>
+<p>简单的分为容器属性和元素属性 容器的属性：</p>
+<ul>
+<li flex-direction:="" row="" |="" row-reverse="" |="" column="" |="" column-reverse;="">flex-direction：决定主轴的方向（即子 item 的排列方法） .box</li>
+<li flex-wrap:="" nowrap="" |="" wrap="" |="" wrap-reverse;="">flex-wrap：决定换行规则 .box</li>
+<li flex-flow:="" ||="" ;="">flex-flow： .box</li>
+<li>justify-content：对其方式，水平主轴对齐方式</li>
+<li>align-items：对齐方式，竖直轴线方向</li>
+</ul>
+<p>项目的属性（元素的属性）：</p>
+<ul>
+<li>order 属性：定义项目的排列顺序，顺序越小，排列越靠前，默认为 0</li>
+<li>flex-grow 属性：定义项目的放大比例，即使存在空间，也不会放大</li>
+<li>flex-shrink 属性：定义了项目的缩小比例，当空间不足的情况下会等比例的缩小，如果定义个 item 的 flow-shrink 为 0，则为不缩小</li>
+<li>flex-basis 属性：定义了在分配多余的空间，项目占据的空间。</li>
+<li>flex：是 flex-grow 和 flex-shrink、flex-basis 的简写，默认值为 0 1 auto。</li>
+<li>align-self：允许单个项目与其他项目不一样的对齐方式，可以覆盖 align-items，默认属性为 auto，表示继承父元素的 align-items</li>
+</ul>
+<p>比如说，用 flex 实现圣杯布局</p>
+<h3 id="6bfc块级格式化上下文用于清楚浮动防止margin重叠等"><a class="markdownIt-Anchor" href="#6bfc块级格式化上下文用于清楚浮动防止margin重叠等">#</a> 6.BFC（块级格式化上下文，用于清楚浮动，防止 margin 重叠等）</h3>
+<p>直译成：块级格式化上下文，是一个独立的渲染区域，并且有一定的布局规则。</p>
+<ul>
+<li>BFC 区域不会与 float box 重叠</li>
+<li>BFC 是页面上的一个独立容器，子元素不会影响到外面</li>
+<li>计算 BFC 的高度时，浮动元素也会参与计算</li>
+</ul>
+<p>那些元素会生成 BFC：</p>
+<ul>
+<li>根元素</li>
+<li>float 不为 none 的元素</li>
+<li>position 为 fixed 和 absolute 的元素</li>
+<li>display 为 inline-block、table-cell、table-caption，flex，inline-flex 的元素</li>
+<li>overflow 不为 visible 的元素</li>
+</ul>
+<h3 id="7垂直居中的方法"><a class="markdownIt-Anchor" href="#7垂直居中的方法">#</a> 7. 垂直居中的方法</h3>
+<h3 id="1marginauto法"><a class="markdownIt-Anchor" href="#1marginauto法">#</a> (1) margin:auto 法</h3>
+<p>css:</p>
+<pre class="line-numbers language-none"><code class="language-none">div&#123;
+  width: 400px;
+  height: 400px;
+  position: relative;
+  border: 1px solid #465468;
+ &#125;
+ img&#123;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+ &#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>html:</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;div&gt;
+ &lt;img src&#x3D;&quot;mm.jpg&quot;&gt;
+&lt;&#x2F;div&gt;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>定位为上下左右为 0，margin：0 可以实现脱离文档流的居中.</p>
+<h4 id="2margin负值法"><a class="markdownIt-Anchor" href="#2margin负值法">#</a> (2) margin 负值法</h4>
+<pre class="line-numbers language-none"><code class="language-none">.container&#123;
+  width: 500px;
+  height: 400px;
+  border: 2px solid #379;
+  position: relative;
+&#125;
+.inner&#123;
+  width: 480px;
+  height: 380px;
+  background-color: #746;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -190px; &#x2F;*height的一半*&#x2F;
+  margin-left: -240px; &#x2F;*width的一半*&#x2F;
+ &#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>补充：其实这里也可以将 marin-top 和 margin-left 负值替换成， transform：translateX (-50%) 和 transform：translateY (-50%)</p>
+<h4 id="3table-cell未脱离文档流的"><a class="markdownIt-Anchor" href="#3table-cell未脱离文档流的">#</a> (3) table-cell（未脱离文档流的）</h4>
+<p>设置父元素的 display:table-cell, 并且 vertical-align:middle，这样子元素可以实现垂直居中。</p>
+<pre class="line-numbers language-none"><code class="language-none">css:
+div&#123;
+    width: 300px;
+    height: 300px;
+    border: 3px solid #555;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+&#125;
+img&#123;
+    vertical-align: middle;
+&#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="4利用flex"><a class="markdownIt-Anchor" href="#4利用flex">#</a> (4) 利用 flex</h4>
+<p>将父元素设置为 display:flex，并且设置 align-items:center;justify-content:center;</p>
+<pre class="line-numbers language-none"><code class="language-none">css:
+.container&#123;
+      width: 300px;
+      height: 200px;
+      border: 3px solid #546461;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+ &#125;
+ .inner&#123;
+      border: 3px solid #458761;
+      padding: 20px;
+ &#125;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="8关于js动画和css3动画的差异性"><a class="markdownIt-Anchor" href="#8关于js动画和css3动画的差异性">#</a> 8. 关于 js 动画和 css3 动画的差异性</h3>
+<p>渲染线程分为 main thread 和 compositor thread，如果 css 动画只改变 transform 和 opacity，这时整个 CSS 动画得以在 compositor trhead 完成（而 js 动画则会在 main thread 执行，然后出发 compositor thread 进行下一步操作），特别注意的是如果改变 transform 和 opacity 是不会 layout 或者 paint 的。 区别：</p>
+<ul>
+<li>功能涵盖面，js 比 css 大</li>
+<li>实现 / 重构难度不一，CSS3 比 js 更加简单，性能跳优方向固定</li>
+<li>对帧速表现不好的低版本浏览器，css3 可以做到自然降级</li>
+<li>css 动画有天然事件支持</li>
+<li>css3 有兼容性问题</li>
+</ul>
+<h3 id="9块元素和行元素"><a class="markdownIt-Anchor" href="#9块元素和行元素">#</a> 9. 块元素和行元素</h3>
+<p>块元素：独占一行，并且有自动填满父元素，可以设置 margin 和 pading 以及高度和宽度 行元素：不会独占一行，width 和 height 会失效，并且在垂直方向的 padding 和 margin 会失 效。</p>
+<h3 id="10多行元素的文本省略号"><a class="markdownIt-Anchor" href="#10多行元素的文本省略号">#</a> 10. 多行元素的文本省略号</h3>
+<pre class="line-numbers language-none"><code class="language-none"> display: -webkit-box
+-webkit-box-orient:vertical
+-web-line-clamp:3
+overflow:hidden
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="11visibilityhidden-opacity0displaynone"><a class="markdownIt-Anchor" href="#11visibilityhidden-opacity0displaynone">#</a> 11.visibility=hidden, opacity=0，display:none</h3>
+<p>opacity=0，该元素隐藏起来了，但不会改变页面布局，并且，如果该元素已经绑定一些事件，如 click 事件，那么点击该区域，也能触发点击事件的 visibility=hidden，该元素隐藏起来了，但不会改变页面布局，但是不会触发该元素已经绑定的事件 display=none，把元素隐藏起来，并且会改变页面布局，可以理解成在页面中把该元素删除掉一样。</p>
+<h3 id="12双边距重叠问题外边距折叠"><a class="markdownIt-Anchor" href="#12双边距重叠问题外边距折叠">#</a> 12. 双边距重叠问题（外边距折叠）</h3>
+<p>多个相邻（兄弟或者父子关系）普通流的块元素垂直方向 marigin 会重叠</p>
+<p>折叠的结果为：</p>
+<p>两个相邻的外边距都是正数时，折叠结果是它们两者之间较大的值。 两个相邻的外边距都是负数时，折叠结果是两者绝对值的较大值。 两个外边距一正一负时，折叠结果是两者的相加的和。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2022/02/21/js,css%E7%AD%89%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/">https://harryqu1229.github.io/2022/02/21/js,css%E7%AD%89%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/frontend/">frontend</a><a class="post-meta__tags" href="/tags/interview/">interview</a><a class="post-meta__tags" href="/tags/css/">css</a><a class="post-meta__tags" href="/tags/javascript/">javascript</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/20/%E5%88%86%E5%B8%83%E5%BC%8F/"><img class="prev-cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Distributed services</div></div></a></div><div class="next-post pull-right"><a href="/2022/02/22/Concurrent%E3%80%81Network%20Programming/"><img class="next-cover" src="https://w.wallhaven.cc/full/57/wallhaven-57jlo1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Concurrent(JUC) and Network</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/01/12/CSS%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93-YK%E8%8F%8C/" title="css Interview Questions"><img class="cover" src="https://w.wallhaven.cc/full/28/wallhaven-28wymm.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-12</div><div class="title">css Interview Questions</div></div></a></div><div><a href="/2022/02/25/JS%E9%9D%A2%E8%AF%95%E9%A2%98--YK%E8%8F%8C/" title="some JS Frontend Interview Quesitions"><img class="cover" src="https://raw.githubusercontent.com/HarryQu1229/image-host/9575054fd0f7d407d7b7d5343dfc530a06ed4104/notes-img/cat.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-25</div><div class="title">some JS Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/01/12/css%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" title="css Interview Summary"><img class="cover" src="https://w.wallhaven.cc/full/8o/wallhaven-8oply1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-12</div><div class="title">css Interview Summary</div></div></a></div><div><a href="/2022/01/13/js%E4%B8%87%E5%AD%97%E6%80%BB%E7%BB%93/" title="Javascript 26k words Summary"><img class="cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-13</div><div class="title">Javascript 26k words Summary</div></div></a></div><div><a href="/2021/12/08/js%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" title="Javascript Interview Summary"><img class="cover" src="https://w.wallhaven.cc/full/28/wallhaven-28wymm.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-08</div><div class="title">Javascript Interview Summary</div></div></a></div><div><a href="/2022/01/01/20%E9%81%93%E5%A4%A7%E5%8E%82%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="20 Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">20 Frontend Interview Quesitions</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E7%A1%80javascript%E7%AF%87"><span class="toc-number">1.</span> <span class="toc-text"> 一、基础 javascript 篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-get%E8%AF%B7%E6%B1%82%E4%BC%A0%E5%8F%82%E9%95%BF%E5%BA%A6%E7%9A%84%E8%AF%AF%E5%8C%BA"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 1. get 请求传参长度的误区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%A1%A5%E5%85%85get%E5%92%8Cpost%E8%AF%B7%E6%B1%82%E5%9C%A8%E7%BC%93%E5%AD%98%E6%96%B9%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.0.2.</span> <span class="toc-text"> 2. 补充 get 和 post 请求在缓存方面的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%97%AD%E5%8C%85"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 3. 闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%B1%BB%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%A7%E6%89%BF"><span class="toc-number">1.0.4.</span> <span class="toc-text"> 4. 类的创建和继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%BC%82%E6%AD%A5%E5%9B%9E%E8%B0%83%E5%9C%B0%E7%8B%B1"><span class="toc-number">1.0.5.</span> <span class="toc-text"> 5. 如何解决异步回调地狱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%AF%B4%E8%AF%B4%E5%89%8D%E7%AB%AF%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E6%B5%81"><span class="toc-number">1.0.6.</span> <span class="toc-text"> 6. 说说前端中的事件流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%A6%82%E4%BD%95%E8%AE%A9%E4%BA%8B%E4%BB%B6%E5%85%88%E5%86%92%E6%B3%A1%E5%90%8E%E6%8D%95%E8%8E%B7"><span class="toc-number">1.0.7.</span> <span class="toc-text"> 7. 如何让事件先冒泡后捕获</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98"><span class="toc-number">1.0.8.</span> <span class="toc-text"> 8. 事件委托</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%9B%BE%E7%89%87%E7%9A%84%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD"><span class="toc-number">1.0.9.</span> <span class="toc-text"> 9. 图片的懒加载和预加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-mouseover%E5%92%8Cmouseenter%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.0.10.</span> <span class="toc-text"> 10. mouseover 和 mouseenter 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-js%E7%9A%84new%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85"><span class="toc-number">1.0.11.</span> <span class="toc-text"> 11. js 的 new 操作符做了哪些事情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12%E6%94%B9%E5%8F%98%E5%87%BD%E6%95%B0%E5%86%85%E9%83%A8this%E6%8C%87%E9%92%88%E7%9A%84%E6%8C%87%E5%90%91%E5%87%BD%E6%95%B0bindapplycall%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.0.12.</span> <span class="toc-text"> 12. 改变函数内部 this 指针的指向函数（bind，apply，call 的区别）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-js%E7%9A%84%E5%90%84%E7%A7%8D%E4%BD%8D%E7%BD%AE%E6%AF%94%E5%A6%82clientheightscrollheightoffsetheight-%E4%BB%A5%E5%8F%8Ascrolltop-offsettopclienttop%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.0.13.</span> <span class="toc-text"> 13. js 的各种位置，比如 clientHeight,scrollHeight,offsetHeight , 以及 scrollTop, offsetTop,clientTop 的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-js%E6%8B%96%E6%8B%BD%E5%8A%9F%E8%83%BD%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.0.14.</span> <span class="toc-text"> 14. js 拖拽功能的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E8%BF%9B%E9%98%B6javascript%E7%AF%87"><span class="toc-number">1.1.</span> <span class="toc-text"> 二、进阶 javascript 篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E8%87%AA%E5%B7%B1%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAbind%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 1. 自己实现一个 bind 函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E5%88%9D%E5%A7%8B%E7%89%88%E6%9C%AC"><span class="toc-number">1.1.1.1.</span> <span class="toc-text"> (1) 初始版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%80%83%E8%99%91%E5%88%B0%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="toc-number">1.1.1.2.</span> <span class="toc-text"> (2) 考虑到原型链</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E7%94%A8settimeout%E6%9D%A5%E5%AE%9E%E7%8E%B0setinterval"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 2. 用 setTimeout 来实现 setInterval</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E7%94%A8settimeout%E6%96%B9%E6%B3%95%E6%9D%A5%E6%A8%A1%E6%8B%9Fsetinterval%E4%B8%8Esetinterval%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-number">1.1.2.1.</span> <span class="toc-text"> (1) 用 setTimeout () 方法来模拟 setInterval () 与 setInterval () 之间的什么区别？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3js%E6%80%8E%E4%B9%88%E6%8E%A7%E5%88%B6%E4%B8%80%E6%AC%A1%E5%8A%A0%E8%BD%BD%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E5%AE%8C%E5%90%8E%E5%86%8D%E5%8A%A0%E8%BD%BD%E4%B8%8B%E4%B8%80%E5%BC%A0"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 3.js 怎么控制一次加载一张图片，加载完后再加载下一张</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E6%96%B9%E6%B3%951"><span class="toc-number">1.1.3.1.</span> <span class="toc-text"> (1) 方法 1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E6%96%B9%E6%B3%952"><span class="toc-number">1.1.3.2.</span> <span class="toc-text"> (2) 方法 2</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E4%BB%A3%E7%A0%81%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 3. 代码的执行顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0sleep%E7%9A%84%E6%95%88%E6%9E%9Ces5%E6%88%96%E8%80%85es6"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 4. 如何实现 sleep 的效果（es5 或者 es6）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1while%E5%BE%AA%E7%8E%AF%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.5.1.</span> <span class="toc-text"> (1) while 循环的方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E9%80%9A%E8%BF%87promise%E6%9D%A5%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.1.6.</span> <span class="toc-text"> (2) 通过 promise 来实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E9%80%9A%E8%BF%87async%E5%B0%81%E8%A3%85"><span class="toc-number">1.1.7.</span> <span class="toc-text"> (3) 通过 async 封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E7%AE%80%E5%8D%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AApromise"><span class="toc-number">1.1.8.</span> <span class="toc-text"> 5. 简单的实现一个 promise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6function_proto_getprototypeof%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.9.</span> <span class="toc-text"> 6.Function._proto_(getPrototypeOf) 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E5%AE%9E%E7%8E%B0js%E4%B8%AD%E6%89%80%E6%9C%89%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%85%8B%E9%9A%86%E5%8C%85%E8%A3%85%E5%AF%B9%E8%B1%A1date%E5%AF%B9%E8%B1%A1%E6%AD%A3%E5%88%99%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.10.</span> <span class="toc-text"> 7. 实现 js 中所有对象的深度克隆（包装对象，Date 对象，正则对象）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E5%89%8D%E6%96%87%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.10.1.</span> <span class="toc-text"> (1) 前文的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2valueof%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.10.2.</span> <span class="toc-text"> (2) valueof () 函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0node%E7%9A%84events%E6%A8%A1%E5%9D%97"><span class="toc-number">1.1.11.</span> <span class="toc-text"> 8. 简单实现 Node 的 Events 模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84event%E6%A8%A1%E5%9D%97%E7%9A%84emit%E5%92%8Con%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.11.1.</span> <span class="toc-text"> (1) 实现简单的 Event 模块的 emit 和 on 方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E6%AF%8F%E4%B8%AA%E5%AF%B9%E8%B1%A1%E6%98%AF%E7%8B%AC%E7%AB%8B%E7%9A%84"><span class="toc-number">1.1.11.2.</span> <span class="toc-text"> (2) 每个对象是独立的</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%B8%ADthis%E6%8C%87%E5%90%91%E4%B8%BE%E4%BE%8B"><span class="toc-number">1.1.12.</span> <span class="toc-text"> 9. 箭头函数中 this 指向举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-http-html%E5%92%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AF%87"><span class="toc-number">1.2.</span> <span class="toc-text"> 三、http、html 和浏览器篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1http%E5%92%8Chttps"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 1.http 和 https</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1http%E5%92%8Chttps%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.2.1.1.</span> <span class="toc-text"> (1) http 和 https 的基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2http%E5%92%8Chttps%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.1.2.</span> <span class="toc-text"> (2) http 和 https 的区别？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3https%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.1.3.</span> <span class="toc-text"> (3) https 协议的工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4https%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-number">1.2.1.4.</span> <span class="toc-text"> (4) https 协议的优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5https%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">1.2.1.5.</span> <span class="toc-text"> (5) https 协议的缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%A6%82%E6%8B%AC"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 2.tcp 三次握手，一句话概括</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3tcp%E5%92%8Cudp%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 3.TCP 和 UDP 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4websocket%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%92%8C%E5%BA%94%E7%94%A8"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 4.WebSocket 的实现和应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E4%BB%80%E4%B9%88%E6%98%AFwebsocket"><span class="toc-number">1.2.4.1.</span> <span class="toc-text"> (1) 什么是 WebSocket?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2websocket%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%8D%8F%E8%AE%AE%E5%85%B7%E4%BD%93%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9"><span class="toc-number">1.2.4.2.</span> <span class="toc-text"> (2) WebSocket 是什么样的协议，具体有什么优点？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5http%E8%AF%B7%E6%B1%82%E7%9A%84%E6%96%B9%E5%BC%8Fhead%E6%96%B9%E5%BC%8F"><span class="toc-number">1.2.5.</span> <span class="toc-text"> 5.HTTP 请求的方式，HEAD 方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%89%87url%E8%AE%BF%E9%97%AE%E5%90%8E%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E6%80%8E%E6%A0%B7%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.6.</span> <span class="toc-text"> 6. 一个图片 url 访问后直接下载怎样实现？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7web"><span class="toc-number">1.2.7.</span> <span class="toc-text"> 7.web Quality （无障碍）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E5%87%A0%E4%B8%AA%E5%BE%88%E5%AE%9E%E7%94%A8%E7%9A%84bom%E5%B1%9E%E6%80%A7%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.8.</span> <span class="toc-text"> 8. 几个很实用的 BOM 属性对象方法？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1location%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.2.8.1.</span> <span class="toc-text"> (1) location 对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2history%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.2.8.2.</span> <span class="toc-text"> (2) history 对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3navigator%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.2.8.3.</span> <span class="toc-text"> (3) Navigator 对象</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9html5-drag-api"><span class="toc-number">1.2.9.</span> <span class="toc-text"> 9.HTML5 drag api</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10http20"><span class="toc-number">1.2.10.</span> <span class="toc-text"> 10.http2.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11%E8%A1%A5%E5%85%85400%E5%92%8C401-403%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-number">1.2.11.</span> <span class="toc-text"> 11. 补充 400 和 401、403 状态码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1400%E7%8A%B6%E6%80%81%E7%A0%81%E8%AF%B7%E6%B1%82%E6%97%A0%E6%95%88"><span class="toc-number">1.2.11.1.</span> <span class="toc-text"> (1) 400 状态码：请求无效</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2401%E7%8A%B6%E6%80%81%E7%A0%81%E5%BD%93%E5%89%8D%E8%AF%B7%E6%B1%82%E9%9C%80%E8%A6%81%E7%94%A8%E6%88%B7%E9%AA%8C%E8%AF%81"><span class="toc-number">1.2.11.2.</span> <span class="toc-text"> (2) 401 状态码：当前请求需要用户验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3403%E7%8A%B6%E6%80%81%E7%A0%81%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B7%B2%E7%BB%8F%E5%BE%97%E5%88%B0%E8%AF%B7%E6%B1%82%E4%BD%86%E6%98%AF%E6%8B%92%E7%BB%9D%E6%89%A7%E8%A1%8C"><span class="toc-number">1.2.11.3.</span> <span class="toc-text"> (3) 403 状态码：服务器已经得到请求，但是拒绝执行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12fetch%E5%8F%91%E9%80%812%E6%AC%A1%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">1.2.12.</span> <span class="toc-text"> 12.fetch 发送 2 次请求的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13cookie-sessionstorage-localstorage%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.13.</span> <span class="toc-text"> 13.Cookie、sessionStorage、localStorage 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14web"><span class="toc-number">1.2.14.</span> <span class="toc-text"> 14.web worker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15%E5%AF%B9html%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">1.2.15.</span> <span class="toc-text"> 15. 对 HTML 语义化标签的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16iframe%E6%98%AF%E4%BB%80%E4%B9%88%E6%9C%89%E4%BB%80%E4%B9%88%E7%BC%BA%E7%82%B9"><span class="toc-number">1.2.16.</span> <span class="toc-text"> 16.iframe 是什么？有什么缺点？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17doctype%E4%BD%9C%E7%94%A8-%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%B7%B7%E6%9D%82%E6%A8%A1%E5%BC%8F%E5%A6%82%E4%BD%95%E5%8C%BA%E5%88%86%E5%AE%83%E4%BB%AC%E6%9C%89%E4%BD%95%E6%84%8F%E4%B9%89"><span class="toc-number">1.2.17.</span> <span class="toc-text"> 17.Doctype 作用？严格模式与混杂模式如何区分？它们有何意义？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18cookie%E5%A6%82%E4%BD%95%E9%98%B2%E8%8C%83xss%E6%94%BB%E5%87%BB"><span class="toc-number">1.2.18.</span> <span class="toc-text"> 18.Cookie 如何防范 XSS 攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19cookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.19.</span> <span class="toc-text"> 19.Cookie 和 session 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%A6%82%E6%8B%ACrestful"><span class="toc-number">1.2.20.</span> <span class="toc-text"> 20. 一句话概括 RESTFUL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#21%E8%AE%B2%E8%AE%B2viewport%E5%92%8C%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80"><span class="toc-number">1.2.21.</span> <span class="toc-text"> 21. 讲讲 viewport 和移动端布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-click%E5%9C%A8ios%E4%B8%8A%E6%9C%89300ms%E5%BB%B6%E8%BF%9F%E5%8E%9F%E5%9B%A0%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3"><span class="toc-number">1.2.22.</span> <span class="toc-text"> 22. click 在 ios 上有 300ms 延迟，原因及如何解决？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E7%B2%97%E6%9A%B4%E5%9E%8B%E7%A6%81%E7%94%A8%E7%BC%A9%E6%94%BE"><span class="toc-number">1.2.22.1.</span> <span class="toc-text"> (1) 粗暴型，禁用缩放</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E5%88%A9%E7%94%A8fastclick%E5%85%B6%E5%8E%9F%E7%90%86%E6%98%AF"><span class="toc-number">1.2.22.2.</span> <span class="toc-text"> (2) 利用 FastClick，其原理是：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-css%E7%AF%87"><span class="toc-number">1.3.</span> <span class="toc-text"> 四、css 篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1css%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 1.css 盒模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E7%94%BB%E4%B8%80%E6%9D%A105px%E7%9A%84%E7%BA%BF"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 2. 画一条 0.5px 的线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3link%E6%A0%87%E7%AD%BE%E5%92%8Cimport%E6%A0%87%E7%AD%BE%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 3.link 标签和 import 标签的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4transition%E5%92%8Canimation%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 4.transition 和 animation 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5flex%E5%B8%83%E5%B1%80"><span class="toc-number">1.3.5.</span> <span class="toc-text"> 5.Flex 布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6bfc%E5%9D%97%E7%BA%A7%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%96%87%E7%94%A8%E4%BA%8E%E6%B8%85%E6%A5%9A%E6%B5%AE%E5%8A%A8%E9%98%B2%E6%AD%A2margin%E9%87%8D%E5%8F%A0%E7%AD%89"><span class="toc-number">1.3.6.</span> <span class="toc-text"> 6.BFC（块级格式化上下文，用于清楚浮动，防止 margin 重叠等）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.7.</span> <span class="toc-text"> 7. 垂直居中的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1marginauto%E6%B3%95"><span class="toc-number">1.3.8.</span> <span class="toc-text"> (1) margin:auto 法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2margin%E8%B4%9F%E5%80%BC%E6%B3%95"><span class="toc-number">1.3.8.1.</span> <span class="toc-text"> (2) margin 负值法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3table-cell%E6%9C%AA%E8%84%B1%E7%A6%BB%E6%96%87%E6%A1%A3%E6%B5%81%E7%9A%84"><span class="toc-number">1.3.8.2.</span> <span class="toc-text"> (3) table-cell（未脱离文档流的）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E5%88%A9%E7%94%A8flex"><span class="toc-number">1.3.8.3.</span> <span class="toc-text"> (4) 利用 flex</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E5%85%B3%E4%BA%8Ejs%E5%8A%A8%E7%94%BB%E5%92%8Ccss3%E5%8A%A8%E7%94%BB%E7%9A%84%E5%B7%AE%E5%BC%82%E6%80%A7"><span class="toc-number">1.3.9.</span> <span class="toc-text"> 8. 关于 js 动画和 css3 动画的差异性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E5%9D%97%E5%85%83%E7%B4%A0%E5%92%8C%E8%A1%8C%E5%85%83%E7%B4%A0"><span class="toc-number">1.3.10.</span> <span class="toc-text"> 9. 块元素和行元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E5%A4%9A%E8%A1%8C%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC%E7%9C%81%E7%95%A5%E5%8F%B7"><span class="toc-number">1.3.11.</span> <span class="toc-text"> 10. 多行元素的文本省略号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11visibilityhidden-opacity0displaynone"><span class="toc-number">1.3.12.</span> <span class="toc-text"> 11.visibility&#x3D;hidden, opacity&#x3D;0，display:none</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12%E5%8F%8C%E8%BE%B9%E8%B7%9D%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98%E5%A4%96%E8%BE%B9%E8%B7%9D%E6%8A%98%E5%8F%A0"><span class="toc-number">1.3.13.</span> <span class="toc-text"> 12. 双边距重叠问题（外边距折叠）</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/06/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide"><img src="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My ultimate data structure and algorithm guide"/></a><div class="content"><a class="title" href="/2022/12/06/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide">My ultimate data structure and algorithm guide</a><time datetime="2022-12-05T11:00:00.000Z" title="Created 2022-12-06 00:00:00">2022-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/27/HTML5%E4%B8%8ECSS3%E9%AB%98%E9%98%B6/" title="My HTML5 and CSS3 notes"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My HTML5 and CSS3 notes"/></a><div class="content"><a class="title" href="/2022/08/27/HTML5%E4%B8%8ECSS3%E9%AB%98%E9%98%B6/" title="My HTML5 and CSS3 notes">My HTML5 and CSS3 notes</a><time datetime="2022-08-26T12:00:00.000Z" title="Created 2022-08-27 00:00:00">2022-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" title="Object Orientated Programming"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/ca78dff38e0bfb81a8e98ad64f749e97bcc55f14/notes-img/Billfish.yWAOuM.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Object Orientated Programming"/></a><div class="content"><a class="title" href="/2022/08/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" title="Object Orientated Programming">Object Orientated Programming</a><time datetime="2022-08-10T12:00:00.000Z" title="Created 2022-08-11 00:00:00">2022-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns"/></a><div class="content"><a class="title" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns">Design Patterns</a><time datetime="2022-06-11T12:00:00.000Z" title="Created 2022-06-12 00:00:00">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns - Command"/></a><div class="content"><a class="title" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command">Design Patterns - Command</a><time datetime="2022-06-10T12:00:00.000Z" title="Created 2022-06-11 00:00:00">2022-06-11</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2022/02/21/js,css%E7%AD%89%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/'
+    this.page.identifier = '2022/02/21/js,css等前端面试题/'
+    this.page.title = 'css and JS Frontend Interview Quesitions'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>if (window.DISQUSWIDGETS === undefined) {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://harry-study-blog.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+} else {
+  DISQUSWIDGETS.getCount({reset: true});
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: '82d79a6ba73906924d53bc5bc4552e50',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=B5XFmdGuVaYDW7OIBakffpXoKorvphwRiwONIol4puEtr8YiwYAMAk2K7QcExNLY')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

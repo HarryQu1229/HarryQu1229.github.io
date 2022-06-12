@@ -1,0 +1,925 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>My Nginx notes | Harry World</title><meta name="keywords" content="nginx,load balance,proxy"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# 01.Nginx 课程介绍  Nginx 简介  什么是 Nginx 和可以做什么事情 正向代理 反向代理 动静分离   Nginx 的安装  在 Linux 系统中安装 Nginx   Nginx 的常用命令和配置文件 Nginx 配置实例 - 1 反向代理 Nginx 配置实例 - 2 负载均衡 Nginx 配置实例 - 3 动静分离 Nginx 的高可用集群  Nginx 配置主从模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My Nginx notes">
+<meta property="og:url" content="https://harryqu1229.github.io/2022/01/16/Nginx/index.html">
+<meta property="og:site_name" content="Harry World">
+<meta property="og:description" content="# 01.Nginx 课程介绍  Nginx 简介  什么是 Nginx 和可以做什么事情 正向代理 反向代理 动静分离   Nginx 的安装  在 Linux 系统中安装 Nginx   Nginx 的常用命令和配置文件 Nginx 配置实例 - 1 反向代理 Nginx 配置实例 - 2 负载均衡 Nginx 配置实例 - 3 动静分离 Nginx 的高可用集群  Nginx 配置主从模式">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://w.wallhaven.cc/full/8o/wallhaven-8oply1.jpg">
+<meta property="article:published_time" content="2022-01-15T11:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-12T01:13:03.896Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="nginx">
+<meta property="article:tag" content="load balance">
+<meta property="article:tag" content="proxy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://w.wallhaven.cc/full/8o/wallhaven-8oply1.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://harryqu1229.github.io/2022/01/16/Nginx/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'My Nginx notes',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-12 13:13:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWMAAACOCAMAAADTsZk7AAABWVBMVEX+/v4AlTsElgP//f///P/+/v35//wAmQD7//4AljYAljEAiTAAlwDJ688ClDjs//QAiQAAkAAIij4AjzMAkwAAigAAlD2GvIz/+f8AgQD7//r2//cbjyMAnAAAhgbY9Nphrl223bgAhCG64cHx/+tIn2Pn/udWq1SOy5CBwYCt26sAfQAAmTvT8tP6//QAgi3/9P8wmS7j++MAeibi9eQAdQBjqmSAu31rum3H7stGoE0AjSvH5tdrtYdKn2l1uJDR894Afzu657o2klCVz6bl//U+j1pip4QAfTCBw5AniUSl2rQrlk1isnmRwZ2avqTz/+Kr1bkAnS7P6tUrgEQ5o1uk1Z7d/tnb6Nt8rH1UjVlqq3A5kVo2oTyT1JG03bNVm1jK9smx6qwAbhtXn05axV1uxnBgnYCy5Lg9qUKYx48qgymbzpuw6pw5kytrvYea05A7ijmp0cEVuwKdAAAcCElEQVR4nO2d+3/aRrbABaMZjQADAkTEyIIYY2IbEClxHWOv87Dd1o8mW/fldt0kTTe7m419vTf3///hnjMSIAQ4hjj1ttb51G4wAklfHZ3XnBkpSiSRRBJJJJFEEkkkkUQSyR9FCOFCcK5QetNH8ucVzjklqkoUftNH8ucVzlRLVUCTyU0fyZ9YVML+sv3o8ROhRJQ/kVjK2uNcIpF8+jgyyNcsBA0xVy2rtrPbjqWb6WJyqeuC1SBERJb5+oRY1H6y/aDYbMZQ9P29NYFxRsT4eoSDHaaivr2fjPmIYwk9+XQvI4ga2eXrEU5U/sXqblLXgXBRMs7rzWLuy0Vb3PSx/QkE1JRjxvHFV1W9qfe0OBZLF0H0/cd14ecjUVoys6DFtURnO5eMjZFiu3jQcakKgTOLNHpWQVPM9nZzTX0MYtTq5OGRDWGHoqo3fah/WKFUPHncLur6OMZomhOJfUhJqGXd9JH+YYXYnYNcshhL+65uFHNaT7e/3gOzHAVxUwrEapQSVdh3nrbToMLg4CbYCvB8egIMhiD4kcjxXV0IGAlVFXPPkunxeIcloee2O0LQKOu7ukCYQFTq3mnnZYz2QcZgrreSz21qRY7vykKFEJnnXycTiasxLqYTiURu6a9uZCuuLtRdXEqmm/oVGadBwC+2l1pKpMmXCyYcnAkwE9+cP4C8GcldSWA7uBLpZn7/ecYV6Poi1BMEa5gQHojM8dft2KRo7XJpLy3UbIgxIuc3SbhCIJo4Xmqnm80rmIgxCq3nHywt2pYVMZ4goMWcVQ728+OSuisyTiT0B3cyNLIVEwSiAvaXHPi6WPPDOCdATqd1Pb97fNOn8t8oYIoZpe7xo9wV3dxlnGPJ3LNjmxJLYUxE9bieyMaUyrP9tP7xjJsYkTw46DCLYdnupk/tv0iofXyYhFzioxFLSX+79XQRsuso8xsItbuQdMSaH6/FMawTYQmjuL8954qopUgO6iuE8rXt/XxC9/AMUF01futtNtgeP9pM5g7WZCnuVtfjuBCMW2ptb39CuHZVys0mjvWFtk4nkk+PbW7xW+34uGpBXjcHSUcI2XSY5VjqmM3SOtYwhHKruzCAMX+yncuHXV1TjnCAXM1Ay8vQzI/YFqzHbX39/Ltb3R3nKnxxP6bribCpAFzJaj5fTSaLV0lI8u12EiR8QXRISZrN6uHcbdZjm67tYlkyFBU3E8X908U1kO7eL+10U9fTkwxGGt5Jt5fetuqd7t5hUQ+aDPxaHIva2rVv+kRvULgylxzj7Zr60yMPCxW1vcOtxLf6JMaAP9Z+VBFy28Xv8/nwhulmOpHL3Oxp3qgg4zGmoPh9pddhDC6xtv0gMZFxWk8k7zChqApRqegs5cP2ImI8To+LxfaxoF4sAMEzIfZee7Lv0xO5OuUy0OacdpOJcAAXMR7L+IeMgDwYN4D0hHNrbTc/McdObz1jKmeCUgi11bV2xDgkbJQxvMwfKP1WCQoaKpTMl+lJYVy6eiRbBShmc6q9mwhtBqFFkDFqO1y/iU211HUpCb9HMFXsCfFaE0aaOeSNpKjq4O8cL/ykkMbFWxXLjd79yjhsKxiZ1O8kBFHETOnqeMb6neGtwP09yWGAN45yuro42JKwpXAYOMwY2SJkMfF4wTaFEOMoOdwjPcFXwgM6tJVXFgh+GLeYmP7gN+LbHmOKl4Mg6UmbU5VcJ+OtEGPGiTh6APnEuIQ7XV0YpBgfZMyZ1DXwpBOPlwv7w6HemCsh/YFwhRxr6G818Rvk9ehfKoao8bgmXRJ6iVpcLmMZp8OMcQQ08/N++hoYw6nB0XJKrElnD2cy0qCIrERPJLjRO0EyZpmOPSinSuWcBAaiIOH2bwZVtk+OMVM9seDIZyvUXo2xyphC3O3xwYUOtmLAmH+AMeWdH9dPfzwReDKjp0/5TxunP7cCegzbiFarUql0BuK/WmPBr0DG7G+mWT21/ahTEZXj486YaW7yQ8KtLxz9ZHMiwam8e7D+8LU7kVR9ef101QZnMLUyj2EMkr8zZlOa+WUrMVrtTOvJoD0WS+lwXNFnTJmi1s7LZqGQNZc5Vbkd1ov7mY1SwTBL92r3/bozc4nVMctZ08z2pFzOwkuQ7F1hDSp64AzZPUPT4oUVZgmXUeu7F9lSybhbsVhozqZQVU7XTk2zXP5sJWPdB+vFz7NG3DTuVSxCR+2Far8zTDiwexVVnbqEOAVjIhb386PVtRBjdhljwdm7Rtxx4qn45y9rqsXCOqG++jzupAyjcS4UX/24ylZNo5BKxQPivyq/CoYBlLZKDryhlVoqfDO3fzU1TUtl10XY7+FIY+teSXNSWqG83iGMKK8bsGlcy75/zQlhw9ur99m7z3GPqcb6DEWBafSYiu5+cSQpnIIxBEt7pQJoWhzOPfvQtsLnror1guM4Wiq1meEeYzAplQvcPiSpFPyKb9aswPGxg6yG6I1ljoH9ahYYxuOO2QqPxRBOvnlvAOIU7Ku84QqV3zVT8rCM8rENDnB488xpyXFwj05pZ/quhikYc5W65+2RlDqtt6/MmIhfpQbCT0ozf1TC565mLjQHCTrliv8et+31lIYf6MtAm53sy4G5YVTcNeSbhWW49xW+kk0VQFLZV+FIWojaGxNUvhCHa5UqdYW69lnciWt4dePzO6HxMTXzJotXXoNfxun07b9XZ8y5yoV7mtRDPXA66PHgFC5nrIozPA0HbCYAqlZkwBJwImpmPuXBM4Gx55nsbsMBbIUCwgtYC/gBSo0WhA7MPxVxz9vAuANeGokX5DXJrgbSFQKBKKfuchlNQ0r+lHaA8XzKOy64zc5acjaXtz2FsPWO6ThwwHjnGOvuJ2TsQ9jVQ9ZCTyQXB27gUsacsHnNM6d43xXOKiqHCDWgZDVgLLmAHvtT0sSK4Zlfqc3+p+VNDn8olDdqhNheFqHa9wyP8Yrc1924tzPzlRJUAgbZ32oJvrL3daVXCrM3wax4f9BSpRbvuzZq26fZ3p7jmrmsfEqfJxmL7mHIWszMOB43N2ro4QMHHWTs6ct99GMpaVxSnh3R5AaaPG/YsKtY3rS1SYy1IcbUhvtxpyrNVZ8x5Hcvs46meRwdo7qjWL5NUGunYNZ7jJ1yx/qUsZvcI6Fzh5cyvix2CzJOpeCuLK/UIIILOJhRxnzDcDxrXMhmDS9kk4KWAs3Fuu1fJWRcGMM4PsSYu5Z6clFwBnYnVYb3xUkVzK0P0onPn/QynMy7hub0LZRxOkMj35SMCTi+n4dnQ86ox1IX4423Lg0GF6OMX5e0gqeN915XIBdp+fJbCdQ6XoCwYJV71vZqjKmw7E1DG2EsVsw+SbhHLjrCkrWn5UbK12/0By86wp56aPKDjOH4f/qJq4R4hwnBY2a7mgiMPE3h8/qMwYEUpJFNXZwoyiRbQRnExi8M2Br8v/Z+DYwkVimICkJqDzGGAFCpau2+22csPwyMIZFgdwveLW6u+v5TZUIw8HeGhjEdhhzS7mRf4XTl+mlDXk3PLhmb3fuqarnPDce30+gCGnNihi6GqzD+y8+MWKT/3aT+LDghcorYLcBYM7wjNzYrwZb7IcaCEfra10XN/HnoJqWiNe/pFyiy906IMQ8ylskO5BaQC9J3Zd+kSxuP+1pQGAQ4mQ0zrvm7h8hys8Ite6Xc97Og+tUdMcv4+gcZE067f18UZMBYUb97qg8q9lPkIH3GcRkLSXbZe+798YypoOo3MuLFIKLxeui4AeFy1reTjZZ1JcZUYLGp0nDkPmQ0XBgwtujJZhYvm8SfSpkXdbHTQywZNxZmAHwlxkx0q/tHwQtoKYv7W5MYX8nnwa1vmpIApBHLbPDdQ4yZ4v7WkCfopEoPR+7RtU3DCzCMDXvAGHX0Esbi5H1BZhpawYg72oAxuHO386bkKzIeobH5sufupIsunbPZ5it/2OcB4/lvD9cCdzTldGHg92bR40Lc+Me8VGTptAZfPWQrOO8kPc+UMl50AtqO+yEu7c7LUC7uQICLh0V8xtpkxrR7VgC4WJko/HMeCPYZY3lYrW+avh2R1w7uIa3HWCu95uq11ehj4bhirqonl2pgyri3Dwhr2L+2vvXHlGbR41TBeLlXSsUNzx52aG/6yJAeq+QthqaoVeZvJBQz4VDIaamMNbhy498Y/hFae9Moo3wOeR6XjOWn+4zhxtjAwpyGieR6p+xoA3tMQXMUUnljgm9D4yTjcN9OxAuOU36uzFDWvCJjAoxj6fYdASBYjzH94nDLrxPPosfAeNn9p+nhhPy01ivYDzPO3PMggCnsqKGCPNbo1xYWu4s7OwtdGdiolqh0X3dBdiqwp1HGcLbnJan6ELmddTpYMhowxvdV++TM1MBea0OMISVtrLCZG6mvxrjYbD49ggDO0zZgrIrKI7+3aErG0sBpceOdaN01vXtVK5/WQow1ZMzPDce7T80DSobtsWRMIYbDEVKrd4nAqsrADgf9aI9xqh9X0PP5lFc+M852eH2UMbFE9w0kfD3Gg6BteaTUff2ME8WnRzb1yo0UJ5/Tuf3mTIy95KPwjrDOmVe0AYO67GsJMpbnB4xJp+EHV4UXtZHKuD90KoRt48JRxBsp9BZJs1RcFRQZS1Q+Y0K7Dfl9wLi6wFTJGEkOGMO9YNfBXMQHObuU0rn9EVMurmorQGf3W/7SQVQwyHbYXlUy1mdgDBbuADKK7rzvxJ1Gy2sDDzKGGxsMoSaroJA7YBrE7b5kMq7totRq8Av+QIilMluOXtsMh/yDjDEH4RCIYNgGO8iuQJxUz/okB4wF9jq18NL2GeO/y8v2JUO818QYYaa3lmqBtFdQ93ESp/vqs/i8FJbROX9YjjsQo8Lrz7o2A8c3sMdPWH0Twg/wUKnURQYHUqnVWd78bH5+Hn/wf/Lfvsy/sojKT19sSvkrHF8/rkhlgbGw1Lr3ugBp468d1xXIODVsKzwN6pqFQl+FIQgxT23qfsSEw6szjjWT218MdsQV8sWjrQTILD4PGYPlcZdlZRb8uLF5Ylk0yJiunclRDNj2pYqlNbtyli1osgYmb3j/l1S5wmZGdYm4Z8qX5kOu0GHGFHK2rGdfNeMNrhrDJzAmlvs/hYCdMIwXJ/z+x0wEmIJxrNk+HeyJc1X54hBbLmbVY1yDiL0wNCxHOA6Oug0Ya9mK5T5MYdEnXjDuQkgjiHhoOsFBPa9qLyWe/VFRXIvd8+AUVrAsHWRMqb1akpcH7AcEKTjXeAJjS4UY2ukj1gqF7HrGIr8P4yJ4t0r/zxQUWcztJ5rNGeoVHmOMBucamFRjkcZczlC1z9isWOJ1A3ABlHh5R1GFar8BJo4T9EU9DilQYyGAsSFVuwA5CBtmTHayjl8GLr8DJwnB0QTGyty8ER/sQzMwFf2o6SzTMM7r+pffUX+OEpX9YXv7sSLo8cBMT2MrGNyx5NUF6J4BBtAp7fCgHkNKsVLAATlIuO7WLNDE9zLR9XU33lNiUDTNbKmQg5F+jf5hkLEGSg6BYsH3YuZyjcqGrjGMASWbgwuVCtoKHBg5z2AL0YzzOaexFSB6rs6CtVi296CY3locjJVPwVhur4qdzzGxxdrBfFdkhnKQ+gtZAk2lGstgu+mp4fSHpeVwp1deMmS9mE6sCWmgx7ULrKk5mgP5nbA8LRnHGAzFfKo3QNsvB4F5eWiD7vPfhXFi/j+BfIdQ5m7n9K3FwJDklIwZrW1kZWYFt/hFHRhrfcaW+qPhI6+uWUK0PnecwVhTyq+dFwpOSRbEJjHG+vCp6Q0AOoWLjmWJSYwta+2sEGaMdRWtfIep6oyzs6bV40Ty+SBShMjfqnyfH2I8Rewm96+Sk/eG48jROnOl/ll8wJhbayUPmpbdgXyOn19kzaxpGlKyfphgpMw3/bqbMYZx3Pitm8WmDTT8Z6+JxQeMQ3keraybTk93tXgv04O7LF5arc26TOCUjIuxxINXgTBHVZVurjq7HlOmWuKkjOej4Ym8/Na3grLuZtH/zXoFi8JmRyhqpra42peF1X8bXjWhtNMfaxrP+B/VlFeujJcW4FCZF+uGGUMseXJW6OXP6DyNQckiFW/8Zs+4gM+0jIvpfHEOjt9ztLikDW39/a3o73xaPeZw3Oyo7PgJn+kXa72xJlWtvYfzBKeolc8Fo4GOTEhKdkoYWcchfPYK0N543jBj7wIZkC4a8lt+xFSVeSWBYcagMErtW9Mv22Ncbtx9WdJkY0dKJi6ldzZYGQhfPjFjnLaXf9ShgZ4IlT0/HuqNnYqx/Iy9XHK0oI/xGVPC3pqykK5pZx0ZOgyOq3bXkIMWWvnEYgPGUnGHGHv3PVbkjfV6oGNomDGxrM662TfFYLjet2yv08UTrdDYgWhT+V0YF7eWgsu4EW7/FHg1A2MIy07jzhjGAizgC9BDrC5m7xAr0CJF1IWGg9+VMteZZdPLGWMRChLK93Ul0F48xBhup7V1I9XbveYYbypCZcslTTY1yQBGm9+x71vTFy5mYaxXD9zBoWLv30zxcYCxWj8zeg5mwJig2qyWUFvhBC/qQbdO7M2Cx3i+o5LR/ooQY9TM+EVLsciwHg/iCqW+WR7012jm+4rFmSpWy95uMN934o2jWcZCZmFcbD44HuwIp2aIq/s8Z5SxsC3enR9lrDKbCvsulvIhf8uuBNpSCcVqu8eTETEYMx0wpkOMwRiX3trcIoMvGWbMV8yC4e8fsp4XFdVSXXFfWemN6TlYs9uscHr9/RUhxijNZmz/tYVTOnrbBC4tW9In9xQKe94/Z2M5pA8LDU0rDJozez0slC+UHFmZizd2sH8epNVqVXYw4HAgDWx0eufs5Xk9n8co7zFGbAUwNsNnToCxHK5LlVepRU9K2I/gKWy8cNZyhXwqFREPS/A65Y8rZjfY/U+uxz625G7dssaujj4jYzWzXA5WInqMCQ7BeXV9zfTb5zE6NgsyoNLMFTGWMVjzIcaOebc2PAMlwPgVVemKkXI8kJCobO64ot/vBjY51e/GarSmrw7NxrgJkGtk7DSryxmLef/OHdFjNQMs+5C1fi8WUbpewQzbhYxCr1ghcRia1uj0v0GOS8vCm7HCkfF6vN+rkips1kKLuQNjx2NceqVwexPbLXxb0Whx4T/4hBLL3ijHewU/p3zOpu6kn4lxMdYsbt2xx2aW9ocYe0MMI4yJ1Tnzxi164yC8Rw78vawExf1isZd5yA5t8zzgOqUee/0VkvGG4ZWXkXNjQQ0tnSgZO/J6Lih25ULrVYKMxitiYeSPao+xTea01As4HOP0E/S7jdVjkET7iKH3DruAyxhTKuBUZGHdOA/dBUylby8gwNK8gZ75jm/kXc5PLlDDZC+9TAkKXl6AjF9kBgYAGG/I2mYcDAiODb005ZfFMXLbERYZnoCg1MpSc8EZzlG2dlHw2vtTqfnX4EM5LjwqGcM/anfLcc9XOObD6cenZ2ZcTGzt4RS38BjMZYw5oQ+z2AMVd7JzI4cqanPzKcfr3zE2av4lYIKy42zckG4n0EePBsPJ7gXSW7i5waxAFGCUdnBenlKZ12QlWHMaO2MWgmHrphyYNk4zYHwfQkYjc+fGohue+UdqG1nv4jul7vRPnZmZcSyh79Yh3gwf/KWMFbWCU10cLfvraLpEXXdHdjdAtjDfVXzfAldRPKlqg6pmX+BrNr8JTArjDGJcA/5qvEH3JhT7vFGADzrm5vG4gIu23mfhbaPaZZTyLs6qcbApwCVqeIqOldkoS7sDnpP+PvYYRdf15LMvVCvcO3OZz4OgXm1dlErlxkY93PeDqTO1O+uNspEtvX/F79MeYyHYQaNcGiOfnweflsgZcbvVcjn72QnaXhu81at7Z9Xq+zsZPm59cUI76/ONs789wfntQrxrlLOl0tctXPYv7GkIRhflUrn85kSETc6nZJzWE9UlHOK5OmMiuCUynZNOHXCEJs3i1GVIy906BMEdnFJre1YImzmoUqvVOrWB1P3/u1QN6jEkfLVWt5KhhLkEuy6owjIu8h2XnGGDRiaTYYpFBWOq22m97XZshjPTw5tjqFw/6XZbNTHDs2bGMC56jHvXkvO56hhTkY41db19BDfhECzI88KLAwwxhmwMnBPmUOHbF4MlnLevyvSc8t4UXMblGAf8NyJEGRr94UAVCOBMbO/Kw478NRjGceGM4oNDcWdMNhZZ8usY42HG+FQO2SaDLUgjN+CsjA/kWsgeYmVua9IaLM1cK7RLFRiH50tHa4SMZfwf2ltkAGKBt2N9nmRcPHzChkZg1MzhiB5HjMetddP8Ya03F4ZT99nkZfT0/FKdBWd80ycPEqFlyiLG4xm3n7t+vs7p4oOJa+gV04mtr5DxAPJRPmIcEq5+l8S5HaFYoLh7IsAto7HPPJq8XBMk1encozpEUNRbpoQfJ4sjxY1mUb/VjJnyJDkOYf5wwVtXae7LXPrSZaeLydx2B9fhgQtSf5YcXdk0tA7L7RObPmknYrFYc9gepBPN/e1updJ9/mBr/KPz+qInmu3DnxdalcrcwddyEZEQ5bSuJw5v81qQQhF3/l5MjigfLrDZrlarW9g0eCnjNGYjW1XcdksOgYQZQ0LYPrrp87xJwfH1ox/a+BDCYXKo2wAalyhNf+BpIWnADI4NfmIe45DPyz07sm/9UyJre7mthH4ND1QIigSdSDSTv/wfj56rByFBaympp/PXSlkqdSK/v11nZMbF5/5EQixL2Au77WZ4FcePZAxmov1ojhFsrrntekwswqio7x2OfYT0rAK2ov3DcUYuVTfrCn9/IsHSnWC0/tW+t/D2TE8cC0haIs4/OKjJSpgQt/rRFQOR5YkFqcofBRmfEyCfWNh+1nVv8xMrxohc29PuPN9NyscpfBRjoJz84XldqLc+YhuW3sK3mcf7yeZHPLRJIs7nHtuMqtHjsIbFRwz/WFxqfyTj6lJLyMmzUw99/ckFh3oUOa6ydieXb6a9nHgawyzNcDpRPXye8RqkosfTTxKuiMrjXDJ21WfyDhijIc7nnq9FD+X9kHAVQtrWMzAYxdhUz9zU9USiulSfcSXmWyUEzAWxMntfJ4tXeoxQXxJ6cne1psw6xeo2CeRl8gnITx6NqXleyrj41Zp8/kAUTnxIBknZky+T+gfrcdI1wmb55L/WFMFu9+MIpxbO7OOlLcjaLs1I8GHfxYTe/uXIpiqNMrvphCtoMNofeIwsjlKl8+1tUGKsetz0Qf/BhBDOqNtdurwchy0vyUdzTLHk8j43fdB/OCHYLOYufplsXmaUk0s7TLUsgiXMyN3NKOppG8dQ8eGbfbBp+dB5vZlutrfr41pPI5lO3LkvczJVjg0zTiSS7UdzUQnzOoQo9tz31WZwdqNk3Gz/0hU0MhDXIoSwtYPcViDCQMT53F5GURUehcTXJaK7u5Xwh6LSmHQ8ePZEyKLoyJPsIplRCK11DyG7TkvKieqjudvcYPVJhDNISep7T/MJDDFyh3uZaCjp2gUfW0fo4lI18e1We2mNR4ivXeSTRHFp/KPd3NJCjVIWlTCvXbDHWK5+a2dwFaDw86wiuU6JwuFIIokkkkgiiSSSSCKJ5Mry//VNTiX5t1Y9AAAAAElFTkSuQmCC')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry World</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">My Nginx notes</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-01-15T11:00:00.000Z" title="Created 2022-01-16 00:00:00">2022-01-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-06-12T01:13:03.896Z" title="Updated 2022-06-12 13:13:03">2022-06-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Backend/">Backend</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Backend/nginx/">nginx</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>18min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="My Nginx notes"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><span class="disqus-comment-count"><a href="https://harryqu1229.github.io/2022/01/16/Nginx/#disqus_thread"></a></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="01nginx课程介绍"><a class="markdownIt-Anchor" href="#01nginx课程介绍">#</a> 01.Nginx 课程介绍</h1>
+<ol>
+<li>Nginx 简介
+<ul>
+<li>什么是 Nginx 和可以做什么事情</li>
+<li>正向代理</li>
+<li>反向代理</li>
+<li>动静分离</li>
+</ul>
+</li>
+<li>Nginx 的安装
+<ul>
+<li>在 Linux 系统中安装 Nginx</li>
+</ul>
+</li>
+<li>Nginx 的常用命令和配置文件</li>
+<li>Nginx 配置实例 - 1 反向代理</li>
+<li>Nginx 配置实例 - 2 负载均衡</li>
+<li>Nginx 配置实例 - 3 动静分离</li>
+<li>Nginx 的高可用集群
+<ul>
+<li>Nginx 配置主从模式</li>
+<li>Nginx 配置双主模式</li>
+</ul>
+</li>
+</ol>
+<h2 id="02nginx的简介"><a class="markdownIt-Anchor" href="#02nginx的简介">#</a> 02.Nginx 的简介</h2>
+<p>Nginx 是高性能的 HTTP 和反向代理的服务器，处理高并发能力是十分强大的，能经受高负载的考验，有报告表明能支持高达 50000 个并发连接数。</p>
+<ul>
+<li>正向代理</li>
+<li>反向代理</li>
+<li>动静分离</li>
+</ul>
+<h2 id="03nginx相关概念正向和反向代理"><a class="markdownIt-Anchor" href="#03nginx相关概念正向和反向代理">#</a> 03.Nginx 相关概念（正向和反向代理）</h2>
+<p><strong>正向代理</strong>：需要在客户端配置代理服务器进行指定网站访问</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/image-20220216013943940.png" alt="image-20220216013943940"></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/up-52053dd46817bcb8d7ceb0137b44d7cda76.png" alt=""></p>
+<hr>
+<p><strong>反向代理 [Reverse Proxy]</strong>，其实客户端对代理是无感知的，因为客户端不需要任何配置就可以访问，我们只需要将请求发送到反向代理服务器，由反向代理服务器去选择目标服务器获取数据后，在返回给客户端，此时反向代理服务器和目标服务器对外就是一个服务器，<strong>暴露的是代理服务器地址</strong>，隐藏了真实服务器 IP 地址。</p>
+<p><img src="https://oscimg.oschina.net/oscnet/up-61b1aef3f70a48c8866723f4966d676b347.png" alt=""></p>
+<h2 id="04nginx相关概念负载均衡和动静分离"><a class="markdownIt-Anchor" href="#04nginx相关概念负载均衡和动静分离">#</a> 04.Nginx 相关概念（负载均衡和动静分离）</h2>
+<p><strong>负载均衡 [load balancing]</strong></p>
+<p>客户端发送多个请求到服务器，服务器处理请求，有一些可能要与数据库进行交互，服务器处理完毕后，再将结果返回给客户端。</p>
+<p>这种架构模式对于早期的系统相对单一，并发请求相对较少的情况下是比较适合的，成本也低。<strong>但是随着信息数量的不断增长，访问量和数据量的飞速增长，以及系统业务的复杂度增加，这种架构会造成服务器相应客户端的请求日益缓慢，并发量特别大的时候，还容易造成服务器直接崩溃</strong>。很明显这是由于服务器性能的瓶颈造成的问题，那么如何解决这种情况呢？</p>
+<p>我们首先想到的可能是<strong>升级服务器的配置</strong>，比如提高 CPU 执行频率，加大内存等提高机器的物理性能来解决此问题，但是我们知道摩尔定律的日益失效，硬件的性能提升已经不能满足日益提升的需求了。最明显的一个例子，天猫双十一当天，某个热销商品的瞬时访问量是极其庞大的，那么类似上面的系统架构，将机器都增加到现有的顶级物理配置，都是不能够满足需求的。那么怎么办呢？</p>
+<p>上面的分析我们去掉了增加服务器物理配置来解决问题的办法，也就是说纵向解决问题的办法行不通了，那么横向增加服务器的数量呢？这时候<strong>集群</strong>的概念产生了，单个服务器解决不了，我们增加服务器的数量，然后<strong>将请求分发到各个服务器上，将原先请求集中到单个服务器上的情况改为将请求分发到多个服务器上，将负载分发到不同的服务器</strong>，也就是我们所说的<strong>负载均衡</strong></p>
+<p><img src="https://oscimg.oschina.net/oscnet/up-77cc9858a963c1396b5f4581e8f619e5b06.png" alt=""></p>
+<hr>
+<p><strong>动静分离 [static separation]</strong></p>
+<p>为了加快网站的解析速度，可以把动态页面和静态页面由不同的服务器来解析，加快解析速度。降低原来单个服务器的压力。</p>
+<p><img src="https://oscimg.oschina.net/oscnet/up-e6b474a63fc04acc5598ea54640b68d932a.png" alt=""></p>
+<h2 id="05nginx在linux系统安装"><a class="markdownIt-Anchor" href="#05nginx在linux系统安装">#</a> 05.Nginx 在 Linux 系统安装</h2>
+<p>与官方教程相比，<strong>视频教学安装过程复杂</strong>。</p>
+<p>事后再试试在 Ubuntu 上安装 Ngnix，<strong>用 Windows 版 Ngnix 进行学习</strong>。</p>
+<ul>
+<li>Mainline version 开发版</li>
+<li>Stable version 稳定版</li>
+<li>Legacy version 历史版本</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.oschina.net/action/GoToLink?url=http%3A%2F%2Fnginx.org%2Fen%2Fdownload.html">Nginx 官方下载</a></p>
+<h3 id="linux版本"><a class="markdownIt-Anchor" href="#linux版本">#</a> Linux 版本</h3>
+<p><a target="_blank" rel="noopener" href="https://www.oschina.net/action/GoToLink?url=http%3A%2F%2Fnginx.org%2Fen%2Flinux_packages.html">nginx: Linux packages</a></p>
+<h3 id="windows版本"><a class="markdownIt-Anchor" href="#windows版本">#</a> Windows 版本</h3>
+<p><a target="_blank" rel="noopener" href="https://www.oschina.net/action/GoToLink?url=http%3A%2F%2Fnginx.org%2Fen%2Fdownload.html">下载页面</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.oschina.net/action/GoToLink?url=http%3A%2F%2Fnginx.org%2Fen%2Fdocs%2Fwindows.html">nginx for Windows</a></p>
+<p>下载后，解压并启动 Nginx</p>
+<pre class="line-numbers language-none"><code class="language-none">cd c:\
+unzip nginx-1.18.0.zip
+cd nginx-1.18.0
+start nginx <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>查询是否启动 Nginx</p>
+<pre class="line-numbers language-none"><code class="language-none">C:\nginx-1.18.0&gt;tasklist &#x2F;fi &quot;imagename eq nginx.exe&quot;
+
+映像名称                       PID 会话名              会话#       内存使用
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+nginx.exe                     7824 Console                    1      8,860 K
+nginx.exe                     7472 Console                    1      9,200 K <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意，配置文件中的文件路径分隔符要用 “/”，而不是 “\”。</p>
+<p>Nginx/Windows 作为一个标准后台应用（非服务）在运行，可以用以下命令行管理已运行 Nginx。</p>
+<table>
+<thead>
+<tr>
+<th>command</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nginx -s stop</td>
+<td>fast shutdown</td>
+</tr>
+<tr>
+<td>nginx -s quit</td>
+<td>graceful shutdown</td>
+</tr>
+<tr>
+<td>nginx -s reload</td>
+<td>changing configuration, starting new worker processes with a new configuration, graceful shutdown of old worker processes</td>
+</tr>
+<tr>
+<td>nginx -s reopen</td>
+<td>re-opening log files</td>
+</tr>
+</tbody>
+</table>
+<h2 id="06nginx常用的命令"><a class="markdownIt-Anchor" href="#06nginx常用的命令">#</a> 06.Nginx 常用的命令</h2>
+<p>转到 Nginx 目录下</p>
+<pre class="line-numbers language-none"><code class="language-none">cd C:\nginx-1.18.0 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<hr>
+<p>启动</p>
+<pre class="line-numbers language-none"><code class="language-none">start nginx <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<hr>
+<p>查看 ngnix 版本</p>
+<pre class="line-numbers language-none"><code class="language-none">nginx -v
+nginx version: nginx&#x2F;1.18.0 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<hr>
+<p>关闭 ngnix</p>
+<pre class="line-numbers language-none"><code class="language-none">nginx -s stop <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<hr>
+<p>重启 ngnix</p>
+<pre class="line-numbers language-none"><code class="language-none">nginx -s reload <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<hr>
+<p>ngnix 命令更多细节</p>
+<pre class="line-numbers language-none"><code class="language-none">nginx -h <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="07nginx的配置文件"><a class="markdownIt-Anchor" href="#07nginx的配置文件">#</a> 07.Nginx 的配置文件</h2>
+<p><code>C:\nginx-1.18.0\conf\nginx.conf</code></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/up-7d77f544b80f5cb7b1b1491dabe30e4e88c.png" alt=""></p>
+<p>配置文件中的内容包含三部分内容:</p>
+<h3 id="第一部分全局块"><a class="markdownIt-Anchor" href="#第一部分全局块">#</a> 第一部分：全局块</h3>
+<p>从配置文件开始到 events 块之间的内容，<strong>主要会设置一些影响 Nginx 服务器整体运行的配置指令</strong>，主要包括</p>
+<ol>
+<li>配置运行 Nginx 服务器的用户（组）、</li>
+<li>允许生成的 worker process 数，</li>
+<li>进程 PID 存放路径、</li>
+<li>日志存放路径和类型</li>
+<li>配置文件的引入</li>
+<li>…</li>
+</ol>
+<p>比如上面第一行配置的：</p>
+<pre class="line-numbers language-none"><code class="language-none">worker_processes  1; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这是 Nginx 服务器并发处理服务的关键配置，worker_processes 值越大，可以支持的并发处理量也越多，但是会受到硬件、软件等设备的制约。</p>
+<h3 id="第二部分-events-块"><a class="markdownIt-Anchor" href="#第二部分-events-块">#</a> 第二部分： events 块</h3>
+<pre class="line-numbers language-none"><code class="language-none">events &#123;
+    worker_connections  1024;
+&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>上述例子就表示每个 work process 支持的最大连接数为 1024.</p>
+<p>events 块涉及的指令主要影响 Nginx 服务器与用户的网络连接，常用的设置包括是否开启对多 work process 下的网络连接进行序列化，是否允许同时接收多个网络连接，选取哪种事件驱动模型来处理连接请求，每个 work process 可以同时支持的最大连接数等。</p>
+<p>这部分的配置对 Nginx 的性能影响较大，在实际中应该灵活配置。</p>
+<h3 id="第三部分-http-块"><a class="markdownIt-Anchor" href="#第三部分-http-块">#</a> 第三部分： http 块</h3>
+<pre class="line-numbers language-none"><code class="language-none">http &#123;
+    include       mime.types;
+    default_type  application&#x2F;octet-stream;
+
+    sendfile        on;
+
+    keepalive_timeout  65;
+
+    server &#123;
+        listen       80;
+        server_name  localhost;
+
+        location &#x2F; &#123;
+            root   html;
+            index  index.html index.htm;
+        &#125;
+        error_page   500 502 503 504  &#x2F;50x.html;
+        location &#x3D; &#x2F;50x.html &#123;
+            root   html;
+        &#125;
+    &#125;
+&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这算是 Nginx 服务器配置中最频繁的部分，代理、缓存和日志定义等绝大多数功能和第三方模块的配置都在这里。需要注意的是： http 块也可以包括:</p>
+<ol>
+<li>http 全局块、</li>
+<li>server 块。</li>
+</ol>
+<h4 id="http-全局块"><a class="markdownIt-Anchor" href="#http-全局块">#</a> http 全局块</h4>
+<p>http 全局块配置的指令包括文件引入、 MIME-TYPE 定义、日志自定义、连接超时时间、单链接请求数上限等</p>
+<h4 id="server-块"><a class="markdownIt-Anchor" href="#server-块">#</a> server 块</h4>
+<p>这块和虚拟主机有密切关系，虚拟主机从用户角度看，和单一独立的硬件主机是完全一样的，该技术的产生是为了节省互联网服务器硬件成本。</p>
+<p>每个 http 块可以包括多个 server 块，而<strong>每个 server 块就相当于一个虚拟主机</strong>。</p>
+<p>而每个 server 块也分为：</p>
+<ol>
+<li>全局 server 块，</li>
+<li>多个 locaton 块。</li>
+</ol>
+<h5 id="全局-server-块"><a class="markdownIt-Anchor" href="#全局-server-块">#</a> 全局 server 块</h5>
+<p>最常见的配置是本虚拟机主机的监听配置和本虚拟主机的名称或 IP 配置。</p>
+<h5 id="location-块"><a class="markdownIt-Anchor" href="#location-块">#</a> location 块</h5>
+<p>一个 server 块可以配置多个 location 块。</p>
+<p>这块的主要作用是基于 Nginx 服务器接收到的请求字符串（例如 server_name/uri-string），对虚拟主机名称（也可以是 IP 别名）之外的字符串（例如 前面的 /uri-string）进行匹配，对特定的请求进行处理。</p>
+<p>地址定向、数据缓存和应答控制等功能，还有许多第三方模块的配置也在这里进行。</p>
+<h2 id="08nginx配置实例反向代理准备工作"><a class="markdownIt-Anchor" href="#08nginx配置实例反向代理准备工作">#</a> 08.Nginx 配置实例（反向代理准备工作）</h2>
+<h3 id="实现效果"><a class="markdownIt-Anchor" href="#实现效果">#</a> 实现效果</h3>
+<p>打开浏览器，在浏览器地址栏输入地址 <a target="_blank" rel="noopener" href="http://www.123.com">www.123.com</a>，跳转到系统 tomcat 相关中</p>
+<h3 id="准备工作"><a class="markdownIt-Anchor" href="#准备工作">#</a> 准备工作</h3>
+<ol>
+<li>安装 tomcat，并启动它</li>
+<li>确定端口可用</li>
+</ol>
+<h2 id="09nginx配置实例反向代理实例一"><a class="markdownIt-Anchor" href="#09nginx配置实例反向代理实例一">#</a> 09.Nginx 配置实例（反向代理实例一）</h2>
+<p>1. 在 windows 系统的 host 文件进行域名和 ip 对应关系的配</p>
+<p>在 <code>C:\Windows\System32\drivers\etc\hosts</code>  文件末添加 <code>127.0.0.1 www.123.com</code></p>
+<p>2. 在 nginx 进行请求转发的配置（反向代理配置）</p>
+<pre class="line-numbers language-none"><code class="language-none">http &#123;
+	...
+    server &#123;
+        listen       80;
+ # 修改成对应的ip地址
+        server_name  localhost;
+
+        location &#x2F; &#123;
+            root   html;
+ # Tomcat的IP地址
+            proxy_pass http:&#x2F;&#x2F;127.0.0.1:8080&#x2F;;
+            index  index.html index.htm;
+        &#125;
+	...
+    &#125;
+&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>最后启动 nginx，<a target="_blank" rel="noopener" href="http://xn--www-0v1e42uk8ahdq87mr4jum3ehln.123.com">浏览器地址栏输入 www.123.com</a>，<strong>验证页面是否跳转到 Tomcat 的页面</strong>。若能跳到 Tomcat 的页面，表示 ngnix 反向代理配置成功。</p>
+<h2 id="10nginx配置实例反向代理实例二"><a class="markdownIt-Anchor" href="#10nginx配置实例反向代理实例二">#</a> 10.Nginx 配置实例（反向代理实例二）</h2>
+<h3 id="实现效果-2"><a class="markdownIt-Anchor" href="#实现效果-2">#</a> 实现效果</h3>
+<p>使用 Nginx 反向代理，根据访问的路径跳转到不同端口的服务中</p>
+<p>Nginx 监听端口为 80，</p>
+<ul>
+<li>访问 <a target="_blank" rel="noopener" href="https://www.oschina.net/action/GoToLink?url=http%3A%2F%2F127.0.0.1%2Fhelloworld1%EF%BC%8C%E8%B7%B3%E8%BD%AC%E5%88%B0">http://127.0.0.1/helloworld1，跳转到</a> 127.0.0.1:8081/helloworld1</li>
+<li>访问 <a target="_blank" rel="noopener" href="https://www.oschina.net/action/GoToLink?url=http%3A%2F%2F127.0.0.1%2Fhelloworld2%EF%BC%8C%E7%9B%B4%E6%8E%A5%E8%B7%B3%E8%BD%AC%E5%88%B0">http://127.0.0.1/helloworld2，直接跳转到</a> 127.0.0.1:8082/helloworld2</li>
+</ul>
+<h3 id="准备工作-2"><a class="markdownIt-Anchor" href="#准备工作-2">#</a> 准备工作</h3>
+<ol>
+<li>准备两个 Tomcat 服务器，一个 8080 端口，一个 8081 端口<a target="_blank" rel="noopener" href="https://my.oschina.net/jallenkwong/blog/4386216"> Windows 上同时运行两个 Tomcat</a></li>
+<li>分别为两个 Tomcat 服务器创建简单 Web 应用 helloworld1、helloworld2，应用包含简单页面，页面内容表明哪个端口号被访问。</li>
+</ol>
+<h3 id="修改配置文件"><a class="markdownIt-Anchor" href="#修改配置文件">#</a> 修改配置文件</h3>
+<pre class="line-numbers language-none"><code class="language-none">server &#123;
+    listen       80;
+    server_name  localhost;
+
+    location ~ &#x2F;helloworld1 &#123;
+        proxy_pass   http:&#x2F;&#x2F;127.0.0.1:8081;
+    &#125;
+        
+    location ~ &#x2F;helloworld2 &#123;
+        proxy_pass   http:&#x2F;&#x2F;127.0.0.1:8082;
+    &#125;
+&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意， <code>http://127.0.0.1:8082</code>  后<strong>不要添加路径</strong>，如 <code>http://127.0.0.1:8082/helloworld2</code> ，否则，ngnix 启动失败，抛出异常 <code>[emerg] 7288#6368: &quot;proxy_pass&quot; cannot have URI part in location given by regular expression, or inside named location, or inside &quot;if&quot; statement, or inside &quot;limit_except&quot; block in C:\nginx-1.18.0/conf/nginx.conf:44</code></p>
+<p>Nginx 会将域名后的路径自动添加到反代理的域名后，例如浏览器地址输入 <code>http://127.0.0.1/helloworld1</code>  反向代理到 <code>http://127.0.0.1:8081/helloworld1</code> ，这可能是正则表达式的功效吧？</p>
+<h3 id="运行结果"><a class="markdownIt-Anchor" href="#运行结果">#</a> 运行结果</h3>
+<p>地址栏输入 <code>http://127.0.0.1/helloworld1</code>  则返回 <code>http://127.0.0.1:8081/helloworld1</code>  的页面。</p>
+<p>地址栏输入 <code>http://127.0.0.1/helloworld2</code>  则返回 <code>http://127.0.0.1:8082/helloworld2</code>  的页面。</p>
+<h3 id="location-指令说明"><a class="markdownIt-Anchor" href="#location-指令说明">#</a> location 指令说明</h3>
+<p>该指令用于匹配 URL，语法如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">location [ &#x3D; | ~ | ~* | ^~ ] uri &#123;
+
+&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>= ：用于不含正则表达式的 uri 前，要求请求字符串与 uri 严格匹配，如果匹配成功，就停止继续向下搜索并立即处理该请求。</li>
+<li>~：用于表示 uri 包含正则表达式，并且区分大小写。</li>
+<li>~*：用于表示 uri 包含正则表达式，并且不区分大小写。</li>
+<li>^~：用于不含正则表达式的 uri 前，要求 Nginx 服务器找到标识 uri 和请求字符串匹配度最高的 location 后，立即使用此 location 处理请求，而不再使用 location 块中的正则 uri 和请求字符串做匹配。</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.oschina.net/action/GoToLink?url=http%3A%2F%2Fnginx.org%2Fen%2Fdocs%2Fhttp%2Fngx_http_core_module.html%23location">Nginx location doc</a></p>
+<h2 id="11nginx配置实例负载均衡"><a class="markdownIt-Anchor" href="#11nginx配置实例负载均衡">#</a> 11.Nginx 配置实例（负载均衡）</h2>
+<h3 id="实现效果-3"><a class="markdownIt-Anchor" href="#实现效果-3">#</a> 实现效果</h3>
+<p>浏览器地址栏输入地址 <code>http://127.0.0.1/helloworld</code> ，负载均衡效果，平均 8081 和 8082 端口中。</p>
+<h3 id="准备工作-3"><a class="markdownIt-Anchor" href="#准备工作-3">#</a> 准备工作</h3>
+<ul>
+<li>准备两台 tomcat 服务器，一台 8080，一台 8081。</li>
+<li>在两台 tomcat 里面 webapps 目录中，创建名称是 helloworld 简单应用。</li>
+</ul>
+<h3 id="修改配置文件-2"><a class="markdownIt-Anchor" href="#修改配置文件-2">#</a> 修改配置文件</h3>
+<p>在 Nginx 的配置文件中进行负载均衡的配置</p>
+<pre class="line-numbers language-none"><code class="language-none"># 负载用到的配置
+upstream myserver&#123;
+	server 127.0.0.1:8081;
+	server 127.0.0.1:8082;
+&#125;
+
+server &#123;
+    listen       80;
+    server_name  localhost;
+
+    #charset koi8-r;
+
+    #access_log  logs&#x2F;host.access.log  main;
+
+    location &#x2F; &#123;
+		# 负责用到的配置
+	    proxy_pass  http:&#x2F;&#x2F;myserver;
+        root   html;
+        index  index.html index.htm;
+    &#125;
+&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="负载均衡分配策略"><a class="markdownIt-Anchor" href="#负载均衡分配策略">#</a> 负载均衡分配策略</h3>
+<p>负载均衡（load balance）即是将负载分摊到不同的服务单元，既保证服务的可用性，又保证响应足够快，给用户很好的体验。</p>
+<p>快速增长的访问量和数据流量催生了各式各样的负载均衡产品，很多专业的负载均衡硬件提供了很好的功能，但却价格不菲，这使得负载均衡软件大受欢迎，nginx 就是其中的一个，在 linux 下有 Nginx、 LVS、 Haproxy 等等服务可以提供负载均衡服务，而且 Nginx 提供了几种分配方式 (策略)</p>
+<h4 id="轮询"><a class="markdownIt-Anchor" href="#轮询">#</a> 轮询</h4>
+<p>这是 Ngnix 负载均衡默认分配策略。每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器 down 掉，能自动剔除。</p>
+<h4 id="加权"><a class="markdownIt-Anchor" href="#加权">#</a> 加权</h4>
+<p>weight 代表权，重默认为 1，权重越高被分配的客户端越多。指定轮询几率，weight 和访问比率成正比，用于后端服务器性能不均的情况。例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">upstream myserver&#123;
+	server 127.0.0.1:8081 weight&#x3D;8;
+	server 127.0.0.1:8082 weight&#x3D;2;
+&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="ip_hash"><a class="markdownIt-Anchor" href="#ip_hash">#</a> ip_hash</h4>
+<p>每个请求按访问 ip 的 hash 结果分配，这样每个访客固定访问一个后端服务器，可以解决 session 的问题。 例如：</p>
+<pre class="line-numbers language-none"><code class="language-none">upstream myserver&#123;
+	ip_hash;
+	server 127.0.0.1:8081;
+	server 127.0.0.1:8082;
+&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="fair"><a class="markdownIt-Anchor" href="#fair">#</a> fair</h4>
+<p>这是 Ngnix 负载均衡第三方分配策略。按后端服务器的响应时间来分配请求，响应时间短的优先分配。</p>
+<pre class="line-numbers language-none"><code class="language-none">upstream myserver&#123;
+	server 127.0.0.1:8081;
+	server 127.0.0.1:8082;
+	fair;
+&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可能需要额外安装，否则就抛出异常 <code>[emerg] 7032#7120: unknown directive &quot;fair&quot; in C:\nginx-1.18.0/conf/nginx.conf:38</code> 。</p>
+<h2 id="12nginx配置实例动静分离准备工作"><a class="markdownIt-Anchor" href="#12nginx配置实例动静分离准备工作">#</a> 12.Nginx 配置实例（动静分离准备工作）</h2>
+<p><strong>Nginx 动静分离简单来说就是把动态跟静态请求分开，不能理解成只是单纯的把动态页面和静态页面物理分离</strong>。严格意义上说应该是动态请求跟静态请求分开，可以理解成使用 Nginx 处理静态页面， Tomcat 处理动态页面。动静分离从目前实现角度来讲大致分为两种：</p>
+<ol>
+<li>一种是纯粹把静态文件独立成单独的域名，放在独立的服务器上，也是目前主流推崇的方案；</li>
+<li>另外一种方法就是动态跟静态文件混合在一起发布，通过 nginx 来分开。</li>
+</ol>
+<p>通过 location 指定不同的后缀名实现不同的请求转发。通过 expires 参数设置，可以使浏览器缓存过期时间，减少与服务器之前的请求和流量。具体 Expires 定义：是给一个资源设定一个过期时间，也就是说无需去服务端验证，直接通过浏览器自身确认是否过期即可，所以不会产生额外的流量。<strong>此种方法非常适合不经常变动的资源</strong>。（如果经常更新的文件，不建议使用 Expires 来缓存）</p>
+<p>若将其设置 3d，表示在这 3 天之内访问这个 URL，发送一个请求，比对服务器该文件最后更新时间没有变化，则不会从服务器抓取，返回状态码 304，如果有修改，则直接从服务器重新下载，返回状态码 200。</p>
+<h3 id="准备工作-4"><a class="markdownIt-Anchor" href="#准备工作-4">#</a> 准备工作</h3>
+<ol>
+<li>新建一个目录路径 <code>C:/image</code></li>
+<li>准备一个 tomcat 服务器，访问端口为 8081</li>
+</ol>
+<h2 id="13nginx配置实例动静分离"><a class="markdownIt-Anchor" href="#13nginx配置实例动静分离">#</a> 13.Nginx 配置实例（动静分离）</h2>
+<h3 id="修改配置文件-3"><a class="markdownIt-Anchor" href="#修改配置文件-3">#</a> 修改配置文件</h3>
+<pre class="line-numbers language-none"><code class="language-none">server &#123;
+    listen       80;
+    server_name  localhost;
+
+	# 主要配置内容
+	location &#x2F;image &#123;
+		alias  C:&#x2F;image&#x2F;;
+		autoindex on;
+	&#125;
+
+    location ~ &#x2F;helloworld &#123;
+        proxy_pass   http:&#x2F;&#x2F;127.0.0.1:8081;
+    &#125;
+&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="运行结果-2"><a class="markdownIt-Anchor" href="#运行结果-2">#</a> 运行结果</h3>
+<p>在浏览器地址栏输入</p>
+<ul>
+<li><code>http://127.0.0.1/image/java.png</code>  将会显示 <code>java.png</code>  图片文件。</li>
+<li><code>http://127.0.0.1/helloworld</code>  将会显示 Tomcat 的应用页面</li>
+<li><code>http://127.0.0.1/image/</code>  可查阅 <code>C:/image/</code>  目录下的文件列表。</li>
+</ul>
+<h2 id="14nginx配置实例高可用准备工作"><a class="markdownIt-Anchor" href="#14nginx配置实例高可用准备工作">#</a> 14.Nginx 配置实例（高可用准备工作）</h2>
+<p>TODO: 需上 Linux 机试验。</p>
+<p>为什么要配置 nginx 高可用？以防单一 nginx 挂了，另一个 nginx 能担当重任。</p>
+<h3 id="什么是nginx高可用"><a class="markdownIt-Anchor" href="#什么是nginx高可用">#</a> 什么是 Nginx 高可用</h3>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/up-620f4d76d7be897ee02adebac4f19ad3633.png" alt=""></p>
+<ol>
+<li>需要两台 nginx 服务器</li>
+<li>需要 keepalived</li>
+<li>需要虚拟 ip</li>
+</ol>
+<h2 id="15nginx配置实例高可用主备模式"><a class="markdownIt-Anchor" href="#15nginx配置实例高可用主备模式">#</a> 15.Nginx 配置实例（高可用主备模式）</h2>
+<h3 id="配置高可用的准备工作"><a class="markdownIt-Anchor" href="#配置高可用的准备工作">#</a> 配置高可用的准备工作</h3>
+<ul>
+<li>需要两台服务器 192.168.17.129 和 192.168.17.131</li>
+<li>在两台服务器安装 Nginx</li>
+<li>在两台服务器安装 keepalived</li>
+</ul>
+<h3 id="在两台服务器安装-keepalived"><a class="markdownIt-Anchor" href="#在两台服务器安装-keepalived">#</a> 在两台服务器安装 keepalived</h3>
+<ul>
+<li>使用 yum 命令进行安装 <code>yum install keepalived –y</code></li>
+<li>安装之后，在 etc 里面生成目录 keepalived，有文件 keepalived.conf</li>
+</ul>
+<h2 id="16nginx配置实例高可用配置文件详解"><a class="markdownIt-Anchor" href="#16nginx配置实例高可用配置文件详解">#</a> 16.Nginx 配置实例（高可用配置文件详解）</h2>
+<p><strong>修改 /etc/keepalived/keepalivec.conf 配置文件</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">global_defs &#123;
+	notification_email &#123;
+		acassen@firewall.loc
+		failover@firewall.loc
+		sysadmin@firewall.loc
+	&#125;
+	notification_email_from Alexandre.Cassen@firewall.loc
+	smtp_server 192.168.17.129
+	smtp_connect_timeout 30
+	router_id LVS_DEVEL
+&#125;
+
+vrrp_script chk_http_port &#123;
+	script &quot;&#x2F;usr&#x2F;local&#x2F;src&#x2F;nginx_check.sh&quot;
+	interval 2 #（检测脚本执行的间隔）
+	weight 2
+&#125;
+
+vrrp_instance VI_1 &#123;
+	state BACKUP # 备份服务器上将 MASTER 改为 BACKUP
+	interface ens33 &#x2F;&#x2F;网卡
+	virtual_router_id 51 # 主、备机的 virtual_router_id 必须相同
+	priority 90 # 主、备机取不同的优先级，主机值较大，备份机值较小
+	advert_int 1
+	authentication &#123;
+		auth_type PASS
+		auth_pass 1111
+	&#125;
+	virtual_ipaddress &#123;
+		192.168.17.50 &#x2F;&#x2F; VRRP H 虚拟地址
+	&#125;
+&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<p><strong>在 /usr/local/src 添加检测脚本</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">#!&#x2F;bin&#x2F;bash
+A&#x3D;&#96;ps -C nginx – no-header |wc -l&#96;
+if [ $A -eq 0 ];then
+	&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx
+	sleep 2
+	if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then
+		killall keepalived
+	fi
+fi <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<p><strong>把两台服务器上 Nginx 和 keepalived 启动</strong></p>
+<ul>
+<li>启动 Nginx： ./nginx</li>
+<li>启动 keepalived： systemctl start keepalived.service</li>
+</ul>
+<hr>
+<p><strong>最终测试</strong></p>
+<ul>
+<li>在浏览器地址栏输入 虚拟 ip 地址 192.168.17.50</li>
+<li>把主服务器（192.168.17.129） Nginx 和 keepalived 停止，再输入 192.168.17.50</li>
+</ul>
+<h2 id="17nginx的原理解析"><a class="markdownIt-Anchor" href="#17nginx的原理解析">#</a> 17.Nginx 的原理解析</h2>
+<h3 id="mater-和-worker"><a class="markdownIt-Anchor" href="#mater-和-worker">#</a> mater 和 worker</h3>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/up-ab993215faaec560d668dc4eb04f2f41b46.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/up-f78b373d0b0f1a82e4c72237cb5a7f02304.png" alt=""></p>
+<p><img src="https://oscimg.oschina.net/oscnet/up-d8093e46e141aeeee29fe53b1666d685099.png" alt=""></p>
+<h3 id="master-workers-的机制的好处"><a class="markdownIt-Anchor" href="#master-workers-的机制的好处">#</a> master-workers 的机制的好处</h3>
+<p>首先，对于每个 worker 进程来说，独立的进程，不需要加锁，所以省掉了锁带来的开销，同时在编程以及问题查找时，也会方便很多。</p>
+<p>其次，采用独立的进程，可以让互相之间不会影响，一个进程退出后，其它进程还在工作，服务不会中断， master 进程则很快启动新的 worker 进程。</p>
+<p>当然， worker 进程的异常退出，肯定是程序有 bug 了，异常退出，会导致当前 worker 上的所有请求失败，不过不会影响到所有请求，所以降低了风险。</p>
+<h3 id="需要设置多少个-worker"><a class="markdownIt-Anchor" href="#需要设置多少个-worker">#</a> 需要设置多少个 worker</h3>
+<p>Nginx 同 redis 类似都采用了 io 多路复用机制，每个 worker 都是一个独立的进程，但每个进程里只有一个主线程，通过异步非阻塞的方式来处理请求， 即使是千上万个请求也不在话下。每个 worker 的线程可以把一个 cpu 的性能发挥到极致。</p>
+<p><strong>所以 worker 数和服务器的 cpu 数相等是最为适宜的</strong>。设少了会浪费 cpu，设多了会造成 cpu 频繁切换上下文带来的损耗。</p>
+<pre class="line-numbers language-none"><code class="language-none">#设置 worker 数量。
+worker_processes 4
+#work 绑定 cpu(4 work 绑定 4cpu)。
+worker_cpu_affinity 0001 0010 0100 1000
+#work 绑定 cpu (4 work 绑定 8cpu 中的 4 个) 。
+worker_cpu_affinity 0000001 00000010 00000100 00001000 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="连接数-worker_connection"><a class="markdownIt-Anchor" href="#连接数-worker_connection">#</a> 连接数 worker_connection</h3>
+<p>这个值是表示每个 worker 进程所能建立连接的最大值，所以，一个 nginx 能建立的最大连接数，应该是  <code>worker_connections * worker_processes</code> 。当然，这里说的是最大连接数，对于 HTTP 请求本地资源来说，能够支持的最大并发数量是 <code>worker_connections * worker_processes</code></p>
+<p>如果是支持 http1.1 的浏览器每次访问要占两个连接，所以普通的静态访问最大并发数是： <code>worker_connections * worker_processes /2</code> ，而如果是 HTTP 作 为反向代理来说，最大并发数量应该是 <code>worker_connections * worker_processes/4</code> 。因为作为反向代理服务器，每个并发会建立与客户端的连接和与后端服务的连接，会占用两个连接。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2022/01/16/Nginx/">https://harryqu1229.github.io/2022/01/16/Nginx/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/nginx/">nginx</a><a class="post-meta__tags" href="/tags/load-balance/">load balance</a><a class="post-meta__tags" href="/tags/proxy/">proxy</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/01/15/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"><img class="prev-cover" src="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Mysql data types</div></div></a></div><div class="next-post pull-right"><a href="/2022/01/16/JDBC/"><img class="next-cover" src="https://raw.githubusercontent.com/HarryQu1229/image-host/9575054fd0f7d407d7b7d5343dfc530a06ed4104/notes-img/cat.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">My JDBC notes</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#01nginx%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text"> 01.Nginx 课程介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#02nginx%E7%9A%84%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text"> 02.Nginx 的简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03nginx%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E6%AD%A3%E5%90%91%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text"> 03.Nginx 相关概念（正向和反向代理）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04nginx%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%92%8C%E5%8A%A8%E9%9D%99%E5%88%86%E7%A6%BB"><span class="toc-number">1.3.</span> <span class="toc-text"> 04.Nginx 相关概念（负载均衡和动静分离）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#05nginx%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85"><span class="toc-number">1.4.</span> <span class="toc-text"> 05.Nginx 在 Linux 系统安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux%E7%89%88%E6%9C%AC"><span class="toc-number">1.4.1.</span> <span class="toc-text"> Linux 版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#windows%E7%89%88%E6%9C%AC"><span class="toc-number">1.4.2.</span> <span class="toc-text"> Windows 版本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#06nginx%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.5.</span> <span class="toc-text"> 06.Nginx 常用的命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#07nginx%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.6.</span> <span class="toc-text"> 07.Nginx 的配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E5%85%A8%E5%B1%80%E5%9D%97"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 第一部分：全局块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-events-%E5%9D%97"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 第二部分： events 块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-http-%E5%9D%97"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 第三部分： http 块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#http-%E5%85%A8%E5%B1%80%E5%9D%97"><span class="toc-number">1.6.3.1.</span> <span class="toc-text"> http 全局块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#server-%E5%9D%97"><span class="toc-number">1.6.3.2.</span> <span class="toc-text"> server 块</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%A8%E5%B1%80-server-%E5%9D%97"><span class="toc-number">1.6.3.2.1.</span> <span class="toc-text"> 全局 server 块</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#location-%E5%9D%97"><span class="toc-number">1.6.3.2.2.</span> <span class="toc-text"> location 块</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#08nginx%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.7.</span> <span class="toc-text"> 08.Nginx 配置实例（反向代理准备工作）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 实现效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 准备工作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#09nginx%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E4%BE%8B%E4%B8%80"><span class="toc-number">1.8.</span> <span class="toc-text"> 09.Nginx 配置实例（反向代理实例一）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10nginx%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E4%BE%8B%E4%BA%8C"><span class="toc-number">1.9.</span> <span class="toc-text"> 10.Nginx 配置实例（反向代理实例二）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C-2"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 实现效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C-2"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.9.3.</span> <span class="toc-text"> 修改配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">1.9.4.</span> <span class="toc-text"> 运行结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#location-%E6%8C%87%E4%BB%A4%E8%AF%B4%E6%98%8E"><span class="toc-number">1.9.5.</span> <span class="toc-text"> location 指令说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11nginx%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">1.10.</span> <span class="toc-text"> 11.Nginx 配置实例（负载均衡）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C-3"><span class="toc-number">1.10.1.</span> <span class="toc-text"> 实现效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C-3"><span class="toc-number">1.10.2.</span> <span class="toc-text"> 准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-2"><span class="toc-number">1.10.3.</span> <span class="toc-text"> 修改配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5"><span class="toc-number">1.10.4.</span> <span class="toc-text"> 负载均衡分配策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AE%E8%AF%A2"><span class="toc-number">1.10.4.1.</span> <span class="toc-text"> 轮询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E6%9D%83"><span class="toc-number">1.10.4.2.</span> <span class="toc-text"> 加权</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ip_hash"><span class="toc-number">1.10.4.3.</span> <span class="toc-text"> ip_hash</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fair"><span class="toc-number">1.10.4.4.</span> <span class="toc-text"> fair</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12nginx%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B%E5%8A%A8%E9%9D%99%E5%88%86%E7%A6%BB%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.11.</span> <span class="toc-text"> 12.Nginx 配置实例（动静分离准备工作）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C-4"><span class="toc-number">1.11.1.</span> <span class="toc-text"> 准备工作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13nginx%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B%E5%8A%A8%E9%9D%99%E5%88%86%E7%A6%BB"><span class="toc-number">1.12.</span> <span class="toc-text"> 13.Nginx 配置实例（动静分离）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-3"><span class="toc-number">1.12.1.</span> <span class="toc-text"> 修改配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C-2"><span class="toc-number">1.12.2.</span> <span class="toc-text"> 运行结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14nginx%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B%E9%AB%98%E5%8F%AF%E7%94%A8%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.13.</span> <span class="toc-text"> 14.Nginx 配置实例（高可用准备工作）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFnginx%E9%AB%98%E5%8F%AF%E7%94%A8"><span class="toc-number">1.13.1.</span> <span class="toc-text"> 什么是 Nginx 高可用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15nginx%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B%E9%AB%98%E5%8F%AF%E7%94%A8%E4%B8%BB%E5%A4%87%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.14.</span> <span class="toc-text"> 15.Nginx 配置实例（高可用主备模式）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%AB%98%E5%8F%AF%E7%94%A8%E7%9A%84%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.14.1.</span> <span class="toc-text"> 配置高可用的准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E4%B8%A4%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85-keepalived"><span class="toc-number">1.14.2.</span> <span class="toc-text"> 在两台服务器安装 keepalived</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16nginx%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B%E9%AB%98%E5%8F%AF%E7%94%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.15.</span> <span class="toc-text"> 16.Nginx 配置实例（高可用配置文件详解）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17nginx%E7%9A%84%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90"><span class="toc-number">1.16.</span> <span class="toc-text"> 17.Nginx 的原理解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mater-%E5%92%8C-worker"><span class="toc-number">1.16.1.</span> <span class="toc-text"> mater 和 worker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#master-workers-%E7%9A%84%E6%9C%BA%E5%88%B6%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-number">1.16.2.</span> <span class="toc-text"> master-workers 的机制的好处</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E8%AE%BE%E7%BD%AE%E5%A4%9A%E5%B0%91%E4%B8%AA-worker"><span class="toc-number">1.16.3.</span> <span class="toc-text"> 需要设置多少个 worker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%95%B0-worker_connection"><span class="toc-number">1.16.4.</span> <span class="toc-text"> 连接数 worker_connection</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/06/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide"><img src="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My ultimate data structure and algorithm guide"/></a><div class="content"><a class="title" href="/2022/12/06/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide">My ultimate data structure and algorithm guide</a><time datetime="2022-12-05T11:00:00.000Z" title="Created 2022-12-06 00:00:00">2022-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/27/HTML5%E4%B8%8ECSS3%E9%AB%98%E9%98%B6/" title="My HTML5 and CSS3 notes"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My HTML5 and CSS3 notes"/></a><div class="content"><a class="title" href="/2022/08/27/HTML5%E4%B8%8ECSS3%E9%AB%98%E9%98%B6/" title="My HTML5 and CSS3 notes">My HTML5 and CSS3 notes</a><time datetime="2022-08-26T12:00:00.000Z" title="Created 2022-08-27 00:00:00">2022-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" title="Object Orientated Programming"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/ca78dff38e0bfb81a8e98ad64f749e97bcc55f14/notes-img/Billfish.yWAOuM.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Object Orientated Programming"/></a><div class="content"><a class="title" href="/2022/08/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" title="Object Orientated Programming">Object Orientated Programming</a><time datetime="2022-08-10T12:00:00.000Z" title="Created 2022-08-11 00:00:00">2022-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns"/></a><div class="content"><a class="title" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns">Design Patterns</a><time datetime="2022-06-11T12:00:00.000Z" title="Created 2022-06-12 00:00:00">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns - Command"/></a><div class="content"><a class="title" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command">Design Patterns - Command</a><time datetime="2022-06-10T12:00:00.000Z" title="Created 2022-06-11 00:00:00">2022-06-11</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2022/01/16/Nginx/'
+    this.page.identifier = '2022/01/16/Nginx/'
+    this.page.title = 'My Nginx notes'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>if (window.DISQUSWIDGETS === undefined) {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://harry-study-blog.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+} else {
+  DISQUSWIDGETS.getCount({reset: true});
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: '16c146693fd3b7b626675594e4647655',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=B5XFmdGuVaYDW7OIBakffpXoKorvphwRiwONIol4puEtr8YiwYAMAk2K7QcExNLY')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

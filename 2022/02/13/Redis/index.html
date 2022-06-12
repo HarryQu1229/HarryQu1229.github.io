@@ -1,0 +1,583 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Redis Notes | Harry World</title><meta name="keywords" content="backend,redis"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# Redis # 1、什么是 Redis Redis 本质上是一个 Key-Value 类型的内存数据库，很像 memcached，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据 flush 到硬盘上进行保存。因为是纯内存操作，Redis 的性能非常出色，每秒可以处理超过 10 万次读写操作，是已知性能最快的 Key-Value DB。 Redis 的出色之处不仅仅是性能，R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis Notes">
+<meta property="og:url" content="https://harryqu1229.github.io/2022/02/13/Redis/index.html">
+<meta property="og:site_name" content="Harry World">
+<meta property="og:description" content="# Redis # 1、什么是 Redis Redis 本质上是一个 Key-Value 类型的内存数据库，很像 memcached，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据 flush 到硬盘上进行保存。因为是纯内存操作，Redis 的性能非常出色，每秒可以处理超过 10 万次读写操作，是已知性能最快的 Key-Value DB。 Redis 的出色之处不仅仅是性能，R">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png">
+<meta property="article:published_time" content="2022-02-12T11:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-12T01:13:43.091Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="backend">
+<meta property="article:tag" content="redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://harryqu1229.github.io/2022/02/13/Redis/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Redis Notes',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-12 13:13:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry World</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Redis Notes</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-02-12T11:00:00.000Z" title="Created 2022-02-13 00:00:00">2022-02-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-06-12T01:13:43.091Z" title="Updated 2022-06-12 13:13:43">2022-06-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Backend/">Backend</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Backend/databases/">databases</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">6.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>19min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Redis Notes"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><span class="disqus-comment-count"><a href="https://harryqu1229.github.io/2022/02/13/Redis/#disqus_thread"></a></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="redis"><a class="markdownIt-Anchor" href="#redis">#</a> Redis</h1>
+<h2 id="1-什么是-redis"><a class="markdownIt-Anchor" href="#1-什么是-redis">#</a> 1、什么是 Redis</h2>
+<p>Redis 本质上是一个 Key-Value 类型的内存数据库，很像 memcached，整个数据库统统加载在内存当中进行操作，定期通过异步操作把数据库数据 flush 到硬盘上进行保存。因为是纯内存操作，Redis 的性能非常出色，每秒可以处理超过 10 万次读写操作，是已知性能最快的 Key-Value DB。 Redis 的出色之处不仅仅是性能，Redis 最大的魅力是支持保存多种数据结构，此外单个 value 的最大限制是 1GB，不像 memcached 只能保存 1MB 的数据，因此 Redis 可以用来实现很多有用的功能，比方说用他的 List 来做 FIFO 双向链表，实现一个轻量级的高性 能消息队列服务，用他的 Set 可以做高性能的 tag 系统等等。另外 Redis 也可以对存入的 Key-Value 设置 expire 时间，因此也可以被当作一 个功能加强版的 memcached 来用。 Redis 的主要缺点是数据库容量受到物理内存的限制，不能用作海量数据的高性能读写，因此 Redis 适合的场景主要局限在较小数据量的高性能操作和运算上。</p>
+<h2 id="2-redis-相比-memcached-有哪些优势"><a class="markdownIt-Anchor" href="#2-redis-相比-memcached-有哪些优势">#</a> 2、Redis 相比 memcached 有哪些优势</h2>
+<ul>
+<li>memcached 所有的值均是简单的字符串，redis 作为其替代者， 支持更为丰富的数据类型</li>
+<li>redis 的速度比 memcached 快很多</li>
+<li>redis 可以持久化其数据</li>
+</ul>
+<h2 id="3-redis-支持哪几种数据类型"><a class="markdownIt-Anchor" href="#3-redis-支持哪几种数据类型">#</a> 3、Redis 支持哪几种数据类型</h2>
+<p>String、List、Set、Sorted Set、hashes</p>
+<h2 id="4-redis-主要消耗什么物理资源"><a class="markdownIt-Anchor" href="#4-redis-主要消耗什么物理资源">#</a> 4、Redis 主要消耗什么物理资源</h2>
+<p>redis 是一种基于内存高性能的数据库 — 主要依赖于内存内存。</p>
+<h2 id="5-redis-的全称是什么"><a class="markdownIt-Anchor" href="#5-redis-的全称是什么">#</a> 5、Redis 的全称是什么</h2>
+<p>Remote Dictionary Server</p>
+<h2 id="6-redis-有哪几种数据淘汰策略"><a class="markdownIt-Anchor" href="#6-redis-有哪几种数据淘汰策略">#</a> 6、Redis 有哪几种数据淘汰策略</h2>
+<p>noeviction: 返回错误当内存限制达到并且客户端尝试执行会让更多内存被使用的命令（大部分的写入指令，但 DEL 和几个例外）allkeys-lru: 尝试回收最少使用的键（LRU），使得新添加的数据有空间存放。volatile-lru: 尝试回收最少使用的键（LRU），但仅限于在过期集合的键，使得新添加的数据有空间存放。allkeys-random: 回收随机的键使得新添加的数据有空间存放。volatile-random: 回收随机的键使得新添加的数据有空间存放，但仅限于在过期集合的键。volatile-ttl: 回收在过期集合的键，并且优先回收存活时间（TTL）较短的键，使得新添加的数据有空间存放。</p>
+<h2 id="7-redis-官方为什么不提供-windows-版本"><a class="markdownIt-Anchor" href="#7-redis-官方为什么不提供-windows-版本">#</a> 7、Redis 官方为什么不提供 Windows 版本</h2>
+<p>因为目前 Linux 版本已经相当稳定，而且用户量很大，无需开发 windows 版本，反而会带来兼容性等问题。</p>
+<h2 id="8-一个字符串类型的值能存储最大容量是多少"><a class="markdownIt-Anchor" href="#8-一个字符串类型的值能存储最大容量是多少">#</a> 8、一个字符串类型的值能存储最大容量是多少</h2>
+<p>512M</p>
+<h2 id="9-为什么-redis-需要把所有数据放到内存中"><a class="markdownIt-Anchor" href="#9-为什么-redis-需要把所有数据放到内存中">#</a> 9、为什么 Redis 需要把所有数据放到内存中</h2>
+<p>Redis 为了达到最快的读写速度将数据都读到内存中，并通过异步的方式将数据写入磁盘。所以 redis 具有快速和数据持久化的特征。如果不将数据放在内存中，磁盘 I/O 速度为严重影响 redis 的性能。在内存越来越便宜的今天，redis 将会越来越受欢迎。<br>
+如果设置了最大使用的内存，则数据已有记录数达到内存限值后不能继续插入新值。</p>
+<h2 id="10-redis-集群方案应该怎么做都有哪些方案"><a class="markdownIt-Anchor" href="#10-redis-集群方案应该怎么做都有哪些方案">#</a> 10、Redis 集群方案应该怎么做？都有哪些方案</h2>
+<ul>
+<li>twemproxy，大概概念是，它类似于一个代理方式，使用方法和普通 redis 无任何区别，设置好它下属的多个 redis 实例后，使用时在本需要连接 redis 的地方改为连接 twemproxy，它会以一个代理的身份接收请求并使用一致性 hash 算法，将请求转接到具体 redis，将结果再返回 twemproxy。使用方式简便 (相对 redis 只需修改连接端口)，对旧项目扩展的首选。 问题：twemproxy 自身单端口实例的压力，使用一致性 hash 后，对 redis 节点数量改变时候的计算值的改变，数据无法自动移动到新的节点。</li>
+<li>codis，目前用的最多的集群方案，基本和 twemproxy 一致的效果，但它支持在 节点数量改变情况下，旧节点数据可恢复到新 hash 节点。</li>
+<li>redis cluster3.0 自带的集群，特点在于他的分布式算法不是一致性 hash，而是 hash 槽的概念，以及自身支持节点设置从节点。具体看官方文档介绍。</li>
+<li>在业务代码层实现，起几个毫无关联的 redis 实例，在代码层，对 key 进行 hash 计算，然后去对应的 redis 实例操作数据。 这种方式对 hash 层代码要求比较高，考虑部分包括，节点失效后的替代算法方案，数据震荡后的自动脚本恢复，实例的监控，等等。</li>
+</ul>
+<h2 id="11-redis-集群方案什么情况下会导致整个集群不可用"><a class="markdownIt-Anchor" href="#11-redis-集群方案什么情况下会导致整个集群不可用">#</a> 11、Redis 集群方案什么情况下会导致整个集群不可用</h2>
+<p>有 A，B，C 三个节点的集群，在没有复制模型的情况下，如果节点 B 失败了，那么整个集群就会以为缺少 5501-11000 这个范围的槽而不可用。</p>
+<h2 id="12-mysql-里有-2000w-数据redis-中只存-20w-的数据如何保证-redis-中的数据都是热点数据"><a class="markdownIt-Anchor" href="#12-mysql-里有-2000w-数据redis-中只存-20w-的数据如何保证-redis-中的数据都是热点数据">#</a> 12、MySQL 里有 2000w 数据，redis 中只存 20w 的数据，如何保证 redis 中的数据都是热点数据</h2>
+<p>redis 内存数据集大小上升到一定大小的时候，就会施行数据淘汰策略。</p>
+<h2 id="13-redis-有哪些适合的场景"><a class="markdownIt-Anchor" href="#13-redis-有哪些适合的场景">#</a> 13、Redis 有哪些适合的场景</h2>
+<ul>
+<li>会话缓存（Session Cache）最常用的一种使用 Redis 的情景是会话缓存（session cache）。用 Redis 缓存会话比其他存储（如 Memcached）的优势在于：Redis 提供持久化。当维护一个不是严格要求一致性的缓存时，如果用户的购物车信息全部丢失，大部分人都会不高兴的，现在，他们还会这样吗？幸运的是，随着 Redis 这些年的改进，很容易找到怎么恰当的使用 Redis 来缓存会话的文档。甚至广为人知的商业平台 Magento 也提供 Redis 的插件。</li>
+<li>全页缓存（FPC）除基本的会话 token 之外，Redis 还提供很简便的 FPC 平台。回到一致性问题，即使重启了 Redis 实例，因为有磁盘的持久化，用户也不会看到页面加载速度的下降，这是一个极大改进，类似 PHP 本地 FPC。再次以 Magento 为例，Magento 提供一个插件来使用 Redis 作为全页缓存后端。此外，对 WordPress 的用户来说，Pantheon 有一个非常好的插件 wp-redis，这个插件能帮助你以最快速度加载你曾浏览过的页面。</li>
+<li>队列 Reids 在内存存储引擎领域的一大优点是提供 list 和 set 操作，这使得 Redis 能作为一个很好的消息队列平台来使用。Redis 作为队列使用的操作，就类似于本地程序语言（如 Python）对 list 的 push/pop 操作。如果你快速的在 Google 中搜索 “Redis queues”，你马上就能找到大量的开源项目，这些项目的目的就是利用 Redis 创建非常好的后端工具，以满足各种队列需求。例如，Celery 有一个后台就是使用 Redis 作为 broker，你可以从这里去查看。</li>
+<li>排行榜 / 计数器 Redis 在内存中对数字进行递增或递减的操作实现的非常好。集合（Set）和有序集合（Sorted Set）也使得我们在执行这些操作的时候变的非常简单，Redis 只是正好提供了这两种数据结构。所以，我们要从排序集合中获取到排名最靠前的 10 个用户–我们称之为 “user_scores”，我们只需要像下面一样执行即可：当然，这是假定你是根据你用户的分数做递增的排序。如果你想返回用户及用户的分数，你需要这样执行：ZRANGE user_scores 0 10 WITHSCORESAgora Games 就是一个很好的例子，用 Ruby 实现的，它的排行榜就是使用 Redis 来存储数据的，你可以在这里看到。</li>
+<li>发布 / 订阅最后（但肯定不是最不重要的）是 Redis 的发布 / 订阅功能。发布 / 订阅的使用场景确实非常多。我已看见人们在社交网络连接中使用，还可作为基于发布 / 订阅的脚本触发器，甚至用 Redis 的发布 / 订阅功能来建立聊天系统！（不，这是真的，你可以去核实）。</li>
+</ul>
+<h2 id="14-redis-支持的-java-客户端都有哪些官方推荐用哪个"><a class="markdownIt-Anchor" href="#14-redis-支持的-java-客户端都有哪些官方推荐用哪个">#</a> 14、Redis 支持的 Java 客户端都有哪些？官方推荐用哪个</h2>
+<p>Redisson、Jedis、lettuce 等等，官方推荐使用 Redisson。</p>
+<h2 id="15-redis-和-redisson-有什么关系"><a class="markdownIt-Anchor" href="#15-redis-和-redisson-有什么关系">#</a> 15、Redis 和 Redisson 有什么关系</h2>
+<p>Redisson 是一个高级的分布式协调 Redis 客服端，能帮助用户在分布式环境中轻松实现一些 Java 的对象 (Bloom filter, BitSet, Set, SetMultimap, ScoredSortedSet, SortedSet, Map, ConcurrentMap, List, ListMultimap, Queue, BlockingQueue, Deque, BlockingDeque, Semaphore, Lock, ReadWriteLock, AtomicLong, CountDownLatch, Publish / Subscribe, HyperLogLog)。</p>
+<h2 id="16-jedis-与-redisson-对比有什么优缺点"><a class="markdownIt-Anchor" href="#16-jedis-与-redisson-对比有什么优缺点">#</a> 16、Jedis 与 Redisson 对比有什么优缺点</h2>
+<p>Jedis 是 Redis 的 Java 实现的客户端，其 API 提供了比较全面的 Redis 命令的支持；Redisson 实现了分布式和可扩展的 Java 数据结构，和 Jedis 相比，功能较为简单，不支持字符串操作，不支持排序、事务、管道、分区等 Redis 特性。Redisson 的宗旨是促进使用者对 Redis 的关注分离，从而让使用者能够将精力更集中地放在处理业务逻辑上。</p>
+<h2 id="17-redis-如何设置密码及验证密码"><a class="markdownIt-Anchor" href="#17-redis-如何设置密码及验证密码">#</a> 17、Redis 如何设置密码及验证密码</h2>
+<p>设置密码：config set requirepass 123456 授权密码：auth 123456</p>
+<h2 id="18-说说-redis-哈希槽的概念"><a class="markdownIt-Anchor" href="#18-说说-redis-哈希槽的概念">#</a> 18、说说 Redis 哈希槽的概念</h2>
+<p>Redis 集群没有使用一致性 hash, 而是引入了哈希槽的概念，Redis 集群有 16384 个哈希槽，每个 key 通过 CRC16 校验后对 16384 取模来决定放置哪个槽，集群的每个节点负责一部分 hash 槽。</p>
+<h2 id="19-redis-集群的主从复制模型是怎样的"><a class="markdownIt-Anchor" href="#19-redis-集群的主从复制模型是怎样的">#</a> 19、Redis 集群的主从复制模型是怎样的</h2>
+<p>为了使在部分节点失败或者大部分节点无法通信的情况下集群仍然可用，所以集群使用了主从复制模型，每个节点都会有 N-1 个复制品.</p>
+<h2 id="20-redis-集群会有写操作丢失吗为什么"><a class="markdownIt-Anchor" href="#20-redis-集群会有写操作丢失吗为什么">#</a> 20、Redis 集群会有写操作丢失吗？为什么</h2>
+<p>Redis 并不能保证数据的强一致性，这意味这在实际中集群在特定的条件下可能会丢失写操作。</p>
+<h2 id="21-redis-集群之间是如何复制的"><a class="markdownIt-Anchor" href="#21-redis-集群之间是如何复制的">#</a> 21、Redis 集群之间是如何复制的</h2>
+<p>异步复制</p>
+<h2 id="22-redis-集群最大节点个数是多少"><a class="markdownIt-Anchor" href="#22-redis-集群最大节点个数是多少">#</a> 22、Redis 集群最大节点个数是多少</h2>
+<p>16384 个。</p>
+<h2 id="23-redis-集群如何选择数据库"><a class="markdownIt-Anchor" href="#23-redis-集群如何选择数据库">#</a> 23、Redis 集群如何选择数据库</h2>
+<p>Redis 集群目前无法做数据库选择，默认在 0 数据库。</p>
+<h2 id="24-怎么测试-redis-的连通性"><a class="markdownIt-Anchor" href="#24-怎么测试-redis-的连通性">#</a> 24、怎么测试 Redis 的连通性</h2>
+<p>ping</p>
+<h2 id="25-redis-中的管道有什么用"><a class="markdownIt-Anchor" href="#25-redis-中的管道有什么用">#</a> 25、Redis 中的管道有什么用</h2>
+<p>一次请求 / 响应服务器能实现处理新的请求即使旧的请求还未被响应。这样就可以将多个命令发送到服务器，而不用等待回复，最后在一个步骤中读取该答复。这就是管道（pipelining），是一种几十年来广泛使用的技术。例如许多 POP3 协议已经实现支持这个功能，大大加快了从服务器下载新邮件的过程。</p>
+<h2 id="26-怎么理解-redis-事务"><a class="markdownIt-Anchor" href="#26-怎么理解-redis-事务">#</a> 26、怎么理解 Redis 事务</h2>
+<p>事务是一个单独的隔离操作：事务中的所有命令都会序列化、按顺序地执行。事务在执行的过程中，不会被其他客户端发送来的命令请求所打断。事务是一个原子操作：事务中的命令要么全部被执行，要么全部都不执行。</p>
+<h2 id="27-redis-事务相关的命令有哪几个"><a class="markdownIt-Anchor" href="#27-redis-事务相关的命令有哪几个">#</a> 27、Redis 事务相关的命令有哪几个</h2>
+<p>MULTI、EXEC、DISCARD、WATCH ##28、Redis key 的过期时间和永久有效分别怎么设置？ EXPIRE 和 PERSIST 命令。</p>
+<h2 id="29-redis-如何做内存优化"><a class="markdownIt-Anchor" href="#29-redis-如何做内存优化">#</a> 29、Redis 如何做内存优化</h2>
+<p>尽可能使用散列表（hashes），散列表（是说散列表里面存储的数少）使用的内存非常小，所以你应该尽可能的将你的数据模型抽象到一个散列表里面。比如你的 web 系统中有一个用户对象，不要为这个用户的名称，姓氏，邮箱，密码设置单独的 key, 而是应该把这个用户的所有信息存储到一张散列表里面.</p>
+<h2 id="30-redis-回收进程如何工作的"><a class="markdownIt-Anchor" href="#30-redis-回收进程如何工作的">#</a> 30、Redis 回收进程如何工作的</h2>
+<p>一个客户端运行了新的命令，添加了新的数据。Redi 检查内存使用情况，如果大于 maxmemory 的限制，则根据设定好的策略进行回收。一个新的命令被执行，等等。所以我们不断地穿越内存限制的边界，通过不断达到边界然后不断地回收回到边界以下。如果一个命令的结果导致大量内存被使用（例如很大的集合的交集保存到一个新的键），不用多久内存限制就会被这个内存使用量超越。**</p>
+<h2 id="31-redis-回收使用的是什么算法"><a class="markdownIt-Anchor" href="#31-redis-回收使用的是什么算法">#</a> 31、Redis 回收使用的是什么算法</h2>
+<p>LRU 算法</p>
+<h2 id="32-redis-如何做大量数据插入"><a class="markdownIt-Anchor" href="#32-redis-如何做大量数据插入">#</a> 32、Redis 如何做大量数据插入</h2>
+<p>Redis2.6 开始 redis-cli 支持一种新的被称之为 pipe mode 的新模式用于执行大量数据插入工作。</p>
+<h2 id="33-为什么要做-redis-分区"><a class="markdownIt-Anchor" href="#33-为什么要做-redis-分区">#</a> 33、为什么要做 Redis 分区</h2>
+<p>分区可以让 Redis 管理更大的内存，Redis 将可以使用所有机器的内存。如果没有分区，你最多只能使用一台机器的内存。分区使 Redis 的计算能力通过简单地增加计算机得到成倍提升，Redis 的网络带宽也会随着计算机和网卡的增加而成倍增长。</p>
+<h2 id="34-你知道有哪些-redis-分区实现方案"><a class="markdownIt-Anchor" href="#34-你知道有哪些-redis-分区实现方案">#</a> 34、你知道有哪些 Redis 分区实现方案</h2>
+<p>客户端分区就是在客户端就已经决定数据会被存储到哪个 redis 节点或者从哪个 redis 节点读取。大多数客户端已经实现了客户端分区。代理分区 意味着客户端将请求发送给代理，然后代理决定去哪个节点写数据或者读数据。代理根据分区规则决定请求哪些 Redis 实例，然后根据 Redis 的响应结果返回给客户端。redis 和 memcached 的一种代理实现就是 Twemproxy 查询路由 (Query routing) 的意思是客户端随机地请求任意一个 redis 实例，然后由 Redis 将请求转发给正确的 Redis 节点。Redis Cluster 实现了一种混合形式的查询路由，但并不是直接将请求从一个 redis 节点转发到另一个 redis 节点，而是在客户端的帮助下直接 redirected 到正确的 redis 节点。</p>
+<h2 id="35-redis-分区有什么缺点"><a class="markdownIt-Anchor" href="#35-redis-分区有什么缺点">#</a> 35、Redis 分区有什么缺点</h2>
+<p>涉及多个 key 的操作通常不会被支持。例如你不能对两个集合求交集，因为他们可能被存储到不同的 Redis 实例（实际上这种情况也有办法，但是不能直接使用交集指令）。同时操作多个 key, 则不能使用 Redis 事务。分区使用的粒度是 key，不能使用一个非常长的排序 key 存储一个数据集（The partitioning granularity is the key, so it is not possible to shard a dataset with a single huge key like a very big sorted set）. 当使用分区的时候，数据处理会非常复杂，例如为了备份你必须从不同的 Redis 实例和主机同时收集 RDB / AOF 文件。分区时动态扩容或缩容可能非常复杂。Redis 集群在运行时增加或者删除 Redis 节点，能做到最大程度对用户透明地数据再平衡，但其他一些客户端分区或者代理分区方法则不支持这种特性。然而，有一种预分片的技术也可以较好的解决这个问题。</p>
+<h2 id="36-redis-持久化数据和缓存怎么做扩容"><a class="markdownIt-Anchor" href="#36-redis-持久化数据和缓存怎么做扩容">#</a> 36、Redis 持久化数据和缓存怎么做扩容</h2>
+<p>如果 Redis 被当做缓存使用，使用一致性哈希实现动态扩容缩容。如果 Redis 被当做一个持久化存储使用，必须使用固定的 keys-to-nodes 映射关系，节点的数量一旦确定不能变化。否则的话 (即 Redis 节点需要动态变化的情况），必须使用可以在运行时进行数据再平衡的一套系统，而当前只有 Redis 集群可以做到这样。</p>
+<h2 id="37-分布式-redis-是前期做还是后期规模上来了再做好为什么"><a class="markdownIt-Anchor" href="#37-分布式-redis-是前期做还是后期规模上来了再做好为什么">#</a> 37、分布式 Redis 是前期做还是后期规模上来了再做好？为什么</h2>
+<p>既然 Redis 是如此的轻量（单实例只使用 1M 内存）, 为防止以后的扩容，最好的办法就是一开始就启动较多实例。即便你只有一台服务器，你也可以一开始就让 Redis 以分布式的方式运行，使用分区，在同一台服务器上启动多个实例。一开始就多设置几个 Redis 实例，例如 32 或者 64 个实例，对大多数用户来说这操作起来可能比较麻烦，但是从长久来看做这点牺牲是值得的。这样的话，当你的数据不断增长，需要更多的 Redis 服务器时，你需要做的就是仅仅将 Redis 实例从一台服务迁移到另外一台服务器而已（而不用考虑重新分区的问题）。一旦你添加了另一台服务器，你需要将你一半的 Redis 实例从第一台机器迁移到第二台机器。</p>
+<h2 id="38-twemproxy-是什么"><a class="markdownIt-Anchor" href="#38-twemproxy-是什么">#</a> 38、Twemproxy 是什么</h2>
+<p>Twemproxy 是 Twitter 维护的（缓存）代理系统，代理 Memcached 的 ASCII 协议和 Redis 协议。它是单线程程序，使用 c 语言编写，运行起来非常快。它是采用 Apache 2.0 license 的开源软件。 Twemproxy 支持自动分区，如果其代理的其中一个 Redis 节点不可用时，会自动将该节点排除（这将改变原来的 keys-instances 的映射关系，所以你应该仅在把 Redis 当缓存时使用 Twemproxy)。 Twemproxy 本身不存在单点问题，因为你可以启动多个 Twemproxy 实例，然后让你的客户端去连接任意一个 Twemproxy 实例。 Twemproxy 是 Redis 客户端和服务器端的一个中间层，由它来处理分区功能应该不算复杂，并且应该算比较可靠的。</p>
+<h2 id="39-支持一致性哈希的客户端有哪些"><a class="markdownIt-Anchor" href="#39-支持一致性哈希的客户端有哪些">#</a> 39、支持一致性哈希的客户端有哪些</h2>
+<p>Redis-rb、Predis 等。</p>
+<h2 id="40-redis-与其他-key-value-存储有什么不同"><a class="markdownIt-Anchor" href="#40-redis-与其他-key-value-存储有什么不同">#</a> 40、Redis 与其他 key-value 存储有什么不同</h2>
+<p>Redis 有着更为复杂的数据结构并且提供对他们的原子性操作，这是一个不同于其他数据库的进化路径。Redis 的数据类型都是基于基本数据结构的同时对程序员透明，无需进行额外的抽象。Redis 运行在内存中但是可以持久化到磁盘，所以在对不同数据集进行高速读写时需要权衡内存，应为数据量不能大于硬件内存。在内存数据库方面的另一个优点是， 相比在磁盘上相同的复杂的数据结构，在内存中操作起来非常简单，这样 Redis 可以做很多内部复杂性很强的事情。 同时，在磁盘格式方面他们是紧凑的以追加的方式产生的，因为他们并不需要进行随机访问。</p>
+<h2 id="41-redis-的内存占用情况怎么样"><a class="markdownIt-Anchor" href="#41-redis-的内存占用情况怎么样">#</a> 41、Redis 的内存占用情况怎么样</h2>
+<p>给你举个例子： 100 万个键值对（键是 0 到 999999 值是字符串 “hello world”）在我的 32 位的 Mac 笔记本上 用了 100MB。同样的数据放到一个 key 里只需要 16MB， 这是因为键值有一个很大的开销。 在 Memcached 上执行也是类似的结果，但是相对 Redis 的开销要小一点点，因为 Redis 会记录类型信息引用计数等等。当然，大键值对时两者的比例要好很多。64 位的系统比 32 位的需要更多的内存开销，尤其是键值对都较小时，这是因为 64 位的系统里指针占用了 8 个字节。 但是，当然，64 位系统支持更大的内存，所以为了运行大型的 Redis 服务器或多或少的需要使用 64 位的系统。</p>
+<h2 id="42-都有哪些办法可以降低-redis-的内存使用情况呢"><a class="markdownIt-Anchor" href="#42-都有哪些办法可以降低-redis-的内存使用情况呢">#</a> 42、都有哪些办法可以降低 Redis 的内存使用情况呢</h2>
+<p>如果你使用的是 32 位的 Redis 实例，可以好好利用 Hash,list,sorted set,set 等集合类型数据，因为通常情况下很多小的 Key-Value 可以用更紧凑的方式存放到一起。</p>
+<p>##43、查看 Redis 使用情况及状态信息用什么命令？info44、Redis 的内存用完了会发生什么？ 如果达到设置的上限，Redis 的写命令会返回错误信息（但是读命令还可以正常返回。）或者你可以将 Redis 当缓存来使用配置淘汰机制，当 Redis 达到内存上限时会冲刷掉旧的内容。## 45、Redis 是单线程的，如何提高多核 CPU 的利用率？ 可以在同一个服务器部署多个 Redis 的实例，并把他们当作不同的服务器来使用，在某些时候，无论如何一个服务器是不够的， 所以，如果你想使用多个 CPU，你可以考虑一下分片（shard）。</p>
+<h2 id="46-一个-redis-实例最多能存放多少的-keys"><a class="markdownIt-Anchor" href="#46-一个-redis-实例最多能存放多少的-keys">#</a> 46、一个 Redis 实例最多能存放多少的 keys</h2>
+<p>List、Set、Sorted Set 他们最多能存放多少元素？理论上 Redis 可以处理多达 232 的 keys，并且在实际中进行了测试，每个实例至少存放了 2 亿 5 千万的 keys。我们正在测试一些较大的值。任何 list、set、和 sorted set 都可以放 232 个元素。换句话说，Redis 的存储极限是系统中的可用内存值。</p>
+<h2 id="47-redis-常见性能问题和解决方案"><a class="markdownIt-Anchor" href="#47-redis-常见性能问题和解决方案">#</a> 47、Redis 常见性能问题和解决方案</h2>
+<ul>
+<li>Master 最好不要做任何持久化工作，如 RDB 内存快照和 AOF 日志文件</li>
+<li>如果数据比较重要，某个 Slave 开启 AOF 备份数据，策略设置为每秒同步一次</li>
+<li>为了主从复制的速度和连接的稳定性，Master 和 Slave 最好在同一个局域网内</li>
+<li>尽量避免在压力很大的主库上增加从库</li>
+<li>主从复制不要用图状结构，用单向链表结构更为稳定，即：Master &lt;- Slave1 &lt;- Slave2 &lt;- Slave3… 这样的结构方便解决单点故障问题，实现 Slave 对 Master 的替换。如果 Master 挂了，可以立刻启用 Slave1 做 Master，其他不变。</li>
+</ul>
+<h2 id="48-redis-提供了哪几种持久化方式"><a class="markdownIt-Anchor" href="#48-redis-提供了哪几种持久化方式">#</a> 48、Redis 提供了哪几种持久化方式</h2>
+<p>RDB 持久化方式能够在指定的时间间隔能对你的数据进行快照存储. AOF 持久化方式记录每次对服务器写的操作，当服务器重启的时候会重新执行这些命令来恢复原始的数据，AOF 命令以 redis 协议追加保存每次写的操作到文件末尾. Redis 还能对 AOF 文件进行后台重写，使得 AOF 文件的体积不至于过大。如果你只希望你的数据在服务器运行的时候存在，你也可以不使用任何持久化方式。你也可以同时开启两种持久化方式，在这种情况下，当 redis 重启的时候会优先载入 AOF 文件来恢复原始的数据，因为在通常情况下 AOF 文件保存的数据集要比 RDB 文件保存的数据集要完整。最重要的事情是了解 RDB 和 AOF 持久化方式的不同，让我们以 RDB 持久化方式开始。</p>
+<h2 id="49-如何选择合适的持久化方式"><a class="markdownIt-Anchor" href="#49-如何选择合适的持久化方式">#</a> 49、如何选择合适的持久化方式</h2>
+<p>一般来说， 如果想达到足以媲美 PostgreSQL 的数据安全性， 你应该同时使用两种持久化功能。如果你非常关心你的数据， 但仍然可以承受数分钟以内的数据丢失，那么你可以只使用 RDB 持久化。有很多用户都只使用 AOF 持久化，但并不推荐这种方式：因为定时生成 RDB 快照（snapshot）非常便于进行数据库备份， 并且 RDB 恢复数据集的速度也要比 AOF 恢复的速度要快，除此之外， 使用 RDB 还可以避免之前提到的 AOF 程序的 bug。</p>
+<h2 id="50-修改配置不重启-redis-会实时生效吗"><a class="markdownIt-Anchor" href="#50-修改配置不重启-redis-会实时生效吗">#</a> 50、修改配置不重启 Redis 会实时生效吗</h2>
+<p>针对运行实例，有许多配置选项可以通过 CONFIG SET 命令进行修改，而无需执行任何形式的重启。 从 Redis 2.2 开始，可以从 AOF 切换到 RDB 的快照持久性或其他方式而不需要重启 Redis。检索 ‘CONFIG GET *’ 命令获取更多信息。但偶尔重新启动是必须的，如为升级 Redis 程序到新的版本，或者当你需要修改某些目前 CONFIG 命令还不支持的配置参数的时候。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2022/02/13/Redis/">https://harryqu1229.github.io/2022/02/13/Redis/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/backend/">backend</a><a class="post-meta__tags" href="/tags/redis/">redis</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/01/31/javascript-questions/"><img class="prev-cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Javascript Questions</div></div></a></div><div class="next-post pull-right"><a href="/2022/02/15/Vue2/"><img class="next-cover" src="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">My Vue2 notes</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/03/20/Redis%E7%AC%94%E8%AE%B0/" title="Redis CS Notes"><img class="cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-20</div><div class="title">Redis CS Notes</div></div></a></div><div><a href="/2022/03/15/redis(%E5%B0%9A%E7%A1%85%E8%B0%B7)/" title="Redis Notes 尚硅谷"><img class="cover" src="https://w.wallhaven.cc/full/v9/wallhaven-v9v9o5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-15</div><div class="title">Redis Notes 尚硅谷</div></div></a></div><div><a href="/2022/02/26/SSM%E6%A1%86%E6%9E%B6%E7%9A%84%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE/" title="SSM combine"><img class="cover" src="https://w.wallhaven.cc/full/3z/wallhaven-3zgdd3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-26</div><div class="title">SSM combine</div></div></a></div><div><a href="/2022/03/22/Socket/" title="Socket Notes"><img class="cover" src="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-22</div><div class="title">Socket Notes</div></div></a></div><div><a href="/2022/03/23/Spring(another%20note)/" title="Spring notes"><img class="cover" src="https://w.wallhaven.cc/full/28/wallhaven-28wymm.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-23</div><div class="title">Spring notes</div></div></a></div><div><a href="/2022/03/24/Spring/" title="My Spring notes"><img class="cover" src="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-24</div><div class="title">My Spring notes</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#redis"><span class="toc-number">1.</span> <span class="toc-text"> Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF-redis"><span class="toc-number">1.1.</span> <span class="toc-text"> 1、什么是 Redis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-redis-%E7%9B%B8%E6%AF%94-memcached-%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8A%BF"><span class="toc-number">1.2.</span> <span class="toc-text"> 2、Redis 相比 memcached 有哪些优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-redis-%E6%94%AF%E6%8C%81%E5%93%AA%E5%87%A0%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.3.</span> <span class="toc-text"> 3、Redis 支持哪几种数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-redis-%E4%B8%BB%E8%A6%81%E6%B6%88%E8%80%97%E4%BB%80%E4%B9%88%E7%89%A9%E7%90%86%E8%B5%84%E6%BA%90"><span class="toc-number">1.4.</span> <span class="toc-text"> 4、Redis 主要消耗什么物理资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-redis-%E7%9A%84%E5%85%A8%E7%A7%B0%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.5.</span> <span class="toc-text"> 5、Redis 的全称是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-redis-%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%B7%98%E6%B1%B0%E7%AD%96%E7%95%A5"><span class="toc-number">1.6.</span> <span class="toc-text"> 6、Redis 有哪几种数据淘汰策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-redis-%E5%AE%98%E6%96%B9%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%8F%90%E4%BE%9B-windows-%E7%89%88%E6%9C%AC"><span class="toc-number">1.7.</span> <span class="toc-text"> 7、Redis 官方为什么不提供 Windows 版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%80%BC%E8%83%BD%E5%AD%98%E5%82%A8%E6%9C%80%E5%A4%A7%E5%AE%B9%E9%87%8F%E6%98%AF%E5%A4%9A%E5%B0%91"><span class="toc-number">1.8.</span> <span class="toc-text"> 8、一个字符串类型的值能存储最大容量是多少</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E4%B8%BA%E4%BB%80%E4%B9%88-redis-%E9%9C%80%E8%A6%81%E6%8A%8A%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%E6%94%BE%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD"><span class="toc-number">1.9.</span> <span class="toc-text"> 9、为什么 Redis 需要把所有数据放到内存中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-redis-%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%81%9A%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E6%A1%88"><span class="toc-number">1.10.</span> <span class="toc-text"> 10、Redis 集群方案应该怎么做？都有哪些方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-redis-%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E5%AF%BC%E8%87%B4%E6%95%B4%E4%B8%AA%E9%9B%86%E7%BE%A4%E4%B8%8D%E5%8F%AF%E7%94%A8"><span class="toc-number">1.11.</span> <span class="toc-text"> 11、Redis 集群方案什么情况下会导致整个集群不可用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-mysql-%E9%87%8C%E6%9C%89-2000w-%E6%95%B0%E6%8D%AEredis-%E4%B8%AD%E5%8F%AA%E5%AD%98-20w-%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81-redis-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E9%83%BD%E6%98%AF%E7%83%AD%E7%82%B9%E6%95%B0%E6%8D%AE"><span class="toc-number">1.12.</span> <span class="toc-text"> 12、MySQL 里有 2000w 数据，redis 中只存 20w 的数据，如何保证 redis 中的数据都是热点数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-redis-%E6%9C%89%E5%93%AA%E4%BA%9B%E9%80%82%E5%90%88%E7%9A%84%E5%9C%BA%E6%99%AF"><span class="toc-number">1.13.</span> <span class="toc-text"> 13、Redis 有哪些适合的场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-redis-%E6%94%AF%E6%8C%81%E7%9A%84-java-%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90%E7%94%A8%E5%93%AA%E4%B8%AA"><span class="toc-number">1.14.</span> <span class="toc-text"> 14、Redis 支持的 Java 客户端都有哪些？官方推荐用哪个</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-redis-%E5%92%8C-redisson-%E6%9C%89%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB"><span class="toc-number">1.15.</span> <span class="toc-text"> 15、Redis 和 Redisson 有什么关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-jedis-%E4%B8%8E-redisson-%E5%AF%B9%E6%AF%94%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.16.</span> <span class="toc-text"> 16、Jedis 与 Redisson 对比有什么优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-redis-%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%81%E5%8F%8A%E9%AA%8C%E8%AF%81%E5%AF%86%E7%A0%81"><span class="toc-number">1.17.</span> <span class="toc-text"> 17、Redis 如何设置密码及验证密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-%E8%AF%B4%E8%AF%B4-redis-%E5%93%88%E5%B8%8C%E6%A7%BD%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.18.</span> <span class="toc-text"> 18、说说 Redis 哈希槽的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19-redis-%E9%9B%86%E7%BE%A4%E7%9A%84%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E6%A8%A1%E5%9E%8B%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84"><span class="toc-number">1.19.</span> <span class="toc-text"> 19、Redis 集群的主从复制模型是怎样的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20-redis-%E9%9B%86%E7%BE%A4%E4%BC%9A%E6%9C%89%E5%86%99%E6%93%8D%E4%BD%9C%E4%B8%A2%E5%A4%B1%E5%90%97%E4%B8%BA%E4%BB%80%E4%B9%88"><span class="toc-number">1.20.</span> <span class="toc-text"> 20、Redis 集群会有写操作丢失吗？为什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#21-redis-%E9%9B%86%E7%BE%A4%E4%B9%8B%E9%97%B4%E6%98%AF%E5%A6%82%E4%BD%95%E5%A4%8D%E5%88%B6%E7%9A%84"><span class="toc-number">1.21.</span> <span class="toc-text"> 21、Redis 集群之间是如何复制的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-redis-%E9%9B%86%E7%BE%A4%E6%9C%80%E5%A4%A7%E8%8A%82%E7%82%B9%E4%B8%AA%E6%95%B0%E6%98%AF%E5%A4%9A%E5%B0%91"><span class="toc-number">1.22.</span> <span class="toc-text"> 22、Redis 集群最大节点个数是多少</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23-redis-%E9%9B%86%E7%BE%A4%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.23.</span> <span class="toc-text"> 23、Redis 集群如何选择数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24-%E6%80%8E%E4%B9%88%E6%B5%8B%E8%AF%95-redis-%E7%9A%84%E8%BF%9E%E9%80%9A%E6%80%A7"><span class="toc-number">1.24.</span> <span class="toc-text"> 24、怎么测试 Redis 的连通性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#25-redis-%E4%B8%AD%E7%9A%84%E7%AE%A1%E9%81%93%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8"><span class="toc-number">1.25.</span> <span class="toc-text"> 25、Redis 中的管道有什么用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#26-%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3-redis-%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.26.</span> <span class="toc-text"> 26、怎么理解 Redis 事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#27-redis-%E4%BA%8B%E5%8A%A1%E7%9B%B8%E5%85%B3%E7%9A%84%E5%91%BD%E4%BB%A4%E6%9C%89%E5%93%AA%E5%87%A0%E4%B8%AA"><span class="toc-number">1.27.</span> <span class="toc-text"> 27、Redis 事务相关的命令有哪几个</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#29-redis-%E5%A6%82%E4%BD%95%E5%81%9A%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96"><span class="toc-number">1.28.</span> <span class="toc-text"> 29、Redis 如何做内存优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#30-redis-%E5%9B%9E%E6%94%B6%E8%BF%9B%E7%A8%8B%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="toc-number">1.29.</span> <span class="toc-text"> 30、Redis 回收进程如何工作的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#31-redis-%E5%9B%9E%E6%94%B6%E4%BD%BF%E7%94%A8%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88%E7%AE%97%E6%B3%95"><span class="toc-number">1.30.</span> <span class="toc-text"> 31、Redis 回收使用的是什么算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#32-redis-%E5%A6%82%E4%BD%95%E5%81%9A%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E6%8F%92%E5%85%A5"><span class="toc-number">1.31.</span> <span class="toc-text"> 32、Redis 如何做大量数据插入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#33-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%81%9A-redis-%E5%88%86%E5%8C%BA"><span class="toc-number">1.32.</span> <span class="toc-text"> 33、为什么要做 Redis 分区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#34-%E4%BD%A0%E7%9F%A5%E9%81%93%E6%9C%89%E5%93%AA%E4%BA%9B-redis-%E5%88%86%E5%8C%BA%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88"><span class="toc-number">1.33.</span> <span class="toc-text"> 34、你知道有哪些 Redis 分区实现方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#35-redis-%E5%88%86%E5%8C%BA%E6%9C%89%E4%BB%80%E4%B9%88%E7%BC%BA%E7%82%B9"><span class="toc-number">1.34.</span> <span class="toc-text"> 35、Redis 分区有什么缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#36-redis-%E6%8C%81%E4%B9%85%E5%8C%96%E6%95%B0%E6%8D%AE%E5%92%8C%E7%BC%93%E5%AD%98%E6%80%8E%E4%B9%88%E5%81%9A%E6%89%A9%E5%AE%B9"><span class="toc-number">1.35.</span> <span class="toc-text"> 36、Redis 持久化数据和缓存怎么做扩容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#37-%E5%88%86%E5%B8%83%E5%BC%8F-redis-%E6%98%AF%E5%89%8D%E6%9C%9F%E5%81%9A%E8%BF%98%E6%98%AF%E5%90%8E%E6%9C%9F%E8%A7%84%E6%A8%A1%E4%B8%8A%E6%9D%A5%E4%BA%86%E5%86%8D%E5%81%9A%E5%A5%BD%E4%B8%BA%E4%BB%80%E4%B9%88"><span class="toc-number">1.36.</span> <span class="toc-text"> 37、分布式 Redis 是前期做还是后期规模上来了再做好？为什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#38-twemproxy-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.37.</span> <span class="toc-text"> 38、Twemproxy 是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#39-%E6%94%AF%E6%8C%81%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-number">1.38.</span> <span class="toc-text"> 39、支持一致性哈希的客户端有哪些</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#40-redis-%E4%B8%8E%E5%85%B6%E4%BB%96-key-value-%E5%AD%98%E5%82%A8%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C"><span class="toc-number">1.39.</span> <span class="toc-text"> 40、Redis 与其他 key-value 存储有什么不同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#41-redis-%E7%9A%84%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8%E6%83%85%E5%86%B5%E6%80%8E%E4%B9%88%E6%A0%B7"><span class="toc-number">1.40.</span> <span class="toc-text"> 41、Redis 的内存占用情况怎么样</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#42-%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8A%9E%E6%B3%95%E5%8F%AF%E4%BB%A5%E9%99%8D%E4%BD%8E-redis-%E7%9A%84%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5%E5%91%A2"><span class="toc-number">1.41.</span> <span class="toc-text"> 42、都有哪些办法可以降低 Redis 的内存使用情况呢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#46-%E4%B8%80%E4%B8%AA-redis-%E5%AE%9E%E4%BE%8B%E6%9C%80%E5%A4%9A%E8%83%BD%E5%AD%98%E6%94%BE%E5%A4%9A%E5%B0%91%E7%9A%84-keys"><span class="toc-number">1.42.</span> <span class="toc-text"> 46、一个 Redis 实例最多能存放多少的 keys</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#47-redis-%E5%B8%B8%E8%A7%81%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">1.43.</span> <span class="toc-text"> 47、Redis 常见性能问题和解决方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#48-redis-%E6%8F%90%E4%BE%9B%E4%BA%86%E5%93%AA%E5%87%A0%E7%A7%8D%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F"><span class="toc-number">1.44.</span> <span class="toc-text"> 48、Redis 提供了哪几种持久化方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#49-%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F"><span class="toc-number">1.45.</span> <span class="toc-text"> 49、如何选择合适的持久化方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#50-%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E4%B8%8D%E9%87%8D%E5%90%AF-redis-%E4%BC%9A%E5%AE%9E%E6%97%B6%E7%94%9F%E6%95%88%E5%90%97"><span class="toc-number">1.46.</span> <span class="toc-text"> 50、修改配置不重启 Redis 会实时生效吗</span></a></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/06/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide"><img src="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My ultimate data structure and algorithm guide"/></a><div class="content"><a class="title" href="/2022/12/06/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide">My ultimate data structure and algorithm guide</a><time datetime="2022-12-05T11:00:00.000Z" title="Created 2022-12-06 00:00:00">2022-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/27/HTML5%E4%B8%8ECSS3%E9%AB%98%E9%98%B6/" title="My HTML5 and CSS3 notes"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My HTML5 and CSS3 notes"/></a><div class="content"><a class="title" href="/2022/08/27/HTML5%E4%B8%8ECSS3%E9%AB%98%E9%98%B6/" title="My HTML5 and CSS3 notes">My HTML5 and CSS3 notes</a><time datetime="2022-08-26T12:00:00.000Z" title="Created 2022-08-27 00:00:00">2022-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" title="Object Orientated Programming"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/ca78dff38e0bfb81a8e98ad64f749e97bcc55f14/notes-img/Billfish.yWAOuM.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Object Orientated Programming"/></a><div class="content"><a class="title" href="/2022/08/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" title="Object Orientated Programming">Object Orientated Programming</a><time datetime="2022-08-10T12:00:00.000Z" title="Created 2022-08-11 00:00:00">2022-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns"/></a><div class="content"><a class="title" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns">Design Patterns</a><time datetime="2022-06-11T12:00:00.000Z" title="Created 2022-06-12 00:00:00">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns - Command"/></a><div class="content"><a class="title" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command">Design Patterns - Command</a><time datetime="2022-06-10T12:00:00.000Z" title="Created 2022-06-11 00:00:00">2022-06-11</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2022/02/13/Redis/'
+    this.page.identifier = '2022/02/13/Redis/'
+    this.page.title = 'Redis Notes'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>if (window.DISQUSWIDGETS === undefined) {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://harry-study-blog.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+} else {
+  DISQUSWIDGETS.getCount({reset: true});
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: 'b67f15879d2205b882f9790751243f79',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=B5XFmdGuVaYDW7OIBakffpXoKorvphwRiwONIol4puEtr8YiwYAMAk2K7QcExNLY')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

@@ -1,0 +1,923 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>228 Java Interview Questions | Harry World</title><meta name="keywords" content="interview,javase"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# 2019 年 Java 面试题基础系列 228 道（1），快看看哪些你还不会？ # Java 面试题（一） 1、面向对象的特征有哪些方面？ 2、访问修饰符 public,private,protected, 以及不写（默认）时的区别？ 3、String 是最基本的数据类型吗？ 4、float f&#x3D;3.4; 是否正确？ 5、short s1 &#x3D; 1; s1 &#x3D; s1 + 1; 有错吗？short">
+<meta property="og:type" content="article">
+<meta property="og:title" content="228 Java Interview Questions">
+<meta property="og:url" content="https://harryqu1229.github.io/2022/05/04/java%E9%9D%A2%E8%AF%95%E9%A2%98228%E9%81%93(1)/index.html">
+<meta property="og:site_name" content="Harry World">
+<meta property="og:description" content="# 2019 年 Java 面试题基础系列 228 道（1），快看看哪些你还不会？ # Java 面试题（一） 1、面向对象的特征有哪些方面？ 2、访问修饰符 public,private,protected, 以及不写（默认）时的区别？ 3、String 是最基本的数据类型吗？ 4、float f&#x3D;3.4; 是否正确？ 5、short s1 &#x3D; 1; s1 &#x3D; s1 + 1; 有错吗？short">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://w.wallhaven.cc/full/3z/wallhaven-3zgdd3.jpg">
+<meta property="article:published_time" content="2022-05-03T12:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-12T01:08:50.006Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="interview">
+<meta property="article:tag" content="javase">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://w.wallhaven.cc/full/3z/wallhaven-3zgdd3.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://harryqu1229.github.io/2022/05/04/java%E9%9D%A2%E8%AF%95%E9%A2%98228%E9%81%93(1)/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '228 Java Interview Questions',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-12 13:08:50'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://thestatetimes.com/wp-content/uploads/2021/11/structured-interview@2x.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry World</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">228 Java Interview Questions</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-05-03T12:00:00.000Z" title="Created 2022-05-04 00:00:00">2022-05-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-06-12T01:08:50.006Z" title="Updated 2022-06-12 13:08:50">2022-06-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Interview/">Interview</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Interview/java/">java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">9.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>32min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="228 Java Interview Questions"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><span class="disqus-comment-count"><a href="https://harryqu1229.github.io/2022/05/04/java%E9%9D%A2%E8%AF%95%E9%A2%98228%E9%81%93(1)/#disqus_thread"></a></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="2019年java面试题基础系列228道1快看看哪些你还不会"><a class="markdownIt-Anchor" href="#2019年java面试题基础系列228道1快看看哪些你还不会">#</a> 2019 年 Java 面试题基础系列 228 道（1），快看看哪些你还不会？</h1>
+<h2 id="java面试题一"><a class="markdownIt-Anchor" href="#java面试题一">#</a> Java 面试题（一）</h2>
+<p>1、面向对象的特征有哪些方面？</p>
+<p>2、访问修饰符 public,private,protected, 以及不写（默认）时的区别？</p>
+<p>3、String 是最基本的数据类型吗？</p>
+<p>4、float f=3.4; 是否正确？</p>
+<p>5、short s1 = 1; s1 = s1 + 1; 有错吗？short s1 = 1; s1 += 1; 有错吗？</p>
+<p>6、Java 有没有 goto？</p>
+<p>7、int 和 Integer 有什么区别？</p>
+<p>8、&amp; 和 &amp;&amp; 的区别？</p>
+<p>9、解释内存中的栈 (stack)、堆 (heap) 和方法区 (method area) 的用法。</p>
+<p>10、Math.round (11.5) 等于多少？Math.round (-11.5) 等于多少？</p>
+<p>11、switch 是否能作用在 byte 上，是否能作用在 long 上，是否能作用在 String 上？</p>
+<p>12、用最有效率的方法计算 2 乘以 8？</p>
+<p>13、数组有没有 length () 方法？String 有没有 length () 方法？</p>
+<p>14、在 Java 中，如何跳出当前的多重嵌套循环？</p>
+<p>15、构造器（constructor）是否可被重写（override）？</p>
+<p>16、两个对象值相同 (x.equals (y) == true)，但却可有不同的 hashcode，这句话对不对？</p>
+<p>17、是否可以继承 String 类？</p>
+<p>18、当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递？</p>
+<p>19、String 和 StringBuilder、StringBuffer 的区别？</p>
+<p>20、重载（Overload）和重写（Override）的区别。重载的方法能否根据返回类型进行区分？</p>
+<p>21、描述一下 JVM 加载 class 文件的原理机制？</p>
+<p>22、char 型变量中能不能存贮一个中文汉字，为什么？</p>
+<p>23、抽象类（abstract class）和接口（interface）有什么异同？</p>
+<p>24、静态嵌套类 (Static Nested Class) 和内部类（Inner Class）的不同？</p>
+<p>25、Java 中会存在内存泄漏吗，请简单描述。</p>
+<p>26、抽象的（abstract）方法是否可同时是静态的（static）, 是否可同时是本地方法（native），是否可同时被 synchronized 修饰？</p>
+<p>27、阐述静态变量和实例变量的区别。</p>
+<p>28、是否可以从一个静态（static）方法内部发出对非静态（non-static）方法的调用？</p>
+<p>29、如何实现对象克隆？</p>
+<p>30、GC 是什么？为什么要有 GC？</p>
+<p>31、String s = new String (“xyz”); 创建了几个字符串对象？</p>
+<p>32 、 接 口 是 否 可 继 承 （ extends ） 接 口 ？ 抽 象 类 是 否 可 实 现（implements）接口？抽象类是否可继承具体类（concrete class）？</p>
+<p>33、一个”.java” 源文件中是否可以包含多个类（不是内部类）？有什么限制？</p>
+<p>34、Anonymous Inner Class (匿名内部类) 是否可以继承其它类？是否可以实现接口？</p>
+<p>35、内部类可以引用它的包含类（外部类）的成员吗？有没有什么限制？</p>
+<p>36、Java 中的 final 关键字有哪些用法？</p>
+<p>37、指出下面程序的运行结果</p>
+<p>38、数据类型之间的转换：</p>
+<p>39、如何实现字符串的反转及替换？</p>
+<p>40、怎样将 GB2312 编码的字符串转换为 ISO-8859-1 编码的字符串？</p>
+<p>41、日期和时间：</p>
+<p>42、打印昨天的当前时刻。</p>
+<p>43、比较一下 Java 和 JavaSciprt。</p>
+<p>44、什么时候用断言（assert）？</p>
+<p>45、Error 和 Exception 有什么区别？</p>
+<p>46、try {} 里有一个 return 语句，那么紧跟在这个 try 后的 finally {} 里的代码会不会被执行，什么时候被执行，在 return 前还是后？</p>
+<p>47、Java 语言如何进行异常处理，关键字：throws、throw、try、catch、finally 分别如何使用？</p>
+<p>48、运行时异常与受检异常有何异同？</p>
+<p>49、列出一些你常见的运行时异常？</p>
+<p>50、阐述 final、finally、finalize 的区别。</p>
+<p>51、类 ExampleA 继承 Exception，类 ExampleB 继承 ExampleA。</p>
+<p>52、List、Set、Map 是否继承自 Collection 接口？</p>
+<p>53、阐述 ArrayList、Vector、LinkedList 的存储性能和特性。</p>
+<p>54、Collection 和 Collections 的区别？</p>
+<p>55、List、Map、Set 三个接口存取元素时，各有什么特点？</p>
+<p>56、TreeMap 和 TreeSet 在排序时如何比较元素？Collections 工具类中的 sort () 方法如何比较元素？</p>
+<p>57、Thread 类的 sleep () 方法和对象的 wait () 方法都可以让线程暂停执行，它们有什么区别？</p>
+<p>58、线程的 sleep () 方法和 yield () 方法有什么区别？</p>
+<p>59、当一个线程进入一个对象的 synchronized 方法 A 之后，其它线程是否可进入此对象 synchronized 方法 B？</p>
+<p>60、请说出与线程同步以及线程调度相关的方法。</p>
+<p>61、编写多线程程序有几种实现方式？</p>
+<p>62、synchronized 关键字的用法？</p>
+<p>63、举例说明同步和异步。</p>
+<p>64、启动一个线程是调用 run () 还是 start () 方法？</p>
+<p>65、什么是线程池（thread pool）？</p>
+<p>66、线程的基本状态以及状态之间的关系？</p>
+<p>67、简述 synchronized 和 java.util.concurrent.locks.Lock 的异同？</p>
+<p>68、Java 中如何实现序列化，有什么意义？</p>
+<p>69、Java 中有几种类型的流？</p>
+<p>70、写一个方法，输入一个文件名和一个字符串，统计这个字符串在这个文件中出现的次数。</p>
+<p>71、如何用 Java 代码列出一个目录下所有的文件？</p>
+<p>72、用 Java 的套接字编程实现一个多线程的回显（echo）服务器。</p>
+<p>73、XML 文档定义有几种形式？它们之间有何本质区别？解析 XML 文档有哪几种方式？</p>
+<p>74、你在项目中哪些地方用到了 XML？</p>
+<p>75、阐述 JDBC 操作数据库的步骤。</p>
+<p>76、Statement 和 PreparedStatement 有什么区别？哪个性能更好？</p>
+<p>77、使用 JDBC 操作数据库时，如何提升读取数据的性能？如何提升更新数据的性能？</p>
+<p>78、在进行数据库编程时，连接池有什么作用？</p>
+<p>79、什么是 DAO 模式？</p>
+<p>80、事务的 ACID 是指什么？</p>
+<p>82、JDBC 能否处理 Blob 和 Clob？</p>
+<p>83、简述正则表达式及其用途。</p>
+<p>84、Java 中是如何支持正则表达式操作的？</p>
+<p>85、获得一个类的类对象有哪些方式？</p>
+<p>88、如何通过反射调用对象的方法？</p>
+<p>90、简述一下你了解的设计模式。</p>
+<p>91、用 Java 写一个单例类。</p>
+<p>92、什么是 UML？</p>
+<p>93、UML 中有哪些常用的图？</p>
+<p>95、用 Java 写一个折半查找。</p>
+<h2 id="java-面试题二"><a class="markdownIt-Anchor" href="#java-面试题二">#</a> Java 面试题（二）</h2>
+<p>1、Java 中能创建 volatile 数组吗？</p>
+<p>2、volatile 能使得一个非原子操作变成原子操作吗？</p>
+<p>3、volatile 修饰符的有过什么实践？</p>
+<p>4、volatile 类型变量提供什么保证？</p>
+<p>5、10 个线程和 2 个线程的同步代码，哪个更容易写？</p>
+<p>6、你是如何调用 wait（）方法的？使用 if 块还是循环？为什么？</p>
+<p>8、什么是 Busy spin？我们为什么要使用它？</p>
+<p>9、Java 中怎么获取一份线程 dump 文件？</p>
+<p>10、Swing 是线程安全的？</p>
+<p>11、什么是线程局部变量？</p>
+<p>12、用 wait-notify 写一段代码来解决生产者 - 消费者问题？</p>
+<p>13、用 Java 写一个线程安全的单例模式（Singleton）？</p>
+<p>14、Java 中 sleep 方法和 wait 方法的区别？</p>
+<p>15、什么是不可变对象（immutable object）？Java 中怎么创建一个不可变对象？</p>
+<p>16、我们能创建一个包含可变对象的不可变对象吗？</p>
+<p>17、Java 中应该使用什么数据类型来代表价格？</p>
+<p>18、怎么将 byte 转换为 String？</p>
+<p>19、Java 中怎样将 bytes 转换为 long 类型？</p>
+<p>20、我们能将 int 强制转换为 byte 类型的变量吗？如果该值大于 byte 类型的范围，将会出现什么现象？</p>
+<p>21、存在两个类，B 继承 A ，C 继承 B，我们能将 B 转换为 C 么？如 C = © B；</p>
+<p>22、哪个类包含 clone 方法？是 Cloneable 还是 Object？</p>
+<p>23、Java 中 ++ 操作符是线程安全的吗？</p>
+<p>23、不是线程安全的操作。它涉及到多个指令，如读取变量值，增加，然后存储回内存，这个过程可能会出现多个线程交差。</p>
+<p>24、a = a + b 与 a += b 的区别</p>
+<p>25、我能在不进行强制转换的情况下将一个 double 值赋值给 long 类型的变量吗？</p>
+<p>26、3*0.1 == 0.3 将会返回什么？true 还是 false？</p>
+<p>27、int 和 Integer 哪个会占用更多的内存？</p>
+<p>28、为什么 Java 中的 String 是不可变的（Immutable）？</p>
+<p>31、64 位 JVM 中，int 的长度是多数？</p>
+<p>32、Serial 与 Parallel GC 之间的不同之处？</p>
+<p>33、32 位和 64 位的 JVM，int 类型变量的长度是多数？</p>
+<p>34、Java 中 WeakReference 与 SoftReference 的区别？</p>
+<p>35、WeakHashMap 是怎么工作的？</p>
+<p>36、JVM 选项 -XX:+UseCompressedOops 有什么作用？为什么要使用？</p>
+<p>37、怎样通过 Java 程序来判断 JVM 是 32 位 还是 64 位？</p>
+<p>38、32 位 JVM 和 64 位 JVM 的最大堆内存分别是多数？</p>
+<p>39、JRE、JDK、JVM 及 JIT 之间有什么不同？</p>
+<p>40、解释 Java 堆空间及 GC？</p>
+<p>41、你能保证 GC 执行吗？</p>
+<p>42、怎么获取 Java 程序使用的内存？堆使用的百分比？</p>
+<p>43、Java 中堆和栈有什么区别？</p>
+<p>44、“a==b” 和”a.equals (b)” 有什么区别？</p>
+<p>45、a.hashCode () 有什么用？与 a.equals (b) 有什么关系？</p>
+<p>46、final、finalize 和 finally 的不同之处？</p>
+<p>47、Java 中的编译期常量是什么？使用它又什么风险？</p>
+<p>48、List、Set、Map 和 Queue 之间的区别 (答案)</p>
+<p>49、poll () 方法和 remove () 方法的区别？</p>
+<p>50、Java 中 LinkedHashMap 和 PriorityQueue 的区别是什么？</p>
+<p>51、ArrayList 与 LinkedList 的不区别？</p>
+<p>52、用哪两种方式来实现集合的排序？</p>
+<p>53、Java 中怎么打印数组？</p>
+<p>54、Java 中的 LinkedList 是单向链表还是双向链表？</p>
+<p>55、Java 中的 TreeMap 是采用什么树实现的？(答案)</p>
+<p>56、Hashtable 与 HashMap 有什么不同之处？</p>
+<p>57、Java 中的 HashSet，内部是如何工作的？</p>
+<p>58、写一段代码在遍历 ArrayList 时移除一个元素？</p>
+<p>59、我们能自己写一个容器类，然后使用 for-each 循环码？</p>
+<p>60、ArrayList 和 HashMap 的默认大小是多数？</p>
+<p>61、有没有可能两个不相等的对象有有相同的 hashcode？</p>
+<p>62、两个相同的对象会有不同的的 hash code 吗？</p>
+<p>63、我们可以在 hashcode () 中使用随机数字吗？</p>
+<p>64、Java 中，Comparator 与 Comparable 有什么不同？</p>
+<p>66、在我 Java 程序中，我有三个 socket，我需要多少个线程来处理？</p>
+<p>67、Java 中怎么创建 ByteBuffer？</p>
+<p>68、Java 中，怎么读写 ByteBuffer ？</p>
+<p>69、Java 采用的是大端还是小端？</p>
+<p>70、ByteBuffer 中的字节序是什么？</p>
+<p>71、Java 中，直接缓冲区与非直接缓冲器有什么区别？</p>
+<p>72、Java 中的内存映射缓存区是什么？</p>
+<p>73、socket 选项 TCP NO DELAY 是指什么？</p>
+<p>74、TCP 协议与 UDP 协议有什么区别？</p>
+<p>75、Java 中，ByteBuffer 与 StringBuffer 有什么区别？(答案)</p>
+<p>76、Java 中，编写多线程程序的时候你会遵循哪些最佳实践？</p>
+<p>77、说出几点 Java 中使用 Collections 的最佳实践</p>
+<p>78、说出至少 5 点在 Java 中使用线程的最佳实践。</p>
+<p>79、说出 5 条 IO 的最佳实践 (答案)</p>
+<p>80、列出 5 个应该遵循的 JDBC 最佳实践</p>
+<p>81、说出几条 Java 中方法重载的最佳实践？</p>
+<p>82、在多线程环境下，SimpleDateFormat 是线程安全的吗？</p>
+<p>83、Java 中如何格式化一个日期？如格式化为 ddMMyyyy 的形式？</p>
+<p>84、Java 中，怎么在格式化的日期中显示时区？</p>
+<p>85、Java 中 java.util.Date 与 java.sql.Date 有什么区别？</p>
+<p>86、Java 中，如何计算两个日期之间的差距？</p>
+<p>87、Java 中，如何将字符串 YYYYMMDD 转换为日期？</p>
+<p>89、如何测试静态方法？(答案)</p>
+<p>90、怎么利用 JUnit 来测试一个方法的异常？</p>
+<p>91、你使用过哪个单元测试库来测试你的 Java 程序？</p>
+<p>92、@Before 和 @BeforeClass 有什么区别？</p>
+<p>93、怎么检查一个字符串只包含数字？解决方案</p>
+<p>94、Java 中如何利用泛型写一个 LRU 缓存？</p>
+<p>95、写一段 Java 程序将 byte 转换为 long？</p>
+<p>96、在不使用 StringBuffer 的前提下，怎么反转一个字符串？</p>
+<p>97、Java 中，怎么获取一个文件中单词出现的最高频率？</p>
+<p>98、如何检查出两个给定的字符串是反序的？</p>
+<p>99、Java 中，怎么打印出一个字符串的所有排列？</p>
+<p>100、Java 中，怎样才能打印出数组中的重复元素？</p>
+<p>101、Java 中如何将字符串转换为整数？</p>
+<p>102、在没有使用临时变量的情况如何交换两个整数变量的值？</p>
+<p>103、接口是什么？为什么要使用接口而不是直接使用具体类？</p>
+<p>104、Java 中，抽象类与接口之间有什么不同？</p>
+<p>105、除了单例模式，你在生产环境中还用过什么设计模式？</p>
+<p>106、你能解释一下里氏替换原则吗？</p>
+<p>107、什么情况下会违反迪米特法则？为什么会有这个问题？</p>
+<p>108、适配器模式是什么？什么时候使用？</p>
+<p>109、什么是 “依赖注入” 和 “控制反转”？为什么有人使用？</p>
+<p>110、抽象类是什么？它与接口有什么区别？你为什么要使用过抽象类？</p>
+<p>111、构造器注入和 setter 依赖注入，那种方式更好？</p>
+<p>112、依赖注入和工程模式之间有什么不同？</p>
+<p>113、适配器模式和装饰器模式有什么区别？</p>
+<p>114、适配器模式和代理模式之前有什么不同？</p>
+<p>115、什么是模板方法模式？</p>
+<p>116、什么时候使用访问者模式？</p>
+<p>117、什么时候使用组合模式？</p>
+<p>118、继承和组合之间有什么不同？</p>
+<p>119、描述 Java 中的重载和重写？</p>
+<p>120、Java 中，嵌套公共静态类与顶级类有什么不同？</p>
+<p>121、 OOP 中的 组合、聚合和关联有什么区别？</p>
+<p>122、给我一个符合开闭原则的设计模式的例子？</p>
+<p>123、抽象工厂模式和原型模式之间的区别？</p>
+<p>125、嵌套静态类与顶级类有什么区别？</p>
+<p>126、你能写出一个正则表达式来判断一个字符串是否是一个数字吗？</p>
+<p>127、Java 中，受检查异常 和 不受检查异常的区别？</p>
+<p>128、Java 中，throw 和 throws 有什么区别</p>
+<p>129、Java 中，Serializable 与 Externalizable 的区别？</p>
+<p>130、Java 中，DOM 和 SAX 解析器有什么不同？</p>
+<p>131、说出 JDK 1.7 中的三个新特性？</p>
+<p>132、说出 5 个 JDK 1.8 引入的新特性？</p>
+<p>133、Java 中，Maven 和 ANT 有什么区别？</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16ed5486fdd36093%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p><strong>本次更新 Java 面试题（一）的 1~20 题答案</strong></p>
+<h2 id="1-面向对象的特征有哪些方面"><a class="markdownIt-Anchor" href="#1-面向对象的特征有哪些方面">#</a> 1、面向对象的特征有哪些方面？</h2>
+<p><strong>面向对象的特征主要有以下几个方面：</strong></p>
+<p><strong>抽象：</strong> 抽象是将一类对象的共同特征总结出来构造类的过程，包括数据抽象和行为抽象两方面。抽象只关注对象有哪些属性和行为，并不关注这些行为的细节是什么。</p>
+<p><strong>继承：</strong> 继承是从已有类得到继承信息创建新类的过程。提供继承信息的类被称为父类（超类、基类）；得到继承信息的类被称为子类（派生类）。继承让变化中的软件系统有了一定的延续性，同时继承也是封装程序中可变因素的重要手段（如果不能理解请阅读阎宏博士的《Java 与模式》或《设计模式精解》中关于桥梁模式的部分）。</p>
+<p><strong>封装：</strong> 通常认为封装是把数据和操作数据的方法绑定起来，对数据的访问只能通过已定义的接口。面向对象的本质就是将现实世界描绘成一系列完全自治、封闭的对象。我们在类中编写的方法就是对实现细节的一种封装；我们编写一个类就是对数据和数据操作的封装。可以说，封装就是隐藏一切可隐藏的东西，只向外界提供最简单的编程接口（可以想想普通洗衣机和全自动洗衣机的差别，明显全自动洗衣机封装更好因此操作起来更简单；我们现在使用的智能手机也是封装得足够好的，因为几个按键就搞定了所有的事情）。</p>
+<p><strong>多态性：</strong> 多态性是指允许不同子类型的对象对同一消息作出不同的响应。简单的说就是用同样的对象引用调用同样的方法但是做了不同的事情。多态性分为编译时的多态性和运行时的多态性。如果将对象的方法视为对象向外界提供的服务，那么运行时的多态性可以解释为：当 A 系统访问 B 系统提供的服务时，B 系统有多种提供服务的方式，但一切对 A 系统来说都是透明的（就像电动剃须刀是 A 系统，它的供电系统是 B 系统，B 系统可以使用电池供电或者用交流电，甚至还有可能是太阳能，A 系统只会通过 B 类对象调用供电的方法，但并不知道供电系统的底层实现是什么，究竟通过何种方式获得了动力）。方法重载（overload）实现的是编译时的多态性（也称为前绑定），而方法重写（override）实现的是运行时的多态性（也称为后绑定）。运行时的多态是面向对象最精髓的东西，要实现多态需要做两件事：</p>
+<p>1). 方法重写（子类继承父类并重写父类中已有的或抽象的方法）；</p>
+<p>2). 对象造型（用父类型引用引用子类型对象，这样同样的引用调用同样的方法就会根据子类对象的不同而表现出不同的行为）。</p>
+<h2 id="2-访问修饰符-publicprivateprotected以及不写默认时的区别"><a class="markdownIt-Anchor" href="#2-访问修饰符-publicprivateprotected以及不写默认时的区别">#</a> 2、访问修饰符 public,private,protected, 以及不写（默认）时的区别？</h2>
+<p>修饰符 当前类 同 包 子 类 其他包</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/12/5/16ed5486fab6aaa5~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>类的成员不写访问修饰时默认为 default。默认对于同一个包中的其他类相当于公开（public），对于不是同一个包中的其他类相当于私有（private）。受保护（protected）对子类相当于公开，对不是同一包中的没有父子关系的类相当于私有。Java 中，外部类的修饰符只能是 public 或默认，类的成员（包括内部类）的修饰符可以是以上四种。</p>
+<h2 id="3-string-是最基本的数据类型吗"><a class="markdownIt-Anchor" href="#3-string-是最基本的数据类型吗">#</a> 3、String 是最基本的数据类型吗？</h2>
+<p>不是。Java 中的基本数据类型只有 8 个 ：byte、short、int、long、float、double、char、boolean；除了基本类型（primitive type），剩下的都是引用类型（referencetype），Java 5 以后引入的枚举类型也算是一种比较特殊的引用类型。</p>
+<h2 id="4-float-f34是否正确"><a class="markdownIt-Anchor" href="#4-float-f34是否正确">#</a> 4、float f=3.4; 是否正确？</h2>
+<p>不正确。3.4 是双精度数，将双精度型（double）赋值给浮点型（float）属于下转型（down-casting，也称为窄化）会造成精度损失，因此需要强制类型转换 float f =(float) 3.4; 或者写成 float f =3.4F;。</p>
+<h2 id="5-short-s1-1-s1-s1-1有错吗short-s1-1-s1-1有错吗"><a class="markdownIt-Anchor" href="#5-short-s1-1-s1-s1-1有错吗short-s1-1-s1-1有错吗">#</a> 5、short s1 = 1; s1 = s1 + 1; 有错吗？short s1 = 1; s1 += 1; 有错吗？</h2>
+<p>对于 short s1 = 1; s1 = s1 + 1; 由于 1 是 int 类型，因此 s1+1 运算结果也是 int 型，需要强制转换类型才能赋值给 short 型。而 short s1 = 1; s1 += 1; 可以正确编译，因为 s1+= 1; 相当于 s1 = (short (s1 + 1); 其中有隐含的强制类型转换。</p>
+<h2 id="6-java-有没有-goto"><a class="markdownIt-Anchor" href="#6-java-有没有-goto">#</a> 6、Java 有没有 goto？</h2>
+<p>goto 是 Java 中的保留字，在目前版本的 Java 中没有使用。（根据 James Gosling（Java 之父）编写的《The Java Programming Language》一书的附录中给出了一个 Java 关键字列表，其中有 goto 和 const，但是这两个是目前无法使用的关键字，因此有些地方将其称之为保留字，其实保留字这个词应该有更广泛的意义，因为熟悉 C 语言的程序员都知道，在系统类库中使用过的有特殊意义的但词或单词的组合都被视为保留字）</p>
+<h2 id="7-int-和-integer-有什么区别"><a class="markdownIt-Anchor" href="#7-int-和-integer-有什么区别">#</a> 7、int 和 Integer 有什么区别？</h2>
+<p>Java 是一个近乎纯洁的面向对象编程语言，但是为了编程的方便还是引入了基本数据类型，但是为了能够将这些基本数据类型当成对象操作，Java 为每一个基本数据类型都引入了对应的包装类型（wrapper class），int 的包装类就是 Integer，从 Java 5 开始引入了自动装箱 / 拆箱机制，使得二者可以相互转换。</p>
+<p>Java 为每个原始类型提供了包装类型：</p>
+<p>原始类型: boolean，char，byte，short，int，long，float，double</p>
+<p>包装类型：Boolean，Character，Byte，Short，Integer，Long，Float，Double</p>
+<pre class="line-numbers language-none"><code class="language-none">class AutoUnboxingTest &#123;
+	public static void main(String[] args) &#123;
+		Integer a &#x3D; new Integer(3);
+		Integer b &#x3D; 3;
+		&#x2F;&#x2F; 将 3 自动装箱成 Integer 类型
+		int c &#x3D; 3;
+		System.out.println(a &#x3D;&#x3D; b);
+		&#x2F;&#x2F; false 两个引用没有引用同一对
+		象
+		System.out.println(a &#x3D;&#x3D; c);
+		&#x2F;&#x2F; true a 自动拆箱成 int 类型再和 c
+		比较
+	&#125;
+&#125;复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>最近还遇到一个面试题，也是和自动装箱和拆箱有点关系的，代码如下所示：</p>
+<pre class="line-numbers language-none"><code class="language-none">public class Test03 &#123;
+	public static void main(String[] args) &#123;
+		Integer f1 &#x3D; 100, f2 &#x3D; 100, f3 &#x3D; 150, f4 &#x3D; 150;
+		System.out.println(f1 &#x3D;&#x3D; f2);
+		System.out.println(f3 &#x3D;&#x3D; f4);
+	&#125;
+&#125;复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果不明就里很容易认为两个输出要么都是 true 要么都是 false。首先需要注意的是 f1、f2、f3、f4 四个变量都是 Integer 对象引用，所以下面的 == 运算比较的不是值而是引用。装箱的本质是什么呢？当我们给一个 Integer 对象赋一个 int 值的时候，会调用 Integer 类的静态方法 valueOf，如果看 valueOf 的源代码就知道发生了什么。</p>
+<pre class="line-numbers language-none"><code class="language-none">public static Integer valueOf(int i) &#123;
+	if (i &gt;&#x3D; IntegerCache.low &amp;&amp; i &lt;&#x3D; IntegerCache.high)
+	return IntegerCache.cache[i + (-IntegerCache.low)];
+	return new Integer(i);
+&#125;复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>IntegerCache 是 Integer 的内部类，其代码如下所示：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;**
+* Cache to support the object identity semantics of autoboxing for
+values between
+* -128 and 127 (inclusive) as required by JLS.
+*
+* The cache is initialized on first usage. The size of the cache
+* may be controlled by the &#123;@code -XX:AutoBoxCacheMax&#x3D;&lt;size&gt;&#125;
+option.
+* During VM initialization, java.lang.Integer.IntegerCache.high
+property
+* may be set and saved in the private system properties in the
+* sun.misc.VM class.
+*&#x2F;
+private static class IntegerCache &#123;
+	static final int low &#x3D; -128;
+	static final int high;
+	static final Integer cache[];
+	static &#123;
+		&#x2F;&#x2F; high value may be configured by property
+		int h &#x3D; 127;
+		String integerCacheHighPropValue &#x3D;
+		sun.misc.VM.getSavedProperty(&quot;java.lang.Integer.IntegerCache.high&quot;);
+		if (integerCacheHighPropValue !&#x3D; null) &#123;
+			try &#123;
+				int i &#x3D; parseint(integerCacheHighPropValue);
+				i &#x3D; Math.max(i, 127);
+				&#x2F;&#x2F; Maximum array size is Integer.MAX_VALUE
+				h &#x3D; Math.min(i, Integer.MAX_VALUE - (-low) -1);
+			&#125;
+			catch( NumberFormatException nfe) &#123;
+				&#x2F;&#x2F; If the property cannot be parsed into an int,
+				ignore it.
+			&#125;
+		&#125;
+		high &#x3D; h;
+		cache &#x3D; new Integer[(high - low) + 1];
+		int j &#x3D; low;
+		for (int k &#x3D; 0; k &lt; cache.length; k++)
+		cache[k] &#x3D; new Integer(j++);
+		&#x2F;&#x2F; range [-128, 127] must be interned (JLS7 5.1.7)
+		assert IntegerCache.high &gt;&#x3D; 127;
+	&#125;
+	private IntegerCache() &#123;
+	&#125;
+&#125;复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>简单的说，如果整型字面量的值在 - 128 到 127 之间，那么不会 new 新的 Integer 对象，而是直接引用常量池中的 Integer 对象，所以上面的面试题中 f1f4 的结果是 false。</p>
+<p>提醒：越是貌似简单的面试题其中的玄机就越多，需要面试者有相当深厚的功力。</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16ed5486fde3ebe5%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h2 id="8-和的区别"><a class="markdownIt-Anchor" href="#8-和的区别">#</a> 8、&amp; 和 &amp;&amp; 的区别？</h2>
+<p>&amp; 运算符有两种用法：(1) 按位与；(2) 逻辑与。&amp;&amp; 运算符是短路与运算。逻辑与跟短路与的差别是非常巨大的，虽然二者都要求运算符左右两端的布尔值都是 true 整个表达式的值才是 true。&amp;&amp; 之所以称为短路运算是因为，如果 &amp;&amp; 左边的表达式的值是 false，右边的表达式会被直接短路掉，不会进行运算。很多时候我们可能都需要用 &amp;&amp; 而不是 &amp;，例如在验证用户登录时判定用户名不是 null 而且不是空字符串，应当写为：username != null &amp;&amp;!username.equals (“”)，二者的顺序不能交换，更不能用 &amp; 运算符，因为第一个条件如果不成立，根本不能进行字符串的 equals 比较，否则会生 NullPointerException 异常。注意：逻辑或运算符（|）和短路或运算符（||）的差别也是如此。</p>
+<h2 id="9-解释内存中的栈stack-堆heap和方法区method-area的用法"><a class="markdownIt-Anchor" href="#9-解释内存中的栈stack-堆heap和方法区method-area的用法">#</a> 9、解释内存中的栈 (stack)、堆 (heap) 和方法区 (method area) 的用法。</h2>
+<p>通常我们定义一个基本数据类型的变量，一个对象的引用，还有就是函数调用的现场保存都使用 JVM 中的栈空间；而通过 new 关键字和构造器创建的对象则放在堆空间，堆是垃圾收集器管理的主要区域，由于现在的垃圾收集器都采用分代收集算法，所以堆空间还可以细分为新生代和老生代，再具体一点可以分为 Eden、Survivor（又可分为 From Survivor 和 To Survivor）、Tenured；方法区和堆都是各个线程共享的内存区域，用于存储已经被 JVM 加载的类信息、常量、静态变量、JIT 编译器编译后的代码等数据；程序中的字面量（literal）如直接书写的 100、”hello” 和常量都是放在常量池中，常量池是方法区的一部分，。栈空间操作起来最快但是栈很小，通常大量的对象都是放在堆空间，栈和堆的大小都可以通过 JVM 的启动参数来进行调整，栈空间用光了会引发 StackOverflowError，而堆和常量池空间不足则会引发 OutOfMemoryError。</p>
+<pre class="line-numbers language-none"><code class="language-none">String str &#x3D; new String(&quot;hello&quot;);复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>上面的语句中变量 str 放在栈上，用 new 创建出来的字符串对象放在堆上，而”hello” 这个字面量是放在方法区的。</p>
+<p>补充 1：较新版本的 Java（从 Java 6 的某个更新开始）中，由于 JIT 编译器的发展和” 逃逸分析” 技术的逐渐成熟，栈上分配、标量替换等优化技术使得对象一定分配在堆上这件事情已经变得不那么绝对了。</p>
+<p>补充 2：运行时常量池相当于 Class 文件常量池具有动态性，Java 语言并不要求常量一定只有编译期间才能产生，运行期间也可以将新的常量放入池中，String 类的 intern () 方法就是这样的。</p>
+<p>看看下面代码的执行结果是什么并且比较一下 Java 7 以前和以后的运行结果是否一致。</p>
+<pre class="line-numbers language-none"><code class="language-none">String s1 &#x3D; new StringBuilder(&quot;go&quot;)
+.append(&quot;od&quot;).toString();
+System.out.println(s1.intern() &#x3D;&#x3D; s1);
+String s2 &#x3D; new StringBuilder(&quot;ja&quot;)
+.append(&quot;va&quot;).toString();
+System.out.println(s2.intern() &#x3D;&#x3D; s2);复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="10-mathround115-等于多少mathround-115等于多少"><a class="markdownIt-Anchor" href="#10-mathround115-等于多少mathround-115等于多少">#</a> 10、Math.round (11.5) 等于多少？Math.round (-11.5) 等于多少？</h2>
+<p>Math.round (11.5) 的返回值是 12，Math.round (-11.5) 的返回值是 - 11。四舍五入的原理是在参数上加 0.5 然后进行下取整。</p>
+<h2 id="11-switch-是否能作用在-byte-上是否能作用在-long-上是否能作用在-string-上"><a class="markdownIt-Anchor" href="#11-switch-是否能作用在-byte-上是否能作用在-long-上是否能作用在-string-上">#</a> 11、switch 是否能作用在 byte 上，是否能作用在 long 上，是否能作用在 String 上？</h2>
+<p>在 Java 5 以前，switch (expr) 中，expr 只能是 byte、short、char、int。从 Java5 开始，Java 中引入了枚举类型，expr 也可以是 enum 类型，从 Java 7 开始，expr 还可以是字符串（String），但是长整型（long）在目前所有的版本中都是不可以的。</p>
+<h2 id="12-用最有效率的方法计算-2-乘以-8"><a class="markdownIt-Anchor" href="#12-用最有效率的方法计算-2-乘以-8">#</a> 12、用最有效率的方法计算 2 乘以 8？</h2>
+<p>2 &lt;&lt; 3（左移 3 位相当于乘以 2 的 3 次方，右移 3 位相当于除以 2 的 3 次方）。</p>
+<p><strong>补充：</strong> 我们为编写的类重写 hashCode 方法时，可能会看到如下所示的代码，其实我们不太理解为什么要使用这样的乘法运算来产生哈希码（散列码），而且为什么这个数是个素数，为什么通常选择 31 这个数？前两个问题的答案你可以自己百度一下，选择 31 是因为可以用移位和减法运算来代替乘法，从而得到更好的性能。说到这里你可能已经想到了：31 * num 等价于 (num &lt;&lt; 5) - num，左移 5 位相当于乘以 2 的 5 次方再减去自身就相当于乘以 31，现在的 VM 都能自动完成这个优化。</p>
+<pre class="line-numbers language-none"><code class="language-none">public class PhoneNumber &#123;
+	private int areaCode;
+	private String prefix;
+	private String lineNumber;
+	@Override
+	public int hashCode() &#123;
+		final int prime &#x3D; 31;
+		int result &#x3D; 1;
+		result &#x3D; prime * result + areaCode;
+		result &#x3D; prime * result
+		+ ((lineNumber &#x3D;&#x3D; null) ? 0 : lineNumber.hashCode());
+		result &#x3D; prime * result + ((prefix &#x3D;&#x3D; null) ? 0 : prefix.hashCode());
+		return result;
+	&#125;
+	@Override
+	public Boolean equals(Object obj) &#123;
+		if (this &#x3D;&#x3D; obj)
+		return true;
+		if (obj &#x3D;&#x3D; null)
+		return false;
+		if (getClass() !&#x3D; obj.getClass())
+		return false;
+		PhoneNumber other &#x3D; (PhoneNumber) obj;
+		if (areaCode !&#x3D; other.areaCode)
+		return false;
+		if (lineNumber &#x3D;&#x3D; null) &#123;
+			if (other.lineNumber !&#x3D; null)
+			return false;
+		&#125; else if (!lineNumber.equals(other.lineNumber))
+		return false;
+		if (prefix &#x3D;&#x3D; null) &#123;
+			if (other.prefix !&#x3D; null)
+			return false;
+		&#125; else if (!prefix.equals(other.prefix))
+		return false;
+		return true;
+	&#125;
+&#125;复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="13-数组有没有-length方法string-有没有-length方法"><a class="markdownIt-Anchor" href="#13-数组有没有-length方法string-有没有-length方法">#</a> 13、数组有没有 length () 方法？String 有没有 length () 方法？</h2>
+<p>数组没有 length () 方法 ，有 length 的属性。String 有 length () 方法。JavaScript 中，获得字符串的长度是通过 length 属性得到的，这一点容易和 Java 混淆。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/12/5/16ed5486fdd84da6~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<h2 id="14-在-java-中如何跳出当前的多重嵌套循环"><a class="markdownIt-Anchor" href="#14-在-java-中如何跳出当前的多重嵌套循环">#</a> 14、在 Java 中，如何跳出当前的多重嵌套循环？</h2>
+<p>在最外层循环前加一个标记如 A，然后用 break A; 可以跳出多重循环。（Java 中支持带标签的 break 和 continue 语句，作用有点类似于 C 和 C++ 中的 goto 语句，但是就像要避免使用 goto 一样，应该避免使用带标签的 break 和 continue，因为它不会让你的程序变得更优雅，很多时候甚至有相反的作用，所以这种语法其实不知道更好）</p>
+<h2 id="15-构造器constructor是否可被重写override"><a class="markdownIt-Anchor" href="#15-构造器constructor是否可被重写override">#</a> 15、构造器（constructor）是否可被重写（override）？</h2>
+<p>构造器不能被继承，因此不能被重写，但可以被重载。</p>
+<h2 id="16-两个对象值相同xequalsy-true但却可有不同的hash-code这句话对不对"><a class="markdownIt-Anchor" href="#16-两个对象值相同xequalsy-true但却可有不同的hash-code这句话对不对">#</a> 16、两个对象值相同 (x.equals (y) == true)，但却可有不同的 hash code，这句话对不对？</h2>
+<p>不对，如果两个对象 x 和 y 满足 x.equals (y) == true，它们的哈希码（hash code）应当相同。Java 对于 eqauls 方法和 hashCode 方法是这样规定的：</p>
+<p>(1) 如果两个对象相同（equals 方法返回 true），那么它们的 hashCode 值一定要相同；</p>
+<p>(2) 如果两个对象的 hashCode 相同，它们并不一定相同。当然，你未必要按照要求去做，但是如果你违背了上述原则就会发现在使用容器时，相同的对象可以出现在 Set 集合中，同时增加新元素的效率会大大下降（对于使用哈希存储的系统，如果哈希码频繁的冲突将会造成存取性能急剧下降）。</p>
+<p><strong>补充：</strong> 关于 equals 和 hashCode 方法，很多 Java 程序都知道，但很多人也就是仅仅知道而已，在 Joshua Bloch 的大作《Effective Java》（很多软件公司，《Effective Java》、《Java 编程思想》以及《重构：改善既有代码质量》是 Java 程序员必看书籍，如果你还没看过，那就赶紧去亚马逊买一本吧）中是这样介绍 equals 方法的：首先 equals 方法必须满足自反性（x.equals (x) 必须返回 true）、</p>
+<p>对称性（x.equals (y) 返回 true 时，y.equals (x) 也必须返回 true）、传递性（x.equals (y) 和 y.equals (z) 都返回 true 时，x.equals (z) 也必须返回 true）和一致性（当 x 和 y 引用的对象信息没有被修改时，多次调用 x.equals (y) 应该得到同样的返回值），而且对于任何非 null 值的引用 x，x.equals (null) 必须返回 false。</p>
+<p>实现高质量的 equals 方法的诀窍包括：</p>
+<p>(1) 使用 == 操作符检查” 参数是否为这个对象的引用”；</p>
+<p>(2) 使用 instanceof 操作符检查” 参数是否为正确的类型”；</p>
+<p>(3) 对于类中的关键属性，检查参数传入对象的属性是否与之相匹配；</p>
+<p>(4) 编写完 equals 方法后，问自己它是否满足对称性、传递性、一致性；</p>
+<p>(5) 重写 equals 时总是要重写 hashCode；</p>
+<p>(6) 不要将 equals 方法参数中的 Object 对象替换为其他的类型，在重写时不要忘掉 @Override 注解。</p>
+<h2 id="17-是否可以继承-string-类"><a class="markdownIt-Anchor" href="#17-是否可以继承-string-类">#</a> 17、是否可以继承 String 类？</h2>
+<p>String 类是 final 类，不可以被继承。</p>
+<p>补充：继承 String 本身就是一个错误的行为，对 String 类型最好的重用方式是关联关系（Has-A）和依赖关系（Use-A）而不是继承关系（Is-A）。</p>
+<h2 id="18-当一个对象被当作参数传递到一个方法后此方法可改变这个对象的属性并可返回变化后的结果那么这里到底是值传递还是引用传递"><a class="markdownIt-Anchor" href="#18-当一个对象被当作参数传递到一个方法后此方法可改变这个对象的属性并可返回变化后的结果那么这里到底是值传递还是引用传递">#</a> 18、当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递？</h2>
+<p>是值传递。Java 语言的方法调用只支持参数的值传递。当一个对象实例作为一个参数被传递到方法中时，参数的值就是对该对象的引用。对象的属性可以在被调用过程中被改变，但对对象引用的改变是不会影响到调用者的。C++ 和 C# 中可以通过传引用或传输出参数来改变传入的参数的值。在 C# 中可以编写如下所示的代码，但是在 Java 中却做不到。</p>
+<pre class="line-numbers language-none"><code class="language-none">using System;
+namespace CS01 &#123;
+	class Program &#123;
+		public static void swap(ref int x, ref int y) &#123;
+			int temp &#x3D; x;
+			x &#x3D; y;
+			y &#x3D; temp;
+		&#125;
+		public static void Main (string[] args) &#123;
+			int a &#x3D; 5, b &#x3D; 10;
+			swap (ref a, ref b);
+			&#x2F;&#x2F; a &#x3D; 10, b &#x3D; 5;
+			第 225 页 共 485 页
+			Console.WriteLine (&quot;a &#x3D; &#123;0&#125;, b &#x3D; &#123;1&#125;&quot;, a, b);
+		&#125;
+	&#125;
+&#125;复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>说明：</strong> Java 中没有传引用实在是非常的不方便，这一点在 Java 8 中仍然没有得到改进，正是如此在 Java 编写的代码中才会出现大量的 Wrapper 类（将需要通过方法调用修改的引用置于一个 Wrapper 类中，再将 Wrapper 对象传入方法），这样的做法只会让代码变得臃肿，尤其是让从 C 和 C++ 转型为 Java 程序员的开发者无法容忍。</p>
+<h2 id="19-string-和-stringbuilder-stringbuffer-的区别"><a class="markdownIt-Anchor" href="#19-string-和-stringbuilder-stringbuffer-的区别">#</a> 19、String 和 StringBuilder、StringBuffer 的区别？</h2>
+<p>Java 平台提供了两种类型的字符串：String 和 StringBuffer/StringBuilder，它们可以储存和操作字符串。其中 String 是只读字符串，也就意味着 String 引用的字符串内容是不能被改变的。而 StringBuffer/StringBuilder 类表示的字符串对象可以直接进行修改。StringBuilder 是 Java 5 中引入的，它和 StringBuffer 的方法完全相同，区别在于它是在单线程环境下使用的，因为它的所有方面都没有被 synchronized 修饰，因此它的效率也比 StringBuffer 要高。</p>
+<p>面试题 1 - 什么情况下用 + 运算符进行字符串连接比调用</p>
+<p>StringBuffer/StringBuilder 对象的 append 方法连接字符串性能更好？</p>
+<p>面试题 2 - 请说出下面程序的输出。</p>
+<pre class="line-numbers language-none"><code class="language-none">class StringEqualTest &#123;
+	public static void main(String[] args) &#123;
+		String s1 &#x3D; &quot;Programming&quot;;
+		String s2 &#x3D; new String(&quot;Programming&quot;);
+		String s3 &#x3D; &quot;Program&quot;;
+		String s4 &#x3D; &quot;ming&quot;;
+		String s5 &#x3D; &quot;Program&quot; + &quot;ming&quot;;
+		String s6 &#x3D; s3 + s4;
+		System.out.println(s1 &#x3D;&#x3D; s2);
+		System.out.println(s1 &#x3D;&#x3D; s5);
+		System.out.println(s1 &#x3D;&#x3D; s6);
+		System.out.println(s1 &#x3D;&#x3D; s6.intern());
+		System.out.println(s2 &#x3D;&#x3D; s2.intern());
+	&#125;
+&#125;复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>补充：</strong> 解答上面的面试题需要清除两点：</p>
+<p>(1) String 对象的 intern 方法会得到字符串对象在常量池中对应的版本的引用（如果常量池中有一个字符串与 String 对象的 equals 结果是 true），如果常量池中没有对应的字符串，则该字符串将被添加到常量池中，然后返回常量池中字符串的引用；</p>
+<p>(2) 字符串的 + 操作其本质是创建了 StringBuilder 对象进行 append 操作，然后将拼接后的 StringBuilder 对象用 toString 方法处理成 String 对象，这一点可以用 javap -c StringEqualTest.class 命令获得 class 文件对应的 JVM 字节码指令就可以看出来。</p>
+<h2 id="20-重载overload和重写override的区别-重载的方法能否根据返回类型进行区分"><a class="markdownIt-Anchor" href="#20-重载overload和重写override的区别-重载的方法能否根据返回类型进行区分">#</a> 20、重载（Overload）和重写（Override）的区别。重载的方法能否根据返回类型进行区分？</h2>
+<p>方法的重载和重写都是实现多态的方式，区别在于前者实现的是编译时的多态性，而后者实现的是运行时的多态性。重载发生在一个类中，同名的方法如果有不同的参数列表（参数类型不同、参数个数不同或者二者都不同）则视为重载；重写发生在子类与父类之间，重写要求子类被重写方法与父类被重写方法有相同的返回类型，比父类被重写方法更好访问，不能比父类被重写方法声明更多的异常（里氏代换原则）。重载对返回类型没有特殊的要求。</p>
+<p>面试题：华为的面试题中曾经问过这样一个问题 - “为什么不能根据返回类型来区分重载”，快说出你的答案吧！</p>
+<h2 id="最后"><a class="markdownIt-Anchor" href="#最后">#</a> 最后</h2>
+<p>欢迎大家关注我的公种浩【程序员追风】，整理了 1000 道 2019 年多家公司 java 面试题 400 多页 pdf 文档，文章都会在里面更新，整理的资料也会放在里面。喜欢文章记得关注我点个赞哟，感谢支持！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2022/05/04/java%E9%9D%A2%E8%AF%95%E9%A2%98228%E9%81%93(1)/">https://harryqu1229.github.io/2022/05/04/java%E9%9D%A2%E8%AF%95%E9%A2%98228%E9%81%93(1)/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/interview/">interview</a><a class="post-meta__tags" href="/tags/javase/">javase</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/01/java%E7%AD%89%E4%B8%80%E7%B3%BB%E5%88%97%E9%9D%A2%E8%AF%95%E9%A2%98/"><img class="prev-cover" src="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Java Big Company Interview Questions</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/10/nodejs/"><img class="next-cover" src="https://raw.githubusercontent.com/HarryQu1229/image-host/9575054fd0f7d407d7b7d5343dfc530a06ed4104/notes-img/cat.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Nodejs notes</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/04/30/java%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Java Interview Questions"><img class="cover" src="https://w.wallhaven.cc/full/e7/wallhaven-e7p2pk.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-30</div><div class="title">Java Interview Questions</div></div></a></div><div><a href="/2022/05/01/java%E7%AD%89%E4%B8%80%E7%B3%BB%E5%88%97%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Java Big Company Interview Questions"><img class="cover" src="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-01</div><div class="title">Java Big Company Interview Questions</div></div></a></div><div><a href="/2022/05/01/java%E9%9B%86%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Java Collection Interview Questions"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-01</div><div class="title">Java Collection Interview Questions</div></div></a></div><div><a href="/2022/01/01/20%E9%81%93%E5%A4%A7%E5%8E%82%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="20 Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">20 Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/01/01/30%E9%81%93vue%E9%9D%A2%E8%AF%95%E9%A2%98/" title="30 Vue Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/28/wallhaven-28wymm.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">30 Vue Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/01/01/45%E9%81%93promise%E9%9D%A2%E8%AF%95%E9%A2%98/" title="45 Promise Frontend Interview Quesitions"><img class="cover" src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">45 Promise Frontend Interview Quesitions</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2019%E5%B9%B4java%E9%9D%A2%E8%AF%95%E9%A2%98%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97228%E9%81%931%E5%BF%AB%E7%9C%8B%E7%9C%8B%E5%93%AA%E4%BA%9B%E4%BD%A0%E8%BF%98%E4%B8%8D%E4%BC%9A"><span class="toc-number">1.</span> <span class="toc-text"> 2019 年 Java 面试题基础系列 228 道（1），快看看哪些你还不会？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80"><span class="toc-number">1.1.</span> <span class="toc-text"> Java 面试题（一）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BA%8C"><span class="toc-number">1.2.</span> <span class="toc-text"> Java 面试题（二）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E5%BE%81%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E9%9D%A2"><span class="toc-number">1.3.</span> <span class="toc-text"> 1、面向对象的特征有哪些方面？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6-publicprivateprotected%E4%BB%A5%E5%8F%8A%E4%B8%8D%E5%86%99%E9%BB%98%E8%AE%A4%E6%97%B6%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.4.</span> <span class="toc-text"> 2、访问修饰符 public,private,protected, 以及不写（默认）时的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-string-%E6%98%AF%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%90%97"><span class="toc-number">1.5.</span> <span class="toc-text"> 3、String 是最基本的数据类型吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-float-f34%E6%98%AF%E5%90%A6%E6%AD%A3%E7%A1%AE"><span class="toc-number">1.6.</span> <span class="toc-text"> 4、float f&#x3D;3.4; 是否正确？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-short-s1-1-s1-s1-1%E6%9C%89%E9%94%99%E5%90%97short-s1-1-s1-1%E6%9C%89%E9%94%99%E5%90%97"><span class="toc-number">1.7.</span> <span class="toc-text"> 5、short s1 &#x3D; 1; s1 &#x3D; s1 + 1; 有错吗？short s1 &#x3D; 1; s1 +&#x3D; 1; 有错吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-java-%E6%9C%89%E6%B2%A1%E6%9C%89-goto"><span class="toc-number">1.8.</span> <span class="toc-text"> 6、Java 有没有 goto？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-int-%E5%92%8C-integer-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-number">1.9.</span> <span class="toc-text"> 7、int 和 Integer 有什么区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%92%8C%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.10.</span> <span class="toc-text"> 8、&amp; 和 &amp;&amp; 的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E8%A7%A3%E9%87%8A%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%A0%88stack-%E5%A0%86heap%E5%92%8C%E6%96%B9%E6%B3%95%E5%8C%BAmethod-area%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.11.</span> <span class="toc-text"> 9、解释内存中的栈 (stack)、堆 (heap) 和方法区 (method area) 的用法。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-mathround115-%E7%AD%89%E4%BA%8E%E5%A4%9A%E5%B0%91mathround-115%E7%AD%89%E4%BA%8E%E5%A4%9A%E5%B0%91"><span class="toc-number">1.12.</span> <span class="toc-text"> 10、Math.round (11.5) 等于多少？Math.round (-11.5) 等于多少？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-switch-%E6%98%AF%E5%90%A6%E8%83%BD%E4%BD%9C%E7%94%A8%E5%9C%A8-byte-%E4%B8%8A%E6%98%AF%E5%90%A6%E8%83%BD%E4%BD%9C%E7%94%A8%E5%9C%A8-long-%E4%B8%8A%E6%98%AF%E5%90%A6%E8%83%BD%E4%BD%9C%E7%94%A8%E5%9C%A8-string-%E4%B8%8A"><span class="toc-number">1.13.</span> <span class="toc-text"> 11、switch 是否能作用在 byte 上，是否能作用在 long 上，是否能作用在 String 上？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E7%94%A8%E6%9C%80%E6%9C%89%E6%95%88%E7%8E%87%E7%9A%84%E6%96%B9%E6%B3%95%E8%AE%A1%E7%AE%97-2-%E4%B9%98%E4%BB%A5-8"><span class="toc-number">1.14.</span> <span class="toc-text"> 12、用最有效率的方法计算 2 乘以 8？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E6%95%B0%E7%BB%84%E6%9C%89%E6%B2%A1%E6%9C%89-length%E6%96%B9%E6%B3%95string-%E6%9C%89%E6%B2%A1%E6%9C%89-length%E6%96%B9%E6%B3%95"><span class="toc-number">1.15.</span> <span class="toc-text"> 13、数组有没有 length () 方法？String 有没有 length () 方法？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E5%9C%A8-java-%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B7%B3%E5%87%BA%E5%BD%93%E5%89%8D%E7%9A%84%E5%A4%9A%E9%87%8D%E5%B5%8C%E5%A5%97%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.16.</span> <span class="toc-text"> 14、在 Java 中，如何跳出当前的多重嵌套循环？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-%E6%9E%84%E9%80%A0%E5%99%A8constructor%E6%98%AF%E5%90%A6%E5%8F%AF%E8%A2%AB%E9%87%8D%E5%86%99override"><span class="toc-number">1.17.</span> <span class="toc-text"> 15、构造器（constructor）是否可被重写（override）？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-%E4%B8%A4%E4%B8%AA%E5%AF%B9%E8%B1%A1%E5%80%BC%E7%9B%B8%E5%90%8Cxequalsy-true%E4%BD%86%E5%8D%B4%E5%8F%AF%E6%9C%89%E4%B8%8D%E5%90%8C%E7%9A%84hash-code%E8%BF%99%E5%8F%A5%E8%AF%9D%E5%AF%B9%E4%B8%8D%E5%AF%B9"><span class="toc-number">1.18.</span> <span class="toc-text"> 16、两个对象值相同 (x.equals (y) &#x3D;&#x3D; true)，但却可有不同的 hash code，这句话对不对？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E7%BB%A7%E6%89%BF-string-%E7%B1%BB"><span class="toc-number">1.19.</span> <span class="toc-text"> 17、是否可以继承 String 类？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-%E5%BD%93%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E8%A2%AB%E5%BD%93%E4%BD%9C%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E5%88%B0%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95%E5%90%8E%E6%AD%A4%E6%96%B9%E6%B3%95%E5%8F%AF%E6%94%B9%E5%8F%98%E8%BF%99%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7%E5%B9%B6%E5%8F%AF%E8%BF%94%E5%9B%9E%E5%8F%98%E5%8C%96%E5%90%8E%E7%9A%84%E7%BB%93%E6%9E%9C%E9%82%A3%E4%B9%88%E8%BF%99%E9%87%8C%E5%88%B0%E5%BA%95%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92"><span class="toc-number">1.20.</span> <span class="toc-text"> 18、当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19-string-%E5%92%8C-stringbuilder-stringbuffer-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.21.</span> <span class="toc-text"> 19、String 和 StringBuilder、StringBuffer 的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20-%E9%87%8D%E8%BD%BDoverload%E5%92%8C%E9%87%8D%E5%86%99override%E7%9A%84%E5%8C%BA%E5%88%AB-%E9%87%8D%E8%BD%BD%E7%9A%84%E6%96%B9%E6%B3%95%E8%83%BD%E5%90%A6%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%B1%BB%E5%9E%8B%E8%BF%9B%E8%A1%8C%E5%8C%BA%E5%88%86"><span class="toc-number">1.22.</span> <span class="toc-text"> 20、重载（Overload）和重写（Override）的区别。重载的方法能否根据返回类型进行区分？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-number">1.23.</span> <span class="toc-text"> 最后</span></a></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/06/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide"><img src="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My ultimate data structure and algorithm guide"/></a><div class="content"><a class="title" href="/2022/12/06/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide">My ultimate data structure and algorithm guide</a><time datetime="2022-12-05T11:00:00.000Z" title="Created 2022-12-06 00:00:00">2022-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/27/HTML5%E4%B8%8ECSS3%E9%AB%98%E9%98%B6/" title="My HTML5 and CSS3 notes"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My HTML5 and CSS3 notes"/></a><div class="content"><a class="title" href="/2022/08/27/HTML5%E4%B8%8ECSS3%E9%AB%98%E9%98%B6/" title="My HTML5 and CSS3 notes">My HTML5 and CSS3 notes</a><time datetime="2022-08-26T12:00:00.000Z" title="Created 2022-08-27 00:00:00">2022-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" title="Object Orientated Programming"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/ca78dff38e0bfb81a8e98ad64f749e97bcc55f14/notes-img/Billfish.yWAOuM.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Object Orientated Programming"/></a><div class="content"><a class="title" href="/2022/08/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" title="Object Orientated Programming">Object Orientated Programming</a><time datetime="2022-08-10T12:00:00.000Z" title="Created 2022-08-11 00:00:00">2022-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns"/></a><div class="content"><a class="title" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns">Design Patterns</a><time datetime="2022-06-11T12:00:00.000Z" title="Created 2022-06-12 00:00:00">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns - Command"/></a><div class="content"><a class="title" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command">Design Patterns - Command</a><time datetime="2022-06-10T12:00:00.000Z" title="Created 2022-06-11 00:00:00">2022-06-11</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2022/05/04/java%E9%9D%A2%E8%AF%95%E9%A2%98228%E9%81%93(1)/'
+    this.page.identifier = '2022/05/04/java面试题228道(1)/'
+    this.page.title = '228 Java Interview Questions'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>if (window.DISQUSWIDGETS === undefined) {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://harry-study-blog.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+} else {
+  DISQUSWIDGETS.getCount({reset: true});
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: '6b8bdb5aad1b06c47bd8499365cda665',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=B5XFmdGuVaYDW7OIBakffpXoKorvphwRiwONIol4puEtr8YiwYAMAk2K7QcExNLY')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

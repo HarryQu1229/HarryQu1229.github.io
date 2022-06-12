@@ -1,0 +1,723 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Java Interview Questions | Harry World</title><meta name="keywords" content="interview,javase"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# Java 最常见的 200+ 面试题：面试必备 这份面试清单是我从 2015 年做了 TeamLeader 之后开始收集的，一方面是给公司招聘用，另一方面是想用它来挖掘我在 Java 技术栈中的技术盲点，然后修复和完善它，以此来提高自己的技术水平。虽然我从 2009 年就开始参加编程工作了，但依旧觉得还有很多东西要学，当然学习的过程也给我带来了很多成就感，这些成就感也推动我学习更多的技术知识。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Interview Questions">
+<meta property="og:url" content="https://harryqu1229.github.io/2022/04/30/java%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="Harry World">
+<meta property="og:description" content="# Java 最常见的 200+ 面试题：面试必备 这份面试清单是我从 2015 年做了 TeamLeader 之后开始收集的，一方面是给公司招聘用，另一方面是想用它来挖掘我在 Java 技术栈中的技术盲点，然后修复和完善它，以此来提高自己的技术水平。虽然我从 2009 年就开始参加编程工作了，但依旧觉得还有很多东西要学，当然学习的过程也给我带来了很多成就感，这些成就感也推动我学习更多的技术知识。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://w.wallhaven.cc/full/e7/wallhaven-e7p2pk.png">
+<meta property="article:published_time" content="2022-04-29T12:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-12T01:08:10.226Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="interview">
+<meta property="article:tag" content="javase">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://w.wallhaven.cc/full/e7/wallhaven-e7p2pk.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://harryqu1229.github.io/2022/04/30/java%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java Interview Questions',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-12 13:08:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://thestatetimes.com/wp-content/uploads/2021/11/structured-interview@2x.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry World</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java Interview Questions</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-04-29T12:00:00.000Z" title="Created 2022-04-30 00:00:00">2022-04-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-06-12T01:08:10.226Z" title="Updated 2022-06-12 13:08:10">2022-06-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Interview/">Interview</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Interview/java/">java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">3.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>12min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java Interview Questions"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><span class="disqus-comment-count"><a href="https://harryqu1229.github.io/2022/04/30/java%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/#disqus_thread"></a></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="java-最常见的-200-面试题面试必备"><a class="markdownIt-Anchor" href="#java-最常见的-200-面试题面试必备">#</a> Java 最常见的 200+ 面试题：面试必备</h1>
+<p>这份面试清单是我从 2015 年做了 TeamLeader 之后开始收集的，一方面是给公司招聘用，另一方面是想用它来挖掘我在 Java 技术栈中的技术盲点，然后修复和完善它，以此来提高自己的技术水平。虽然我从 2009 年就开始参加编程工作了，但依旧觉得还有很多东西要学，当然学习的过程也给我带来了很多成就感，这些成就感也推动我学习更多的技术知识。</p>
+<p>聊回面试题这件事，这份面试清单原本是我们公司内部使用的，可到后来有很多朋友在微信上联系到我，让我帮他们找一些面试方面的资料，而且这些关系也不太好拒绝，一呢，是因为这些找我，要面试题的人，不是我的好朋友的弟弟妹妹，就是我的弟弟妹妹们；二呢，我也不能马马虎虎的对付，受人之事忠人之命，我也不能辜负这份信任。慢慢的我产生了一个想法，要不要把我整理的这 200 多道面试题分享出来，来帮助更多需要的人。</p>
+<p>说实话刚开始的时候还是比较犹豫的，首先我会觉得这么做会不会有点帮人 “作弊” 的嫌疑，最后我想通了，这是一件值得去做的事儿。</p>
+<ul>
+<li>第一：让更多的人因此而学到了更多的知识，这是一件大好事。</li>
+<li>第二：这只是经验的高度提炼，让那些原本就掌握了技术却不知道怎么表达的人，学会如何在面试中展示自己。</li>
+<li>第三：如果只是死记硬背这些面试题，只要面试官再深入问纠一下，也可对这个人有一个准确的认识，之前说的 “帮人作弊” 的事就存在了。</li>
+<li>第四：学习有很多种方式，但只有好学者才会临池学书。如果是不想学的人，提供再多再好的资料放在他们的面前，他们也会视而不见。</li>
+</ul>
+<p>就像之前听过的一个故事，为什么在美国有些企业只要看你是哈佛的学历就直接录取？并不是哈佛有多么厉害，当然教学质量也是其中原因之一，但更多的是在美国上大学还是挺贵的，首先你能上的起哈佛，说明你的家庭条还不错，从小应该就有很多参加更好教育的机会；第二，你能进入哈佛，也说明你脑子不笨，能考的上哈佛；最后才是哈佛确实能给你提供一个，相对不错的教育环境。综合以上特质，所以这些企业才敢直接聘请那些有哈佛学历的人。</p>
+<p>对应到我们这份面试题其实也一样，首先你如果能记住其中大部分的答案说明你，第一，你很聪明并且记性还很好；第二，说明你有上进心，也愿意学习；第三，有了这份面试题做理论支撑之后，即使你的实践经验没有那么多，但懂得原理的你，做出来的程序也一定不会太差。</p>
+<p>所以如果您是面试官，恰好又看到这里，如果条件允许的话，请多给这样愿意学又很聪明的年轻人多一些机会。</p>
+<p>面试题模块介绍</p>
+<p>说了这么多，下面进入我们本文的主题，我们这份面试题，包含的内容了十九了模块：Java 基础、容器、多线程、反射、对象拷贝、Java Web 模块、异常、网络、设计模式、Spring/Spring MVC、Spring Boot/Spring Cloud、Hibernate、Mybatis、RabbitMQ、Kafka、Zookeeper、MySql、Redis、JVM 。如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/16936e93f737aea4%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>可能对于初学者不需要看后面的框架和 JVM 模块的知识，读者朋友们可根据自己的情况，选择对应的模块进行阅读。</p>
+<h2 id="适宜阅读人群"><a class="markdownIt-Anchor" href="#适宜阅读人群">#</a> 适宜阅读人群</h2>
+<ul>
+<li>需要面试的初 / 中 / 高级 java 程序员</li>
+<li>想要查漏补缺的人</li>
+<li>想要不断完善和扩充自己 java 技术栈的人</li>
+<li>java 面试官</li>
+</ul>
+<h2 id="具体面试题"><a class="markdownIt-Anchor" href="#具体面试题">#</a> 具体面试题</h2>
+<p>下面一起来看 208 道面试题，具体的内容。</p>
+<p><strong>一、Java 基础</strong></p>
+<p>1.JDK 和 JRE 有什么区别？</p>
+<p>2.== 和 equals 的区别是什么？</p>
+<p>3. 两个对象的 hashCode () 相同，则 equals () 也一定为 true，对吗？</p>
+<p>4.final 在 java 中有什么作用？</p>
+<p>5.java 中的 Math.round (-1.5) 等于多少？</p>
+<p>6.String 属于基础的数据类型吗？</p>
+<p>7.java 中操作字符串都有哪些类？它们之间有什么区别？</p>
+<p>8.String str=&quot;i&quot; 与 String str=new String (“i”) 一样吗？</p>
+<p>9. 如何将字符串反转？</p>
+<p>10.String 类的常用方法都有那些？</p>
+<p>11. 抽象类必须要有抽象方法吗？</p>
+<p>12. 普通类和抽象类有哪些区别？</p>
+<p>13. 抽象类能使用 final 修饰吗？</p>
+<p>14. 接口和抽象类有什么区别？</p>
+<p>15.java 中 IO 流分为几种？</p>
+<p>16.BIO、NIO、AIO 有什么区别？</p>
+<p>17.Files 的常用方法都有哪些？</p>
+<p><strong>二、容器</strong></p>
+<p>18.java 容器都有哪些？</p>
+<p>19.Collection 和 Collections 有什么区别？</p>
+<p>20.List、Set、Map 之间的区别是什么？</p>
+<p>21.HashMap 和 Hashtable 有什么区别？</p>
+<p>22. 如何决定使用 HashMap 还是 TreeMap？</p>
+<p>23. 说一下 HashMap 的实现原理？</p>
+<p>24. 说一下 HashSet 的实现原理？</p>
+<p>25.ArrayList 和 LinkedList 的区别是什么？</p>
+<p>26. 如何实现数组和 List 之间的转换？</p>
+<p>27.ArrayList 和 Vector 的区别是什么？</p>
+<p>28.Array 和 ArrayList 有何区别？</p>
+<p>29. 在 Queue 中 poll () 和 remove () 有什么区别？</p>
+<p>30. 哪些集合类是线程安全的？</p>
+<p>31. 迭代器 Iterator 是什么？</p>
+<p>32.Iterator 怎么使用？有什么特点？</p>
+<p>33.Iterator 和 ListIterator 有什么区别？</p>
+<p>34. 怎么确保一个集合不能被修改？</p>
+<p><strong>三、多线程</strong></p>
+<p>35. 并行和并发有什么区别？</p>
+<p>36. 线程和进程的区别？</p>
+<p>37. 守护线程是什么？</p>
+<p>38. 创建线程有哪几种方式？</p>
+<p>39. 说一下 runnable 和 callable 有什么区别？</p>
+<p>40. 线程有哪些状态？</p>
+<p>41.sleep () 和 wait () 有什么区别？</p>
+<p>42.notify () 和 notifyAll () 有什么区别？</p>
+<p>43. 线程的 run () 和 start () 有什么区别？</p>
+<p>44. 创建线程池有哪几种方式？</p>
+<p>45. 线程池都有哪些状态？</p>
+<p>46. 线程池中 submit () 和 execute () 方法有什么区别？</p>
+<p>47. 在 java 程序中怎么保证多线程的运行安全？</p>
+<p>48. 多线程锁的升级原理是什么？</p>
+<p>49. 什么是死锁？</p>
+<p>50. 怎么防止死锁？</p>
+<p>51.ThreadLocal 是什么？有哪些使用场景？</p>
+<p>52. 说一下 synchronized 底层实现原理？</p>
+<p>53.synchronized 和 volatile 的区别是什么？</p>
+<p>54.synchronized 和 Lock 有什么区别？</p>
+<p>55.synchronized 和 ReentrantLock 区别是什么？</p>
+<p>56. 说一下 atomic 的原理？</p>
+<p><strong>四、反射</strong></p>
+<p>57. 什么是反射？</p>
+<p>58. 什么是 java 序列化？什么情况下需要序列化？</p>
+<p>59. 动态代理是什么？有哪些应用？</p>
+<p>60. 怎么实现动态代理？</p>
+<p><strong>五、对象拷贝</strong></p>
+<p>61. 为什么要使用克隆？</p>
+<p>62. 如何实现对象克隆？</p>
+<p>63. 深拷贝和浅拷贝区别是什么？</p>
+<p><strong>六、Java Web</strong></p>
+<p>64.jsp 和 servlet 有什么区别？</p>
+<p>65.jsp 有哪些内置对象？作用分别是什么？</p>
+<p>66. 说一下 jsp 的 4 种作用域？</p>
+<p>67.session 和 cookie 有什么区别？</p>
+<p>68. 说一下 session 的工作原理？</p>
+<p>69. 如果客户端禁止 cookie 能实现 session 还能用吗？</p>
+<p>70.spring mvc 和 struts 的区别是什么？</p>
+<p>71. 如何避免 sql 注入？</p>
+<p>72. 什么是 XSS 攻击，如何避免？</p>
+<p>73. 什么是 CSRF 攻击，如何避免？</p>
+<p><strong>七、异常</strong></p>
+<p>74.throw 和 throws 的区别？</p>
+<p>75.final、finally、finalize 有什么区别？</p>
+<p>76.try-catch-finally 中哪个部分可以省略？</p>
+<p>77.try-catch-finally 中，如果 catch 中 return 了，finally 还会执行吗？</p>
+<p>78. 常见的异常类有哪些？</p>
+<p><strong>八、网络</strong></p>
+<p>79.http 响应码 301 和 302 代表的是什么？有什么区别？</p>
+<p>80.forward 和 redirect 的区别？</p>
+<p>81. 简述 tcp 和 udp 的区别？</p>
+<p>82.tcp 为什么要三次握手，两次不行吗？为什么？</p>
+<p>83. 说一下 tcp 粘包是怎么产生的？</p>
+<p>84.OSI 的七层模型都有哪些？</p>
+<p>85.get 和 post 请求有哪些区别？</p>
+<p>86. 如何实现跨域？</p>
+<p>87. 说一下 JSONP 实现原理？</p>
+<p><strong>九、设计模式</strong></p>
+<p>88. 说一下你熟悉的设计模式？</p>
+<p>89. 简单工厂和抽象工厂有什么区别？</p>
+<p><strong>十、Spring/Spring MVC</strong></p>
+<p>90. 为什么要使用 spring？</p>
+<p>91. 解释一下什么是 aop？</p>
+<p>92. 解释一下什么是 ioc？</p>
+<p>93.spring 有哪些主要模块？</p>
+<p>94.spring 常用的注入方式有哪些？</p>
+<p>95.spring 中的 bean 是线程安全的吗？</p>
+<p>96.spring 支持几种 bean 的作用域？</p>
+<p>97.spring 自动装配 bean 有哪些方式？</p>
+<p>98.spring 事务实现方式有哪些？</p>
+<p>99. 说一下 spring 的事务隔离？</p>
+<p>100. 说一下 spring mvc 运行流程？</p>
+<p>101.spring mvc 有哪些组件？</p>
+<p>102.@RequestMapping 的作用是什么？</p>
+<p>103.@Autowired 的作用是什么？</p>
+<p><strong>十一、Spring Boot/Spring Cloud</strong></p>
+<p>104. 什么是 spring boot？</p>
+<p>105. 为什么要用 spring boot？</p>
+<p>106.spring boot 核心配置文件是什么？</p>
+<p>107.spring boot 配置文件有哪几种类型？它们有什么区别？</p>
+<p>108.spring boot 有哪些方式可以实现热部署？</p>
+<p>109.jpa 和 hibernate 有什么区别？</p>
+<p>110. 什么是 spring cloud？</p>
+<p>111.spring cloud 断路器的作用是什么？</p>
+<p>112.spring cloud 的核心组件有哪些？</p>
+<p><strong>十二、Hibernate</strong></p>
+<p>113. 为什么要使用 hibernate？</p>
+<p>114. 什么是 ORM 框架？</p>
+<p>115.hibernate 中如何在控制台查看打印的 sql 语句？</p>
+<p>116.hibernate 有几种查询方式？</p>
+<p>117.hibernate 实体类可以被定义为 final 吗？</p>
+<p>118. 在 hibernate 中使用 Integer 和 int 做映射有什么区别？</p>
+<p>119.hibernate 是如何工作的？</p>
+<p>120.get () 和 load () 的区别？</p>
+<p>121. 说一下 hibernate 的缓存机制？</p>
+<p>122.hibernate 对象有哪些状态？</p>
+<p>123. 在 hibernate 中 getCurrentSession 和 openSession 的区别是什么？</p>
+<p>124.hibernate 实体类必须要有无参构造函数吗？为什么？</p>
+<p><strong>十三、Mybatis</strong></p>
+<p>125.mybatis 中 #{} 和 ${} 的区别是什么？</p>
+<p>126.mybatis 有几种分页方式？</p>
+<p>127.RowBounds 是一次性查询全部结果吗？为什么？</p>
+<p>128.mybatis 逻辑分页和物理分页的区别是什么？</p>
+<p>129.mybatis 是否支持延迟加载？延迟加载的原理是什么？</p>
+<p>130. 说一下 mybatis 的一级缓存和二级缓存？</p>
+<p>131.mybatis 和 hibernate 的区别有哪些？</p>
+<p>132.mybatis 有哪些执行器（Executor）？</p>
+<p>133.mybatis 分页插件的实现原理是什么？</p>
+<p>134.mybatis 如何编写一个自定义插件？</p>
+<p><strong>十四、RabbitMQ</strong></p>
+<p>135.rabbitmq 的使用场景有哪些？</p>
+<p>136.rabbitmq 有哪些重要的角色？</p>
+<p>137.rabbitmq 有哪些重要的组件？</p>
+<p>138.rabbitmq 中 vhost 的作用是什么？</p>
+<p>139.rabbitmq 的消息是怎么发送的？</p>
+<p>140.rabbitmq 怎么保证消息的稳定性？</p>
+<p>141.rabbitmq 怎么避免消息丢失？</p>
+<p>142. 要保证消息持久化成功的条件有哪些？</p>
+<p>143.rabbitmq 持久化有什么缺点？</p>
+<p>144.rabbitmq 有几种广播类型？</p>
+<p>145.rabbitmq 怎么实现延迟消息队列？</p>
+<p>146.rabbitmq 集群有什么用？</p>
+<p>147.rabbitmq 节点的类型有哪些？</p>
+<p>148.rabbitmq 集群搭建需要注意哪些问题？</p>
+<p>149.rabbitmq 每个节点是其他节点的完整拷贝吗？为什么？</p>
+<p>150.rabbitmq 集群中唯一一个磁盘节点崩溃了会发生什么情况？</p>
+<p>151.rabbitmq 对集群节点停止顺序有要求吗？</p>
+<p><strong>十五、Kafka</strong></p>
+<p>152.kafka 可以脱离 zookeeper 单独使用吗？为什么？</p>
+<p>153.kafka 有几种数据保留的策略？</p>
+<p>154.kafka 同时设置了 7 天和 10G 清除数据，到第五天的时候消息达到了 10G，这个时候 kafka 将如何处理？</p>
+<p>155. 什么情况会导致 kafka 运行变慢？</p>
+<p>156. 使用 kafka 集群需要注意什么？</p>
+<p><strong>十六、Zookeeper</strong></p>
+<p>157.zookeeper 是什么？</p>
+<p>158.zookeeper 都有哪些功能？</p>
+<p>159.zookeeper 有几种部署模式？</p>
+<p>160.zookeeper 怎么保证主从节点的状态同步？</p>
+<p>161. 集群中为什么要有主节点？</p>
+<p>162. 集群中有 3 台服务器，其中一个节点宕机，这个时候 zookeeper 还可以使用吗？</p>
+<p>163. 说一下 zookeeper 的通知机制？</p>
+<p><strong>十七、MySql</strong></p>
+<p>164. 数据库的三范式是什么？</p>
+<p>165. 一张自增表里面总共有 7 条数据，删除了最后 2 条数据，重启 mysql 数据库，又插入了一条数据，此时 id 是几？</p>
+<p>166. 如何获取当前数据库版本？</p>
+<p>167. 说一下 ACID 是什么？</p>
+<p>168.char 和 varchar 的区别是什么？</p>
+<p>169.float 和 double 的区别是什么？</p>
+<p>170.mysql 的内连接、左连接、右连接有什么区别？</p>
+<p>171.mysql 索引是怎么实现的？</p>
+<p>172. 怎么验证 mysql 的索引是否满足需求？</p>
+<p>173. 说一下数据库的事务隔离？</p>
+<p>174. 说一下 mysql 常用的引擎？</p>
+<p>175. 说一下 mysql 的行锁和表锁？</p>
+<p>176. 说一下乐观锁和悲观锁？</p>
+<p>177.mysql 问题排查都有哪些手段？</p>
+<p>178. 如何做 mysql 的性能优化？</p>
+<p><strong>十八、Redis</strong></p>
+<p>179.redis 是什么？都有哪些使用场景？</p>
+<p>180.redis 有哪些功能？</p>
+<p>181.redis 和 memecache 有什么区别？</p>
+<p>182.redis 为什么是单线程的？</p>
+<p>183. 什么是缓存穿透？怎么解决？</p>
+<p>184.redis 支持的数据类型有哪些？</p>
+<p>185.redis 支持的 java 客户端都有哪些？</p>
+<p>186.jedis 和 redisson 有哪些区别？</p>
+<p>187. 怎么保证缓存和数据库数据的一致性？</p>
+<p>188.redis 持久化有几种方式？</p>
+<p>189.redis 怎么实现分布式锁？</p>
+<p>190.redis 分布式锁有什么缺陷？</p>
+<p>191.redis 如何做内存优化？</p>
+<p>192.redis 淘汰策略有哪些？</p>
+<p>193.redis 常见的性能问题有哪些？该如何解决？</p>
+<p><strong>十九、JVM</strong></p>
+<p>194. 说一下 jvm 的主要组成部分？及其作用？</p>
+<p>195. 说一下 jvm 运行时数据区？</p>
+<p>196. 说一下堆栈的区别？</p>
+<p>197. 队列和栈是什么？有什么区别？</p>
+<p>198. 什么是双亲委派模型？</p>
+<p>199. 说一下类加载的执行过程？</p>
+<p>200. 怎么判断对象是否可以被回收？</p>
+<p>201.java 中都有哪些引用类型？</p>
+<p>202. 说一下 jvm 有哪些垃圾回收算法？</p>
+<p>203. 说一下 jvm 有哪些垃圾回收器？</p>
+<p>204. 详细介绍一下 CMS 垃圾回收器？</p>
+<p>205. 新生代垃圾回收器和老生代垃圾回收器都有哪些？有什么区别？</p>
+<p>206. 简述分代垃圾回收器是怎么工作的？</p>
+<p>207. 说一下 jvm 调优的工具？</p>
+<p>208. 常用的 jvm 调优的参数都有哪些？</p>
+<h2 id="面试答案"><a class="markdownIt-Anchor" href="#面试答案">#</a> 面试答案</h2>
+<p>扫描下面二维码，获取答案 + 题目分析 + 案例代码 ↓↓↓</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/6/13/16b5017b5e775a6f~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2022/04/30/java%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/">https://harryqu1229.github.io/2022/04/30/java%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/interview/">interview</a><a class="post-meta__tags" href="/tags/javase/">javase</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/04/30/java%E5%A4%A7%E6%80%BB%E7%BB%93/"><img class="prev-cover" src="https://w.wallhaven.cc/full/8o/wallhaven-8oply1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Java big Summary</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/01/java%E9%9B%86%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/"><img class="next-cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Java Collection Interview Questions</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/05/01/java%E7%AD%89%E4%B8%80%E7%B3%BB%E5%88%97%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Java Big Company Interview Questions"><img class="cover" src="https://w.wallhaven.cc/full/k7/wallhaven-k7v9yq.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-01</div><div class="title">Java Big Company Interview Questions</div></div></a></div><div><a href="/2022/05/01/java%E9%9B%86%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Java Collection Interview Questions"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-01</div><div class="title">Java Collection Interview Questions</div></div></a></div><div><a href="/2022/05/04/java%E9%9D%A2%E8%AF%95%E9%A2%98228%E9%81%93(1)/" title="228 Java Interview Questions"><img class="cover" src="https://w.wallhaven.cc/full/3z/wallhaven-3zgdd3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-04</div><div class="title">228 Java Interview Questions</div></div></a></div><div><a href="/2022/01/01/20%E9%81%93%E5%A4%A7%E5%8E%82%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="20 Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">20 Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/01/01/30%E9%81%93vue%E9%9D%A2%E8%AF%95%E9%A2%98/" title="30 Vue Frontend Interview Quesitions"><img class="cover" src="https://w.wallhaven.cc/full/28/wallhaven-28wymm.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">30 Vue Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/01/01/45%E9%81%93promise%E9%9D%A2%E8%AF%95%E9%A2%98/" title="45 Promise Frontend Interview Quesitions"><img class="cover" src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">45 Promise Frontend Interview Quesitions</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java-%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84-200-%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text"> Java 最常见的 200+ 面试题：面试必备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%82%E5%AE%9C%E9%98%85%E8%AF%BB%E4%BA%BA%E7%BE%A4"><span class="toc-number">1.1.</span> <span class="toc-text"> 适宜阅读人群</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text"> 具体面试题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E7%AD%94%E6%A1%88"><span class="toc-number">1.3.</span> <span class="toc-text"> 面试答案</span></a></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/06/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide"><img src="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My ultimate data structure and algorithm guide"/></a><div class="content"><a class="title" href="/2022/12/06/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide">My ultimate data structure and algorithm guide</a><time datetime="2022-12-05T11:00:00.000Z" title="Created 2022-12-06 00:00:00">2022-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/27/HTML5%E4%B8%8ECSS3%E9%AB%98%E9%98%B6/" title="My HTML5 and CSS3 notes"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My HTML5 and CSS3 notes"/></a><div class="content"><a class="title" href="/2022/08/27/HTML5%E4%B8%8ECSS3%E9%AB%98%E9%98%B6/" title="My HTML5 and CSS3 notes">My HTML5 and CSS3 notes</a><time datetime="2022-08-26T12:00:00.000Z" title="Created 2022-08-27 00:00:00">2022-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" title="Object Orientated Programming"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/ca78dff38e0bfb81a8e98ad64f749e97bcc55f14/notes-img/Billfish.yWAOuM.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Object Orientated Programming"/></a><div class="content"><a class="title" href="/2022/08/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" title="Object Orientated Programming">Object Orientated Programming</a><time datetime="2022-08-10T12:00:00.000Z" title="Created 2022-08-11 00:00:00">2022-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns"/></a><div class="content"><a class="title" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns">Design Patterns</a><time datetime="2022-06-11T12:00:00.000Z" title="Created 2022-06-12 00:00:00">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns - Command"/></a><div class="content"><a class="title" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command">Design Patterns - Command</a><time datetime="2022-06-10T12:00:00.000Z" title="Created 2022-06-11 00:00:00">2022-06-11</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2022/04/30/java%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/'
+    this.page.identifier = '2022/04/30/java常见面试题/'
+    this.page.title = 'Java Interview Questions'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>if (window.DISQUSWIDGETS === undefined) {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://harry-study-blog.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+} else {
+  DISQUSWIDGETS.getCount({reset: true});
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: 'eca2a7f3e64731ac7a26ce530738c917',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=B5XFmdGuVaYDW7OIBakffpXoKorvphwRiwONIol4puEtr8YiwYAMAk2K7QcExNLY')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

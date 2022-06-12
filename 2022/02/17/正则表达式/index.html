@@ -1,0 +1,907 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Regular Expressions | Harry World</title><meta name="keywords" content="tools,regular expressions"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# 正则表达式 # 1.1. 基本语法 通过一张图表来对正则表达式的基本进行一个回顾    single char quantifiers (数量) position (位置)     \d 匹配数字 * 0 个或者更多 ^ 一行的开头   \w 匹配 word (数字、字母) + 1 个或更多，至少 1 个 $ 一行的结尾   \W 匹配非 word (数字、字母) ? 0 个或 1 个，一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Regular Expressions">
+<meta property="og:url" content="https://harryqu1229.github.io/2022/02/17/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Harry World">
+<meta property="og:description" content="# 正则表达式 # 1.1. 基本语法 通过一张图表来对正则表达式的基本进行一个回顾    single char quantifiers (数量) position (位置)     \d 匹配数字 * 0 个或者更多 ^ 一行的开头   \w 匹配 word (数字、字母) + 1 个或更多，至少 1 个 $ 一行的结尾   \W 匹配非 word (数字、字母) ? 0 个或 1 个，一个">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d">
+<meta property="article:published_time" content="2022-02-16T11:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-12T01:02:22.173Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="tools">
+<meta property="article:tag" content="regular expressions">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://harryqu1229.github.io/2022/02/17/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Regular Expressions',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-12 13:02:22'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://miro.medium.com/max/1036/1*WfLCo4Ql59kxq_0frEe7xQ.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry World</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Regular Expressions</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-02-16T11:00:00.000Z" title="Created 2022-02-17 00:00:00">2022-02-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-06-12T01:02:22.173Z" title="Updated 2022-06-12 13:02:22">2022-06-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tools/">Tools</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tools/regular-expressions/">regular expressions</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>19min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Regular Expressions"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><span class="disqus-comment-count"><a href="https://harryqu1229.github.io/2022/02/17/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/#disqus_thread"></a></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="正则表达式"><a class="markdownIt-Anchor" href="#正则表达式">#</a> 正则表达式</h1>
+<h2 id="11-基本语法"><a class="markdownIt-Anchor" href="#11-基本语法">#</a> 1.1. 基本语法</h2>
+<p>通过一张图表来对正则表达式的基本进行一个回顾</p>
+<table>
+<thead>
+<tr>
+<th>single char</th>
+<th>quantifiers (数量)</th>
+<th>position (位置)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\d 匹配数字</td>
+<td>* 0 个或者更多</td>
+<td>^ 一行的开头</td>
+</tr>
+<tr>
+<td>\w 匹配 word (数字、字母)</td>
+<td>+ 1 个或更多，至少 1 个</td>
+<td>$ 一行的结尾</td>
+</tr>
+<tr>
+<td>\W 匹配<strong>非</strong> word (数字、字母)</td>
+<td>? 0 个或 1 个，一个 Optional</td>
+<td>\b 单词 &quot;结界&quot;(word bounds)</td>
+</tr>
+<tr>
+<td>\s 匹配 white space (包括空格、tab 等)</td>
+<td>{min,max} 出现次数在一个范围内</td>
+<td></td>
+</tr>
+<tr>
+<td>\S 匹配<strong>非</strong> white space (包括空格、tab 等)</td>
+<td>{n} 匹配出现 n 次的</td>
+<td></td>
+</tr>
+<tr>
+<td>. 匹配任何，任何的字符</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="111-single-char"><a class="markdownIt-Anchor" href="#111-single-char">#</a> 1.1.1. single char</h3>
+<p>假设你有一段字符如下：</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/7/29/164e60dc2b93eb2a~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<ul>
+<li><code>\w</code></li>
+</ul>
+<p>将匹配所有 word，当然，() - 等字符除外</p>
+<ul>
+<li><code>\w\w\w</code></li>
+</ul>
+<p>发现匹配的有’ <code>The</code> se  <code>are</code>   <code>som</code> e  <code>pho</code> ne  <code>number</code> s …’ 注意正则表达式是匹配一个连续串的规则，所以可以看到三个字母的单词可以匹配到，6 个单词的也可以匹配到。</p>
+<ul>
+<li><code>\s\s</code></li>
+</ul>
+<p>匹配到一行中连续两个空格</p>
+<h2 id="quantifiers"><a class="markdownIt-Anchor" href="#quantifiers">#</a> quantifiers</h2>
+<p>假设我们有这一段话：</p>
+<pre class="line-numbers language-none"><code class="language-none">The colors of the rainbow have many colours 
+and the rainbow does not  have a single colour.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>我们想把所有的颜色找出来 <code>colors</code>   <code>colours</code>   <code>colour</code></p>
+<p><strong>答案</strong>  <code>colou?rs?</code>  嗯，看起来很简单，很方便。</p>
+<hr>
+<p>好了，现在想要匹配一行中的 4 个数字，或者一行中的 5 个字母等，这时候用 quantifiers 就非常方便了。</p>
+<blockquote>
+<p>我现在想找 5 个字母组成的单词</p>
+</blockquote>
+<ul>
+<li>
+<p><code>\w&#123;5&#125;</code>  这样可以吗？嗯… 不行的，看下它匹配的内容，如下: ’ <code>These</code>  are some  <code>phone</code>   <code>numbe</code> rs 915-555-1234…’ 的确，我们模板给的很简单，它只找一行中，连续出现 5 个字母的序列。所以现在改进一下好了</p>
+</li>
+<li>
+<p><code>\w&#123;5&#125;\s</code>  为了能找到单词，所以我希望 5 个字母后，跟一个空格的序列，这样应该可以了吧，看下匹配情况： ‘ <code>These</code> are some  <code>phone</code> nu <code>mbers</code> 915-555-1234…’ 嗯，是的，只有目前这些方法，是做不到的。 所以，我们需要第三个工具 “position”</p>
+</li>
+</ul>
+<h3 id="112-position"><a class="markdownIt-Anchor" href="#112-position">#</a> 1.1.2. position</h3>
+<p>回到刚才的问题之前，先熟悉下 <code>^</code>   <code>$</code>  和  <code>\b</code></p>
+<pre class="line-numbers language-none"><code class="language-none">This is somthing
+is about
+a blah
+words
+sequence of words
+Hello and
+GoodBye and 
+Go gogo!
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>来看下各种正则所匹配的内容</p>
+<ul>
+<li>
+<p><code>\w+</code>  这个应该毫无疑问，匹配所有的 words</p>
+</li>
+<li>
+<p><code>^\w+</code>  多了一个 <code>^</code> ，这样子，就只能匹配到每一行开头的单词了 <code>This</code>   <code>is</code>   <code>a</code>   <code>words</code>   <code>sequence</code>   <code>Hello</code>   <code>GoodBye</code>   <code>Go</code></p>
+</li>
+<li>
+<p><code>\w+$</code>  这样就能匹配到每行的最后一个字母</p>
+</li>
+</ul>
+<p>回到刚才的问题</p>
+<blockquote>
+<p>现在想找 5 个字母组成的单词</p>
+</blockquote>
+<p>就变得很简单了，使用单词结界符 <code>\b</code></p>
+<p>答案就是 <code>\b\w&#123;5&#125;\b</code></p>
+<h3 id="113-找个电话号码吧"><a class="markdownIt-Anchor" href="#113-找个电话号码吧">#</a> 1.1.3. 找个电话号码吧</h3>
+<p>最后，找一个刚才出现的电话号 <code>123-456-1231</code></p>
+<p>用以上最基本的正则方法就是  <code>\d&#123;3&#125;-\d&#123;3&#125;-\d&#123;4&#125;</code> ，这样就找到了。 但是有的时候，电话号码是 <code>123.456.1234</code>  或者  <code>(212)867-4233</code>  的结构怎么办呢？</p>
+<p>正则表达式中的 <code>或</code> 或者其他表达方式，下面一一来介绍。</p>
+<h2 id="12-字符分类char-class"><a class="markdownIt-Anchor" href="#12-字符分类char-class">#</a> 1.2. 字符分类 (char class)</h2>
+<p>前面记录了最基本的方法，接下来说一下分类符 <code>[]</code></p>
+<p>这个符号用来表示逻辑关系 <code>或</code> ，比如 <code>[abc]</code>  表示 a 或者 b 或 c. <code>[-.]</code>  表示符号 <code>-</code>  或者 <code>.</code>  号 (<strong>注意这里，在 <code>[]</code>  中的 <code>.</code>  号代表的就是这个符号，但是如果在其外面，表示个匹配所有。 所以如果不在 <code>[]</code>  之中，想要匹配’.’，就要通过转意符号 <code>\.</code> </strong>)</p>
+<h3 id="121-分类的简单应用"><a class="markdownIt-Anchor" href="#121-分类的简单应用">#</a> 1.2.1. 分类的简单应用</h3>
+<p>字符序列：</p>
+<pre class="line-numbers language-none"><code class="language-none">The lynk is quite a link don&#39;t you think? l nk l(nk
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>正则表达式：  <code>l[yi (]nk</code></p>
+<p>结果:</p>
+<pre class="line-numbers language-none"><code class="language-none">lynk  link  l nk   l(nk
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>很容易理解的，就是表达 <code>或</code> 逻辑。</p>
+<h3 id="122-匹配所有可能的电话号码"><a class="markdownIt-Anchor" href="#122-匹配所有可能的电话号码">#</a> 1.2.2. 匹配所有可能的电话号码</h3>
+<p>好了，现在回到之前遗留的问题，有以下字段，请匹配所有可能的电话号码：</p>
+<pre class="line-numbers language-none"><code class="language-none">These are some phone numbers 915-134-3122. Also,
+you can call me at 643.123.1333 and of course,
+I&#39;m always reachable at (212)867-5509
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>好的，一步一步来，刚才我们使用 <code>\d&#123;3&#125;-\d&#123;3&#125;-\d&#123;4&#125;</code>  匹配了连字符的情况。现在我们可以很轻松的把 <code>.</code>  这种情况加进去了</p>
+<p>第一步：  <code>\d&#123;3&#125;[-.]\d&#123;3&#125;[-.]\d&#123;4&#125;</code></p>
+<p>第二步：为了能够匹配括号，可以使用？来，因为这是一个 option 选择。所以最后就成了</p>
+<p><code>\(?\d&#123;3&#125;[-.)]\d&#123;3&#125;[-.]\d&#123;4&#125;</code></p>
+<p><strong>这里还是要说明，在 [] 中，特殊字符不需要转义，可以直接使用，比如 <code>[.()]</code> , 但是在外面，是需要转义的 <code>\(</code>   <code>\.</code>  等</strong></p>
+<h3 id="123-的特殊语法"><a class="markdownIt-Anchor" href="#123-的特殊语法">#</a> 1.2.3. [] 的特殊语法</h3>
+<p>刚才介绍了最简单和基本的功能，但是有些特殊的地方需要注意</p>
+<ol>
+<li>- 连接符是第一个字符时</li>
+</ol>
+<p>比如 <code>[-.]</code>  的含义是连字符 <code>-</code>  或者点符 <code>.</code> 。 但是，如果当连字符不是第一个字符时，比如 <code>[a-z]</code> ，这就表示是从字母 a 到字符 z。</p>
+<ol start="2">
+<li>[] 中的 ^</li>
+</ol>
+<p><code>^</code>  在之前介绍中，是表示一行开头，但是在 <code>[]</code>  中，有着不同的含义。  <code>[ab]</code>  表示 a 或者 b  <code>[^ab]</code>  啥都行，只要不是 a 或 b (anythings except a and b)，相当于取反</p>
+<h3 id="124-和"><a class="markdownIt-Anchor" href="#124-和">#</a> 1.2.4. [] 和 ()</h3>
+<p>除了使用 <code>[]</code>  表示或逻辑， <code>()</code>  也是可以的。用法是 <code>(a|b)</code>  表示 a 或者 b</p>
+<p>比如下面的例子，匹配所有 email</p>
+<pre class="line-numbers language-none"><code class="language-none">gaoyaqi411@126.com  
+dyumc@google.net 
+sam@sjtu.edu
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>思路：</p>
+<p>首先要想我到底相匹配什么，这里我想匹配的是</p>
+<ol>
+<li>任何一个以 words 开头的，一个或更多  <code>\w+</code></li>
+<li>紧接着是一个 <code>@</code> 符号  <code>\w+@</code></li>
+<li>接着有一个或者更多的 words  <code>\w+@\w+</code></li>
+<li>接着一个 <code>.</code>  标点  <code>\w+@\w+\.</code></li>
+<li>接着一个 <code>com</code>   <code>net</code>  或  <code>edu</code>   <code>\w+@\w+\.(com|net|edu)</code></li>
+</ol>
+<p><strong>还是提醒注意第四步的 <code>\.</code>  转义符号</strong></p>
+<p>好了，这样几可以匹配以上的所有邮箱了。但是还有一个问题，因为邮箱用户名是可以有 <code>.</code>  的，比如 <code>vincent.ko@126.com</code></p>
+<p>其实仍然很简单，修复如下：  <code>[\w.]+@\w+\.(com|net|edu)</code></p>
+<h3 id="125-总结"><a class="markdownIt-Anchor" href="#125-总结">#</a> 1.2.5. 总结</h3>
+<ol>
+<li><code>[]</code>  的作用，用英文表达就是 &quot;alternation&quot;, 表达一个或的逻辑；</li>
+<li><code>/[-.(]/</code>  在符号中的连字符 <code>-</code>  放在第一位表示连字符本身，如果放在中间，表示 &quot;从… 到…&quot;，比如 <code>[a-z]</code>  表示 a-z</li>
+<li><code>[.)]</code>  括号中的特殊符号不需要转义，就表示其本身</li>
+<li><code>[^ab]</code>  括号中的 <code>^</code>  表示非，anythings except  <code>a</code>  and  <code>b</code></li>
+<li><code>(a|b)</code>  也可表示选择，但是它有更强大的功能…</li>
+</ol>
+<p>所以， <code>()</code>  的强大功能是什么呢？ 分组捕获，这对序列的替换、交换是很有帮助的。 后面一节进行学习记录</p>
+<h2 id="13-分组捕获capturing-groups"><a class="markdownIt-Anchor" href="#13-分组捕获capturing-groups">#</a> 1.3. 分组捕获 (capturing groups)</h2>
+<p>什么是分组捕获，现在回到之前电话号码的例子</p>
+<pre class="line-numbers language-none"><code class="language-none">212-555-1234
+915-412-1333
+
+&#x2F;&#x2F;我想要保留区号，把后面的电话号码变为通用性的
+👇👇👇👇👇👇👇👇👇👇👇👇
+
+212-xxx-xxxx
+915-xxx-xxxx
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>按照之前的做法 <code>\d&#123;3&#125;-\d&#123;3&#125;-\d&#123;4&#125;</code> , 这种匹配的方式，是将整个电话号码作为一个组 (group) 匹配起来。 我们把 <code>212-555-1234</code>  这样的叫 <code>Group0</code> 。</p>
+<p>这个时候，如果我们加了一个括号 <code>\d&#123;3&#125;-(\d&#123;3&#125;)-\d&#123;4&#125;</code> ，那么匹配到的 <code>555</code>  就叫 <code>Group1</code> 。 以此类推，如果有两个小括号 <code>\d&#123;3&#125;-(\d&#123;3&#125;)-(\d&#123;4&#125;)</code>  那么分组就是下面的情况：</p>
+<pre class="line-numbers language-none"><code class="language-none">212-555-1234   Group0
+555            Group1
+1234           Group2
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="131-选择分组"><a class="markdownIt-Anchor" href="#131-选择分组">#</a> 1.3.1. 选择分组</h3>
+<p>现在组已经分好，那么如何选择已经匹配的分组？</p>
+<p>这里有两种方法，第一种使用 <code>$</code>  符号，比如 <code>$1</code>  代表 <code>555</code> , <code>$2</code>  代表 <code>1234</code> ；第二种，使用 <code>\</code> , 比如 <code>\1</code>  代表 <code>555</code> 。两种的使用场景不一样，先讲 <code>$</code></p>
+<p>现在为了满足最开始的要求，我们可以这么做</p>
+<pre class="line-numbers language-none"><code class="language-none">reg: \(?(\d&#123;3&#125;)[-.)]\d&#123;3&#125;[-.]\d&#123;4&#125;
+
+replace: $1-xxx-xxxx
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>ps: 这里可以直接用 JS 的 replace 函数进行操作，但是正则不是 JS 专属的，所以这里先介绍通用方法，之后对 JS 部分进行总结</strong></p>
+<h3 id="132-实景训练"><a class="markdownIt-Anchor" href="#132-实景训练">#</a> 1.3.2. 实景训练</h3>
+<ol>
+<li>现在有一个名单列表，但是姓和名称是反的，我需要把他交换过来</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">shiffina, Daniel
+shifafl, Daniell
+shquer, Danny
+...
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>实现方法:</p>
+<pre class="line-numbers language-none"><code class="language-none">reg: (\w+),\s(\w+)
+
+replace: $2 $1
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意： <code>$0</code>  是所有匹配到的，所以第一个加括号的是 <code>$1</code></p>
+<ol start="2">
+<li>匹配 markdown 中的 link 标签，并替换为 html 标签</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">[google](http:&#x2F;&#x2F;google.com)
+[itp](http:&#x2F;&#x2F;itp.nyu.edu)
+[Coding Rainbow](http:&#x2F;&#x2F;codingrainbow.com)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>解析： 这道题有些坑，需要慢慢来。</p>
+<p>看到这个，第一个想考虑匹配 <code>[google]</code>  这个东西，立马想到正则表达式 <code>\[.*\]</code> 。 这个是巨大的坑，在当前来看，它的确能正确匹配到上面的三条。 但是如果文本是这样的：</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/164e60dc2f6bb0bd%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>看到了，第一行的内容会全部匹配下来，而不能区分 <code>[google]</code>  和 <code>[test]</code> 。 之所以这样，<strong>是因为 <code>.</code>  是贪婪的，他表示所有，所有能匹配到的，所以当然也包括了 <code>]</code> ，一直到这一行的最后一个 <code>]</code> ，它才停止。</strong></p>
+<p>所以为了让它能正确匹配，需要去掉这种贪婪的属性。这里用到 <code>？</code>  。 当 <code>?</code>  放在了 <code>quantifiers</code>  符号后，表示去掉贪婪属性，匹配到终止条件，即可停下。</p>
+<p><code>\[.*?\]</code>  这样子，就可以将 <code>[google]</code>  和 <code>[test]</code>  分开，效果如下：</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/7/29/164e60dc30787dd8~tplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>接下来完成所有内容：</p>
+<pre class="line-numbers language-none"><code class="language-none">reg: \[(.*?)\]\((http.*?)\)
+
+replace: &lt;a href&#x3D;&quot;$2&quot;&gt;$1&lt;&#x2F;a&gt;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="133-使用选择器"><a class="markdownIt-Anchor" href="#133-使用选择器">#</a> 1.3.3. 使用 <code>\</code>  选择器</h3>
+<p><code>$</code>  选择符是在替换的时候进行的标志或选择，但是如果在正则表达式本身，就要使用 <code>\</code>  选择了。比如以下的场景</p>
+<pre class="line-numbers language-none"><code class="language-none">This is is a a dog , I think think this is is really
+a a good good dog. Don&#39;t you you thinks so so ?
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>我们想要匹配比如 <code>is is</code>   <code>so so</code>  这样连续的序列，就用到了下面的表达方式:  <code>(\w+)\s\1</code></p>
+<p>效果:</p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/164e60dc2e523db9%7Etplv-t2oaga2asx-watermark.awebp" alt=""></p>
+<p>嗯，差不多达到效果，但是有一些小的 bug。比如第一句话 <code>This is is a</code>  这个就匹配不准确，会把第一个 This 的后面字母匹配进去。 <strong>这就用到第一节说的字符结界  <code>\b</code>  了</strong>，就变成了 <code>\b(\w+)\s\1\b</code></p>
+<p>好了，大功告成，就不贴效果图了，自行脑补就好了。</p>
+<h3 id="134-总结"><a class="markdownIt-Anchor" href="#134-总结">#</a> 1.3.4. 总结</h3>
+<ol>
+<li>分组捕获，使用 () 进行数据分组，编号 0 代表整个匹配项，选择的分组从 1 号开始</li>
+<li>选择器可以使用 <code>$1</code>  和 <code>\1</code> ，但是使用场景不同， <code>\</code>  用在正则表达式自己身上</li>
+<li><code>?</code>  符号可以禁止贪婪属性，放在 <code>.*</code>  之后，表示一次匹配遇到重点就可以停止。否则将会一直向后匹配。</li>
+</ol>
+<h2 id="14-在javascript中的应用"><a class="markdownIt-Anchor" href="#14-在javascript中的应用">#</a> 1.4. 在 JavaScript 中的应用</h2>
+<p>在 js 中，主要的正则表达式都是涉及到 string 的应用。</p>
+<pre class="line-numbers language-none"><code class="language-none">var str &#x3D; &quot;hello&quot;
+var r &#x3D; &#x2F;w+&#x2F;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>这两个分别是 string 和 reg 的字面量创建方法。当要使用正则来进行操作的时候，使用了 <code>r.test()</code>  和 <code>str.match()</code>  以及 <code>str.replace</code>  等方法。</p>
+<h3 id="141-regtest"><a class="markdownIt-Anchor" href="#141-regtest">#</a> 1.4.1. reg.test()</h3>
+<p>正则表达式本身有一个 test 的方法，这个方法只能测试是否包含，返回一个 bool 变量。</p>
+<pre class="line-numbers language-none"><code class="language-none">var r &#x3D; &#x2F;\d&#123;3&#125;&#x2F;;
+var a &#x3D; &#39;123&#39;;
+var b &#x3D; &#39;123ABC&#39;;
+var c &#x3D; &#39;abc&#39;;
+
+r.test(a)  &#x2F;&#x2F;true
+r.test(b) &#x2F;&#x2F;true
+r.test(c) &#x2F;&#x2F;false
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>嗯，这个很简单，而且用的实际不多，下面着重讲 str 上的一些方法。</p>
+<h3 id="142-strmatch"><a class="markdownIt-Anchor" href="#142-strmatch">#</a> 1.4.2. str.match()</h3>
+<p>与 test () 不同，不只是返回 bool 变量，它会返回你所匹配到的内容。</p>
+<pre class="line-numbers language-none"><code class="language-none">var r &#x3D; &#x2F;compus&#x2F;
+var reg &#x3D; &#x2F;w+&#x2F;
+var s &#x3D; &quot;compus, I know something about you&quot;
+r.test(s)  &#x2F;&#x2F;true
+s.match(r)  &#x2F;&#x2F;[&quot;compus&quot;]
+s.match(reg) &#x2F;&#x2F;[&quot;compus&quot;]
+
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>等等，好像有点问题，为什么最后一个返回的也是 &quot;compus&quot;？这不科学。</p>
+<p>好吧，实际上，match () 返回了第一个可以匹配的序列。想要实现之前的效果，就要用到 JS 里关于正则的几个 flag</p>
+<h4 id="1421-flag"><a class="markdownIt-Anchor" href="#1421-flag">#</a> 1.4.2.1. flag</h4>
+<p>这个标志就在建立正则的时候就要有的，主要有三个</p>
+<table>
+<thead>
+<tr>
+<th>flag</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>g</td>
+<td>全部的，给我匹配全部的</td>
+</tr>
+<tr>
+<td>i</td>
+<td>忽略大小写</td>
+</tr>
+<tr>
+<td>m</td>
+<td>多行匹配</td>
+</tr>
+</tbody>
+</table>
+<p>所以为了解决刚才的问题，只要这样子设置 reg 就可以了</p>
+<pre class="line-numbers language-none"><code class="language-none">var reg &#x3D; &#x2F;w+&#x2F;g
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>看下面一个练习</p>
+<pre class="line-numbers language-none"><code class="language-none">var str &#x3D; &quot;Here is a Phone Number 111-2313 and 133-2311&quot;
+
+var r &#x3D; &#x2F;\d&#123;3&#125;[-.]\d&#123;4&#125;&#x2F;
+var rg &#x3D; &#x2F;\d&#123;3&#125;[-.]d&#123;4&#125;&#x2F;g
+
+console.log(str.match(r)); &#x2F;&#x2F;[&quot;111-2313&quot;]
+console.log(str.match(rg));&#x2F;&#x2F;[&quot;111-2313&quot;,&quot;133-2311&quot;]
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>嗯，找电话号码，是的，很方便。但是还有一个问题，刚才说的分组，那么 match 会返回分组吗？</p>
+<pre class="line-numbers language-none"><code class="language-none">var sr &#x3D; &#x2F;(\d&#123;3&#125;)[-.]\d&#123;4&#125;&#x2F;
+var srg &#x3D; &#x2F;(\d&#123;3&#125;)[-.]\d&#123;4&#125;&#x2F;g
+
+console.log(str.match(sr)); &#x2F;&#x2F;[&quot;111-2313&quot;,&quot;111&quot;]
+console.log(str.match(srg)); &#x2F;&#x2F;[&quot;111-2313&quot;,&quot;133-2311&quot;]
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>所以结论是： 当使用了全局 flag <code>g</code>  的时候，不会返回分组，而是全部的匹配结果；如果没有使用 <code>g</code> ，会将匹配到的结果和分组以数组的形式返回。</p>
+<p>那么如何实现全局的分组？</p>
+<h3 id="143-regexec"><a class="markdownIt-Anchor" href="#143-regexec">#</a> 1.4.3. reg.exec()</h3>
+<p>从字面意思来看，正则表达式的执行方法。 这个方法可以实现匹配全局，并返回分组的结果。</p>
+<blockquote>
+<p>reg.exec () 每次调用，返回一个匹配的结果，匹配结果和分组以数组的形式返回，不断的调用即可返回下一个结果，直到返回 <code>null</code></p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">var str &#x3D; &quot;Here is a Phone Number 111-2313 and 133-2311&quot; ;
+var srg &#x3D; &#x2F;(\d&#123;3&#125;)[-.]\d&#123;4&#125;&#x2F;g;
+var result &#x3D; srg.exec(str);
+while(result !&#x3D;&#x3D; null) &#123;
+    console.log(result);
+    result &#x3D; srg.exec(str);
+&#125;
+
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>result 包含的内容可能比想象中的多，它是一个数组，比如第一次执行，他的结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">[&quot;133-2311&quot;, &quot;133&quot;, index: 36, 
+input: &quot;Here is a Phone Number 111-2313 and 133-2311&quot; groups: undefined]
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="144-strsplit"><a class="markdownIt-Anchor" href="#144-strsplit">#</a> 1.4.4. str.split</h3>
+<p>现在来到了更强的功能上，先说下 split，我们知道 split 是将字符串按照某个字符分隔开，比如有以下一段话，需要将其分割成单词。</p>
+<pre class="line-numbers language-none"><code class="language-none">var s &#x3D; &quot;unicorns and rainbows And, Cupcakes&quot;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>分割成单词，首先想到的是空格隔开，于是可以用下面方式实现</p>
+<pre class="line-numbers language-none"><code class="language-none">var result &#x3D; s.split(&#39; &#39;);
+var result1 &#x3D; s.split(&#x2F;\s&#x2F;);
+&#x2F;&#x2F;完全一样的效果
+&#x2F;&#x2F;[&quot;unicorns&quot;, &quot;and&quot;, &quot;rainbows&quot;, &quot;And,&quot;, &quot;Cupcakes&quot;]
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>嗯，这样体现不出来正则的强大，而且最主要的是没有实现要求。因为还有一个 &quot;And,&quot;。所以要用正则了，匹配条件是 <code>逗号或者空格</code></p>
+<pre class="line-numbers language-none"><code class="language-none">result &#x3D; s.split(&#x2F;[,\s]&#x2F;);
+
+&#x2F;&#x2F;[&quot;unicorns&quot;, &quot;and&quot;, &quot;rainbows&quot;, &quot;And&quot;, &quot;&quot;, &quot;Cupcakes&quot;]
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结果仍然和需要的有出入，因为多了一个 &quot;&quot;。 我们并不是想让它分割的依据是 <code>逗号或者空格</code> ，依据应该是 <code>逗号或空格所在的连续序列</code> 。 在原来的基础上加一个 <code>+</code> ，改成 <code>/[,\s]+/</code> ，这个含义就是 <code>一个单独的逗号，或者一个单独的空格</code></p>
+<pre class="line-numbers language-none"><code class="language-none">result &#x3D; s.split(&#x2F;[,\s]+&#x2F;);
+&#x2F;&#x2F; [&quot;unicorns&quot;, &quot;and&quot;, &quot;rainbows&quot;, &quot;And&quot;, &quot;Cupcakes&quot;]
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="1441-单词分割"><a class="markdownIt-Anchor" href="#1441-单词分割">#</a> 1.4.4.1. 单词分割</h4>
+<p>好了，拓展一下，实现一个段落的单词分割，一个正则表达式就是</p>
+<pre class="line-numbers language-none"><code class="language-none">result &#x3D; s.split(&#x2F;[,.!?\s]+&#x2F;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>当然，有个最简单的方法，我们可以这样去做</p>
+<pre class="line-numbers language-none"><code class="language-none">result &#x3D; s.split(&#x2F;\W+&#x2F;);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>接着，如果我们想将一个段落的句子都分隔开，一个可以实现的表达式就是</p>
+<pre class="line-numbers language-none"><code class="language-none">result &#x3D; s.split(&#x2F;[.,!?]+&#x2F;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>最后，有一个小需求，就是在分割句子的同时，还想把相应的分隔符保留下来。</p>
+<pre class="line-numbers language-none"><code class="language-none">var s &#x3D; 
+&quot;Hello,My name is Vincent. Nice to Meet you!What&#39;s your name? Haha.&quot;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>这是一个小小的 ponit，记住<strong>如果想要保留分隔符，只要给匹配的内容分组即可</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">var result &#x3D; s.split(&#x2F;([.,!?]+)&#x2F;)
+&#x2F;&#x2F;[&quot;Hello&quot;, &quot;,&quot;, &quot;My name is Vincent&quot;, &quot;.&quot;, &quot; Nice to Meet you&quot;, &quot;!&quot;, &quot;What&#39;s your name&quot;, &quot;?&quot;, &quot; Haha&quot;, &quot;.&quot;, &quot;&quot;]
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>可以看到，这样就会把分隔符也存储起来。</p>
+<h3 id="145-strreplace"><a class="markdownIt-Anchor" href="#145-strreplace">#</a> 1.4.5. str.replace()</h3>
+<p>replace 也是字符串的方法，它的基本用法是 <code>str.replace(reg,replace|function)</code> ，第一个参数是正则表达式，代表匹配的内容，第二个参数是替换的字符串或者一个回掉函数。</p>
+<p><strong>注意，replace 不会修改原字符串，只是返回一个修改后的字符串；除此外，正则表达式如果没有使用 <code>g</code>  标志，也和 <code>match</code>  一样，只匹配 / 替换第一个</strong></p>
+<h4 id="1451-最简单的替换"><a class="markdownIt-Anchor" href="#1451-最简单的替换">#</a> 1.4.5.1. 最简单的替换</h4>
+<blockquote>
+<p>替换一个序列中的元音字母 (aeiou)，将其替换成一个 double。 比如 x-&gt;xx</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">var s &#x3D; &quot;Hello,My name is Vincent.&quot;
+var result &#x3D; s.replace(&#x2F;([aeiou])&#x2F;g,&quot;$1$1&quot;)
+&#x2F;&#x2F;&quot;Heelloo,My naamee iis Viinceent.&quot;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>注意，第二个参数必须是字符串；注意不要忘记加 <code>g</code> </strong></p>
+<h4 id="1452-牛x哄哄的function参数来了"><a class="markdownIt-Anchor" href="#1452-牛x哄哄的function参数来了">#</a> 1.4.5.2. 牛 x 哄哄的 function 参数来了</h4>
+<p>嗯，这才是最强大的地方，第二参数传入 function，先看一个最简单的示例</p>
+<pre class="line-numbers language-none"><code class="language-none">var s &#x3D; &quot;Hello,My name is Vincent. What is your name?&quot;
+var newStr &#x3D; s.replace(&#x2F;\b\w&#123;4&#125;\b&#x2F;g,replacer)
+console.log(newStr)
+function replacer(match) &#123;
+    console.log(match);
+    return match.toUpperCase();
+&#125;
+&#x2F;*
+name
+What
+your
+name
+Hello,My NAME is Vincent. WHAT is YOUR NAME?
+*&#x2F;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>所以，函数的参数是匹配到的内容，返回的是需要替换的内容。好了，基本示例解释了基本用法，那么之前讨论的分组怎么办？如何实现分组呢？</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;分组
+
+function replacer(match,group1,group2) &#123;
+    console.log(group1);
+    console.log(group2);
+&#125;
+
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果正则表达式分组处理，那么在回调函数中，函数的第二个、第三参数就是 group1,group2。这样子，就可以做很多神奇的事情</p>
+<h4 id="1453-综合练习题"><a class="markdownIt-Anchor" href="#1453-综合练习题">#</a> 1.4.5.3. 综合练习题</h4>
+<ol>
+<li>判断一个字符串中出现次数最多的字符，并统计次数</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">var s &#x3D; &#39;aaabbbcccaaabbbaaa&#39;;
+var a &#x3D; s.split(&#39;&#39;).sort().join(&quot;&quot;);  &#x2F;&#x2F;&quot;aaaaaaaaabbbbbbccc&quot;
+var ans &#x3D; a.match(&#x2F;(\w)\1+&#x2F;g);
+ans.sort(function(a,b) &#123;
+    return a.length - b.length;
+&#125;)
+console.log(&#39;ans is : &#39; + ans[ans.length-1])
+
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="146-总结"><a class="markdownIt-Anchor" href="#146-总结">#</a> 1.4.6. 总结</h3>
+<ol>
+<li>在 js 中，正则表达式字面量 <code>/reg/</code>  和字符串字面量 <code>&quot;str&quot;</code>  用于创建正则和字符串。其中正则上有两个方法 <code>reg.test()</code>  和 <code>reg.exec()</code></li>
+<li><code>reg.test(str)</code>  方法，返回布尔变量，用于指示是否有所匹配；  <code>reg.exec(str)</code>  有点类似与迭代器，每次执行，返回匹配结果和分组，直到返回为 <code>null</code>  结束。</li>
+<li>字符串方法主要有 <code>str.match(reg)</code> , <code>str.split(reg)</code>  和 <code>str.replace(reg,str|function)</code>  三种方法。</li>
+<li><code>match</code>  比较特殊，如果正则包含了分组，且没有 <code>g</code>  标志，则返回匹配内容和分组；如果没有分组，且有 <code>g</code>  标志，返回所有匹配内容</li>
+<li><code>split</code>  方法主要用于字符串分割，如果想要保存分隔符，记得将匹配内容分组 (用小括号包起来)</li>
+<li><code>replace</code>  是最强大的方法，当使用回掉函数时，返回值就是替换值；参数分别为 <code>匹配值</code>   <code>group1</code>   <code>group2</code> …</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2022/02/17/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">https://harryqu1229.github.io/2022/02/17/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/tools/">tools</a><a class="post-meta__tags" href="/tags/regular-expressions/">regular expressions</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/15/Vue2/"><img class="prev-cover" src="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">My Vue2 notes</div></div></a></div><div class="next-post pull-right"><a href="/2022/02/20/%E5%88%86%E5%B8%83%E5%BC%8F/"><img class="next-cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Distributed services</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/12/30/Maven/" title="My Maven notes"><img class="cover" src="https://w.wallhaven.cc/full/8o/wallhaven-8oply1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-30</div><div class="title">My Maven notes</div></div></a></div><div><a href="/2021/12/30/maven,netty,rocketmq/" title="Maven + Netty + Rocketmq"><img class="cover" src="https://w.wallhaven.cc/full/28/wallhaven-28wymm.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-30</div><div class="title">Maven + Netty + Rocketmq</div></div></a></div><div><a href="/2021/12/11/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95/" title="Commonly used git commands"><img class="cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-11</div><div class="title">Commonly used git commands</div></div></a></div><div><a href="/2022/01/01/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/" title="Build tool -> Maven"><img class="cover" src="https://w.wallhaven.cc/full/rd/wallhaven-rdw8dj.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">Build tool -> Maven</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text"> 正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text"> 1.1. 基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#111-single-char"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 1.1.1. single char</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#quantifiers"><span class="toc-number">1.2.</span> <span class="toc-text"> quantifiers</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#112-position"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 1.1.2. position</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#113-%E6%89%BE%E4%B8%AA%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E5%90%A7"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 1.1.3. 找个电话号码吧</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E5%AD%97%E7%AC%A6%E5%88%86%E7%B1%BBchar-class"><span class="toc-number">1.3.</span> <span class="toc-text"> 1.2. 字符分类 (char class)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#121-%E5%88%86%E7%B1%BB%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 1.2.1. 分类的简单应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#122-%E5%8C%B9%E9%85%8D%E6%89%80%E6%9C%89%E5%8F%AF%E8%83%BD%E7%9A%84%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 1.2.2. 匹配所有可能的电话号码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#123-%E7%9A%84%E7%89%B9%E6%AE%8A%E8%AF%AD%E6%B3%95"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 1.2.3. [] 的特殊语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#124-%E5%92%8C"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 1.2.4. [] 和 ()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#125-%E6%80%BB%E7%BB%93"><span class="toc-number">1.3.5.</span> <span class="toc-text"> 1.2.5. 总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E5%88%86%E7%BB%84%E6%8D%95%E8%8E%B7capturing-groups"><span class="toc-number">1.4.</span> <span class="toc-text"> 1.3. 分组捕获 (capturing groups)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#131-%E9%80%89%E6%8B%A9%E5%88%86%E7%BB%84"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 1.3.1. 选择分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#132-%E5%AE%9E%E6%99%AF%E8%AE%AD%E7%BB%83"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 1.3.2. 实景训练</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#133-%E4%BD%BF%E7%94%A8%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 1.3.3. 使用 \  选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#134-%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.4.</span> <span class="toc-text"> 1.3.4. 总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E5%9C%A8javascript%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.5.</span> <span class="toc-text"> 1.4. 在 JavaScript 中的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#141-regtest"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 1.4.1. reg.test()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#142-strmatch"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 1.4.2. str.match()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1421-flag"><span class="toc-number">1.5.2.1.</span> <span class="toc-text"> 1.4.2.1. flag</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#143-regexec"><span class="toc-number">1.5.3.</span> <span class="toc-text"> 1.4.3. reg.exec()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#144-strsplit"><span class="toc-number">1.5.4.</span> <span class="toc-text"> 1.4.4. str.split</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1441-%E5%8D%95%E8%AF%8D%E5%88%86%E5%89%B2"><span class="toc-number">1.5.4.1.</span> <span class="toc-text"> 1.4.4.1. 单词分割</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#145-strreplace"><span class="toc-number">1.5.5.</span> <span class="toc-text"> 1.4.5. str.replace()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1451-%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E6%9B%BF%E6%8D%A2"><span class="toc-number">1.5.5.1.</span> <span class="toc-text"> 1.4.5.1. 最简单的替换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1452-%E7%89%9Bx%E5%93%84%E5%93%84%E7%9A%84function%E5%8F%82%E6%95%B0%E6%9D%A5%E4%BA%86"><span class="toc-number">1.5.5.2.</span> <span class="toc-text"> 1.4.5.2. 牛 x 哄哄的 function 参数来了</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1453-%E7%BB%BC%E5%90%88%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-number">1.5.5.3.</span> <span class="toc-text"> 1.4.5.3. 综合练习题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#146-%E6%80%BB%E7%BB%93"><span class="toc-number">1.5.6.</span> <span class="toc-text"> 1.4.6. 总结</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/06/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide"><img src="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My ultimate data structure and algorithm guide"/></a><div class="content"><a class="title" href="/2022/12/06/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide">My ultimate data structure and algorithm guide</a><time datetime="2022-12-05T11:00:00.000Z" title="Created 2022-12-06 00:00:00">2022-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/27/HTML5%E4%B8%8ECSS3%E9%AB%98%E9%98%B6/" title="My HTML5 and CSS3 notes"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My HTML5 and CSS3 notes"/></a><div class="content"><a class="title" href="/2022/08/27/HTML5%E4%B8%8ECSS3%E9%AB%98%E9%98%B6/" title="My HTML5 and CSS3 notes">My HTML5 and CSS3 notes</a><time datetime="2022-08-26T12:00:00.000Z" title="Created 2022-08-27 00:00:00">2022-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" title="Object Orientated Programming"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/ca78dff38e0bfb81a8e98ad64f749e97bcc55f14/notes-img/Billfish.yWAOuM.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Object Orientated Programming"/></a><div class="content"><a class="title" href="/2022/08/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" title="Object Orientated Programming">Object Orientated Programming</a><time datetime="2022-08-10T12:00:00.000Z" title="Created 2022-08-11 00:00:00">2022-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns"/></a><div class="content"><a class="title" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns">Design Patterns</a><time datetime="2022-06-11T12:00:00.000Z" title="Created 2022-06-12 00:00:00">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns - Command"/></a><div class="content"><a class="title" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command">Design Patterns - Command</a><time datetime="2022-06-10T12:00:00.000Z" title="Created 2022-06-11 00:00:00">2022-06-11</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2022/02/17/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/'
+    this.page.identifier = '2022/02/17/正则表达式/'
+    this.page.title = 'Regular Expressions'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>if (window.DISQUSWIDGETS === undefined) {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://harry-study-blog.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+} else {
+  DISQUSWIDGETS.getCount({reset: true});
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: '87fd6233de4d18b015c3af5a501866b5',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=B5XFmdGuVaYDW7OIBakffpXoKorvphwRiwONIol4puEtr8YiwYAMAk2K7QcExNLY')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

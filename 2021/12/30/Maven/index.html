@@ -1,0 +1,1156 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>My Maven notes | Harry World</title><meta name="keywords" content="build,tools,maven"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# Maven 简介 # Maven 的需求 目前技术在开发中存在的问题  一个项目就是一个工程   如果项目非常庞大，就不适合继续使用 package 来划分模块。最好是每一个模块对应一 个工程，利于分工协作。 借助于 Maven 就可以将一个项目拆分成多个工程。   项目中的 jar 包必须手动 “复制”、“粘贴” 到 WEB-INF&#x2F;lib 目录下   带来的问题是：同样的 jar 包文件重">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My Maven notes">
+<meta property="og:url" content="https://harryqu1229.github.io/2021/12/30/Maven/index.html">
+<meta property="og:site_name" content="Harry World">
+<meta property="og:description" content="# Maven 简介 # Maven 的需求 目前技术在开发中存在的问题  一个项目就是一个工程   如果项目非常庞大，就不适合继续使用 package 来划分模块。最好是每一个模块对应一 个工程，利于分工协作。 借助于 Maven 就可以将一个项目拆分成多个工程。   项目中的 jar 包必须手动 “复制”、“粘贴” 到 WEB-INF&#x2F;lib 目录下   带来的问题是：同样的 jar 包文件重">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://w.wallhaven.cc/full/8o/wallhaven-8oply1.jpg">
+<meta property="article:published_time" content="2021-12-29T11:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-12T01:12:06.888Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="build">
+<meta property="article:tag" content="tools">
+<meta property="article:tag" content="maven">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://w.wallhaven.cc/full/8o/wallhaven-8oply1.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://harryqu1229.github.io/2021/12/30/Maven/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'My Maven notes',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-12 13:12:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Apache_Maven_logo.svg/1280px-Apache_Maven_logo.svg.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry World</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Videos/"><i class="fa-fw fa-regular fa-play"></i><span> Videos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">My Maven notes</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-12-29T11:00:00.000Z" title="Created 2021-12-30 00:00:00">2021-12-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-06-12T01:12:06.888Z" title="Updated 2022-06-12 13:12:06">2022-06-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tools/">Tools</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tools/maven/">maven</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">4.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>15min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="My Maven notes"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><span class="disqus-comment-count"><a href="https://harryqu1229.github.io/2021/12/30/Maven/#disqus_thread"></a></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="maven"><a class="markdownIt-Anchor" href="#maven">#</a> <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Maven&amp;spm=1001.2101.3001.7020">Maven</a> 简介</h1>
+<h2 id="maven的需求"><a class="markdownIt-Anchor" href="#maven的需求">#</a> Maven 的需求</h2>
+<p><strong>目前技术在开发中存在的问题</strong></p>
+<ul>
+<li>一个项目就是一个工程</li>
+</ul>
+<blockquote>
+<p>如果项目非常庞大，就不适合继续使用<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=package&amp;spm=1001.2101.3001.7020"> package</a> 来划分模块。最好是每一个模块对应一 个工程，利于分工协作。</p>
+<p><strong>借助于 Maven 就可以将一个项目拆分成多个工程。</strong></p>
+</blockquote>
+<ul>
+<li>项目中的 jar 包必须手动 “复制”、“粘贴” 到 WEB-INF/lib 目录下</li>
+</ul>
+<blockquote>
+<p>带来的问题是：同样的 jar 包文件重复出现在不同的项目工程中，一方面浪费存储空间，另外也让工程比较臃肿。</p>
+<p><strong>借助 Maven , 可以将 jar 包仅仅保存在 “仓库” 中，有需要使用的工程 &quot; 引用” 这个文件接口，并钚需要真的把 jar 包复制过来。</strong></p>
+</blockquote>
+<ul>
+<li>jar 包需要别人替我们准备好，或到官网下载</li>
+</ul>
+<blockquote>
+<p>不同技术的官网提供 jar 包下载的形式是五花八门的。</p>
+<p>有些技术的官网就是通过 Maven 或 SVN 等专门的工具来提供下载的。</p>
+<p>如果是以不规范的方式下载的 jar 包，那么其中的内容很可能也是不规范的。</p>
+<p><strong>借助于 Maven 可以以一种规范的方式下载 jar 包。因为所有知名框架或第三方工具的 jar 包以及按照统一 - 的规范存放在 了 Maven 的中央仓库中</strong></p>
+<p>以规范的方式下载的 jar 包，内容也是可靠的。</p>
+<p>Tips: &quot;统一的规范&quot; 不仅是对 T 开发领域非常重要，对于整个人类社会都是非常重要的。</p>
+</blockquote>
+<ul>
+<li>一个 jar 包依赖的其他 jar 包需要自己手动加入到项目中</li>
+</ul>
+<blockquote>
+<p>FileUpload 组件–&gt;IO 组件。 commons-fileupload-1.3.jar 依赖于 commons-io-2.0.1jar</p>
+<p>如果所有 jar 包之间的依赖关系都需要程序员自己非常清楚的了解，那么就会极大的增加学习成本。</p>
+<p><strong>Maven 会自动将被依赖的 jar 包导入进来。</strong></p>
+</blockquote>
+<h2 id="maven的概述"><a class="markdownIt-Anchor" href="#maven的概述">#</a> Maven 的概述</h2>
+<blockquote>
+<p>Maven 是 Apache 软件基金会组织维护的一款自动化构建工具。主要有两个作用:</p>
+<ul>
+<li>maven 工程对 jar 包的管理过程</li>
+<li>项目的一键构建</li>
+</ul>
+</blockquote>
+<h3 id="构建"><a class="markdownIt-Anchor" href="#构建">#</a> 构建</h3>
+<blockquote>
+<p>概念：以 “java 原文件”、“框架配置文件”、“JSP”、“HTML”、“图片” 等资源为 “原材料”，去 “生产” 一个可以运行的项目过程</p>
+<p>其中包括：编译、部署、搭建</p>
+</blockquote>
+<ul>
+<li>
+<p>编译：Java 源文件 [User.java]-→编译 - +Class 字节码文件 [User.class]- + 交给 JVM 去执行</p>
+</li>
+<li>
+<p>部署：一个 BS 项目最终运行的并不是动态 Web 工程本身，而是这个动态 Web 工程 &quot; 编译的结果”</p>
+</li>
+</ul>
+<blockquote>
+<p>一个形象的比喻：生的鸡 -&gt; 处理 -&gt; 熟的鸡</p>
+<p>动态 Web 工程 -&gt; 编译、部署 -&gt; 编译结果</p>
+</blockquote>
+<p>图解编译结果与动态 Web 工程的区别：<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426101139471.png" alt=""></p>
+<blockquote>
+<p>开发过程中，所有的路径或配置文件中配置的类路径等都是以编译结果的目录结构为标准的</p>
+</blockquote>
+<p>其中：<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/2021042610112668.png" alt=""></p>
+<p>被称为运行时环境，并不会加载到编译结果中</p>
+<ul>
+<li>
+<p>构建过程的各个环节</p>
+<ul>
+<li>清理：将以前编译得到的旧的 class 字节码文件删除，为下一 - 次编译做准备</li>
+<li>编译：将 Java 源程序编程成 class 字节码文件</li>
+<li>测试：自动测试，自动调用 junit 程序</li>
+<li>报告：测试程序执行的结果</li>
+<li>打包：动态 Web_ I 程打 war 包，Java 工程打 jar 包</li>
+<li>安装: Maven 特定的概念一将打包得到的文件复制到 &quot; 仓库” 中的指定位置</li>
+<li>部署：将动态 Web. 工程生成的 war 包复制到 Servlet 容器的指定目录下，使其可以运行<br>
+<img src="https://img-blog.csdnimg.cn/20210426101116816.png" alt=""></li>
+</ul>
+</li>
+<li>
+<p>自动化构建</p>
+</li>
+</ul>
+<h3 id="安装maven核心程序"><a class="markdownIt-Anchor" href="#安装maven核心程序">#</a> 安装 Maven 核心程序</h3>
+<ul>
+<li>检查 JAVA_HOME 环境变量，maven 本身就是 java 写的，所以要求必须安装 JDK</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426101109532.png" alt=""></p>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener" href="http://maven.apache.org/download.cgi">下载并解压 maven 安装程序</a>，放在一个非中文无空格路径下</p>
+</li>
+<li>
+<p>配置 Maven 相关的环境变量<br>
+<img src="https://img-blog.csdnimg.cn/20210426101059493.png" alt=""></p>
+</li>
+<li>
+<p>验证是否安装成功，在 cmd 中运行 mvn -v 命令</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426101052777.png" alt=""></p>
+<h3 id="第一个maven工程原生maven"><a class="markdownIt-Anchor" href="#第一个maven工程原生maven">#</a> 第一个 Maven 工程（原生 Maven）</h3>
+<ul>
+<li>创建约定的目录结构</li>
+</ul>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties">目录结构
+Hello						工程名
+|---src						源码
+|---|---main				放主程序
+|---|---|---java			存放java源文件
+|---|---|---resources		存放框架或其他工具的配置文件
+|---|---test				存放测试程序
+|---|---|---java			存放java源文件
+|---|---|---resources		存放框架或其他工具的配置文件
+|---pom.xml					Maven的核心配置文件
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>手动创建时为什么要遵守约定的目录结构？</p>
+<p>Maven 要负责我们这个项目的自动化构建，以编译为例，Maven 要想自动进行编译，那么它必须知道 Java 源文件保存在哪里</p>
+<p>而，我们自定义的东西要想让框架知道或工具知道，有两种方式</p>
+<ul>
+<li>通过配置的方式告诉框架</li>
+<li>按照框架约定的来创建</li>
+</ul>
+</blockquote>
+<ul>
+<li>编写 pom.xml</li>
+</ul>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" ?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>modelVersion</span><span class="token punctuation">></span></span>4.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>modelVersion</span><span class="token punctuation">></span></span>
+
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.atguigu.maven<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>Hello<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.0.1-SNAPSHOT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>Hello<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+	  
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>junit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>junit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>4.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>在 src/main/java/com/atguigu/maven 目录下新建文件<strong> Hello.java</strong></li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>atguigu<span class="token punctuation">.</span>maven</span><span class="token punctuation">;</span>
+		<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Hello</span> <span class="token punctuation">&#123;</span>
+			<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+				<span class="token keyword">return</span> <span class="token string">"Hello "</span><span class="token operator">+</span>name<span class="token operator">+</span><span class="token string">"!"</span><span class="token punctuation">;</span>
+			<span class="token punctuation">&#125;</span>
+		<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>在 /src/test/java/com/atguigu/maven 目录下新建测试文件<strong> HelloTest.java</strong></li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>atguigu<span class="token punctuation">.</span>maven</span><span class="token punctuation">;</span>	
+		<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span></span><span class="token class-name">Test</span><span class="token punctuation">;</span>
+		<span class="token keyword">import</span> <span class="token keyword">static</span> <span class="token namespace">junit<span class="token punctuation">.</span>framework<span class="token punctuation">.</span></span><span class="token class-name">Assert</span><span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+		<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloTest</span> <span class="token punctuation">&#123;</span>
+			<span class="token annotation punctuation">@Test</span>
+			<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+				<span class="token class-name">Hello</span> hello <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token class-name">String</span> results <span class="token operator">=</span> hello<span class="token punctuation">.</span><span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token string">"litingwei"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token string">"Hello litingwei!"</span><span class="token punctuation">,</span>results<span class="token punctuation">)</span><span class="token punctuation">;</span>	
+			<span class="token punctuation">&#125;</span>
+		<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>在命令行中运行基本命令</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">mvn compile	编译
+mvn clean	清理
+mvn test	测试
+mvn package	打包
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>注意：运行 Maven 命令时一定要进入 pom.xml 文件所在的目录！</p>
+</blockquote>
+<h1 id="maven的核心概念"><a class="markdownIt-Anchor" href="#maven的核心概念">#</a> Maven 的核心概念</h1>
+<h2 id="maven目录结构"><a class="markdownIt-Anchor" href="#maven目录结构">#</a> Maven 目录结构</h2>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties">目录结构
+Hello						工程名
+|---src						源码
+|---|---main				放主程序
+|---|---|---java			存放java源文件
+|---|---|---resources		存放框架或其他工具的配置文件
+|---|---test				存放测试程序
+|---|---|---java			存放java源文件
+|---|---|---resources		存放框架或其他工具的配置文件
+|---pom.xml					Maven的核心配置文件
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="maven常用命令"><a class="markdownIt-Anchor" href="#maven常用命令">#</a> Maven 常用命令</h2>
+<ul>
+<li>mvn clean：将 target 目录删除，但是已经 install 到仓库里的包不会删除</li>
+<li>mvn compile：编译主程序</li>
+<li>mvn test-compile：编译测试程序</li>
+<li>mvn test：执行测试</li>
+<li>mvn package：打包</li>
+<li>mvn install：安装</li>
+<li>mvn deploy：部署、生成站点</li>
+</ul>
+<h2 id="maven工程对jar包的管理过程"><a class="markdownIt-Anchor" href="#maven工程对jar包的管理过程">#</a> maven 工程对 jar 包的管理过程</h2>
+<ul>
+<li>①Maven 的核心程序中仅仅定义了抽象的生命周期，但是具体的工作必须由特定的插件来完成。而插件本身并不包含在 Maven 的核心程序中。</li>
+<li>②当我们执行的 Maven 命令需要用到某些插件时，Maven 核心程序会首先到本地仓库中查找。</li>
+<li>③本地仓库的默认位置: C:\USERS\USERNAME <code>\</code> .m2\repository</li>
+<li>④Maven 核心程序如果在本地仓库中找不到需要的插件，那么它会自动连接外网，到中央仓库下载</li>
+<li>⑤如果此时无法连接外网，则构建失败。</li>
+<li>⑥修改默认本地仓库的位置可以让 Maven 核心程序到我们事先准备好的目录下查找插件
+<ul>
+<li>[1] 找到 Maven 解压目录 \confsettings.xml</li>
+<li>[2] 在 settings.xm | 文件中找到 localRepository 标签</li>
+<li>[3] 将 <code>&lt;localRepository&gt;</code>  /path/to/local/repo <code>&lt;/localRepository</code>  &gt; 从注释中取出</li>
+<li>[4] 将标签体内容修改为已经准备好的 Maven 仓库目录</li>
+</ul>
+</li>
+</ul>
+<h2 id="pom"><a class="markdownIt-Anchor" href="#pom">#</a> POM</h2>
+<blockquote>
+<p>Project Object Model 项目对象模型</p>
+<p>DOM Document Object Model 文档对象模型</p>
+</blockquote>
+<p><strong>pom.xml 对于 Maven 工程是核心配置文件，与构建过程相关的一切设置都在这个文件中进行配置。重要程度相当于 web.xm | 对于动态 Web 工程</strong></p>
+<h2 id="坐标gav"><a class="markdownIt-Anchor" href="#坐标gav">#</a> 坐标 gav</h2>
+<ul>
+<li>
+<p>数学中的坐标：</p>
+<ul>
+<li>在平面上，使用 x、y 两个向量可以唯一的定位平面中的任何一个点</li>
+<li>在空间上，使用 x、y、z 三个向量可以唯一的定位空间中的任何一个点</li>
+</ul>
+</li>
+<li>
+<p>Maven 的坐标</p>
+<ul>
+<li>
+<p>使用三个向量在仓库中唯一定位一个 Maven 工程</p>
+<ul>
+<li>groupid：公司或组织域名的倒序 + 项目名</li>
+</ul>
+<pre class="line-numbers language-p" data-language="p"><code class="language-p">com.baidu.projectname<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>artifactid：模块名</li>
+<li>version：版本</li>
+</ul>
+</li>
+<li>
+<p>Maven 工程的坐标与仓库中路径的对应关系</p>
+</li>
+</ul>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span> org.springframework <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span> spring-core <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>4.0.0.RELEASE <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">org&#x2F;springframework&#x2F;spring-core&#x2F;4.0.0.RELEASE&#x2F;spring-core-4.0.0.RELEASE.jar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="仓库repository"><a class="markdownIt-Anchor" href="#仓库repository">#</a> 仓库 repository</h2>
+</li>
+<li>
+<p>仓库的分类</p>
+<ul>
+<li>
+<p>本地仓库：当前电脑上部署的仓库目录，为当前电脑上多有 Maven 工程服务</p>
+</li>
+<li>
+<p>远程仓库</p>
+<ul>
+<li>私服：搭建在局域网环境中，为局域网范围内的所有 Maven 工程服务</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426101025215.png" alt=""></p>
+<ul>
+<li>中央仓库：架设在 Internet 上，为全世界所有 Maven 工程服务</li>
+<li>中央仓库镜像：为了分担中央仓库的流量，提升用户访问速度<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426101002914.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>仓库中保存的内容：Maven 工程</p>
+<ul>
+<li>Maven 自身所需的插件</li>
+<li>第三方框架或工具的 jar 包</li>
+<li>自己开发的 Maven 工程</li>
+</ul>
+</li>
+</ul>
+<h2 id="依赖初步"><a class="markdownIt-Anchor" href="#依赖初步">#</a> 依赖【初步】</h2>
+<ul>
+<li>
+<p>Maven 解析依赖信息时会到本地仓库中查找被依赖的 jar 包。对于我们自己开发的 Maven 工程，使用 mvn install 命令安装后就可以进入仓库。</p>
+</li>
+<li>
+<p>依赖的范围<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426100945416.png" alt=""></p>
+<ul>
+<li>compile 范围依赖
+<ul>
+<li>对主程序是否有效：有效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：参与</li>
+<li>是否参与部署：参与</li>
+<li>典型例子：spring-core</li>
+</ul>
+</li>
+<li>test 范围依赖
+<ul>
+<li>对主程序是否有效：无效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：不参与</li>
+<li>是否参与部署：不参与</li>
+<li>典型例子：junit</li>
+</ul>
+</li>
+<li>provided 范围依赖
+<ul>
+<li>对主程序是否有效：有效</li>
+<li>对测试程序是否有效：有效</li>
+<li>是否参与打包：不参与</li>
+<li>是否参与部署：不参与</li>
+<li>典型例子：servlet-api.jar<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426100930874.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="生命周期"><a class="markdownIt-Anchor" href="#生命周期">#</a> 生命周期</h2>
+<ul>
+<li>各个构建环节执行的顺序：不能打乱顺序，必须按照既定的正确顺序来执行</li>
+<li>Maven 的核心程序中定义了抽象的生命周期，生命周期中各个阶段的具体任务是由插件来完成的</li>
+<li>Maven 核心程序为了更好的实现自动化构建，按照这一的特点执行生命周期中的各个阶段：不论现在要执行生命周期中的哪一个阶段，都是从这个生命周期最初的位置开始执行</li>
+</ul>
+<p>例如：<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426100917825.png" alt=""></p>
+<h3 id="插件与目标"><a class="markdownIt-Anchor" href="#插件与目标">#</a> 插件与目标</h3>
+<ul>
+<li>生命周期的各个阶段仅仅定义了要执行的任务是什么</li>
+<li>各个阶段和插件的目标是对应的</li>
+<li>相似的日标由特定的插件来完成</li>
+<li>可以将目标看作” 调用插件功能的命令 “<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426100857173.png" alt=""></li>
+</ul>
+<h2 id="依赖高级"><a class="markdownIt-Anchor" href="#依赖高级">#</a> 依赖【高级】</h2>
+<ul>
+<li>依赖的传递性<br>
+<img src="https://img-blog.csdnimg.cn/20210426100846806.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NDA4Mzkw,size_16,color_FFFFFF,t_70" alt=""></li>
+</ul>
+<blockquote>
+<p>好处：可以传递的依赖不必在每个模块工程中都重复声明，在” 最下面” 的工程中依赖 - 次即可。</p>
+<p>注意：非 compile 范围的依赖不能传递。所以在各个工程模块中，如果有需要就得重复声明依赖。</p>
+</blockquote>
+<ul>
+<li>
+<p>依赖的排除</p>
+<ul>
+<li>
+<p>需要设置依赖排除的场合<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426100835556.png" alt=""></p>
+</li>
+<li>
+<p>依赖排除的设置方式</p>
+</li>
+</ul>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusions</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusion</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>commons-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>commons-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusion</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusions</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>依赖的原则</p>
+<ul>
+<li>
+<p>作用：解决模块工程之间的 jar 包冲突问题</p>
+</li>
+<li>
+<p>情景设定一：验证路径最短者优先原则<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426100814827.png" alt=""></p>
+</li>
+<li>
+<p>情景设定二：验证路径相同时先声明者优先<br>
+<img src="https://img-blog.csdnimg.cn/20210426100822982.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li>
+<p>统一管理依赖的版本</p>
+<ul>
+<li>情景举例<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426100804603.png" alt=""></li>
+</ul>
+<blockquote>
+<p>这里需要对 spring 各个 jar 包的依赖版本进行管理，如需要升级到 4.1.1</p>
+</blockquote>
+<ul>
+<li>
+<p>配置方式</p>
+<ul>
+<li>使用 properties 标签内使用自定义标签统一声明版本号</li>
+</ul>
+<pre class="line-numbers language-XML" data-language="XML"><code class="language-XML">&lt;properties&gt;
+ 	&lt;cvzhanshi.spring.version&gt;4.0.0.RELEASE&lt;&#x2F;cvzhanshi.spring.version&gt;
+ &lt;&#x2F;properties&gt;
+		<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>在需要统一版本的位置，使用 ${自定义标签名} 引用声明的版本号</li>
+</ul>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>$&#123;cvzhanshi.spring.versio&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>其实 properties 标签配合自定义标签声明数据的配置并不是只能用于声明依赖的版本号。凡是需要统一声明后再弓 | 用的场合都可以使用</p>
+</li>
+</ul>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">></span></span>
+	 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cvzhanshi.spring.version</span><span class="token punctuation">></span></span>4.0.0.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cvzhanshi.spring.version</span><span class="token punctuation">></span></span>
+	 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project.build.sourceEncoding</span><span class="token punctuation">></span></span>UTF-8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project.build.sourceEncoding</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">></span></span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h2 id="继承"><a class="markdownIt-Anchor" href="#继承">#</a> 继承</h2>
+<ul>
+<li>
+<p>现状<br>
+<img src="https://img-blog.csdnimg.cn/20210426100748640.png" alt=""></p>
+</li>
+<li>
+<p>需求：统一管理各个模块工程中对 junit 依赖的版本</p>
+</li>
+<li>
+<p>解决思路：将 junit 依赖统一提取到 “父” 工程中，在子工程中声明 junit 依赖时不指定版本，以父工程中统一设定的为准。同时也便于修改</p>
+</li>
+<li>
+<p>操作步骤</p>
+<ul>
+<li>创建一个 Maven 工程作为父工程。注意：打包的方式为 pom</li>
+</ul>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.cvzhanshi.maven<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>Parent<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.0.1-SNAPSHOT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>packaging</span><span class="token punctuation">></span></span>pom<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>packaging</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>在子工程中声明对父工程的引用</li>
+</ul>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!-- 子工程中声明父工程 --></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>parent</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.cvzhanshi.maven<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>Parent<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.0.1-SNAPSHOT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+        
+		<span class="token comment">&lt;!-- 以当前文件为基准的父工程pom.xml文件的相对路径 --></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>relativePath</span><span class="token punctuation">></span></span>../Parent/pom.xml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>relativePath</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>parent</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>
+<p>将子工程的坐标中与父工程坐标中重复的内容删除<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426100735469.png" alt=""></p>
+</li>
+<li>
+<p>在父工程中统一管理 junit 的依赖</p>
+</li>
+</ul>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!-- 配置依赖的管理 --></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencyManagement</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>junit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>junit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>4.9<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencyManagement</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>在子工程中删除 junit 依赖的版本号部分<br>
+<img src="https://img-blog.csdnimg.cn/20210426100725476.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NDA4Mzkw,size_16,color_FFFFFF,t_70" alt=""></li>
+</ul>
+</li>
+<li>
+<p>注意：配置继承后，执行安装命令时要先安装父工程</p>
+</li>
+</ul>
+<h2 id="聚合"><a class="markdownIt-Anchor" href="#聚合">#</a> 聚合</h2>
+<ul>
+<li>作用：一键安装各个模块工程</li>
+<li>配置方式：在一个” 总的聚合工程 “中配置各个参与聚合的模块</li>
+</ul>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!-- 配置聚合 --></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>modules</span><span class="token punctuation">></span></span>
+		<span class="token comment">&lt;!-- 指定各个子工程的相对路径 --></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>module</span><span class="token punctuation">></span></span>../HelloFriend<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>module</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>module</span><span class="token punctuation">></span></span>../MakeFriends<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>module</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>module</span><span class="token punctuation">></span></span>../Hello<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>module</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>modules</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>使用方式：在聚合工程的 pom.xml 上点右键 -&gt;run as-&gt;maven install（eclipse 中）</li>
+</ul>
+<h1 id="idea中使用maven"><a class="markdownIt-Anchor" href="#idea中使用maven">#</a> IDEA 中使用 Maven</h1>
+<h2 id="在-idea中配置-maven"><a class="markdownIt-Anchor" href="#在-idea中配置-maven">#</a> 在 Idea 中配置 Maven</h2>
+<blockquote>
+<p>Idea 中也自带 Maven 插件，而且我们也可以给自带的 Maven 插件进行配置， 所以我们可以使用自带的 Maven，也可以使用我们安装的 Maven 核心程序</p>
+</blockquote>
+<h3 id="配置自己安装的maven"><a class="markdownIt-Anchor" href="#配置自己安装的maven">#</a> 配置自己安装的 Maven</h3>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426100711701.png" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/20210426100659686.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NDA4Mzkw,size_16,color_FFFFFF,t_70" alt=""></p>
+<h3 id="配置idea自带的maven插件"><a class="markdownIt-Anchor" href="#配置idea自带的maven插件">#</a> 配置 IDEA 自带的 Maven 插件</h3>
+<p>进入 idea 的安装目录</p>
+<p>E:\study\Java\soft\idea\ideaIU-2019.2.4.win\plugins\maven\lib\maven3\conf 配置 setting.xml<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426100646754.png" alt=""></p>
+<p>1、添加本地仓库位置</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>localRepository</span><span class="token punctuation">></span></span>E:\study\Java\maven\apache-maven-3.5.3\repository<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>localRepository</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>2、添加阿里云仓库和中央仓库，方便联网时下载 jar 包</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirror</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>nexus-aliyun<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirrorOf</span><span class="token punctuation">></span></span>central<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirrorOf</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>Nexus aliyun<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">></span></span>http://maven.aliyun.com/nexus/content/groups/public<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirror</span><span class="token punctuation">></span></span>
+
+	<span class="token comment">&lt;!-- 中央仓库1 --></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirror</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>repo1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirrorOf</span><span class="token punctuation">></span></span>central<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirrorOf</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>Human Readable Name for this Mirror.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">></span></span>http://repo1.maven.org/maven2/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirror</span><span class="token punctuation">></span></span>
+
+	<span class="token comment">&lt;!-- 中央仓库2 --></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirror</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>repo2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirrorOf</span><span class="token punctuation">></span></span>central<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirrorOf</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>Human Readable Name for this Mirror.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">></span></span>http://repo2.maven.org/maven2/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirror</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>3、配置 jdk 版本</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profile</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>jdk-1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activation</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activeByDefault</span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activeByDefault</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>jdk</span><span class="token punctuation">></span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>jdk</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activation</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">></span></span>
+		  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maven.compiler.source</span><span class="token punctuation">></span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maven.compiler.source</span><span class="token punctuation">></span></span>
+		  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maven.compiler.target</span><span class="token punctuation">></span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maven.compiler.target</span><span class="token punctuation">></span></span>
+		  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maven.compiler.compilerVersion</span><span class="token punctuation">></span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maven.compiler.compilerVersion</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profile</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="使用maven创建java工程"><a class="markdownIt-Anchor" href="#使用maven创建java工程">#</a> 使用 Maven 创建 Java 工程</h2>
+<h3 id="创建"><a class="markdownIt-Anchor" href="#创建">#</a> 创建</h3>
+<p><img src="https://img-blog.csdnimg.cn/20210426100631179.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NDA4Mzkw,size_16,color_FFFFFF,t_70" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/2021042610062066.png" alt=""></p>
+<h3 id="测试"><a class="markdownIt-Anchor" href="#测试">#</a> 测试</h3>
+<ul>
+<li>配置 Maven 的核心配置文件 pom.xml</li>
+</ul>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>modelVersion</span><span class="token punctuation">></span></span>4.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>modelVersion</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.cvzhanshi.maven<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>Hello<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.0-SNAPSHOT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>junit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>junit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>4.12<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>在 src/main/java 目录下创建包并创建 Hello.java 文件</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * @author cVzhanshi
+ * @create 2021-04-26 1:06
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Hello</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token string">"Hello "</span><span class="token operator">+</span>name<span class="token operator">+</span><span class="token string">"!"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>在 /src/test/java 目录下创建包并创建 HelloTest.java 文件</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>atguigu<span class="token punctuation">.</span>maven</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span></span><span class="token class-name">Test</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloTest</span> <span class="token punctuation">&#123;</span>
+ <span class="token annotation punctuation">@Test</span>
+ <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+ <span class="token class-name">Hello</span> hello <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token class-name">String</span> maven <span class="token operator">=</span> hello<span class="token punctuation">.</span><span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token string">"Maven"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>maven<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用 Maven 的方式运行 Maven 工程 ：<br>
+<img src="https://img-blog.csdnimg.cn/20210426100602918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NDA4Mzkw,size_16,color_FFFFFF,t_70" alt=""></p>
+<h2 id="使用maven创建java-web工程"><a class="markdownIt-Anchor" href="#使用maven创建java-web工程">#</a> 使用 Maven 创建 Java Web 工程</h2>
+<h3 id="创建-2"><a class="markdownIt-Anchor" href="#创建-2">#</a> 创建</h3>
+<ul>
+<li>
+<p>选择 Maven-&gt; 选择 java jdk-&gt; 勾选 Create from archetype-&gt; 选择 maven-archetype-webapp<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210512094924545.png" alt=""></p>
+</li>
+<li>
+<p>填写 GroupId（域名。公司名。项目名）、Artifacted (模块名)</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/2021051209491753.png" alt=""></p>
+<ul>
+<li>
+<p>选择本地 maven 解压的路径、配置文件<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210512094910774.png" alt=""></p>
+</li>
+<li>
+<p>选择工作空间<br>
+<img src="https://img-blog.csdnimg.cn/20210512094902732.png" alt=""></p>
+</li>
+<li>
+<p>创建成功，结构如下<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/2021051209485614.png" alt=""></p>
+</li>
+<li>
+<p>在 main 底下 new 两个 Directory:java,resources<br>
+<img src="https://img-blog.csdnimg.cn/20210512094849528.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NDA4Mzkw,size_16,color_FFFFFF,t_70" alt=""></p>
+</li>
+<li>
+<p>点 Project Struct，设置源码文件夹和资源文件夹<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210512094842525.png" alt=""></p>
+</li>
+<li>
+<p>tomcat 部署<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210512094834687.png" alt=""></p>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20210512094818165.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NDA4Mzkw,size_16,color_FFFFFF,t_70" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210512094810324.png" alt=""></p>
+<ul>
+<li>启动 tomcat<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210512094802254.png" alt=""></li>
+</ul>
+<h2 id="idea-中导入-maven-项目"><a class="markdownIt-Anchor" href="#idea-中导入-maven-项目">#</a> Idea 中导入 Maven 项目</h2>
+<ul>
+<li>
+<p>点击 Project Structure<br>
+<img src="https://img-blog.csdnimg.cn/20210426102238935.png" alt=""></p>
+</li>
+<li>
+<p>点击 Modules→➕→Import Module<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426102228274.png" alt=""></p>
+</li>
+<li>
+<p>找到项目所在的位置<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426102217436.png" alt=""></p>
+</li>
+<li>
+<p>选择 Import module from external model（从外部模型导入模块）→Maven →Finish<br>
+<img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/20210426102202875.png" alt=""></p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2021/12/30/Maven/">https://harryqu1229.github.io/2021/12/30/Maven/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/build/">build</a><a class="post-meta__tags" href="/tags/tools/">tools</a><a class="post-meta__tags" href="/tags/maven/">maven</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/30/MyBatis/"><img class="prev-cover" src="https://w.wallhaven.cc/full/wq/wallhaven-wqvov7.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">My Mybatis notes</div></div></a></div><div class="next-post pull-right"><a href="/2021/12/31/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%89%E5%8D%81%E5%85%AD%E6%9D%A1%E5%86%9B%E8%A7%84/"><img class="next-cover" src="https://raw.githubusercontent.com/HarryQu1229/image-host/ca78dff38e0bfb81a8e98ad64f749e97bcc55f14/notes-img/Billfish.yWAOuM.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Mysql principles</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/12/30/maven,netty,rocketmq/" title="Maven + Netty + Rocketmq"><img class="cover" src="https://w.wallhaven.cc/full/28/wallhaven-28wymm.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-30</div><div class="title">Maven + Netty + Rocketmq</div></div></a></div><div><a href="/2022/01/01/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/" title="Build tool -> Maven"><img class="cover" src="https://w.wallhaven.cc/full/rd/wallhaven-rdw8dj.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">Build tool -> Maven</div></div></a></div><div><a href="/2021/12/11/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95/" title="Commonly used git commands"><img class="cover" src="https://w.wallhaven.cc/full/q2/wallhaven-q257x7.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-11</div><div class="title">Commonly used git commands</div></div></a></div><div><a href="/2022/02/17/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Regular Expressions"><img class="cover" src="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-17</div><div class="title">Regular Expressions</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/6aca34ee52f40fe1b2d637474f90111e2c151939/notes-img/%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%9B%BE%E7%89%87%EF%BC%9A%7B%7B%20pinTitle%20%7D%7D_m6kogp.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#maven"><span class="toc-number">1.</span> <span class="toc-text"> Maven 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#maven%E7%9A%84%E9%9C%80%E6%B1%82"><span class="toc-number">1.1.</span> <span class="toc-text"> Maven 的需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#maven%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="toc-number">1.2.</span> <span class="toc-text"> Maven 的概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85maven%E6%A0%B8%E5%BF%83%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 安装 Maven 核心程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AAmaven%E5%B7%A5%E7%A8%8B%E5%8E%9F%E7%94%9Fmaven"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 第一个 Maven 工程（原生 Maven）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#maven%E7%9A%84%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text"> Maven 的核心概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#maven%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text"> Maven 目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#maven%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">2.2.</span> <span class="toc-text"> Maven 常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#maven%E5%B7%A5%E7%A8%8B%E5%AF%B9jar%E5%8C%85%E7%9A%84%E7%AE%A1%E7%90%86%E8%BF%87%E7%A8%8B"><span class="toc-number">2.3.</span> <span class="toc-text"> maven 工程对 jar 包的管理过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pom"><span class="toc-number">2.4.</span> <span class="toc-text"> POM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9D%90%E6%A0%87gav"><span class="toc-number">2.5.</span> <span class="toc-text"> 坐标 gav</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%93%E5%BA%93repository"><span class="toc-number">2.6.</span> <span class="toc-text"> 仓库 repository</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%88%9D%E6%AD%A5"><span class="toc-number">2.7.</span> <span class="toc-text"> 依赖【初步】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">2.8.</span> <span class="toc-text"> 生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E4%B8%8E%E7%9B%AE%E6%A0%87"><span class="toc-number">2.8.1.</span> <span class="toc-text"> 插件与目标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E9%AB%98%E7%BA%A7"><span class="toc-number">2.9.</span> <span class="toc-text"> 依赖【高级】</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">2.10.</span> <span class="toc-text"> 继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%9A%E5%90%88"><span class="toc-number">2.11.</span> <span class="toc-text"> 聚合</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#idea%E4%B8%AD%E4%BD%BF%E7%94%A8maven"><span class="toc-number">3.</span> <span class="toc-text"> IDEA 中使用 Maven</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-idea%E4%B8%AD%E9%85%8D%E7%BD%AE-maven"><span class="toc-number">3.1.</span> <span class="toc-text"> 在 Idea 中配置 Maven</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%87%AA%E5%B7%B1%E5%AE%89%E8%A3%85%E7%9A%84maven"><span class="toc-number">3.1.1.</span> <span class="toc-text"> 配置自己安装的 Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEidea%E8%87%AA%E5%B8%A6%E7%9A%84maven%E6%8F%92%E4%BB%B6"><span class="toc-number">3.1.2.</span> <span class="toc-text"> 配置 IDEA 自带的 Maven 插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8maven%E5%88%9B%E5%BB%BAjava%E5%B7%A5%E7%A8%8B"><span class="toc-number">3.2.</span> <span class="toc-text"> 使用 Maven 创建 Java 工程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="toc-number">3.2.1.</span> <span class="toc-text"> 创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">3.2.2.</span> <span class="toc-text"> 测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8maven%E5%88%9B%E5%BB%BAjava-web%E5%B7%A5%E7%A8%8B"><span class="toc-number">3.3.</span> <span class="toc-text"> 使用 Maven 创建 Java Web 工程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-2"><span class="toc-number">3.3.1.</span> <span class="toc-text"> 创建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#idea-%E4%B8%AD%E5%AF%BC%E5%85%A5-maven-%E9%A1%B9%E7%9B%AE"><span class="toc-number">3.4.</span> <span class="toc-text"> Idea 中导入 Maven 项目</span></a></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/06/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide"><img src="https://c.pxhere.com/photos/e5/15/watercolour_painting_technique_soluble_in_water_not_opaque_color_image_color_sketch_turquoise-1110070.jpg!d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My ultimate data structure and algorithm guide"/></a><div class="content"><a class="title" href="/2022/12/06/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide">My ultimate data structure and algorithm guide</a><time datetime="2022-12-05T11:00:00.000Z" title="Created 2022-12-06 00:00:00">2022-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/27/HTML5%E4%B8%8ECSS3%E9%AB%98%E9%98%B6/" title="My HTML5 and CSS3 notes"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8o6rmo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My HTML5 and CSS3 notes"/></a><div class="content"><a class="title" href="/2022/08/27/HTML5%E4%B8%8ECSS3%E9%AB%98%E9%98%B6/" title="My HTML5 and CSS3 notes">My HTML5 and CSS3 notes</a><time datetime="2022-08-26T12:00:00.000Z" title="Created 2022-08-27 00:00:00">2022-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" title="Object Orientated Programming"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/ca78dff38e0bfb81a8e98ad64f749e97bcc55f14/notes-img/Billfish.yWAOuM.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Object Orientated Programming"/></a><div class="content"><a class="title" href="/2022/08/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" title="Object Orientated Programming">Object Orientated Programming</a><time datetime="2022-08-10T12:00:00.000Z" title="Created 2022-08-11 00:00:00">2022-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns"><img src="https://w.wallhaven.cc/full/q2/wallhaven-q2vzx5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns"/></a><div class="content"><a class="title" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns">Design Patterns</a><time datetime="2022-06-11T12:00:00.000Z" title="Created 2022-06-12 00:00:00">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command"><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/18bbc356ddf5fcd5544ddb91bb7b35a99ebfef25/notes-img/download%20(1).png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns - Command"/></a><div class="content"><a class="title" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command">Design Patterns - Command</a><time datetime="2022-06-10T12:00:00.000Z" title="Created 2022-06-11 00:00:00">2022-06-11</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2021/12/30/Maven/'
+    this.page.identifier = '2021/12/30/Maven/'
+    this.page.title = 'My Maven notes'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>if (window.DISQUSWIDGETS === undefined) {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://harry-study-blog.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+} else {
+  DISQUSWIDGETS.getCount({reset: true});
+}</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: '6d01b9a1f5135df26765c7a41c0aa432',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=B5XFmdGuVaYDW7OIBakffpXoKorvphwRiwONIol4puEtr8YiwYAMAk2K7QcExNLY')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
+    }
+  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
