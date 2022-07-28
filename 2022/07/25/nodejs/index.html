@@ -1,0 +1,1758 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Nodejs notes | Harry Blog</title><meta name="keywords" content="Nodejs,frontend"><meta name="author" content="Harry Qu"><meta name="copyright" content="Harry Qu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# （一）Node.js 初识 # 1. Node.js 诞生史 Node.js 之父：Ryan Dahl（瑞安・达尔）  并非科班出身的开发者，在 2004 年在纽约的罗彻斯特大学数学系读博士。 2006 年退学，来到智利的 Valparaiso 小镇。 期间曾熬夜做了一些不切实际的研究，例如如何通过云进行通信。 偶然的机会，走上了编程之路，生活方式变为接项目，然后去客户的地方工作。 工作中遇到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs notes">
+<meta property="og:url" content="https://harryqu1229.github.io/2022/07/25/nodejs/index.html">
+<meta property="og:site_name" content="Harry Blog">
+<meta property="og:description" content="# （一）Node.js 初识 # 1. Node.js 诞生史 Node.js 之父：Ryan Dahl（瑞安・达尔）  并非科班出身的开发者，在 2004 年在纽约的罗彻斯特大学数学系读博士。 2006 年退学，来到智利的 Valparaiso 小镇。 期间曾熬夜做了一些不切实际的研究，例如如何通过云进行通信。 偶然的机会，走上了编程之路，生活方式变为接项目，然后去客户的地方工作。 工作中遇到">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://harryqu1229.github.io/img/default-covers/hello-world.png">
+<meta property="article:published_time" content="2022-07-24T12:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-28T11:28:54.327Z">
+<meta property="article:author" content="Harry Qu">
+<meta property="article:tag" content="frontend">
+<meta property="article:tag" content="Nodejs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://harryqu1229.github.io/img/default-covers/hello-world.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://harryqu1229.github.io/2022/07/25/nodejs/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#C78550","bgDark":"#c08eaf","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Nodejs notes',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-28 23:28:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAR8AAACvCAMAAADzNCq+AAAA+VBMVEX///8zMzNon2M+hj0uLi5rv0dZWVlzqmMrKyt1rGRxqGF2rmN3sGNtpV94sWJhm1xbmFV5tGF3tl0jIyN3d3dmn1tkZGR1t1lyuVWpqamwy65jmlhwu1FVlE72+vaqx6e+07zs8+xOkEk5OTkfHx8XFxd/f38ODg5WmkxISEgxgTAAAAB+rHrJycnl5eWcnJxYoknv7++7u7tWmU13qHPc59vo6OhPT0/Z2dmWupOysrJYpUjj7OLN3syVlZVubm4lfCOOtouGtn6HvXyZwI6wz6dop1LK38Sbx4yCwGu12alfuzSe0YxlvT6BrndTkE9UqEBFjz9ClzTcvb9iAAANQ0lEQVR4nO2da2OayhaGUUxqL27otqYNCYhGcjEmjVEaTbSp+9Ketrsnyfn/P+YAwwBzZYFmawLvhzaJMuDDmndua1BRnrbOT67O1n0Nm6x39ZqzPVn3VWyu3tUrldrRu0/rvo5Nlc+nUqk7n9d9IRsqxKdSaTZ3130pGynMp1LpHZRGzSrmUymNmqMEn8Coh+u+oA0Twac0akYUH9+oL9d9TZskhk+lclr6dCwOn/rtui9qg8ThU9te90VtkEo+cpV85Cr5yFXykavkI1fJR66Sj1wlH7lKPnKVfOQq+chV8pGr5CNXyUeuko9cJR+5Sj5ylXzkKvnIVfKRq+QjV8lHrpKPXCUfuUo+cq2Xz2T32vrXTpZLS/NZImFoeHvU7PVWk9fX+et1o72SkhTl7PAwStFYks9hzznImw/z+Sg490ry+v7++vrlS920ly9JOd926nVn+xz9thSf614zSMs7z3EZl/UmPp+zk6eAhL69ffv65YuXr/bMqrtcSd4dP6oFF3V0GNSMJficnfTCA8KyMmhy1UucsX50mPH4pNw/f//tjcfnxYvW3t5o0VmiKGW32YwuKqj5ufl8unVq8QfMlh3sGU+NPGezeZ3r8yiK9Z/3b9+GfF7t7e3po/w2FN1xJK/mTxg6QD6fHRJsFhehj0UFnOSyoR8f3v8e82ns+YR0O09Jyqcdh7prtV6PvVAIn+vIPOKjnB3YJoVL9thsBST07YOHJ8HHDyBPuWwobC7SlcpncsLD6rkIIPd1cuUITwwqIKHZ9/0P70k+DQSoldmGrpv8u5adD2sekVJdZPhOeCwqoA63IeufLR8PyedVKwTUymRDgjuehw/XPCL1TmQp+B97qSEMtqEfW1v7LJ9GGEAeIL01B9Ihmprl+FxWUsKw5ghT8C9rkBCuObcAG/q29Wt/n8sHB5AfQv+dQfDI73gWPjLziFR3PuY+FhWQakOz7z/96OHyiQLIA+TZUOrwTtRcZOeTZh6RmjVmyAE+FhUg9THrn5+/tsR84hrma2RI6ZD91KX4fMwQhvROoCzHBpL42I9fPp10PiGgVkNsQ9nuGhaXT6rxUGUkhxyXB1lDWGxD3/Z/bm3J+RA1rCWxIUBzwb00ls9kO5PD+6rjiYvz7MeiAjhbiTrfMR0ZnxYFqDWacmwo4x2PxfAZHub6hGjIMTnNRSco4Iq6EOPnr60MfDCeVqM1oivZObi5YETzOctqHlFBzq2i7OTG49kY6fPz/vEWiE+L5tNo9Mn+9Hke48Efi+QzPM3/Ab06lv9grx0ja9iie7efiU9UwxqtPtmOHea85b4oPtc5q2lYVP6DGT6D7p0J40MDaqh9crixTFRTfHaX4FM5WS0f8+4+G58wfsyi8DFNGB/KotWnyafW6zmy0jl87m6y8QlqmJmRT13qTln4eJ9QWpaUjzdWHw5lnbQmOZIL4ucOxoeoYWomPl7HS9qhgfPxnygwYWYlk5LwwXM9kk4+zWfk8TEvYHz0GFA3Cx+0miIbTYP5NCtB/+TsQDzGE/JJDtKFF8PwGY1iB0rjEwNSM/CJ5tHFszFAPol5jF1hHTlRDrinoOaaBZMMNJ/jkU/oAsgHA+rC+dSdxDqMaEIaxId8FMXwUFBH+HxqFWaS8DMvBik+fwR8RuZ+Jj66CuVTcw6JcdqQP68I4dO7ouYfvFEo5231Wy6fJmeK8SPnNAwfBOgYxsfU4/CB8Gmy68CTE04IAfhE81edhWaHP16yEVA7nfD41LmrpZwAYvkEhFAApfMJAKHwAfCp7fCu6oTzxlQ+0TvaulbVx+Fi0y1dVDDJxeHDX2zlvZHDxyd0nIGPGvIhx18cPvy7tp2LD0Jta1rVl44Wm+hHwaAJoFXyuTgOCd3D+HiAzPXxmerVUJrJ8IkmEB+Dz/EIxqdr4vBZCx8N86nqFsknkfPyKHyOb2Dx0/W0gXzCjuPq+USAunA+iNAG8SEXwFbLBxNSHzLw8QltDB/6GWar5hMQelDV/Sx8PEIbwodZuFohnz9vLkJCXoUJAuip8OmGfDgLn4/BJ3DcexgfdW18LNzAa9Vg9eTylPfwu0fg8xDweQDyUdfFR1FmA4+QFo0wPvEyN1bK5+YmCh9VvdlYPpUKfnFeNXlrk4/Hx9MD7vPtfwDxUWF8KnVOIvduvvFpLc7GTMtjWzkfHD6qegGLHygftm3hz/xB4geeFL5KPvc+HzUWMH5UIB+qb3IumDmGzR/WgUnhq+ZzkeBzDOSjmjA+RFKEMK0MOv8MSwpfNR9VpQIIwqdrAvlEYyNJPit8/QKSFL5SPvf3DwSfByAfL4CgfCoV52pyJstnzbD+Bdhaslo+ZPioKrB+eQ4E5+Mv6klfzrJ+mrq1ZLV8Hig+D0A+ahY+Kcq4vlyX73Bbrf+otL4C+YD9Z+V8UmwIzoe9ZIYPg8erYTA+6fMbj8dHakMcPqfc3NRD9jwUnx//4/D5CuPzxSaKul0iP6pOLnScQRL16o7Ihhg+tVNu/riisG0Gxcfq9zmAQHz6Gnmuy6P8fI6occgVKMFFZEM0H4deWYzFLFNTfBRr8IXlc5zOp/9lSp8LvJuJVo3N7j+EJWjybYjkw0mtT35+6kysUbkaS+htGp8vY84gUTR6SKHD/Q4MYFlcG0ryEWzNEJ6JZ+S2SleykZxP/06QQH+WPW29KdqsLe1QJgEwwXcS4wN9u0ZyzMxv6KZfKEK/SfiofVt8rozbHqS3F7jBjvkeH8ynJjEeUrENCQZ4nTFZybpiPn3GeAgJ8044Sr29QEtzyOYv5JNcEksVtiHhANi9I0Loq4DPA894SIF3TgBuL3Cf3SlxUMCn3kszHlKhDUkmCGyirefy6eqgDYSgfRjA2wuwIXp32wHUeKgz+TYknUBJ2tCI5WOm7PxKKNWGMnzrzrV8k6TXhFFhuNMDGw+p3WbzVHrTkjb05g3F5zhlWpyQfB9Y7eg2y+2Vbdfk7K4dfs77/JLhx7TNzPMuDqERGT/AnaexJBuY5VuOedct2uCd/yERuWVgG0ryGYF3LickShHNsOM8EnfXZnrn7zFkLVAl60Z8JFtOO64rqXWcipH7674Y0/cGqGv6arVZNSD06iXic/yXCIE71j1JfIlun2FbzQUiTH/5R/gso8CGugEfsfF0FnqQL6BpknaNsKGcT0zBSpj+kiUtL8Nr6xsvXjQa30TvaOtRNkWYLsBXNExImRaFaHKFenG8hdl/WZ4N9V9//Vv0Ms4kxQmlA0nzFgwTxPNZmXRZcXprsWVWM8OWGA/CMnajlFuJDZ3fOquzi7OzDX9AX5SGg/JMyN8EGhboWzyN0JZ1nEAfJOWk2VBRNK8SKeySPxZRs9B4tDH1vC0mqIoomdWAbOh5K4oRflOFbUinY6sYijxG3NUpsA0B26iC2pA1NRGd1AdFWgtsQwTHebudduQTlq2n95EjJfrW+E/W2Jh17OWfdLuZctONh1Q85Aj/MO6483lHGWecgnwacs3sneNwbK+Ng9/subKYGqZiDR7pEteq0HjAaxeBOsiG0MzQwFIWrmJaynPkM9ehxkPKHQch5P849neOml6LNn2Gzb7hfUwt17jT340UbNPyekN+/ASgnp0M/Ckzy/aP9CNm3lYGc6VrufKl+6cpDp/ObJZoiebtxdhv4caL9px4nx0dubC9fyy3uukTW3nE8ul09cBNfFltLZqG1jRdTzpMzEdpjw17kf7k1qcoDh9/ixri42rxjkfEyIzbOTt5pDt/ht7sS8YHd42QEKG4I2Dndq6nJBkf1MfRBm3DMNrTMappJh5GFJ6P/5IXL9GLVjsAhnuBheczjnrIWKgzGTpN4fkE4UMCWPi9SRv9XPJh+czjtq3k4/OhZ+MHg8E4/FPh+SyCABrYgmmdwvOZh1OpujaeGvMZjaLwfJRBnOHiDy60gZGcQi35KIvogWAhpuQIrOTjVbGBrpFjMC36Sr6ST/DbvD2o6noCE14DKvlEsmaubSyqeBkIvb3kQ8uyg6WgcDq26HyM6XTKrGoMqhG8ovMJGnX67XN/AIbmmYvOxw8VnV4z9qGU8RMgaPsoFtTbgwE8qnVF5+PqVcao7WACCA3Iis4HDS+0qoG3qMzsIElICycQC8+ng8enXu8w/Ldazh8m+j8zenknoFXOz0e2Y011jaIzKMenyf5zxxgHYy8NzXBME3NlJR8ky53bhtE2bGqJtBh8Eh2+UOLxF6HOgJ2+f4aa6XRyHYwPWit8jhk/lNAkaiI5cwbgE6Zowp638LRl4fRVnGPXTqwB8hWl+BYjSxzvPEFL7WgIIcllFqSIP2NFmwv0wQJFkyZ+s2EWcIsB3nkS/ife0V3YLSpGoqesiZolt8BbnKy2roU1h570we8o+hY521+iGE8FsYH3NplFMh6wCms8fLltAkPUwhXQeDhyF3pyx0rhjYdUB80URoMyI5wmM9vPfjQKU7g3B3lNvG+3NJ5INm7q23gwUT5bglBkOXhotu4L2jjhJis5tC+VFKpkGnjfbvFkjKvVxYYZz/8BgbFSXQmK13cAAAAASUVORK5CYII=')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Nodejs notes</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-07-24T12:00:00.000Z" title="Created 2022-07-25 00:00:00">2022-07-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-07-28T11:28:54.327Z" title="Updated 2022-07-28 23:28:54">2022-07-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Frontend/">Frontend</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Frontend/nodejs/">nodejs</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">10k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>35min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Nodejs notes"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一nodejs-初识"><a class="markdownIt-Anchor" href="#一nodejs-初识">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch01?id=%EF%BC%88%E4%B8%80%EF%BC%89nodejs-%E5%88%9D%E8%AF%86">（一）Node.js 初识</a></h1>
+<h2 id="1-nodejs-诞生史"><a class="markdownIt-Anchor" href="#1-nodejs-诞生史">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch01?id=_1-nodejs-%E8%AF%9E%E7%94%9F%E5%8F%B2">1. Node.js 诞生史</a></h2>
+<p>Node.js 之父：Ryan Dahl（瑞安・达尔）</p>
+<ul>
+<li>并非科班出身的开发者，在 2004 年在纽约的罗彻斯特大学数学系读博士。</li>
+<li>2006 年退学，来到智利的 Valparaiso 小镇。</li>
+<li>期间曾熬夜做了一些不切实际的研究，例如如何通过云进行通信。</li>
+<li>偶然的机会，走上了编程之路，生活方式变为接项目，然后去客户的地方工作。</li>
+<li>工作中遇到了主流服务器的瓶颈问题，尝试着自己去解决，费尽周折没有办法。</li>
+<li>2008 年 Google 公司 Chrome V8 引擎横空出世，JavaScript 脚本语言的执行效率得到质的提升，他的想法与 Chrome V8 引擎碰撞出激烈的火花。</li>
+<li>2009 年的 2 月，按新的想法他提交了项目的第一行代码，这个项目的名字最终被定名为 “node”。</li>
+<li>2009 年 5 月，正式向外界宣布他做的这个项目。</li>
+<li>2009 年底，Ryan Dahl 在柏林举行的 JSConf EU 会议上发表关于 Node.js 的演讲，之后 Node.js 逐渐流行于世。</li>
+<li>Ryan Dahl 于 2010 年加入 Joyent 公司，全职负责 Node.js 项目的开发。此时 Node.js 项目已经从个人项目变成一个公司组织下的项目。</li>
+</ul>
+<h2 id="2-nodejs-是什么"><a class="markdownIt-Anchor" href="#2-nodejs-是什么">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch01?id=_2-nodejs-%E6%98%AF%E4%BB%80%E4%B9%88">2. Node.js 是什么</a></h2>
+<p>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/node1.1ual4a2yhz9c.png" alt="node1"></p>
+<p>传统的 JavaScript 只能运行在浏览器端，脱离浏览器不能运行，也就不能操作本地的文件或者创建文件，也不能进行网络编程，Node.js 的出现打破了这一局面。<br>
+Node.js 编写的代码还是 JS，所以开发者需要利用 Chrome V8 来运行 JS。Node.js 借助了 C/C++ 中的 libuv 库来实现文件读取和事件循环。我们不必深挖其中的原理，只需要知道如何使用就行，Node.js 已经为我们打包好了相关接口。</p>
+<h2 id="3-nodejs-的特点"><a class="markdownIt-Anchor" href="#3-nodejs-的特点">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch01?id=_3-nodejs-%E7%9A%84%E7%89%B9%E7%82%B9">3. Node.js 的特点</a></h2>
+<h3 id="31-优点"><a class="markdownIt-Anchor" href="#31-优点">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch01?id=_31-%E4%BC%98%E7%82%B9">3.1 优点</a></h3>
+<ul>
+<li>异步非阻塞的 I/O（I/O 线程池）</li>
+<li>特别适用于 I/O 密集型应用（对比传统 Java 服务器）</li>
+<li>事件循环机制</li>
+<li>单线程（成也单线程，败也单线程）</li>
+<li>跨平台</li>
+</ul>
+<p>解释：</p>
+<ul>
+<li>
+<p>异步非阻塞的 I/O（I/O 线程池）</p>
+<p>I/O 是指 inout/ouput，这里是指文件的读写，数据库的操作等等。同步会造成阻塞问题，按照顺序来进行操作。异步是指做这一件事的时候可以做其他事情，非阻塞。<br>
+I/O 线程池：让一个线程随时随地处于待命状态，以便下次更加快速的执行任务。</p>
+</li>
+<li>
+<p>特别适用于 I/O 密集型应用</p>
+<p>某个项目需要频繁进行 I/O 操作，就成为 I/O 密集型应用。</p>
+</li>
+<li>
+<p>事件循环机制</p>
+<p>Node.js 脱离了浏览器，浏览器有事件循环机制，但 Node.js 也提供了自己的独有的一个事件循环机制。</p>
+</li>
+<li>
+<p>单线程（成也单线程，败也单线程）</p>
+<p>单线程要想实现异步，就必须要有自己的 “事件循环模型”。</p>
+</li>
+<li>
+<p>跨平台</p>
+<ul>
+<li>JS 跨平台：js——js 引擎 —— 由谷歌等设计</li>
+<li>java 跨平台：java——jvm 虚拟机</li>
+<li>Node.js 也跨平台</li>
+</ul>
+</li>
+</ul>
+<h3 id="32-不足之处"><a class="markdownIt-Anchor" href="#32-不足之处">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch01?id=_32-%E4%B8%8D%E8%B6%B3%E4%B9%8B%E5%A4%84">3.2 不足之处</a></h3>
+<ul>
+<li>回调函数嵌套太多、太深（俗称回调地狱）</li>
+<li>单线程，处理不好 CPU 密集型任务</li>
+</ul>
+<p>CPU 密集型与 IO 密集型：</p>
+<ul>
+<li>CPU 密集型：需要过多判断，要做的事情不明确</li>
+<li>IO 密集型：事情明确</li>
+</ul>
+<p>简单 web 交互模型：<br>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/node3.5ub7ikpaiq80.png" alt="node3"></p>
+<p>Node.js 和 Java 服务器对比：</p>
+<ul>
+<li>Java 服务器可以有多 “服务员” ，增加服务器空间来实现高并发，成本也高，适用于大企业。</li>
+<li>Node.js 的服务器只有一个 “服务员”，每次收到任务请求的时候，一对一的服务，向数据库请求数据，通过回调函数实现高并发。适用于 I/O 密集型应用，适用于 <strong>个人或中小型企业或者微信小程序搭建服务器</strong>。</li>
+<li>所以对于 CPU 密集型应用，会频繁 “点餐”，这时候一对一的 “Node” 就废掉了。</li>
+</ul>
+<h2 id="4-nodejs-的应用场景"><a class="markdownIt-Anchor" href="#4-nodejs-的应用场景">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch01?id=_4-nodejs-%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF">4. Node.js 的应用场景</a></h2>
+<ul>
+<li>Web 服务 API，比如 RESTful API（本身没有太多的逻辑，只需要请求 API，组织数据进行返回即可）</li>
+<li>服务器渲染页面，提升速度</li>
+<li>后端的 Web 服务，例如跨域、服务器端的请求</li>
+</ul>
+<h2 id="5-node-中函数的特点"><a class="markdownIt-Anchor" href="#5-node-中函数的特点">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch01?id=_5-node-%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E7%89%B9%E7%82%B9">5. Node 中函数的特点</a></h2>
+<p>Node 中 <strong>任何一个模块（js 文件）都被一个外层函数所包裹</strong>。现在我们获得这个外层函数，那我们就有这样一个需求：在函数体内输出自身这个函数。使用  <code>arguments.callee</code>  可以做到：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">demo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// 输出函数本身</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arguments<span class="token punctuation">.</span>callee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>那么可以直接在 Node 中执行这段代码，获取这个外层函数：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arguments<span class="token punctuation">.</span>callee<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>执行这段代码，我们可以得到 Node 中的外层函数：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">exports<span class="token punctuation">,</span> require<span class="token punctuation">,</span> module<span class="token punctuation">,</span> __filename<span class="token punctuation">,</span> __dirname</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这意味这些参数在 Node 中可以直接调用：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>__filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li><code>exports</code> ：用于支持 CommonJS 模块化的暴露语法</li>
+<li><code>require</code> ：用于支持 CommonJS 模块化的引入语法</li>
+<li><code>module</code> ：用于支持 CommonJS 模块化的暴露语法</li>
+<li><code>__filename</code> ：当前运行文件的绝对路径</li>
+<li><code>__dirname</code> ：当前运行文件所在文件夹的绝对路径</li>
+</ul>
+<p>那么，这个外层函数有什么作用？</p>
+<ul>
+<li>用于支持模块化语法</li>
+<li>隐藏服务器内部实现（从作用域角度去看，但不仅仅是这个方面，有自己的安全保护机制），服务器安全。</li>
+</ul>
+<h2 id="6-node-中的-global"><a class="markdownIt-Anchor" href="#6-node-中的-global">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch01?id=_6-node-%E4%B8%AD%E7%9A%84-global">6. Node 中的 global</a></h2>
+<h3 id="61-node-的组成"><a class="markdownIt-Anchor" href="#61-node-的组成">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch01?id=_61-node-%E7%9A%84%E7%BB%84%E6%88%90">6.1 Node 的组成</a></h3>
+<p>浏览器端的 JS 由三部分组成：</p>
+<ul>
+<li>BOM</li>
+<li>DOM</li>
+<li>ECMAScript</li>
+</ul>
+<p>Node 端的 JS：</p>
+<ul>
+<li>没有 BOM，因为服务器不需要</li>
+<li>没有 DOM，因为没有浏览器窗口，也就没有文档对象模型</li>
+<li>几乎包含了所有的 ES 规范</li>
+<li>没有  <code>window</code>  对象，取而代之的是一个叫  <code>global</code>  的全局变量</li>
+<li>在 Node 中禁止函数的  <code>this</code>  指向  <code>global</code> ，所以执行  <code>console.log(this)</code>  的结果为  <code>&#123;&#125;</code></li>
+</ul>
+<h3 id="62-global-的一些常用属性"><a class="markdownIt-Anchor" href="#62-global-的一些常用属性">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch01?id=_62-global-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7">6.2 global 的一些常用属性</a></h3>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>global<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><code>setInterval</code> ：设置循环定时器</li>
+<li><code>clearInterval</code> ：清空循环定时器</li>
+<li><code>setTimeout</code> ：设置延迟定时器</li>
+<li><code>clearTimeout</code> ：清空延迟定时器</li>
+<li><code>setImmediate</code> ：设置立即执行函数</li>
+<li><code>clearImmediate</code> ：清空立即执行函数</li>
+</ul>
+<h2 id="7-node-中的事件循环模型了解"><a class="markdownIt-Anchor" href="#7-node-中的事件循环模型了解">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch01?id=_7-node-%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%A8%A1%E5%9E%8B%EF%BC%88%E4%BA%86%E8%A7%A3%EF%BC%89">7. Node 中的事件循环模型（了解）</a></h2>
+<p>概览：</p>
+<pre class="line-numbers language-none"><code class="language-none">   ┌───────────────────────────┐
+┌─&gt;│           timers          │
+│  └─────────────┬─────────────┘
+│  ┌─────────────┴─────────────┐
+│  │     pending callbacks     │
+│  └─────────────┬─────────────┘
+│  ┌─────────────┴─────────────┐
+│  │       idle, prepare       │
+│  └─────────────┬─────────────┘      ┌───────────────┐
+│  ┌─────────────┴─────────────┐      │   incoming:   │
+│  │           poll            │&lt;─────┤  connections, │
+│  └─────────────┬─────────────┘      │   data, etc.  │
+│  ┌─────────────┴─────────────┐      └───────────────┘
+│  │           check           │
+│  └─────────────┬─────────────┘
+│  ┌─────────────┴─────────────┐
+└──┤      close callbacks      │
+   └───────────────────────────┘<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Node 事件循环模型包括 6 个阶段：</p>
+<ul>
+<li>
+<p>第一个阶段: timers（定时器阶段： <code>setTimeout</code> 、 <code>setInterval</code> ）</p>
+<ol>
+<li>开始计时</li>
+<li>执行计时器的回调（timers 独有）</li>
+</ol>
+</li>
+<li>
+<p>第二个阶段: pending calLbacks（系统阶段，我们一般不关注）</p>
+</li>
+<li>
+<p>第三个阶段: idle, prepare（准备阶段，我们一般不关注）</p>
+</li>
+<li>
+<p>第四个阶段: poll（轮询阶段）</p>
+<ul>
+<li>如果回调队列里有待执行的回调函数
+<ul>
+<li>从回调队列中取出回调函数，同步执行（依次执行），直到回调队列为空，或者达到系统最大限制。</li>
+</ul>
+</li>
+<li>如果回调队列为空
+<ul>
+<li>如果设置过  <code>setImmediate</code> ，则进入下一个 check 阶段，为了执行  <code>setImmediate</code>  所设置的回调。</li>
+<li>如果未设置  <code>setImmediate</code> ： 在此阶段停留，等待回调函数被插入回调队列。 若定时器到点了，进入下一 check 阶段。目的：为，了走第五阶段，随后走第六阶段（最终目的）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>第五个阶段: check（专门用于执行  <code>setImmediate</code>  所设置的回调）</p>
+</li>
+<li>
+<p>第六个阶段: close callbacks（关闭回调阶段）</p>
+</li>
+<li>
+<p><code>process.nextTick()</code> ：设置立即执行函数（“人民币玩家”—— 能在任意阶段优先执行）</p>
+</li>
+</ul>
+<p>特殊情况：</p>
+<ul>
+<li>当没有主线程事件的时候， <code>setTimeout(()=&gt;&#123;&#125;)</code>  和  <code>setImmediate(()=&gt;&#123;&#125;)</code>  的执行顺序不确定，取决于事件轮询的时间，看 timers 阶段是否来得及定时以及执行  <code>setTimeout</code> 。</li>
+<li>当有了主线程事件的时候，那么 timers 阶段是完全有时间来定时以及执行  <code>setTimeout</code>  的，所以  <code>setTimeout(()=&gt;&#123;&#125;)</code>  将执行在  <code>setImmediate</code>  前面。</li>
+</ul>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 延迟执行函数</span>
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"setTimeout指定的回调"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 立即执行函数（回调）</span>
+<span class="token function">setImmediate</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"我是setImmediate执行的回调"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 立即执行函数（VIP回调）</span>
+process<span class="token punctuation">.</span><span class="token function">nextTick</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"process.nextTick指定的回调函数"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"我是主线程上的代码"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>以上代码输出：</p>
+<pre class="line-numbers language-none"><code class="language-none">我是主线程上的代码
+process.nextTick指定的回调函数
+setTimeout指定的回调
+我是setImmediate执行的回调<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h1 id="二-包与-npm-包管理器"><a class="markdownIt-Anchor" href="#二-包与-npm-包管理器">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch02?id=%EF%BC%88%E4%BA%8C%EF%BC%89-%E5%8C%85%E4%B8%8E-npm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8">（二） 包与 npm 包管理器</a></h1>
+<h2 id="1-package-包"><a class="markdownIt-Anchor" href="#1-package-包">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch02?id=_1-package-%E5%8C%85">1. package 包</a></h2>
+<p>Node.js 的包基本遵循 CommonJS 规范，包将一组相关的模块组合在一起，形成一组完整的工具。<br>
+包由包结构和包描述文件两个部分组成。</p>
+<ul>
+<li>包结构：用于组织包中的各种文件</li>
+<li>包描述文件：描述包的相关信息，以供外部读取分析</li>
+</ul>
+<h3 id="11-包结构"><a class="markdownIt-Anchor" href="#11-包结构">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch02?id=_11-%E5%8C%85%E7%BB%93%E6%9E%84">1.1 包结构</a></h3>
+<p>包实际上就是一个压缩文件，解压以后还原为目录。符合 CommonJS 规范的目录，应该包含如下文件：</p>
+<ul>
+<li>package.json 描述文件</li>
+<li>bin 可执行二进制文件（“说明书”，必须有）</li>
+<li>lib js 代码</li>
+<li>doc 文档（说明文档、bug 修复文档、版本变更记录）</li>
+<li>test 单元测试</li>
+</ul>
+<blockquote>
+<p>Tip</p>
+<p>实际上开发的时候也不必严格遵循这个规则，但  <code>package.json</code>  是必需的。</p>
+</blockquote>
+<p>如何让一个普通文件夹变成一个包？</p>
+<ul>
+<li>
+<p>让这个文件夹拥有一个: package.json 文件即可，且 package.json 里面的内容要合法。执行命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>包名的要求：不能有中文、不能有大写字母、尽量不要以数字开头，不能与 npm 仓库上其他包同名</strong>。</p>
+</li>
+</ul>
+<h3 id="12-包描述文件"><a class="markdownIt-Anchor" href="#12-包描述文件">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch02?id=_12-%E5%8C%85%E6%8F%8F%E8%BF%B0%E6%96%87%E4%BB%B6">1.2 包描述文件</a></h3>
+<p>包描述文件用于表达非代码相关的信息，它是一个 JSON 格式的文件： <code>package.json</code> <br>
+ 包描述文件包含以下字段：<strong>name、version</strong>、description、keywords、maintainers、contributors、bugs、licenses、repositories、dependencies、homepage、os、cpu、engine、builtin、directories、implements、scripts、author、bin、main、devDependencies。</p>
+<h2 id="2-npm"><a class="markdownIt-Anchor" href="#2-npm">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch02?id=_2-npm">2. NPM</a></h2>
+<h3 id="21-npm-是什么"><a class="markdownIt-Anchor" href="#21-npm-是什么">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch02?id=_21-npm-%E6%98%AF%E4%BB%80%E4%B9%88">2.1 NPM 是什么</a></h3>
+<p>全称：Node Package Manager，Node 的包管理器。</p>
+<p>NPM 与 Node 的关系：</p>
+<ul>
+<li>安装 node 后自动安装 npm（npm 是 node 官方出的包管理器，专门用于管理包）</li>
+</ul>
+<h3 id="22-npm-能干什么"><a class="markdownIt-Anchor" href="#22-npm-能干什么">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch02?id=_22-npm-%E8%83%BD%E5%B9%B2%E4%BB%80%E4%B9%88">2.2 NPM 能干什么</a></h3>
+<p>通过 NPM 可以对 Node 的包进行搜索、下载、安装、删除、上传。</p>
+<h3 id="23-npm-常用命令"><a class="markdownIt-Anchor" href="#23-npm-常用命令">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch02?id=_23-npm-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">2.3 NPM 常用命令</a></h3>
+<ol>
+<li>
+<p>【搜索】</p>
+<ul>
+<li><code>npm search xxx</code></li>
+<li>通过网址搜索：<a target="_blank" rel="noopener" href="https://www.npmjs.com/">https://www.npmjs.com</a></li>
+</ul>
+</li>
+<li>
+<p>【安装】</p>
+<p>前提：安装之前必须保证文件夹里面有 package.json，且里面的内容格式合法。</p>
+<ul>
+<li>
+<p><code>npm install xxx --save</code>  或  <code>npm i xxx -S</code>  或  <code>npm i xxx</code></p>
+<p>备注：</p>
+<ol>
+<li>局部安装完的第三方包，放在当前目录中 node_modules 这个文件夹里</li>
+<li>安装完毕会自动产生一个 package-lock.json (npm 版本在 5 以后才有)，里面缓存的是每个包的地址，目的是下次快一些。</li>
+<li>当安装完一个包，该包的名字会自动写入到 package.json 中的【dependencies (生产依赖) npm5 及之前版本要加上  <code>--save</code>  后缀才可以。</li>
+</ol>
+</li>
+<li>
+<p><code>npm install xxx --save-dev</code>  或  <code>npm i xxx -D</code></p>
+<p>安装包并将该包写入到【devDependencies (开发依赖中)】<br>
+备注：什么是生产依赖与开发依赖？</p>
+<ol>
+<li>只在开发时 (写代码时) 时才用到的库，就是开发依赖 ----- 例如：语法检查、压缩代码、扩展 css 前缀的包。</li>
+<li>在生产环境中 (项目上线) 不可缺少的，就是生产依赖 ------ 例如：jquery、bootStrap 等等。</li>
+<li>注意：某些包即属于开发依赖，又属于生产依赖 ------- 例如：jquery。</li>
+</ol>
+</li>
+<li>
+<p><code>npm i xxx -g</code></p>
+<ul>
+<li>全局安装 xxxx 包（一般来说，<strong>带有指令集的包要进行全局安装</strong>，<strong>例如：browserify、babel 等）</strong></li>
+<li>全局安装的包，其指令到处可用，如果该包不带有指令，就无需全局安装。</li>
+<li>查看全局安装的位置： <code>npm root -g</code></li>
+</ul>
+</li>
+<li>
+<p><code>npm i xxx@yyy</code></p>
+<p>安装 xxx 包的 yyy 版本</p>
+</li>
+<li>
+<p><code>npm i</code> ：安装 (当前我们自己包里面的) package.json 中声明的 (依赖中的) 所有包</p>
+</li>
+</ul>
+</li>
+<li>
+<p>【移除】</p>
+<ul>
+<li>
+<p><code>npm remove xxx</code></p>
+<p>在 node_module 中删除 xxx 包，同时会删除该包在 package.json 中的声明。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>【其他命令】</p>
+<ul>
+<li><code>npm aduit fix</code> ：检测项目依赖中的一些问题，并且尝试着修复。</li>
+<li><code>npm view xxxxx versions</code> ：查看远程 npm 仓库中 xxx 包的所有版本信息</li>
+<li><code>npm view xxxxx version</code> ：查看 npm 仓库中 xxx 包的最新版本</li>
+<li><code>npm ls xxxx</code> ：查看我们所安装的 xxx 包的版本</li>
+</ul>
+</li>
+<li>
+<p>【关于版本号的说明】</p>
+<ul>
+<li><code>&quot;^3.x.x&quot;</code> ：锁定大版本，以后安装包的时候，保证包是 3.x.x 版本，x 默认取最新的。</li>
+<li><code>&quot;~3.1.x&quot;</code> ：锁定小版本，以后安装包的时候，保证包是 3.1.x 版本，x 默认取最新的。</li>
+<li><code>&quot;3.1.1&quot;</code> ：锁定完整版本，以后安装包的时候，保证包必须是 3.1.1 版本。</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-cnpm-的简介与使用"><a class="markdownIt-Anchor" href="#3-cnpm-的简介与使用">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch02?id=_3-cnpm-%E7%9A%84%E7%AE%80%E4%BB%8B%E4%B8%8E%E4%BD%BF%E7%94%A8">3. cnpm 的简介与使用</a></h2>
+<h3 id="31-国内使用-npm-存在的问题"><a class="markdownIt-Anchor" href="#31-国内使用-npm-存在的问题">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch02?id=_31-%E5%9B%BD%E5%86%85%E4%BD%BF%E7%94%A8-npm-%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98">3.1 国内使用 npm 存在的问题</a></h3>
+<ul>
+<li>安装 npm 后，每次我们安装包时，我们的电脑都要和 npm 服务器进行对话，去 npm 仓库获取包。</li>
+<li>npm 默认的仓库地址为：<a target="_blank" rel="noopener" href="http://registry.npmjs.org/">http://registry.npmjs.org</a></li>
+<li>查看当前 npm 仓库地址命令： <code>npm config get registry</code> ，提示如下图： <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/FqtKhR.png" alt="Alt text"></li>
+<li>因为 npm 的远程服务器在国外，所以有时候难免出现访问过慢，甚至无法访问的情况。</li>
+<li>为了解决这个问题，我们有以下几个解决办法</li>
+</ul>
+<h3 id="32-使用淘宝的-cnpm-代替-npm"><a class="markdownIt-Anchor" href="#32-使用淘宝的-cnpm-代替-npm">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch02?id=_32-%E4%BD%BF%E7%94%A8%E6%B7%98%E5%AE%9D%E7%9A%84-cnpm-%E4%BB%A3%E6%9B%BF-npm">3.2 使用淘宝的 cnpm 代替 npm</a></h3>
+<p>淘宝为我们搭建了一个国内的 npm 服务器，它目前是每隔 10 分钟将国外 npm 仓库的所有内容 “搬运” 回国内的服务器上，这样我们直接访问淘宝的国内服务器就可以了，它的地址是：<a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a></p>
+<p>使用方法：</p>
+<ul>
+<li>
+<p>第一种（不建议）：直接安装 cnpm 安装淘宝提供的 cnpm，并更改服务器地址为淘宝的国内地址， 命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> -g cnpm --registry<span class="token operator">=</span>https://registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>以后安装直接采用  <code>cnpm</code>  替代  <code>npm</code> 。<br>
+例如原生 npm 命令为： <code>npm install uniq --save</code> ，cnpm 命令为： <code>cnpm install uniq --save</code> 。</p>
+</li>
+<li>
+<p>第二种（建议）：替换 npm 仓库地址为淘宝镜像地址</p>
+<p>命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> config <span class="token builtin class-name">set</span> registry https://registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>查看是否更改成功： <code>npm config get registry</code> ，以后安装时，依然用  <code>npm</code>  命令，但是实际是从淘宝国内服务器下载的。</p>
+</li>
+</ul>
+<h2 id="4-yarn-的简介与使用"><a class="markdownIt-Anchor" href="#4-yarn-的简介与使用">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch02?id=_4-yarn-%E7%9A%84%E7%AE%80%E4%BB%8B%E4%B8%8E%E4%BD%BF%E7%94%A8">4. yarn 的简介与使用</a></h2>
+<p>Yarn 发布于 2016 年 10 月，截至当前 2019 年 1 月，gitHub 上的 Start 数量为：34.3k，已经超过 npm 很多了， yarn 使用本地缓存，有时甚至无需互联网连接就能安装本地已经缓存过的依赖项，安装方法：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> -g <span class="token function">yarn</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="41-注意配置环境变量"><a class="markdownIt-Anchor" href="#41-注意配置环境变量">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch02?id=_41-%E6%B3%A8%E6%84%8F%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">4.1 注意配置环境变量</a></h3>
+<p>由于 yarn 的全局安装位置与 npm 不同，所以要配置 yarn 的全局安装路径到环境变量中，否则全局安装的包不起作用。 具体操作如下：</p>
+<ul>
+<li>安装 yarn 后分别执行  <code>yarn global dir</code>  命令， <code>yarn global bin</code>  命令。</li>
+<li>将上述两步返回的路径配置到电脑环境变量中即可。</li>
+</ul>
+<h3 id="42-yarn-命令与-npm-命令的对应关系"><a class="markdownIt-Anchor" href="#42-yarn-命令与-npm-命令的对应关系">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch02?id=_42-yarn%E5%91%BD%E4%BB%A4%E4%B8%8Enpm%E5%91%BD%E4%BB%A4%E7%9A%84%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB">4.2 yarn 命令与 npm 命令的对应关系</a></h3>
+<ul>
+<li>
+<p>初始化项目:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">yarn</span> init -y
+<span class="token function">npm</span> init -y<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>下载项目的所有声明的依赖:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">yarn</span>
+<span class="token function">npm</span> <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>下载指定的运行时依赖包:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">yarn</span> <span class="token function">add</span> xxxx@3.2.1
+<span class="token function">npm</span> <span class="token function">install</span> xxxxx@3.2.1 -S<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>下载指定的开发时依赖:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">yarn</span> <span class="token function">add</span> xxxxx@3.2.1 -D
+<span class="token function">npm</span> <span class="token function">install</span> xxxxx@3.2.1 -D<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>全局下载指定包:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">yarn</span> global <span class="token function">add</span> xxxxxx
+<span class="token function">npm</span> <span class="token function">install</span> xxxxxxx -g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>删除依赖包:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">yarn</span> remove xxxxx
+<span class="token function">yarn</span> global remove xxxxxx
+<span class="token function">npm</span> remove xxxxxxx -g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>查看某个包的信息:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">yarn</span> info xxx
+<span class="token function">npm</span> info xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>设置淘宝镜像:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">yarn</span> config <span class="token builtin class-name">set</span> registry https://registry.npm.taobao.org
+<span class="token function">npm</span> config <span class="token builtin class-name">set</span> registry https://registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<hr>
+<h1 id="三buffer-缓冲器"><a class="markdownIt-Anchor" href="#三buffer-缓冲器">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch03?id=%EF%BC%88%E4%B8%89%EF%BC%89buffer-%E7%BC%93%E5%86%B2%E5%99%A8">（三）Buffer 缓冲器</a></h1>
+<p>背景：</p>
+<ul>
+<li>浏览器没有储存图片文件等媒体文件的需求，JS 存的都是一些基本数据类型。</li>
+<li>服务器需要存储图片 / 视频 / 音频等媒体文件，因此有了 Buffer 缓冲器。</li>
+</ul>
+<h2 id="1-buffer-是什么"><a class="markdownIt-Anchor" href="#1-buffer-是什么">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch03?id=_1-buffer-%E6%98%AF%E4%BB%80%E4%B9%88">1. Buffer 是什么</a></h2>
+<p>Buffer 是一个和数组类似的对象，不同是 Buffer 是专门用来保存二进制数据的。</p>
+<h2 id="2-buffer-特点"><a class="markdownIt-Anchor" href="#2-buffer-特点">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch03?id=_2-buffer-%E7%89%B9%E7%82%B9">2. Buffer 特点</a></h2>
+<ul>
+<li>它是一个【类似于数组】的对象，用于存储数据（存储的是二进制数据）。</li>
+<li>Buffer 的效率很高，存储和读取很快，它是直接对计算机的内存进行操作。</li>
+<li>Buffer 的大小一旦确定了，不可修改。</li>
+<li>每个元素占用内存的大小为 1 字节。</li>
+<li>Buffer 是 Node 中的非常核心的模块，无需下载、无需引入，直接即可使用</li>
+</ul>
+<h2 id="3-buffer-的操作"><a class="markdownIt-Anchor" href="#3-buffer-的操作">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch03?id=_3-buffer-%E7%9A%84%E6%93%8D%E4%BD%9C">3. Buffer 的操作</a></h2>
+<h3 id="31-buffer-的创建"><a class="markdownIt-Anchor" href="#31-buffer-的创建">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch03?id=_31-buffer-%E7%9A%84%E5%88%9B%E5%BB%BA">3.1 Buffer 的创建</a></h3>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 创建一个指定size大小的Buffer</span>
+<span class="token comment">// 安全，里面全是0</span>
+<span class="token keyword">var</span> buf <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">alloc</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//不安全，可能包含旧数据，需要重写所有数据</span>
+<span class="token keyword">var</span> buf <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">allocUnsafe</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>
+<p>方式一：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> buf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Buffer</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><code>new Buffer</code>  方式创建一个 Buffer 的实例对象，性能特别差（需要在堆里开辟空间，然后清理空间 - 置零）</p>
+</li>
+<li>
+<p>方式二</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> buf2 <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">alloc</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>buf2<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>创建一个 Buffer 的实例对象，性能比  <code>new Buffer()</code>  稍强一点，在堆中开辟一块空间（该块空间没有人用过）</p>
+</li>
+<li>
+<p>方式三</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> buf3 <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">allocUnsafe</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>buf3<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>创建一个 Buffer 的实例对象，性能最好的，在堆里开辟空间。</p>
+</li>
+</ol>
+<h3 id="32-获取-buffer-的长度"><a class="markdownIt-Anchor" href="#32-获取-buffer-的长度">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch03?id=_32-%E8%8E%B7%E5%8F%96-buffer-%E7%9A%84%E9%95%BF%E5%BA%A6">3.2 获取 Buffer 的长度</a></h3>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 获取Buffer的长度</span>
+buf<span class="token punctuation">.</span>length<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="33-buffer-的转换"><a class="markdownIt-Anchor" href="#33-buffer-的转换">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch03?id=_33-buffer-%E7%9A%84%E8%BD%AC%E6%8D%A2">3.3 Buffer 的转换</a></h3>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 相当于Buffer.alloc(size);</span>
+<span class="token keyword">var</span> buf <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">allocUnsafe</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+buf<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//将可能出现的敏感数据用0全部填充</span>
+
+<span class="token comment">// 将一个字符串转换为Buffer</span>
+<span class="token keyword">var</span> buf <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 将一个Buffer转换为字符串</span>
+<span class="token keyword">var</span> str <span class="token operator">=</span> buf<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意：</p>
+<ul>
+<li>
+<p>输出的 Buffer 为什么不是二进制？</p>
+<p>输出的是 16 进制，但是存储的是二进制吗，输出的时候会自动转 16 进制。</p>
+</li>
+<li>
+<p>输出的 Buffer 不为空？</p>
+<p>在堆里开辟空间，可能残留着别人用过的数据，所以 allocUnsafe</p>
+</li>
+</ul>
+<hr>
+<h1 id="四fs-文件系统"><a class="markdownIt-Anchor" href="#四fs-文件系统">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch04?id=%EF%BC%88%E5%9B%9B%EF%BC%89fs-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">（四）fs 文件系统</a></h1>
+<h2 id="1-node-中的-fs-文件系统"><a class="markdownIt-Anchor" href="#1-node-中的-fs-文件系统">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch04?id=_1-node-%E4%B8%AD%E7%9A%84-fs-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">1. Node 中的 fs 文件系统</a></h2>
+<ul>
+<li>
+<p>在 Node 中有一个文件系统，所谓的文件系统，就是对计算机中的文件进行增删改查等操作。</p>
+</li>
+<li>
+<p>在 NodeJs 中，给我们提供了一个模块，叫做 fs 模块 (文件系统)，专门用于操作文件。</p>
+</li>
+<li>
+<p>fs 模块是 Node 的核心模块，使用的时候，无需下载，直接引入。</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 引入fs模块</span>
+<span class="token keyword">var</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<p>fs 中的大部分方法都为我们提供了两个版本：</p>
+<ol>
+<li>
+<p>同步方法：带 <code>sync</code>  的方法</p>
+<ul>
+<li>同步方法会阻塞程序的执行</li>
+<li>同步方法通过返回值返回结果</li>
+</ul>
+</li>
+<li>
+<p>异步方法：不带 <code>sync</code>  的方法</p>
+<ul>
+<li>异步方法不会阻塞程序的执行</li>
+<li>异步方法都是通过回调函数来返回结果的</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>Tip</p>
+<p>Nodejs 的一个特点是异步非阻塞，所以学习的都是异步方法。</p>
+</blockquote>
+<h2 id="2-fs-文件写入"><a class="markdownIt-Anchor" href="#2-fs-文件写入">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch04?id=_2-fs-%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5">2. fs 文件写入</a></h2>
+<p>文件写入有两种方法，一种是  <code>writeFileSync</code> （同步），另一种是  <code>writeFile</code> （异步的）。</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 同步方法</span>
+fs<span class="token punctuation">.</span><span class="token function">writeFileSync</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> data<span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment">// 异步方法</span>
+fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> data<span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">,</span> callback<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="21-简单文件写入"><a class="markdownIt-Anchor" href="#21-简单文件写入">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch04?id=_21-%E7%AE%80%E5%8D%95%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5">2.1 简单文件写入</a></h3>
+<blockquote>
+<p>Tip</p>
+<p>简单文件写入方式是一种异步操作，事实上，后面讲的都是异步操作。</p>
+</blockquote>
+<p>语法：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> data<span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token function">callback</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><code>file</code> ：要写入的文件路径 + 文件名 + 后缀</li>
+<li><code>data</code> ：要写入的数据</li>
+<li><code>options</code> ：配置对象 (可选参数)
+<ul>
+<li><code>encoding</code> ：设置文件的编码方式，默认值： <code>utf8</code> （万国码）</li>
+<li><code>mode</code> ：设置文件的操作权限，默认值是：<strong> <code>0o666 = 0o222 + 0o444</code> </strong>
+<ul>
+<li><code>0o111</code> ：文件可被执行的权限，.exe .msc 几乎不用，linux 有自己一套操作方法。</li>
+<li><code>0o222</code> ：文件可被写入的权限</li>
+<li><code>0o444</code> ：文件可别读取的权限</li>
+</ul>
+</li>
+<li><code>flag</code> ：打开文件要执行的操作，默认值是 <code>'w'</code>
+<ul>
+<li><code>a</code> ：追加</li>
+<li><code>w</code> ：写入</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>callback</code> ：回调函数
+<ul>
+<li><code>err</code> ：错误对象</li>
+</ul>
+</li>
+</ul>
+<p>举例：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">//引入内置的fs模块</span>
+<span class="token keyword">let</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//调用writeFile方法</span>
+fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span>
+  __dirname <span class="token operator">+</span> <span class="token string">"/demo.txt"</span><span class="token punctuation">,</span>
+  <span class="token string">"kobe,123"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#123;</span> mode<span class="token operator">:</span> <span class="token number">0o666</span><span class="token punctuation">,</span> flag<span class="token operator">:</span> <span class="token string">"a"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"文件写入失败"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"文件写入成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>Tip</p>
+<p>在 Node 中有这样一个原则：错误优先。所以有了回调： <code>err=&gt;&#123;&#125;</code> 。</p>
+</blockquote>
+<h3 id="22-流式文件写入"><a class="markdownIt-Anchor" href="#22-流式文件写入">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch04?id=_22-%E6%B5%81%E5%BC%8F%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5">2.2 流式文件写入</a></h3>
+<p>流式文件写入适用于一些比较大的文件，可以分多次向文件中写入内容，有效避免内存溢出的问题。</p>
+<blockquote>
+<p>Tip</p>
+<p>可以把流式文件写入比作是使用水管从河里往家里运水，流式文件写入首先要创建流（水管），然后要检测流的状态，文件传输完毕，则要关闭流（拿开水管）。</p>
+</blockquote>
+<p>创建一个文件可写流：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">fs<span class="token punctuation">.</span><span class="token function">createWriteStream</span><span class="token punctuation">(</span>path<span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>参数说明：</p>
+<ul>
+<li><code>path</code> ：要写入文件的路径 + 文件名 + 文件后缀</li>
+<li><code>options</code> ：配置对象（可选参数）
+<ul>
+<li><code>flags</code> ：打开文件要执行的操作，默认值： <code>w</code></li>
+<li><code>encoding</code> ：设置文件的编码方式，默认值： <code>utf8</code></li>
+<li><code>fd</code>  : 文件统一标识符，linux 下文件标识符</li>
+<li><code>mode</code> ：设置文件的操作权限，默认值是： <code>0o666 = 0o222 + 0o444</code></li>
+<li><code>autoClose</code>  : 自动关闭文件，默认值：true</li>
+<li><code>emitClose</code>  : 关闭文件，默认值：true</li>
+<li><code>start</code>  : 整数值，写入文件的起始位置（偏移量）</li>
+</ul>
+</li>
+<li>返回值： <code>&lt;fs.WriteStream&gt;</code> （一个可写流）</li>
+</ul>
+<p>文件流写入的过程：</p>
+<ol>
+<li>
+<p>创建一个可写流（水管搭建好了）</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> ws <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">createWriteStream</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span> <span class="token string">"/demo.txt"</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> start<span class="token operator">:</span> <span class="token number">10</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>检测流的状态（只要用到了流，就必须监测流的状态）</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">ws<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"open"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"可写流打开了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"close"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"可写流关闭了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>使用可写流写入数据</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">ws<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"美女\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"霉女？\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"到底是哪一个？\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>关闭可写流（水管不用了，得收起来）</p>
+<p>方式一：在 Node 的 v8 版本中，要用 <code>end</code>  方法关闭流，否则可能造成数据丢失。</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">ws<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>方式二： <code>close</code>  方法关闭流在 Node V8 可能造成数据丢失。</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">ws<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<h2 id="3-文件读取"><a class="markdownIt-Anchor" href="#3-文件读取">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch04?id=_3-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96">3. 文件读取</a></h2>
+<p>文件读取也有两种方法：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 同步</span>
+fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span>path<span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment">// 异步</span>
+fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>path<span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">,</span> callback<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="31-简单文件读取"><a class="markdownIt-Anchor" href="#31-简单文件读取">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch04?id=_31-%E7%AE%80%E5%8D%95%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96">3.1 简单文件读取</a></h3>
+<p>语法：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>path<span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token function">callback</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>参数说明：</p>
+<ul>
+<li><code>path</code> ：要读取文件的路径 + 文件名 + 后缀</li>
+<li><code>options</code> ：配置对象（可选）</li>
+<li><code>callback</code> ：回调函数
+<ul>
+<li><code>err</code> ：错误对象</li>
+<li><code>data</code> ：读取出来的数据</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Tip</p>
+<p>当文件读入成功，则  <code>err</code>  为  <code>null</code> ， <code>data</code>  为读取到的数据。若当文件读入失败，则  <code>err</code>  为异常对象， <code>data</code>  为空。</p>
+</blockquote>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span> <span class="token string">"/test.mp4"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token string">"../haha.mp4"</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"文件写入成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>为什么读取出来的东西是 Buffer？ 用户存储的不一定是纯文本。</p>
+<blockquote>
+<p>Warning</p>
+<p>简单文件写入和简单文件读取，都是一次性把所有要读取或要写入的内容加到内存中，容易造成内存泄露。</p>
+</blockquote>
+<h3 id="32-流式文件读取"><a class="markdownIt-Anchor" href="#32-流式文件读取">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch04?id=_32-%E6%B5%81%E5%BC%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96">3.2 流式文件读取</a></h3>
+<p>对于一个较大的文件，我们不能通过简单方式读取。因为简单方式是一次性读取，内存可能不够用。这个时候我们可以使用流式读取，分多次读取。</p>
+<p>创建一个文件读取流语法：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">fs<span class="token punctuation">.</span><span class="token function">createReadStream</span><span class="token punctuation">(</span>path<span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>参数说明：</p>
+<ul>
+<li><code>path</code> ：要读取的文件路径 + 文件名 + 后缀</li>
+<li><code>options</code> ：可选配置项
+<ul>
+<li><code>flags</code></li>
+<li><code>encoding</code></li>
+<li><code>fd</code></li>
+<li><code>mode</code></li>
+<li><code>autoClose</code></li>
+<li><code>emitClose</code></li>
+<li><code>start</code> ：起始偏移量</li>
+<li><code>end</code> ：结束偏移量</li>
+<li><code>highWaterMark</code> ：每次读取数据的大小，默认值是  <code>64 * 1024</code> （ <code>64KB</code> ）</li>
+</ul>
+</li>
+</ul>
+<p>流式读取（并写入到一个新文件中）文件过程：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> <span class="token punctuation">&#123;</span> createReadStream<span class="token punctuation">,</span> createWriteStream <span class="token punctuation">&#125;</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//创建一个可读流</span>
+<span class="token keyword">let</span> rs <span class="token operator">=</span> <span class="token function">createReadStream</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span> <span class="token string">"/music.mp3"</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// 10M</span>
+  highWaterMark<span class="token operator">:</span> <span class="token number">10</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">,</span>
+  <span class="token comment">//  start end 参数一般不用</span>
+  <span class="token comment">// start:60000,</span>
+  <span class="token comment">// end:120000</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//创建一个可写流</span>
+<span class="token keyword">let</span> ws <span class="token operator">=</span> <span class="token function">createWriteStream</span><span class="token punctuation">(</span><span class="token string">"../haha.mp3"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 只要用到了流，就必须监测流的状态</span>
+rs<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"open"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"可读流打开了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+rs<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"close"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"可读流关闭了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 正确关闭流方式：当没有数据可读，读取流关闭，则写入流也关闭</span>
+  ws<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"open"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"可写流打开了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"close"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"可写流关闭了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 给可读流绑定一个data事件，就会触发可读流自动读取内容。</span>
+rs<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"data"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// Buffer实例的length属性，是表示该Buffer实例占用内存空间的大小</span>
+  <span class="token comment">// 输出的是65536，每次读取64KB的内容</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  ws<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// ws.close()</span>
+  <span class="token comment">//若在此处关闭流，会写入一次，后续数据丢失</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ws.close()</span>
+<span class="token comment">//若在此处关闭流，导致无法写入数据</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h1 id="五mongodb-非关系型数据库"><a class="markdownIt-Anchor" href="#五mongodb-非关系型数据库">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=%EF%BC%88%E4%BA%94%EF%BC%89mongodb-%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93">（五）MongoDB 非关系型数据库</a></h1>
+<h2 id="1-数据库简介"><a class="markdownIt-Anchor" href="#1-数据库简介">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%80%E4%BB%8B">1. 数据库简介</a></h2>
+<h3 id="11-数据库是什么"><a class="markdownIt-Anchor" href="#11-数据库是什么">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_11-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%AF%E4%BB%80%E4%B9%88">1.1 数据库是什么</a></h3>
+<p>数据库（DataBase）是按照数据结构来组织、存储和管理数据的仓库。</p>
+<h3 id="12-为什么要使用数据库"><a class="markdownIt-Anchor" href="#12-为什么要使用数据库">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_12-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93">1.2 为什么要使用数据库</a></h3>
+<p>我们的程序都是在内存中运行的，一旦程序运行结束或者计算机断电，程序运行中的数据都会丢失。所以我们就需要将一些程序运行的数据持久化到硬盘之中，以确保数据的安全性。而数据库就是数据持久化的最佳选择。说白了，数据库就是存储数据的仓库。</p>
+<h3 id="13-数据库的分类"><a class="markdownIt-Anchor" href="#13-数据库的分类">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_13-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%88%86%E7%B1%BB">1.3 数据库的分类</a></h3>
+<h4 id="131-关系型数据库rdbs"><a class="markdownIt-Anchor" href="#131-关系型数据库rdbs">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_131-%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88rdbs%EF%BC%89">1.3.1 关系型数据库（RDBS）</a></h4>
+<ul>
+<li>
+<p>代表有：MySQL、Oracle、DB2、SQL Server…</p>
+</li>
+<li>
+<p>特点：关系紧密，<strong>表结构</strong></p>
+</li>
+<li>
+<p>优点：</p>
+<ol>
+<li>易于维护：都是使用表结构，格式一致；</li>
+<li>使用方便：SQL 结构化查询通用，可用于复杂查询；</li>
+<li>高级查询：可用于一个表以及多个表之间非常复杂的查询。</li>
+</ol>
+</li>
+<li>
+<p>缺点：</p>
+<ol>
+<li>读写性能比较差，尤其是海量数据的高效率读写；</li>
+<li>有固定的表结构，字段不可随意更改，灵活度稍欠；</li>
+<li>高并发读写需求，传统关系型数据库来说，硬盘 I/O 是一个很大的瓶颈。</li>
+</ol>
+</li>
+</ul>
+<h4 id="132-非关系型数据库nosql"><a class="markdownIt-Anchor" href="#132-非关系型数据库nosql">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_132-%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88nosql%EF%BC%89">1.3.2 非关系型数据库（NoSQL）</a></h4>
+<ul>
+<li>
+<p>代表有：MongoDB、Redis…</p>
+</li>
+<li>
+<p>特点：关系不紧密，文档存储，有<strong>键值对</strong></p>
+</li>
+<li>
+<p>优点：</p>
+<ol>
+<li>格式灵活：存储数据的格式可以是 key,value 形式。</li>
+<li>速度快：nosql 可以内存作为载体，而关系型数据库只能使用硬盘；</li>
+<li>易用：nosql 数据库部署简单。</li>
+</ol>
+</li>
+<li>
+<p>缺点：</p>
+<ol>
+<li>不支持 sql，学习和使用成本较高；</li>
+<li>不支持事务；</li>
+<li>复杂查询时语句过于繁琐。</li>
+</ol>
+</li>
+</ul>
+<h2 id="2-mongodb-的简介和安装"><a class="markdownIt-Anchor" href="#2-mongodb-的简介和安装">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_2-mongodb-%E7%9A%84%E7%AE%80%E4%BB%8B%E5%92%8C%E5%AE%89%E8%A3%85">2. MongoDB 的简介和安装</a></h2>
+<h3 id="21-mongodb-简介"><a class="markdownIt-Anchor" href="#21-mongodb-简介">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_21-mongodb-%E7%AE%80%E4%BB%8B">2.1 MongoDB 简介</a></h3>
+<ul>
+<li>MongoDB 是为 <strong>快速开发互联网 Web 应用而设计的数据库系统</strong>。</li>
+<li>MongoDB 的设计目标是极简、灵活、作为 Web 应用栈的一部分。</li>
+<li>MongoDB 的数据模型是面向文档的，所谓文档是一种类似于  <code>JSON</code>  的结构，简单理解 MongoDB 这个数据库中存的是各种各样的 JSON。（ <code>BSON</code> ）</li>
+</ul>
+<h3 id="22-mongodb-安装和基本配置"><a class="markdownIt-Anchor" href="#22-mongodb-安装和基本配置">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_22-mongodb-%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE">2.2 MongoDB 安装和基本配置</a></h3>
+<h4 id="221-mongodb-安装"><a class="markdownIt-Anchor" href="#221-mongodb-安装">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_221-mongodb-%E5%AE%89%E8%A3%85">2.2.1 MongoDB 安装</a></h4>
+<ol>
+<li>下载安装 MongoDB 数据库系统，安装好后需要配置环境变量，在系统高级设置中添加 MongoDB 安装路径下的  <code>bin</code>  的路径即可。（一般都是安装在 C 盘，无法修改。）</li>
+<li>在 c 盘根目录创建文件夹  <code>C:\data\db</code></li>
+<li>打开命令行窗口输入  <code>mongod</code>  启动数据库服务器</li>
+<li>打开一个新的命令行窗口输入  <code>mongo</code>  启动数据库的客户端</li>
+</ol>
+<h4 id="222-mongodb-服务器的启动"><a class="markdownIt-Anchor" href="#222-mongodb-服务器的启动">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_222-mongodb-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%90%AF%E5%8A%A8">2.2.2 MongoDB 服务器的启动</a></h4>
+<ul>
+<li>
+<p>服务器负责在计算机创建数据库，使用数据库需要先启动服务器</p>
+</li>
+<li>
+<p>MongoDB 的默认端口号 ** <code>27017</code> **</p>
+<ol>
+<li>可以通过  <code>--port</code>  来指定端口号</li>
+<li>端口号尽量使用四位以上，不要超过最大端口号 65535</li>
+<li>不能使用其他服务占用的端口号</li>
+</ol>
+</li>
+<li>
+<p>MongoDB 数据库默认会存放在 C 盘根目录下的  <code>data/db</code> ，可以通过  <code>--dbpath</code>  指令来指定数据库的目录</p>
+</li>
+</ul>
+<p>结合使用：</p>
+<pre class="line-numbers language-none"><code class="language-none">mongod --dbpath C:\Users\web\Desktop\database --port 12345<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p>Warning</p>
+<p>注意：目前为止，启动服务的命令行窗口不能关闭。</p>
+</blockquote>
+<h4 id="223-mongodb-客户端"><a class="markdownIt-Anchor" href="#223-mongodb-客户端">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_223-mongodb-%E5%AE%A2%E6%88%B7%E7%AB%AF">2.2.3 MongoDB 客户端</a></h4>
+<ul>
+<li>我们通过客户端来管理数据库</li>
+<li>在 CMD 输入  <code>mongo</code>  来启动客户端</li>
+</ul>
+<h3 id="23-将-mongodb-设置为-windows-系统服务"><a class="markdownIt-Anchor" href="#23-将-mongodb-设置为-windows-系统服务">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_23-%E5%B0%86-mongodb-%E8%AE%BE%E7%BD%AE%E4%B8%BA-windows-%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1">2.3 将 MongoDB 设置为 windows 系统服务</a></h3>
+<p>每次使用服务都要手动启动依次服务器，且启动服务窗口不能关闭。这里我们将将 MongoDB 设置为 windows 系统服务，使其开机自启。</p>
+<ol>
+<li>
+<p>在 c 盘根目录创建如下文件夹</p>
+<pre class="line-numbers language-none"><code class="language-none">C:\data\log
+C:\data\db<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>在 MongoDB 的安装目录添加一个配置文件 <code>mongod.cfg</code> 。</p>
+<p>其中，目录位置如下（根据自己数据库版本确定）：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 目录
+C:\Program Files\MongoDB\Server\4.4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><code>mongod.cfg</code>  的文件内容如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">systemLog:
+destination: file
+path: c:\data\log\mongod.log
+storage:
+    dbPath: c:\data\db
+net:
+    port: 27017<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>以管理员身份打开命令行，执行以下指令（注意版本号根据自己的修改）：</p>
+<pre class="line-numbers language-none"><code class="language-none">sc.exe create MongoDB binPath&#x3D; &quot;\&quot;C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe\&quot; --service --config&#x3D;\&quot;C:\Program Files\MongoDB\Server\3.2\mongod.cfg\&quot;&quot; DisplayName&#x3D; &quot;MongoDB&quot; start&#x3D; &quot;auto&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>打开系统服务器，启动名为 MongoDB 的服务，将其启动方式设置为自动。</p>
+</li>
+<li>
+<p>如果无法启动服务，在管理员的命令行窗口中输入如下指令，然后重复步骤 1。</p>
+<pre class="line-numbers language-none"><code class="language-none">sc delete MongoDB<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<h3 id="24-安装-mongodb-图形化工具"><a class="markdownIt-Anchor" href="#24-安装-mongodb-图形化工具">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_24-%E5%AE%89%E8%A3%85-mongodb-%E5%9B%BE%E5%BD%A2%E5%8C%96%E5%B7%A5%E5%85%B7">2.4 安装 MongoDB 图形化工具</a></h3>
+<p><strong>数据库图形化管理工具</strong> 极大地方便了数据库的操作与管理，<strong>推荐的 MongoDB 图形化管理工具</strong> 有：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://studio3t.com/">Studio 3T</a></li>
+<li><a target="_blank" rel="noopener" href="https://navicat.com.cn/">Navicat</a></li>
+</ul>
+<h3 id="25-常用端口号总结"><a class="markdownIt-Anchor" href="#25-常用端口号总结">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_25-%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%80%BB%E7%BB%93">2.5 常用端口号总结</a></h3>
+<p>端口号： <code>1-65535</code> ，不建议使用  <code>1--199</code>  的端口号，这些是预留给系统的，一般使用 4 位的，4 位的也不要用 1 开头的。</p>
+<p>常见端口号：</p>
+<ul>
+<li><code>21</code>  端口：FTP 文件传输服务</li>
+<li><code>22</code>  端口：SSH 端口</li>
+<li><code>23</code>  端口：TELNET 终端仿真服务</li>
+<li><code>25</code>  端口：SMTP 简单邮件传输服务</li>
+<li><code>53</code>  端口：DNS 域名解析服务</li>
+<li><code>80</code>  端口：HTTP 超文本传输服务</li>
+<li><code>110</code>  端口：POP3 “邮局协议版本 3” 使用的端口</li>
+<li><code>443</code>  端口：HTTPS 加密的超文本传输服务</li>
+<li><code>1433</code>  端口：MS SQL*SERVER 数据库 默认端口号</li>
+<li><code>1521</code>  端口：Oracle 数据库服务</li>
+<li><code>1863</code>  端口：MSN Messenger 的文件传输功能所使用的端口</li>
+<li><code>3306</code>  端口：MYSQL 默认端口号</li>
+<li><code>3389</code>  端口：Microsoft RDP 微软远程桌面使用的端口</li>
+<li><code>5631</code>  端口：Symantec pcAnywhere 远程控制数据传输时使用的端口</li>
+<li><code>5632</code>  端口：Symantec pcAnywhere 主控端扫描被控端时使用的端口</li>
+<li><code>5000</code>  端口：MS SQL Server 使用的端口</li>
+<li><code>27017</code>  端口：MongoDB 实例默认端口</li>
+</ul>
+<h2 id="3-mongodb-的使用"><a class="markdownIt-Anchor" href="#3-mongodb-的使用">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_3-mongodb-%E7%9A%84%E4%BD%BF%E7%94%A8">3. MongoDB 的使用</a></h2>
+<h3 id="31-mongodb-中的基本概念"><a class="markdownIt-Anchor" href="#31-mongodb-中的基本概念">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_31-mongodb-%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">3.1 MongoDB 中的基本概念</a></h3>
+<ol>
+<li>
+<p>数据库（database）</p>
+<p>数据库是一个仓库，在仓库中可以存放集合。</p>
+</li>
+<li>
+<p>集合（collection）</p>
+<p>集合类似于 JS 中的数组，在集合中可以存放文档。 说白了，集合就是一组文档。</p>
+</li>
+<li>
+<p>文档（document）</p>
+<p>文档数据库中的最小单位，我们存储和操作的内容都是文档。类似于 JS 中的对象，在 MongoDB 中每一条数据都是一个文档。</p>
+</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/nodejs10.6hwgl7zhvtw0.png" alt="nodejs10"></p>
+<p>和 MySQL 的对比：</p>
+<table>
+<thead>
+<tr>
+<th>MySQL</th>
+<th>MongoDB</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据库</td>
+<td>数据库</td>
+<td>一个数据库文件</td>
+</tr>
+<tr>
+<td>表</td>
+<td>集合</td>
+<td>关系型数据库：一张表，非关系型：一个集合</td>
+</tr>
+<tr>
+<td>字段</td>
+<td>字段</td>
+<td>每列的头，在关系型数据库中，某些字段是唯一标识，则称为主键</td>
+</tr>
+<tr>
+<td>一条数据</td>
+<td>一条文档</td>
+<td>一行数据</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-命令行基本命令"><a class="markdownIt-Anchor" href="#32-命令行基本命令">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_32-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4">3.2 命令行基本命令</a></h3>
+<ul>
+<li>
+<p>显示所有的数据库</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">show dbs
+show databases<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>切换到指定的数据库</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">use 数据库名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>显示当前所在的数据库</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>删除当前数据库</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span><span class="token function">dropDatabase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>显示当前数据库中的所有集合</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">show collections<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>删除当前集合</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>collection<span class="token punctuation">.</span><span class="token function">drop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ul>
+<p>在 MongoDB，数据库和集合都不需要创建，当 <strong>我们向集合或数据库中第一次插入文档时，集合和数据库会自动创建</strong>。</p>
+<ul>
+<li>
+<p>向集合中插入文档</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span><span class="token operator">&lt;</span>collection<span class="token operator">></span><span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>doc<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如：</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>stus<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token property">name</span><span class="token operator">:</span><span class="token string">"sunwukong"</span><span class="token punctuation">,</span><span class="token property">age</span><span class="token operator">:</span><span class="token number">18</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>查询集合中的文档</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span><span class="token operator">&lt;</span>collection<span class="token operator">></span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如：</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>stus<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ul>
+<h3 id="33-mongodb-原生-crud增删改查"><a class="markdownIt-Anchor" href="#33-mongodb-原生-crud增删改查">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_33-mongodb-%E5%8E%9F%E7%94%9F-crud%EF%BC%88%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%EF%BC%89">3.3 MongoDB 原生 CRUD（增删改查）</a></h3>
+<h4 id="1-c-creat新增数据"><a class="markdownIt-Anchor" href="#1-c-creat新增数据">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_1-c-creat%EF%BC%88%E6%96%B0%E5%A2%9E%E6%95%B0%E6%8D%AE%EF%BC%89">1. C-creat（新增数据）</a></h4>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>集合名<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>文档对象<span class="token punctuation">)</span>
+db<span class="token punctuation">.</span>集合名<span class="token punctuation">.</span><span class="token function">insertOne</span><span class="token punctuation">(</span>文档对象<span class="token punctuation">)</span>
+db<span class="token punctuation">.</span>集合名<span class="token punctuation">.</span><span class="token function">insertMany</span><span class="token punctuation">(</span><span class="token punctuation">[</span>文档对象，文档对象<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-r-read查询数据"><a class="markdownIt-Anchor" href="#2-r-read查询数据">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_2-r-read%EF%BC%88%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%EF%BC%89">2. R-read（查询数据）</a></h4>
+<p>（1）语法：  <code>db.集合名.find(查询条件[, 投影])</code> <br>
+ 举例：查找年龄为 18 的所有信息</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>students<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token property">age</span><span class="token operator">:</span><span class="token number">18</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>举例：查找年龄为 18 且名字为 jack 的学生</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>students<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token property">age</span><span class="token operator">:</span><span class="token number">18</span><span class="token punctuation">,</span><span class="token property">name</span><span class="token operator">:</span><span class="token string">'jack'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>（2）常用操作符：</p>
+<ol>
+<li>
+<p><code>&lt; , &lt;= , &gt; , &gt;= , !==</code>  对应为： <code>$lt $lte $gt $gte $ne</code></p>
+<p>举例：年龄是大于等于 20 的</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>集合名<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token property">age</span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token property"><span class="token keyword">$gte</span></span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>逻辑或：使用 <code>$in</code>  或 <code>$or</code></p>
+<p>举例：查找年龄为 18 或 20 的学生</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>students<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token property">age</span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token property"><span class="token keyword">$in</span></span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token number">18</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+db<span class="token punctuation">.</span>students<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token property"><span class="token keyword">$or</span></span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">&#123;</span><span class="token property">age</span><span class="token operator">:</span><span class="token number">18</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token property">age</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>逻辑非： <code>$nin</code></p>
+</li>
+<li>
+<p>正则匹配： 举例： <code>db.students.find(&#123;name:/^T/&#125;)</code></p>
+</li>
+<li>
+<p><code>$where</code>  能写函数：</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>students<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token property"><span class="token keyword">$where</span></span><span class="token operator">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+ <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'zhangsan'</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">===</span> <span class="token number">18</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<p>（3）投影：过滤掉不想要的数据，只保留想要展示的数据 举例：过滤掉 id 和 name</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>students<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token property">_id</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token property">name</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>举例：只保留 age</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>students<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token property">age</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>（4）补充：默认只要找到一个</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>集合名<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span>查询条件<span class="token punctuation">[</span><span class="token punctuation">,</span>投影<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="3-u-update更新数据"><a class="markdownIt-Anchor" href="#3-u-update更新数据">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_3-u-update%EF%BC%88%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE%EF%BC%89">3. U-update（更新数据）</a></h4>
+<p>语法：</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>集合名<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>查询条件<span class="token punctuation">,</span>要更新的内容<span class="token punctuation">[</span><span class="token punctuation">,</span>配置对象<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如下写法会将更新内容替换掉整个文档对象，但  <code>_id</code>  不受影响</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>students<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token property">name</span><span class="token operator">:</span><span class="token string">'zhangsan'</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token property">age</span><span class="token operator">:</span><span class="token number">19</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使用  <code>$set</code>  修改指定内容，其他数据不变，不过只能匹配一个 zhangsan</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>students<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token property">name</span><span class="token operator">:</span><span class="token string">'zhangsan'</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token property"><span class="token keyword">$set</span></span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token property">age</span><span class="token operator">:</span><span class="token number">19</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>修改多个文档对象，匹配多个 zhangsan, 把所有 zhangsan 的年龄都替换为 19</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>students<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token property">name</span><span class="token operator">:</span><span class="token string">'zhangsan'</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token property"><span class="token keyword">$set</span></span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token property">age</span><span class="token operator">:</span><span class="token number">19</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token property">multi</span><span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>补充：</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>集合名<span class="token punctuation">.</span><span class="token function">updateOne</span><span class="token punctuation">(</span>查询条件<span class="token punctuation">,</span>要更新的内容<span class="token punctuation">[</span><span class="token punctuation">,</span>配置对象<span class="token punctuation">]</span><span class="token punctuation">)</span>
+db<span class="token punctuation">.</span>集合名<span class="token punctuation">.</span><span class="token function">updateMany</span><span class="token punctuation">(</span>查询条件<span class="token punctuation">,</span>要更新的内容<span class="token punctuation">[</span><span class="token punctuation">,</span>配置对象<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="4-d-delete删除数据"><a class="markdownIt-Anchor" href="#4-d-delete删除数据">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_4-d-delete%EF%BC%88%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%EF%BC%89">4. D-delete（删除数据）</a></h4>
+<p>语法：</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>集合名<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>查询条件<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>删除所有年龄小于等于 19 的学生</p>
+<pre class="line-numbers language-mongodb" data-language="mongodb"><code class="language-mongodb">db<span class="token punctuation">.</span>students<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token property">age</span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token property"><span class="token keyword">$lte</span></span><span class="token operator">:</span><span class="token number">19</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p>Tip</p>
+<p>学过关系型数据库的写 MongoDB 原生怎删改查确实很难受，于是有了 Nodejs 模块：Mongoose。</p>
+</blockquote>
+<h2 id="4-mongoose-的使用"><a class="markdownIt-Anchor" href="#4-mongoose-的使用">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_4-mongoose-%E7%9A%84%E4%BD%BF%E7%94%A8">4. Mongoose 的使用</a></h2>
+<h3 id="41-简介"><a class="markdownIt-Anchor" href="#41-简介">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_41-%E7%AE%80%E4%BB%8B">4.1 简介</a></h3>
+<p>Mongoose 是一个对象文档模型（ODM）库，它对 Node 原生的 MongoDB 模块进行了进一步的优化封装，并提供了更多的功能。</p>
+<h3 id="42-优势"><a class="markdownIt-Anchor" href="#42-优势">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_42-%E4%BC%98%E5%8A%BF">4.2 优势</a></h3>
+<ul>
+<li>可以为文档创建一个模式结构（Schema）</li>
+<li>可以对模型中的对象 / 文档进行验证</li>
+<li>数据可以通过类型转换转换为对象模型</li>
+<li>可以使用中间件来应用业务逻辑挂钩</li>
+<li>比 Node 原生的 MongoDB 驱动更容易</li>
+</ul>
+<h3 id="43-核心对象概念"><a class="markdownIt-Anchor" href="#43-核心对象概念">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_43-%E6%A0%B8%E5%BF%83%E5%AF%B9%E8%B1%A1%EF%BC%88%E6%A6%82%E5%BF%B5%EF%BC%89">4.3 核心对象（概念）</a></h3>
+<ol>
+<li>
+<p>Schema</p>
+<p>模式对象，通过  <code>Schema</code>  可以对集合进行 <strong>约束</strong>。</p>
+</li>
+<li>
+<p>Model</p>
+<p>模型对象，相当于数据库中的集合，通过该对象可以 <strong>对集合进行操作</strong>。 3。 Document<br>
+ 文档对象，它和数据库中的文档相对应，通过它可以读取文档的信息，也可以对文档进行各种操作。</p>
+</li>
+</ol>
+<h3 id="44-mongoose-的使用"><a class="markdownIt-Anchor" href="#44-mongoose-的使用">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_44-mongoose-%E7%9A%84%E4%BD%BF%E7%94%A8">4.4 Mongoose 的使用</a></h3>
+<p>首先通过  <code>npm</code>  或  <code>yarn</code>  下载安装 Mongoose。</p>
+<pre class="line-numbers language-none"><code class="language-none">npm i mongoose --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="1-连接数据库"><a class="markdownIt-Anchor" href="#1-连接数据库">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_1-%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93">1. 连接数据库</a></h4>
+<p>语法：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 1. 引入 Mongoose</span>
+<span class="token keyword">let</span> mongoose <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"mongoose"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 2. 连接数据库</span>
+mongoose<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token string">"mongodb://[ip地址]:[端口号]/[数据库名]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>举例：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> mongoose <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"mongoose"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mongoose<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token string">"mongodb://localhost:27017/demo"</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+  useNewUrlParser<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 使用新解析器，解决一些安全性问题</span>
+  useUnifiedTopology<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 使用一个统一的拓扑结构</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-绑定数据库连接的监听"><a class="markdownIt-Anchor" href="#2-绑定数据库连接的监听">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_2-%E7%BB%91%E5%AE%9A%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%9B%91%E5%90%AC">2. 绑定数据库连接的监听</a></h4>
+<p>语法：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">mongoose<span class="token punctuation">.</span>connection<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"open"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"数据库连接失败"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"数据库连接成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 进行下一步操作</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="3-创建核心对象"><a class="markdownIt-Anchor" href="#3-创建核心对象">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_3-%E5%88%9B%E5%BB%BA%E6%A0%B8%E5%BF%83%E5%AF%B9%E8%B1%A1">3. 创建核心对象</a></h4>
+<p>进行下一步操作：</p>
+<ol>
+<li>
+<p>创建  <code>Schema</code>  对象，内部传入约束对象</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 引入 Schema 约束对象</span>
+<span class="token keyword">var</span> Schema <span class="token operator">=</span> mongoose<span class="token punctuation">.</span>Schema<span class="token punctuation">;</span>
+<span class="token keyword">var</span> xxxSchema <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Schema</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+  字段<span class="token operator">:</span> 类型<span class="token punctuation">,</span>
+  字段<span class="token operator">:</span> 类型<span class="token punctuation">,</span>
+  字段<span class="token operator">:</span> 类型<span class="token punctuation">,</span>
+  字段<span class="token operator">:</span> 类型<span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>生成某个集合所对应的 Model 模型对象</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> xxxModel <span class="token operator">=</span> mongoose<span class="token punctuation">.</span><span class="token function">model</span><span class="token punctuation">(</span><span class="token string">"集合名"</span><span class="token punctuation">,</span> xxxSchema<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>进行 CRUD 增删改查操作</p>
+</li>
+</ol>
+<p>实例：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 引入 mongoose</span>
+<span class="token keyword">let</span> mongoose <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"mongoose"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 1. 连接数据库</span>
+mongoose<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token string">"mongodb://localhost:27017/demo"</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+  useNewUrlParser<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 使用新解析器，解决一些安全性问题</span>
+  useUnifiedTopology<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 使用一个统一的拓扑结构</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 2. 绑定数据库连接的监听</span>
+mongoose<span class="token punctuation">.</span>connection<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"open"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"数据库连接失败"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"数据库连接成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 1. 引入模式对象</span>
+    <span class="token keyword">let</span> Schema <span class="token operator">=</span> mongoose<span class="token punctuation">.</span>Schema<span class="token punctuation">;</span>
+    <span class="token comment">// 2. 创建约束对象</span>
+    <span class="token keyword">let</span> studentSchema <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Schema</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 3. 生成某个集合所对应的模型对象</span>
+    <span class="token keyword">let</span> stuModel <span class="token operator">=</span> mongoose<span class="token punctuation">.</span><span class="token function">model</span><span class="token punctuation">(</span><span class="token string">"students"</span><span class="token punctuation">,</span> studentSchema<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 4. 进行增删改查</span>
+    stuModel<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="45-mongoose-的-crud-增删改查"><a class="markdownIt-Anchor" href="#45-mongoose-的-crud-增删改查">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_45-mongoose-%E7%9A%84-crud-%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5">4.5 Mongoose 的 CRUD 增删改查</a></h3>
+<ol>
+<li>
+<p>Create</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">模型对象<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>文档对象，回调函数<span class="token punctuation">)</span>
+模型对象<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>文档对象<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>Read</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">模型对象<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>查询条件<span class="token punctuation">[</span><span class="token punctuation">,</span>投影<span class="token punctuation">]</span><span class="token punctuation">)</span>不管有没有数据，都返回一个数组
+模型对象<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span>查询条件<span class="token punctuation">[</span><span class="token punctuation">,</span>投影<span class="token punctuation">]</span><span class="token punctuation">)</span>找到了返回一个对象，没找到返回<span class="token keyword">null</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>Update</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">模型对象<span class="token punctuation">.</span><span class="token function">updateOne</span><span class="token punctuation">(</span>查询条件<span class="token punctuation">,</span>要更新的内容<span class="token punctuation">[</span><span class="token punctuation">,</span>配置对象<span class="token punctuation">]</span><span class="token punctuation">)</span>
+模型对象<span class="token punctuation">.</span><span class="token function">updateMany</span><span class="token punctuation">(</span>查询条件<span class="token punctuation">,</span>要更新的内容<span class="token punctuation">[</span><span class="token punctuation">,</span>配置对象<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>备注：存在  <code>update</code>  方法，但是即将废弃，查询条件匹配到多个时，依然只修改一个，强烈建议用  <code>updateOne</code>  或  <code>updateMany</code></p>
+</li>
+<li>
+<p>Delete</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">模型对象<span class="token punctuation">.</span><span class="token function">deleteOne</span><span class="token punctuation">(</span>查询条件<span class="token punctuation">)</span><span class="token punctuation">;</span>
+模型对象<span class="token punctuation">.</span><span class="token function">deleteMany</span><span class="token punctuation">(</span>查询条件<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>备注：没有  <code>delete</code>  方法，会报错！</p>
+</li>
+</ol>
+<p>Mongoose 增删改查案例：</p>
+<p>（1）新增操作</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">stuModel<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>
+  <span class="token punctuation">&#123;</span>
+    stu_id<span class="token operator">:</span> <span class="token string">"004"</span><span class="token punctuation">,</span>
+    name<span class="token operator">:</span> <span class="token string">"静静"</span><span class="token punctuation">,</span>
+    age<span class="token operator">:</span> <span class="token number">16</span><span class="token punctuation">,</span>
+    sex<span class="token operator">:</span> <span class="token string">"女"</span><span class="token punctuation">,</span>
+    hobby<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"看番"</span><span class="token punctuation">,</span> <span class="token string">"听音乐"</span><span class="token punctuation">,</span> <span class="token string">"喝奶茶"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    info<span class="token operator">:</span> <span class="token string">"温柔的女生"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// err：错误对象，data：写入的数据</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>（2）查询操作：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// find 方法，返回数组（即使是一条数据），查询结果为空，则返回 []</span>
+stuModel<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> name<span class="token operator">:</span> <span class="token string">"静静1"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// findOne 方法，若有结果，则返回一个对象，没有则返回 null</span>
+stuModel<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> name<span class="token operator">:</span> <span class="token string">"静静1"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 投影</span>
+stuModel<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> name<span class="token operator">:</span> <span class="token string">"瑞秋"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> age<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> _id<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>（3）更新操作：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">stuModel<span class="token punctuation">.</span><span class="token function">updateOne</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> name<span class="token operator">:</span> <span class="token string">"静静"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> age<span class="token operator">:</span> <span class="token number">14</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>（4）删除操作：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">stuModel<span class="token punctuation">.</span><span class="token function">deleteMany</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> age<span class="token operator">:</span> <span class="token number">22</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="46-mongoose-的模块化编码"><a class="markdownIt-Anchor" href="#46-mongoose-的模块化编码">#</a> <a target="_blank" rel="noopener" href="https://docs.mphy.top/#/Node.js/ch05?id=_46-mongoose-%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BC%96%E7%A0%81">4.6 Mongoose 的模块化编码</a></h3>
+<p>直接按照上述方法依次执行，代码都写在一个文件中，代码不好维护管理，使用模块化解决。</p>
+<ol>
+<li>
+<p>数据库连接模块</p>
+<p>该模块连接数据库，判断连接状态。<br>
+ <code>db/db.js</code>  文件内容：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> mongoose <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"mongoose"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 暴露模块，返回一个 Promise 对象</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// 1. 连接数据库</span>
+  mongoose<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token string">"mongodb://localhost:27017/demo"</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+    useNewUrlParser<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 使用新解析器，解决一些安全性问题</span>
+    useUnifiedTopology<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 使用一个统一的拓扑结构</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 2. 绑定数据库连接的监听</span>
+  mongoose<span class="token punctuation">.</span>connection<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"open"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token function">reject</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">"数据库连接成功！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>Mongoose 关键对象模块 该模块用于提供模型对象，需要哪个模型对象就新建一个，例如  <code>teacherModel.js</code> 。  <code>module/studentModel.js</code>  文件内容：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> mongoose <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"mongoose"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// （1）引入模式对象</span>
+<span class="token keyword">let</span> Schema <span class="token operator">=</span> mongoose<span class="token punctuation">.</span>Schema<span class="token punctuation">;</span>
+
+<span class="token comment">// （2）创建约束对象</span>
+<span class="token keyword">let</span> studentSchema <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Schema</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// (3) 生成某个集合所对应的模型对象</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> mongoose<span class="token punctuation">.</span><span class="token function">model</span><span class="token punctuation">(</span><span class="token string">"students"</span><span class="token punctuation">,</span> studentSchema<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>入口文件： <code>app.js</code></p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 1. 引入数据库连接模块</span>
+<span class="token keyword">let</span> p <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./db/db"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 2. 引入学生模型对象</span>
+<span class="token keyword">let</span> stuModel <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./module/studentModel"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 3. 判断数据库连接状态，成功则进行CRUD</span>
+<span class="token comment">// 异步操作，使用 Promise 封装</span>
+p<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+  <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// !CRUD</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+      stuModel<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>
+        <span class="token punctuation">&#123;</span>
+          <span class="token comment">// 相关数据插入</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token comment">// err：错误对象，data：写入的数据</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token function">reject</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token function">resolve</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">(</span><span class="token parameter">reason</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"数据库连接失败！"</span><span class="token punctuation">,</span> reason<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+  <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"数据添加成功！"</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">(</span><span class="token parameter">reason</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"数据添加错误！"</span><span class="token punctuation">,</span> reason<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2022/07/25/nodejs/">https://harryqu1229.github.io/2022/07/25/nodejs/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/frontend/">frontend</a><a class="post-meta__tags" href="/tags/Nodejs/">Nodejs</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/12/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/home.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">My ultimate data structure and algorithm guide</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/28/Maven/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/car.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">My Maven notes</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/05/11/nodejs(express,mysql%E4%BB%A5%E5%8F%8A%E5%A4%A7%E4%BA%8B%E4%BB%B6%E5%90%8E%E5%8F%B0%20API%20%E9%A1%B9%E7%9B%AE)/" title="Nodejs notes + mysql + express + 项目"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/forest.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-11</div><div class="title">Nodejs notes + mysql + express + 项目</div></div></a></div><div><a href="/2022/01/01/30%E9%81%93vue%E9%9D%A2%E8%AF%95%E9%A2%98/" title="30 Vue Frontend Interview Quesitions"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/town.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">30 Vue Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/01/01/20%E9%81%93%E5%A4%A7%E5%8E%82%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="20 Frontend Interview Quesitions"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/home.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">20 Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/01/01/45%E9%81%93promise%E9%9D%A2%E8%AF%95%E9%A2%98/" title="45 Promise Frontend Interview Quesitions"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/hello-world.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">45 Promise Frontend Interview Quesitions</div></div></a></div><div><a href="/2022/01/01/50%E9%81%93%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="50 Frontend Interview Quesitions"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/forest.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">50 Frontend Interview Quesitions</div></div></a></div><div><a href="/2021/09/13/AJAX/" title="My Ajax notes"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/cat.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-13</div><div class="title">My Ajax notes</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80nodejs-%E5%88%9D%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text"> （一）Node.js 初识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-nodejs-%E8%AF%9E%E7%94%9F%E5%8F%B2"><span class="toc-number">1.1.</span> <span class="toc-text"> 1. Node.js 诞生史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-nodejs-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.2.</span> <span class="toc-text"> 2. Node.js 是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-nodejs-%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.3.</span> <span class="toc-text"> 3. Node.js 的特点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E4%BC%98%E7%82%B9"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 3.1 优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E4%B8%8D%E8%B6%B3%E4%B9%8B%E5%A4%84"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 3.2 不足之处</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-nodejs-%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.4.</span> <span class="toc-text"> 4. Node.js 的应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-node-%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.5.</span> <span class="toc-text"> 5. Node 中函数的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-node-%E4%B8%AD%E7%9A%84-global"><span class="toc-number">1.6.</span> <span class="toc-text"> 6. Node 中的 global</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#61-node-%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 6.1 Node 的组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#62-global-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 6.2 global 的一些常用属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-node-%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%A8%A1%E5%9E%8B%E4%BA%86%E8%A7%A3"><span class="toc-number">1.7.</span> <span class="toc-text"> 7. Node 中的事件循环模型（了解）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C-%E5%8C%85%E4%B8%8E-npm-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text"> （二） 包与 npm 包管理器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-package-%E5%8C%85"><span class="toc-number">2.1.</span> <span class="toc-text"> 1. package 包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E5%8C%85%E7%BB%93%E6%9E%84"><span class="toc-number">2.1.1.</span> <span class="toc-text"> 1.1 包结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E5%8C%85%E6%8F%8F%E8%BF%B0%E6%96%87%E4%BB%B6"><span class="toc-number">2.1.2.</span> <span class="toc-text"> 1.2 包描述文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-npm"><span class="toc-number">2.2.</span> <span class="toc-text"> 2. NPM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21-npm-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.2.1.</span> <span class="toc-text"> 2.1 NPM 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-npm-%E8%83%BD%E5%B9%B2%E4%BB%80%E4%B9%88"><span class="toc-number">2.2.2.</span> <span class="toc-text"> 2.2 NPM 能干什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-npm-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">2.2.3.</span> <span class="toc-text"> 2.3 NPM 常用命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-cnpm-%E7%9A%84%E7%AE%80%E4%BB%8B%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text"> 3. cnpm 的简介与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E5%9B%BD%E5%86%85%E4%BD%BF%E7%94%A8-npm-%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.3.1.</span> <span class="toc-text"> 3.1 国内使用 npm 存在的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E4%BD%BF%E7%94%A8%E6%B7%98%E5%AE%9D%E7%9A%84-cnpm-%E4%BB%A3%E6%9B%BF-npm"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 3.2 使用淘宝的 cnpm 代替 npm</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-yarn-%E7%9A%84%E7%AE%80%E4%BB%8B%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">2.4.</span> <span class="toc-text"> 4. yarn 的简介与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-%E6%B3%A8%E6%84%8F%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">2.4.1.</span> <span class="toc-text"> 4.1 注意配置环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-yarn-%E5%91%BD%E4%BB%A4%E4%B8%8E-npm-%E5%91%BD%E4%BB%A4%E7%9A%84%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB"><span class="toc-number">2.4.2.</span> <span class="toc-text"> 4.2 yarn 命令与 npm 命令的对应关系</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89buffer-%E7%BC%93%E5%86%B2%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text"> （三）Buffer 缓冲器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-buffer-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">3.1.</span> <span class="toc-text"> 1. Buffer 是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-buffer-%E7%89%B9%E7%82%B9"><span class="toc-number">3.2.</span> <span class="toc-text"> 2. Buffer 特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-buffer-%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">3.3.</span> <span class="toc-text"> 3. Buffer 的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-buffer-%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">3.3.1.</span> <span class="toc-text"> 3.1 Buffer 的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E8%8E%B7%E5%8F%96-buffer-%E7%9A%84%E9%95%BF%E5%BA%A6"><span class="toc-number">3.3.2.</span> <span class="toc-text"> 3.2 获取 Buffer 的长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-buffer-%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.3.3.</span> <span class="toc-text"> 3.3 Buffer 的转换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9Bfs-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.</span> <span class="toc-text"> （四）fs 文件系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-node-%E4%B8%AD%E7%9A%84-fs-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.1.</span> <span class="toc-text"> 1. Node 中的 fs 文件系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-fs-%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5"><span class="toc-number">4.2.</span> <span class="toc-text"> 2. fs 文件写入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21-%E7%AE%80%E5%8D%95%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5"><span class="toc-number">4.2.1.</span> <span class="toc-text"> 2.1 简单文件写入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-%E6%B5%81%E5%BC%8F%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5"><span class="toc-number">4.2.2.</span> <span class="toc-text"> 2.2 流式文件写入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-number">4.3.</span> <span class="toc-text"> 3. 文件读取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E7%AE%80%E5%8D%95%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-number">4.3.1.</span> <span class="toc-text"> 3.1 简单文件读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E6%B5%81%E5%BC%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-number">4.3.2.</span> <span class="toc-text"> 3.2 流式文件读取</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94mongodb-%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">5.</span> <span class="toc-text"> （五）MongoDB 非关系型数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%80%E4%BB%8B"><span class="toc-number">5.1.</span> <span class="toc-text"> 1. 数据库简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">5.1.1.</span> <span class="toc-text"> 1.1 数据库是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">5.1.2.</span> <span class="toc-text"> 1.2 为什么要使用数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">5.1.3.</span> <span class="toc-text"> 1.3 数据库的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#131-%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93rdbs"><span class="toc-number">5.1.3.1.</span> <span class="toc-text"> 1.3.1 关系型数据库（RDBS）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#132-%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93nosql"><span class="toc-number">5.1.3.2.</span> <span class="toc-text"> 1.3.2 非关系型数据库（NoSQL）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-mongodb-%E7%9A%84%E7%AE%80%E4%BB%8B%E5%92%8C%E5%AE%89%E8%A3%85"><span class="toc-number">5.2.</span> <span class="toc-text"> 2. MongoDB 的简介和安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21-mongodb-%E7%AE%80%E4%BB%8B"><span class="toc-number">5.2.1.</span> <span class="toc-text"> 2.1 MongoDB 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-mongodb-%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number">5.2.2.</span> <span class="toc-text"> 2.2 MongoDB 安装和基本配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#221-mongodb-%E5%AE%89%E8%A3%85"><span class="toc-number">5.2.2.1.</span> <span class="toc-text"> 2.2.1 MongoDB 安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#222-mongodb-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%90%AF%E5%8A%A8"><span class="toc-number">5.2.2.2.</span> <span class="toc-text"> 2.2.2 MongoDB 服务器的启动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#223-mongodb-%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">5.2.2.3.</span> <span class="toc-text"> 2.2.3 MongoDB 客户端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-%E5%B0%86-mongodb-%E8%AE%BE%E7%BD%AE%E4%B8%BA-windows-%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1"><span class="toc-number">5.2.3.</span> <span class="toc-text"> 2.3 将 MongoDB 设置为 windows 系统服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24-%E5%AE%89%E8%A3%85-mongodb-%E5%9B%BE%E5%BD%A2%E5%8C%96%E5%B7%A5%E5%85%B7"><span class="toc-number">5.2.4.</span> <span class="toc-text"> 2.4 安装 MongoDB 图形化工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25-%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%80%BB%E7%BB%93"><span class="toc-number">5.2.5.</span> <span class="toc-text"> 2.5 常用端口号总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-mongodb-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">5.3.</span> <span class="toc-text"> 3. MongoDB 的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-mongodb-%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">5.3.1.</span> <span class="toc-text"> 3.1 MongoDB 中的基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-number">5.3.2.</span> <span class="toc-text"> 3.2 命令行基本命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-mongodb-%E5%8E%9F%E7%94%9F-crud%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="toc-number">5.3.3.</span> <span class="toc-text"> 3.3 MongoDB 原生 CRUD（增删改查）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-c-creat%E6%96%B0%E5%A2%9E%E6%95%B0%E6%8D%AE"><span class="toc-number">5.3.3.1.</span> <span class="toc-text"> 1. C-creat（新增数据）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-r-read%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="toc-number">5.3.3.2.</span> <span class="toc-text"> 2. R-read（查询数据）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-u-update%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE"><span class="toc-number">5.3.3.3.</span> <span class="toc-text"> 3. U-update（更新数据）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-d-delete%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="toc-number">5.3.3.4.</span> <span class="toc-text"> 4. D-delete（删除数据）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-mongoose-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">5.4.</span> <span class="toc-text"> 4. Mongoose 的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-%E7%AE%80%E4%BB%8B"><span class="toc-number">5.4.1.</span> <span class="toc-text"> 4.1 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-%E4%BC%98%E5%8A%BF"><span class="toc-number">5.4.2.</span> <span class="toc-text"> 4.2 优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-%E6%A0%B8%E5%BF%83%E5%AF%B9%E8%B1%A1%E6%A6%82%E5%BF%B5"><span class="toc-number">5.4.3.</span> <span class="toc-text"> 4.3 核心对象（概念）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#44-mongoose-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">5.4.4.</span> <span class="toc-text"> 4.4 Mongoose 的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">5.4.4.1.</span> <span class="toc-text"> 1. 连接数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%BB%91%E5%AE%9A%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%9B%91%E5%90%AC"><span class="toc-number">5.4.4.2.</span> <span class="toc-text"> 2. 绑定数据库连接的监听</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E6%A0%B8%E5%BF%83%E5%AF%B9%E8%B1%A1"><span class="toc-number">5.4.4.3.</span> <span class="toc-text"> 3. 创建核心对象</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#45-mongoose-%E7%9A%84-crud-%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="toc-number">5.4.5.</span> <span class="toc-text"> 4.5 Mongoose 的 CRUD 增删改查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#46-mongoose-%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BC%96%E7%A0%81"><span class="toc-number">5.4.6.</span> <span class="toc-text"> 4.6 Mongoose 的模块化编码</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/28/Maven/" title="My Maven notes"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/car.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My Maven notes"/></a><div class="content"><a class="title" href="/2022/07/28/Maven/" title="My Maven notes">My Maven notes</a><time datetime="2022-07-27T12:00:00.000Z" title="Created 2022-07-28 00:00:00">2022-07-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/25/nodejs/" title="Nodejs notes"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/hello-world.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nodejs notes"/></a><div class="content"><a class="title" href="/2022/07/25/nodejs/" title="Nodejs notes">Nodejs notes</a><time datetime="2022-07-24T12:00:00.000Z" title="Created 2022-07-25 00:00:00">2022-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/12/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/home.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My ultimate data structure and algorithm guide"/></a><div class="content"><a class="title" href="/2022/06/12/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide">My ultimate data structure and algorithm guide</a><time datetime="2022-06-11T12:00:00.000Z" title="Created 2022-06-12 00:00:00">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/town.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns"/></a><div class="content"><a class="title" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns">Design Patterns</a><time datetime="2022-06-11T12:00:00.000Z" title="Created 2022-06-12 00:00:00">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/code.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns - Command"/></a><div class="content"><a class="title" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command">Design Patterns - Command</a><time datetime="2022-06-10T12:00:00.000Z" title="Created 2022-06-11 00:00:00">2022-06-11</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://harryqu1229.github.io/2022/07/25/nodejs/'
+    this.page.identifier = '2022/07/25/nodejs/'
+    this.page.title = 'Nodejs notes'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://harry-study-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !true) {
+  if (true) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '5df1e915e0fa867b50de',
+      clientSecret: 'ce1cb793fe49078ee9d0102d3326d0d50ff6937b',
+      repo: 'blog-comments-storage',
+      owner: 'HarryQu1229',
+      admin: ['HarryQu1229'],
+      id: '856955bb2dc3338d247049a7b1df4209',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<code>.*?<\/code>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    fetch('https://disqus.com/api/3.0/forums/listPosts.json?forum=harry-study-blog&related=thread&limit=6&api_key=B5XFmdGuVaYDW7OIBakffpXoKorvphwRiwONIol4puEtr8YiwYAMAk2K7QcExNLY')
+      .then(response => response.json())
+      .then(data => {
+        const disqusArray = data.response.map(item => {
+          return {
+            'avatar': item.author.avatar.cache,
+            'content': changeContent(item.message),
+            'nick': item.author.name,
+            'url': item.url,
+            'date': item.createdAt
+          }
+        })
+
+        saveToLocal.set('disqus-newest-comments', JSON.stringify(disqusArray), 10/(60*24))
+        generateHtml(disqusArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "Unable to get the data, please make sure the settings are correct."
+      })
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('disqus-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="255,255,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>((window.gitter = {}).chat = {}).options = {
+  disableDefaultChat: true,
+};
+document.addEventListener('gitter-sidecar-ready', (e) => {
+  const GitterChat = e.detail.Chat
+  let chat
+
+  function initGitter () {
+    chat = new GitterChat({
+      room: 'HarryStudyBlog/community',
+      activationElement: '#chat_btn'
+    });
+  }
+
+  initGitter()
+
+  if (true) {
+    document.addEventListener('pjax:complete', () => {
+      chat.destroy()
+      initGitter()
+    })
+  }
+
+})</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async="async" defer="defer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

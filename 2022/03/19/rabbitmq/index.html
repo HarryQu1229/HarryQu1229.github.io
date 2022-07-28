@@ -5,7 +5,7 @@
 <meta property="og:site_name" content="Harry Blog">
 <meta property="og:description" content="# 1. MQ # 1.1 MQ 的相关概念  什么是 MQ  MQ (message queue)，从字面意思上看，本质是个队列，FIFO 先入先出，只不过队列中存放的内容是 message 而已，还是一种跨进程的通信机制，用于上下游传递消息。在互联网架构中，MQ 是一种非常常见的上下游 “逻辑解耦 + 物理解耦” 的消息通信服务。使用了 MQ 之后，消息发送上游只需要依赖 MQ，不用依赖其他服">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://harryqu1229.github.io/img/default-covers/car.jpg">
+<meta property="og:image" content="https://harryqu1229.github.io/img/default-covers/hello-world.png">
 <meta property="article:published_time" content="2022-03-18T11:00:00.000Z">
 <meta property="article:modified_time" content="2022-06-12T01:13:27.029Z">
 <meta property="article:author" content="Harry Qu">
@@ -13,7 +13,7 @@
 <meta property="article:tag" content="summary">
 <meta property="article:tag" content="message queue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://harryqu1229.github.io/img/default-covers/car.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://harryqu1229.github.io/2022/03/19/rabbitmq/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://harryqu1229.github.io/img/default-covers/hello-world.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://harryqu1229.github.io/2022/03/19/rabbitmq/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
@@ -47,7 +47,7 @@
     }
   },
   isPhotoFigcaption: false,
-  islazyload: false,
+  islazyload: true,
   isAnchor: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: 'My Rabbitmq notes',
@@ -144,7 +144,7 @@
       }
     }
     detectApple()
-    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pedrorijo.com/assets/img/rabbitmq_logo.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">My Rabbitmq notes</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-03-18T11:00:00.000Z" title="Created 2022-03-19 00:00:00">2022-03-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-06-12T01:13:27.029Z" title="Updated 2022-06-12 13:13:27">2022-06-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Backend/">Backend</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Backend/message-queue/">message queue</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">24.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>87min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="My Rabbitmq notes"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-mq"><a class="markdownIt-Anchor" href="#1-mq">#</a> 1. MQ</h1>
+    })(window)</script><style type="text/css">.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pedrorijo.com/assets/img/rabbitmq_logo.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Harry Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-graduation-cap"></i><span> Journey</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Hobbies</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/Photos/"><i class="fa-fw fas fa-images"></i><span> Photos</span></a></li><li><a class="site-page child" href="/Movies/"><i class="fa-fw fas fa-video"></i><span> Movies</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">My Rabbitmq notes</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-03-18T11:00:00.000Z" title="Created 2022-03-19 00:00:00">2022-03-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-06-12T01:13:27.029Z" title="Updated 2022-06-12 13:13:27">2022-06-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Backend/">Backend</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Backend/message-queue/">message queue</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">24.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>87min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="My Rabbitmq notes"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-mq"><a class="markdownIt-Anchor" href="#1-mq">#</a> 1. MQ</h1>
 <h2 id="11-mq的相关概念"><a class="markdownIt-Anchor" href="#11-mq的相关概念">#</a> 1.1 MQ 的相关概念</h2>
 <blockquote>
 <p>什么是 MQ</p>
@@ -157,17 +157,17 @@
 <li>
 <p><code>流量消峰</code></p>
 <p>举个例子，如果订单系统最多能处理一万次订单，这个处理能力应付正常时段的下单时绰绰有余，正常时段我们下单一秒后就能返回结果。但是在高峰期，如果有两万次下单操作系统是处理不了的，只能限制订单超过一万后不允许用户下单。使用消息队列做缓冲，我们可以取消这个限制，把一秒内下的订单分散成一段时间来处理，这时有些用户可能在下单十几秒后才能收到下单成功的操作，但是比不能下单的体验要好。</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/8cdc879c1dde4c31baf9caa7a9690ebc.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/8cdc879c1dde4c31baf9caa7a9690ebc.png" alt=""></p>
 </li>
 <li>
 <p><code>应用解耦</code></p>
 <p>以电商应用为例，应用中有订单系统、库存系统、支付系统。用户创建订单后，如果耦合调用库存系统、物流系统、支付系统，任何一个子系统出了故障，都会造成下单操作异常。当转变成基于消息队列的方式后，系统间调用的问题会减少很多，比如物流系统因为发生故障，需要几分钟来修复。在这几分钟的时间里，物流系统要处理的内存被缓存在消息队列中，用户的下单操作可以正常完成。当物流系统恢复后，继续处理订单信息即可 ，中单用户感受不到物流系统的故障，提升系统的可用性。</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/eadc9eef9b9140339207d5cb2456ed19.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/eadc9eef9b9140339207d5cb2456ed19.png" alt=""></p>
 </li>
 <li>
 <p><code>异步处理</code></p>
 <p>有些服务间调用是异步的，例如 A 调用 B，B 需要花费很长时间执行，但是 A 需要知道 B 什么时候可以执行完，以前一般有两种方式，A 过一段时间去调用 B 的查询 api 查询。或者 A 提供一个 callback api,B 执行完之后调用 api 通知 A 服务。这两种方式都不是很优雅，使用消息总线，可以很方便解决这个问题，A 调用 B 服务后，只需要监听 B 处理完成的消息，当 B 处理完成后，会发送一条消息给 MQ，MQ 会将此消息转发给 A 服务。这样 A 服务既不用循环调用 B 的查询 api，也不用提供 callback api。同样 B 服务也不用做这些操作。A 服务还能及时的得到异步处理成功的消息。</p>
-<p><img src="https://img-blog.csdnimg.cn/647443dd56554010b87a3fc5487ef0f6.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/647443dd56554010b87a3fc5487ef0f6.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 </li>
 </ol>
 <h2 id="12-mq分类"><a class="markdownIt-Anchor" href="#12-mq分类">#</a> 1.2 MQ 分类</h2>
@@ -249,7 +249,7 @@
 <p>概念</p>
 </blockquote>
 <p>RabbitMQ 是一个消息中间件：它接受并转发消息。你可以把它当做一个快递站点，当你要发送一个包裹时，你把你的包裹放到快递站，快递员最终会把你的快递送到收件人那里，按照这种逻辑 RabbitMQ 是一个快递站，一个快递员帮你传递快件。RabbitMQ. 与快递站的主要区别在于，它不处理快件而是接收，存储和转发消息数据。</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/677b3b4e233046228fbf9ef37e68d25b.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/677b3b4e233046228fbf9ef37e68d25b.png" alt=""></p>
 <blockquote>
 <p>四大核心概念</p>
 </blockquote>
@@ -322,7 +322,7 @@
 </tr>
 </tbody>
 </table>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/3132c3be84a4407bbefafa3540e6ae30.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/3132c3be84a4407bbefafa3540e6ae30.png" alt=""></p>
 <h2 id="22-安装"><a class="markdownIt-Anchor" href="#22-安装">#</a> 2.2 安装</h2>
 <ol>
 <li>
@@ -357,7 +357,7 @@ erl -version
 <span class="token comment">#安装可视化管理 插件</span>
 rabbitmq-plugins <span class="token builtin class-name">enable</span> rabbitmq_management
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/53778c13009b470bb54f7a668dd4a107.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/53778c13009b470bb54f7a668dd4a107.png" alt=""></p>
 </li>
 <li>
 <p>重启 rabbitmq 服务，然后在 windows 客户端进入 192.168.163.128 (Linux 的 ip 地址):15672，需要开启端口号，顺利进入！</p>
@@ -367,7 +367,7 @@ firewall-cmd --permanent --add-port<span class="token operator">=</span><span cl
 <span class="token comment"># 重启生效</span>
 firewall-cmd --reload
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://img-blog.csdnimg.cn/912ea25f95e74fa68aaf9deca495c84a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/912ea25f95e74fa68aaf9deca495c84a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 </li>
 </ol>
 <blockquote>
@@ -416,7 +416,7 @@ rabbitmqctl list_users
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="32-生产者代码"><a class="markdownIt-Anchor" href="#32-生产者代码">#</a> 3.2 生产者代码</h2>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/92a0c2c742424bb082dc89bc4147cad6.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/92a0c2c742424bb082dc89bc4147cad6.png" alt=""></p>
 <pre class="line-numbers language-JAVA" data-language="JAVA"><code class="language-JAVA">public class Producer &#123;
    &#x2F;&#x2F; 队列名称
    public static  final String QUEUE_NAME&#x3D;&quot;hello&quot;;
@@ -509,7 +509,7 @@ rabbitmqctl list_users
 <p>简介</p>
 </blockquote>
 <p>工作队列 (又称任务队列) 的主要思想是避免立即执行资源密集型任务，而不得不等待它完成。相反我们安排任务在之后执行。我们把任务封装为消息并将其发送到队列。在后台运行的工作进程将弹出任务并最终执行作业。当有多个工作线程时，这些工作线程将一起处理这些任务。</p>
-<p><img src="https://img-blog.csdnimg.cn/0af73d299dea493e81c5aaa2af9112ca.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/0af73d299dea493e81c5aaa2af9112ca.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <h2 id="41-实现工作队列"><a class="markdownIt-Anchor" href="#41-实现工作队列">#</a> 4.1 实现工作队列</h2>
 <blockquote>
 <p>抽取连接工厂攻击类</p>
@@ -559,11 +559,11 @@ rabbitmqctl list_users
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>同时开启 2 个工作线程：</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/5d289f61b78d4a24baffce7d9ec2f951.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/5d289f61b78d4a24baffce7d9ec2f951.png" alt=""></p>
 <p>然后启动工作线程 1：</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/b2883af5622b4958abafa9fdd3b5089a.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/b2883af5622b4958abafa9fdd3b5089a.png" alt=""></p>
 <p>修改输出信息，作为工作线程 2：</p>
-<p><img src="https://img-blog.csdnimg.cn/6e0de1a590484fd4967f67ee953606a1.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/6e0de1a590484fd4967f67ee953606a1.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <blockquote>
 <p>生产者代码</p>
 </blockquote>
@@ -592,9 +592,9 @@ rabbitmqctl list_users
 <blockquote>
 <p>测试</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/1bf7f30022ce479683a7c310fdde1ac7.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_11,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/303e2e5aaedd47729a8225124d5e92a8.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/9b631f5f519b4001928d6a2fa3de84b3.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/1bf7f30022ce479683a7c310fdde1ac7.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_11,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/303e2e5aaedd47729a8225124d5e92a8.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/9b631f5f519b4001928d6a2fa3de84b3.png" alt=""></p>
 <h2 id="42-消息应答"><a class="markdownIt-Anchor" href="#42-消息应答">#</a> 4.2 消息应答</h2>
 <blockquote>
 <p>概念</p>
@@ -627,7 +627,7 @@ rabbitmqctl list_users
 <p>Multiple 的解释</p>
 </blockquote>
 <p>手动应答的好处是 <code>可以批量应答并且减少网络拥堵</code></p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/c8503dac0e8e4acd9807b3600a1b94d2.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/c8503dac0e8e4acd9807b3600a1b94d2.png" alt=""></p>
 <p>multiple 的 true 和 false 是不同的意思：</p>
 <ol>
 <li>true 表示批量应答 channel 上未应答的消息，比如 channel 上有传送 tag 的消息 5,6,7,8,，当前 tag 是 8，那么此时 5-8 的这些还未应答的消息就会被确认收到消息应答</li>
@@ -637,7 +637,7 @@ rabbitmqctl list_users
 <p>消息自动重新入队</p>
 </blockquote>
 <p>如果消费者由于某些原因失去连接 (其通道已关闭，连接已关闭或 TCP 连接丢失)，导致消息未发送 ACK 确认，RabbitMQ 将了解到消息未完全处理，并将对其重新排队。如果此时其他消费者可以处理，它将很快将其重新分发给另一个消费者。这样，即使某个消费者偶尔死亡，也可以确保不会丢失任何消息。</p>
-<p><img src="https://img-blog.csdnimg.cn/baec64d3371f466984953b5c2e893a71.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/baec64d3371f466984953b5c2e893a71.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <blockquote>
 <p>消息手动应答</p>
 </blockquote>
@@ -738,9 +738,9 @@ rabbitmqctl list_users
 <li>
 <p>测试</p>
 <p>Worker04 由于处理时间太长，我们挂掉他，这个时候信息会重回队列分给 Worker03 进行处理。</p>
-<p><img src="https://img-blog.csdnimg.cn/c1a0000c58d748f49546405bdf8d3b65.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_10,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/01c474d7eaf54c24935126d1e8944c1f.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/e58b980fdf934f179ced3b9bdb3032ee.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/c1a0000c58d748f49546405bdf8d3b65.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_10,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/01c474d7eaf54c24935126d1e8944c1f.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/e58b980fdf934f179ced3b9bdb3032ee.png" alt=""></p>
 </li>
 </ol>
 <blockquote>
@@ -767,7 +767,7 @@ rabbitmqctl list_users
 <span class="token comment">// 持久化 需要让Queue持久化</span>
 <span class="token keyword">boolean</span> durable <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
 channel<span class="token punctuation">.</span><span class="token function">queueDeclare</span><span class="token punctuation">(</span>TASK_QUEUE_NAME<span class="token punctuation">,</span>durable<span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/5010c7b210354dd8a5e1a67d56a3db63.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/5010c7b210354dd8a5e1a67d56a3db63.png" alt=""></p>
 <blockquote>
 <p>只要声明这个队列的时候传参数让这个队列持久化，那么之后就算 rabbitmq 本身挂掉了，它里面队列还存在着，队列还存在里面消息也会存在</p>
 <p>当然这个前提是消息也是持久化，跟上面说的那个消息应答不是很一样，rabbitmq 接收到消息应答会把对应的消息 (批量，哪个消息的 tag? 等等) 标记为删除，而这里的持久化就是存到硬盘里面</p>
@@ -776,11 +776,11 @@ channel<span class="token punctuation">.</span><span class="token function">queu
 </li>
 <li>
 <p>需要注意的就是如果之前声明的队列不是持久化的，需要把原先队列先删除或者重新创建一个持久化的队列，不然就会出现错误</p>
-<p><img src="https://img-blog.csdnimg.cn/498c3932f734473e93ed8ac0d26ae71b.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/498c3932f734473e93ed8ac0d26ae71b.png" alt=""></p>
 </li>
 <li>
 <p>重新运行代码后，队列持久化成功</p>
-<p><img src="https://img-blog.csdnimg.cn/2edaad2f704b4cfa9e736ab9eae84dfd.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/2edaad2f704b4cfa9e736ab9eae84dfd.png" alt=""></p>
 </li>
 </ol>
 <blockquote>
@@ -797,7 +797,7 @@ channel<span class="token punctuation">.</span><span class="token function">basi
                      <span class="token punctuation">,</span>message<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token class-name">StandardCharsets</span><span class="token punctuation">.</span>UTF_8<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"生产者发出消息："</span><span class="token operator">+</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://img-blog.csdnimg.cn/d5f946770f7f4016b4c58e821bb30c7b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/d5f946770f7f4016b4c58e821bb30c7b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 </li>
 </ol>
 <blockquote>
@@ -814,13 +814,13 @@ channel<span class="token punctuation">.</span><span class="token function">basi
 channel<span class="token punctuation">.</span><span class="token function">basicQos</span><span class="token punctuation">(</span>prefetchCount<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/3afd123311144b4d9b2c852ab4dbe043.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/3afd123311144b4d9b2c852ab4dbe043.png" alt=""></p>
 <blockquote>
 <p>此时要是工作线程 1 号特别慢，工作线程 2 特别快，各种线程 2 会处理好几个消息，而线程 1 才会处理一点点</p>
 </blockquote>
 <h2 id="44-预取值"><a class="markdownIt-Anchor" href="#44-预取值">#</a> 4.4 预取值</h2>
 <p>本身消息的发送就是异步发送的，所以在任何时候，channel 上肯定不止只有一个消息另外来自消费者的手动确认本质上也是异步的。因此这里就存在一个未确认的消息缓冲区，因此希望开发人员能限制此缓冲区的大小，以避免缓冲区里面无限制的未确认消息问题。这个时候就可以通过使用 basic.gos. 方法设置 “预取计数” 值来完成的。该值定义通道上允许的未确认消息的最大数量。一旦数量达到配置的数量，RabbitMQ 将停止在通道上传递更多消息，除非至少有一个未处理的消息被确认，例如，假设在通道上有未确认的消息 5、6、7，8，并且通道的预取计数设置为 4，此时 RabbitMQ. 将不会在该通道上再传递任何消息，除非至少有一个未应答的消息被 ack。比方说 tag=6 这个消息刚刚被确认 ACK，RabbitMQ 将会感知这个情况到并再发送一条消息。消息应答和 QoS 预取值对用户吞吐量有重大影响。通常，增加预取将提高向消费者传递消息的速度。虽然自动应答传输消息速率是最佳的，但是，在这种情况下已传递但尚未处理的消息的数量也会增加，从而增加了消费者的 RAM 消耗 (随机存取存储器) 应该小心使用具有无限预处理的自动确认模式或手动确认模式，消费者消费了大量的消息如果没有确认的话，会导致消费者连接节点的内存消耗变大，所以找到合适的预取值是一个反复试验的过程，不同的负载该值取值也不同 100 到 300 范围内的值通常可提供最佳的吞吐量，并且不会给消费者带来太大的风险。预取值为 1 是最保守的。当然这将使吞吐量变得很低，特别是消费者连接延迟很严重的情况下，特别是在消费者连接等待时间较长的环境中。对于大多数应用来说，稍微高一点的值将是最佳的。</p>
-<p><img src="https://img-blog.csdnimg.cn/e44797faa2c046b1a5c41ac8872de9dc.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/e44797faa2c046b1a5c41ac8872de9dc.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <blockquote>
 <p>其实就相当于是每一个工作线程都有一个 channel 然后这个 channel 会按照你设置的 basicQos 方法的 prefetch 数量来决定大小，比如说你传 7 个消息，工作线程 1prefetch 是 2, 工作线程 2prefetch 是 5</p>
 <p>那么只要你手速够块 (在工作线程 1 和 2 没有处理完任何一个消息之前) 把请求都发送过去，那么会有两个分配给工作线程 1, 五个分配给工作线程 2</p>
@@ -965,7 +965,7 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 <p>异步发布确认</p>
 </blockquote>
 <p>异步确认虽然编程逻辑比上两个要复杂，但是性价比最高，无论是可靠性还是效率都没得说，他是利用回调函数来达到消息可靠性传递的，这个中间件也是通过函数回调来保证是否投递成功，下面就让我们来详细讲解异步确认是怎么实现的。</p>
-<p><img src="https://img-blog.csdnimg.cn/31b28fd7d39e49359f4678c68df63082.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/31b28fd7d39e49359f4678c68df63082.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <p>生产者发消息，消息会发到信道中，信道类似于 map 一样有 key 有 value</p>
 <p>key 是每一个消息的序号，value 是消息的内容</p>
 <p>所以之后要是哪个消息没有被 rabbitmq 接收到或者持久化 (反正没有让 rabbitmq 发送发布确认的) 都会找到他对应的 key 知道到底是哪个消息</p>
@@ -1148,7 +1148,7 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 </table>
 <h1 id="6-交换机"><a class="markdownIt-Anchor" href="#6-交换机">#</a> 6. 交换机</h1>
 <h2 id="61-交换机简介"><a class="markdownIt-Anchor" href="#61-交换机简介">#</a> 6.1 交换机简介</h2>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/333d0208c47a4e009fa722709afe659f.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/333d0208c47a4e009fa722709afe659f.png" alt=""></p>
 <p>这样同一个消息就可以被多个消费者消费，我们之前的就是一个消息只能消费一次，然后消费者是竞争模式</p>
 <blockquote>
 <p>介绍</p>
@@ -1183,24 +1183,24 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 </li>
 </ol>
 <p>创建出来的队列长这样：</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/508a61de15644f118f071ed989c1d6b0.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/508a61de15644f118f071ed989c1d6b0.png" alt=""></p>
 <h2 id="63-bindings"><a class="markdownIt-Anchor" href="#63-bindings">#</a> 6.3 Bindings</h2>
 <blockquote>
 <p>简介</p>
 </blockquote>
 <p>什么是 bingding. 呢，binding 其实是 exchange 和 queue 之间的桥梁，它告诉我们 exchange 和那个队列进行了绑定关系。比如说下面这张图告诉我们的就是 × 与 Q1 和 Q2 进行了绑定</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/46f9af7462f3468da5e43990faa7c328.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/46f9af7462f3468da5e43990faa7c328.png" alt=""></p>
 <p>这里这个 routingkey 是我们自己配的，随便配的</p>
 <p>一旦我们发送消息给这个交换机，这个交换机就会找到我们给的 routingKey 找到对应的队列然后发送消息</p>
 <p>这样我们可能有多个队列都是同一个 routingKey, 所以消息会从这个交换机 pass on 到那所有对应的 routingKey 的队列，这样每个队列可以把消息发给消费者，多个队列说明多个消费者可以收到那个消息</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/c12d0c944d2a4d2fa3fb90dc1ba1f74c.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/c12d0c944d2a4d2fa3fb90dc1ba1f74c.png" alt=""></p>
 <h2 id="64-fanout"><a class="markdownIt-Anchor" href="#64-fanout">#</a> 6.4 Fanout</h2>
 <p><strong>这种交换机最大的特点就是只要是跟这个绑定的队列都会收到交给这个交换机发送的消息，不管你 RoutingKey 一不一样 (所以随便设都行), 有点像广播的意思</strong></p>
 <blockquote>
 <p>简介</p>
 </blockquote>
 <p>Fanout 这种类型非常简单。正如从名称中猜到的那样，它是将接收到的所有消息广播到它知道的所有队列中。系统中默认有些 exchange 类型</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/3cdbfd3af4bd420c9ee550ec2f5823dd.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/3cdbfd3af4bd420c9ee550ec2f5823dd.png" alt=""></p>
 <blockquote>
 <p>实战</p>
 </blockquote>
@@ -1290,20 +1290,20 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 </li>
 <li>
 <p>效果</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/b36a316e9ed44c1884da024e4797ccd1.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/a3d5f0e8ede14445912ae4245f7d9354.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/09cc33d93e4a423496fc85619a807d65.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/b36a316e9ed44c1884da024e4797ccd1.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/a3d5f0e8ede14445912ae4245f7d9354.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/09cc33d93e4a423496fc85619a807d65.png" alt=""></p>
 </li>
 </ol>
 <h2 id="65-direct"><a class="markdownIt-Anchor" href="#65-direct">#</a> 6.5 Direct</h2>
 <blockquote>
 <p>实现原理</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/8a546dbb8c0a4456a89d7c753114475c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/8a546dbb8c0a4456a89d7c753114475c.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <blockquote>
 <p>实战</p>
 </blockquote>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/75935e9b08eb443aa70edcdde2fc3956.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/75935e9b08eb443aa70edcdde2fc3956.png" alt=""></p>
 <p>一个队列可以有多个 RoutingKey</p>
 <ol>
 <li>
@@ -1377,7 +1377,7 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 </li>
 <li>
 <p>效果</p>
-<p><img src="https://img-blog.csdnimg.cn/f818fa03a570473c974e2d81c410c5bf.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/f818fa03a570473c974e2d81c410c5bf.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 </li>
 </ol>
 <h2 id="66-topics"><a class="markdownIt-Anchor" href="#66-topics">#</a> 6.6 Topics</h2>
@@ -1401,7 +1401,7 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 <p>下图绑定关系如下：</p>
 <p>Q1 绑定的是：中间带 orange 的三个单词的字符串： <code>*.orange.*</code></p>
 <p>Q2 绑定的是：最后一个单词是 rabbit 的单个单词： <code>*.*.rabbit</code> ，第一个单词是 lazy 的多个单词： <code>lazy.#</code></p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/9a7819422df6426fbd12fb6321bdd571.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/9a7819422df6426fbd12fb6321bdd571.png" alt=""></p>
 <p>数据接收情况如下：</p>
 <ol>
 <li>quick.orange.rabbit：被队列 Q1Q2 接收到</li>
@@ -1420,7 +1420,7 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 <blockquote>
 <p>实战</p>
 </blockquote>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/856176f2bcbd420582d43b59e47c5131.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/856176f2bcbd420582d43b59e47c5131.png" alt=""></p>
 <ol>
 <li>
 <p>生产者</p>
@@ -1518,9 +1518,9 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 </li>
 <li>
 <p>结果</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/01e75f721d7f47f5a904370cd64a235e.png" alt=""></p>
-<p><img src="https://img-blog.csdnimg.cn/37e5339a87b04819808ab36542a0437a.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/f0c241331c1240b09029a5fe8d2f29e1.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/01e75f721d7f47f5a904370cd64a235e.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/37e5339a87b04819808ab36542a0437a.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/f0c241331c1240b09029a5fe8d2f29e1.png" alt=""></p>
 </li>
 </ol>
 <h1 id="7-死信队列"><a class="markdownIt-Anchor" href="#7-死信队列">#</a> 7. 死信队列</h1>
@@ -1544,7 +1544,7 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 <blockquote>
 <p>代码架构图</p>
 </blockquote>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/f2ae03b4ede740aa96a90b92ce876d1a.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/f2ae03b4ede740aa96a90b92ce876d1a.png" alt=""></p>
 <p>因为那三个任意一个原因导致消息被放到死信交换机，然后这个死信交换机也有 Routingkey 绑定 (bind) 一个死信队列，然后这个死信队列把消息交给 C2 消费 (我们自己写自己配置)</p>
 <blockquote>
 <p>消息 TTL 过期</p>
@@ -1667,14 +1667,14 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 <ol>
 <li>
 <p>生产者</p>
-<p><img src="https://img-blog.csdnimg.cn/af18efbc91514cb09288ec2bbc578504.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/af18efbc91514cb09288ec2bbc578504.png" alt=""></p>
 </li>
 <li>
 <p>消费者</p>
 <ul>
 <li>
 <p>消费者 01</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/5889bbd68a464bf29400a3d3559fd06a.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/5889bbd68a464bf29400a3d3559fd06a.png" alt=""></p>
 </li>
 <li>
 <p>消费者 02 无需做修改</p>
@@ -1683,7 +1683,7 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 </li>
 <li>
 <p>效果：<br>
-<img src="https://img-blog.csdnimg.cn/9bc73667bfb84966bda6d54d2da9b1e2.png" alt=""></p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/9bc73667bfb84966bda6d54d2da9b1e2.png" alt=""></p>
 </li>
 </ol>
 <blockquote>
@@ -1696,7 +1696,7 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 <li>
 <p>消费者：</p>
 <ul>
-<li>消费者 01<img src="https://img-blog.csdnimg.cn/b052ea297e364885a99f8c2e89a9f971.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></li>
+<li>消费者 01<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/b052ea297e364885a99f8c2e89a9f971.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></li>
 </ul>
 <blockquote>
 <p>basicReject 方法那里传的第二个参数就是拒绝当前消息还要不要把消息放回队列了，我们给的 false 不放回</p>
@@ -1708,8 +1708,8 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 </li>
 <li>
 <p>效果</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1eccce88a86c4ebd9a8817c1c34139d8.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/50c86c8bd27c4bb4979df484b328b201.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/1eccce88a86c4ebd9a8817c1c34139d8.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/50c86c8bd27c4bb4979df484b328b201.png" alt=""></p>
 </li>
 </ol>
 <blockquote>
@@ -1837,7 +1837,7 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 <p>代码架构</p>
 </blockquote>
 <p>创建两个队列 QA 和 QB，两者队列 TTL 分别设置为 10S 和 40S，然后在创建一个交换机 X 和死信交换机 Y，它们的类型都是 direct，创建一个死信队列 QD，它们的绑定关系如下：</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/b5db67fec0a24835a22f256a8c427b88.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/b5db67fec0a24835a22f256a8c427b88.png" alt=""></p>
 <blockquote>
 <p>代码实现</p>
 </blockquote>
@@ -1992,7 +1992,7 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 </li>
 <li>
 <p>效果</p>
-<p><img src="https://img-blog.csdnimg.cn/fbfac236743c4301981d9dc960b7ef65.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/fbfac236743c4301981d9dc960b7ef65.png" alt=""></p>
 </li>
 </ol>
 <h2 id="83-队列优化"><a class="markdownIt-Anchor" href="#83-队列优化">#</a> 8.3 队列优化</h2>
@@ -2004,7 +2004,7 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 <blockquote>
 <p>代码架构图</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/0a352267cd494c258f14cbc43a75ffd2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/0a352267cd494c258f14cbc43a75ffd2.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <p>由我们生产者发送到底需要延迟多久时间给我们 QC, 那我们 QC 延迟队列就会按照我们传了多久延迟多久，这样适用于所有延迟队列，比 QA 和 QB 好</p>
 <p>QC 这个延迟队列会在我们设置的时间过了之后将那个消息传给死信交换机和死信队列 QD</p>
 <p><strong>注意我们这个就是之前讲的死信队列得消息 TTL 过期，只不过我们这里这个延迟队列 (中间工具人队列) 没有对应的消费者接收消息，因为这里没必要，我们只需要死信队列那边把消息传给消费者处理消息</strong></p>
@@ -2157,7 +2157,7 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 </li>
 <li>
 <p>效果及问题：按理来说应该是你好 2 先收到</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/e83a1610782441ad88c5eb4d3c43a934.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/e83a1610782441ad88c5eb4d3c43a934.png" alt=""></p>
 <p><strong>因为 RabbitMQ 检查第一个消息是否过期，如果过期则丢到死信队列， 如果第一个消息的延时时长很长，而第二个消息的延时时长很短，第二个消息并不会优先得到执行</strong>！队列嘛，先进先出，你好 1 这个消息先进入 QC 延迟队列，你好 2 这个消息再进入。期间就算你好 2 这个消息先过期 (因为没有消费者接收所以不会有任何的消费者给我们的 rabbitmq 发送应答什么的应该是) 因为我们设置得 ttl 时间很短，还是不会传给死信交换机，因为当前 QC 延迟队列你好 1 消息排到第一个，需要等他的 TTL 时间到了 (因为没有消费者接收所以不会有任何的消费者给我们的 rabbitmq 发送应答什么的应该是), 才会从当前队列 dequeue 然后到死信交换机，so on…(我们的你好 1 信息一出，我们你好 2 信息也会立马出，因为 TTL 时间早到了，你好 1 消息一 dequeue 这个就是 front of queue 了也会 dequeue 到死信交换机 so on…), 这样不好我们需要插件实现延迟队列弥补这个坏处 (下方)</p>
 </li>
 </ol>
@@ -2165,10 +2165,10 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 <p>注意只要配置好 TTL 过期时间，因为我们并没有 QA,QB,QC 队列那里有消费者接收消息，说明那个消息会一直在那个队列中，所以等时间一到 TTL 时间，那么就会被传给死信交换机，然后按照我们配置的他的 RoutingKey 传给死信队列，这个死信队列有消费者从那取消息.</p>
 </blockquote>
 <h2 id="84-插件实现延迟队列"><a class="markdownIt-Anchor" href="#84-插件实现延迟队列">#</a> 8.4 插件实现延迟队列</h2>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/image-20220219010902943.png" alt="image-20220219010902943"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/image-20220219010902943.png" alt="image-20220219010902943"></p>
 <p>安装插件后设置延迟的是在交换机而不是队列了</p>
 <p>也就是</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/image-20220219011226594.png" alt="image-20220219011226594"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/image-20220219011226594.png" alt="image-20220219011226594"></p>
 <p>也不需要死信交换机和死信队列了</p>
 <ol>
 <li>
@@ -2177,7 +2177,7 @@ channel<span class="token punctuation">.</span><span class="token function">conf
 </li>
 <li>
 <p>将延迟插件放到 RabbitMQ 的插件目录下：</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/883b86c2a0ee470c83273089e76c3eee.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/883b86c2a0ee470c83273089e76c3eee.png" alt=""></p>
 </li>
 <li>
 <p>安装插件并重启服务</p>
@@ -2189,7 +2189,7 @@ systemctl restart rabbitmq-server
 <blockquote>
 <p>代码架构图</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/10dc1c242041459e9deb2b1b5cd346ae.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/10dc1c242041459e9deb2b1b5cd346ae.png" alt=""></p>
 <blockquote>
 <p>实现</p>
 </blockquote>
@@ -2276,7 +2276,7 @@ systemctl restart rabbitmq-server
 <p>效果</p>
 <p>访问：</p>
 <p><a target="_blank" rel="noopener" href="http://localhost:8080/ttl/sendDelayMsg/come">http://localhost:8080/ttl/sendDelayMsg/come</a> on baby1/20000,<a target="_blank" rel="noopener" href="http://localhost:8080/ttl/sendDelayMsg/come">http://localhost:8080/ttl/sendDelayMsg/come</a> on baby1/20000</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/9c079d7e9bd640f08b29495891341517.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/9c079d7e9bd640f08b29495891341517.png" alt=""></p>
 </li>
 </ol>
 <blockquote>
@@ -2292,7 +2292,7 @@ systemctl restart rabbitmq-server
 <p>介绍</p>
 </blockquote>
 <p>在生产环境中由于一些不明原因，导致 rabbitmq 重启，在 RabbitMQ 重启期间生产者消息投递失败，导致消息丢失，需要手动处理和恢复。于是，我们开始思考，如何才能进行 RabbitMQ 的消息可靠投递呢？特别是在这样比较极端的情况，RabbitMQ 集群不可用的时候，无法投递的消息该如何处理呢：</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/ac8290b9896d4f3899742dfe14ab2d86.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/ac8290b9896d4f3899742dfe14ab2d86.png" alt=""></p>
 <p>其实跟之前说的发布确认一个东西，只不过这是跟 springboot 整合的方式</p>
 <blockquote>
 <p>实现</p>
@@ -2533,12 +2533,12 @@ systemctl restart rabbitmq-server
 </li>
 <li>
 <p>效果：实现回退消息成功！</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/7b725fb5b484432fac6596c0561abd9a.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/7b725fb5b484432fac6596c0561abd9a.png" alt=""></p>
 </li>
 </ol>
 <h2 id="92-备份交换机"><a class="markdownIt-Anchor" href="#92-备份交换机">#</a> 9.2 备份交换机</h2>
 <p>有了 mandatory 参数和回退消息，我们获得了对无法投递消息的感知能力，有机会在生产者的消息无法被投递时发现并处理。但有时候，我们并不知道该如何处理这些无法路由的消息，最多打个日志，然后触发报警，再来手动处理。而通过日志来处理这些无法路由的消息是很不优雅的做法，特别是当生产者所在的服务有多台机器的时候，手动复制日志会更加麻烦而且容易出错。而且设置 mandatory 参数会增加生产者的复杂性，需要添加处理这些被退回的消息的逻辑。如果既不想丢失消息，又不想增加生产者的复杂性，该怎么做呢？前面在设置死信队列的文章中，我们提到，可以为队列设置死信交换机来存储那些处理失败的消息，可是这些不可路由消息根本没有机会进入到队列，因此无法使用死信队列来保存消息。在 RabbitMQ. 中，有一种备份交换机的机制存在，可以很好的应对这个问题。什么是备份交换机呢？备份交换机可以理解为 RabbitMQ 中交换机的 “备胎”，当我们为某一个交换机声明一个对应的备份交换机时，就是为它创建一个备胎，<strong>当交换机接收到一条不可路由 (就是找不到我们传的 RoutingKey 对应的队列) 消息时，将会把这条消息转发到备份交换机中，由备份交换机来进行转发和处理，通常备份交换机的类型为 Fanout，这样就能把所有消息都投递到与其绑定的队列中，然后我们在备份交换机下绑定一个队列，这样所有那些原交换机无法被路由的消息，就会都进入这个队列了。当然，我们还可以建立一个报警队列，用独立的消费者来进行监测和报警</strong>。</p>
-<p><img src="https://img-blog.csdnimg.cn/a4b9a56ec9d34b8dafee683f5aca80ff.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/a4b9a56ec9d34b8dafee683f5aca80ff.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <ol>
 <li>
 <p>配置类</p>
@@ -2627,7 +2627,7 @@ systemctl restart rabbitmq-server
 </li>
 <li>
 <p>效果</p>
-<p><img src="https://img-blog.csdnimg.cn/46166e32d5ef4ebfa16fa78f1da14a17.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/46166e32d5ef4ebfa16fa78f1da14a17.png" alt=""></p>
 </li>
 <li>
 <p><strong>mandatory 参数与备份交换机可以一起使用的时候，如果两者同时开启，消息究竟何去何从？谁优先级高，经过上面结果显示答案是 <code>备份交换机优先级高</code> 。</strong></p>
@@ -2638,7 +2638,7 @@ systemctl restart rabbitmq-server
 <p>概念</p>
 </blockquote>
 <p>用户对于同一操作发起的一次请求或者多次请求的结果是一致的，不会因为多次点击而产生了副作用。举个最简单的例子，那就是支付，用户购买商品后支付，支付扣款成功，但是返回结果的时候网络异常，此时钱已经扣了，用户再次点击按钮，此时会进行第二次扣款，返回结果成功，用户查询余额发现多扣钱了，流水记录也变成了两条。在以前的__单应用系统__中，我们只需要把数据操作放入事务中即可，发生错误立即回滚，<strong>但是再响应客户端的时候也有可能出现网络中断或者异常等等</strong></p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/image-20220219032022649.png" alt="image-20220219032022649"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/image-20220219032022649.png" alt="image-20220219032022649"></p>
 <blockquote>
 <p>解决思路</p>
 </blockquote>
@@ -2669,7 +2669,7 @@ systemctl restart rabbitmq-server
 <blockquote>
 <p>代码实现</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/877295543dbb4e88b728210dbd63f8cd.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/877295543dbb4e88b728210dbd63f8cd.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <p>要让队列实现优先级需要做的事情有如下事情：<em>_队列需要设置为优先级队列，消息需要设置消息的优先级，消费者需要等待所有消息已经发送到队列中才去消费因为这样才有机会对消息进行排序 (== 而不是消费者看到队列里面有一个消息就消费一个有一个就消费一个，这样那些消息都还没有在那个队列里面按照他们的优先级 (被消费者) 排序就会被消费者一个一个消费掉，就没效果了！！！⭐️==)</em>_</p>
 <ol>
 <li>
@@ -2745,7 +2745,7 @@ systemctl restart rabbitmq-server
 </li>
 <li>
 <p>效果</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/bf7ab83003bb4e63829654227c8824c3.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/bf7ab83003bb4e63829654227c8824c3.png" alt=""></p>
 </li>
 </ol>
 <h2 id="95-惰性队列"><a class="markdownIt-Anchor" href="#95-惰性队列">#</a> 9.5 惰性队列</h2>
@@ -2767,7 +2767,7 @@ channel<span class="token punctuation">.</span><span class="token function">queu
 <blockquote>
 <p>内存对比</p>
 </blockquote>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/223765c46c484935aeb19249ea999154.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/223765c46c484935aeb19249ea999154.png" alt=""></p>
 <p>在发送 1 百万务消息，每条消息大概占 1KB 的情况下，普通队列占用内存是 1.2GB, 而惰性队列仅仅占用 1.5MB</p>
 <h1 id="10-rabbitmq集群"><a class="markdownIt-Anchor" href="#10-rabbitmq集群">#</a> 10. RabbitMQ 集群</h1>
 <h2 id="101-搭建集群"><a class="markdownIt-Anchor" href="#101-搭建集群">#</a> 10.1 搭建集群</h2>
@@ -2859,24 +2859,24 @@ rabbitmqctl forget_cluster_node rabbit@node2<span aria-hidden="true" class="line
 </li>
 <li>
 <p>在 node1 创建一个队列发噢是那个一条信息，队列存在镜像队列</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/ded18734ff9045d3ba147213240a018d.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/ded18734ff9045d3ba147213240a018d.png" alt=""></p>
 </li>
 <li>
 <p>在 node1 上创建一个队列发送一条消息，队列存在镜像队列</p>
 </li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/image-20220219034952926.png" alt="image-20220219034952926"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/image-20220219034952926.png" alt="image-20220219034952926"></p>
 <h2 id="103-实现高可用负载均衡"><a class="markdownIt-Anchor" href="#103-实现高可用负载均衡">#</a> 10.3 实现高可用负载均衡</h2>
 <p>HAProxy. 提供高可用性、负载均衡及基于 TCPHTTP 应用的代理，支持虚拟主机，它是免费、快速并且可靠的一种解决方案，包括 Twitter,Reddit,StackOverflow,GitHub. 在内的多家知名互联网公司在使用。HAProxy 实现了一种事件驱动、单一进程模型，此模型支持非常大的井发连接数。<br>
 扩展 nginx,lvs,haproxx.p 间的区别: <a target="_blank" rel="noopener" href="http://www.ha97.com/5646.html">http://www.ha97.com/5646.html</a></p>
-<p><img src="https://img-blog.csdnimg.cn/634662f2b9fa46d4abc334322fa8a461.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/634662f2b9fa46d4abc334322fa8a461.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <h2 id="104-federation-exchange"><a class="markdownIt-Anchor" href="#104-federation-exchange">#</a> 10.4 Federation Exchange</h2>
 <blockquote>
 <p>使用原因</p>
 </blockquote>
 <p>(broker 北京)，(broker 深圳) 彼此之间相距甚远，网络延迟是一个不得不面对的问题。有一个在北京的业务 (Client 北京) 需要连接 (broker 北京), 向其中的交换器 exchangeA. 发送消息，此时的网络延迟很小，(Client 北京) 可以迅速将消息发送至 exchangeA. 中，就算在开启了 publisherconfirm. 机制或者事务机制的情况下，也可以迅速收到确认信息。此时又有个在深圳的业务 (Client 深圳) 需要向 exchangeA 发送消息，那么 (Client 深圳)(broker 北京) 之间有很大的网络延迟，(Client 深圳) 将发送消息至 exchangeA 会经历一定的延迟，尤其是在开启了 publisherconfirm. 机制或者事务机制的情况下，(Client 深圳) 会等待很长的延迟时间来接收 (broker 北京) 的确认信息，进而必然造成这条发送线程的性能降低，甚至造成一定程度上的阻塞。<br>
 将业务 (Client 深圳) 部署到北京的机房可以解决这个问题，但是如果 (Client 深圳) 调用的另些服务都部署在深圳，那么又会引发新的时延问题，总不见得将所有业务全部部署在一个机房，那么容灾又何以实现？这里使用 Federation 插件就可以很好地解决这个问题.</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/78b70611103a4629a272c11f05cf9ca0.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/78b70611103a4629a272c11f05cf9ca0.png" alt=""></p>
 <blockquote>
 <p>搭建步骤</p>
 </blockquote>
@@ -2892,19 +2892,19 @@ rabbitmq-plugns <span class="token builtin class-name">enable</span> rabbitmq_fe
 </li>
 <li>
 <p>原理图</p>
-<p><img src="https://img-blog.csdnimg.cn/23fe63dd789447b29006339fbea7c539.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_19,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/23fe63dd789447b29006339fbea7c539.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_19,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 </li>
 <li>
 <p>在下游节点（node2）配置上游节点（node1）</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/d37589d07897451f9451da10260b2d4f.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/d37589d07897451f9451da10260b2d4f.png" alt=""></p>
 </li>
 <li>
 <p>添加 policy</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/67127f31952846d2b5fc3f74dce858c1.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/67127f31952846d2b5fc3f74dce858c1.png" alt=""></p>
 </li>
 <li>
 <p>成功</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/8e3568d84f4b43cda9f9a931e5213fbf.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/8e3568d84f4b43cda9f9a931e5213fbf.png" alt=""></p>
 </li>
 </ol>
 <h2 id="105-federation-queue"><a class="markdownIt-Anchor" href="#105-federation-queue">#</a> 10.5 Federation Queue</h2>
@@ -2912,14 +2912,14 @@ rabbitmq-plugns <span class="token builtin class-name">enable</span> rabbitmq_fe
 <p>使用原因</p>
 </blockquote>
 <p>联邦队列可以在多个 Broker 节点 (或者集群) 之间为单个队列提供均衡负载的功能。一个联邦队列可以连接一个或者多个上游队列 (upstream queue)，并从这些上游队列中获取消息以满足本地消费者消费消息的需求。</p>
-<p><img src="https://img-blog.csdnimg.cn/dd4fbefb1a7647a0af467c42f2f362e4.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img-blog.csdnimg.cn/dd4fbefb1a7647a0af467c42f2f362e4.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5piv6Zi_5bKa5ZGQ,size_20,color_FFFFFF,t_70,g_se,x_16" alt=""></p>
 <ol>
 <li>
 <p>添加上下游配置（同 10.4）</p>
 </li>
 <li>
 <p>添加 policy</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/eef3484c764e4df089ffc8d121a4f40f.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/eef3484c764e4df089ffc8d121a4f40f.png" alt=""></p>
 </li>
 </ol>
 <h2 id="106-shovel"><a class="markdownIt-Anchor" href="#106-shovel">#</a> 10.6 Shovel</h2>
@@ -2927,7 +2927,7 @@ rabbitmq-plugns <span class="token builtin class-name">enable</span> rabbitmq_fe
 <p>使用原因</p>
 </blockquote>
 <p>Federation 具备的数据转发功能类似，Shovel 够可靠、持续地从一个 Broker 中的队列 (作为源端，即 source) 拉取数据并转发至另一个 Broker 中的交换器 (作为目的端，即 destination)。作为源端的队列和作为目的端的交换器可以同时位于同一个 Broker，也可以位于不同的 Broker 上。Shovel 可以翻译为 &quot;铲子&quot;, 是一种比较形象的比喻，这个 &quot;铲子&quot; 可以将消息从一方 &quot;铲子&quot; 另一方。Shovel 行为就像优秀的客户端应用程序能够负责连接源和目的地、负责消息的读写及负责连接失败问题的处理。</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/a886ce49e94a471b9ffecaed95d8d915.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/a886ce49e94a471b9ffecaed95d8d915.png" alt=""></p>
 <blockquote>
 <p>搭建步骤</p>
 </blockquote>
@@ -2939,10 +2939,10 @@ rabbitmq-plugins <span class="token builtin class-name">enable</span> rabbitmq_s
 </li>
 <li>
 <p>添加 shevel 源和目的地</p>
-<p><img src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/4b458177bcf140899435d6b6a1f22567.png" alt=""></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://raw.githubusercontent.com/HarryQu1229/image-host/main/notes-img/4b458177bcf140899435d6b6a1f22567.png" alt=""></p>
 </li>
 </ol>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2022/03/19/rabbitmq/">https://harryqu1229.github.io/2022/03/19/rabbitmq/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/backend/">backend</a><a class="post-meta__tags" href="/tags/summary/">summary</a><a class="post-meta__tags" href="/tags/message-queue/">message queue</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/15/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/"><img class="prev-cover" src="/img/default-covers/car.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Linux commands</div></div></a></div><div class="next-post pull-right"><a href="/2022/03/20/rabbitmq%E7%AC%94%E8%AE%B0/"><img class="next-cover" src="/img/default-covers/town.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Rabbitmq notes</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/03/20/rabbitmq%E7%AC%94%E8%AE%B0/" title="Rabbitmq notes"><img class="cover" src="/img/default-covers/town.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-20</div><div class="title">Rabbitmq notes</div></div></a></div><div><a href="/2022/01/01/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="Message Queue"><img class="cover" src="/img/default-covers/car.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">Message Queue</div></div></a></div><div><a href="/2022/02/13/Redis/" title="Redis Notes"><img class="cover" src="/img/default-covers/mountain.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-13</div><div class="title">Redis Notes</div></div></a></div><div><a href="/2022/03/23/Spring(another%20note)/" title="Spring notes"><img class="cover" src="/img/default-covers/statue.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-23</div><div class="title">Spring notes</div></div></a></div><div><a href="/2022/03/20/Redis%E7%AC%94%E8%AE%B0/" title="Redis CS Notes"><img class="cover" src="/img/default-covers/sky.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-20</div><div class="title">Redis CS Notes</div></div></a></div><div><a href="/2022/02/26/SSM%E6%A1%86%E6%9E%B6%E7%9A%84%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE/" title="SSM combine"><img class="cover" src="/img/default-covers/car.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-26</div><div class="title">SSM combine</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-mq"><span class="toc-number">1.</span> <span class="toc-text"> 1. MQ</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-mq%E7%9A%84%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text"> 1.1 MQ 的相关概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-mq%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text"> 1.2 MQ 分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-mq%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-number">1.3.</span> <span class="toc-text"> 1.3 MQ 的选择</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-rabbitmq"><span class="toc-number">2.</span> <span class="toc-text"> 2 RabbitMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#21-%E6%A0%B8%E5%BF%83%E9%83%A8%E5%88%86"><span class="toc-number">2.1.</span> <span class="toc-text"> 2.1 核心部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-%E5%AE%89%E8%A3%85"><span class="toc-number">2.2.</span> <span class="toc-text"> 2.2 安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-helloworld"><span class="toc-number">3.</span> <span class="toc-text"> 3. HelloWorld</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#31-%E5%88%9B%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">3.1.</span> <span class="toc-text"> 3.1 创建开发环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#32-%E7%94%9F%E4%BA%A7%E8%80%85%E4%BB%A3%E7%A0%81"><span class="toc-number">3.2.</span> <span class="toc-text"> 3.2 生产者代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#33-%E6%B6%88%E8%B4%B9%E8%80%85%E4%BB%A3%E7%A0%81"><span class="toc-number">3.3.</span> <span class="toc-text"> 3.3 消费者代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97"><span class="toc-number">4.</span> <span class="toc-text"> 4. 工作队列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#41-%E5%AE%9E%E7%8E%B0%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97"><span class="toc-number">4.1.</span> <span class="toc-text"> 4.1 实现工作队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#42-%E6%B6%88%E6%81%AF%E5%BA%94%E7%AD%94"><span class="toc-number">4.2.</span> <span class="toc-text"> 4.2 消息应答</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#43-%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">4.3.</span> <span class="toc-text"> 4.3 持久化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#44-%E9%A2%84%E5%8F%96%E5%80%BC"><span class="toc-number">4.4.</span> <span class="toc-text"> 4.4 预取值</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%8F%91%E5%B8%83%E7%A1%AE%E8%AE%A4"><span class="toc-number">5.</span> <span class="toc-text"> 5. 发布确认</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-number">6.</span> <span class="toc-text"> 6. 交换机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#61-%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AE%80%E4%BB%8B"><span class="toc-number">6.1.</span> <span class="toc-text"> 6.1 交换机简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#62-%E4%B8%B4%E6%97%B6%E9%98%9F%E5%88%97"><span class="toc-number">6.2.</span> <span class="toc-text"> 6.2 临时队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#63-bindings"><span class="toc-number">6.3.</span> <span class="toc-text"> 6.3 Bindings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#64-fanout"><span class="toc-number">6.4.</span> <span class="toc-text"> 6.4 Fanout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#65-direct"><span class="toc-number">6.5.</span> <span class="toc-text"> 6.5 Direct</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#66-topics"><span class="toc-number">6.6.</span> <span class="toc-text"> 6.6 Topics</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97"><span class="toc-number">7.</span> <span class="toc-text"> 7. 死信队列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97"><span class="toc-number">8.</span> <span class="toc-text"> 8. 延迟队列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#81-%E6%95%B4%E5%90%88springboot"><span class="toc-number">8.1.</span> <span class="toc-text"> 8.1 整合 Springboot</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#82-%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0"><span class="toc-number">8.2.</span> <span class="toc-text"> 8.2 队列实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#83-%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96"><span class="toc-number">8.3.</span> <span class="toc-text"> 8.3 队列优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#84-%E6%8F%92%E4%BB%B6%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97"><span class="toc-number">8.4.</span> <span class="toc-text"> 8.4 插件实现延迟队列</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E5%8F%91%E5%B8%83%E7%A1%AE%E8%AE%A4%E9%AB%98%E7%BA%A7"><span class="toc-number">9.</span> <span class="toc-text"> 9. 发布确认高级</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#91-%E5%9B%9E%E9%80%80%E6%B6%88%E6%81%AF"><span class="toc-number">9.1.</span> <span class="toc-text"> 9.1 回退消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#92-%E5%A4%87%E4%BB%BD%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-number">9.2.</span> <span class="toc-text"> 9.2 备份交换机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#93-%E5%B9%82%E7%AD%89%E6%80%A7"><span class="toc-number">9.3.</span> <span class="toc-text"> 9.3 幂等性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#94-%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97"><span class="toc-number">9.4.</span> <span class="toc-text"> 9.4 优先级队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#95-%E6%83%B0%E6%80%A7%E9%98%9F%E5%88%97"><span class="toc-number">9.5.</span> <span class="toc-text"> 9.5 惰性队列</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-rabbitmq%E9%9B%86%E7%BE%A4"><span class="toc-number">10.</span> <span class="toc-text"> 10. RabbitMQ 集群</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#101-%E6%90%AD%E5%BB%BA%E9%9B%86%E7%BE%A4"><span class="toc-number">10.1.</span> <span class="toc-text"> 10.1 搭建集群</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#102-%E9%95%9C%E5%83%8F%E9%98%9F%E5%88%97"><span class="toc-number">10.2.</span> <span class="toc-text"> 10.2 镜像队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#103-%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">10.3.</span> <span class="toc-text"> 10.3 实现高可用负载均衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#104-federation-exchange"><span class="toc-number">10.4.</span> <span class="toc-text"> 10.4 Federation Exchange</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#105-federation-queue"><span class="toc-number">10.5.</span> <span class="toc-text"> 10.5 Federation Queue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#106-shovel"><span class="toc-number">10.6.</span> <span class="toc-text"> 10.6 Shovel</span></a></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns"><img src="/img/default-covers/town-lake.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns"/></a><div class="content"><a class="title" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns">Design Patterns</a><time datetime="2022-06-11T12:00:00.000Z" title="Created 2022-06-12 00:00:00">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/12/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide"><img src="/img/default-covers/car.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My ultimate data structure and algorithm guide"/></a><div class="content"><a class="title" href="/2022/06/12/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide">My ultimate data structure and algorithm guide</a><time datetime="2022-06-11T12:00:00.000Z" title="Created 2022-06-12 00:00:00">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command"><img src="/img/default-covers/cat.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns - Command"/></a><div class="content"><a class="title" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command">Design Patterns - Command</a><time datetime="2022-06-10T12:00:00.000Z" title="Created 2022-06-11 00:00:00">2022-06-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%A4%87%E5%BF%98%E5%BD%95/" title="Design Patterns - Momento"><img src="/img/default-covers/sun.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns - Momento"/></a><div class="content"><a class="title" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%A4%87%E5%BF%98%E5%BD%95/" title="Design Patterns - Momento">Design Patterns - Momento</a><time datetime="2022-06-10T12:00:00.000Z" title="Created 2022-06-11 00:00:00">2022-06-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95/" title="Design Patterns - Factory Method"><img src="/img/default-covers/cat.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns - Factory Method"/></a><div class="content"><a class="title" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95/" title="Design Patterns - Factory Method">Design Patterns - Factory Method</a><time datetime="2022-06-10T12:00:00.000Z" title="Created 2022-06-11 00:00:00">2022-06-11</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Harry Qu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://harryqu1229.github.io/2022/03/19/rabbitmq/">https://harryqu1229.github.io/2022/03/19/rabbitmq/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/backend/">backend</a><a class="post-meta__tags" href="/tags/summary/">summary</a><a class="post-meta__tags" href="/tags/message-queue/">message queue</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-621848f44e1c3724" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/15/linux%E7%9A%84%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/forest.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Linux commands</div></div></a></div><div class="next-post pull-right"><a href="/2022/03/20/rabbitmq%E7%AC%94%E8%AE%B0/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/statue.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Rabbitmq notes</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/03/20/rabbitmq%E7%AC%94%E8%AE%B0/" title="Rabbitmq notes"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/statue.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-20</div><div class="title">Rabbitmq notes</div></div></a></div><div><a href="/2022/01/01/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="Message Queue"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/sun.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-01</div><div class="title">Message Queue</div></div></a></div><div><a href="/2022/02/13/Redis/" title="Redis Notes"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/car.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-13</div><div class="title">Redis Notes</div></div></a></div><div><a href="/2022/03/20/Redis%E7%AC%94%E8%AE%B0/" title="Redis CS Notes"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/cat.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-20</div><div class="title">Redis CS Notes</div></div></a></div><div><a href="/2022/02/26/SSM%E6%A1%86%E6%9E%B6%E7%9A%84%E6%95%B4%E5%90%88%E9%A1%B9%E7%9B%AE/" title="SSM combine"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/mountain2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-26</div><div class="title">SSM combine</div></div></a></div><div><a href="/2022/03/22/Socket/" title="Socket Notes"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/car.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-22</div><div class="title">Socket Notes</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Harry Qu</div><div class="author-info__description">Software Engineering Student</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">158</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">84</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">57</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/HarryQu1229"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://www.linkedin.com/in/harry-qu-a0a38220a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="social-icon" href="https://github.com/HarryQu1229" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Harryqu666@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="weixin://dl/chat?harry666ya" target="_blank" title="Wechat"><i class="fab fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">be healthy, stay safe</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-mq"><span class="toc-number">1.</span> <span class="toc-text"> 1. MQ</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-mq%E7%9A%84%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text"> 1.1 MQ 的相关概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-mq%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text"> 1.2 MQ 分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-mq%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-number">1.3.</span> <span class="toc-text"> 1.3 MQ 的选择</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-rabbitmq"><span class="toc-number">2.</span> <span class="toc-text"> 2 RabbitMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#21-%E6%A0%B8%E5%BF%83%E9%83%A8%E5%88%86"><span class="toc-number">2.1.</span> <span class="toc-text"> 2.1 核心部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-%E5%AE%89%E8%A3%85"><span class="toc-number">2.2.</span> <span class="toc-text"> 2.2 安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-helloworld"><span class="toc-number">3.</span> <span class="toc-text"> 3. HelloWorld</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#31-%E5%88%9B%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">3.1.</span> <span class="toc-text"> 3.1 创建开发环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#32-%E7%94%9F%E4%BA%A7%E8%80%85%E4%BB%A3%E7%A0%81"><span class="toc-number">3.2.</span> <span class="toc-text"> 3.2 生产者代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#33-%E6%B6%88%E8%B4%B9%E8%80%85%E4%BB%A3%E7%A0%81"><span class="toc-number">3.3.</span> <span class="toc-text"> 3.3 消费者代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97"><span class="toc-number">4.</span> <span class="toc-text"> 4. 工作队列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#41-%E5%AE%9E%E7%8E%B0%E5%B7%A5%E4%BD%9C%E9%98%9F%E5%88%97"><span class="toc-number">4.1.</span> <span class="toc-text"> 4.1 实现工作队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#42-%E6%B6%88%E6%81%AF%E5%BA%94%E7%AD%94"><span class="toc-number">4.2.</span> <span class="toc-text"> 4.2 消息应答</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#43-%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">4.3.</span> <span class="toc-text"> 4.3 持久化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#44-%E9%A2%84%E5%8F%96%E5%80%BC"><span class="toc-number">4.4.</span> <span class="toc-text"> 4.4 预取值</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%8F%91%E5%B8%83%E7%A1%AE%E8%AE%A4"><span class="toc-number">5.</span> <span class="toc-text"> 5. 发布确认</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-number">6.</span> <span class="toc-text"> 6. 交换机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#61-%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AE%80%E4%BB%8B"><span class="toc-number">6.1.</span> <span class="toc-text"> 6.1 交换机简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#62-%E4%B8%B4%E6%97%B6%E9%98%9F%E5%88%97"><span class="toc-number">6.2.</span> <span class="toc-text"> 6.2 临时队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#63-bindings"><span class="toc-number">6.3.</span> <span class="toc-text"> 6.3 Bindings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#64-fanout"><span class="toc-number">6.4.</span> <span class="toc-text"> 6.4 Fanout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#65-direct"><span class="toc-number">6.5.</span> <span class="toc-text"> 6.5 Direct</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#66-topics"><span class="toc-number">6.6.</span> <span class="toc-text"> 6.6 Topics</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97"><span class="toc-number">7.</span> <span class="toc-text"> 7. 死信队列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97"><span class="toc-number">8.</span> <span class="toc-text"> 8. 延迟队列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#81-%E6%95%B4%E5%90%88springboot"><span class="toc-number">8.1.</span> <span class="toc-text"> 8.1 整合 Springboot</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#82-%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0"><span class="toc-number">8.2.</span> <span class="toc-text"> 8.2 队列实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#83-%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96"><span class="toc-number">8.3.</span> <span class="toc-text"> 8.3 队列优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#84-%E6%8F%92%E4%BB%B6%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97"><span class="toc-number">8.4.</span> <span class="toc-text"> 8.4 插件实现延迟队列</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E5%8F%91%E5%B8%83%E7%A1%AE%E8%AE%A4%E9%AB%98%E7%BA%A7"><span class="toc-number">9.</span> <span class="toc-text"> 9. 发布确认高级</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#91-%E5%9B%9E%E9%80%80%E6%B6%88%E6%81%AF"><span class="toc-number">9.1.</span> <span class="toc-text"> 9.1 回退消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#92-%E5%A4%87%E4%BB%BD%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-number">9.2.</span> <span class="toc-text"> 9.2 备份交换机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#93-%E5%B9%82%E7%AD%89%E6%80%A7"><span class="toc-number">9.3.</span> <span class="toc-text"> 9.3 幂等性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#94-%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97"><span class="toc-number">9.4.</span> <span class="toc-text"> 9.4 优先级队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#95-%E6%83%B0%E6%80%A7%E9%98%9F%E5%88%97"><span class="toc-number">9.5.</span> <span class="toc-text"> 9.5 惰性队列</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-rabbitmq%E9%9B%86%E7%BE%A4"><span class="toc-number">10.</span> <span class="toc-text"> 10. RabbitMQ 集群</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#101-%E6%90%AD%E5%BB%BA%E9%9B%86%E7%BE%A4"><span class="toc-number">10.1.</span> <span class="toc-text"> 10.1 搭建集群</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#102-%E9%95%9C%E5%83%8F%E9%98%9F%E5%88%97"><span class="toc-number">10.2.</span> <span class="toc-text"> 10.2 镜像队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#103-%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">10.3.</span> <span class="toc-text"> 10.3 实现高可用负载均衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#104-federation-exchange"><span class="toc-number">10.4.</span> <span class="toc-text"> 10.4 Federation Exchange</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#105-federation-queue"><span class="toc-number">10.5.</span> <span class="toc-text"> 10.5 Federation Queue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#106-shovel"><span class="toc-number">10.6.</span> <span class="toc-text"> 10.6 Shovel</span></a></li></ol></li></ol></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>Visitor Map</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=4LA950xi3DtQgUHPlkO0mo-n_QgrcOu-1BIiVpExg7k"></script></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/28/Maven/" title="My Maven notes"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/car.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My Maven notes"/></a><div class="content"><a class="title" href="/2022/07/28/Maven/" title="My Maven notes">My Maven notes</a><time datetime="2022-07-27T12:00:00.000Z" title="Created 2022-07-28 00:00:00">2022-07-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/25/nodejs/" title="Nodejs notes"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/hello-world.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nodejs notes"/></a><div class="content"><a class="title" href="/2022/07/25/nodejs/" title="Nodejs notes">Nodejs notes</a><time datetime="2022-07-24T12:00:00.000Z" title="Created 2022-07-25 00:00:00">2022-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/12/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/home.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My ultimate data structure and algorithm guide"/></a><div class="content"><a class="title" href="/2022/06/12/%E7%AE%97%E6%B3%95%E7%BB%88%E6%9E%81%E6%8C%87%E5%8D%97/" title="My ultimate data structure and algorithm guide">My ultimate data structure and algorithm guide</a><time datetime="2022-06-11T12:00:00.000Z" title="Created 2022-06-12 00:00:00">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/town.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns"/></a><div class="content"><a class="title" href="/2022/06/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Design Patterns">Design Patterns</a><time datetime="2022-06-11T12:00:00.000Z" title="Created 2022-06-12 00:00:00">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default-covers/code.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Design Patterns - Command"/></a><div class="content"><a class="title" href="/2022/06/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E5%91%BD%E4%BB%A4/" title="Design Patterns - Command">Design Patterns - Command</a><time datetime="2022-06-10T12:00:00.000Z" title="Created 2022-06-11 00:00:00">2022-06-11</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Harry Qu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="Chat"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Local search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
@@ -3092,7 +3092,7 @@ if ('Disqus' === 'Gitalk' || !true) {
         result += '<div class=\'aside-list-item\'>'
 
         if (true) {
-          const name = 'src'
+          const name = 'data-lazy-src'
           result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
         }
         
@@ -3124,8 +3124,8 @@ if ('Disqus' === 'Gitalk' || !true) {
 
   newestCommentInit()
   document.addEventListener('pjax:complete', newestCommentInit)
-})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
-POWERMODE.shake = true;
+})</script><div class="aplayer no-destroy" data-id="2809513713" data-server="netease" data-type="playlist" data-autoplay="false" data-fixed="true" data-order="random" data-theme="#e9ccd3"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="255,255,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
 POWERMODE.mobile = false;
 document.body.addEventListener('input', POWERMODE);
 </script><script>((window.gitter = {}).chat = {}).options = {
@@ -3223,7 +3223,7 @@ document.addEventListener('pjax:error', (e) => {
 })</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
   function butterfly_footer_beautify_injector_config(){
     var parent_div_git = document.getElementById('footer-wrap');
-    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    var item_html = '<div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
     console.log('已挂载butterfly_footer_beautify')
     parent_div_git.insertAdjacentHTML("beforeend",item_html)
     }
@@ -3244,16 +3244,4 @@ document.addEventListener('pjax:error', (e) => {
   else if (epage === cpage){
     butterfly_footer_beautify_injector_config();
   }
-  </script><script async src="/js/footer-beautify-runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax src="https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
-  function gitcalendar_injector_config(){
-      var parent_div_git = document.getElementById('recent-posts');
-      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
-      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
-      console.log('已挂载gitcalendar')
-      }
-
-    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
-        gitcalendar_injector_config()
-        GitCalendarInit("https://gitcalendar.akilar.top/api?HarryQu1229",['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'],'HarryQu1229')
-    }
-  </script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":300,"height":450},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
